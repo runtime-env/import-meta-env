@@ -1,0 +1,44 @@
+{
+  "name": "@runtime-config/plugin-vite",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Ernest",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/plugin-vite/src/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && pnpm build-types && pnpm build-bundle",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
+    "build-types": "tsc -p . --emitDeclarationOnly --outDir dist"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iendeavor/runtime-config.git",
+    "directory": "packages/plugin-vite"
+  },
+  "bugs": {
+    "url": "https://github.com/iendeavor/runtime-config/issues"
+  },
+  "homepage": "https://github.com/iendeavor/runtime-config/tree/main/packages/plugin-vite#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "dotenv": "^12.0.3",
+    "esbuild": "^0.14.11",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.12"
+  },
+  "peerDependencies": {
+    "dotenv": "^12.0.3",
+    "vite": "^2.7.12"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
