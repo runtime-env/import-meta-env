@@ -39,6 +39,6 @@
     "vite": "^2.7.12"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10"
+    "@originjs/vite-plugin-federation": "^1.1.0"
   }
 }

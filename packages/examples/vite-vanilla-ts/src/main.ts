@@ -1,8 +1,8 @@
 import "./style.css";
-import { getRuntimeConfig } from "@runtime-config/core";
+import env from "./env.json";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
 app.innerHTML = `
-  <h1>Hello ${getRuntimeConfig("NAME")}!</h1>
+  <h1>Hello ${env.NAME}!</h1>
 `;
