@@ -84,9 +84,11 @@ const createPlugin: () => Plugin = () => {
           legacyFileNames
             .map(
               (fileName) =>
-                path.relative(config.root, config.build.outDir) +
-                path.sep +
-                chalk.cyan(path.join(fileName))
+                chalk.gray(
+                  chalk.white.dim(
+                    path.relative(config.root, config.build.outDir) + path.sep
+                  )
+                ) + chalk.cyan(path.join(fileName))
             )
             .join("\n")
         );
