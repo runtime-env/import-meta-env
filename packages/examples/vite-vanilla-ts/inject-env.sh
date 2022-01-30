@@ -1,0 +1,1 @@
+find ./dist/assets/.env* -type f -exec sed -i '' 's/VITE_NAME:"World"/VITE_NAME:"There"/g' {} \;
