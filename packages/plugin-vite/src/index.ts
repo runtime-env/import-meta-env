@@ -1,4 +1,6 @@
 import { Plugin, ResolvedConfig } from "vite";
+import chalk from "chalk";
+import path from "path";
 
 const createPlugin: () => Plugin = () => {
   const name = "runtime-config";
@@ -13,6 +15,7 @@ const createPlugin: () => Plugin = () => {
     .join("");
 
   let config: ResolvedConfig;
+  const legacyFileNames: string[] = [];
   return <Plugin>{
     name,
     configResolved(_config) {
@@ -46,18 +49,48 @@ const createPlugin: () => Plugin = () => {
       }
     },
     renderChunk(code, chunk) {
-      if (code.includes(uniqueId)) {
-        return `import ${uniqueId} from './.env.js';` + code;
-      }
+      if (chunk.fileName.includes("-legacy")) {
+        if (code.includes(uniqueId)) {
+          legacyFileNames.push(chunk.fileName);
+        }
+      } else {
+        if (code.includes(uniqueId)) {
+          return `import ${uniqueId} from './.env.js';` + code;
+        }
 
-      if (chunk.name === ".env") {
-        return [
-          `import env from ${JSON.stringify("./.env.js")};`,
-          `export default env`,
-        ].join("\n");
+        if (chunk.name === ".env") {
+          return [
+            `import env from ${JSON.stringify("./.env.js")};`,
+            `export default env`,
+          ].join("\n");
+        }
       }
 
       return undefined;
+    },
+    closeBundle() {
+      if (legacyFileNames.length) {
+        config.logger.warn(
+          chalk.yellow(
+            `\n[@runtime-config/plugin-vite] doesn't support legacy now.`
+          )
+        );
+        config.logger.warn(
+          chalk.yellow(
+            `Please manually replace '${uniqueId}' with your .env in following files:`
+          )
+        );
+        config.logger.warn(
+          legacyFileNames
+            .map(
+              (fileName) =>
+                path.relative(config.root, config.build.outDir) +
+                path.sep +
+                chalk.cyan(path.join(fileName))
+            )
+            .join("\n")
+        );
+      }
     },
   };
 };
