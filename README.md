@@ -3,4 +3,5 @@
 ## TODO
 
 - [ ] Automatically generate typescript .d.ts for .env
-- [ ] import .env instead of .env.js for production to simply replacing .env file from codebase.
+- [ ] Import .env instead of .env.js for production to simply replacing .env file from codebase.
+- [ ] Support legacy.
