@@ -1,14 +1,13 @@
 import { Plugin, ResolvedConfig } from "vite";
 
-const createPlugin: () => Plugin = () => {
-  const name = "runtime-config";
-  const virtualFile = ".env";
-  const virtualId = "\0" + virtualFile;
+const virtualFile = ".env";
+const virtualId = "\0" + virtualFile;
 
+const createPlugin: () => Plugin = () => {
   let config: ResolvedConfig;
 
   return <Plugin>{
-    name,
+    name: "runtime-config",
     config(config, env) {
       if (env.command === "build") {
         return {
@@ -16,7 +15,7 @@ const createPlugin: () => Plugin = () => {
             rollupOptions: {
               output: {
                 manualChunks: {
-                  [virtualId]: [virtualId],
+                  [virtualFile]: [virtualId],
                 },
               },
             },
