@@ -1,5 +1,5 @@
 {
-  "name": "@runtime-config/plugin-vite",
+  "name": "vite-plugin-runtime-config",
   "version": "0.1.0",
   "description": "",
   "license": "MIT",

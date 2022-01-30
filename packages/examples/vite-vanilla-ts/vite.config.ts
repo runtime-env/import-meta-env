@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import runtimeConfig from "@runtime-config/plugin-vite";
+import runtimeConfig from "vite-plugin-runtime-config";
 import legacy from "@vitejs/plugin-legacy";
 
 // https://vitejs.dev/config/

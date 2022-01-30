@@ -14,6 +14,6 @@
     "vite": "^2.7.2"
   },
   "dependencies": {
-    "@runtime-config/plugin-vite": "workspace:^0.1.0"
+    "vite-plugin-runtime-config": "workspace:^0.1.0"
   }
 }

@@ -72,7 +72,7 @@ const createPlugin: () => Plugin = () => {
       if (legacyFileNames.length) {
         config.logger.warn(
           chalk.yellow(
-            `\n[@runtime-config/plugin-vite] doesn't support legacy now.`
+            `\n[vite-plugin-runtime-config] doesn't support legacy now.`
           )
         );
         config.logger.warn(
@@ -90,6 +90,7 @@ const createPlugin: () => Plugin = () => {
             )
             .join("\n")
         );
+        config.logger.warn("");
       }
     },
   };
