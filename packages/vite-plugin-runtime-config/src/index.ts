@@ -1,3 +1,4 @@
+import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 
 const virtualFile = ".env";
@@ -8,7 +9,7 @@ const createPlugin: () => Plugin = () => {
 
   return <Plugin>{
     name: "runtime-config",
-    config(config, env) {
+    config(_, env) {
       if (env.command === "build") {
         return {
           build: {
@@ -16,6 +17,12 @@ const createPlugin: () => Plugin = () => {
               output: {
                 manualChunks: {
                   [virtualFile]: [virtualId],
+                },
+                chunkFileNames(chunkInfo) {
+                  if (chunkInfo.name === virtualFile) {
+                    return path.join(config.build!.assetsDir, `[name].js`);
+                  }
+                  return `[name]-[hash].js`;
                 },
               },
             },
