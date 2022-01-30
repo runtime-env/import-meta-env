@@ -1,3 +1,4 @@
+import { copyFileSync } from "fs";
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 
@@ -6,6 +7,7 @@ const virtualId = "\0" + virtualFile;
 
 const createPlugin: () => Plugin = () => {
   let config: ResolvedConfig;
+  const backupEnvAssetFilePathPair: [string, string][] = [];
 
   return <Plugin>{
     name: "runtime-config",
@@ -46,6 +48,28 @@ const createPlugin: () => Plugin = () => {
       if (id === virtualId) {
         return `export default ${JSON.stringify(config.env)}`;
       }
+    },
+    renderChunk(_, chunk) {
+      if (config.command === "build") {
+        if (chunk.name === virtualFile) {
+          const envAssetFilePath = path.join(
+            config.build!.outDir,
+            chunk.fileName
+          );
+          const backupEnvAssetFilePath = envAssetFilePath + "~";
+          backupEnvAssetFilePathPair.push([
+            envAssetFilePath,
+            backupEnvAssetFilePath,
+          ]);
+        }
+      }
+    },
+    closeBundle() {
+      backupEnvAssetFilePathPair.forEach(
+        ([envAssetFilePath, backupEnvAssetFilePath]) => {
+          copyFileSync(envAssetFilePath, backupEnvAssetFilePath);
+        }
+      );
     },
   };
 };
