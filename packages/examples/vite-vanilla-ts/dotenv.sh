@@ -14,7 +14,7 @@ done < .env
 ENV_JSON=${ENV_JSON%,*}
 ENV_JSON+="}"
 
-# inject env json to .env.js
+# dotenv json to .env.js
 if [ -e ./dist/assets/.env.js~ ]
 then
   # restore env
@@ -23,7 +23,7 @@ else
   # backup env
   cp ./dist/assets/.env.js ./dist/assets/.env.js~
 fi
-sed -i '' "s/__RUNTIME_CONFIG__/$ENV_JSON/g" ./dist/assets/.env.js;
+sed -i '' "s/__DOTENV__/$ENV_JSON/g" ./dist/assets/.env.js;
 
 if [ -e ./dist/assets/.env-legacy.js ]
 then
@@ -33,5 +33,5 @@ then
   else
     cp ./dist/assets/.env-legacy.js ./dist/assets/.env-legacy.js~
   fi
-  sed -i '' "s/__RUNTIME_CONFIG__/$ENV_JSON/g" ./dist/assets/.env-legacy.js;
+  sed -i '' "s/__DOTENV__/$ENV_JSON/g" ./dist/assets/.env-legacy.js;
 fi

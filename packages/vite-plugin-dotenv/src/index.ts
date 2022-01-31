@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 const virtualFile = ".env";
 const virtualId = "\0" + virtualFile;
-const defaultPlaceholder = "__RUNTIME_CONFIG__";
+const defaultPlaceholder = "__DOTENV__";
 
 const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
   pluginOptions = {}
@@ -16,7 +16,7 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
   const envAssetFileNames: string[] = [];
 
   return <Plugin>{
-    name: "runtime-config",
+    name: "dotenv",
     config(_, env) {
       if (env.command === "build") {
         return {
@@ -71,7 +71,7 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
         config.logger.info(
           [
             "",
-            `${chalk.green("✓")} [runtime-config] is generated.`,
+            `${chalk.green("✓")} [dotenv] is generated.`,
             chalk.yellow(
               `Before deploying the project, replace ${placeholder} with your environment object in the following files:`
             ),

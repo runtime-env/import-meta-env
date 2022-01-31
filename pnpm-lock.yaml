@@ -5,7 +5,22 @@ importers:
   .:
     specifiers: {}
 
-  packages/vite-plugin-runtime-config:
+  packages/examples/vite-vanilla-ts:
+    specifiers:
+      '@types/node': ^17.0.8
+      '@vitejs/plugin-legacy': ^1.6.4
+      typescript: ^4.4.4
+      vite: ^2.7.2
+      vite-plugin-dotenv: workspace:^0.1.0
+    dependencies:
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+    devDependencies:
+      '@types/node': 17.0.8
+      '@vitejs/plugin-legacy': 1.6.4_vite@2.7.12
+      typescript: 4.5.4
+      vite: 2.7.12
+
+  packages/vite-plugin-dotenv:
     specifiers:
       '@originjs/vite-plugin-federation': ^1.1.0
       '@types/node': ^17.0.8
@@ -26,6 +41,11 @@ importers:
 
 packages:
 
+  /@babel/standalone/7.16.12:
+    resolution: {integrity: sha512-Yhx3HHbBLCE0AzpmAXQ2h0adOz0N4Ga64EC7BibFPbdE0c9/davL/NCdHJf/xuQUbwtCg99g1ZLUsMvTLgBQ2w==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
   /@originjs/vite-plugin-federation/1.1.0:
     resolution: {integrity: sha512-VZmbOnFEmSLW5DeypWyWxErfuCsHqh6kVbMffga3aFVQlqJWZ9liKdk73EPbxVmNMNGetImt+HKHQY/xYxdVWA==}
     engines: {node: '>=12.0.0'}
@@ -36,6 +56,20 @@ packages:
 
   /@types/node/17.0.8:
     resolution: {integrity: sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==}
+    dev: true
+
+  /@vitejs/plugin-legacy/1.6.4_vite@2.7.12:
+    resolution: {integrity: sha512-geH2F3hTRN++E4n9NZ0JFumxIWUKqW4FA9PAgM7Q6RvUOUUYW4tlURhEmCBYfZSN24H/yX3mEolX+wFVErsAYQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      vite: ^2.0.0
+    dependencies:
+      '@babel/standalone': 7.16.12
+      core-js: 3.20.3
+      magic-string: 0.25.7
+      regenerator-runtime: 0.13.9
+      systemjs: 6.12.1
+      vite: 2.7.12
     dev: true
 
   /balanced-match/1.0.2:
@@ -56,6 +90,11 @@ packages:
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    dev: true
+
+  /core-js/3.20.3:
+    resolution: {integrity: sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==}
+    requiresBuild: true
     dev: true
 
   /esbuild-android-arm64/0.13.15:
@@ -446,7 +485,6 @@ packages:
     resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==}
     dependencies:
       sourcemap-codec: 1.4.8
-    dev: false
 
   /minimatch/3.0.4:
     resolution: {integrity: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==}
@@ -488,6 +526,10 @@ packages:
       source-map-js: 1.0.1
     dev: true
 
+  /regenerator-runtime/0.13.9:
+    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: true
+
   /resolve/1.21.0:
     resolution: {integrity: sha512-3wCbTpk5WJlyE4mSOtDLhqQmGFi0/TD9VPwmiolnk8U0wRgMEktqCXd3vy5buTO3tljvalNvKrjHEfrd2WpEKA==}
     hasBin: true
@@ -519,11 +561,14 @@ packages:
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
-    dev: false
 
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /systemjs/6.12.1:
+    resolution: {integrity: sha512-hqTN6kW+pN6/qro6G9OZ7ceDQOcYno020zBQKpZQLsJhYTDMCMNfXi/Y8duF5iW+4WWZr42ry0MMkcRGpbwG2A==}
     dev: true
 
   /typescript/4.5.4:

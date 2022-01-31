@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-runtime-config",
+  "name": "vite-plugin-dotenv",
   "version": "0.1.0",
   "description": "",
   "license": "MIT",
@@ -7,6 +7,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "b": "bin/printenv"
+  },
   "main": "dist/index.js",
   "types": "dist/plugin-vite/src/index.d.ts",
   "scripts": {
@@ -19,13 +22,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iendeavor/runtime-config.git",
+    "url": "git+https://github.com/iendeavor/dotenv.git",
     "directory": "packages/plugin-vite"
   },
   "bugs": {
-    "url": "https://github.com/iendeavor/runtime-config/issues"
+    "url": "https://github.com/iendeavor/dotenv/issues"
   },
-  "homepage": "https://github.com/iendeavor/runtime-config/tree/main/packages/plugin-vite#readme",
+  "homepage": "https://github.com/iendeavor/dotenv/tree/main/packages/plugin-vite#readme",
   "devDependencies": {
     "@types/node": "^17.0.8",
     "esbuild": "^0.14.11",
