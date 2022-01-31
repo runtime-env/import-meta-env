@@ -1,1 +1,1 @@
-find ./dist/assets/.env* -type f -exec sed -i '' 's/VITE_NAME:"World"/VITE_NAME:"There"/g' {} \;
+find ./dist/assets/.env* -type f -exec sed -i '' 's/__RUNTIME_CONFIG__/{VITE_NAME:"World"}/g' {} \;

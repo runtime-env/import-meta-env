@@ -1,11 +1,19 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
+import chalk from "chalk";
 
 const virtualFile = ".env";
 const virtualId = "\0" + virtualFile;
+const defaultPlaceholder = "__RUNTIME_CONFIG__";
 
-const createPlugin: () => Plugin = () => {
+const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
+  pluginOptions = {}
+) => {
   let config: ResolvedConfig;
+
+  const placeholder = pluginOptions.placeholder || defaultPlaceholder;
+
+  const envAssetFileNames: string[] = [];
 
   return <Plugin>{
     name: "runtime-config",
@@ -43,8 +51,41 @@ const createPlugin: () => Plugin = () => {
       }
     },
     load(id) {
-      if (id === virtualId) {
-        return `export default ${JSON.stringify(config.env)}`;
+      if (config.command === "serve") {
+        if (id === virtualId) {
+          return `export default ${JSON.stringify(config.env)}`;
+        }
+      } else {
+        if (id === virtualId) {
+          return `export default ${placeholder}`;
+        }
+      }
+    },
+    renderChunk(_, chunk) {
+      if (chunk.name === virtualFile) {
+        envAssetFileNames.push(chunk.fileName);
+      }
+    },
+    closeBundle() {
+      if (config.command === "build") {
+        config.logger.info(
+          [
+            "",
+            `${chalk.green("✓")} [runtime-config] is generated.`,
+            chalk.yellow(
+              `Before deploying the project, replace ${placeholder} with your environment object in the following files:`
+            ),
+            ...envAssetFileNames.map(
+              (fileName) =>
+                chalk.gray(
+                  chalk.dim.white(
+                    config.build.outDir.split(path.sep).pop() + path.sep
+                  )
+                ) + chalk.blue(`${fileName}`)
+            ),
+            "",
+          ].join("\n")
+        );
       }
     },
   };
