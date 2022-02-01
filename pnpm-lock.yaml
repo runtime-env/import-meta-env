@@ -2,9 +2,6 @@ lockfileVersion: 5.3
 
 importers:
 
-  .:
-    specifiers: {}
-
   packages/examples/vite-vanilla-ts:
     specifiers:
       '@types/node': ^17.0.8

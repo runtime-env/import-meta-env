@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "sh dotenv.sh && vite preview"
+    "preview": "./dist/assets/dotenv.sh && vite preview"
   },
   "devDependencies": {
     "@types/node": "^17.0.8",

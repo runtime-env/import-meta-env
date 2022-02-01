@@ -1,4 +1,4 @@
-# dotenv
+# vite-plugin-dotenv
 
 ## TODO
 

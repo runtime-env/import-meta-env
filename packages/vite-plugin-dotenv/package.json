@@ -5,10 +5,11 @@
   "license": "MIT",
   "author": "Ernest",
   "files": [
+    "bin",
     "dist"
   ],
   "bin": {
-    "b": "bin/printenv"
+    "dotenv": "bin/dotenv.sh"
   },
   "main": "dist/index.js",
   "types": "dist/plugin-vite/src/index.d.ts",

@@ -4,3 +4,4 @@ dist
 !**/examples/**/dist
 dist-ssr
 *.local
+.pnpm-debug.log

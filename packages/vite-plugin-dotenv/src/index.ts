@@ -1,6 +1,7 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import chalk from "chalk";
+import { copyFileSync } from "fs";
 
 const virtualFile = ".env";
 const virtualId = "\0" + virtualFile;
@@ -67,11 +68,22 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
       }
     },
     closeBundle() {
+      const assetsDir = path.join(config.build.outDir, config.build.assetsDir);
+      copyFileSync(
+        "node_modules/vite-plugin-dotenv/bin/dotenv.sh",
+        path.join(assetsDir, "dotenv.sh")
+      );
+      copyFileSync(".env", path.join(assetsDir, ".env"));
+      envAssetFileNames.push(config.build.assetsDir + path.sep + "dotenv.sh");
+      envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
+
       if (config.command === "build") {
         config.logger.info(
           [
             "",
-            `${chalk.green("✓")} [dotenv] is generated.`,
+            `${chalk.green(
+              "✓"
+            )} [vite-plugin-dotenv] environment files is generated.`,
             chalk.yellow(
               `Before deploying the project, replace ${placeholder} with your environment object in the following files:`
             ),
