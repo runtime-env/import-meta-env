@@ -55,15 +55,6 @@ After building the package, you will see something like the following in the ter
 $ pnpm exec vite build
 
 vite v2.7.12 building for production...
-✓ 5 modules transformed.
-dist/assets/index-legacy.87eadd25.js       0.47 KiB / gzip: 0.35 KiB
-dist/assets/.env-legacy.js                 0.16 KiB / gzip: 0.16 KiB
-dist/assets/polyfills-legacy.03bd3439.js   41.71 KiB / gzip: 17.48 KiB
-dist/assets/favicon.17e50649.svg   1.49 KiB
-dist/index.html                    1.57 KiB
-dist/assets/index.a5010ad2.js      0.86 KiB / gzip: 0.50 KiB
-dist/assets/.env.js                0.10 KiB / gzip: 0.12 KiB
-dist/assets/index.06d14ce2.css     0.17 KiB / gzip: 0.14 KiB
 
 + ✓ [vite-plugin-dotenv] is generated.
 + Before deploying the project, replace __DOTENV__ with your environment object in the following files:
