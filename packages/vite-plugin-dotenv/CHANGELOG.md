@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.1...v0.1.2) (2022-02-01)
+
+
+### Features
+
+* prevent to expose secret keys ([28dfefe](https://github.com/iendeavor/vite-plugin-dotenv/commit/28dfefea0ce754b0d709f58b710ad5b323a0c75b))
+
 ### 0.1.1 (2022-02-01)
 
 
