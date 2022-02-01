@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/iendeavor/vite-plugin-dotenv/issues"
   },
-  "homepage": "https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/plugin-vite#readme",
+  "homepage": "https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/vite-plugin-dotenv#readme",
   "devDependencies": {
     "@types/node": "^17.0.8",
     "esbuild": "^0.14.11",
