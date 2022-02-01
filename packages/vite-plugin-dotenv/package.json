@@ -9,7 +9,7 @@
     "dist"
   ],
   "main": "dist/index.js",
-  "types": "dist/plugin-vite/src/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && pnpm build-types && pnpm build-bundle",
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
@@ -22,7 +22,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iendeavor/vite-plugin-dotenv.git",
-    "directory": "packages/plugin-vite"
+    "directory": "packages/vite-plugin-dotenv"
   },
   "bugs": {
     "url": "https://github.com/iendeavor/vite-plugin-dotenv/issues"
