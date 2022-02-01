@@ -1,16 +1,12 @@
 {
   "name": "vite-plugin-dotenv",
   "version": "0.1.0",
-  "description": "",
+  "description": "Inject your environment variables from the .env file at runtime instead of build time.",
   "license": "MIT",
   "author": "Ernest",
   "files": [
-    "bin",
     "dist"
   ],
-  "bin": {
-    "dotenv": "bin/dotenv.sh"
-  },
   "main": "dist/index.js",
   "types": "dist/plugin-vite/src/index.d.ts",
   "scripts": {
@@ -23,13 +19,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iendeavor/dotenv.git",
+    "url": "git+https://github.com/iendeavor/vite-plugin-dotenv.git",
     "directory": "packages/plugin-vite"
   },
   "bugs": {
-    "url": "https://github.com/iendeavor/dotenv/issues"
+    "url": "https://github.com/iendeavor/vite-plugin-dotenv/issues"
   },
-  "homepage": "https://github.com/iendeavor/dotenv/tree/main/packages/plugin-vite#readme",
+  "homepage": "https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/plugin-vite#readme",
   "devDependencies": {
     "@types/node": "^17.0.8",
     "esbuild": "^0.14.11",
