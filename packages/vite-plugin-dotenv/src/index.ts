@@ -58,7 +58,14 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
         }
       } else {
         if (id === virtualId) {
-          return `export default ${placeholder}`;
+          const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
+          const preservedEnv = preservedEnvKeys.reduce((acc, key) => {
+            return Object.assign(acc, { [key]: config.env[key] });
+          }, {});
+          return [
+            `const e = ${placeholder};`,
+            `export default Object.assign(e, ${JSON.stringify(preservedEnv)});`,
+          ].join("\n");
         }
       }
     },
