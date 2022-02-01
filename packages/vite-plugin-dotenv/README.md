@@ -11,6 +11,8 @@ In production, this package will generate some files in your dist assets directo
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
+⚠️ **DO NOT** add secret environment to `<package-root>/dist/assets/.env`, the [shell script](https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/vite-plugin-dotenv#:~:text=%3Cpackage%2Droot%3E/dist/assets/dotenv.sh%20is%20a%20shell%20script%20that%20injects%20%3Cpackage%2Droot%3E/dist/assets/.env%20into%20%3Cpackage%2Droot%3E/dist/assets/.env.js.) will inject everything from it into `<package-root>/dist/assets/.env.js`.
+
 ## 🚀 Quick Start
 
 Install and register the plugin:
