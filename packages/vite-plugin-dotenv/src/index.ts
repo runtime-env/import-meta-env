@@ -1,18 +1,23 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import chalk from "chalk";
-import { copyFileSync, writeFileSync } from "fs";
+import { writeFileSync } from "fs";
+import { createDotenvShellTemplate } from "./template";
 
-const virtualFile = ".env";
-const virtualId = "\0" + virtualFile;
 const defaultPlaceholder = "__.env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
 
-const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
-  pluginOptions = {}
-) => {
+const createPlugin: ({
+  placeholder,
+  virtualFile,
+}?: {
+  placeholder?: string;
+  virtualFile?: string;
+}) => Plugin = (pluginOptions = {}) => {
   let config: ResolvedConfig;
 
+  const virtualFile = pluginOptions.virtualFile || ".env";
+  const virtualId = "\0" + virtualFile;
   const placeholder = pluginOptions.placeholder || defaultPlaceholder;
 
   const envAssetFileNames: string[] = [];
@@ -76,9 +81,9 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
     },
     closeBundle() {
       const assetsDir = path.join(config.build.outDir, config.build.assetsDir);
-      copyFileSync(
-        "node_modules/vite-plugin-dotenv/bin/.env.sh",
-        path.join(assetsDir, ".env.sh")
+      writeFileSync(
+        path.join(assetsDir, ".env.sh"),
+        createDotenvShellTemplate({ dotenvJsFileName: `${virtualFile}` })
       );
       writeFileSync(
         path.join(assetsDir, ".env"),
