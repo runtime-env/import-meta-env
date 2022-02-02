@@ -19,24 +19,24 @@ done < $dir/.env
 ENV_JSON=${ENV_JSON%,*}
 ENV_JSON+="}"
 
-# dotenv json to .env.js
-if [ -e $dir/.env.js~ ]
+# dotenv json to dotenv.js
+if [ -e $dir/dotenv.js~ ]
 then
   # restore env
-  cp $dir/.env.js~ $dir/.env.js
+  cp $dir/dotenv.js~ $dir/dotenv.js
 else
   # backup env
-  cp $dir/.env.js $dir/.env.js~
+  cp $dir/dotenv.js $dir/dotenv.js~
 fi
-sed -i '' "s/__.env__/$ENV_JSON/g" $dir/.env.js;
+sed -i '' "s/__.env__/$ENV_JSON/g" $dir/dotenv.js;
 
-if [ -e $dir/.env-legacy.js ]
+if [ -e $dir/dotenv-legacy.js ]
 then
-  if [ -e $dir/.env-legacy.js~ ]
+  if [ -e $dir/dotenv-legacy.js~ ]
   then
-    cp $dir/.env-legacy.js~ $dir/.env-legacy.js
+    cp $dir/dotenv-legacy.js~ $dir/dotenv-legacy.js
   else
-    cp $dir/.env-legacy.js $dir/.env-legacy.js~
+    cp $dir/dotenv-legacy.js $dir/dotenv-legacy.js~
   fi
-  sed -i '' "s/__.env__/$ENV_JSON/g" $dir/.env-legacy.js;
+  sed -i '' "s/__.env__/$ENV_JSON/g" $dir/dotenv-legacy.js;
 fi
