@@ -60,7 +60,7 @@ const createPlugin: ({
     load(id) {
       if (config.command === "serve") {
         if (id === virtualId) {
-          return `export default ${JSON.stringify(config.env)}`;
+          return `export default Object.freeze(${JSON.stringify(config.env)})`;
         }
       } else {
         if (id === virtualId) {
