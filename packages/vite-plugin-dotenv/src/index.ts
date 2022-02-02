@@ -3,6 +3,7 @@ import { Plugin, ResolvedConfig } from "vite";
 import chalk from "chalk";
 import { writeFileSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
+import { parseSnippet } from "./parse";
 
 const defaultPlaceholder = "__env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR"];
@@ -70,7 +71,8 @@ const createPlugin: ({
             return Object.assign(acc, { [key]: env[key] });
           }, {});
           return [
-            `const e = ${placeholder};`,
+            parseSnippet,
+            `const e = parse(${placeholder});`,
             `export default Object.assign(e, ${JSON.stringify(preservedEnv)});`,
           ].join("\n");
         }

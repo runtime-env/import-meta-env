@@ -115,6 +115,7 @@ importers:
       '@originjs/vite-plugin-federation': ^1.1.0
       '@types/node': ^17.0.8
       chalk: ^5.0.0
+      dotenv: ^14.3.2
       esbuild: ^0.14.11
       rimraf: ^3.0.2
       standard-version: ^9.3.2
@@ -123,6 +124,7 @@ importers:
     dependencies:
       '@originjs/vite-plugin-federation': 1.1.0
       chalk: 5.0.0
+      dotenv: 14.3.2
     devDependencies:
       '@types/node': 17.0.8
       esbuild: 0.14.11
@@ -2797,6 +2799,11 @@ packages:
     dependencies:
       is-obj: 2.0.0
     dev: true
+
+  /dotenv/14.3.2:
+    resolution: {integrity: sha512-vwEppIphpFdvaMCaHfCEv9IgwcxMljMw2TnAQBB4VWPvzXQLTb82jwmdOKzlEVUL3gNFT4l4TPKO+Bn+sqcrVQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /dotgitignore/2.1.0:
     resolution: {integrity: sha512-sCm11ak2oY6DglEPpCB8TixLjWAxd3kJTs6UIcSasNYxXdFPV+YKlye92c8H4kKFqV5qYMIh7d+cYecEg0dIkA==}

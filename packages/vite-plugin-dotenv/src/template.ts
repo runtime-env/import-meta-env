@@ -9,21 +9,12 @@ export const createDotenvShellTemplate = ({
 
 dir=$(dirname $0)
 
-# construct env json from .env
-ENV_JSON=""
-ENV_JSON+="{"
+# read .env
+ENV=""
 while read line; do
-  KEY_VALUE_PAIR=(\`echo $line | sed 's/=/\\n/g'\`)
-  if [ \${KEY_VALUE_PAIR[0]} ]
-  then
-    ENV_JSON+=\${KEY_VALUE_PAIR[0]}
-    ENV_JSON+=":\\""
-    ENV_JSON+=\${KEY_VALUE_PAIR[1]}
-    ENV_JSON+="\\","
-  fi
+  ENV+=$line
+  ENV+="\\n"
 done < $dir/.env
-ENV_JSON=\${ENV_JSON%,*}
-ENV_JSON+="}"
 
 # dotenv json to ${dotenvJsFileName}.js
 if [ -e $dir/${dotenvJsFileName}.js~ ]
@@ -34,7 +25,7 @@ else
   # backup env
   cp $dir/${dotenvJsFileName}.js $dir/${dotenvJsFileName}.js~
 fi
-sed -i '' "s/${placeholder}/$ENV_JSON/g" $dir/${dotenvJsFileName}.js;
+sed -i '' "s/${placeholder}/\\\`$ENV\\\`/g" $dir/${dotenvJsFileName}.js;
 
 if [ -e $dir/${dotenvJsFileName}-legacy.js ]
 then
@@ -44,6 +35,6 @@ then
   else
     cp $dir/${dotenvJsFileName}-legacy.js $dir/${dotenvJsFileName}-legacy.js~
   fi
-  sed -i '' "s/${placeholder}/$ENV_JSON/g" $dir/${dotenvJsFileName}-legacy.js;
+  sed -i '' "s/${placeholder}/\\\`$ENV\\\`/g" $dir/${dotenvJsFileName}-legacy.js;
 fi
 `;
