@@ -90,7 +90,10 @@ const createPlugin: ({
           createDotenvShellTemplate({
             dotenvJsFileName: `${virtualFile}`,
             placeholder,
-          })
+          }),
+          {
+            mode: 0o755,
+          }
         );
         writeFileSync(
           path.join(assetsDir, ".env"),
