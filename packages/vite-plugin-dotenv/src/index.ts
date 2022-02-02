@@ -80,23 +80,26 @@ const createPlugin: ({
       }
     },
     closeBundle() {
-      const assetsDir = path.join(config.build.outDir, config.build.assetsDir);
-      writeFileSync(
-        path.join(assetsDir, ".env.sh"),
-        createDotenvShellTemplate({ dotenvJsFileName: `${virtualFile}` })
-      );
-      writeFileSync(
-        path.join(assetsDir, ".env"),
-        Object.keys(config.env)
-          .filter((key) => !preservedEnvKeys.includes(key))
-          .map((key) => `${key}=${config.env[key]}`)
-          .concat("")
-          .join("\n")
-      );
-      envAssetFileNames.push(config.build.assetsDir + path.sep + ".env.sh");
-      envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
-
       if (config.command === "build") {
+        const assetsDir = path.join(
+          config.build.outDir,
+          config.build.assetsDir
+        );
+        writeFileSync(
+          path.join(assetsDir, ".env.sh"),
+          createDotenvShellTemplate({ dotenvJsFileName: `${virtualFile}` })
+        );
+        writeFileSync(
+          path.join(assetsDir, ".env"),
+          Object.keys(config.env)
+            .filter((key) => !preservedEnvKeys.includes(key))
+            .map((key) => `${key}=${config.env[key]}`)
+            .concat("")
+            .join("\n")
+        );
+        envAssetFileNames.push(config.build.assetsDir + path.sep + ".env.sh");
+        envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
+
         config.logger.info(
           [
             "",
