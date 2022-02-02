@@ -4,7 +4,7 @@ import chalk from "chalk";
 import { writeFileSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
 
-const defaultPlaceholder = "__.env__";
+const defaultPlaceholder = "__env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
 
 const createPlugin: ({
@@ -16,7 +16,7 @@ const createPlugin: ({
 }) => Plugin = (pluginOptions = {}) => {
   let config: ResolvedConfig;
 
-  const virtualFile = pluginOptions.virtualFile || ".env";
+  const virtualFile = pluginOptions.virtualFile || "env";
   const virtualId = "\0" + virtualFile;
   const placeholder = pluginOptions.placeholder || defaultPlaceholder;
 
@@ -87,7 +87,10 @@ const createPlugin: ({
         );
         writeFileSync(
           path.join(assetsDir, ".env.sh"),
-          createDotenvShellTemplate({ dotenvJsFileName: `${virtualFile}` })
+          createDotenvShellTemplate({
+            dotenvJsFileName: `${virtualFile}`,
+            placeholder,
+          })
         );
         writeFileSync(
           path.join(assetsDir, ".env"),

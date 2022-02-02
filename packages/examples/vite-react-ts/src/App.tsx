@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 // @ts-ignore
-import env from ".env";
+import env from "env";
 
 function App() {
   const [count, setCount] = useState(0);

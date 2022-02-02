@@ -1,6 +1,6 @@
 import "./style.css";
 // @ts-ignore
-import env from ".env";
+import env from "env";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 

@@ -1,5 +1,5 @@
 import "./style.css";
-import env from "dotenv";
+import env from "env";
 
 document.querySelector("#app").innerHTML = `
   <h1>Hello ${env.VITE_NAME}!</h1>

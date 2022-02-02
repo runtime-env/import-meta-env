@@ -1,7 +1,9 @@
 export const createDotenvShellTemplate = ({
   dotenvJsFileName,
+  placeholder,
 }: {
   dotenvJsFileName: string;
+  placeholder: string;
 }) => `
 #!/bin/sh
 
@@ -32,7 +34,7 @@ else
   # backup env
   cp $dir/${dotenvJsFileName}.js $dir/${dotenvJsFileName}.js~
 fi
-sed -i '' "s/__.env__/$ENV_JSON/g" $dir/${dotenvJsFileName}.js;
+sed -i '' "s/${placeholder}/$ENV_JSON/g" $dir/${dotenvJsFileName}.js;
 
 if [ -e $dir/${dotenvJsFileName}-legacy.js ]
 then
@@ -42,6 +44,6 @@ then
   else
     cp $dir/${dotenvJsFileName}-legacy.js $dir/${dotenvJsFileName}-legacy.js~
   fi
-  sed -i '' "s/__.env__/$ENV_JSON/g" $dir/${dotenvJsFileName}-legacy.js;
+  sed -i '' "s/${placeholder}/$ENV_JSON/g" $dir/${dotenvJsFileName}-legacy.js;
 fi
 `;
