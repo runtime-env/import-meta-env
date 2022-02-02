@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.3...v0.1.4) (2022-02-02)
+
+
+### Features
+
+* expose virtualFile option to avoid naming conflicts ([3d10d06](https://github.com/iendeavor/vite-plugin-dotenv/commit/3d10d06a9f2b72c349c28dbfa74bd1b19ae1145e))
+* rename dotenv to .env ([9ca79fa](https://github.com/iendeavor/vite-plugin-dotenv/commit/9ca79fa73d198e64924c0eee42fc567eb658fefb))
+* use env as virtual file to prevent some issues ([9aaf430](https://github.com/iendeavor/vite-plugin-dotenv/commit/9aaf43012528624d76f5c7a296c886d77f848aa1))
+
+
+### Bug Fixes
+
+* assets should not be wrote in development mode ([b41d060](https://github.com/iendeavor/vite-plugin-dotenv/commit/b41d06033fbef6603e465acdc5acb5d994f08afd))
+* generated shell script should have execute permission ([fec81f5](https://github.com/iendeavor/vite-plugin-dotenv/commit/fec81f58e196cf851b4eba6be39d54474dacd026))
+
 ### [0.1.3](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.2...v0.1.3) (2022-02-01)
 
 
