@@ -5,7 +5,7 @@ import { writeFileSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
 
 const defaultPlaceholder = "__env__";
-const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
+const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR"];
 
 const createPlugin: ({
   placeholder,
@@ -15,6 +15,7 @@ const createPlugin: ({
   virtualFile?: string;
 }) => Plugin = (pluginOptions = {}) => {
   let config: ResolvedConfig;
+  let env: typeof config.env;
 
   const virtualFile = pluginOptions.virtualFile || "env";
   const virtualId = "\0" + virtualFile;
@@ -47,6 +48,7 @@ const createPlugin: ({
     },
     configResolved(_config) {
       config = _config;
+      env = { ...config.env, SSR: !!config.build.ssr };
     },
     resolveId(id) {
       if (id === virtualFile) {
@@ -60,12 +62,12 @@ const createPlugin: ({
     load(id) {
       if (config.command === "serve") {
         if (id === virtualId) {
-          return `export default Object.freeze(${JSON.stringify(config.env)})`;
+          return `export default Object.freeze(${JSON.stringify(env)})`;
         }
       } else {
         if (id === virtualId) {
           const preservedEnv = preservedEnvKeys.reduce((acc, key) => {
-            return Object.assign(acc, { [key]: config.env[key] });
+            return Object.assign(acc, { [key]: env[key] });
           }, {});
           return [
             `const e = ${placeholder};`,
@@ -97,9 +99,9 @@ const createPlugin: ({
         );
         writeFileSync(
           path.join(assetsDir, ".env"),
-          Object.keys(config.env)
+          Object.keys(env)
             .filter((key) => !preservedEnvKeys.includes(key))
-            .map((key) => `${key}=${config.env[key]}`)
+            .map((key) => `${key}=${env[key]}`)
             .concat("")
             .join("\n")
         );
