@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.5...v0.1.6) (2022-02-02)
+
+
+### Features
+
+* expose SSR flag ([1561977](https://github.com/iendeavor/vite-plugin-dotenv/commit/1561977aca81e12a8b5446263c600edbc664dd2b))
+* freeze env in development mode ([32dd7aa](https://github.com/iendeavor/vite-plugin-dotenv/commit/32dd7aa48d968a09b247e73dac210cc9acfd7716))
+* parse with dotenv snippet to remove comment and support multiline feature ([f898dfc](https://github.com/iendeavor/vite-plugin-dotenv/commit/f898dfcf56eaad8c88cacd94c4ae9a7eb49ef2f7))
+* seamless integration with import.meta.env ([32c23f1](https://github.com/iendeavor/vite-plugin-dotenv/commit/32c23f179eff7252204aac0a011a160e2b00a306))
+
 ### [0.1.5](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.4...v0.1.5) (2022-02-02)
 
 ### [0.1.4](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.3...v0.1.4) (2022-02-02)
