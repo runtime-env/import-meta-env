@@ -5,7 +5,7 @@ import { copyFileSync, writeFileSync } from "fs";
 
 const virtualFile = ".env";
 const virtualId = "\0" + virtualFile;
-const defaultPlaceholder = "__DOTENV__";
+const defaultPlaceholder = "__.env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
 
 const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
@@ -77,8 +77,8 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
     closeBundle() {
       const assetsDir = path.join(config.build.outDir, config.build.assetsDir);
       copyFileSync(
-        "node_modules/vite-plugin-dotenv/bin/dotenv.sh",
-        path.join(assetsDir, "dotenv.sh")
+        "node_modules/vite-plugin-dotenv/bin/.env.sh",
+        path.join(assetsDir, ".env.sh")
       );
       writeFileSync(
         path.join(assetsDir, ".env"),
@@ -88,7 +88,7 @@ const createPlugin: ({ placeholder }?: { placeholder?: string }) => Plugin = (
           .concat("")
           .join("\n")
       );
-      envAssetFileNames.push(config.build.assetsDir + path.sep + "dotenv.sh");
+      envAssetFileNames.push(config.build.assetsDir + path.sep + ".env.sh");
       envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
 
       if (config.command === "build") {

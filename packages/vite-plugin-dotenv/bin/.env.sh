@@ -27,7 +27,7 @@ else
   # backup env
   cp $dir/.env.js $dir/.env.js~
 fi
-sed -i '' "s/__DOTENV__/$ENV_JSON/g" $dir/.env.js;
+sed -i '' "s/__.env__/$ENV_JSON/g" $dir/.env.js;
 
 if [ -e $dir/.env-legacy.js ]
 then
@@ -37,5 +37,5 @@ then
   else
     cp $dir/.env-legacy.js $dir/.env-legacy.js~
   fi
-  sed -i '' "s/__DOTENV__/$ENV_JSON/g" $dir/.env-legacy.js;
+  sed -i '' "s/__.env__/$ENV_JSON/g" $dir/.env-legacy.js;
 fi

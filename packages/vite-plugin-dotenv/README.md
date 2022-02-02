@@ -11,7 +11,7 @@ In production, this package will generate some files in your dist assets directo
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
-⚠️ **DO NOT** add secret environment to `<package-root>/dist/assets/.env`, the [shell script](https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/vite-plugin-dotenv#:~:text=%3Cpackage%2Droot%3E/dist/assets/dotenv.sh%20is%20a%20shell%20script%20that%20injects%20%3Cpackage%2Droot%3E/dist/assets/.env%20into%20%3Cpackage%2Droot%3E/dist/assets/.env.js.) will inject everything from it into `<package-root>/dist/assets/.env.js`.
+⚠️ **DO NOT** add secret environment to `<package-root>/dist/assets/.env`, the [shell script](https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/vite-plugin-dotenv#:~:text=%3Cpackage%2Droot%3E/dist/assets/.env.sh%20is%20a%20shell%20script%20that%20injects%20%3Cpackage%2Droot%3E/dist/assets/.env%20into%20%3Cpackage%2Droot%3E/dist/assets/.env.js.) will inject everything from it into `<package-root>/dist/assets/.env.js`.
 
 ## 🚀 Quick Start
 
@@ -36,7 +36,7 @@ Say you want to say hi on your website, you can do this:
 `.env`:
 
 ```
-VITE_NAME=World
+VITE_NAME=vite-plugin-dotenv
 
 ```
 
@@ -57,23 +57,23 @@ $ pnpm exec vite build
 vite v2.7.12 building for production...
 
 + ✓ [vite-plugin-dotenv] is generated.
-+ Before deploying the project, replace __DOTENV__ with your environment object in the following files:
++ Before deploying the project, replace __.env__ with your environment object in the following files:
 + dist/assets/.env-legacy.js
 + dist/assets/.env.js
-+ dist/assets/dotenv.sh
++ dist/assets/.env.sh
 + dist/assets/.env
 ```
 
 - `<package-root>/dist/assets/.env` is cloned from `<package-root>/.env` as is.
 
-- `<package-root>/dist/assets/.env.js` contains a placeholder: `__DOTENV__`, which allows us to inject environment variables.
+- `<package-root>/dist/assets/.env.js` contains a placeholder: `__.env__`, which allows us to inject environment variables.
 
-- `<package-root>/dist/assets/dotenv.sh` is a shell script that injects `<package-root>/dist/assets/.env` into `<package-root>/dist/assets/.env.js`.
+- `<package-root>/dist/assets/.env.sh` is a shell script that injects `<package-root>/dist/assets/.env` into `<package-root>/dist/assets/.env.js`.
 
 Before serving your website, you need to inject environment variables, you can do this:
 
 ```sh
-$ ./dist/assets/dotenv.sh && pnpm exec vite build
+$ ./dist/assets/.env.sh && pnpm exec vite build
 ```
 
 If you run into problems, see [example](../examples/vite-vanilla-ts) or create an issue from github.
