@@ -69,6 +69,32 @@ Before serving your website, you need to inject environment variables:
 
 If you run into problems, see [examples](../examples) or create an issue from github.
 
+## Integration
+
+### jest
+
+For jest, we have to mock virtual file before running tests:
+
+```ts
+// tests/setup.ts
+jest.mock(
+  "env",
+  () => ({
+    VITE_NAME: "vite-plugin-dotenv",
+  }),
+  { virtual: true }
+);
+```
+
+```ts
+// jest.config.ts
+export default {
+  // ...
+
+  setupFiles: ["<rootDir>/test/setup.ts"],
+};
+```
+
 ## 🤝 Contributing
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull
