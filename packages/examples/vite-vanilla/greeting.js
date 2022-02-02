@@ -1,3 +1,1 @@
-import env from "env";
-
-export const greeting = `Hello ${env.VITE_NAME}!`;
+export const greeting = `Hello ${import.meta.env.VITE_NAME}!`;

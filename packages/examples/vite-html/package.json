@@ -1,0 +1,14 @@
+{
+  "name": "vite-vanilla",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "cross-env VITE_INLINE=inline-serve vite",
+    "build": "cross-env VITE_INLINE=inline-build vite build",
+    "preview": "./dist/assets/.env.sh && vite preview"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "vite": "^2.7.2",
+    "vite-plugin-dotenv": "workspace:^0.1.3"
+  }
+}
