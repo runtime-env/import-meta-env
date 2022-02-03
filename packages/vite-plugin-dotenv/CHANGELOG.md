@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.6...v0.1.7) (2022-02-03)
+
+
+### Bug Fixes
+
+* generates the same output if the source has not changed ([01b3c48](https://github.com/iendeavor/vite-plugin-dotenv/commit/01b3c48d473c96799b163aeed03adb80d92aaa80))
+* sed command is different ([e39ca2e](https://github.com/iendeavor/vite-plugin-dotenv/commit/e39ca2e9dee4873b0adbadbd52aa478c5e03a1c4))
+* should not override chunk file names ([68b22b0](https://github.com/iendeavor/vite-plugin-dotenv/commit/68b22b0ebf1fb7cd3d87f269f2732ca04c3082bf))
+
 ### [0.1.6](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.5...v0.1.6) (2022-02-02)
 
 
