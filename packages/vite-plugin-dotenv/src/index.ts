@@ -93,48 +93,19 @@ const createPlugin: ({
           code =
             `import ${unique} from '${virtualFile}';` +
             code.replace(`import ${unique} from '${virtualFile}';`, "");
-
-          for (const envKey of envKeys.keys()) {
-            code = code.replace(
-              new RegExp(`import.meta.env.${envKey}`, "g"),
-              `${unique}.${envKey}`
-            );
-          }
-          code = code.replace(/import\.meta\.env/g, unique);
         } else if (id.endsWith(".vue")) {
           code = code.replace(
             /(\<script.*?\>)/,
             `$1import ${unique} from '${virtualFile}';`
           );
-
-          for (const envKey of envKeys.keys()) {
-            code = code.replace(
-              new RegExp(`import.meta.env.${envKey}`, "g"),
-              `${unique}.${envKey}`
-            );
-          }
-          code = code.replace(/import\.meta\.env/g, unique);
-        } else if (id.endsWith(".html")) {
-          for (const envKey of envKeys.keys()) {
-            code = code.replace(
-              new RegExp(`import.meta.env.${envKey}`, "g"),
-              `${unique}.${envKey}`
-            );
-          }
-          code = code.replace(/import\.meta\.env/g, unique);
         }
+        code = code.replace(/import\.meta\.env/g, unique);
       }
       return code;
     },
     transformIndexHtml(html) {
       if (config.command === "serve") return;
 
-      for (const envKey of envKeys.keys()) {
-        html = html.replace(
-          new RegExp(`${unique}\.${envKey}`, "g"),
-          `import.meta.env.${envKey}`
-        );
-      }
       html = html.replace(new RegExp(unique, "g"), "import.meta.env");
       return html;
     },
@@ -197,25 +168,7 @@ const createPlugin: ({
     },
   };
 
-  const post = <Plugin>{
-    name: "dotenv:post",
-    enforce: "post",
-    transform(code, id) {
-      if (config.command === "serve") return code;
-
-      if (id !== virtualId) {
-        if (id.endsWith(".js")) {
-          code =
-            `import ${unique} from '${virtualFile}';` +
-            code.replace(`import ${unique} from '${virtualFile}';`, "");
-        }
-      }
-
-      return code;
-    },
-  };
-
-  return [pre, post];
+  return [pre];
 };
 
 export default createPlugin;
