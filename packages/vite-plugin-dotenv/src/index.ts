@@ -41,9 +41,9 @@ const createPlugin: ({
               },
               chunkFileNames(chunkInfo) {
                 if (chunkInfo.name === virtualFile) {
-                  return path.join(config.build!.assetsDir, `[name].js`);
+                  return path.join(config.build.assetsDir, `[name].js`);
                 }
-                return undefined;
+                return path.join(config.build.assetsDir, `[name].[hash].js`);
               },
             },
           },
