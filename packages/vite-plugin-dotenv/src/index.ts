@@ -90,28 +90,28 @@ const createPlugin: ({
 
       if (id !== virtualId && id.includes("node_modules") === false) {
         if ([".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext))) {
-          code = `import env from '${virtualFile}';` + code;
+          code = `import ${unique} from '${virtualFile}';` + code;
 
           for (const envKey of envKeys.keys()) {
             code = code.replace(
               new RegExp(`import.meta.env.${envKey}`, "g"),
-              `env.${envKey}`
+              `${unique}.${envKey}`
             );
           }
-          code = code.replace(/import\.meta\.env/g, "env");
+          code = code.replace(/import\.meta\.env/g, unique);
         } else if (id.endsWith(".vue")) {
           code = code.replace(
             /(\<script.*?\>)/,
-            `$1import env from '${virtualFile}';`
+            `$1import ${unique} from '${virtualFile}';`
           );
 
           for (const envKey of envKeys.keys()) {
             code = code.replace(
               new RegExp(`import.meta.env.${envKey}`, "g"),
-              `env.${envKey}`
+              `${unique}.${envKey}`
             );
           }
-          code = code.replace(/import\.meta\.env/g, "env");
+          code = code.replace(/import\.meta\.env/g, unique);
         } else if (id.endsWith(".html")) {
           for (const envKey of envKeys.keys()) {
             code = code.replace(
