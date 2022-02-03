@@ -6,7 +6,8 @@ import { createDotenvShellTemplate } from "./template";
 import { parseSnippet } from "./parse";
 
 const defaultPlaceholder = "__env__";
-const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR"];
+const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
+const inlineEnvKeys = ["SSR", "LEGACY"];
 const unique =
   "lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm";
 
@@ -99,7 +100,22 @@ const createPlugin: ({
             `$1import ${unique} from '${virtualFile}';`
           );
         }
+
+        inlineEnvKeys.forEach((key) => {
+          code = code.replace(
+            new RegExp(`import.meta.env.${key}`, "g"),
+            unique + `.${key}`
+          );
+        });
+
         code = code.replace(/import\.meta\.env/g, unique);
+
+        inlineEnvKeys.forEach((key) => {
+          code = code.replace(
+            new RegExp(unique + `.${key}`, "g"),
+            `import.meta.env.${key}`
+          );
+        });
       }
       return code;
     },
