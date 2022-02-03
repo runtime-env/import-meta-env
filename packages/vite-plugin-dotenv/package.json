@@ -11,7 +11,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && pnpm build-types && pnpm build-bundle",
-    "build-bundle": "esbuild src/index.ts --minify --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
     "release": "standard-version"
   },
