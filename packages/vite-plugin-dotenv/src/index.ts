@@ -50,7 +50,7 @@ const createPlugin: ({
                 if (chunkInfo.name === virtualFile) {
                   return path.join(config.build!.assetsDir, `[name].js`);
                 }
-                return `[name]-[hash].js`;
+                return undefined;
               },
             },
           },
