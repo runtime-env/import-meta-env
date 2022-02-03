@@ -1,2 +1,2 @@
 const n=/(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|\s*"(?:\\"|[^"])*"|[^#\r\n]+)?\s*(?:#.*)?(?:$|$)/gm;const e=function(e){const r={};let s,t=e.toString();for(t=t.replace(/\r\n?/gm,"\n");null!=(s=n.exec(t));){const n=s[1];let e=s[2]||"";e=e.trim();const t=e[0];e=e.replace(/^(['"])([\s\S]+)\1$/gm,"$2"),'"'===t&&(e=e.replace(/\\n/g,"\n"),e=e.replace(/\\r/g,"\r")),r[n]=e}return r}(`VITE_NAME=vite-plugin-dotenv
-`);var r=Object.assign(e,{BASE_URL:"/",MODE:"production",DEV:!1,PROD:!0});export{r as l};
+`);var r=Object.assign(e,{BASE_URL:"/",MODE:"production",DEV:!1,PROD:!0});export{r as v};

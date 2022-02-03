@@ -1,4 +1,4 @@
-import { l as lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm } from "./env.js";
+import { v as vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx } from "./env.js";
 const p$1 = function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -4250,7 +4250,7 @@ function normalizeContainer(container) {
 const Named = defineComponent(() => {
   const count = ref(0);
   const inc = () => count.value++;
-  console.assert(lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm.VITE_COMPS === "Comps");
+  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_COMPS === "Comps");
   return () => createVNode("button", {
     "class": "named",
     "onClick": inc
@@ -4275,7 +4275,7 @@ var Default$1 = defineComponent(() => {
 const Default = defineComponent(() => {
   const count = ref(3);
   const inc = () => count.value++;
-  console.assert(lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm.VITE_COMP === "Comp");
+  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_COMP === "Comp");
   return () => createVNode("button", {
     "class": "default-tsx",
     "onClick": inc
@@ -4284,7 +4284,7 @@ const Default = defineComponent(() => {
 var _sfc_main$1 = defineComponent(() => {
   const count = ref(4);
   const inc = () => count.value++;
-  console.assert(lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm.VITE_SCRIPT === "Script");
+  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_SCRIPT === "Script");
   return () => createVNode("button", {
     "class": "script",
     "onClick": inc
@@ -4293,15 +4293,15 @@ var _sfc_main$1 = defineComponent(() => {
 var _sfc_main = defineComponent(() => {
   const count = ref(5);
   const inc = () => count.value++;
-  console.assert(lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm.VITE_SRC_IMPORT_JSX === "SrcImportJsx");
+  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_SRC_IMPORT_JSX === "SrcImportJsx");
   return () => createVNode("button", {
     "class": "src-import",
     "onClick": inc
   }, [createTextVNode("src import "), count.value]);
 });
 function App() {
-  console.assert(lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm.VITE_MAIN === "Main");
+  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_MAIN === "Main");
   return createVNode(Fragment, null, [createVNode(Named, null, null), createVNode(NamedSpec, null, null), createVNode(Default$1, null, null), createVNode(Default, null, null), createVNode(_sfc_main$1, null, null), createVNode(_sfc_main, null, null)]);
 }
 createApp(App).mount("#app");
-console.assert(lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm.VITE_INDEX === "Index");
+console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_INDEX === "Index");

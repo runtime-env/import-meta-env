@@ -8,8 +8,15 @@ import { parseSnippet } from "./parse";
 const defaultPlaceholder = "__env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
 const inlineEnvKeys = ["SSR", "LEGACY"];
-const unique =
-  "lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm";
+const unique = (() => {
+  const uniqueId = "vite_plugin_dotenv_unique_id_";
+  return (
+    uniqueId +
+    Array(256 - uniqueId.length)
+      .fill("x")
+      .join("")
+  );
+})();
 
 const createPlugin: ({
   placeholder,
