@@ -90,7 +90,9 @@ const createPlugin: ({
 
       if (id !== virtualId && id.includes("node_modules") === false) {
         if ([".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext))) {
-          code = `import ${unique} from '${virtualFile}';` + code;
+          code =
+            `import ${unique} from '${virtualFile}';` +
+            code.replace(`import ${unique} from '${virtualFile}';`, "");
 
           for (const envKey of envKeys.keys()) {
             code = code.replace(
