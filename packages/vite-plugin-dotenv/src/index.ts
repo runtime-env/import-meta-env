@@ -99,6 +99,19 @@ const createPlugin: ({
             );
           }
           code = code.replace(/import\.meta\.env/g, "env");
+        } else if (id.endsWith(".vue")) {
+          code = code.replace(
+            /(\<script.*?\>)/,
+            `$1import env from '${virtualFile}';`
+          );
+
+          for (const envKey of envKeys.keys()) {
+            code = code.replace(
+              new RegExp(`import.meta.env.${envKey}`, "g"),
+              `env.${envKey}`
+            );
+          }
+          code = code.replace(/import\.meta\.env/g, "env");
         } else if (id.endsWith(".html")) {
           for (const envKey of envKeys.keys()) {
             code = code.replace(

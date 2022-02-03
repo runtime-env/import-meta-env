@@ -9,6 +9,8 @@ declare module "*.vue" {
 
 interface ImportMetaEnv {
   readonly VITE_NAME: string;
+  readonly VITE_VSCODE: string;
+  readonly VITE_ALT: string;
 }
 
 interface ImportMeta {
