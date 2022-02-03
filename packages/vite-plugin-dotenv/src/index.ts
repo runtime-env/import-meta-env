@@ -7,15 +7,8 @@ import { parseSnippet } from "./parse";
 
 const defaultPlaceholder = "__env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR"];
-const unique = Array(10)
-  .fill(null)
-  .map(() =>
-    Math.random()
-      .toString(36)
-      .slice(2, 9)
-      .replace(/[^a-z]+/g, "")
-  )
-  .join("");
+const unique =
+  "lyidiiyemdfoxopakumopqqehzfargppoteyouyebiansyzgzsvdxjjtshatcysfjumgjvcequxyzniwkojjnreyqjtxgvhwjgjahrmzcjoqbuiaaduffikyhqtfcmetruttmyehcmyqtitaymkrdidauktzigmrtpntfwjzsodmwctlnraifuptzfjwqdgalxoyvlcixaeykxmgmbelnnpawyzfeyrmhsqvfdjjqcgovhiwiptdnatqijttwvm";
 
 const createPlugin: ({
   placeholder,
