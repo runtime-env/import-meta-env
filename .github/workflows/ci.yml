@@ -41,86 +41,13 @@ jobs:
       - name: Build vite-plugin-dotenv
         run: pnpm run build --parallel --stream --filter vite-plugin-dotenv
 
-      - name: Build&Test vite-html
-        run: |
-          cd packages/examples/vite-html
-          rm -rf dist
-          mv .env .env.example
-          mv .env.production .env.production.example
-          pnpm run build
-          echo $'VITE_EFFECTIVE_MODE_FILE_NAME=.env.production\nVITE_CUSTOM_ENV_VARIABLE=1\nCUSTOM_PREFIX_ENV_VARIABLE=1' >> ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
-          mv .env.production.example .env.production
-
-      - name: Build&Test vite-react-ts
-        run: |
-          cd packages/examples/vite-react-ts
-          rm -rf dist
-          mv .env .env.example
-          pnpm run build
-          cp .env.example ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
-
-      - name: Build&Test vite-vanilla
-        run: |
-          cd packages/examples/vite-vanilla
-          rm -rf dist
-          mv .env .env.example
-          pnpm run build
-          cp .env.example ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
-
-      - name: Build&Test vite-vanilla-legacy
-        run: |
-          cd packages/examples/vite-vanilla-legacy
-          rm -rf dist
-          mv .env .env.example
-          pnpm run build
-          cp .env.example ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
-
-      - name: Build&Test vite-vanilla-ts
-        run: |
-          cd packages/examples/vite-vanilla-ts
-          rm -rf dist
-          mv .env .env.example
-          pnpm run build
-          cp .env.example ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
-
-      - name: Build&Test vite-vitest-ts
-        run: |
-          cd packages/examples/vite-vitest-ts
-          rm -rf dist
-          mv .env .env.example
-          pnpm run build
-          cp .env.example ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
-          pnpm exec vitest run
-
-      - name: Build&Test vite-vue-ts
+      - name: Build&Test examples
         if: ${{ matrix.node_version >= '14' }}
-        run: |
-          cd packages/examples/vite-vue-ts
-          rm -rf dist
-          mv .env .env.example
-          pnpm run build
-          cp .env.example ./dist/assets/.env
-          ./dist/assets/.env.sh
-          diff dist __dist__ -r
-          mv .env.example .env
+        run: pnpm --parallel --stream --filter \!vite-plugin-dotenv exec sh test.sh
+
+      - name: Build&Test examples
+        if: ${{ matrix.node_version == '12' }}
+        run: pnpm --parallel --stream --filter \!vite-plugin-dotenv --filter \!vite-vue-ts exec sh test.sh
 
   lint:
     runs-on: ubuntu-latest
