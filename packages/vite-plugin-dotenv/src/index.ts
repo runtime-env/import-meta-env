@@ -1,7 +1,7 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import chalk from "chalk";
-import { writeFileSync } from "fs";
+import { chmodSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
 import { parseSnippet } from "./parse";
 
@@ -141,30 +141,35 @@ const createPlugin: ({
 
       if (chunk.name === virtualFile) {
         envAssetFileNames.push(chunk.fileName);
+
+        this.emitFile({
+          type: "asset",
+          source: createDotenvShellTemplate({
+            dotenvJsFileName: `${virtualFile}`,
+            placeholder,
+          }),
+          fileName: path.join(config.build.assetsDir, ".env.sh"),
+        });
+
+        this.emitFile({
+          type: "asset",
+          source: [...envKeys.keys()]
+            .filter((key) => !preservedEnvKeys.includes(key))
+            .map((key) => `${key}=${config.env[key]}`)
+            .concat("")
+            .join("\n"),
+          fileName: path.join(config.build.assetsDir, ".env"),
+        });
       }
     },
     closeBundle() {
       if (config.command === "serve") return;
 
-      const assetsDir = path.join(config.build.outDir, config.build.assetsDir);
-      writeFileSync(
-        path.join(assetsDir, ".env.sh"),
-        createDotenvShellTemplate({
-          dotenvJsFileName: `${virtualFile}`,
-          placeholder,
-        }),
-        {
-          mode: 0o755,
-        }
+      chmodSync(
+        path.join(config.build.outDir, config.build.assetsDir, ".env.sh"),
+        0o755
       );
-      writeFileSync(
-        path.join(assetsDir, ".env"),
-        [...envKeys.keys()]
-          .filter((key) => !preservedEnvKeys.includes(key))
-          .map((key) => `${key}=${config.env[key]}`)
-          .concat("")
-          .join("\n")
-      );
+
       envAssetFileNames.push(config.build.assetsDir + path.sep + ".env.sh");
       envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
       config.logger.info(
