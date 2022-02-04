@@ -20,15 +20,13 @@ const unique = (() => {
 
 const createPlugin: ({
   placeholder,
-  virtualFile,
 }?: {
   placeholder?: string;
-  virtualFile?: string;
 }) => Plugin[] = (pluginOptions = {}) => {
   let config: ResolvedConfig;
   let envKeys: Set<string>;
 
-  const virtualFile = pluginOptions.virtualFile || "env";
+  const virtualFile = "env";
   const virtualId = "\0" + virtualFile;
   const placeholder = pluginOptions.placeholder || defaultPlaceholder;
 
