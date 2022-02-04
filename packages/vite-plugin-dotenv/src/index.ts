@@ -21,6 +21,9 @@ const unique = (() => {
 const createPlugin: ({
   placeholder,
 }?: {
+  /**
+   * the placeholder to replace with the `.env` file content
+   */
   placeholder?: string;
 }) => Plugin[] = (pluginOptions = {}) => {
   let config: ResolvedConfig;
