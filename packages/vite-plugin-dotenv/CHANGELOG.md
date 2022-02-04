@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.7...v0.1.8) (2022-02-04)
+
+
+### Features
+
+* add description ([cad2eab](https://github.com/iendeavor/vite-plugin-dotenv/commit/cad2eabbeff2b5deec8d936220f33e31b3172924))
+* remove unused parameter ([831e55c](https://github.com/iendeavor/vite-plugin-dotenv/commit/831e55c447cf7c83df308476c9fb0d6ea09ecf82))
+
+
+### Bug Fixes
+
+* cannot write file ([8265164](https://github.com/iendeavor/vite-plugin-dotenv/commit/8265164874182d719c6115da28d48c3d6ea8db6b))
+* prevent naming conflicts ([0c2e6c4](https://github.com/iendeavor/vite-plugin-dotenv/commit/0c2e6c4c0cc2806d4196cfef4eb7af32473e9fff))
+* return default chunkFileNames ([422b46e](https://github.com/iendeavor/vite-plugin-dotenv/commit/422b46e0f9dc3186cd63ddd44d300ad2518b22e8))
+* some env variables should be inlined ([ca35637](https://github.com/iendeavor/vite-plugin-dotenv/commit/ca35637db2e30c270994f2c6bc19a5e9e3946eb9))
+* vue file should be transformed ([7fc3187](https://github.com/iendeavor/vite-plugin-dotenv/commit/7fc3187d5da17ac2f503fb17f406f506877123d6))
+* vue file will be excuted twice ([04966d8](https://github.com/iendeavor/vite-plugin-dotenv/commit/04966d8b50b37c886db8a3214d75587a541fb749))
+
 ### [0.1.7](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.6...v0.1.7) (2022-02-03)
 
 
