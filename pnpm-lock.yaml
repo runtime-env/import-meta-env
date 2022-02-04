@@ -8,6 +8,22 @@ importers:
     devDependencies:
       prettier: 2.5.1
 
+  packages/examples/vite-config-build-assets-dir:
+    specifiers:
+      vite: ^2.7.2
+      vite-plugin-dotenv: workspace:^0.1.3
+    devDependencies:
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
+  packages/examples/vite-config-build-out-dir:
+    specifiers:
+      vite: ^2.7.2
+      vite-plugin-dotenv: workspace:^0.1.3
+    devDependencies:
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
   packages/examples/vite-html:
     specifiers:
       cross-env: ^7.0.3
