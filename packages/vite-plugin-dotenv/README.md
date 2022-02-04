@@ -53,6 +53,12 @@ Add the following script to run `.env.sh` to inject environment variables before
 
 If you run into problems, see [examples](../examples) or create an issue from github.
 
+## Plugin Options
+
+- `placeholder?: string`: The placeholder to replace with the `.env` file content
+
+- `debug?: boolean`: Whether to dump debug logs, logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
+
 ## 🤝 Contributing
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull
