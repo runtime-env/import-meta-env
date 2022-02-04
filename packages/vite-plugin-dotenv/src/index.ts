@@ -98,14 +98,11 @@ const createPlugin: ({
       if (config.command === "serve") return code;
 
       if (id !== virtualId && id.includes("node_modules") === false) {
-        if (
-          [".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext)) &&
-          id.includes("?vue&type=template") === false
-        ) {
+        if (isTransformingJs(code, id)) {
           code =
             `import ${unique} from '${virtualFile}';` +
             code.replace(`import ${unique} from '${virtualFile}';`, "");
-        } else if (id.endsWith(".vue")) {
+        } else if (isTransformingVue(code, id)) {
           code = code.replace(
             /(\<script.*?\>)/,
             `$1import ${unique} from '${virtualFile}';`
@@ -199,3 +196,9 @@ const createPlugin: ({
 };
 
 export default createPlugin;
+
+const isTransformingJs = (code: string, id: string) =>
+  [".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext)) &&
+  id.includes("?vue&type=template") === false;
+
+const isTransformingVue = (code: string, id: string) => id.endsWith(".vue");
