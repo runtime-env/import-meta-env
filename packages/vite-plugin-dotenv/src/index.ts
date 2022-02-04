@@ -1,7 +1,7 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import chalk from "chalk";
-import { chmodSync } from "fs";
+import { chmodSync, writeFileSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
 import { parseSnippet } from "./parse";
 
@@ -20,12 +20,21 @@ const unique = (() => {
 
 const createPlugin: ({
   placeholder,
+  debug,
 }?: {
   /**
    * the placeholder to replace with the `.env` file content
    */
   placeholder?: string;
+
+  /**
+   * whether to dump debug logs
+   * Logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
+   */
+  debug?: boolean;
 }) => Plugin[] = (pluginOptions = {}) => {
+  let debugLog = "";
+
   let config: ResolvedConfig;
   let envKeys: Set<string>;
 
@@ -99,14 +108,28 @@ const createPlugin: ({
 
       if (id !== virtualId && id.includes("node_modules") === false) {
         if (isTransformingJs(code, id)) {
+          debugLog += `\n===before transforming [.jt]sx? ${id}===\n` + code;
+
           code =
             `import ${unique} from '${virtualFile}';` +
             code.replace(`import ${unique} from '${virtualFile}';`, "");
+
+          debugLog +=
+            `\n===after transforming [.jt]sx? ${id}===\n` +
+            code +
+            "\n===vite-plugin-dotenv===\n";
         } else if (isTransformingVue(code, id)) {
+          debugLog += `\n===before transforming vue ${id}===\n` + code;
+
           code = code.replace(
             /(\<script.*?\>)/,
             `$1import ${unique} from '${virtualFile}';`
           );
+
+          debugLog +=
+            `\n===after transforming vue ${id}===\n` +
+            code +
+            "\n===vite-plugin-dotenv===\n";
         }
 
         inlineEnvKeys.forEach((key) => {
@@ -166,6 +189,13 @@ const createPlugin: ({
         path.join(config.build.outDir, config.build.assetsDir, ".env.sh"),
         0o755
       );
+
+      if (pluginOptions.debug) {
+        writeFileSync(
+          path.join(config.root, "vite-plugin-dotenv-debug.log"),
+          debugLog
+        );
+      }
 
       envAssetFileNames.push(config.build.assetsDir + path.sep + ".env.sh");
       envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
