@@ -39,7 +39,6 @@
     "vite": "^2.7.13"
   },
   "dependencies": {
-    "@originjs/vite-plugin-federation": "^1.1.0",
     "chalk": "^5.0.0",
     "dotenv": "^14.3.2"
   }
