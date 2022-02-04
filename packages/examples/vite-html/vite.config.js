@@ -5,4 +5,7 @@ import dotenv from "vite-plugin-dotenv";
 export default defineConfig({
   envPrefix: ["VITE_", "CUSTOM_PREFIX_"],
   plugins: [dotenv()],
+  build: {
+    minify: false,
+  },
 });

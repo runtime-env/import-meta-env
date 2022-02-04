@@ -14,7 +14,6 @@ module.exports = {
     vuePlugin(),
   ],
   build: {
-    // to make tests faster
     minify: false,
   },
 };
