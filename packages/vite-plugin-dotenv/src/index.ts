@@ -4,6 +4,7 @@ import chalk from "chalk";
 import { chmodSync, writeFileSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
 import { parseSnippet } from "./parse";
+import { verifySnippet } from "./verify";
 
 const defaultPlaceholder = "__env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
@@ -20,12 +21,18 @@ const unique = (() => {
 
 const createPlugin: ({
   placeholder,
+  verify,
   debug,
 }?: {
   /**
    * The placeholder to replace with the `.env` file content
    */
   placeholder?: string;
+
+  /**
+   * Whether to verify the `.env` file content at runtime
+   */
+  verify?: boolean;
 
   /**
    * Whether to dump debug logs
@@ -99,6 +106,26 @@ const createPlugin: ({
         return [
           parseSnippet,
           `const e = parse(${placeholder});`,
+          ...(pluginOptions.verify ?? true
+            ? [
+                verifySnippet(
+                  JSON.stringify(
+                    [...envKeys.keys()]
+                      .filter(
+                        (key) =>
+                          !preservedEnvKeys.includes(key) &&
+                          !inlineEnvKeys.includes(key)
+                      )
+                      .reduce(
+                        (acc, key) =>
+                          Object.assign(acc, { [key]: config.env[key] }),
+                        {}
+                      )
+                  )
+                ),
+                `verify(e);`,
+              ]
+            : []),
           `export default Object.assign(e, ${JSON.stringify(preservedEnv)});`,
         ].join("\n");
       }

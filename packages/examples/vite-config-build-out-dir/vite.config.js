@@ -7,5 +7,5 @@ export default defineConfig({
     minify: false,
     outDir: "custom-out-dir",
   },
-  plugins: [dotenv()],
+  plugins: [dotenv({ verify: false })],
 });

@@ -42,6 +42,14 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
+  packages/examples/vite-parameters-verify:
+    specifiers:
+      vite: ^2.7.13
+      vite-plugin-dotenv: workspace:^0.1.9
+    devDependencies:
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
   packages/examples/vite-react-ts:
     specifiers:
       '@types/react': ^17.0.33

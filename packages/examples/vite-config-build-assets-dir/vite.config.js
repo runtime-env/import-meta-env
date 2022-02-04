@@ -7,5 +7,5 @@ export default defineConfig({
     minify: false,
     assetsDir: "custom-assets-dir",
   },
-  plugins: [dotenv()],
+  plugins: [dotenv({ verify: false })],
 });

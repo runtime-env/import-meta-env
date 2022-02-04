@@ -18,8 +18,6 @@ In production, this package will generate some files in your dist assets directo
 
 - `dist/assets/.env.sh` is used to inject the contents of `dist/assets/.env` into the above placeholder `__env__`.
 
-⚠️ **DO NOT** add secret environment to `dist/assets/.env`, the [shell script](https://github.com/iendeavor/vite-plugin-dotenv/tree/main/packages/vite-plugin-dotenv#:~:text=%3Cpackage%2Droot%3E/dist/assets/.env.sh%20is%20a%20shell%20script%20that%20injects%20%3Cpackage%2Droot%3E/dist/assets/.env%20into%20%3Cpackage%2Droot%3E/dist/assets/env.js.) will inject everything from it into `dist/assets/env.js`.
-
 ## 🚀 Quick Start
 
 Install the plugin:
@@ -56,6 +54,8 @@ If you run into problems, see [examples](../examples) or create an issue from gi
 ## Plugin Options
 
 - `placeholder?: string`: The placeholder to replace with the `.env` file content
+
+- `verify: boolean = true`: Whether to verify the `.env` file content at runtime
 
 - `debug?: boolean`: Whether to dump debug logs, logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
 
