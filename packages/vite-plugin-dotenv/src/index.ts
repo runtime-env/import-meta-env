@@ -98,7 +98,10 @@ const createPlugin: ({
       if (config.command === "serve") return code;
 
       if (id !== virtualId && id.includes("node_modules") === false) {
-        if ([".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext))) {
+        if (
+          [".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext)) &&
+          id.includes("?vue&type=template") === false
+        ) {
           code =
             `import ${unique} from '${virtualFile}';` +
             code.replace(`import ${unique} from '${virtualFile}';`, "");

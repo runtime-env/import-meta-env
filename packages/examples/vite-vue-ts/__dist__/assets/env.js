@@ -3,4 +3,5 @@ const l=/(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|
 `),x=x.replace(/\\r/g,"\r")),t[r]=x}return t}const a=o(`VITE_NAME=vite-plugin-dotenv
 VITE_VSCODE=VSCode
 VITE_ALT=Vue logo
+VITE_PUG=Pug
 `);var i=Object.assign(a,{BASE_URL:"/",MODE:"production",DEV:!1,PROD:!0});export{i as v};

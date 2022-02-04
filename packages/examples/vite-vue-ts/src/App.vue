@@ -3,11 +3,13 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import { defineComponent } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import Pug from "./components/Pug.vue";
 import { greeting } from "./greeting";
 
 export default defineComponent({
   components: {
     HelloWorld,
+    Pug,
   },
   setup() {
     return {
@@ -21,6 +23,7 @@ export default defineComponent({
 <template>
   <img :alt="alt" src="./assets/logo.png" />
   <HelloWorld :msg="greeting" />
+  <Pug />
 </template>
 
 <style>
