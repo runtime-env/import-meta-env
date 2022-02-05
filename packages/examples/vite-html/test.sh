@@ -2,7 +2,7 @@ set -e
 
 # set up
 rm -rf dist
-mv .env .env.example
+mv .env .env.tmp
 mv .env.production .env.production.example
 
 # act
@@ -16,5 +16,5 @@ echo 'CUSTOM_PREFIX_ENV_VARIABLE=1' >> ./dist/assets/.env
 diff -r dist __dist__
 
 # tear down
-mv .env.example .env
+mv .env.tmp .env
 mv .env.production.example .env.production

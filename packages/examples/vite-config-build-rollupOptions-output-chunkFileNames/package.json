@@ -1,5 +1,6 @@
 {
-  "name": "vite-vanilla",
+  "private": true,
+  "name": "vite-config-build-rollupOptions-output-chunkFileNames",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

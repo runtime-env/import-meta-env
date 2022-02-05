@@ -48,8 +48,7 @@ function parse(src, options) {
   }
   return obj;
 }
-const e = parse(`VITE_INLINE=inline-build
-VITE_EFFECTIVE_MODE_FILE_NAME=.env.production
+const e = parse(`VITE_EFFECTIVE_MODE_FILE_NAME=.env.production
 VITE_CUSTOM_ENV_VARIABLE=1
 CUSTOM_PREFIX_ENV_VARIABLE=1
 `, {});

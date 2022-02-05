@@ -1,6 +1,6 @@
 {
-  "name": "vite-vue-jsx",
   "private": true,
+  "name": "vite-vue-jsx",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

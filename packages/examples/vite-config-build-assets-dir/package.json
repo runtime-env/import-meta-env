@@ -1,5 +1,6 @@
 {
-  "name": "vite-vanilla",
+  "private": true,
+  "name": "vite-config-build-assets-dir",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

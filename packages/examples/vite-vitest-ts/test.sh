@@ -2,18 +2,18 @@ set -e
 
 # set up
 rm -rf dist
-mv .env .env.example
+mv .env .env.tmp
 
 # act
 pnpm run build
-cp .env.example ./dist/assets/.env
+cp .env.tmp ./dist/assets/.env
 ./dist/assets/.env.sh
 
 # assert
 diff -r dist __dist__
 
 # tear down
-mv .env.example .env
+mv .env.tmp .env
 
 # assert
 pnpm exec vitest run

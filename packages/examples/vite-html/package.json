@@ -1,9 +1,10 @@
 {
-  "name": "vite-vanilla",
+  "private": true,
+  "name": "vite-html",
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env VITE_INLINE=inline-serve vite",
-    "build": "cross-env VITE_INLINE=inline-build vite build",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "./dist/assets/.env.sh && vite preview"
   },
   "devDependencies": {

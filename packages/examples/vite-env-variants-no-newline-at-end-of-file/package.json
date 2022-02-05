@@ -1,5 +1,6 @@
 {
-  "name": "vite-vanilla",
+  "private": true,
+  "name": "vite-env-variants-no-newline-at-end-of-file",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
