@@ -104,7 +104,7 @@ const createPlugin: ({
         }, {});
         return [
           parseSnippet,
-          `const e = parse(${placeholder});`,
+          `const e = parse(${placeholder}, {});`,
           ...(pluginOptions.verify ?? true
             ? [
                 verifySnippet(

@@ -1,41 +1,73 @@
-// https://github.com/motdotla/dotenv/blob/c906decccf623581a67f2ac1d2046176e4e48470/lib/main.js#L5-L44
+// https://github.com/motdotla/dotenv/blob/v14.3.2/lib/main.js#L9-L80
 export const parseSnippet = `
-const LINE = /(?:^|^)\\s*(?:export\\s+)?([\\w.-]+)(?:\\s*=\\s*?|:\\s+?)(\\s*'(?:\\\\'|[^'])*'|\\s*"(?:\\\\"|[^"])*"|[^#\\r\\n]+)?\\s*(?:#.*)?(?:$|$)/mg
+const NEWLINE = '\\n'
+const RE_INI_KEY_VAL = /^\\s*([\\w.-]+)\\s*=\\s*("[^"]*"|'[^']*'|.*?)(\\s+#.*)?$/
+const RE_NEWLINES = /\\\\n/g
+const NEWLINES_MATCH = /\\r\\n|\\n|\\r/
 
-// Parser src into an Object
-function parse (src) {
+// Parses src into an Object
+function parse (src, options) {
+  const debug = Boolean(options && options.debug)
+  const multiline = Boolean(options && options.multiline)
   const obj = {}
 
-  // Convert buffer to string
-  let lines = src.toString()
+  // convert Buffers before splitting into lines and processing
+  const lines = src.toString().split(NEWLINES_MATCH)
 
-  // Convert line breaks to same format
-  lines = lines.replace(/\\r\\n?/mg, '\\n')
+  for (let idx = 0; idx < lines.length; idx++) {
+    let line = lines[idx]
 
-  let match
-  while ((match = LINE.exec(lines)) != null) {
-    const key = match[1]
+    // matching "KEY' and 'VAL' in 'KEY=VAL'
+    const keyValueArr = line.match(RE_INI_KEY_VAL)
+    // matched?
+    if (keyValueArr != null) {
+      const key = keyValueArr[1]
+      // default undefined or missing values to empty string
+      let val = (keyValueArr[2] || '')
+      let end = val.length - 1
+      const isDoubleQuoted = val[0] === '"' && val[end] === '"'
+      const isSingleQuoted = val[0] === "'" && val[end] === "'"
 
-    // Default undefined or null to empty string
-    let value = (match[2] || '')
+      const isMultilineDoubleQuoted = val[0] === '"' && val[end] !== '"'
+      const isMultilineSingleQuoted = val[0] === "'" && val[end] !== "'"
 
-    // Remove whitespace
-    value = value.trim()
+      // if parsing line breaks and the value starts with a quote
+      if (multiline && (isMultilineDoubleQuoted || isMultilineSingleQuoted)) {
+        const quoteChar = isMultilineDoubleQuoted ? '"' : "'"
 
-    // Check if double quoted
-    const maybeQuote = value[0]
+        val = val.substring(1)
 
-    // Remove surrounding quotes
-    value = value.replace(/^(['"])([\\s\\S]+)\\1$/mg, '$2')
+        while (idx++ < lines.length - 1) {
+          line = lines[idx]
+          end = line.length - 1
+          if (line[end] === quoteChar) {
+            val += NEWLINE + line.substring(0, end)
+            break
+          }
+          val += NEWLINE + line
+        }
+      // if single or double quoted, remove quotes
+      } else if (isSingleQuoted || isDoubleQuoted) {
+        val = val.substring(1, end)
 
-    // Expand newlines if double quoted
-    if (maybeQuote === '"') {
-      value = value.replace(/\\\\n/g, '\\n')
-      value = value.replace(/\\\\r/g, '\\r')
+        // if double quoted, expand newlines
+        if (isDoubleQuoted) {
+          val = val.replace(RE_NEWLINES, NEWLINE)
+        }
+      } else {
+        // remove surrounding whitespace
+        val = val.trim()
+      }
+
+      obj[key] = val
+    } else if (debug) {
+      const trimmedLine = line.trim()
+
+      // ignore empty and commented lines
+      if (trimmedLine.length && trimmedLine[0] !== '#') {
+        log(\`Failed to match key and value when parsing line \\\${idx + 1}: \\\${line}\`)
+      }
     }
-
-    // Add to object
-    obj[key] = value
   }
 
   return obj

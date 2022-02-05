@@ -13,7 +13,7 @@ echo 'CUSTOM_PREFIX_ENV_VARIABLE=1' >> ./dist/assets/.env
 ./dist/assets/.env.sh
 
 # assert
-diff dist __dist__ -r
+diff -r dist __dist__
 
 # tear down
 mv .env.example .env

@@ -8,6 +8,14 @@ importers:
     devDependencies:
       prettier: 2.5.1
 
+  packages/examples/vite-comments:
+    specifiers:
+      vite: ^2.7.13
+      vite-plugin-dotenv: workspace:^0.1.3
+    devDependencies:
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
   packages/examples/vite-config-build-assets-dir:
     specifiers:
       vite: ^2.7.13

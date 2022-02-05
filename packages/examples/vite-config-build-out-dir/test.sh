@@ -10,7 +10,7 @@ cp .env.example ./custom-out-dir/assets/.env
 ./custom-out-dir/assets/.env.sh
 
 # assert
-diff custom-out-dir __dist__ -r
+diff -r custom-out-dir __dist__
 
 # tear down
 mv .env.example .env

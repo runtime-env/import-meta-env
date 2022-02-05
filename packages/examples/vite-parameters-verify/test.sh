@@ -9,4 +9,4 @@ cp .env.prod ./dist/assets/.env
 ./dist/assets/.env.sh
 
 # assert
-diff dist __dist__ -r
+diff -r dist __dist__
