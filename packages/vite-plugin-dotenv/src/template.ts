@@ -4,7 +4,7 @@ export const createDotenvShellTemplate = ({
 }: {
   dotenvJsFileName: string;
   placeholder: string;
-}) => `#!/bin/sh
+}) => `#!/bin/bash
 
 dir=$(dirname $0)
 
