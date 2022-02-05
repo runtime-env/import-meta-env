@@ -53,7 +53,7 @@ const createPlugin: ({
   const pre = <Plugin>{
     name: "dotenv:pre",
     enforce: "pre",
-    config(_, env) {
+    config(userConfig, env) {
       if (env.command === "serve") return;
 
       return {
@@ -66,6 +66,26 @@ const createPlugin: ({
               chunkFileNames(chunkInfo) {
                 if (chunkInfo.name === virtualFile) {
                   return path.join(config.build.assetsDir, `[name].js`);
+                }
+
+                const output = userConfig.build?.rollupOptions?.output;
+                if (Array.isArray(output)) {
+                  const chunkFileNamesList = output.map(
+                    (o) => o.chunkFileNames
+                  );
+                  for (const chunkFileNames of chunkFileNamesList) {
+                    if (typeof chunkFileNames === "string") {
+                      return chunkFileNames;
+                    } else if (typeof chunkFileNames === "function") {
+                      return chunkFileNames(chunkInfo);
+                    }
+                  }
+                } else if (typeof output === "object") {
+                  if (typeof output.chunkFileNames === "string") {
+                    return output.chunkFileNames;
+                  } else if (typeof output.chunkFileNames === "function") {
+                    return output.chunkFileNames(chunkInfo);
+                  }
                 }
                 return path.join(config.build.assetsDir, `[name].[hash].js`);
               },
