@@ -152,16 +152,16 @@ importers:
   packages/vite-plugin-dotenv:
     specifiers:
       '@types/node': ^17.0.8
-      chalk: ^5.0.0
       dotenv: ^14.3.2
       esbuild: ^0.14.11
+      picocolors: ^1.0.0
       rimraf: ^3.0.2
       standard-version: ^9.3.2
       typescript: ^4.5.4
       vite: ^2.7.13
     dependencies:
-      chalk: 5.0.0
       dotenv: 14.3.2
+      picocolors: 1.0.0
     devDependencies:
       '@types/node': 17.0.8
       esbuild: 0.14.11
@@ -981,11 +981,6 @@ packages:
       escape-string-regexp: 1.0.5
       supports-color: 5.5.0
     dev: true
-
-  /chalk/5.0.0:
-    resolution: {integrity: sha512-/duVOqst+luxCQRKEo4bNxinsOQtMP80ZYm7mMqzuh5PociNL0PvmHFvREJ9ueYL2TxlHjBcmLCdmocx9Vg+IQ==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-    dev: false
 
   /character-parser/2.2.0:
     resolution: {integrity: sha1-x84o821LzZdE5f/CxfzeHHMmH8A=}

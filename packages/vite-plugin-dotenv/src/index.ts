@@ -1,10 +1,11 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
-import chalk from "chalk";
+import colors from "picocolors";
 import { chmodSync, writeFileSync } from "fs";
 import { createDotenvShellTemplate } from "./template";
 import { parseSnippet } from "./parse";
 import { verifySnippet } from "./verify";
+import { version } from "../package.json";
 
 const defaultPlaceholder = "__env__";
 const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
@@ -48,8 +49,6 @@ const createPlugin: ({
   const virtualFile = "env";
   const virtualId = "\0" + virtualFile;
   const placeholder = pluginOptions.placeholder || defaultPlaceholder;
-
-  const envAssetFileNames: string[] = [];
 
   const pre = <Plugin>{
     name: "dotenv:pre",
@@ -187,8 +186,6 @@ const createPlugin: ({
       if (config.command === "serve") return;
 
       if (chunk.name === virtualFile) {
-        envAssetFileNames.push(chunk.fileName);
-
         this.emitFile({
           type: "asset",
           source: createDotenvShellTemplate({
@@ -224,24 +221,19 @@ const createPlugin: ({
         );
       }
 
-      envAssetFileNames.push(config.build.assetsDir + path.sep + ".env.sh");
-      envAssetFileNames.push(config.build.assetsDir + path.sep + ".env");
       config.logger.info(
         [
           "",
-          `${chalk.green(
-            "✓"
-          )} [vite-plugin-dotenv] environment files is generated.`,
-          chalk.yellow(
-            `Before deploying the project, replace ${placeholder} with your environment object in the following files:`
-          ),
-          ...envAssetFileNames.map(
-            (fileName) =>
-              chalk.gray(
-                chalk.dim.white(
-                  config.build.outDir.split(path.sep).pop() + path.sep
-                )
-              ) + chalk.blue(`${fileName}`)
+          `${colors.cyan("vite-plugin-dotenv v" + version)}`,
+          `${colors.green("✓")} environment files are generated.`,
+          colors.yellow(
+            `Run \`sh ${
+              config.build.outDir.split(path.sep).pop() +
+              path.sep +
+              config.build.assetsDir +
+              path.sep +
+              ".env.sh"
+            }\` to inject environment variables before serving your application.`
           ),
           "",
         ].join("\n")
