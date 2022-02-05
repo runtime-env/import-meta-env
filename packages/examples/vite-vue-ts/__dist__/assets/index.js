@@ -4402,7 +4402,7 @@ const _sfc_main$1 = defineComponent({
 });
 var Pug = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", render]]);
 const greeting = `Hello ${vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_NAME}!`;
-var _imports_0 = "/assets/logo.03d6d6da.png";
+var _imports_0 = "/assets/logo.png";
 var App_vue_vue_type_style_index_0_lang = "";
 const _sfc_main = defineComponent({
   components: {

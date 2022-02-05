@@ -6,5 +6,12 @@ export default defineConfig({
   plugins: [dotenv({ verify: true })],
   build: {
     minify: false,
+    rollupOptions: {
+      output: {
+        chunkFileNames: "assets/[name].js",
+        entryFileNames: "assets/[name].js",
+        assetFileNames: "assets/[name][extname]",
+      },
+    },
   },
 });

@@ -6836,7 +6836,7 @@ function checkDCE() {
 }
 var ReactDOM = reactDom.exports;
 var index = "";
-var logo = "/assets/logo.ecc203fb.svg";
+var logo = "/assets/logo.svg";
 var App$1 = "";
 const greeting = `Hello ${vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_NAME}!`;
 var jsxRuntime = { exports: {} };
