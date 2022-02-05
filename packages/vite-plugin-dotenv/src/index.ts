@@ -68,23 +68,22 @@ const createPlugin: ({
                   return path.join(config.build.assetsDir, `[name].js`);
                 }
 
-                const output = userConfig.build?.rollupOptions?.output;
-                if (Array.isArray(output)) {
-                  const chunkFileNamesList = output.map(
-                    (o) => o.chunkFileNames
-                  );
-                  for (const chunkFileNames of chunkFileNamesList) {
-                    if (typeof chunkFileNames === "string") {
-                      return chunkFileNames;
-                    } else if (typeof chunkFileNames === "function") {
-                      return chunkFileNames(chunkInfo);
-                    }
+                const output = (() => {
+                  const output = userConfig.build?.rollupOptions?.output;
+                  if (Array.isArray(output)) {
+                    return output;
+                  } else if (typeof output === "object") {
+                    return [output];
+                  } else {
+                    return [];
                   }
-                } else if (typeof output === "object") {
-                  if (typeof output.chunkFileNames === "string") {
-                    return output.chunkFileNames;
-                  } else if (typeof output.chunkFileNames === "function") {
-                    return output.chunkFileNames(chunkInfo);
+                })();
+                const chunkFileNamesList = output.map((o) => o.chunkFileNames);
+                for (const chunkFileNames of chunkFileNamesList) {
+                  if (typeof chunkFileNames === "string") {
+                    return chunkFileNames;
+                  } else if (typeof chunkFileNames === "function") {
+                    return chunkFileNames(chunkInfo);
                   }
                 }
                 return path.join(config.build.assetsDir, `[name].[hash].js`);
