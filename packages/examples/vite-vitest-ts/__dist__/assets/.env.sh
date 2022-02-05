@@ -4,7 +4,7 @@ dir=$(dirname $0)
 
 # read .env
 ENV=""
-while read line; do
+while read line || [[ -n "$line" ]]; do
   ENV="${ENV}${line}"
   ENV="${ENV}\n"
 done < $dir/.env
