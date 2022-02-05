@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.10...v0.1.11) (2022-02-05)
+
+
+### Bug Fixes
+
+* should apply user defined chunkFileNames ([29dc65e](https://github.com/iendeavor/vite-plugin-dotenv/commit/29dc65ec629acdb32a3164eef4ac4875f65ca5c6))
+* should be able to parse missing EOF ([52a0d7c](https://github.com/iendeavor/vite-plugin-dotenv/commit/52a0d7c52a30c6eff4f7e6b2ce6bc5e70d75f1af))
+* use bash instead of sh ([9e50096](https://github.com/iendeavor/vite-plugin-dotenv/commit/9e500962c742147790c95176fbc69073271e6d6e))
+* use the dotenv@^14.3.2 parse function to parse comment ([9a10011](https://github.com/iendeavor/vite-plugin-dotenv/commit/9a10011b50eaac82652d36deb0356d74330955c8))
+
 ### [0.1.10](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.9...v0.1.10) (2022-02-04)
 
 
