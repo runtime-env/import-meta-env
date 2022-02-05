@@ -102,7 +102,11 @@ const createPlugin: ({
         envKeys.add(key);
       }
     },
-    resolveId(id) {
+    resolveId(id, _, options) {
+      if (options.ssr) {
+        throw new Error(`vite-plugin-dotenv: SSR is not supported.`);
+      }
+
       if (id === virtualFile) {
         return virtualId;
       }
