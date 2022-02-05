@@ -4,11 +4,11 @@
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-dotenv.svg)](https://www.npmjs.com/package/vite-plugin-dotenv)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Inject your [environment variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) at runtime instead of build time.
+This plugin extends vite's built-in [environment variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) functionality to inject your environment variables at runtime instead of build time.
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
-## How
+## 💡 How
 
 In production, this package will generate some files in your dist assets directory that allow us to inject environment variables _after building the package_.
 
@@ -51,7 +51,7 @@ Add the following script to run `.env.sh` to inject environment variables before
 
 If you run into problems, see [examples](../examples) or create an issue from github.
 
-## Plugin Options
+## 📖 Plugin Options
 
 - `placeholder?: string`: The placeholder to replace with the `.env` file content
 
