@@ -4330,7 +4330,7 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-1a1dc83a"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-27007679"), n = n(), popScopeId(), n);
 const _hoisted_1$1 = /* @__PURE__ */ createTextVNode(" Recommended IDE setup: ");
 const _hoisted_2 = {
   href: "https://code.visualstudio.com/",
@@ -4389,7 +4389,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var HelloWorld = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-1a1dc83a"]]);
+var HelloWorld = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-27007679"]]);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("p", null, "Pug: " + toDisplayString(_ctx.pug), 1);
 }

@@ -138,8 +138,8 @@ const createPlugin: ({
           debugLog += `\n===before transforming [.jt]sx? ${id}===\n` + code;
 
           code =
-            `import ${unique} from '${virtualFile}';` +
-            code.replace(`import ${unique} from '${virtualFile}';`, "");
+            `import ${unique} from '${virtualFile}';\n` +
+            code.replace(`import ${unique} from '${virtualFile}';\n`, "");
 
           debugLog +=
             `\n===after transforming [.jt]sx? ${id}===\n` +
@@ -150,7 +150,7 @@ const createPlugin: ({
 
           code = code.replace(
             /(\<script.*?\>)/,
-            `$1import ${unique} from '${virtualFile}';`
+            `$1\nimport ${unique} from '${virtualFile}';`
           );
 
           debugLog +=
