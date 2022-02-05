@@ -53,9 +53,10 @@ const createPlugin: ({
   const pre = <Plugin>{
     name: "dotenv:pre",
     enforce: "pre",
-    config(userConfig, env) {
-      if (env.command === "serve") return;
-
+    apply: (_, env) => {
+      return env.command === "build";
+    },
+    config(userConfig) {
       return {
         build: {
           rollupOptions: {
@@ -96,16 +97,12 @@ const createPlugin: ({
     configResolved(_config) {
       config = _config;
 
-      if (config.command === "serve") return;
-
       envKeys = new Set([]);
       for (const key of Object.keys(config.env)) {
         envKeys.add(key);
       }
     },
     resolveId(id) {
-      if (config.command === "serve") return;
-
       if (id === virtualFile) {
         return virtualId;
       }
@@ -115,8 +112,6 @@ const createPlugin: ({
       }
     },
     load(id) {
-      if (config.command === "serve") return;
-
       if (id === virtualId) {
         const preservedEnv = preservedEnvKeys.reduce((acc, key) => {
           return Object.assign(acc, { [key]: config.env[key] });
@@ -149,8 +144,6 @@ const createPlugin: ({
       }
     },
     transform(code, id) {
-      if (config.command === "serve") return code;
-
       if (id !== virtualId && id.includes("node_modules") === false) {
         if (isTransformingJs(code, id)) {
           debugLog += `\n===before transforming [.jt]sx? ${id}===\n` + code;
@@ -196,14 +189,10 @@ const createPlugin: ({
       return code;
     },
     transformIndexHtml(html) {
-      if (config.command === "serve") return;
-
       html = html.replace(new RegExp(unique, "g"), "import.meta.env");
       return html;
     },
     renderChunk(_, chunk) {
-      if (config.command === "serve") return;
-
       if (chunk.name === virtualFile) {
         this.emitFile({
           type: "asset",
@@ -226,8 +215,6 @@ const createPlugin: ({
       }
     },
     closeBundle() {
-      if (config.command === "serve") return;
-
       chmodSync(
         path.join(config.build.outDir, config.build.assetsDir, ".env.sh"),
         0o755
