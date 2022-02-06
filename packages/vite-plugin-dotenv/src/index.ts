@@ -1,8 +1,7 @@
 import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import colors from "picocolors";
-import { chmodSync, writeFileSync } from "fs";
-import { createDotenvShellTemplate } from "./template";
+import { writeFileSync } from "fs";
 import { parseSnippet } from "./parse";
 import { verifySnippet } from "./verify";
 import { version } from "../package.json";
@@ -200,15 +199,6 @@ const createPlugin: ({
       if (chunk.name === virtualFile) {
         this.emitFile({
           type: "asset",
-          source: createDotenvShellTemplate({
-            dotenvJsFileName: `${virtualFile}`,
-            placeholder,
-          }),
-          fileName: path.join(config.build.assetsDir, ".env.sh"),
-        });
-
-        this.emitFile({
-          type: "asset",
           source: [...envKeys.keys()]
             .filter((key) => !preservedEnvKeys.includes(key))
             .map((key) => `${key}=${config.env[key]}`)
@@ -219,11 +209,6 @@ const createPlugin: ({
       }
     },
     closeBundle() {
-      chmodSync(
-        path.join(config.build.outDir, config.build.assetsDir, ".env.sh"),
-        0o755
-      );
-
       if (pluginOptions.debug) {
         writeFileSync(
           path.join(config.root, "vite-plugin-dotenv-debug.log"),
@@ -237,13 +222,7 @@ const createPlugin: ({
           `${colors.cyan("vite-plugin-dotenv v" + version)}`,
           `${colors.green("✓")} environment files are generated.`,
           colors.yellow(
-            `Run \`sh ${
-              config.build.outDir.split(path.sep).pop() +
-              path.sep +
-              config.build.assetsDir +
-              path.sep +
-              ".env.sh"
-            }\` to inject environment variables before serving your application.`
+            `Remember to inject environment variables before serving your application.`
           ),
           "",
         ].join("\n")

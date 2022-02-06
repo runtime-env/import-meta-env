@@ -7,7 +7,7 @@ mv .env .env.tmp
 # act
 pnpm run build
 cp .env.tmp ./dist/custom-assets-dir/.env
-./dist/custom-assets-dir/.env.sh
+sh inject-env.sh
 
 # assert
 diff -r dist __dist__

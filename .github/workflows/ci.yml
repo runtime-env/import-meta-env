@@ -21,6 +21,14 @@ jobs:
 
     name: "Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}"
     steps:
+      - name: Cache sd
+        uses: actions/cache@v2
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-sd
+          restore-keys: |
+            ${{ runner.os }}-sd
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -38,13 +46,20 @@ jobs:
       - name: Install deps
         run: pnpm i
 
+      - name: Install cargo
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Install sd
+        run: cargo install sd
+
       - name: Build vite-plugin-dotenv
         run: pnpm run build --parallel --stream --filter vite-plugin-dotenv
 
       - name: Build&Test examples
         if: ${{ matrix.node_version >= '14' }}
         run: pnpm --parallel --stream --filter \!vite-plugin-dotenv exec sh test.sh
-
       - name: Build&Test examples
         if: ${{ matrix.node_version == '12' }}
         run: pnpm --parallel --stream --filter \!vite-plugin-dotenv --filter \!vite-vue-ts --filter \!vite-vue-jsx exec sh test.sh

@@ -16,8 +16,6 @@ In production, this package will generate some files in your dist assets directo
 
 - `dist/assets/env.js` contains a placeholder: `__env__` which allows us to inject environment variables.
 
-- `dist/assets/.env.sh` is used to inject the contents of `dist/assets/.env` into the above placeholder `__env__`.
-
 ## 🚀 Quick Start
 
 Install the plugin:
@@ -39,14 +37,15 @@ export default defineConfig({
 });
 ```
 
-Add the following script to run `.env.sh` to inject environment variables before serving your application:
+Finally, remember to inject environment variables before serving your application.
 
-```json
-{
-  "scripts": {
-    "preview": "./dist/assets/.env.sh && vite preview"
-  }
-}
+Since our programs all run on different operating systems (for example, you might develop with Windows/MacOS but deploy to linux), we do not provide binaries for injecting environment variables.
+
+We recommend that you install [sd](https://github.com/chmln/sd) - an intuitive find and replace CLI written in rust that helps us run the same script in different operating systems, for example:
+
+```sh
+# Find __env__ and replace it with .env content
+sd __env__ "\`$(cat dist/assets/.env)\n\`" dist/assets/env.js
 ```
 
 If you run into problems, see [examples](../examples) or create an issue from github.
