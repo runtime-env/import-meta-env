@@ -74,11 +74,9 @@ const __vitePreload = function preload(baseModule, deps) {
     }
   })).then(() => baseModule());
 };
-var style = "";
 (async () => {
   const greeting = await __vitePreload(() => import("./greeting.js"), true ? ["assets/greeting.js","assets/env.js"] : void 0).then((m) => m.greeting);
   document.querySelector("#app").innerHTML = `
-    <h1>${greeting}</h1>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
+    <h1>VITE_NAME: ${greeting}</h1>
   `;
 })();

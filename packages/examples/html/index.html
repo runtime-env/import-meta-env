@@ -1,48 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
   <body>
-    <h1>Environment Variables</h1>
-    <p>import.meta.env.BASE_URL: <code class="base"></code></p>
-    <p>import.meta.env.MODE: <code class="mode"></code></p>
-    <p>import.meta.env.DEV: <code class="dev"></code></p>
-    <p>import.meta.env.PROD: <code class="prod"></code></p>
-    <p>
-      import.meta.env.VITE_CUSTOM_ENV_VARIABLE: <code class="custom"></code>
-    </p>
-    <p>
-      import.meta.env.CUSTOM_PREFIX_ENV_VARIABLE:
-      <code class="custom-prefix"></code>
-    </p>
-    <p>
-      import.meta.env.VITE_EFFECTIVE_MODE_FILE_NAME:
-      <code class="mode-file"></code>
-    </p>
-    <p>process.env.NODE_ENV: <code class="node-env"></code></p>
-    <p>import.meta.env: <span class="pre env-object"></span></p>
-
+    <div id="app"></div>
     <script type="module">
-      text(".base", import.meta.env.BASE_URL);
-      text(".mode", import.meta.env.MODE);
-      text(".dev", import.meta.env.DEV);
-      text(".prod", import.meta.env.PROD);
-      text(".custom", import.meta.env.VITE_CUSTOM_ENV_VARIABLE);
-      text(".custom-prefix", import.meta.env.CUSTOM_PREFIX_ENV_VARIABLE);
-      text(".mode-file", import.meta.env.VITE_EFFECTIVE_MODE_FILE_NAME);
-      text(".node-env", process.env.NODE_ENV);
-      text(".env-object", JSON.stringify(import.meta.env, null, 2));
-
-      function text(el, text) {
-        document.querySelector(el).textContent = text;
-      }
+      document.querySelector("#app").innerHTML = `
+        <h1>VITE_NAME: ${import.meta.env.VITE_NAME}</h1>
+      `;
     </script>
-
-    <style>
-      .pre {
-        display: block;
-        unicode-bidi: embed;
-        font-family: monospace;
-        white-space: pre;
-      }
-    </style>
   </body>
 </html>

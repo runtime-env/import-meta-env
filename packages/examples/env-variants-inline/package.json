@@ -3,8 +3,8 @@
   "name": "env-variants-inline",
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env VITE_FOO=42 vite",
-    "build": "cross-env VITE_FOO=42 vite build",
+    "dev": "cross-env VITE_NAME=vite-plugin-dotenv vite",
+    "build": "cross-env VITE_NAME=vite-plugin-dotenv vite build",
     "preview": "sh inject-env.sh && vite preview"
   },
   "devDependencies": {

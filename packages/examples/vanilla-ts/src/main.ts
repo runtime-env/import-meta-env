@@ -1,8 +1,3 @@
-import { greeting } from "./greeting";
-import "./style.css";
-
-const app = document.querySelector<HTMLDivElement>("#app")!;
-
-app.innerHTML = `
-  <h1>${greeting}</h1>
+document.querySelector("#app")!.innerHTML = `
+  <h1>VITE_NAME: ${import.meta.env.VITE_NAME}</h1>
 `;

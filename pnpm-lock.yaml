@@ -100,7 +100,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/react-ts:
+  packages/examples/react:
     specifiers:
       '@types/react': ^17.0.33
       '@types/react-dom': ^17.0.10
@@ -153,7 +153,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vitest-ts:
+  packages/examples/vitest:
     specifiers:
       typescript: ^4.4.4
       vite: ^2.7.13

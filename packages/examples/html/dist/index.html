@@ -1,37 +1,14 @@
 <!DOCTYPE html>
-<html>
-  <script type="module" crossorigin src="/assets/index.js"></script>
-  <link rel="modulepreload" href="/assets/env.js">
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="modulepreload" href="/assets/env.js">
+  </head>
   <body>
-    <h1>Environment Variables</h1>
-    <p>import.meta.env.BASE_URL: <code class="base"></code></p>
-    <p>import.meta.env.MODE: <code class="mode"></code></p>
-    <p>import.meta.env.DEV: <code class="dev"></code></p>
-    <p>import.meta.env.PROD: <code class="prod"></code></p>
-    <p>
-      import.meta.env.VITE_CUSTOM_ENV_VARIABLE: <code class="custom"></code>
-    </p>
-    <p>
-      import.meta.env.CUSTOM_PREFIX_ENV_VARIABLE:
-      <code class="custom-prefix"></code>
-    </p>
-    <p>
-      import.meta.env.VITE_EFFECTIVE_MODE_FILE_NAME:
-      <code class="mode-file"></code>
-    </p>
-    <p>"production": <code class="node-env"></code></p>
-    <p>import.meta.env: <span class="pre env-object"></span></p>
-
+    <div id="app"></div>
     
-
-    <style>
-      .pre {
-        display: block;
-        unicode-bidi: embed;
-        font-family: monospace;
-        white-space: pre;
-      }
-    </style>
   </body>
 </html>
