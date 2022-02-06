@@ -53,11 +53,11 @@ If you run into problems, see [examples](../examples) or create an issue from gi
 
 ## 📖 Plugin Options
 
-- `placeholder?: string`: The placeholder to replace with the `.env` file content
+- `placeholder: string = "__env__"`: The placeholder to replace with the `.env` file content
 
 - `verify: boolean = true`: Whether to verify the `.env` file content at runtime
 
-- `debug?: boolean`: Whether to dump debug logs, logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
+- `debug: boolean = false`: Whether to dump debug logs, logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
 
 ## 🤝 Contributing
 
