@@ -4,4 +4,4 @@ dist
 __dist__
 pnpm-lock.yaml
 
-packages/examples/vite-config-build-out-dir/custom-out-dir
+packages/examples/config-build-out-dir/custom-out-dir

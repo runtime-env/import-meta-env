@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "config-build-assets-dir",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "sh inject-env.sh && vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.7.13",
+    "vite-plugin-dotenv": "workspace:^0.1.3"
+  }
+}

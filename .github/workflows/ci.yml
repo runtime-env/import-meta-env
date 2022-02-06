@@ -62,7 +62,7 @@ jobs:
         run: pnpm --parallel --stream --filter \!vite-plugin-dotenv exec sh test.sh
       - name: Build&Test examples
         if: ${{ matrix.node_version == '12' }}
-        run: pnpm --parallel --stream --filter \!vite-plugin-dotenv --filter \!vite-vue-ts --filter \!vite-vue-jsx exec sh test.sh
+        run: pnpm --parallel --stream --filter \!vite-plugin-dotenv --filter \!vue-ts --filter \!vue-jsx exec sh test.sh
 
   lint:
     runs-on: ubuntu-latest

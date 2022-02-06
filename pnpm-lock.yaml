@@ -8,7 +8,7 @@ importers:
     devDependencies:
       prettier: 2.5.1
 
-  packages/examples/vite-cli-mode:
+  packages/examples/cli-mode:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -16,7 +16,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-config-build-assets-dir:
+  packages/examples/config-build-assets-dir:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -24,7 +24,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-config-build-out-dir:
+  packages/examples/config-build-out-dir:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -32,7 +32,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-config-build-rollupOptions-output-chunkFileNames:
+  packages/examples/config-build-rollupOptions-output-chunkFileNames:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -40,7 +40,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-env-variants-comments:
+  packages/examples/env-variants-comments:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -48,25 +48,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-env-variants-inline:
-    specifiers:
-      cross-env: ^7.0.3
-      vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.3
-    devDependencies:
-      cross-env: 7.0.3
-      vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
-
-  packages/examples/vite-env-variants-no-newline-at-end-of-file:
-    specifiers:
-      vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.3
-    devDependencies:
-      vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
-
-  packages/examples/vite-html:
+  packages/examples/env-variants-inline:
     specifiers:
       cross-env: ^7.0.3
       vite: ^2.7.13
@@ -76,7 +58,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-parameters-placeholder:
+  packages/examples/env-variants-no-newline-at-end-of-file:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -84,7 +66,25 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-parameters-verify:
+  packages/examples/html:
+    specifiers:
+      cross-env: ^7.0.3
+      vite: ^2.7.13
+      vite-plugin-dotenv: workspace:^0.1.3
+    devDependencies:
+      cross-env: 7.0.3
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
+  packages/examples/parameters-placeholder:
+    specifiers:
+      vite: ^2.7.13
+      vite-plugin-dotenv: workspace:^0.1.3
+    devDependencies:
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
+  packages/examples/parameters-verify:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.9
@@ -92,7 +92,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-react-ts:
+  packages/examples/react-ts:
     specifiers:
       '@types/react': ^17.0.33
       '@types/react-dom': ^17.0.10
@@ -115,7 +115,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-vanilla:
+  packages/examples/vanilla:
     specifiers:
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.3
@@ -123,7 +123,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-vanilla-legacy:
+  packages/examples/vanilla-legacy:
     specifiers:
       '@vitejs/plugin-legacy': ^1.6.4
       vite: ^2.7.13
@@ -133,7 +133,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-vanilla-ts:
+  packages/examples/vanilla-ts:
     specifiers:
       '@types/node': ^17.0.8
       typescript: ^4.4.4
@@ -145,7 +145,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-vitest-ts:
+  packages/examples/vitest-ts:
     specifiers:
       typescript: ^4.4.4
       vite: ^2.7.13
@@ -157,7 +157,7 @@ importers:
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
       vitest: 0.2.5
 
-  packages/examples/vite-vue-jsx:
+  packages/examples/vue-jsx:
     specifiers:
       '@vitejs/plugin-vue': ^2.0.0
       '@vitejs/plugin-vue-jsx': ^1.3.3
@@ -172,7 +172,7 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/vite-vue-ts:
+  packages/examples/vue-ts:
     specifiers:
       '@vitejs/plugin-vue': ^2.0.0
       pug: ^3.0.2
@@ -509,7 +509,7 @@ packages:
       '@babel/helper-module-imports': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-syntax-jsx': 7.16.7_@babel+core@7.17.0
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
     dev: true
 
   /@babel/plugin-transform-typescript/7.16.8_@babel+core@7.17.0:
@@ -556,14 +556,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/types/7.16.8:
-    resolution: {integrity: sha512-smN2DQc5s4M7fntyjGtyIPbRJv6wW4rU/94fmYJ7PKQuZkC0qGMHXJbg6sNGt12JmVr4k5YaptI/XtiLJBnmIg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.16.7
-      to-fast-properties: 2.0.0
     dev: true
 
   /@babel/types/7.17.0:
