@@ -40,6 +40,16 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
+  packages/examples/env-variants-ci-environment:
+    specifiers:
+      cross-env: ^7.0.3
+      vite: ^2.7.13
+      vite-plugin-dotenv: workspace:^0.1.3
+    devDependencies:
+      cross-env: 7.0.3
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
   packages/examples/env-variants-comments:
     specifiers:
       vite: ^2.7.13

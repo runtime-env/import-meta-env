@@ -18,7 +18,7 @@ jobs:
           - os: macos-latest
             node_version: 16
       fail-fast: false
-
+    environment: VITE_NAME
     name: "Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}"
     steps:
       - name: Cache sd
@@ -65,6 +65,7 @@ jobs:
             --filter \!vite-plugin-dotenv \
             --filter \!vue-ts \
             --filter \!vue-jsx \
+            --filter \!env-variants-ci-environment \
             exec sh test.sh
 
       - name: Build&Test examples/vue-*
@@ -76,6 +77,15 @@ jobs:
             --filter vue-ts \
             --filter vue-jsx \
             exec sh test.sh
+
+      - name: Build&Test examples/env-variants-ci-environment
+        run: |
+          pnpm i -g cross-env
+          pnpm \
+            --parallel \
+            --stream \
+            --filter env-variants-ci-environment \
+            exec cross-env VITE_NAME="${{ secrets.VITE_NAME }}" sh test.sh
 
   lint:
     runs-on: ubuntu-latest
