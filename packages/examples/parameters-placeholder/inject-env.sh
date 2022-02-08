@@ -11,4 +11,4 @@ else
 fi
 
 # find __env__ and replace it with .env content
-sd __CUSTOM_PLACEHOLDER__ "\`$(cat dist/assets/.env)\n\`" dist/assets/env.js
+sd __CUSTOM_PLACEHOLDER__ "\`$(cat .env)\n\`" dist/assets/env.js

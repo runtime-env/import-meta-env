@@ -195,19 +195,6 @@ const createPlugin: ({
       html = html.replace(new RegExp(unique, "g"), "import.meta.env");
       return html;
     },
-    renderChunk(_, chunk) {
-      if (chunk.name === virtualFile) {
-        this.emitFile({
-          type: "asset",
-          source: [...envKeys.keys()]
-            .filter((key) => !preservedEnvKeys.includes(key))
-            .map((key) => `${key}=${config.env[key]}`)
-            .concat("")
-            .join("\n"),
-          fileName: path.join(config.build.assetsDir, ".env"),
-        });
-      }
-    },
     closeBundle() {
       if (pluginOptions.debug) {
         writeFileSync(

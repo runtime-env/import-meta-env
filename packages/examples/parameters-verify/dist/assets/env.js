@@ -51,10 +51,10 @@ function parse(src, options) {
 const e = parse(`VITE_NAME=vite-plugin-dotenv
 `, {});
 function verify(actual) {
-  const expected = { "VITE_NAME": "" };
+  const expectedKeys = { "VITE_NAME": true };
   const importMetaEnv = "import.meta.env";
   const missingKeys = [];
-  Object.keys(expected).forEach((key) => {
+  Object.keys(expectedKeys).forEach((key) => {
     if (Object.hasOwnProperty.call(actual, key) === false) {
       missingKeys.push(JSON.stringify(key));
     }
@@ -64,7 +64,7 @@ function verify(actual) {
   }
   const notExistsKeys = [];
   Object.keys(actual).forEach((key) => {
-    if (Object.hasOwnProperty.call(expected, key) === false) {
+    if (Object.hasOwnProperty.call(expectedKeys, key) === false) {
       notExistsKeys.push(JSON.stringify(key));
     }
   });

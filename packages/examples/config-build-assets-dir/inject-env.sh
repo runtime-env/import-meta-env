@@ -11,4 +11,4 @@ else
 fi
 
 # find __env__ and replace it with .env content
-sd __env__ "\`$(cat dist/custom-assets-dir/.env)\n\`" dist/custom-assets-dir/env.js
+sd __env__ "\`$(cat .env)\n\`" dist/custom-assets-dir/env.js

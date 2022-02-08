@@ -13,5 +13,5 @@ else
 fi
 
 # find __env__ and replace it with .env content
-sd __env__ "\`$(cat dist/assets/.env)\n\`" dist/assets/env.js
-sd __env__ "\`$(cat dist/assets/.env)\n\`" dist/assets/env-legacy.js
+sd __env__ "\`$(cat .env)\n\`" dist/assets/env.js
+sd __env__ "\`$(cat .env)\n\`" dist/assets/env-legacy.js

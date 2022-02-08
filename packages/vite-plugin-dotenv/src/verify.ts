@@ -1,11 +1,16 @@
 export const verifySnippet = (expected: string) =>
   `
 function verify (actual) {
-  const expected = ${expected};
+  const expectedKeys = ${JSON.stringify(
+    Object.keys(JSON.parse(expected)).reduce(
+      (acc, key) => Object.assign(acc, { [key]: true }),
+      {}
+    )
+  )};
   const importMetaEnv = 'import.meta' + '.env';
 
   const missingKeys = [];
-  Object.keys(expected).forEach(key => {
+  Object.keys(expectedKeys).forEach(key => {
     if (Object.hasOwnProperty.call(actual, key) === false) {
       missingKeys.push(JSON.stringify(key));
     }
@@ -16,7 +21,7 @@ function verify (actual) {
 
   const notExistsKeys = [];
   Object.keys(actual).forEach(key => {
-    if (Object.hasOwnProperty.call(expected, key) === false) {
+    if (Object.hasOwnProperty.call(expectedKeys, key) === false) {
       notExistsKeys.push(JSON.stringify(key));
     }
   })
