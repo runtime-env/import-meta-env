@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "env-variants-multiple",
+  "name": "env-variants-mode",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
