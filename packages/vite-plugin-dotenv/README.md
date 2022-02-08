@@ -37,16 +37,42 @@ export default defineConfig({
 
 Finally, after building your project, remember to inject environment variables before serving your application.
 
-Since our programs all run on different operating systems (for example, you might develop with Windows/MacOS but deploy to linux), we do not provide binaries for injecting environment variables.
+Since our programs all run on different operating systems (for example, you might develop with Windows/MacOS but deploy to Linux), we do not provide binaries for injecting environment variables.
 
-We recommend that you install [sd](https://github.com/chmln/sd) - an intuitive find and replace CLI written in rust that helps us run the same script in different operating systems, for example:
+Here is a working example for MacOS:
 
 ```sh
-# Find __env__ and replace it with .env content
-sd <placeholder> "\`$(cat <path/to/your/.env>)\n\`" <outDir>/<assetsDir>/env.js>
+# inject-env.sh
 
-# For example:
-sd __env__ "\`$(cat .env)\n\`" dist/assets/env.js
+#!/bin/bash
+set -e
+
+# Config
+PLACEHOLDER="__env__" # vite-plugin-dotenv option: placeholder
+OUT_DIR="dist" # vite config: build.outDir
+ASSETS_DIR="assets" # vite config: build.assetsDir
+DOTENV_PATH=".env"
+
+# You can expand the environment variable to "ENV" variable
+ENV="\`VITE_NAME=$VITE_NAME\\\n\`"
+# or read the `.env` file line by line and save it to the `ENV` variable
+ENV="\`"
+while read line || [[ -n "$line" ]]; do
+  ENV="$ENV$line"
+  ENV="$ENV\\\n"
+done < $DOTENV_PATH
+ENV="$ENV\`"
+
+# Backup if `env.js~` does not exist, otherwise restore from `.env.js~` to `env.js`
+# This step will allow us to change environment variables without rebuilding the project
+if [ ! -f "$OUT_DIR/$ASSETS_DIR/env.js~" ]; then
+  cp "$OUT_DIR/$ASSETS_DIR/env.js" "$OUT_DIR/$ASSETS_DIR/env.js~"
+else
+  cp "$OUT_DIR/$ASSETS_DIR/env.js~" "$OUT_DIR/$ASSETS_DIR/env.js"
+fi
+
+# Inject the `ENV` variable to `env.js`
+sed -i '' "s/$PLACEHOLDER/$ENV/g" "$OUT_DIR/$ASSETS_DIR/env.js"
 ```
 
 If you run into problems, see [examples](../examples) or create an issue from github.
