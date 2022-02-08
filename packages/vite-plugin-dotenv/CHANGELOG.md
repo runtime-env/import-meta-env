@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.11...v0.1.12) (2022-02-08)
+
+
+### Features
+
+* remove .env.sh and add a guide to inject environment variables ([91f8874](https://github.com/iendeavor/vite-plugin-dotenv/commit/91f887490cce5afa2fa1aae83c2bcbbab3e8fd4e))
+* remove emitting .env file ([adceacf](https://github.com/iendeavor/vite-plugin-dotenv/commit/adceacfbc19efb52a50f3bccb9344239e8fa09d6))
+* SSR is not supported ([2dbfa7d](https://github.com/iendeavor/vite-plugin-dotenv/commit/2dbfa7d1b8cf79f634b68128164510e80bccaee9))
+
 ### [0.1.11](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.10...v0.1.11) (2022-02-05)
 
 
