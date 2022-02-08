@@ -4,17 +4,15 @@
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-dotenv.svg)](https://www.npmjs.com/package/vite-plugin-dotenv)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This plugin extends vite's built-in [environment variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) functionality to inject your environment variables at runtime instead of build time.
+This plugin extends vite's built-in [environment variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) functionality, allowing you to inject environment variables at runtime instead of build time.
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
 ## 💡 How
 
-In production, this package will generate some files in your dist assets directory that allow us to inject environment variables _after building the package_.
+In production, this plugin will generate the following chunk, allowing us to inject environment variables after building the package.
 
-- `dist/assets/.env` is a `.env` file whose contents are generated from `import.meta.env`, **feel free to change the environment variables** in this file before serving your application.
-
-- `dist/assets/env.js` contains a placeholder: `__env__` which allows us to inject environment variables.
+- `dist/assets/env.js` (default) contains a placeholder: `__env__` (default) which allows us to inject environment variables.
 
 ## 🚀 Quick Start
 
@@ -37,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-Finally, remember to inject environment variables before serving your application.
+Finally, after building your project, remember to inject environment variables before serving your application.
 
 Since our programs all run on different operating systems (for example, you might develop with Windows/MacOS but deploy to linux), we do not provide binaries for injecting environment variables.
 
@@ -45,7 +43,10 @@ We recommend that you install [sd](https://github.com/chmln/sd) - an intuitive f
 
 ```sh
 # Find __env__ and replace it with .env content
-sd __env__ "\`$(cat dist/assets/.env)\n\`" dist/assets/env.js
+sd <placeholder> "\`$(cat <path/to/your/.env>)\n\`" <outDir>/<assetsDir>/env.js>
+
+# For example:
+sd __env__ "\`$(cat .env)\n\`" dist/assets/env.js
 ```
 
 If you run into problems, see [examples](../examples) or create an issue from github.
