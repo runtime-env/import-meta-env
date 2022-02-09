@@ -83,6 +83,13 @@ If you run into problems, see [examples](../examples) or create an issue from gi
 
 - `verify: boolean = true`: Whether to verify the `.env` file content at runtime
 
+  The verification step are:
+
+  1. Parse the `.env` file content into `import.meta.env` (This is achieved by `vite`)
+  2. Use keys of `import.meta.env` to verify the runtime environment variables
+  3. If any key is missing, throw an error
+  4. If any key is redundant, throw an error (This is to prevent accidentally exposing sensitive information)
+
 - `debug: boolean = false`: Whether to dump debug logs, logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
 
 ## 🤝 Contributing

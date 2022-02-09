@@ -34,6 +34,12 @@ const createPlugin: ({
   /**
    * Whether to verify the `.env` file content at runtime
    *
+   * The verification steps are:
+   * 1. Parse the `.env` file content into `import.meta.env` (This is achieved by `vite`)
+   * 2. Use keys of `import.meta.env` to verify the runtime environment variables
+   * 3. If any key is missing, throw an error
+   * 4. If any key is redundant, throw an error (This is to prevent accidentally exposing sensitive information)
+   *
    * @default true
    */
   verify?: boolean;
