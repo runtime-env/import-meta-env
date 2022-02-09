@@ -26,17 +26,23 @@ const createPlugin: ({
 }?: {
   /**
    * The placeholder to replace with the `.env` file content
+   *
+   * @default "__env__"
    */
   placeholder?: string;
 
   /**
    * Whether to verify the `.env` file content at runtime
+   *
+   * @default true
    */
   verify?: boolean;
 
   /**
    * Whether to dump debug logs
    * Logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
+   *
+   * @default false
    */
   debug?: boolean;
 }) => Plugin[] = (pluginOptions = {}) => {
