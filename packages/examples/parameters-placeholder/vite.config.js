@@ -3,7 +3,7 @@ import dotenv from "vite-plugin-dotenv";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [dotenv({ verify: false, placeholder: "__CUSTOM_PLACEHOLDER__" })],
+  plugins: [dotenv({ placeholder: "__CUSTOM_PLACEHOLDER__" })],
   build: {
     minify: false,
     rollupOptions: {

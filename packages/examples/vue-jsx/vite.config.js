@@ -7,7 +7,7 @@ const dotenvPlugin = require("vite-plugin-dotenv").default;
  */
 module.exports = {
   plugins: [
-    dotenvPlugin({ verify: false }),
+    dotenvPlugin(),
     vueJsxPlugin({
       include: [/\.[jt]sx$/],
     }),

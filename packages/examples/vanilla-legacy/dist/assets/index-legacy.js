@@ -1,1 +1,1 @@
-System.register(["./env-legacy.js"],(function(){"use strict";var e;return{setters:[function(n){e=n.v}],execute:function(){document.querySelector("#app").innerHTML="\n  <h1>VITE_NAME: ".concat(e.VITE_NAME,"</h1>\n  <h1>Is legacy? ").concat(!0,"</h1>\n")}}}));
+System.register(["./vite-plugin-dotenv-legacy.js"],(function(){"use strict";var e;return{setters:[function(n){e=n.e}],execute:function(){document.querySelector("#app").innerHTML="\n  <h1>VITE_NAME: ".concat(e.VITE_NAME,"</h1>\n  <h1>Is legacy? ").concat(!0,"</h1>\n")}}}));

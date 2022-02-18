@@ -5,10 +5,8 @@ rm -rf dist
 
 # act
 pnpm run build
-sh inject-env.sh
+pnpm exec vite-plugin-dotenv
 
 # assert
 diff -r dist __dist__
-
-# assert
 pnpm exec vitest run

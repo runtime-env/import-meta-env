@@ -1,0 +1,2 @@
+const e = __CUSTOM_PLACEHOLDER__;
+export { e };

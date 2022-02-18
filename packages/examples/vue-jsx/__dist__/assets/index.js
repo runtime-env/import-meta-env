@@ -1,4 +1,4 @@
-import { v as vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx } from "./env.js";
+import { e } from "./vite-plugin-dotenv.js";
 const p$1 = function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -212,10 +212,10 @@ class EffectScope {
   }
   stop(fromParent) {
     if (this.active) {
-      this.effects.forEach((e) => e.stop());
+      this.effects.forEach((e2) => e2.stop());
       this.cleanups.forEach((cleanup) => cleanup());
       if (this.scopes) {
-        this.scopes.forEach((e) => e.stop(true));
+        this.scopes.forEach((e2) => e2.stop(true));
       }
       if (this.parent && !fromParent) {
         const last = this.parent.scopes.pop();
@@ -3793,8 +3793,8 @@ function setupStatefulComponent(instance, isSSR) {
       if (isSSR) {
         return setupResult.then((resolvedResult) => {
           handleSetupResult(instance, resolvedResult, isSSR);
-        }).catch((e) => {
-          handleError(e, instance, 0);
+        }).catch((e2) => {
+          handleError(e2, instance, 0);
         });
       } else {
         instance.asyncDep = setupResult;
@@ -4090,7 +4090,7 @@ function patchDOMProp(el, key, value, prevChildren, parentComponent, parentSuspe
   }
   try {
     el[key] = value;
-  } catch (e) {
+  } catch (e2) {
   }
 }
 let _getNow = Date.now;
@@ -4144,24 +4144,24 @@ function parseName(name) {
   return [hyphenate(name.slice(2)), options];
 }
 function createInvoker(initialValue, instance) {
-  const invoker = (e) => {
-    const timeStamp = e.timeStamp || _getNow();
+  const invoker = (e2) => {
+    const timeStamp = e2.timeStamp || _getNow();
     if (skipTimestampCheck || timeStamp >= invoker.attached - 1) {
-      callWithAsyncErrorHandling(patchStopImmediatePropagation(e, invoker.value), instance, 5, [e]);
+      callWithAsyncErrorHandling(patchStopImmediatePropagation(e2, invoker.value), instance, 5, [e2]);
     }
   };
   invoker.value = initialValue;
   invoker.attached = getNow();
   return invoker;
 }
-function patchStopImmediatePropagation(e, value) {
+function patchStopImmediatePropagation(e2, value) {
   if (isArray(value)) {
-    const originalStop = e.stopImmediatePropagation;
-    e.stopImmediatePropagation = () => {
-      originalStop.call(e);
-      e._stopped = true;
+    const originalStop = e2.stopImmediatePropagation;
+    e2.stopImmediatePropagation = () => {
+      originalStop.call(e2);
+      e2._stopped = true;
     };
-    return value.map((fn) => (e2) => !e2._stopped && fn && fn(e2));
+    return value.map((fn) => (e3) => !e3._stopped && fn && fn(e3));
   } else {
     return value;
   }
@@ -4250,7 +4250,7 @@ function normalizeContainer(container) {
 const Named = defineComponent(() => {
   const count = ref(0);
   const inc = () => count.value++;
-  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_COMPS === "Comps");
+  console.assert(e.VITE_COMPS === "Comps");
   return () => createVNode("button", {
     "class": "named",
     "onClick": inc
@@ -4275,7 +4275,7 @@ var Default$1 = defineComponent(() => {
 const Default = defineComponent(() => {
   const count = ref(3);
   const inc = () => count.value++;
-  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_COMP === "Comp");
+  console.assert(e.VITE_COMP === "Comp");
   return () => createVNode("button", {
     "class": "default-tsx",
     "onClick": inc
@@ -4284,7 +4284,7 @@ const Default = defineComponent(() => {
 var _sfc_main$1 = defineComponent(() => {
   const count = ref(4);
   const inc = () => count.value++;
-  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_SCRIPT === "Script");
+  console.assert(e.VITE_SCRIPT === "Script");
   return () => createVNode("button", {
     "class": "script",
     "onClick": inc
@@ -4293,15 +4293,15 @@ var _sfc_main$1 = defineComponent(() => {
 var _sfc_main = defineComponent(() => {
   const count = ref(5);
   const inc = () => count.value++;
-  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_SRC_IMPORT_JSX === "SrcImportJsx");
+  console.assert(e.VITE_SRC_IMPORT_JSX === "SrcImportJsx");
   return () => createVNode("button", {
     "class": "src-import",
     "onClick": inc
   }, [createTextVNode("src import "), count.value]);
 });
 function App() {
-  console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_MAIN === "Main");
+  console.assert(e.VITE_MAIN === "Main");
   return createVNode(Fragment, null, [createVNode(Named, null, null), createVNode(NamedSpec, null, null), createVNode(Default$1, null, null), createVNode(Default, null, null), createVNode(_sfc_main$1, null, null), createVNode(_sfc_main, null, null)]);
 }
 createApp(App).mount("#app");
-console.assert(vite_plugin_dotenv_unique_id_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.VITE_INDEX === "Index");
+console.assert(e.VITE_INDEX === "Index");

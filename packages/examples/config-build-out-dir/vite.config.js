@@ -14,5 +14,5 @@ export default defineConfig({
     },
     outDir: "custom-out-dir",
   },
-  plugins: [dotenv({ verify: false })],
+  plugins: [dotenv()],
 });

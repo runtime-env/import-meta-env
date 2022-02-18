@@ -14,5 +14,5 @@ export default defineConfig({
     },
     assetsDir: "custom-assets-dir",
   },
-  plugins: [dotenv({ verify: false })],
+  plugins: [dotenv()],
 });

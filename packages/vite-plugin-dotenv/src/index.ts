@@ -2,13 +2,14 @@ import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import colors from "picocolors";
 import { writeFileSync } from "fs";
-import { parseSnippet } from "./parse";
-import { verifySnippet } from "./verify";
+import { config as dotenvConfig } from "dotenv";
 import { version } from "../package.json";
 
-const defaultPlaceholder = "__env__";
-const preservedEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD"];
-const inlineEnvKeys = ["SSR", "LEGACY"];
+const DEBUG = false;
+
+export const virtualFile = "vite-plugin-dotenv";
+export const defaultPlaceholder = "__vite_plugin_dotenv_placeholder__";
+const inlineEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR", "LEGACY"];
 const unique = (() => {
   const uniqueId = "vite_plugin_dotenv_unique_id_";
   return (
@@ -21,84 +22,107 @@ const unique = (() => {
 
 const createPlugin: ({
   placeholder,
-  verify,
-  debug,
 }?: {
   /**
    * The placeholder to replace with the `.env` file content
    *
-   * @default "__env__"
+   * @default "__vite_plugin_dotenv_placeholder__"
    */
   placeholder?: string;
-
-  /**
-   * Whether to verify the `.env` file content at runtime
-   *
-   * The verification steps are:
-   * 1. Parse the `.env` file content into `import.meta.env` (This is achieved by `vite`)
-   * 2. Use keys of `import.meta.env` to verify the runtime environment variables
-   * 3. If any key is missing, throw an error
-   * 4. If any key is redundant, throw an error (This is to prevent accidentally exposing sensitive information)
-   *
-   * @default true
-   */
-  verify?: boolean;
-
-  /**
-   * Whether to dump debug logs
-   * Logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
-   *
-   * @default false
-   */
-  debug?: boolean;
 }) => Plugin[] = (pluginOptions = {}) => {
   let debugLog = "";
 
   let config: ResolvedConfig;
   let envKeys: Set<string>;
+  let env: Record<string, string> = {};
 
-  const virtualFile = "env";
   const virtualId = "\0" + virtualFile;
   const placeholder = pluginOptions.placeholder || defaultPlaceholder;
 
-  const pre = <Plugin>{
+  const development = <Plugin>{
+    name: "dotenv:development",
+    enforce: "pre",
+    apply: (_, env) => {
+      return env.command === "serve";
+    },
+    config() {
+      return {
+        // disable vite built-in environment variable feature
+        envPrefix: [],
+      };
+    },
+    configResolved() {
+      const parsed = (() => {
+        const { parsed, error } = dotenvConfig();
+        if (error) {
+          return {};
+        }
+        return { ...parsed! };
+      })();
+      Object.assign(parsed, process.env);
+
+      const parsedExample = (() => {
+        const { parsed, error } = dotenvConfig({ path: ".env.example" });
+        if (error) {
+          console.error(error);
+          return {};
+        }
+        return parsed!;
+      })();
+
+      const missingKeys: string[] = [];
+      Object.keys(parsedExample).forEach((key) => {
+        if (Object.prototype.hasOwnProperty.call(parsed, key) === false) {
+          missingKeys.push(key);
+        }
+
+        env[key] = parsed[key];
+      });
+      if (missingKeys.length) {
+        throw new Error(
+          `[vite-plugin-dotenv]: The following variables were defined in .env.example but are not present in the environment: ` +
+            missingKeys.join(", ")
+        );
+      }
+    },
+    transform(code, id) {
+      if (id !== virtualId && id.includes("node_modules") === false) {
+        inlineEnvKeys.forEach((key) => {
+          code = code.replace(
+            new RegExp(`import.meta.env.${key}`, "g"),
+            unique + `.${key}`
+          );
+        });
+
+        code = code.replace(/import\.meta\.env/g, JSON.stringify(env));
+
+        inlineEnvKeys.forEach((key) => {
+          code = code.replace(
+            new RegExp(unique + `.${key}`, "g"),
+            `import.meta.env.${key}`
+          );
+        });
+      }
+
+      return code;
+    },
+  };
+
+  const production = <Plugin>{
     name: "dotenv:pre",
     enforce: "pre",
     apply: (_, env) => {
       return env.command === "build";
     },
-    config(userConfig) {
+    config() {
       return {
+        // disable vite built-in environment variable feature
+        envPrefix: [],
         build: {
           rollupOptions: {
             output: {
               manualChunks: {
                 [virtualFile]: [virtualId],
-              },
-              chunkFileNames(chunkInfo) {
-                if (chunkInfo.name === virtualFile) {
-                  return path.join(config.build.assetsDir, `[name].js`);
-                }
-
-                const output = (() => {
-                  const output = userConfig.build?.rollupOptions?.output;
-                  if (Array.isArray(output)) {
-                    return output;
-                  } else if (typeof output === "object") {
-                    return [output];
-                  } else {
-                    return [];
-                  }
-                })();
-                const chunkFileNamesList = output.map((o) => o.chunkFileNames);
-                for (const chunkFileNames of chunkFileNamesList) {
-                  if (typeof chunkFileNames === "string") {
-                    return chunkFileNames;
-                  } else if (typeof chunkFileNames === "function") {
-                    return chunkFileNames(chunkInfo);
-                  }
-                }
-                return path.join(config.build.assetsDir, `[name].[hash].js`);
               },
             },
           },
@@ -128,34 +152,7 @@ const createPlugin: ({
     },
     load(id) {
       if (id === virtualId) {
-        const preservedEnv = preservedEnvKeys.reduce((acc, key) => {
-          return Object.assign(acc, { [key]: config.env[key] });
-        }, {});
-        return [
-          parseSnippet,
-          `const e = parse(${placeholder}, {});`,
-          ...(pluginOptions.verify ?? true
-            ? [
-                verifySnippet(
-                  JSON.stringify(
-                    [...envKeys.keys()]
-                      .filter(
-                        (key) =>
-                          !preservedEnvKeys.includes(key) &&
-                          !inlineEnvKeys.includes(key)
-                      )
-                      .reduce(
-                        (acc, key) =>
-                          Object.assign(acc, { [key]: config.env[key] }),
-                        {}
-                      )
-                  )
-                ),
-                `verify(e);`,
-              ]
-            : []),
-          `export default Object.assign(e, ${JSON.stringify(preservedEnv)});`,
-        ].join("\n");
+        return [`const e = ${placeholder};`, `export default e;`].join("\n");
       }
     },
     transform(code, id) {
@@ -208,7 +205,7 @@ const createPlugin: ({
       return html;
     },
     closeBundle() {
-      if (pluginOptions.debug) {
+      if (DEBUG) {
         writeFileSync(
           path.join(config.root, "vite-plugin-dotenv-debug.log"),
           debugLog
@@ -229,7 +226,7 @@ const createPlugin: ({
     },
   };
 
-  return [pre];
+  return [development, production];
 };
 
 export default createPlugin;

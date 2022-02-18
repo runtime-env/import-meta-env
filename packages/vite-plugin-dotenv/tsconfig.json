@@ -1,6 +1,6 @@
 {
   "include": ["src"],
-  "exclude": ["**/*.spec.ts"],
+  "exclude": ["**/*.test.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "esnext",

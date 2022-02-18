@@ -5,7 +5,7 @@ rm -rf custom-out-dir
 
 # act
 pnpm run build
-sh inject-env.sh
+pnpm exec vite-plugin-dotenv -o custom-out-dir/assets/vite-plugin-dotenv*
 
 # assert
 diff -r custom-out-dir __dist__

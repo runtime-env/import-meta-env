@@ -4,7 +4,7 @@ import dotenv from "vite-plugin-dotenv";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), dotenv({ verify: false })],
+  plugins: [vue(), dotenv()],
   build: {
     minify: false,
     rollupOptions: {

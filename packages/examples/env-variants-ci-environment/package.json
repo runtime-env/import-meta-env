@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "cross-env VITE_NAME=from-inline vite",
-    "build": "cross-env VITE_NAME=from-inline vite build",
-    "preview": "sh inject-env.sh && vite preview"
+    "build": "vite build",
+    "preview": "pnpm exec vite-plugin-dotenv && vite preview"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

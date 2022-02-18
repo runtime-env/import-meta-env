@@ -4,141 +4,63 @@
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-dotenv.svg)](https://www.npmjs.com/package/vite-plugin-dotenv)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This plugin extends vite's built-in [environment variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) functionality, allowing you to inject environment variables at runtime instead of build time.
+This plugin loads environment variables from a `.env` file and environment variables on your machine into `import.meta.env` (see more info of `import.meta` on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta)).
+
+Follow [the Twelve-Factor App](https://12factor.net/config) methodology, storing configuration in the environment separate from code, allowing us to inject environment variables at runtime instead of build time. Powered by [dotenv](https://github.com/motdotla/dotenv)
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
 ## 💡 How
 
-In production, this plugin will generate the following chunk, allowing us to inject environment variables after building the package.
+For security reasons, this plugin will only load those environment variables defined in the `.env.example` file.
 
-- `dist/assets/env.js` (default) contains a placeholder: `__env__` (default) which allows us to inject environment variables.
+For dev server, this plugin will load environment variables from a `.env` file, and the environment variables on your machine into `import.meta.env`.
+
+For bundling, this plugin will generate a chunk with placeholder that allow us to inject environment variables later. Before serving your application in production, run the `vite-plugin-dotenv` command to inject environment variables.
 
 ## 🚀 Quick Start
 
-Install the plugin:
+Install and register the plugin:
 
 ```sh
-pnpm i vite-plugin-dotenv
+$ npm i vite-plugin-dotenv dotenv
 ```
 
-Register the plugin:
-
-```js
-// vite.config.js
+```ts
+// vite.cofnig.ts
 import { defineConfig } from "vite";
 import dotenv from "vite-plugin-dotenv";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [dotenv()],
 });
 ```
 
-Finally, after building your project, remember to inject environment variables before serving your application.
-
-Since our programs all run on different operating systems (for example, you might develop with Windows/MacOS but deploy to Linux), we do not provide binaries for injecting environment variables.
-
-Instead, you need to write a script based on your operating system, for example:
-
-<details>
-  <summary>
-  for MacOS:
-  </summary>
+Create a `.env` and `.env.example` files in the root of your project:
 
 ```sh
-# inject-env.sh
-
-#!/bin/bash
-set -e
-
-# Config
-PLACEHOLDER="__env__" # vite-plugin-dotenv option: placeholder
-OUT_DIR="dist" # vite config: build.outDir
-ASSETS_DIR="assets" # vite config: build.assetsDir
-DOTENV_PATH=".env"
-
-# You can expand the environment variable to "ENV" variable
-ENV="\`VITE_NAME=$VITE_NAME\\\n\`"
-# or read the `.env` file line by line and save it to the `ENV` variable
-ENV="\`"
-while read line || [[ -n "$line" ]]; do
-  ENV="$ENV$line"
-  ENV="$ENV\\\n"
-done < $DOTENV_PATH
-ENV="$ENV\`"
-
-# Backup if `env.js~` does not exist, otherwise restore from `.env.js~` to `env.js`
-# This step will allow us to change environment variables without rebuilding the project
-if [ ! -f "$OUT_DIR/$ASSETS_DIR/env.js~" ]; then
-  cp "$OUT_DIR/$ASSETS_DIR/env.js" "$OUT_DIR/$ASSETS_DIR/env.js~"
-else
-  cp "$OUT_DIR/$ASSETS_DIR/env.js~" "$OUT_DIR/$ASSETS_DIR/env.js"
-fi
-
-# Inject the `ENV` variable to `env.js`
-sed -i '' "s/$PLACEHOLDER/$ENV/g" "$OUT_DIR/$ASSETS_DIR/env.js"
+# .env
+S3_BUCKET="YOURS3BUCKET"
+SECRET_KEY="YOURSECRETKEYGOESHERE"
 ```
-
-</details>
-
-<details>
-  <summary>
-  for Linux:
-  </summary>
 
 ```sh
-# inject-env.sh
-
-#!/bin/bash
-set -e
-
-# Config
-PLACEHOLDER="__env__" # vite-plugin-dotenv option: placeholder
-OUT_DIR="dist" # vite config: build.outDir
-ASSETS_DIR="assets" # vite config: build.assetsDir
-DOTENV_PATH=".env"
-
-# You can expand the environment variable to "ENV" variable
-ENV="\`VITE_NAME=$VITE_NAME\\\n\`"
-# or read the `.env` file line by line and save it to the `ENV` variable
-ENV="\`"
-while read line || [[ -n "$line" ]]; do
-  ENV="$ENV$line"
-  ENV="$ENV\\\n"
-done < $DOTENV_PATH
-ENV="$ENV\`"
-
-# Backup if `env.js~` does not exist, otherwise restore from `.env.js~` to `env.js`
-# This step will allow us to change environment variables without rebuilding the project
-if [ ! -f "$OUT_DIR/$ASSETS_DIR/env.js~" ]; then
-  cp "$OUT_DIR/$ASSETS_DIR/env.js" "$OUT_DIR/$ASSETS_DIR/env.js~"
-else
-  cp "$OUT_DIR/$ASSETS_DIR/env.js~" "$OUT_DIR/$ASSETS_DIR/env.js"
-fi
-
-# Inject the `ENV` variable to `env.js`
-sed -i -e "s/$PLACEHOLDER/$ENV/g" "$OUT_DIR/$ASSETS_DIR/env.js"
+# .env.example
+S3_BUCKET=
 ```
 
-</details>
+Finally, adjust preview script:
 
-If you run into problems, see [examples](../examples) or create an issue from github.
-
-## 📖 Plugin Options
-
-- `placeholder: string = "__env__"`: The placeholder to replace with the `.env` file content
-
-- `verify: boolean = true`: Whether to verify the `.env` file content at runtime
-
-  The verification step are:
-
-  1. Parse the `.env` file content into `import.meta.env` (This is achieved by `vite`)
-  2. Use keys of `import.meta.env` to verify the runtime environment variables
-  3. If any key is missing, throw an error
-  4. If any key is redundant, throw an error (This is to prevent accidentally exposing sensitive information)
-
-- `debug: boolean = false`: Whether to dump debug logs, logs will be dumped to <package-root>/vite-plugin-dotenv-debug.log
+```json
+// package.json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "npx vite-plugin-dotenv && vite preview"
+  }
+}
+```
 
 ## 🤝 Contributing
 

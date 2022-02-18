@@ -2,9 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - develop
   pull_request:
 
 jobs:
@@ -21,21 +18,13 @@ jobs:
     environment: VITE_NAME
     name: "Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}"
     steps:
-      - name: Cache sd
-        uses: actions/cache@v2
-        with:
-          path: ~/.cargo
-          key: ${{ runner.os }}-sd
-          restore-keys: |
-            ${{ runner.os }}-sd
-
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 6
+          version: ^6.31.0
 
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v2
@@ -46,16 +35,14 @@ jobs:
       - name: Install deps
         run: pnpm i
 
-      - name: Install cargo
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-
-      - name: Install sd
-        run: cargo install sd
+      - name: Test vite-plugin-dotenv
+        run: pnpm run test --parallel --stream --filter vite-plugin-dotenv
 
       - name: Build vite-plugin-dotenv
         run: pnpm run build --parallel --stream --filter vite-plugin-dotenv
+
+      - name: Install binary
+        run: pnpm i
 
       - name: Build&Test examples
         run: |
