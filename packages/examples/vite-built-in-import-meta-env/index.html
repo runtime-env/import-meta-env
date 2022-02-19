@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      document.querySelector("#app").innerHTML = `
+        <h1>VITE_NAME: ${import.meta.env.VITE_NAME}</h1>
+        <h1>MODE: ${import.meta.env.MODE}</h1>
+        <h1>BASE_URL: ${import.meta.env.BASE_URL}</h1>
+        <h1>PROD: ${import.meta.env.PROD}</h1>
+        <h1>DEV: ${import.meta.env.DEV}</h1>
+      `;
+    </script>
+  </body>
+</html>

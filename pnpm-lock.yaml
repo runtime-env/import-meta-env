@@ -139,6 +139,16 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
+  packages/examples/vite-built-in-import-meta-env:
+    specifiers:
+      cross-env: ^7.0.3
+      vite: ^2.7.13
+      vite-plugin-dotenv: workspace:^0.1.12
+    devDependencies:
+      cross-env: 7.0.3
+      vite: 2.7.13
+      vite-plugin-dotenv: link:../../vite-plugin-dotenv
+
   packages/examples/vitest:
     specifiers:
       typescript: ^4.4.4

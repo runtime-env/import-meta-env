@@ -18,6 +18,8 @@ For dev server, this plugin will load environment variables from a `.env` file, 
 
 For bundling, this plugin will generate a chunk with placeholder that allow us to inject environment variables later. Before serving your application in production, run the `vite-plugin-dotenv` command to inject environment variables.
 
+Note: vite [built-in variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) will work as usual.
+
 ## 🚀 Quick Start
 
 Install and register the plugin:
