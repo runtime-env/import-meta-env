@@ -13,11 +13,11 @@ import glob from "glob";
 import { version } from "../package.json";
 
 const backupFileExt = ".bak";
-const outputGlobPaths = [`dist/**/${virtualFile}*`];
+const virtualFileGlob = `dist/assets/${virtualFile}*`;
 const generateDefaultOutput = () => {
-  const outputFilePaths = outputGlobPaths
-    .map((globPath) => glob.sync(globPath))
-    .flat();
+  const outputFilePaths = glob
+    .sync(virtualFileGlob)
+    .filter((path) => path.includes("node_modules") === false);
 
   return outputFilePaths;
 };
@@ -36,7 +36,10 @@ export const createCommand = () =>
     )
     .option("-e, --env <path>", ".env file path", ".env")
     .option("-x, --example <path>", ".env example file path", ".env.example")
-    .option("-o, --output <path...>", "output file paths")
+    .option(
+      "-o, --output <path...>",
+      `output file paths (default: ${JSON.stringify(virtualFileGlob)})`
+    )
     .action((args: Args) => {
       if (existsSync(args.example) === false) {
         console.error(

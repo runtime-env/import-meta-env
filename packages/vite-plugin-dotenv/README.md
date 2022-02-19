@@ -97,7 +97,7 @@ Options:
   -V, --version           output the version number
   -e, --env <path>        .env file path (default: ".env")
   -x, --example <path>    .env example file path (default: ".env.example")
-  -o, --output <path...>  output file paths
+  -o, --output <path...>  output file paths (default: "dist/assets/vite-plugin-dotenv*")
   -h, --help              display help for command
 ```
 
