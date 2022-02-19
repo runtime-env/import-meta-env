@@ -5,18 +5,16 @@ on:
   pull_request:
 
 jobs:
-  build:
+  lts:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        node_version: [12, 14, 16, 17]
         include:
-          - os: macos-latest
+          - os: ubuntu-latest
             node_version: 16
       fail-fast: false
     environment: VITE_NAME
-    name: "Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}"
+    name: "lts: ${{ matrix.os }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -24,7 +22,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^6.31.0
+          version: ^6
 
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v2
@@ -49,6 +47,7 @@ jobs:
           pnpm \
             --parallel \
             --stream \
+            --filter \!html \
             --filter \!vite-plugin-dotenv \
             --filter \!vue-ts \
             --filter \!vue-jsx \
@@ -74,9 +73,56 @@ jobs:
             --filter env-variants-ci-environment \
             exec cross-env VITE_NAME="${{ secrets.VITE_NAME }}" sh test.sh
 
+  compatibility:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [12]
+        dotenv_version: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+        include:
+          - os: macos-latest
+            dotenv_version: 16
+          - os: windows-latest
+            dotenv_version: 16
+    name: "compatibility: ${{ matrix.os }}, dotenv@${{ matrix.dotenv_version }}, node@${{ matrix.node_version }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^6
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install deps
+        run: |
+          pnpm i
+          pnpm --parallel --stream --filter vite-plugin-dotenv exec pnpm rm dotenv
+          pnpm i -W -D dotenv@${{ matrix.dotenv_version }}
+
+      - name: Test vite-plugin-dotenv
+        run: pnpm run test --parallel --stream --filter vite-plugin-dotenv
+
+      - name: Build vite-plugin-dotenv
+        run: pnpm run build --parallel --stream --filter vite-plugin-dotenv
+
+      - name: Install binary
+        run: pnpm i
+
+      - name: Test example
+        run: |
+          pnpm run test --parallel --stream --filter html
+
   lint:
     runs-on: ubuntu-latest
-    name: "Lint: node-16, ubuntu-latest"
+    name: "lint"
     steps:
       - uses: actions/checkout@v2
         with:

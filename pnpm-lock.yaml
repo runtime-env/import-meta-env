@@ -53,10 +53,12 @@ importers:
   packages/examples/html:
     specifiers:
       cross-env: ^7.0.3
+      rimraf: ^3.0.2
       vite: ^2.7.13
       vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
       cross-env: 7.0.3
+      rimraf: 3.0.2
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
@@ -181,7 +183,7 @@ importers:
       '@types/tmp': ^0.2.3
       babel-jest: ^27.5.1
       commander: ^9.0.0
-      dotenv: ^15.0.1
+      dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
       esbuild: ^0.14.11
       glob: ^7.2.0
       jest: ^27.5.1
