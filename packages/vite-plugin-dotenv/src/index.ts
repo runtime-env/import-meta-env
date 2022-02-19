@@ -27,7 +27,6 @@ const createPlugin: ({ placeholder }?: Options) => Plugin[] = (
   let debugLog = "";
 
   let config: ResolvedConfig;
-  let envKeys: Set<string>;
   let env: Record<string, string> = {};
 
   const virtualId = "\0" + virtualFile;
@@ -124,11 +123,6 @@ const createPlugin: ({ placeholder }?: Options) => Plugin[] = (
     },
     configResolved(_config) {
       config = _config;
-
-      envKeys = new Set([]);
-      for (const key of Object.keys(config.env)) {
-        envKeys.add(key);
-      }
     },
     resolveId(id, _, options) {
       if (options.ssr) {
