@@ -56,6 +56,11 @@
     "dotenv": "^15.0.1",
     "vite": "^2.7.13"
   },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "commander": "^9.0.0",
     "glob": "^7.2.0",
