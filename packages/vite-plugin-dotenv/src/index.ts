@@ -127,7 +127,7 @@ const createPlugin: ({ placeholder }?: Options) => Plugin[] = (
     },
     resolveId(id, _, options) {
       if (options.ssr) {
-        throw new Error(`vite-plugin-dotenv: SSR is not supported.`);
+        throw new Error(`[vite-plugin-dotenv]: SSR is not supported.`);
       }
 
       if (id === virtualFile) {
