@@ -1,9 +1,89 @@
 import tmp from "tmp";
-import { Args, command, main, resolve } from "../cli";
+import { Args, createCommand, main, resolve } from "../cli";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { defaultPlaceholder } from "../index";
 
+let command = createCommand();
+
+beforeEach(() => {
+  command = createCommand();
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("cli", () => {
+  describe("command", () => {
+    test("it should warn if example not found", () => {
+      // arrange
+      const spy = jest.spyOn(console, "error").mockImplementation();
+
+      // act
+      command.exitOverride().parse(["node", "test", "--example", "foo"]);
+
+      // assert
+      expect(spy.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "[31m[vite-plugin-dotenv]: Example file not found: foo[39m",
+          ],
+          Array [
+            "[31m[vite-plugin-dotenv]: Output file not found[39m",
+          ],
+        ]
+      `);
+    });
+
+    test("it should warn if output files not found", () => {
+      // arrange
+      const envExampleFilePath = tmp.fileSync();
+      const spy = jest.spyOn(console, "error").mockImplementation();
+
+      // act
+      command
+        .exitOverride()
+        .parse([
+          "node",
+          "test",
+          "--example",
+          envExampleFilePath.name,
+          "--output",
+          "foo",
+          "bar",
+        ]);
+
+      // assert
+      expect(spy.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "[31m[vite-plugin-dotenv]: Output file not found: foo, bar[39m",
+          ],
+        ]
+      `);
+    });
+
+    test("it should warn if output files not found 2", () => {
+      // arrange
+      const envExampleFilePath = tmp.fileSync();
+      const spy = jest.spyOn(console, "error").mockImplementation();
+
+      // act
+      command
+        .exitOverride()
+        .parse(["node", "test", "--example", envExampleFilePath.name]);
+
+      // assert
+      expect(spy.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "[31m[vite-plugin-dotenv]: Output file not found[39m",
+          ],
+        ]
+      `);
+    });
+  });
+
   describe("resolve", () => {
     test("resolve environment variables from env file", () => {
       // arrange

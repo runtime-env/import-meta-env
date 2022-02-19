@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import { copyFileSync, existsSync, readFileSync, writeFileSync } from "fs";
 import { config } from "dotenv";
+import colors from "picocolors";
 import { defaultPlaceholder, virtualFile } from "./index";
 import glob from "glob";
 
@@ -21,22 +22,57 @@ export interface Args {
   output: string[];
 }
 
-export const command = new Command()
-  .description(
-    "Inject your environment variables from the .env file or system environment variables."
-  )
-  .option("-e, --env <path>", ".env file path", ".env")
-  .option(
-    "--example <path>",
-    ".env example file path, required if key is not specified",
-    ".env.example"
-  )
-  .option("-o, --output <path...>", "output file paths")
-  .option(
-    "-p, --placeholder <placeholder>",
-    "placeholder to be injected",
-    defaultPlaceholder
-  );
+export const createCommand = () =>
+  new Command()
+    .description(
+      "Inject your environment variables from the .env file or system environment variables."
+    )
+    .option("-e, --env <path>", ".env file path", ".env")
+    .option(
+      "--example <path>",
+      ".env example file path, required if key is not specified",
+      ".env.example"
+    )
+    .option("-o, --output <path...>", "output file paths")
+    .option(
+      "-p, --placeholder <placeholder>",
+      "placeholder to be injected",
+      defaultPlaceholder
+    )
+    .action((args: Args) => {
+      if (existsSync(args.example) === false) {
+        console.error(
+          colors.red(
+            `[vite-plugin-dotenv]: Example file not found: ${args.example}`
+          )
+        );
+        if (require.main === module) process.exit(1);
+      }
+
+      const outputFilePaths = args.output ?? generateDefaultOutput();
+      if (outputFilePaths.length === 0) {
+        console.error(
+          colors.red(`[vite-plugin-dotenv]: Output file not found`)
+        );
+        if (require.main === module) process.exit(1);
+      }
+
+      const notFoundOutputFilePaths = outputFilePaths.filter(
+        (outputFilePath) => {
+          return existsSync(outputFilePath) === false;
+        }
+      );
+      if (notFoundOutputFilePaths.length > 0) {
+        console.error(
+          colors.red(
+            `[vite-plugin-dotenv]: Output file not found: ${notFoundOutputFilePaths.join(
+              ", "
+            )}`
+          )
+        );
+        if (require.main === module) process.exit(1);
+      }
+    });
 
 export const resolve = ({
   envFilePath,
@@ -84,7 +120,7 @@ export const resolve = ({
 };
 
 export const main = (di: {
-  command: typeof command;
+  command: ReturnType<typeof createCommand>;
   resolve: typeof resolve;
 }) => {
   di.command.parse();
@@ -114,5 +150,5 @@ export const main = (di: {
 };
 
 if (require.main === module) {
-  main({ command, resolve });
+  main({ command: createCommand(), resolve });
 }

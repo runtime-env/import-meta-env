@@ -42,16 +42,6 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/env-variants-no-config:
-    specifiers:
-      cross-env: ^7.0.3
-      vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
-    devDependencies:
-      cross-env: 7.0.3
-      vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
-
   packages/examples/env-variants-no-newline-at-end-of-file:
     specifiers:
       vite: ^2.7.13
