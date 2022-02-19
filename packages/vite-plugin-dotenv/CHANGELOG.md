@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.13...v0.1.14) (2022-02-19)
+
+
+### Features
+
+* beautify error message ([994efd6](https://github.com/iendeavor/vite-plugin-dotenv/commit/994efd6d5197e17bc5add80da926cc209b89d911))
+* terminate process when file not found ([c6caa23](https://github.com/iendeavor/vite-plugin-dotenv/commit/c6caa230471f2b4bbd0be2758c4a5e81f01e7cbd))
+
+
+### Bug Fixes
+
+* invalid cache when .env.example changes ([29291f2](https://github.com/iendeavor/vite-plugin-dotenv/commit/29291f27764010d09471f0381ddbdba94ca04638))
+* shouldn't error when .env or .env.example file is missing ([d43b511](https://github.com/iendeavor/vite-plugin-dotenv/commit/d43b511af457b9c98816056a075ae4fae1e80f04))
+
 ### [0.1.13](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.12...v0.1.13) (2022-02-19)
 
 
