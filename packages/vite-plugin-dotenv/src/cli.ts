@@ -4,6 +4,7 @@ import { config } from "dotenv";
 import colors from "picocolors";
 import { placeholder, virtualFile } from "./index";
 import glob from "glob";
+import { version } from "../package.json";
 
 const backupFileExt = ".bak";
 const outputGlobPaths = [`dist/**/${virtualFile}*`];
@@ -23,6 +24,7 @@ export interface Args {
 
 export const createCommand = () =>
   new Command()
+    .version(version)
     .description(
       "Inject your environment variables from the .env file or system environment variables."
     )
