@@ -4,6 +4,7 @@ import colors from "picocolors";
 import { writeFileSync } from "fs";
 import { config as dotenvConfig } from "dotenv";
 import { version } from "../package.json";
+import { Options } from "./types";
 
 const DEBUG = false;
 
@@ -20,16 +21,9 @@ const unique = (() => {
   );
 })();
 
-const createPlugin: ({
-  placeholder,
-}?: {
-  /**
-   * The placeholder to replace with the `.env` file content
-   *
-   * @default "__vite_plugin_dotenv_placeholder__"
-   */
-  placeholder?: string;
-}) => Plugin[] = (pluginOptions = {}) => {
+const createPlugin: ({ placeholder }?: Options) => Plugin[] = (
+  pluginOptions = {}
+) => {
   let debugLog = "";
 
   let config: ResolvedConfig;

@@ -64,6 +64,18 @@ Finally, adjust the preview script:
 }
 ```
 
+## 📖 API
+
+### vite-plugin-dotenv plugin options
+
+See [types.ts](./src/types.ts).
+
+### vite-plugin-dotenv binary
+
+```sh
+$ npx vite-plugin-dotenv --help
+```
+
 ## 🤝 Contributing
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull
