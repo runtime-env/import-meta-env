@@ -51,7 +51,9 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 S3_BUCKET=
 ```
 
-Finally, adjust the preview script in your package.json:
+Finally, remember to inject environment variables before serving your application.
+
+Adjust the preview script in your package.json:
 
 ```json
 {
@@ -61,6 +63,12 @@ Finally, adjust the preview script in your package.json:
     "preview": "vite-plugin-dotenv && vite preview"
   }
 }
+```
+
+You can use [pkg](https://github.com/vercel/pkg) to create a standalone executable for deployment:
+
+```sh
+$ npx pkg ./node_modules/vite-plugin-dotenv/bin/vite-plugin-dotenv.js
 ```
 
 ## 📖 API
