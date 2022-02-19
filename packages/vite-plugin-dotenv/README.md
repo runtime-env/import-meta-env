@@ -65,11 +65,16 @@ Adjust the preview script in your package.json:
 }
 ```
 
-You can use [pkg](https://github.com/vercel/pkg) to create a standalone executable for deployment:
+You can use [pkg](https://github.com/vercel/pkg) to create a standalone executable for deployment.
+
+For example, you can pack the alpine version like this:
 
 ```sh
-$ npx pkg ./node_modules/vite-plugin-dotenv/bin/vite-plugin-dotenv.js
+$ npm i -g pkg
+$ npx pkg ./node_modules/vite-plugin-dotenv/bin/vite-plugin-dotenv.js -t node16-alpine
 ```
+
+See all available targets [here](https://github.com/vercel/pkg#targets)
 
 ## 📖 API
 
