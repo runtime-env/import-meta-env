@@ -1,2 +1,3 @@
+console.assert("8b9857ccbf267cebbfdfb46f6d9dc9e8d214eb0b");
 const e = __vite_plugin_dotenv_placeholder__;
 export { e };

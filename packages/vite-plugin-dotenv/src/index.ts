@@ -3,6 +3,7 @@ import { Plugin, ResolvedConfig } from "vite";
 import colors from "picocolors";
 import { writeFileSync } from "fs";
 import { config as dotenvConfig } from "dotenv";
+import hash from "object-hash";
 import { version } from "../package.json";
 import { Options } from "./types";
 
@@ -139,7 +140,20 @@ const createPlugin: ({ placeholder }?: Options) => Plugin[] = (
     },
     load(id) {
       if (id === virtualId) {
-        return [`const e = ${placeholder};`, `export default e;`].join("\n");
+        const parsedExample = (() => {
+          const { parsed, error } = dotenvConfig({ path: ".env.example" });
+          if (error) {
+            return {};
+          }
+          return parsed!;
+        })();
+        const hashValue = hash.keys(parsedExample);
+
+        return [
+          `console.assert("${hashValue}"); // Invalidate the cache when the .env.example changes.`,
+          `const e = ${placeholder};`,
+          `export default e;`,
+        ].join("\n");
       }
     },
     transform(code, id) {

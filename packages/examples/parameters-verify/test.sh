@@ -14,5 +14,7 @@ set +e
 pnpm exec vite-plugin-dotenv
 set -e
 
+diff -r dist __dist__
+
 # cleanup
 mv .env.bak .env
