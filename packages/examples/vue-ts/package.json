@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "pnpm exec vite-plugin-dotenv && vite preview"
+    "preview": "vite-plugin-dotenv && vite preview"
   },
   "dependencies": {
     "vue": "^3.2.25"

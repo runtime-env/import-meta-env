@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "pnpm exec vite-plugin-dotenv -o dist/custom-assets-dir/vite-plugin-dotenv* && vite preview"
+    "preview": "vite-plugin-dotenv -o dist/custom-assets-dir/vite-plugin-dotenv* && vite preview"
   },
   "devDependencies": {
     "vite": "^2.7.13",

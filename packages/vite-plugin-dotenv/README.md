@@ -58,7 +58,7 @@ Finally, adjust the preview script in your package.json:
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "npx vite-plugin-dotenv && vite preview"
+    "preview": "vite-plugin-dotenv && vite preview"
   }
 }
 ```
