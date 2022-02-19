@@ -51,7 +51,7 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 S3_BUCKET=
 ```
 
-And you can read your environment variables like this:
+Now you can access environment variables like this:
 
 ```ts
 console.log(import.meta.env.S3_BUCKET); // "YOURS3BUCKET"

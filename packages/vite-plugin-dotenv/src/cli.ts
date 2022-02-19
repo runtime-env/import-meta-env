@@ -29,11 +29,7 @@ export const createCommand = () =>
       "Inject your environment variables from the .env file or system environment variables."
     )
     .option("-e, --env <path>", ".env file path", ".env")
-    .option(
-      "--example <path>",
-      ".env example file path, required if key is not specified",
-      ".env.example"
-    )
+    .option("-x, --example <path>", ".env example file path", ".env.example")
     .option("-o, --output <path...>", "output file paths")
     .action((args: Args) => {
       if (existsSync(args.example) === false) {
