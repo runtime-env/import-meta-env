@@ -4,9 +4,9 @@
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-dotenv.svg)](https://www.npmjs.com/package/vite-plugin-dotenv)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This plugin loads environment variables from a `.env` file and environment variables on your machine into `import.meta.env` (see more info of `import.meta` on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta)).
+This plugin loads environment variables from `.env` files and environment variables on the machine into `import.meta.env` (see `import.meta` on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta) for more information).
 
-Follow [the Twelve-Factor App](https://12factor.net/config) methodology, storing configuration in the environment separate from code, allowing us to inject environment variables at runtime instead of build time. Powered by [dotenv](https://github.com/motdotla/dotenv)
+Following [the Twelve-Factor App](https://12factor.net/config) approach, storing configuration in the environment separate from code allows us to inject environment variables at runtime rather than build time. Powered by [dotenv](https://github.com/motdotla/dotenv).
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
@@ -49,7 +49,7 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 S3_BUCKET=
 ```
 
-Finally, adjust preview script:
+Finally, adjust the preview script:
 
 ```json
 // package.json
