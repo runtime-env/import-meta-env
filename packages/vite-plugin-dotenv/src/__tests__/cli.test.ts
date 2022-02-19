@@ -1,7 +1,7 @@
 import tmp from "tmp";
 import { Args, createCommand, main, resolve } from "../cli";
 import { existsSync, readFileSync, writeFileSync } from "fs";
-import { defaultPlaceholder } from "../index";
+import { placeholder } from "../index";
 
 let command = createCommand();
 
@@ -130,7 +130,7 @@ describe("cli", () => {
       const envExampleFilePath = tmp.fileSync();
       writeFileSync(envExampleFilePath.name, "FOO=");
       const outputFile = tmp.fileSync();
-      writeFileSync(outputFile.name, defaultPlaceholder);
+      writeFileSync(outputFile.name, placeholder);
       const parse = jest.fn();
       const opts = jest.fn(
         () =>
@@ -138,7 +138,6 @@ describe("cli", () => {
             env: envFilePath.name,
             example: envExampleFilePath.name,
             output: [outputFile.name],
-            placeholder: defaultPlaceholder,
           } as Args)
       );
       const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
@@ -157,7 +156,7 @@ describe("cli", () => {
       const backupFileName = outputFile.name + ".bak";
       expect(existsSync(backupFileName)).toBe(true);
       expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(
-        defaultPlaceholder
+        placeholder
       );
     });
   });

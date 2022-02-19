@@ -60,14 +60,6 @@ importers:
       vite: 2.7.13
       vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
-  packages/examples/parameters-placeholder:
-    specifiers:
-      vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
-    devDependencies:
-      vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
-
   packages/examples/parameters-verify:
     specifiers:
       vite: ^2.7.13

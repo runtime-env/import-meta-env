@@ -5,12 +5,11 @@ import { writeFileSync } from "fs";
 import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { version } from "../package.json";
-import { Options } from "./types";
 
 const DEBUG = false;
 
 export const virtualFile = "vite-plugin-dotenv";
-export const defaultPlaceholder = "__vite_plugin_dotenv_placeholder__";
+export const placeholder = "__vite_plugin_dotenv_placeholder__";
 const inlineEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR", "LEGACY"];
 const unique = (() => {
   const uniqueId = "vite_plugin_dotenv_unique_id_";
@@ -22,16 +21,13 @@ const unique = (() => {
   );
 })();
 
-const createPlugin: ({ placeholder }?: Options) => Plugin[] = (
-  pluginOptions = {}
-) => {
+const createPlugin: () => Plugin[] = () => {
   let debugLog = "";
 
   let config: ResolvedConfig;
   let env: Record<string, string> = {};
 
   const virtualId = "\0" + virtualFile;
-  const placeholder = pluginOptions.placeholder || defaultPlaceholder;
 
   const development = <Plugin>{
     name: "dotenv:development",

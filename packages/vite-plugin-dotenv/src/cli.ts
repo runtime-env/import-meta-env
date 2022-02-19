@@ -2,7 +2,7 @@ import { Command } from "commander";
 import { copyFileSync, existsSync, readFileSync, writeFileSync } from "fs";
 import { config } from "dotenv";
 import colors from "picocolors";
-import { defaultPlaceholder, virtualFile } from "./index";
+import { placeholder, virtualFile } from "./index";
 import glob from "glob";
 
 const backupFileExt = ".bak";
@@ -18,7 +18,6 @@ const generateDefaultOutput = () => {
 export interface Args {
   env: string;
   example: string;
-  placeholder: string;
   output: string[];
 }
 
@@ -34,11 +33,6 @@ export const createCommand = () =>
       ".env.example"
     )
     .option("-o, --output <path...>", "output file paths")
-    .option(
-      "-p, --placeholder <placeholder>",
-      "placeholder to be injected",
-      defaultPlaceholder
-    )
     .action((args: Args) => {
       if (existsSync(args.example) === false) {
         console.error(
@@ -130,7 +124,6 @@ export const main = (di: {
     envExampleFilePath: opts.example,
     envFilePath: opts.env,
   });
-  const placeholder = opts.placeholder;
   (opts.output ?? generateDefaultOutput()).forEach((outputFileName) => {
     const backupFileName = outputFileName + backupFileExt;
     if (

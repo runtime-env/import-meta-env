@@ -73,10 +73,6 @@ $ npx pkg ./node_modules/vite-plugin-dotenv/bin/vite-plugin-dotenv.js
 
 ## 📖 API
 
-### vite-plugin-dotenv plugin options
-
-See [types.ts](./src/types.ts).
-
 ### vite-plugin-dotenv binary
 
 ```sh
