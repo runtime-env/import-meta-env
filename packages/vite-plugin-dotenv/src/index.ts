@@ -64,7 +64,6 @@ const createPlugin: ({
       const parsedExample = (() => {
         const { parsed, error } = dotenvConfig({ path: ".env.example" });
         if (error) {
-          console.error(error);
           return {};
         }
         return parsed!;

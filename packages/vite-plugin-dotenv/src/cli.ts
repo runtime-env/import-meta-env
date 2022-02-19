@@ -56,9 +56,13 @@ export const resolve = ({
   })();
 
   const parsedExample = (() => {
-    const { parsed } = config({ path: envExampleFilePath });
+    const { parsed, error } = config({ path: envExampleFilePath });
 
-    return parsed!;
+    if (error === undefined) {
+      return parsed!;
+    }
+
+    return {};
   })();
 
   const missingKeys: string[] = [];
