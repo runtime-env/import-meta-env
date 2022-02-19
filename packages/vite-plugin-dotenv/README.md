@@ -51,10 +51,9 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 S3_BUCKET=
 ```
 
-Finally, adjust the preview script:
+Finally, adjust the preview script in your package.json:
 
 ```json
-// package.json
 {
   "scripts": {
     "dev": "vite",
