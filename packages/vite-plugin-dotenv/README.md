@@ -51,6 +51,13 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 S3_BUCKET=
 ```
 
+And you can read your environment variables like this:
+
+```ts
+console.log(import.meta.env.S3_BUCKET); // "YOURS3BUCKET"
+console.log(import.meta.env.SECRET_KEY); // undefined
+```
+
 Finally, remember to inject environment variables before serving your application.
 
 Adjust the preview script in your package.json:
