@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.14...v0.1.15) (2022-02-19)
+
+
+### Features
+
+* add version info to cli ([f6ccc2c](https://github.com/iendeavor/vite-plugin-dotenv/commit/f6ccc2c3c2a3500c08e92bcc0190c06c103bcf85))
+* remove placeholder option ([f5dc356](https://github.com/iendeavor/vite-plugin-dotenv/commit/f5dc3568dc79a05550e5322b6970b27d87ba46f1))
+
 ### [0.1.14](https://github.com/iendeavor/vite-plugin-dotenv/compare/v0.1.13...v0.1.14) (2022-02-19)
 
 
