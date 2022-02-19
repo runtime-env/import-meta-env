@@ -1,5 +1,11 @@
 import { Command } from "commander";
-import { copyFileSync, existsSync, readFileSync, writeFileSync } from "fs";
+import {
+  copyFileSync,
+  existsSync,
+  lstatSync,
+  readFileSync,
+  writeFileSync,
+} from "fs";
 import { config } from "dotenv";
 import colors from "picocolors";
 import { placeholder, virtualFile } from "./index";
@@ -123,6 +129,8 @@ export const main = (di: {
     envFilePath: opts.env,
   });
   (opts.output ?? generateDefaultOutput()).forEach((outputFileName) => {
+    if (lstatSync(outputFileName).isFile() === false) return;
+
     const backupFileName = outputFileName + backupFileExt;
     if (
       outputFileName.endsWith(backupFileExt) === false &&
