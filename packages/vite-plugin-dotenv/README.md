@@ -14,7 +14,7 @@ This project use [SemVer](https://semver.org/) for versioning. For the versions 
 
 For security reasons, this plugin will only load those environment variables defined in the `.env.example` file.
 
-For dev server, this plugin will load environment variables from a `.env` file, and the environment variables on your machine into `import.meta.env`.
+For dev server, this plugin loads environment variables into `import.meta.env` from a `.env` file or from environment variables on your machine.
 
 For bundling, this plugin will generate a chunk with placeholder that allow us to inject environment variables later. Before serving your application in production, run the `vite-plugin-dotenv` command to inject environment variables.
 
@@ -89,6 +89,16 @@ See all available targets [here](https://github.com/vercel/pkg#targets)
 
 ```sh
 $ npx vite-plugin-dotenv --help
+Usage: vite-plugin-dotenv [options]
+
+Inject your environment variables from the `.env` file or from environment variables on your machine.
+
+Options:
+  -V, --version           output the version number
+  -e, --env <path>        .env file path (default: ".env")
+  -x, --example <path>    .env example file path (default: ".env.example")
+  -o, --output <path...>  output file paths
+  -h, --help              display help for command
 ```
 
 ## 🤝 Contributing
