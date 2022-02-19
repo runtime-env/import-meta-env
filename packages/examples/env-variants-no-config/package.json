@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "html",
+  "name": "env-variants-no-config",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

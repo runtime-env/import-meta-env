@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "html",
+  "name": "vite-built-in-import-meta-env",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
