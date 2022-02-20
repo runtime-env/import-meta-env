@@ -13,7 +13,7 @@ export default defineComponent({
   },
   setup() {
     return {
-      alt: import.meta.env.VITE_ALT,
+      alt: import.meta.env.ALT,
       greeting,
     };
   },

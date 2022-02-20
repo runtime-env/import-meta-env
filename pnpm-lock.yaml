@@ -10,60 +10,61 @@ importers:
 
   packages/examples/config-build-assets-dir:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/config-build-out-dir:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/env-variants-ci-environment:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.3
       cross-env: ^7.0.3
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.3
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/env-variants-comments:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/env-variants-no-newline-at-end-of-file:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/html:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       cross-env: ^7.0.3
       rimraf: ^3.0.2
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       rimraf: 3.0.2
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/react:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       '@types/react': ^17.0.33
       '@types/react-dom': ^17.0.10
       '@vitejs/plugin-react': ^1.0.7
@@ -72,106 +73,105 @@ importers:
       remove: ^0.1.5
       typescript: ^4.4.4
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       remove: 0.1.5
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
       '@vitejs/plugin-react': 1.1.4
       typescript: 4.5.4
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/vanilla:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/vanilla-legacy:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       '@vitejs/plugin-legacy': ^1.6.4
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       '@vitejs/plugin-legacy': 1.6.4_vite@2.7.13
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/vanilla-ts:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       '@types/node': ^17.0.8
       typescript: ^4.4.4
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       '@types/node': 17.0.8
       typescript: 4.5.4
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/vite-built-in-import-meta-env:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       cross-env: ^7.0.3
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/vitest:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.12
       typescript: ^4.4.4
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.12
       vitest: ^0.2.5
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       typescript: 4.5.4
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
       vitest: 0.2.5
 
   packages/examples/vue-jsx:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.7
       '@vitejs/plugin-vue': ^2.0.0
       '@vitejs/plugin-vue-jsx': ^1.3.3
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.7
       vue: ^3.2.25
     dependencies:
       vue: 3.2.29
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
       '@vitejs/plugin-vue-jsx': 1.3.3
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
 
   packages/examples/vue-ts:
     specifiers:
+      '@import-meta-env/vite': workspace:^0.1.3
       '@vitejs/plugin-vue': ^2.0.0
       pug: ^3.0.2
       typescript: ^4.4.4
       vite: ^2.7.13
-      vite-plugin-dotenv: workspace:^0.1.3
       vue: ^3.2.25
       vue-tsc: ^0.29.8
     dependencies:
       vue: 3.2.29
     devDependencies:
+      '@import-meta-env/vite': link:../../vite
       '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
       pug: 3.0.2
       typescript: 4.5.4
       vite: 2.7.13
-      vite-plugin-dotenv: link:../../vite-plugin-dotenv
       vue-tsc: 0.29.8_typescript@4.5.4
 
-  packages/vite-plugin-dotenv:
+  packages/vite:
     specifiers:
       '@babel/core': ^7.17.5
       '@babel/preset-env': ^7.16.11

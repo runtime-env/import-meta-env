@@ -1,4 +1,4 @@
-import { e } from "./vite-plugin-dotenv.js";
+import { e } from "./import-meta-env.js";
 const p$1 = function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -4330,7 +4330,7 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-e8118a56"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-43dacba4"), n = n(), popScopeId(), n);
 const _hoisted_1$1 = /* @__PURE__ */ createTextVNode(" Recommended IDE setup: ");
 const _hoisted_2 = {
   href: "https://code.visualstudio.com/",
@@ -4368,7 +4368,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const count = ref(0);
-    const vscode = e.VITE_VSCODE;
+    const vscode = e.VSCODE;
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock(Fragment, null, [
         createBaseVNode("h1", null, toDisplayString(__props.msg), 1),
@@ -4389,19 +4389,19 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var HelloWorld = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-e8118a56"]]);
+var HelloWorld = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-43dacba4"]]);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("p", null, "Pug: " + toDisplayString(_ctx.pug), 1);
 }
 const _sfc_main$1 = defineComponent({
   setup() {
     return {
-      pug: e.VITE_PUG
+      pug: e.PUG
     };
   }
 });
 var Pug = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", render]]);
-const greeting = `Hello ${e.VITE_NAME}!`;
+const greeting = `Hello ${e.HELLO}!`;
 var _imports_0 = "/assets/logo.png";
 var App_vue_vue_type_style_index_0_lang = "";
 const _sfc_main = defineComponent({
@@ -4411,7 +4411,7 @@ const _sfc_main = defineComponent({
   },
   setup() {
     return {
-      alt: e.VITE_ALT,
+      alt: e.ALT,
       greeting
     };
   }

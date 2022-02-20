@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite-plugin-dotenv -o custom-out-dir/assets/vite-plugin-dotenv* && vite preview"
+    "preview": "import-meta-env -o custom-out-dir/assets/import-meta-env* && vite preview"
   },
   "devDependencies": {
     "vite": "^2.7.13",
-    "vite-plugin-dotenv": "workspace:^0.1.12"
+    "@import-meta-env/vite": "workspace:^0.1.12"
   }
 }

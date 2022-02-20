@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import dotenv from "vite-plugin-dotenv";
+import importMetaEnv from "@import-meta-env/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dotenv()],
+  plugins: [react(), importMetaEnv()],
   build: {
     minify: false,
     rollupOptions: {

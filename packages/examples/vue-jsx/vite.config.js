@@ -1,6 +1,6 @@
 const vueJsxPlugin = require("@vitejs/plugin-vue-jsx");
 const vuePlugin = require("@vitejs/plugin-vue");
-const dotenvPlugin = require("vite-plugin-dotenv").default;
+const dotenvPlugin = require("@import-meta-env/vite").default;
 
 /**
  * @type {import('vite').UserConfig}

@@ -33,11 +33,11 @@ jobs:
       - name: Install deps
         run: pnpm i
 
-      - name: Test vite-plugin-dotenv
-        run: pnpm run test --parallel --stream --filter vite-plugin-dotenv
+      - name: Test @import-meta-env/vite
+        run: pnpm run test --parallel --stream --filter @import-meta-env/vite
 
-      - name: Build vite-plugin-dotenv
-        run: pnpm run build --parallel --stream --filter vite-plugin-dotenv
+      - name: Build @import-meta-env/vite
+        run: pnpm run build --parallel --stream --filter @import-meta-env/vite
 
       - name: Install binary
         run: pnpm i
@@ -48,7 +48,7 @@ jobs:
             --parallel \
             --stream \
             --filter \!html \
-            --filter \!vite-plugin-dotenv \
+            --filter \!@import-meta-env/vite \
             --filter \!vue-ts \
             --filter \!vue-jsx \
             --filter \!env-variants-ci-environment \
@@ -106,14 +106,14 @@ jobs:
       - name: Install deps
         run: |
           pnpm i
-          pnpm --parallel --stream --filter vite-plugin-dotenv exec pnpm rm dotenv
+          pnpm --parallel --stream --filter @import-meta-env/vite exec pnpm rm dotenv
           pnpm i -W -D dotenv@${{ matrix.dotenv_version }}
 
-      - name: Test vite-plugin-dotenv
-        run: pnpm run test --parallel --stream --filter vite-plugin-dotenv
+      - name: Test @import-meta-env/vite
+        run: pnpm run test --parallel --stream --filter @import-meta-env/vite
 
-      - name: Build vite-plugin-dotenv
-        run: pnpm run build --parallel --stream --filter vite-plugin-dotenv
+      - name: Build @import-meta-env/vite
+        run: pnpm run build --parallel --stream --filter @import-meta-env/vite
 
       - name: Install binary
         run: pnpm i

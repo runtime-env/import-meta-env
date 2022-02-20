@@ -1,4 +1,4 @@
-import { e } from "./vite-plugin-dotenv.js";
+import { e } from "./import-meta-env.js";
 const p$1 = function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -4250,7 +4250,7 @@ function normalizeContainer(container) {
 const Named = defineComponent(() => {
   const count = ref(0);
   const inc = () => count.value++;
-  console.assert(e.VITE_COMPS === "Comps");
+  console.assert(e.COMPS === "Comps");
   return () => createVNode("button", {
     "class": "named",
     "onClick": inc
@@ -4275,7 +4275,7 @@ var Default$1 = defineComponent(() => {
 const Default = defineComponent(() => {
   const count = ref(3);
   const inc = () => count.value++;
-  console.assert(e.VITE_COMP === "Comp");
+  console.assert(e.COMP === "Comp");
   return () => createVNode("button", {
     "class": "default-tsx",
     "onClick": inc
@@ -4284,7 +4284,7 @@ const Default = defineComponent(() => {
 var _sfc_main$1 = defineComponent(() => {
   const count = ref(4);
   const inc = () => count.value++;
-  console.assert(e.VITE_SCRIPT === "Script");
+  console.assert(e.SCRIPT === "Script");
   return () => createVNode("button", {
     "class": "script",
     "onClick": inc
@@ -4293,15 +4293,15 @@ var _sfc_main$1 = defineComponent(() => {
 var _sfc_main = defineComponent(() => {
   const count = ref(5);
   const inc = () => count.value++;
-  console.assert(e.VITE_SRC_IMPORT_JSX === "SrcImportJsx");
+  console.assert(e.SRC_IMPORT_JSX === "SrcImportJsx");
   return () => createVNode("button", {
     "class": "src-import",
     "onClick": inc
   }, [createTextVNode("src import "), count.value]);
 });
 function App() {
-  console.assert(e.VITE_MAIN === "Main");
+  console.assert(e.MAIN === "Main");
   return createVNode(Fragment, null, [createVNode(Named, null, null), createVNode(NamedSpec, null, null), createVNode(Default$1, null, null), createVNode(Default, null, null), createVNode(_sfc_main$1, null, null), createVNode(_sfc_main, null, null)]);
 }
 createApp(App).mount("#app");
-console.assert(e.VITE_INDEX === "Index");
+console.assert(e.INDEX === "Index");

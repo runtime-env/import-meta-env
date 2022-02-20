@@ -1,4 +1,4 @@
-import { e } from "./vite-plugin-dotenv.js";
+import { e } from "./import-meta-env.js";
 const p = function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -42,6 +42,6 @@ const p = function polyfill() {
 };
 p();
 document.querySelector("#app").innerHTML = `
-  <h1>FOO: ${e.VITE_FOO}</h1>
-  <h1>BAR: ${e.VITE_BAR}</h1>
+  <h1>FOO: ${e.FOO}</h1>
+  <h1>BAR: ${e.BAR}</h1>
 `;

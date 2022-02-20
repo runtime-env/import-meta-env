@@ -5,7 +5,7 @@ import JsxScript from "./Script.vue";
 import JsxSrcImport from "./SrcImport.vue";
 
 function App() {
-  console.assert(import.meta.env.VITE_MAIN === "Main");
+  console.assert(import.meta.env.MAIN === "Main");
   return (
     <>
       <Named />

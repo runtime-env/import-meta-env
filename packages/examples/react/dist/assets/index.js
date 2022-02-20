@@ -1,4 +1,4 @@
-import { e } from "./vite-plugin-dotenv.js";
+import { e } from "./import-meta-env.js";
 const p$2 = function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -6874,6 +6874,6 @@ const jsx = jsxRuntime.exports.jsx;
 const jsxs = jsxRuntime.exports.jsxs;
 ReactDOM.render(/* @__PURE__ */ jsx(React.StrictMode, {
   children: /* @__PURE__ */ jsxs("h1", {
-    children: ["VITE_NAME: ", e.VITE_NAME]
+    children: ["HELLO: ", e.HELLO]
   })
 }), document.getElementById("root"));

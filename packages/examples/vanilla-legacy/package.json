@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite-plugin-dotenv && vite preview"
+    "preview": "import-meta-env && vite preview"
   },
   "devDependencies": {
     "@vitejs/plugin-legacy": "^1.6.4",
     "vite": "^2.7.13",
-    "vite-plugin-dotenv": "workspace:^0.1.12"
+    "@import-meta-env/vite": "workspace:^0.1.12"
   }
 }

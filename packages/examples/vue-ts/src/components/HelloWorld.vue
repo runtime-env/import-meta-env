@@ -4,7 +4,7 @@ import { ref } from "vue";
 defineProps<{ msg: string }>();
 
 const count = ref(0);
-const vscode = import.meta.env.VITE_VSCODE;
+const vscode = import.meta.env.VSCODE;
 </script>
 
 <template>

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite-plugin-dotenv && vite preview"
+    "preview": "import-meta-env && vite preview"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -18,6 +18,6 @@
     "@vitejs/plugin-react": "^1.0.7",
     "typescript": "^4.4.4",
     "vite": "^2.7.13",
-    "vite-plugin-dotenv": "workspace:^0.1.12"
+    "@import-meta-env/vite": "workspace:^0.1.12"
   }
 }

@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
-import dotenv from "vite-plugin-dotenv";
+import importMetaEnv from "@import-meta-env/vite";
 import legacy from "@vitejs/plugin-legacy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [dotenv(), legacy()],
+  plugins: [importMetaEnv(), legacy()],
   build: {
     minify: false,
     rollupOptions: {

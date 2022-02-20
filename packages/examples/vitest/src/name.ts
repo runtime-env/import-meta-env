@@ -1,1 +1,1 @@
-export const name = import.meta.env.VITE_NAME;
+export const name = import.meta.env.HELLO;

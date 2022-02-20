@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   setup() {
     return {
-      pug: import.meta.env.VITE_PUG,
+      pug: import.meta.env.PUG,
     };
   },
 });

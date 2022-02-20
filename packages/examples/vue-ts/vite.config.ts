@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import dotenv from "vite-plugin-dotenv";
+import importMetaEnv from "@import-meta-env/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), dotenv()],
+  plugins: [vue(), importMetaEnv()],
   build: {
     minify: false,
     rollupOptions: {

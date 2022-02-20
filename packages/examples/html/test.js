@@ -5,7 +5,7 @@
 
 // # act
 // pnpm run build
-// pnpm exec vite-plugin-dotenv
+// pnpm exec import-meta-env
 
 // # assert
 // diff -r dist __dist__
@@ -21,7 +21,7 @@ rimraf.sync("dist");
 
 // act
 child_process.execSync("pnpm run build");
-child_process.execSync("pnpm exec vite-plugin-dotenv");
+child_process.execSync("pnpm exec import-meta-env");
 
 // assert
 const expectedFileDir = path.resolve(__dirname, "__dist__");

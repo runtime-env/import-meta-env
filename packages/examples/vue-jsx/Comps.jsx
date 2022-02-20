@@ -3,7 +3,7 @@ import { defineComponent, ref } from "vue";
 export const Named = defineComponent(() => {
   const count = ref(0);
   const inc = () => count.value++;
-  console.assert(import.meta.env.VITE_COMPS === "Comps");
+  console.assert(import.meta.env.COMPS === "Comps");
 
   return () => (
     <button class="named" onClick={inc}>
