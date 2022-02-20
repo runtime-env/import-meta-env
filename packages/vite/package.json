@@ -18,8 +18,7 @@
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
     "build-cli": "esbuild src/cli.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=bin/import-meta-env.js",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
-    "release": "standard-version",
-    "postrelease": "pnpm build",
+    "release": "standard-version && pnpm build",
     "test": "jest src/__tests__"
   },
   "engines": {
