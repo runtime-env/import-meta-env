@@ -4,6 +4,7 @@ import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { version } from "../package.json";
 import { resolve } from "./env";
+import { getPackageManagerExecCommand } from "./get-package-manager-exec-command";
 
 export const virtualFile = "import-meta-env";
 export const placeholder = "__import_meta_env_placeholder__";
@@ -161,13 +162,15 @@ const createPlugin: () => Plugin[] = () => {
       return html;
     },
     closeBundle() {
+      const execCommand = getPackageManagerExecCommand();
+
       config.logger.info(
         [
           "",
           `${colors.cyan("import-meta-env v" + version)}`,
           `${colors.green("✓")} environment files are generated.`,
           colors.yellow(
-            `Remember to inject environment variables before serving your application.`
+            `Remember to inject (\`${execCommand} import-meta-env\`) environment variables before serving your application.`
           ),
           "",
         ].join("\n")
