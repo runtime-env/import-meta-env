@@ -69,7 +69,7 @@ const createPlugin: () => Plugin[] = () => {
       });
       if (missingKeys.length) {
         throw new Error(
-          `[@import-meta-env/vite]: The following variables were defined in .env.example but are not present in the environment: ` +
+          `[import-meta-env]: The following variables were defined in .env.example but are not present in the environment: ` +
             missingKeys.join(", ")
         );
       }
@@ -123,7 +123,7 @@ const createPlugin: () => Plugin[] = () => {
     },
     resolveId(id, _, options) {
       if (options.ssr) {
-        throw new Error(`[@import-meta-env/vite]: SSR is not supported.`);
+        throw new Error(`[import-meta-env]: SSR is not supported.`);
       }
 
       if (id === virtualFile) {
@@ -212,7 +212,7 @@ const createPlugin: () => Plugin[] = () => {
       config.logger.info(
         [
           "",
-          `${colors.cyan("@import-meta-env/vite v" + version)}`,
+          `${colors.cyan("import-meta-env v" + version)}`,
           `${colors.green("✓")} environment files are generated.`,
           colors.yellow(
             `Remember to inject environment variables before serving your application.`
