@@ -47,15 +47,25 @@ const createPlugin: () => Plugin[] = () => {
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {
+        preserveViteBuiltInEnv();
+
+        code = code.replace(/import\.meta\.env/g, JSON.stringify(env));
+
+        restoreViteBuiltInEnv();
+      }
+
+      return code;
+
+      function preserveViteBuiltInEnv() {
         inlineEnvKeys.forEach((key) => {
           code = code.replace(
             new RegExp(`import.meta.env.${key}`, "g"),
             unique + `.${key}`
           );
         });
+      }
 
-        code = code.replace(/import\.meta\.env/g, JSON.stringify(env));
-
+      function restoreViteBuiltInEnv() {
         inlineEnvKeys.forEach((key) => {
           code = code.replace(
             new RegExp(unique + `.${key}`, "g"),
@@ -63,8 +73,6 @@ const createPlugin: () => Plugin[] = () => {
           );
         });
       }
-
-      return code;
     },
   };
 
