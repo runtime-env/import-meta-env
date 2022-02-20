@@ -5,6 +5,7 @@ import { writeFileSync } from "fs";
 import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { version } from "../package.json";
+import { resolve } from "./env";
 
 const DEBUG = false;
 
@@ -42,37 +43,10 @@ const createPlugin: () => Plugin[] = () => {
       };
     },
     configResolved() {
-      const parsed = (() => {
-        const { parsed, error } = dotenvConfig();
-        if (error) {
-          return {};
-        }
-        return { ...parsed! };
-      })();
-      Object.assign(parsed, process.env);
-
-      const parsedExample = (() => {
-        const { parsed, error } = dotenvConfig({ path: ".env.example" });
-        if (error) {
-          return {};
-        }
-        return parsed!;
-      })();
-
-      const missingKeys: string[] = [];
-      Object.keys(parsedExample).forEach((key) => {
-        if (Object.prototype.hasOwnProperty.call(parsed, key) === false) {
-          missingKeys.push(key);
-        }
-
-        env[key] = parsed[key];
+      env = resolve({
+        envFilePath: ".env",
+        envExampleFilePath: ".env.example",
       });
-      if (missingKeys.length) {
-        throw new Error(
-          `[import-meta-env]: The following variables were defined in .env.example but are not present in the environment: ` +
-            missingKeys.join(", ")
-        );
-      }
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {

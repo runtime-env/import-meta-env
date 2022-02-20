@@ -1,5 +1,6 @@
 import tmp from "tmp";
-import { Args, createCommand, main, resolve } from "../cli";
+import { Args, createCommand, main } from "../cli";
+import { resolve } from "../env";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { placeholder } from "../index";
 
@@ -81,44 +82,6 @@ describe("cli", () => {
           ],
         ]
       `);
-    });
-  });
-
-  describe("resolve", () => {
-    test("resolve environment variables from env file", () => {
-      // arrange
-      const envFilePath = tmp.tmpNameSync();
-      writeFileSync(envFilePath, "FOO=bar\nBAZ=qux");
-      const envExampleFilePath = tmp.tmpNameSync();
-      writeFileSync(envExampleFilePath, "FOO=");
-
-      // act
-      const env = resolve({ envFilePath, envExampleFilePath });
-
-      // assert
-      expect(env).toEqual({
-        FOO: "bar",
-      });
-    });
-
-    test("resolve environment variables from environment", () => {
-      // arrange
-      process.env.FOO = "bar";
-      process.env.BAZ = "qux";
-      const envExampleFilePath = tmp.tmpNameSync();
-      writeFileSync(envExampleFilePath, "FOO=");
-
-      // act
-      const env = resolve({ envExampleFilePath, envFilePath: ".env" });
-
-      // assert
-      expect(env).toEqual({
-        FOO: "bar",
-      });
-
-      // cleanup
-      delete process.env.FOO;
-      delete process.env.BAZ;
     });
   });
 

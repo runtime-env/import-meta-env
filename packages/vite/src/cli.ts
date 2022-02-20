@@ -6,11 +6,11 @@ import {
   readFileSync,
   writeFileSync,
 } from "fs";
-import { config } from "dotenv";
 import colors from "picocolors";
 import { placeholder, virtualFile } from "./index";
 import glob from "glob";
 import { version } from "../package.json";
+import { resolve } from "./env";
 
 const backupFileExt = ".bak";
 const virtualFileGlob = `dist/assets/${virtualFile}*`;
@@ -72,51 +72,6 @@ export const createCommand = () =>
         if (require.main === module) process.exit(1);
       }
     });
-
-export const resolve = ({
-  envFilePath,
-  envExampleFilePath,
-}: {
-  envFilePath: string;
-  envExampleFilePath: string;
-}): Record<string, string> => {
-  const parsed = (() => {
-    const { parsed, error } = config({ path: envFilePath });
-
-    if (error === undefined) {
-      return Object.assign({}, parsed!, process.env);
-    }
-
-    return { ...process.env };
-  })();
-
-  const parsedExample = (() => {
-    const { parsed, error } = config({ path: envExampleFilePath });
-
-    if (error === undefined) {
-      return parsed!;
-    }
-
-    return {};
-  })();
-
-  const missingKeys: string[] = [];
-  const env = Object.keys(parsedExample).reduce((acc, key) => {
-    if (Object.prototype.hasOwnProperty.call(parsed, key) === false) {
-      missingKeys.push(key);
-    }
-
-    return Object.assign(acc, { [key]: parsed[key] });
-  }, {});
-  if (missingKeys.length) {
-    throw new Error(
-      `[import-meta-env]: The following variables were defined in .env.example but are not present in the environment: ` +
-        missingKeys.join(", ")
-    );
-  }
-
-  return env!;
-};
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
