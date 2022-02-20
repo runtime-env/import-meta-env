@@ -34,7 +34,7 @@ const createPlugin: () => Plugin[] = () => {
   const virtualId = "\0" + virtualFile;
 
   const development = <Plugin>{
-    name: "dotenv:development",
+    name: "import-meta-env:development",
     enforce: "pre",
     apply: (_, env) => {
       return env.command === "serve";
@@ -77,7 +77,7 @@ const createPlugin: () => Plugin[] = () => {
   };
 
   const production = <Plugin>{
-    name: "dotenv:pre",
+    name: "import-meta-env:production",
     enforce: "pre",
     apply: (_, env) => {
       return env.command === "build";
