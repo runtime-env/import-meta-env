@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/iendeavor/import-meta-env/compare/v0.1.15...v0.1.16) (2022-02-20)
+
+
+### Features
+
+* inject environment variables into files in vite default output directory by default ([f2dff36](https://github.com/iendeavor/import-meta-env/commit/f2dff36aaceb5f71f8cbc8177733830159751611))
+* rename ([8861f79](https://github.com/iendeavor/import-meta-env/commit/8861f79cdbf5901ea119586ee925253941e80ed7))
+
+
+### Bug Fixes
+
+* ignore if path is not a file ([78a5e77](https://github.com/iendeavor/import-meta-env/commit/78a5e7774166722210cb1f0b17b72e8b5ac981fd))
+
 ### [0.1.15](https://github.com/iendeavor/import-meta-env/compare/v0.1.14...v0.1.15) (2022-02-19)
 
 
