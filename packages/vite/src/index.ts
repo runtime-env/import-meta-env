@@ -1,13 +1,9 @@
-import path from "path";
 import { Plugin, ResolvedConfig } from "vite";
 import colors from "picocolors";
-import { writeFileSync } from "fs";
 import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { version } from "../package.json";
 import { resolve } from "./env";
-
-const DEBUG = false;
 
 export const virtualFile = "import-meta-env";
 export const placeholder = "__import_meta_env_placeholder__";
@@ -23,8 +19,6 @@ const unique = (() => {
 })();
 
 const createPlugin: () => Plugin[] = () => {
-  let debugLog = "";
-
   let config: ResolvedConfig;
   const env: Record<string, string> = resolve({
     envFilePath: ".env",
@@ -134,28 +128,14 @@ const createPlugin: () => Plugin[] = () => {
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {
         if (isTransformingJs(code, id)) {
-          debugLog += `\n===before transforming [.jt]sx? ${id}===\n` + code;
-
           code =
             `import ${unique} from '${virtualFile}';\n` +
             code.replace(`import ${unique} from '${virtualFile}';\n`, "");
-
-          debugLog +=
-            `\n===after transforming [.jt]sx? ${id}===\n` +
-            code +
-            "\n===import-meta-env===\n";
         } else if (isTransformingVue(code, id)) {
-          debugLog += `\n===before transforming vue ${id}===\n` + code;
-
           code = code.replace(
             /(\<script.*?\>)/,
             `$1\nimport ${unique} from '${virtualFile}';`
           );
-
-          debugLog +=
-            `\n===after transforming vue ${id}===\n` +
-            code +
-            "\n===import-meta-env===\n";
         }
 
         inlineEnvKeys.forEach((key) => {
@@ -181,13 +161,6 @@ const createPlugin: () => Plugin[] = () => {
       return html;
     },
     closeBundle() {
-      if (DEBUG) {
-        writeFileSync(
-          path.join(config.root, "import-meta-env-debug.log"),
-          debugLog
-        );
-      }
-
       config.logger.info(
         [
           "",
