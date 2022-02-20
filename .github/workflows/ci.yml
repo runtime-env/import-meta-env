@@ -13,7 +13,7 @@ jobs:
           - os: ubuntu-latest
             node_version: 16
       fail-fast: false
-    environment: VITE_NAME
+    environment: HELLO
     name: "lts: ${{ matrix.os }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
     steps:
       - name: Checkout
@@ -71,7 +71,7 @@ jobs:
             --parallel \
             --stream \
             --filter env-variants-ci-environment \
-            exec cross-env VITE_NAME="${{ secrets.VITE_NAME }}" sh test.sh
+            exec cross-env HELLO="${{ secrets.HELLO }}" sh test.sh
 
   compatibility:
     runs-on: ${{ matrix.os }}

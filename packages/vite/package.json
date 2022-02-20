@@ -20,7 +20,7 @@
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
     "release": "standard-version",
     "postrelease": "pnpm build",
-    "test": "jest"
+    "test": "jest src/__tests__"
   },
   "engines": {
     "node": "^12.20.0 || >= 14"
