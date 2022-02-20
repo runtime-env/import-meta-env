@@ -4,21 +4,23 @@
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/vite.svg)](https://www.npmjs.com/package/@import-meta-env/vite)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This plugin loads environment variables from `.env` files and environment variables on the machine into `import.meta.env` (see `import.meta` on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta) for more information).
+Environment variables are easy to change between deployments without changing any code, this plugin helps you load environment variables into `import.meta.env` object.
 
-Following [the Twelve-Factor App](https://12factor.net/config) approach, storing configuration in the environment separate from code allows us to inject environment variables at runtime rather than build time. Powered by [dotenv](https://github.com/motdotla/dotenv).
+See `import.meta` on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta) for more info.
+
+See `config` chapter on [The Twelve-Factor App](https://12factor.net/config) for more info.
+
+<br>
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
-## 💡 How
+## Motivation
 
-For security reasons, this plugin will only load those environment variables defined in the `.env.example` file.
+Vite's built-in environment variables feature [statically replaces environment variables during production](https://vitejs.dev/guide/env-and-mode.html), which forces us to rebuild multiple times for different environment variables.
 
-For dev server, this plugin loads environment variables into `import.meta.env` from a `.env` file or from environment variables on your machine.
+Instead, during production, this plugin will generate a chunk with a placeholder.
 
-For bundling, this plugin will generate a chunk with placeholder that allow us to inject environment variables later. Before serving your application in production, run the `import-meta-env` command to inject environment variables.
-
-Note: vite [built-in variables](https://vitejs.dev/guide/env-and-mode.html#env-variables) will work as usual.
+Before serving your application, you can execute the `import-meta-env` binary to statically replace the placeholder with environment variables **without** rebuilding the entire application!
 
 ## 🚀 Quick Start
 
@@ -38,41 +40,44 @@ export default defineConfig({
 });
 ```
 
-Create a `.env` and `.env.example` files in the root of your project:
+Create a `.env.example` file in the root of your project:
+
+```sh
+# .env.example
+# To prevent exposure of sensitive credentials to clients,
+# only the keys defined in this file can be accessed.
+S3_BUCKET=
+```
+
+Create a `.env` file in the root directory of your project (this step is completely optional, you can set environment variables directly on your system).
 
 ```sh
 # .env
+# Make sure add this file to .gitignore
 S3_BUCKET="YOURS3BUCKET"
 SECRET_KEY="YOURSECRETKEYGOESHERE"
 ```
 
-```sh
-# .env.example
-S3_BUCKET=
-```
-
-Now you can access environment variables like this:
+`import.meta.env` now has the keys and values you defined on your system:
 
 ```ts
 console.log(import.meta.env.S3_BUCKET); // "YOURS3BUCKET"
 console.log(import.meta.env.SECRET_KEY); // undefined
 ```
 
-Finally, remember to inject environment variables before serving your application.
+Finally, before serving your application, remember to execute `import-meta-env` binary to inject environment variables.
 
 Adjust the preview script in your package.json:
 
 ```json
 {
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
     "preview": "import-meta-env && vite preview"
   }
 }
 ```
 
-You can use [pkg](https://github.com/vercel/pkg) to create a standalone executable for deployment.
+To deploy container with docker or others, you can use [pkg](https://github.com/vercel/pkg) to create a standalone executable.
 
 For example, you can pack the alpine version like this:
 
@@ -80,8 +85,6 @@ For example, you can pack the alpine version like this:
 $ npm i -g pkg
 $ npx pkg ./node_modules/@import-meta-env/vite/bin/import-meta-env.js -t node16-alpine
 ```
-
-See all available targets [here](https://github.com/vercel/pkg#targets)
 
 ## 📖 API
 
@@ -91,7 +94,7 @@ See all available targets [here](https://github.com/vercel/pkg#targets)
 $ npx import-meta-env --help
 Usage: import-meta-env [options]
 
-Inject your environment variables from the `.env` file or from environment variables on your machine.
+Inject your environment variables from the `.env` file or from environment variables on your system.
 
 Options:
   -V, --version           output the version number

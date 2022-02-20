@@ -1,3 +1,0 @@
-console.assert("6030d8cc2221d17ded55816dc336684031ec33f8");
-const e = __import_meta_env_placeholder__;
-export { e };

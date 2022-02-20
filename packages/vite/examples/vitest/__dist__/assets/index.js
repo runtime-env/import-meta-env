@@ -41,7 +41,7 @@ const p = function polyfill() {
   }
 };
 p();
-const name = e.HELLO;
+const hello = e.HELLO;
 document.querySelector("#app").innerHTML = `
-  <h1>HELLO: ${name}</h1>
+  <h1>HELLO: ${hello}</h1>
 `;

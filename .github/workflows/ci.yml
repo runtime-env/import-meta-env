@@ -51,7 +51,7 @@ jobs:
             --filter \!@import-meta-env/vite \
             --filter \!vue-ts \
             --filter \!vue-jsx \
-            --filter \!env-variants-ci-environment \
+            --filter \!env-var-defined-on-system \
             exec sh test.sh
 
       - name: Build&Test examples/vue-*
@@ -64,13 +64,13 @@ jobs:
             --filter vue-jsx \
             exec sh test.sh
 
-      - name: Build&Test examples/env-variants-ci-environment
+      - name: Build&Test examples/env-var-defined-on-system
         run: |
           pnpm i -g cross-env
           pnpm \
             --parallel \
             --stream \
-            --filter env-variants-ci-environment \
+            --filter env-var-defined-on-system \
             exec cross-env HELLO="${{ secrets.HELLO }}" sh test.sh
 
   compatibility:

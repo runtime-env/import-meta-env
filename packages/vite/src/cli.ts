@@ -32,7 +32,7 @@ export const createCommand = () =>
   new Command()
     .version(version)
     .description(
-      "Inject your environment variables from the `.env` file or from environment variables on your machine."
+      "Inject your environment variables from the `.env` file or from environment variables on your system."
     )
     .option("-e, --env <path>", ".env file path", ".env")
     .option("-x, --example <path>", ".env example file path", ".env.example")

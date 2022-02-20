@@ -1,7 +1,7 @@
 {
   "name": "@import-meta-env/vite",
   "version": "0.1.16",
-  "description": "Inject your environment variables from the .env file at runtime instead of build time.",
+  "description": "Load environment variables into import.meta.env object",
   "license": "MIT",
   "author": "Ernest",
   "bin": {
