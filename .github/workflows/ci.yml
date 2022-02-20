@@ -78,13 +78,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [12]
+        node_version: [12, 14, 16, 17]
         dotenv_version: [8, 9, 10, 11, 12, 13, 14, 15, 16]
         include:
           - os: macos-latest
-            dotenv_version: 16
+            node_version: lts/*
+            dotenv_version: latest
           - os: windows-latest
-            dotenv_version: 16
+            node_version: lts/*
+            dotenv_version: latest
     name: "compatibility: ${{ matrix.os }}, dotenv@${{ matrix.dotenv_version }}, node@${{ matrix.node_version }}"
     steps:
       - name: Checkout
