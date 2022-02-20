@@ -42,5 +42,5 @@ export const resolve = ({
     );
   }
 
-  return env!;
+  return Object.freeze(env!);
 };
