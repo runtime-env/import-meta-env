@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.18](https://github.com/iendeavor/import-meta-env/compare/v0.1.17...v0.1.18) (2022-02-21)
+
+
+### Bug Fixes
+
+* only resolve environment variables when dev ([3520a00](https://github.com/iendeavor/import-meta-env/commit/3520a001f17d6be7dbeac84acb2afbc49b2530bc))
+
 ### [0.1.17](https://github.com/iendeavor/import-meta-env/compare/v0.1.16...v0.1.17) (2022-02-21)
 
 
