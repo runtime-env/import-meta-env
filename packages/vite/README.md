@@ -4,11 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/vite.svg)](https://www.npmjs.com/package/@import-meta-env/vite)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Environment variables are easy to change between deployments without changing any code, this plugin helps you load environment variables into `import.meta.env` object.
-
-See `import.meta` on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta) for more info.
-
-See `config` chapter on [The Twelve-Factor App](https://12factor.net/config) for more info.
+This plugin helps us inject environment variables into the `import.meta.env` object **_after_** building the application instead of statically replacing it during production.
 
 <br>
 
@@ -16,11 +12,11 @@ This project use [SemVer](https://semver.org/) for versioning. For the versions 
 
 ## Motivation
 
-Vite's built-in environment variables feature [statically replaces environment variables during production](https://vitejs.dev/guide/env-and-mode.html), which forces us to rebuild multiple times for different environment variables.
+The built-in [environment variables feature](https://vitejs.dev/guide/env-and-mode.html#production-replacement) statically replaces environment variables during production, which **_forces us to rebuild_** multiple times for different environment variables.
 
-Instead, during production, this plugin will generate a chunk with a placeholder.
+Environment variables should be easy to change between deployments **_without_** rebuilding the application or even changing any code, so we should set environment variables on the system instead of checking them into a repository with `.env` files.
 
-Before serving your application, you can execute the `import-meta-env` binary to statically replace the placeholder with environment variables **without** rebuilding the entire application!
+During production, this plugin generates chunks with placeholders, which allow us to statically replace environment variables **_after_** building the application (don't worry, we provide an executable for this, you don't need to write them yourself) .
 
 ## 🚀 Quick Start
 
@@ -49,11 +45,12 @@ Create a `.env.example` file in the root of your project:
 S3_BUCKET=
 ```
 
-Create a `.env` file in the root directory of your project (this step is completely optional, you can set environment variables directly on your system).
+Add `.env` file to .gitignore, and create a `.env` file in the project's root directory:
+
+(⚠ This step is completely optional, you should set environment variables directly on your system if you can.)
 
 ```sh
 # .env
-# Make sure add this file to .gitignore
 S3_BUCKET="YOURS3BUCKET"
 SECRET_KEY="YOURSECRETKEYGOESHERE"
 ```
@@ -94,7 +91,7 @@ $ npx pkg ./node_modules/@import-meta-env/vite/bin/import-meta-env.js -t node16-
 $ npx import-meta-env --help
 Usage: import-meta-env [options]
 
-Inject your environment variables from the `.env` file or from environment variables on your system.
+Inject environment variables from the system or `.env` file.
 
 Options:
   -V, --version           output the version number
@@ -103,6 +100,8 @@ Options:
   -o, --output <path...>  output file paths (default: "dist/assets/import-meta-env*")
   -h, --help              display help for command
 ```
+
+Since we may switch to different environment variables multiple times, this executable also creates `*.bak` files to restore.
 
 ## 🤝 Contributing
 
