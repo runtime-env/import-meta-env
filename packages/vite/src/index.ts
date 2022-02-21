@@ -21,11 +21,7 @@ const unique = (() => {
 
 const createPlugin: () => Plugin[] = () => {
   let config: ResolvedConfig;
-  const env: Record<string, string> = resolve({
-    envFilePath: ".env",
-    envExampleFilePath: ".env.example",
-  });
-
+  let env: Record<string, string> = {};
   const virtualId = "\0" + virtualFile;
 
   const development = <Plugin>{
@@ -39,6 +35,17 @@ const createPlugin: () => Plugin[] = () => {
         // disable vite built-in environment variable feature
         envPrefix: [],
       };
+    },
+    configResolved(config) {
+      if (config.isProduction) {
+        // preview
+      } else {
+        // dev
+        env = resolve({
+          envFilePath: ".env",
+          envExampleFilePath: ".env.example",
+        });
+      }
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {

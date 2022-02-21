@@ -13,7 +13,6 @@ jobs:
           - os: ubuntu-latest
             node_version: 16
       fail-fast: false
-    environment: HELLO
     name: "lts: ${{ matrix.os }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
     steps:
       - name: Checkout
@@ -51,7 +50,6 @@ jobs:
             --filter \!@import-meta-env/vite \
             --filter \!vue-ts \
             --filter \!vue-jsx \
-            --filter \!env-var-defined-on-system \
             exec sh test.sh
 
       - name: Build&Test examples/vue-*
@@ -63,15 +61,6 @@ jobs:
             --filter vue-ts \
             --filter vue-jsx \
             exec sh test.sh
-
-      - name: Build&Test examples/env-var-defined-on-system
-        run: |
-          pnpm i -g cross-env
-          pnpm \
-            --parallel \
-            --stream \
-            --filter env-var-defined-on-system \
-            exec cross-env HELLO="${{ secrets.HELLO }}" sh test.sh
 
   compatibility:
     runs-on: ${{ matrix.os }}
