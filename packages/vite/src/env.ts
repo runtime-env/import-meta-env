@@ -1,4 +1,5 @@
 import { config } from "dotenv";
+import { red, yellow } from "picocolors";
 
 export const resolve = ({
   envFilePath,
@@ -24,6 +25,10 @@ export const resolve = ({
       return parsed!;
     }
 
+    console.warn(
+      yellow("[import-meta-env]: .env.example file not found, skip process.\n")
+    );
+
     return {};
   })();
 
@@ -36,10 +41,28 @@ export const resolve = ({
     return Object.assign(acc, { [key]: parsed[key] });
   }, {});
   if (missingKeys.length) {
-    throw new Error(
-      `[import-meta-env]: The following variables were defined in .env.example but are not present in the environment: ` +
-        missingKeys.join(", ")
+    const missingEnv = missingKeys.map((key) => `${key}=${parsedExample[key]}`);
+
+    const environmentVariablesAreMissing = [
+      "",
+      `The following variables were defined in .env.example file but are not defined in the environment:`,
+      "",
+      "```",
+      ...missingEnv,
+      "```",
+      "",
+      `Here's what you can do:`,
+      `- Set them to environment variables on your system.`,
+      `- Add them to .env file.`,
+      `- Remove them from .env.example file.`,
+      "",
+    ].join("\n");
+    console.error(
+      red(`[import-meta-env]: Some environment variables are not defined.`)
     );
+    console.error(environmentVariablesAreMissing);
+
+    throw ReferenceError(`Some environment variables are not defined.`);
   }
 
   return Object.freeze(env!);

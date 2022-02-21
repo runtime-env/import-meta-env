@@ -2,6 +2,10 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import { resolve } from "../env";
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("resolve", () => {
   test("resolve environment variables from env file", () => {
     // arrange
@@ -59,5 +63,64 @@ describe("resolve", () => {
     expect(() => (env.OLD = "")).toThrowErrorMatchingInlineSnapshot(
       `"Cannot assign to read only property 'OLD' of object '#<Object>'"`
     );
+  });
+
+  test("warn if .env.example file not found", () => {
+    // arrange
+    const spy = jest.spyOn(console, "warn").mockImplementation();
+    const envFilePath = tmp.tmpNameSync();
+    const envExampleFilePath = tmp.tmpNameSync();
+
+    // act
+    resolve({ envFilePath, envExampleFilePath });
+
+    // assert
+    expect(spy.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "[33m[import-meta-env]: .env.example file not found, skip process.
+      [39m",
+        ],
+      ]
+    `);
+  });
+
+  test(`throw if any environment variables is not defined`, () => {
+    // arrange
+    const spy = jest.spyOn(console, "error").mockImplementation();
+    const envFilePath = tmp.tmpNameSync();
+    writeFileSync(envFilePath, "FOO=42");
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(envExampleFilePath, "FOO=1\nBAR=2\nBAZ=3\n");
+
+    // act
+    const act = () => resolve({ envFilePath, envExampleFilePath });
+
+    // assert
+    expect(act).toThrow(
+      ReferenceError(`Some environment variables are not defined.`)
+    );
+    expect(spy.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "[31m[import-meta-env]: Some environment variables are not defined.[39m",
+        ],
+        Array [
+          "
+      The following variables were defined in .env.example file but are not defined in the environment:
+
+      \`\`\`
+      BAR=2
+      BAZ=3
+      \`\`\`
+
+      Here's what you can do:
+      - Set them to environment variables on your system.
+      - Add them to .env file.
+      - Remove them from .env.example file.
+      ",
+        ],
+      ]
+    `);
   });
 });
