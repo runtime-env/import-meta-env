@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/iendeavor/import-meta-env/compare/v0.1.16...v0.1.17) (2022-02-21)
+
+
+### Features
+
+* add exec command example to output message ([202c262](https://github.com/iendeavor/import-meta-env/commit/202c262f3fdcf6b0fd83b953048b7a60588ac8c1))
+* output better error message ([b5906f4](https://github.com/iendeavor/import-meta-env/commit/b5906f4aeea77329ec2cf42f8102c2e531a627d4))
+* remove bundler information ([dac6d8c](https://github.com/iendeavor/import-meta-env/commit/dac6d8cf398ef121ffdf6b7a58d0978ad5d25d9d))
+
 ### [0.1.16](https://github.com/iendeavor/import-meta-env/compare/v0.1.15...v0.1.16) (2022-02-20)
 
 
