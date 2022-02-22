@@ -44,32 +44,14 @@ const createPlugin: () => Plugin[] = () => {
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {
-        preserveViteBuiltInEnv();
+        code = preserveViteBuiltInEnv(code);
 
         code = code.replace(/import\.meta\.env/g, JSON.stringify(env));
 
-        restoreViteBuiltInEnv();
+        code = restoreViteBuiltInEnv(code);
       }
 
       return code;
-
-      function preserveViteBuiltInEnv() {
-        inlineEnvKeys.forEach((key) => {
-          code = code.replace(
-            new RegExp(`import.meta.env.${key}`, "g"),
-            unique + `.${key}`
-          );
-        });
-      }
-
-      function restoreViteBuiltInEnv() {
-        inlineEnvKeys.forEach((key) => {
-          code = code.replace(
-            new RegExp(unique + `.${key}`, "g"),
-            `import.meta.env.${key}`
-          );
-        });
-      }
     },
   };
 
@@ -129,21 +111,11 @@ const createPlugin: () => Plugin[] = () => {
           );
         }
 
-        inlineEnvKeys.forEach((key) => {
-          code = code.replace(
-            new RegExp(`import.meta.env.${key}`, "g"),
-            unique + `.${key}`
-          );
-        });
+        code = preserveViteBuiltInEnv(code);
 
         code = code.replace(/import\.meta\.env/g, unique);
 
-        inlineEnvKeys.forEach((key) => {
-          code = code.replace(
-            new RegExp(unique + `.${key}`, "g"),
-            `import.meta.env.${key}`
-          );
-        });
+        code = restoreViteBuiltInEnv(code);
       }
       return code;
     },
@@ -178,3 +150,25 @@ const isTransformingJs = (code: string, id: string) =>
   id.includes("?vue&type=template") === false;
 
 const isTransformingVue = (code: string, id: string) => id.endsWith(".vue");
+
+function preserveViteBuiltInEnv(code: string) {
+  inlineEnvKeys.forEach((key) => {
+    code = code.replace(
+      new RegExp(`import.meta.env.${key}`, "g"),
+      unique + `.${key}`
+    );
+  });
+
+  return code;
+}
+
+function restoreViteBuiltInEnv(code: string) {
+  inlineEnvKeys.forEach((key) => {
+    code = code.replace(
+      new RegExp(unique + `.${key}`, "g"),
+      `import.meta.env.${key}`
+    );
+  });
+
+  return code;
+}
