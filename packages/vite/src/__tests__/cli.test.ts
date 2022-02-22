@@ -2,7 +2,7 @@ import tmp from "tmp";
 import { Args, createCommand, main } from "../cli";
 import { resolve } from "../env";
 import { existsSync, readFileSync, writeFileSync } from "fs";
-import { placeholder } from "../index";
+import { placeholder } from "../shared";
 
 let command = createCommand();
 

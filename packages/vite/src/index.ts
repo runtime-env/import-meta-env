@@ -6,20 +6,12 @@ import { version } from "../package.json";
 import { resolve } from "./env";
 import { getPackageManagerExecCommand } from "./get-package-manager-exec-command";
 import { assignManualChunks } from "./assign-manual-chunks";
-
-export const virtualFile = "import-meta-env";
-export const virtualId = "\0" + virtualFile;
-export const placeholder = "__import_meta_env_placeholder__";
-const inlineEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR", "LEGACY"];
-const unique = (() => {
-  const uniqueId = "import_meta_env_unique_id_";
-  return (
-    uniqueId +
-    Array(256 - uniqueId.length)
-      .fill("x")
-      .join("")
-  );
-})();
+import {
+  preserveViteBuiltInEnv,
+  restoreViteBuiltInEnv,
+} from "./transform-built-in-env";
+import { uniqueVariableName } from "./shared";
+import { virtualFile, virtualId, placeholder } from "./shared";
 
 const createPlugin: () => Plugin[] = () => {
   let config: ResolvedConfig;
@@ -102,25 +94,31 @@ const createPlugin: () => Plugin[] = () => {
       if (id !== virtualId && id.includes("node_modules") === false) {
         if (isTransformingJs(code, id)) {
           code =
-            `import ${unique} from '${virtualFile}';\n` +
-            code.replace(`import ${unique} from '${virtualFile}';\n`, "");
+            `import ${uniqueVariableName} from '${virtualFile}';\n` +
+            code.replace(
+              `import ${uniqueVariableName} from '${virtualFile}';\n`,
+              ""
+            );
         } else if (isTransformingVue(code, id)) {
           code = code.replace(
             /(\<script.*?\>)/,
-            `$1\nimport ${unique} from '${virtualFile}';`
+            `$1\nimport ${uniqueVariableName} from '${virtualFile}';`
           );
         }
 
         code = preserveViteBuiltInEnv(code);
 
-        code = code.replace(/import\.meta\.env/g, unique);
+        code = code.replace(/import\.meta\.env/g, uniqueVariableName);
 
         code = restoreViteBuiltInEnv(code);
       }
       return code;
     },
     transformIndexHtml(html) {
-      html = html.replace(new RegExp(unique, "g"), "import.meta.env");
+      html = html.replace(
+        new RegExp(uniqueVariableName, "g"),
+        "import.meta.env"
+      );
       return html;
     },
     closeBundle() {
@@ -150,25 +148,3 @@ const isTransformingJs = (code: string, id: string) =>
   id.includes("?vue&type=template") === false;
 
 const isTransformingVue = (code: string, id: string) => id.endsWith(".vue");
-
-function preserveViteBuiltInEnv(code: string) {
-  inlineEnvKeys.forEach((key) => {
-    code = code.replace(
-      new RegExp(`import.meta.env.${key}`, "g"),
-      unique + `.${key}`
-    );
-  });
-
-  return code;
-}
-
-function restoreViteBuiltInEnv(code: string) {
-  inlineEnvKeys.forEach((key) => {
-    code = code.replace(
-      new RegExp(unique + `.${key}`, "g"),
-      `import.meta.env.${key}`
-    );
-  });
-
-  return code;
-}

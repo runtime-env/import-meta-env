@@ -7,7 +7,7 @@ import {
   writeFileSync,
 } from "fs";
 import colors from "picocolors";
-import { placeholder, virtualFile } from "./index";
+import { placeholder, virtualFile } from "./shared";
 import glob from "glob";
 import { version } from "../package.json";
 import { resolve } from "./env";
