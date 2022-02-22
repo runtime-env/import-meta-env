@@ -30,12 +30,6 @@ const createPlugin: () => Plugin[] = () => {
     apply: (_, env) => {
       return env.command === "serve";
     },
-    config() {
-      return {
-        // disable vite built-in environment variable feature
-        envPrefix: [],
-      };
-    },
     configResolved(config) {
       if (config.isProduction) {
         // preview
@@ -86,8 +80,6 @@ const createPlugin: () => Plugin[] = () => {
     },
     config() {
       return {
-        // disable vite built-in environment variable feature
-        envPrefix: [],
         build: {
           rollupOptions: {
             output: {
