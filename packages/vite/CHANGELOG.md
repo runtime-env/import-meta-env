@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/iendeavor/import-meta-env/compare/v0.1.18...v0.1.19) (2022-02-22)
+
+
+### Bug Fixes
+
+* it should apply user-defined output ([feebd3d](https://github.com/iendeavor/import-meta-env/commit/feebd3d58eaef8e75fbc5bf703857ef8a35b5074))
+
 ### [0.1.18](https://github.com/iendeavor/import-meta-env/compare/v0.1.17...v0.1.18) (2022-02-21)
 
 
