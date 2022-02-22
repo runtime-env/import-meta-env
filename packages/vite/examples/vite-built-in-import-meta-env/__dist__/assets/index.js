@@ -47,4 +47,5 @@ document.querySelector("#app").innerHTML = `
         <h1>BASE_URL: ${"/"}</h1>
         <h1>PROD: ${true}</h1>
         <h1>DEV: ${false}</h1>
+        <h1>ALL: ${JSON.stringify(e)}</h1>
       `;

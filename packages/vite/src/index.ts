@@ -23,8 +23,8 @@ const createPlugin: () => Plugin[] = () => {
     apply: (_, env) => {
       return env.command === "serve";
     },
-    configResolved(config) {
-      if (config.isProduction) {
+    configResolved(_config) {
+      if (_config.isProduction) {
         // preview
       } else {
         // dev
@@ -33,12 +33,16 @@ const createPlugin: () => Plugin[] = () => {
           envExampleFilePath: ".env.example",
         });
       }
+      config = _config;
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {
         code = preserveViteBuiltInEnv(code);
 
-        code = code.replace(/import\.meta\.env/g, JSON.stringify(env));
+        code = code.replace(
+          /import\.meta\.env/g,
+          JSON.stringify({ ...env, ...config.env })
+        );
 
         code = restoreViteBuiltInEnv(code);
       }
@@ -85,7 +89,9 @@ const createPlugin: () => Plugin[] = () => {
 
         return [
           `console.assert("${hashValue}"); // Invalidate the cache when the .env.example changes.`,
-          `const e = ${placeholder};`,
+          `const e = Object.assign(${placeholder}, ${JSON.stringify(
+            config.env
+          )});`,
           `export default e;`,
         ].join("\n");
       }
