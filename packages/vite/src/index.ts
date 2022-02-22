@@ -5,8 +5,10 @@ import hash from "object-hash";
 import { version } from "../package.json";
 import { resolve } from "./env";
 import { getPackageManagerExecCommand } from "./get-package-manager-exec-command";
+import { assignManualChunks } from "./assign-manual-chunks";
 
 export const virtualFile = "import-meta-env";
+export const virtualId = "\0" + virtualFile;
 export const placeholder = "__import_meta_env_placeholder__";
 const inlineEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR", "LEGACY"];
 const unique = (() => {
@@ -22,7 +24,6 @@ const unique = (() => {
 const createPlugin: () => Plugin[] = () => {
   let config: ResolvedConfig;
   let env: Record<string, string> = {};
-  const virtualId = "\0" + virtualFile;
 
   const development = <Plugin>{
     name: "import-meta-env:development",
@@ -78,18 +79,8 @@ const createPlugin: () => Plugin[] = () => {
     apply: (_, env) => {
       return env.command === "build";
     },
-    config() {
-      return {
-        build: {
-          rollupOptions: {
-            output: {
-              manualChunks: {
-                [virtualFile]: [virtualId],
-              },
-            },
-          },
-        },
-      };
+    config(config) {
+      return assignManualChunks(config);
     },
     configResolved(_config) {
       config = _config;
