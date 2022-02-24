@@ -42,7 +42,7 @@ const p$1 = function polyfill() {
 };
 p$1();
 function makeMap(str, expectsLowerCase) {
-  const map = Object.create(null);
+  const map = /* @__PURE__ */ Object.create(null);
   const list = str.split(",");
   for (let i = 0; i < list.length; i++) {
     map[list[i]] = true;
@@ -163,7 +163,7 @@ const isPlainObject = (val) => toTypeString(val) === "[object Object]";
 const isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 const isReservedProp = /* @__PURE__ */ makeMap(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted");
 const cacheStringFunction = (fn) => {
-  const cache = Object.create(null);
+  const cache = /* @__PURE__ */ Object.create(null);
   return (str) => {
     const hit = cache[str];
     return hit || (cache[str] = fn(str));
@@ -288,7 +288,7 @@ const finalizeDepMarkers = (effect) => {
     deps.length = ptr;
   }
 };
-const targetMap = new WeakMap();
+const targetMap = /* @__PURE__ */ new WeakMap();
 let effectTrackDepth = 0;
 let trackOpBit = 1;
 const maxMarkerBits = 30;
@@ -370,7 +370,7 @@ function track(target, type, key) {
   }
   let depsMap = targetMap.get(target);
   if (!depsMap) {
-    targetMap.set(target, depsMap = new Map());
+    targetMap.set(target, depsMap = /* @__PURE__ */ new Map());
   }
   let dep = depsMap.get(key);
   if (!dep) {
@@ -833,10 +833,10 @@ const shallowCollectionHandlers = {
 const readonlyCollectionHandlers = {
   get: /* @__PURE__ */ createInstrumentationGetter(true, false)
 };
-const reactiveMap = new WeakMap();
-const shallowReactiveMap = new WeakMap();
-const readonlyMap = new WeakMap();
-const shallowReadonlyMap = new WeakMap();
+const reactiveMap = /* @__PURE__ */ new WeakMap();
+const shallowReactiveMap = /* @__PURE__ */ new WeakMap();
+const readonlyMap = /* @__PURE__ */ new WeakMap();
+const shallowReadonlyMap = /* @__PURE__ */ new WeakMap();
 function targetTypeMap(rawType) {
   switch (rawType) {
     case "Object":
@@ -1613,7 +1613,7 @@ function traverse(value, seen) {
   if (!isObject(value) || value["__v_skip"]) {
     return value;
   }
-  seen = seen || new Set();
+  seen = seen || /* @__PURE__ */ new Set();
   if (seen.has(value)) {
     return value;
   }
@@ -1994,14 +1994,14 @@ function mergeAsArray(to, from) {
   return to ? [...new Set([].concat(to, from))] : from;
 }
 function mergeObjectOptions(to, from) {
-  return to ? extend(extend(Object.create(null), to), from) : from;
+  return to ? extend(extend(/* @__PURE__ */ Object.create(null), to), from) : from;
 }
 function mergeWatchOptions(to, from) {
   if (!to)
     return from;
   if (!from)
     return to;
-  const merged = extend(Object.create(null), to);
+  const merged = extend(/* @__PURE__ */ Object.create(null), to);
   for (const key in from) {
     merged[key] = mergeAsArray(to[key], from[key]);
   }
@@ -2011,7 +2011,7 @@ function initProps(instance, rawProps, isStateful, isSSR = false) {
   const props = {};
   const attrs = {};
   def(attrs, InternalObjectKey, 1);
-  instance.propsDefaults = Object.create(null);
+  instance.propsDefaults = /* @__PURE__ */ Object.create(null);
   setFullProps(instance, rawProps, props, attrs);
   for (const key in instance.propsOptions[0]) {
     if (!(key in props)) {
@@ -2345,10 +2345,10 @@ function createAppContext() {
     mixins: [],
     components: {},
     directives: {},
-    provides: Object.create(null),
-    optionsCache: new WeakMap(),
-    propsCache: new WeakMap(),
-    emitsCache: new WeakMap()
+    provides: /* @__PURE__ */ Object.create(null),
+    optionsCache: /* @__PURE__ */ new WeakMap(),
+    propsCache: /* @__PURE__ */ new WeakMap(),
+    emitsCache: /* @__PURE__ */ new WeakMap()
   };
 }
 let uid = 0;
@@ -2358,7 +2358,7 @@ function createAppAPI(render2, hydrate) {
       rootProps = null;
     }
     const context = createAppContext();
-    const installedPlugins = new Set();
+    const installedPlugins = /* @__PURE__ */ new Set();
     let isMounted = false;
     const app = context.app = {
       _uid: uid++,
@@ -3026,7 +3026,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     } else {
       const s1 = i;
       const s2 = i;
-      const keyToNewIndexMap = new Map();
+      const keyToNewIndexMap = /* @__PURE__ */ new Map();
       for (i = s2; i <= e2; i++) {
         const nextChild = c2[i] = optimized ? cloneIfMounted(c2[i]) : normalizeVNode(c2[i]);
         if (nextChild.key != null) {
@@ -3625,7 +3625,7 @@ const getPublicInstance = (i) => {
     return getExposeProxy(i) || i.proxy;
   return getPublicInstance(i.parent);
 };
-const publicPropertiesMap = extend(Object.create(null), {
+const publicPropertiesMap = extend(/* @__PURE__ */ Object.create(null), {
   $: (i) => i,
   $el: (i) => i.vnode.el,
   $data: (i) => i.data,
@@ -3814,7 +3814,7 @@ function setupComponent(instance, isSSR = false) {
 }
 function setupStatefulComponent(instance, isSSR) {
   const Component = instance.type;
-  instance.accessCache = Object.create(null);
+  instance.accessCache = /* @__PURE__ */ Object.create(null);
   instance.proxy = markRaw(new Proxy(instance.ctx, PublicInstanceProxyHandlers));
   const { setup } = Component;
   if (setup) {

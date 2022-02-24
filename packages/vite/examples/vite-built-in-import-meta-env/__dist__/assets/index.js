@@ -42,7 +42,7 @@ const p = function polyfill() {
 };
 p();
 document.querySelector("#app").innerHTML = `
-        <h1>HELLO: ${e.HELLO}</h1>
+        <h1>Hello: ${e.HELLO}</h1>
         <h1>MODE: ${"production"}</h1>
         <h1>BASE_URL: ${"/"}</h1>
         <h1>PROD: ${true}</h1>

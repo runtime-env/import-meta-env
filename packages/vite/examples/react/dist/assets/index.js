@@ -708,7 +708,7 @@ function y(a) {
 }
 if (!aa)
   throw Error(y(227));
-var ba = new Set(), ca = {};
+var ba = /* @__PURE__ */ new Set(), ca = {};
 function da(a, b) {
   ea(a, b);
   ea(a + "Capture", b);
@@ -1568,7 +1568,7 @@ function dc(a, b) {
   }
   return false;
 }
-var ec, fc, gc, hc, ic = false, jc = [], kc = null, lc = null, mc = null, nc = new Map(), oc = new Map(), pc = [], qc = "mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit".split(" ");
+var ec, fc, gc, hc, ic = false, jc = [], kc = null, lc = null, mc = null, nc = /* @__PURE__ */ new Map(), oc = /* @__PURE__ */ new Map(), pc = [], qc = "mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit".split(" ");
 function rc(a, b, c, d, e2) {
   return { blockedOn: a, domEventName: b, eventSystemFlags: c | 16, nativeEvent: e2, targetContainers: [d] };
 }
@@ -1725,7 +1725,7 @@ function Hc(a) {
       return Fc[a] = b[c];
   return a;
 }
-var Ic = Hc("animationend"), Jc = Hc("animationiteration"), Kc = Hc("animationstart"), Lc = Hc("transitionend"), Mc = new Map(), Nc = new Map(), Oc = [
+var Ic = Hc("animationend"), Jc = Hc("animationiteration"), Kc = Hc("animationstart"), Lc = Hc("transitionend"), Mc = /* @__PURE__ */ new Map(), Nc = /* @__PURE__ */ new Map(), Oc = [
   "abort",
   "abort",
   Ic,
@@ -2815,7 +2815,7 @@ function Db(a) {
 }
 function $e(a) {
   var b = a[yf];
-  b === void 0 && (b = a[yf] = new Set());
+  b === void 0 && (b = a[yf] = /* @__PURE__ */ new Set());
   return b;
 }
 var zf = [], Af = -1;
@@ -3268,7 +3268,7 @@ function Sg(a) {
     return null;
   }
   function d(a2, b2) {
-    for (a2 = new Map(); b2 !== null; )
+    for (a2 = /* @__PURE__ */ new Map(); b2 !== null; )
       b2.key !== null ? a2.set(b2.key, b2) : a2.set(b2.index, b2), b2 = b2.sibling;
     return a2;
   }
@@ -4853,7 +4853,7 @@ function Si(a, b, c) {
   }
   var f2 = a.stateNode;
   f2 !== null && typeof f2.componentDidCatch === "function" && (c.callback = function() {
-    typeof d !== "function" && (Ti === null ? Ti = new Set([this]) : Ti.add(this), Ni(a, b));
+    typeof d !== "function" && (Ti === null ? Ti = /* @__PURE__ */ new Set([this]) : Ti.add(this), Ni(a, b));
     var c2 = b.stack;
     this.componentDidCatch(b.value, { componentStack: c2 !== null ? c2 : "" });
   });
@@ -5331,7 +5331,7 @@ function Jg(a, b, c) {
   $c(a, b, c);
   a === U && (Hi |= b, V === 4 && Ii(a, W));
   var d = eg();
-  b === 1 ? (X & 8) !== 0 && (X & 48) === 0 ? Lj(a) : (Mj(a, c), X === 0 && (wj(), ig())) : ((X & 4) === 0 || d !== 98 && d !== 99 || (Cj === null ? Cj = new Set([a]) : Cj.add(a)), Mj(a, c));
+  b === 1 ? (X & 8) !== 0 && (X & 48) === 0 ? Lj(a) : (Mj(a, c), X === 0 && (wj(), ig())) : ((X & 4) === 0 || d !== 98 && d !== 99 || (Cj === null ? Cj = /* @__PURE__ */ new Set([a]) : Cj.add(a)), Mj(a, c));
   vj = a;
 }
 function Kj(a, b) {
@@ -5629,7 +5629,7 @@ function Sj(a, b) {
             if (C2) {
               var z2 = p2.updateQueue;
               if (z2 === null) {
-                var u2 = new Set();
+                var u2 = /* @__PURE__ */ new Set();
                 u2.add(l2);
                 p2.updateQueue = u2;
               } else
@@ -5652,7 +5652,7 @@ function Sj(a, b) {
               k = void 0;
               h = b;
               var q2 = f2.pingCache;
-              q2 === null ? (q2 = f2.pingCache = new Oi(), k = new Set(), q2.set(l2, k)) : (k = q2.get(l2), k === void 0 && (k = new Set(), q2.set(l2, k)));
+              q2 === null ? (q2 = f2.pingCache = new Oi(), k = /* @__PURE__ */ new Set(), q2.set(l2, k)) : (k = q2.get(l2), k === void 0 && (k = /* @__PURE__ */ new Set(), q2.set(l2, k)));
               if (!k.has(h)) {
                 k.add(h);
                 var v2 = Yj.bind(null, f2, l2, h);
@@ -6874,6 +6874,6 @@ const jsx = jsxRuntime.exports.jsx;
 const jsxs = jsxRuntime.exports.jsxs;
 ReactDOM.render(/* @__PURE__ */ jsx(React.StrictMode, {
   children: /* @__PURE__ */ jsxs("h1", {
-    children: ["HELLO: ", e.HELLO]
+    children: ["Hello: ", e.HELLO]
   })
 }), document.getElementById("root"));

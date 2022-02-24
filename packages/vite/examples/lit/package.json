@@ -1,0 +1,25 @@
+{
+  "name": "lit",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/my-element.es.js",
+  "exports": {
+    ".": "./dist/my-element.es.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "cross-env HELLO=import-meta-env vite",
+    "build": "vite build",
+    "import-meta-env": "cross-env HELLO=import-meta-env import-meta-env -o dist/import-meta-env*"
+  },
+  "dependencies": {
+    "lit": "^2.2.0"
+  },
+  "devDependencies": {
+    "@import-meta-env/vite": "workspace:*",
+    "cross-env": "^7.0.3",
+    "vite": "^2.8.4"
+  }
+}

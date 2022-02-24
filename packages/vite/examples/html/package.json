@@ -9,9 +9,9 @@
     "test": "node test.js"
   },
   "devDependencies": {
+    "@import-meta-env/vite": "workspace:*",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
-    "vite": "^2.7.13",
-    "@import-meta-env/vite": "workspace:^0.1.12"
+    "vite": "^2.8.4"
   }
 }

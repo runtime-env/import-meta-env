@@ -8,8 +8,8 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env -o dist/custom-assets-dir/import-meta-env* && vite preview"
   },
   "devDependencies": {
-    "@import-meta-env/vite": "workspace:^0.1.12",
+    "@import-meta-env/vite": "workspace:*",
     "cross-env": "^7.0.3",
-    "vite": "^2.7.13"
+    "vite": "^2.8.4"
   }
 }

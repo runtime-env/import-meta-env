@@ -3,15 +3,15 @@
   "name": "vanilla-ts",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "cross-env HELLO=import-meta-env vite",
     "build": "tsc && vite build",
-    "preview": "import-meta-env && vite preview"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && vite preview"
   },
   "devDependencies": {
-    "@import-meta-env/vite": "workspace:^0.1.12",
+    "@import-meta-env/vite": "workspace:*",
     "@types/node": "^17.0.8",
     "cross-env": "^7.0.3",
     "typescript": "^4.4.4",
-    "vite": "^2.7.13"
+    "vite": "^2.8.4"
   }
 }
