@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.20](https://github.com/iendeavor/import-meta-env/compare/v0.1.16...v0.1.20) (2022-02-24)
+
+
+### Features
+
+* add exec command example to output message ([202c262](https://github.com/iendeavor/import-meta-env/commit/202c262f3fdcf6b0fd83b953048b7a60588ac8c1))
+* output better error message ([b5906f4](https://github.com/iendeavor/import-meta-env/commit/b5906f4aeea77329ec2cf42f8102c2e531a627d4))
+* remove bundler information ([dac6d8c](https://github.com/iendeavor/import-meta-env/commit/dac6d8cf398ef121ffdf6b7a58d0978ad5d25d9d))
+* transform svelte ([56001df](https://github.com/iendeavor/import-meta-env/commit/56001df47357cd89d731f8ebf031f7d16fc479c5))
+
+
+### Bug Fixes
+
+* build-in env should be preserved ([8cc6b0c](https://github.com/iendeavor/import-meta-env/commit/8cc6b0c7050eb6c1bd874b2c753a97d309d2b9a4))
+* it should apply user-defined output ([feebd3d](https://github.com/iendeavor/import-meta-env/commit/feebd3d58eaef8e75fbc5bf703857ef8a35b5074))
+* only resolve environment variables when dev ([3520a00](https://github.com/iendeavor/import-meta-env/commit/3520a001f17d6be7dbeac84acb2afbc49b2530bc))
+
 ### [0.1.19](https://github.com/iendeavor/import-meta-env/compare/v0.1.18...v0.1.19) (2022-02-22)
 
 

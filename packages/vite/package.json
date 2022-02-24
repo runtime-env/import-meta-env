@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/vite",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Load environment variables into import.meta.env object",
   "license": "MIT",
   "author": "Ernest",
