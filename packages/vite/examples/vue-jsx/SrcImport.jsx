@@ -1,13 +1,5 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent(() => {
-  const count = ref(5);
-  const inc = () => count.value++;
-  console.assert(import.meta.env.SRC_IMPORT_JSX === "SrcImportJsx");
-
-  return () => (
-    <button class="src-import" onClick={inc}>
-      src import {count.value}
-    </button>
-  );
+  return () => <p>src import {import.meta.env.HELLO}</p>;
 });

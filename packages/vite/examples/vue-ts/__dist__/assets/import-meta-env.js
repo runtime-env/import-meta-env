@@ -1,3 +1,3 @@
-console.assert("375acc4b5812c1e38fce10d256e6f7867edc2446");
-const e = Object.assign({"HELLO":"import-meta-env","VSCODE":"VSCode","ALT":"Vue logo","PUG":"Pug"}, { "BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true });
+console.assert("d3612f0e3785495502e39a5f98aae571e7b0e53f");
+const e = Object.assign({"HELLO":"import-meta-env"}, { "BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true });
 export { e };

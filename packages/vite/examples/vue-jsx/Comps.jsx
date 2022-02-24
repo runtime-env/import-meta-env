@@ -1,36 +1,14 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export const Named = defineComponent(() => {
-  const count = ref(0);
-  const inc = () => count.value++;
-  console.assert(import.meta.env.COMPS === "Comps");
-
-  return () => (
-    <button class="named" onClick={inc}>
-      named {count.value}
-    </button>
-  );
+  return () => <p>jsx named {import.meta.env.HELLO}</p>;
 });
 
 const NamedSpec = defineComponent(() => {
-  const count = ref(1);
-  const inc = () => count.value++;
-
-  return () => (
-    <button class="named-specifier" onClick={inc}>
-      named specifier {count.value}
-    </button>
-  );
+  return () => <p>jsx named spec {import.meta.env.HELLO}</p>;
 });
 export { NamedSpec };
 
 export default defineComponent(() => {
-  const count = ref(2);
-  const inc = () => count.value++;
-
-  return () => (
-    <button class="default" onClick={inc}>
-      default {count.value}
-    </button>
-  );
+  return () => <p>jsx {import.meta.env.HELLO}</p>;
 });

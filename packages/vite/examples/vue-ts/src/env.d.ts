@@ -9,9 +9,6 @@ declare module "*.vue" {
 
 interface ImportMetaEnv {
   readonly HELLO: string;
-  readonly VSCODE: string;
-  readonly ALT: string;
-  readonly PUG: string;
 }
 
 interface ImportMeta {

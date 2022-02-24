@@ -3,12 +3,13 @@
   "name": "vanilla",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
-    "preview": "import-meta-env && vite preview"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && vite preview"
   },
   "devDependencies": {
-    "vite": "^2.7.13",
-    "@import-meta-env/vite": "workspace:^0.1.12"
+    "@import-meta-env/vite": "workspace:^0.1.12",
+    "cross-env": "^7.0.3",
+    "vite": "^2.7.13"
   }
 }

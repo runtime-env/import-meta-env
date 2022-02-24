@@ -910,60 +910,30 @@ function markRaw(value) {
 }
 const toReactive = (value) => isObject(value) ? reactive(value) : value;
 const toReadonly = (value) => isObject(value) ? readonly(value) : value;
-function trackRefValue(ref2) {
+function trackRefValue(ref) {
   if (isTracking()) {
-    ref2 = toRaw(ref2);
-    if (!ref2.dep) {
-      ref2.dep = createDep();
+    ref = toRaw(ref);
+    if (!ref.dep) {
+      ref.dep = createDep();
     }
     {
-      trackEffects(ref2.dep);
+      trackEffects(ref.dep);
     }
   }
 }
-function triggerRefValue(ref2, newVal) {
-  ref2 = toRaw(ref2);
-  if (ref2.dep) {
+function triggerRefValue(ref, newVal) {
+  ref = toRaw(ref);
+  if (ref.dep) {
     {
-      triggerEffects(ref2.dep);
+      triggerEffects(ref.dep);
     }
   }
 }
 function isRef(r) {
   return Boolean(r && r.__v_isRef === true);
 }
-function ref(value) {
-  return createRef(value, false);
-}
-function createRef(rawValue, shallow) {
-  if (isRef(rawValue)) {
-    return rawValue;
-  }
-  return new RefImpl(rawValue, shallow);
-}
-class RefImpl {
-  constructor(value, __v_isShallow) {
-    this.__v_isShallow = __v_isShallow;
-    this.dep = void 0;
-    this.__v_isRef = true;
-    this._rawValue = __v_isShallow ? value : toRaw(value);
-    this._value = __v_isShallow ? value : toReactive(value);
-  }
-  get value() {
-    trackRefValue(this);
-    return this._value;
-  }
-  set value(newVal) {
-    newVal = this.__v_isShallow ? newVal : toRaw(newVal);
-    if (hasChanged(newVal, this._rawValue)) {
-      this._rawValue = newVal;
-      this._value = this.__v_isShallow ? newVal : toReactive(newVal);
-      triggerRefValue(this);
-    }
-  }
-}
-function unref(ref2) {
-  return isRef(ref2) ? ref2.value : ref2;
+function unref(ref) {
+  return isRef(ref) ? ref.value : ref;
 }
 const shallowUnwrapHandlers = {
   get: (target, key, receiver) => unref(Reflect.get(target, key, receiver)),
@@ -1288,12 +1258,6 @@ function setCurrentRenderingInstance(instance) {
   currentRenderingInstance = instance;
   currentScopeId = instance && instance.type.__scopeId || null;
   return prev;
-}
-function pushScopeId(id) {
-  currentScopeId = id;
-}
-function popScopeId() {
-  currentScopeId = null;
 }
 function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
   if (!ctx)
@@ -2483,11 +2447,11 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   }
   const refValue = vnode.shapeFlag & 4 ? getExposeProxy(vnode.component) || vnode.component.proxy : vnode.el;
   const value = isUnmount ? null : refValue;
-  const { i: owner, r: ref2 } = rawRef;
+  const { i: owner, r: ref } = rawRef;
   const oldRef = oldRawRef && oldRawRef.r;
   const refs = owner.refs === EMPTY_OBJ ? owner.refs = {} : owner.refs;
   const setupState = owner.setupState;
-  if (oldRef != null && oldRef !== ref2) {
+  if (oldRef != null && oldRef !== ref) {
     if (isString(oldRef)) {
       refs[oldRef] = null;
       if (hasOwn(setupState, oldRef)) {
@@ -2497,37 +2461,37 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
       oldRef.value = null;
     }
   }
-  if (isFunction(ref2)) {
-    callWithErrorHandling(ref2, owner, 12, [value, refs]);
+  if (isFunction(ref)) {
+    callWithErrorHandling(ref, owner, 12, [value, refs]);
   } else {
-    const _isString = isString(ref2);
-    const _isRef = isRef(ref2);
+    const _isString = isString(ref);
+    const _isRef = isRef(ref);
     if (_isString || _isRef) {
       const doSet = () => {
         if (rawRef.f) {
-          const existing = _isString ? refs[ref2] : ref2.value;
+          const existing = _isString ? refs[ref] : ref.value;
           if (isUnmount) {
             isArray(existing) && remove(existing, refValue);
           } else {
             if (!isArray(existing)) {
               if (_isString) {
-                refs[ref2] = [refValue];
+                refs[ref] = [refValue];
               } else {
-                ref2.value = [refValue];
+                ref.value = [refValue];
                 if (rawRef.k)
-                  refs[rawRef.k] = ref2.value;
+                  refs[rawRef.k] = ref.value;
               }
             } else if (!existing.includes(refValue)) {
               existing.push(refValue);
             }
           }
         } else if (_isString) {
-          refs[ref2] = value;
-          if (hasOwn(setupState, ref2)) {
-            setupState[ref2] = value;
+          refs[ref] = value;
+          if (hasOwn(setupState, ref)) {
+            setupState[ref] = value;
           }
-        } else if (isRef(ref2)) {
-          ref2.value = value;
+        } else if (isRef(ref)) {
+          ref.value = value;
           if (rawRef.k)
             refs[rawRef.k] = value;
         } else
@@ -2563,7 +2527,7 @@ function baseCreateRenderer(options, createHydrationFns) {
       optimized = false;
       n2.dynamicChildren = null;
     }
-    const { type, ref: ref2, shapeFlag } = n2;
+    const { type, ref, shapeFlag } = n2;
     switch (type) {
       case Text:
         processText(n1, n2, container, anchor);
@@ -2591,8 +2555,8 @@ function baseCreateRenderer(options, createHydrationFns) {
         } else
           ;
     }
-    if (ref2 != null && parentComponent) {
-      setRef(ref2, n1 && n1.ref, parentSuspense, n2 || n1, !n2);
+    if (ref != null && parentComponent) {
+      setRef(ref, n1 && n1.ref, parentSuspense, n2 || n1, !n2);
     }
   };
   const processText = (n1, n2, container, anchor) => {
@@ -3177,9 +3141,9 @@ function baseCreateRenderer(options, createHydrationFns) {
     }
   };
   const unmount = (vnode, parentComponent, parentSuspense, doRemove = false, optimized = false) => {
-    const { type, props, ref: ref2, children, dynamicChildren, shapeFlag, patchFlag, dirs } = vnode;
-    if (ref2 != null) {
-      setRef(ref2, null, parentSuspense, vnode, true);
+    const { type, props, ref, children, dynamicChildren, shapeFlag, patchFlag, dirs } = vnode;
+    if (ref != null) {
+      setRef(ref, null, parentSuspense, vnode, true);
     }
     if (shapeFlag & 256) {
       parentComponent.ctx.deactivate(vnode);
@@ -3450,8 +3414,8 @@ function isSameVNodeType(n1, n2) {
 }
 const InternalObjectKey = `__vInternal`;
 const normalizeKey = ({ key }) => key != null ? key : null;
-const normalizeRef = ({ ref: ref2, ref_key, ref_for }) => {
-  return ref2 != null ? isString(ref2) || isRef(ref2) || isFunction(ref2) ? { i: currentRenderingInstance, r: ref2, k: ref_key, f: !!ref_for } : ref2 : null;
+const normalizeRef = ({ ref, ref_key, ref_for }) => {
+  return ref != null ? isString(ref) || isRef(ref) || isFunction(ref) ? { i: currentRenderingInstance, r: ref, k: ref_key, f: !!ref_for } : ref : null;
 };
 function createBaseVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, shapeFlag = type === Fragment ? 0 : 1, isBlockNode = false, needFullChildrenNormalization = false) {
   const vnode = {
@@ -3531,7 +3495,7 @@ function guardReactiveProps(props) {
   return isProxy(props) || InternalObjectKey in props ? extend({}, props) : props;
 }
 function cloneVNode(vnode, extraProps, mergeRef = false) {
-  const { props, ref: ref2, patchFlag, children } = vnode;
+  const { props, ref, patchFlag, children } = vnode;
   const mergedProps = extraProps ? mergeProps(props || {}, extraProps) : props;
   const cloned = {
     __v_isVNode: true,
@@ -3539,7 +3503,7 @@ function cloneVNode(vnode, extraProps, mergeRef = false) {
     type: vnode.type,
     props: mergedProps,
     key: mergedProps && normalizeKey(mergedProps),
-    ref: extraProps && extraProps.ref ? mergeRef && ref2 ? isArray(ref2) ? ref2.concat(normalizeRef(extraProps)) : [ref2, normalizeRef(extraProps)] : normalizeRef(extraProps) : ref2,
+    ref: extraProps && extraProps.ref ? mergeRef && ref ? isArray(ref) ? ref.concat(normalizeRef(extraProps)) : [ref, normalizeRef(extraProps)] : normalizeRef(extraProps) : ref,
     scopeId: vnode.scopeId,
     slotScopeIds: vnode.slotScopeIds,
     children,
@@ -4322,7 +4286,6 @@ function normalizeContainer(container) {
   }
   return container;
 }
-var HelloWorld_vue_vue_type_style_index_0_scoped_true_lang = "";
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -4330,103 +4293,62 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _withScopeId = (n) => (pushScopeId("data-v-43dacba4"), n = n(), popScopeId(), n);
-const _hoisted_1$1 = /* @__PURE__ */ createTextVNode(" Recommended IDE setup: ");
-const _hoisted_2 = {
-  href: "https://code.visualstudio.com/",
-  target: "_blank"
-};
-const _hoisted_3 = /* @__PURE__ */ createTextVNode(" + ");
-const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("a", {
-  href: "https://github.com/johnsoncodehk/volar",
-  target: "_blank"
-}, "Volar", -1));
-const _hoisted_5 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", null, [
-  /* @__PURE__ */ createTextVNode("See "),
-  /* @__PURE__ */ createBaseVNode("code", null, "README.md"),
-  /* @__PURE__ */ createTextVNode(" for more information.")
-], -1));
-const _hoisted_6 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", null, [
-  /* @__PURE__ */ createBaseVNode("a", {
-    href: "https://vitejs.dev/guide/features.html",
-    target: "_blank"
-  }, " Vite Docs "),
-  /* @__PURE__ */ createTextVNode(" | "),
-  /* @__PURE__ */ createBaseVNode("a", {
-    href: "https://v3.vuejs.org/",
-    target: "_blank"
-  }, "Vue 3 Docs")
-], -1));
-const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("p", null, [
-  /* @__PURE__ */ createTextVNode(" Edit "),
-  /* @__PURE__ */ createBaseVNode("code", null, "components/HelloWorld.vue"),
-  /* @__PURE__ */ createTextVNode(" to test hot module replacement. ")
-], -1));
-const _sfc_main$2 = /* @__PURE__ */ defineComponent({
-  props: {
-    msg: null
-  },
-  setup(__props) {
-    const count = ref(0);
-    const vscode = e.VSCODE;
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("h1", null, toDisplayString(__props.msg), 1),
-        createBaseVNode("p", null, [
-          _hoisted_1$1,
-          createBaseVNode("a", _hoisted_2, toDisplayString(unref(vscode)), 1),
-          _hoisted_3,
-          _hoisted_4
-        ]),
-        _hoisted_5,
-        _hoisted_6,
-        createBaseVNode("button", {
-          type: "button",
-          onClick: _cache[0] || (_cache[0] = ($event) => count.value++)
-        }, "count is: " + toDisplayString(count.value), 1),
-        _hoisted_7
-      ], 64);
-    };
-  }
-});
-var HelloWorld = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-43dacba4"]]);
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("p", null, "Pug: " + toDisplayString(_ctx.pug), 1);
-}
-const _sfc_main$1 = defineComponent({
+const _sfc_main$4 = defineComponent({
   setup() {
     return {
-      pug: e.PUG
+      hello: e.HELLO
     };
   }
 });
-var Pug = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", render]]);
-const greeting = `Hello ${e.HELLO}!`;
-var _imports_0 = "/assets/logo.png";
-var App_vue_vue_type_style_index_0_lang = "";
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("p", null, "HTML: " + toDisplayString(_ctx.hello), 1);
+}
+var Html = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$1]]);
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  setup(__props) {
+    const hello = e.HELLO;
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("p", null, "HTML with setup: " + toDisplayString(unref(hello)), 1);
+    };
+  }
+});
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("p", null, "Pug: " + toDisplayString(_ctx.hello), 1);
+}
+const _sfc_main$2 = defineComponent({
+  setup() {
+    return {
+      hello: e.HELLO
+    };
+  }
+});
+var Pug = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", render]]);
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  setup(__props) {
+    const hello = e.HELLO;
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("p", null, "Pug with setup: " + toDisplayString(unref(hello)), 1);
+    };
+  }
+});
 const _sfc_main = defineComponent({
   components: {
-    HelloWorld,
-    Pug
-  },
-  setup() {
-    return {
-      alt: e.ALT,
-      greeting
-    };
+    Html,
+    HtmlWithSetup: _sfc_main$3,
+    Pug,
+    PugWithSetup: _sfc_main$1
   }
 });
-const _hoisted_1 = ["alt"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_HelloWorld = resolveComponent("HelloWorld");
+  const _component_Html = resolveComponent("Html");
+  const _component_HtmlWithSetup = resolveComponent("HtmlWithSetup");
   const _component_Pug = resolveComponent("Pug");
+  const _component_PugWithSetup = resolveComponent("PugWithSetup");
   return openBlock(), createElementBlock(Fragment, null, [
-    createBaseVNode("img", {
-      alt: _ctx.alt,
-      src: _imports_0
-    }, null, 8, _hoisted_1),
-    createVNode(_component_HelloWorld, { msg: _ctx.greeting }, null, 8, ["msg"]),
-    createVNode(_component_Pug)
+    createVNode(_component_Html),
+    createVNode(_component_HtmlWithSetup),
+    createVNode(_component_Pug),
+    createVNode(_component_PugWithSetup)
   ], 64);
 }
 var App = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

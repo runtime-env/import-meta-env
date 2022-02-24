@@ -888,60 +888,30 @@ function markRaw(value) {
 }
 const toReactive = (value) => isObject(value) ? reactive(value) : value;
 const toReadonly = (value) => isObject(value) ? readonly(value) : value;
-function trackRefValue(ref2) {
+function trackRefValue(ref) {
   if (isTracking()) {
-    ref2 = toRaw(ref2);
-    if (!ref2.dep) {
-      ref2.dep = createDep();
+    ref = toRaw(ref);
+    if (!ref.dep) {
+      ref.dep = createDep();
     }
     {
-      trackEffects(ref2.dep);
+      trackEffects(ref.dep);
     }
   }
 }
-function triggerRefValue(ref2, newVal) {
-  ref2 = toRaw(ref2);
-  if (ref2.dep) {
+function triggerRefValue(ref, newVal) {
+  ref = toRaw(ref);
+  if (ref.dep) {
     {
-      triggerEffects(ref2.dep);
+      triggerEffects(ref.dep);
     }
   }
 }
 function isRef(r) {
   return Boolean(r && r.__v_isRef === true);
 }
-function ref(value) {
-  return createRef(value, false);
-}
-function createRef(rawValue, shallow) {
-  if (isRef(rawValue)) {
-    return rawValue;
-  }
-  return new RefImpl(rawValue, shallow);
-}
-class RefImpl {
-  constructor(value, __v_isShallow) {
-    this.__v_isShallow = __v_isShallow;
-    this.dep = void 0;
-    this.__v_isRef = true;
-    this._rawValue = __v_isShallow ? value : toRaw(value);
-    this._value = __v_isShallow ? value : toReactive(value);
-  }
-  get value() {
-    trackRefValue(this);
-    return this._value;
-  }
-  set value(newVal) {
-    newVal = this.__v_isShallow ? newVal : toRaw(newVal);
-    if (hasChanged(newVal, this._rawValue)) {
-      this._rawValue = newVal;
-      this._value = this.__v_isShallow ? newVal : toReactive(newVal);
-      triggerRefValue(this);
-    }
-  }
-}
-function unref(ref2) {
-  return isRef(ref2) ? ref2.value : ref2;
+function unref(ref) {
+  return isRef(ref) ? ref.value : ref;
 }
 const shallowUnwrapHandlers = {
   get: (target, key, receiver) => unref(Reflect.get(target, key, receiver)),
@@ -2454,11 +2424,11 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   }
   const refValue = vnode.shapeFlag & 4 ? getExposeProxy(vnode.component) || vnode.component.proxy : vnode.el;
   const value = isUnmount ? null : refValue;
-  const { i: owner, r: ref2 } = rawRef;
+  const { i: owner, r: ref } = rawRef;
   const oldRef = oldRawRef && oldRawRef.r;
   const refs = owner.refs === EMPTY_OBJ ? owner.refs = {} : owner.refs;
   const setupState = owner.setupState;
-  if (oldRef != null && oldRef !== ref2) {
+  if (oldRef != null && oldRef !== ref) {
     if (isString(oldRef)) {
       refs[oldRef] = null;
       if (hasOwn(setupState, oldRef)) {
@@ -2468,37 +2438,37 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
       oldRef.value = null;
     }
   }
-  if (isFunction(ref2)) {
-    callWithErrorHandling(ref2, owner, 12, [value, refs]);
+  if (isFunction(ref)) {
+    callWithErrorHandling(ref, owner, 12, [value, refs]);
   } else {
-    const _isString = isString(ref2);
-    const _isRef = isRef(ref2);
+    const _isString = isString(ref);
+    const _isRef = isRef(ref);
     if (_isString || _isRef) {
       const doSet = () => {
         if (rawRef.f) {
-          const existing = _isString ? refs[ref2] : ref2.value;
+          const existing = _isString ? refs[ref] : ref.value;
           if (isUnmount) {
             isArray(existing) && remove(existing, refValue);
           } else {
             if (!isArray(existing)) {
               if (_isString) {
-                refs[ref2] = [refValue];
+                refs[ref] = [refValue];
               } else {
-                ref2.value = [refValue];
+                ref.value = [refValue];
                 if (rawRef.k)
-                  refs[rawRef.k] = ref2.value;
+                  refs[rawRef.k] = ref.value;
               }
             } else if (!existing.includes(refValue)) {
               existing.push(refValue);
             }
           }
         } else if (_isString) {
-          refs[ref2] = value;
-          if (hasOwn(setupState, ref2)) {
-            setupState[ref2] = value;
+          refs[ref] = value;
+          if (hasOwn(setupState, ref)) {
+            setupState[ref] = value;
           }
-        } else if (isRef(ref2)) {
-          ref2.value = value;
+        } else if (isRef(ref)) {
+          ref.value = value;
           if (rawRef.k)
             refs[rawRef.k] = value;
         } else
@@ -2534,7 +2504,7 @@ function baseCreateRenderer(options, createHydrationFns) {
       optimized = false;
       n2.dynamicChildren = null;
     }
-    const { type, ref: ref2, shapeFlag } = n2;
+    const { type, ref, shapeFlag } = n2;
     switch (type) {
       case Text:
         processText(n1, n2, container, anchor);
@@ -2562,8 +2532,8 @@ function baseCreateRenderer(options, createHydrationFns) {
         } else
           ;
     }
-    if (ref2 != null && parentComponent) {
-      setRef(ref2, n1 && n1.ref, parentSuspense, n2 || n1, !n2);
+    if (ref != null && parentComponent) {
+      setRef(ref, n1 && n1.ref, parentSuspense, n2 || n1, !n2);
     }
   };
   const processText = (n1, n2, container, anchor) => {
@@ -3148,9 +3118,9 @@ function baseCreateRenderer(options, createHydrationFns) {
     }
   };
   const unmount = (vnode, parentComponent, parentSuspense, doRemove = false, optimized = false) => {
-    const { type, props, ref: ref2, children, dynamicChildren, shapeFlag, patchFlag, dirs } = vnode;
-    if (ref2 != null) {
-      setRef(ref2, null, parentSuspense, vnode, true);
+    const { type, props, ref, children, dynamicChildren, shapeFlag, patchFlag, dirs } = vnode;
+    if (ref != null) {
+      setRef(ref, null, parentSuspense, vnode, true);
     }
     if (shapeFlag & 256) {
       parentComponent.ctx.deactivate(vnode);
@@ -3378,8 +3348,8 @@ function isSameVNodeType(n1, n2) {
 }
 const InternalObjectKey = `__vInternal`;
 const normalizeKey = ({ key }) => key != null ? key : null;
-const normalizeRef = ({ ref: ref2, ref_key, ref_for }) => {
-  return ref2 != null ? isString(ref2) || isRef(ref2) || isFunction(ref2) ? { i: currentRenderingInstance, r: ref2, k: ref_key, f: !!ref_for } : ref2 : null;
+const normalizeRef = ({ ref, ref_key, ref_for }) => {
+  return ref != null ? isString(ref) || isRef(ref) || isFunction(ref) ? { i: currentRenderingInstance, r: ref, k: ref_key, f: !!ref_for } : ref : null;
 };
 function createBaseVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, shapeFlag = type === Fragment ? 0 : 1, isBlockNode = false, needFullChildrenNormalization = false) {
   const vnode = {
@@ -3459,7 +3429,7 @@ function guardReactiveProps(props) {
   return isProxy(props) || InternalObjectKey in props ? extend({}, props) : props;
 }
 function cloneVNode(vnode, extraProps, mergeRef = false) {
-  const { props, ref: ref2, patchFlag, children } = vnode;
+  const { props, ref, patchFlag, children } = vnode;
   const mergedProps = extraProps ? mergeProps(props || {}, extraProps) : props;
   const cloned = {
     __v_isVNode: true,
@@ -3467,7 +3437,7 @@ function cloneVNode(vnode, extraProps, mergeRef = false) {
     type: vnode.type,
     props: mergedProps,
     key: mergedProps && normalizeKey(mergedProps),
-    ref: extraProps && extraProps.ref ? mergeRef && ref2 ? isArray(ref2) ? ref2.concat(normalizeRef(extraProps)) : [ref2, normalizeRef(extraProps)] : normalizeRef(extraProps) : ref2,
+    ref: extraProps && extraProps.ref ? mergeRef && ref ? isArray(ref) ? ref.concat(normalizeRef(extraProps)) : [ref, normalizeRef(extraProps)] : normalizeRef(extraProps) : ref,
     scopeId: vnode.scopeId,
     slotScopeIds: vnode.slotScopeIds,
     children,
@@ -4248,60 +4218,25 @@ function normalizeContainer(container) {
   return container;
 }
 const Named = defineComponent(() => {
-  const count = ref(0);
-  const inc = () => count.value++;
-  console.assert(e.COMPS === "Comps");
-  return () => createVNode("button", {
-    "class": "named",
-    "onClick": inc
-  }, [createTextVNode("named "), count.value]);
+  return () => createVNode("p", null, [createTextVNode("jsx named "), e.HELLO]);
 });
 const NamedSpec = defineComponent(() => {
-  const count = ref(1);
-  const inc = () => count.value++;
-  return () => createVNode("button", {
-    "class": "named-specifier",
-    "onClick": inc
-  }, [createTextVNode("named specifier "), count.value]);
+  return () => createVNode("p", null, [createTextVNode("jsx named spec "), e.HELLO]);
 });
-var Default$1 = defineComponent(() => {
-  const count = ref(2);
-  const inc = () => count.value++;
-  return () => createVNode("button", {
-    "class": "default",
-    "onClick": inc
-  }, [createTextVNode("default "), count.value]);
+var Default = defineComponent(() => {
+  return () => createVNode("p", null, [createTextVNode("jsx "), e.HELLO]);
 });
-const Default = defineComponent(() => {
-  const count = ref(3);
-  const inc = () => count.value++;
-  console.assert(e.COMP === "Comp");
-  return () => createVNode("button", {
-    "class": "default-tsx",
-    "onClick": inc
-  }, [createTextVNode("default tsx "), count.value]);
+var TsxDefault = defineComponent(() => {
+  return () => createVNode("p", null, [createTextVNode("tsx "), e.HELLO]);
 });
 var _sfc_main$1 = defineComponent(() => {
-  const count = ref(4);
-  const inc = () => count.value++;
-  console.assert(e.SCRIPT === "Script");
-  return () => createVNode("button", {
-    "class": "script",
-    "onClick": inc
-  }, [createTextVNode("script "), count.value]);
+  return () => createVNode("p", null, [createTextVNode("jsx script "), e.HELLO]);
 });
 var _sfc_main = defineComponent(() => {
-  const count = ref(5);
-  const inc = () => count.value++;
-  console.assert(e.SRC_IMPORT_JSX === "SrcImportJsx");
-  return () => createVNode("button", {
-    "class": "src-import",
-    "onClick": inc
-  }, [createTextVNode("src import "), count.value]);
+  return () => createVNode("p", null, [createTextVNode("src import "), e.HELLO]);
 });
 function App() {
-  console.assert(e.MAIN === "Main");
-  return createVNode(Fragment, null, [createVNode(Named, null, null), createVNode(NamedSpec, null, null), createVNode(Default$1, null, null), createVNode(Default, null, null), createVNode(_sfc_main$1, null, null), createVNode(_sfc_main, null, null)]);
+  return createVNode(Fragment, null, [createVNode(Named, null, null), createVNode(NamedSpec, null, null), createVNode(Default, null, null), createVNode(TsxDefault, null, null), createVNode(_sfc_main$1, null, null), createVNode(_sfc_main, null, null)]);
 }
 createApp(App).mount("#app");
-console.assert(e.INDEX === "Index");
+console.log(e.HELLO);

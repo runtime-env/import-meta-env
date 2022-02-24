@@ -21,7 +21,9 @@ rimraf.sync("dist");
 
 // act
 child_process.execSync("pnpm run build");
-child_process.execSync("pnpm exec import-meta-env");
+child_process.execSync(
+  "pnpm exec cross-env HELLO=import-meta-env import-meta-env"
+);
 
 // assert
 const expectedFileDir = path.resolve(__dirname, "__dist__");

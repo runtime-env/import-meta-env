@@ -3,9 +3,9 @@
   "name": "vite-built-in-import-meta-env",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
-    "preview": "import-meta-env && vite preview"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && vite preview"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

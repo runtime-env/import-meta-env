@@ -10,6 +10,6 @@ export default defineComponent({
 });
 </script>
 
-<template lang="pug">
-p Pug: {{ hello }}
+<template>
+  <p>HTML: {{ hello }}</p>
 </template>
