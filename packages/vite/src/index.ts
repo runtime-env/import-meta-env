@@ -98,7 +98,7 @@ const createPlugin: () => Plugin[] = () => {
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {
-        if (isTransformingJs(code, id)) {
+        if (isTransformingJs(code, id) || isTransformingSvelte(code, id)) {
           code =
             `import ${uniqueVariableName} from '${virtualFile}';\n` +
             code.replace(
@@ -154,3 +154,6 @@ const isTransformingJs = (code: string, id: string) =>
   id.includes("?vue&type=template") === false;
 
 const isTransformingVue = (code: string, id: string) => id.endsWith(".vue");
+
+const isTransformingSvelte = (code: string, id: string) =>
+  id.endsWith(".svelte");
