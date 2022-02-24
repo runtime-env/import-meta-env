@@ -4,7 +4,7 @@ import importMetaEnv from "@import-meta-env/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [svelte(), importMetaEnv.default()],
+  plugins: [svelte(), importMetaEnv()],
   build: {
     minify: false,
     rollupOptions: {

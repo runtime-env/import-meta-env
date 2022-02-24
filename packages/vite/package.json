@@ -15,9 +15,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist bin && pnpm build-types && pnpm build-bundle && pnpm build-cli",
-    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js && pnpm run patch-dist",
     "build-cli": "esbuild src/cli.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=bin/import-meta-env.js",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
+    "patch-dist": "ts-node ./scripts/patchEsbuildDist.ts dist/index.js createPlugin",
     "release": "standard-version && pnpm build",
     "test": "jest src/__tests__"
   },
@@ -49,6 +50,7 @@
     "rimraf": "^3.0.2",
     "standard-version": "^9.3.2",
     "tmp": "^0.2.1",
+    "ts-node": "^10.5.0",
     "typescript": "^4.5.4",
     "vite": "^2.7.13"
   },
