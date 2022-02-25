@@ -88,6 +88,7 @@ $ npx pkg ./node_modules/@import-meta-env/vite/bin/import-meta-env.js -t node16-
 
 See also:
 
+- [examples](./examples)
 - [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
 
 ## 📖 API

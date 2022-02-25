@@ -9,7 +9,7 @@ This plugin is intended to provide an approximation of some of [@import-meta-env
 Install and register the plugin:
 
 ```sh
-$ npm i dotenv @import-meta-env/vite
+$ npm i dotenv @import-meta-env/babel
 ```
 
 ```js
@@ -25,13 +25,14 @@ Adjust the test script in your package.json:
 {
   "scripts": {
     // If you have `.env` file:
-    "test": "jest",
+    "test": "your-test-script",
     // If you have not `.env` file:
-    "test": "cross-env S3_BUCKET=YOURS3BUCKET jest"
+    "test": "cross-env S3_BUCKET=YOURS3BUCKET your-test-script"
   }
 }
 ```
 
 See also:
 
+- [examples](./examples)
 - [@import-meta-env/vite](https://github.com/iendeavor/import-meta-env/tree/main/packages/vite) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.
