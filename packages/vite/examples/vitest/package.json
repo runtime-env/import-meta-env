@@ -6,7 +6,7 @@
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "tsc && vite build",
     "preview": "cross-env HELLO=import-meta-env import-meta-env && vite preview",
-    "test": "vitest"
+    "test": "cross-env HELLO=import-meta-env vitest"
   },
   "devDependencies": {
     "@import-meta-env/vite": "workspace:*",
