@@ -103,6 +103,10 @@ Options:
 
 Since we may switch to different environment variables multiple times, this executable also creates `*.bak` files to restore.
 
+## See Also
+
+- [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
+
 ## 🤝 Contributing
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull

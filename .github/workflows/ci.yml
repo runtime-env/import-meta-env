@@ -38,6 +38,9 @@ jobs:
       - name: Build @import-meta-env/vite
         run: pnpm run build --parallel --stream --filter @import-meta-env/vite
 
+      - name: Build @import-meta-env/babel
+        run: pnpm run build --parallel --stream --filter @import-meta-env/babel
+
       - name: Install binary
         run: pnpm i
 
@@ -48,6 +51,7 @@ jobs:
             --stream \
             --filter \!html \
             --filter \!@import-meta-env/vite \
+            --filter \!@import-meta-env/babel \
             --filter \!vue-ts \
             --filter \!vue-jsx \
             exec sh test.sh
