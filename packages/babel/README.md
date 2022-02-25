@@ -19,6 +19,19 @@ module.exports = {
 };
 ```
 
-## See Also
+Adjust the test script in your package.json:
+
+```json
+{
+  "scripts": {
+    // If you have `.env` file:
+    "test": "jest",
+    // If you have not `.env` file:
+    "test": "cross-env S3_BUCKET=YOURS3BUCKET jest"
+  }
+}
+```
+
+See also:
 
 - [@import-meta-env/vite](https://github.com/iendeavor/import-meta-env/tree/main/packages/vite) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.

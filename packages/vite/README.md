@@ -69,7 +69,10 @@ Adjust the preview script in your package.json:
 ```json
 {
   "scripts": {
-    "preview": "import-meta-env && vite preview"
+    // If you have `.env` file:
+    "preview": "import-meta-env && vite preview",
+    // If you have not `.env` file:
+    "preview": "cross-env S3_BUCKET=YOURS3BUCKET import-meta-env && vite preview"
   }
 }
 ```
@@ -82,6 +85,10 @@ For example, you can pack the alpine version like this:
 $ npm i -g pkg
 $ npx pkg ./node_modules/@import-meta-env/vite/bin/import-meta-env.js -t node16-alpine
 ```
+
+See also:
+
+- [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
 
 ## 📖 API
 
@@ -102,10 +109,6 @@ Options:
 ```
 
 Since we may switch to different environment variables multiple times, this executable also creates `*.bak` files to restore.
-
-## See Also
-
-- [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
 
 ## 🤝 Contributing
 
