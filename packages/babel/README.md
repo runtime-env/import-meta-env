@@ -24,9 +24,9 @@ Adjust the test script in your package.json:
 ```json
 {
   "scripts": {
-    // If you have `.env` file:
+    // If you have a `.env` file:
     "test": "your-test-script",
-    // If you have not `.env` file:
+    // If you don't have a `.env` file:
     "test": "cross-env S3_BUCKET=YOURS3BUCKET your-test-script"
   }
 }

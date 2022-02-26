@@ -70,9 +70,9 @@ Adjust the preview script in your package.json:
 ```json
 {
   "scripts": {
-    // If you have `.env` file:
+    // If you have a `.env` file:
     "preview": "import-meta-env && vite preview",
-    // If you have not `.env` file:
+    // If you don't have a `.env` file:
     "preview": "cross-env S3_BUCKET=YOURS3BUCKET import-meta-env && vite preview"
   }
 }
