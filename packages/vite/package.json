@@ -19,7 +19,7 @@
     "build-cli": "esbuild src/cli.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=bin/import-meta-env.js",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
     "patch-dist": "ts-node ./scripts/patchEsbuildDist.ts dist/index.js createPlugin",
-    "release": "standard-version && pnpm build",
+    "release": "standard-version -t vite --releaseCommitMessageFormat 'chore(release): @import-meta-env/vite@{{currentTag}}' --path . && pnpm build",
     "test": "jest src/__tests__"
   },
   "engines": {
