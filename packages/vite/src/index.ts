@@ -10,7 +10,7 @@ import {
   preserveViteBuiltInEnv,
   restoreViteBuiltInEnv,
 } from "./transform-built-in-env";
-import { uniqueVariableName } from "./shared";
+import { envExampleFilePath, envFilePath, uniqueVariableName } from "./shared";
 import { virtualFile, virtualId, placeholder } from "./shared";
 
 const createPlugin: () => Plugin[] = () => {
@@ -29,8 +29,8 @@ const createPlugin: () => Plugin[] = () => {
       } else {
         // dev
         env = resolve({
-          envFilePath: ".env",
-          envExampleFilePath: ".env.example",
+          envFilePath,
+          envExampleFilePath,
         });
       }
       config = _config;

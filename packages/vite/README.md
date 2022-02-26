@@ -59,6 +59,7 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 
 ```ts
 console.log(import.meta.env.S3_BUCKET); // "YOURS3BUCKET"
+console.log(import.meta.env["S3_BUCKET"]); // "YOURS3BUCKET", dynamic key also works
 console.log(import.meta.env.SECRET_KEY); // undefined
 ```
 

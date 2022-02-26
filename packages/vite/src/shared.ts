@@ -13,3 +13,7 @@ export const uniqueVariableName = (() => {
       .join("")
   );
 })();
+
+export const envFilePath = ".env";
+
+export const envExampleFilePath = ".env.example";

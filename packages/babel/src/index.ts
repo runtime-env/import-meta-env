@@ -1,38 +1,18 @@
 import type babelCore from "@babel/core";
 import { resolve } from "../../vite/src/env";
+import { envFilePath, envExampleFilePath } from "../../vite/src/shared";
 
-let env = {};
+export default function importMetaEnvBabelPlugin({
+  template,
+  types: t,
+}: typeof babelCore): babelCore.PluginObj {
+  const env = resolve({
+    envFilePath,
+    envExampleFilePath,
+  });
 
-const replaceVars = [
-  {
-    regex: /^VITE_/,
-    replacement: (template: typeof babelCore.template, variableName: string) =>
-      template.expression("process.env.%%variableName%%")({ variableName }),
-  },
-  {
-    regex: /^(NODE_ENV|MODE)$/,
-    replacement: (template: typeof babelCore.template) =>
-      template.expression.ast("process.env.NODE_ENV || 'test'"),
-  },
-  {
-    regex: /^BASE_URL$/,
-    replacement: (template: typeof babelCore.template) =>
-      template.expression.ast("'/'"),
-  },
-  {
-    regex: /^DEV$/,
-    replacement: (template: typeof babelCore.template) =>
-      template.expression.ast("process.env.NODE_ENV !== 'production'"),
-  },
-  {
-    regex: /^PROD$/,
-    replacement: (template: typeof babelCore.template) =>
-      template.expression.ast("process.env.NODE_ENV === 'production'"),
-  },
-];
-
-const replaceEnv = (template: typeof babelCore.template) =>
-  template.expression.ast(`{
+  const replaceEnv = (template: typeof babelCore.template) =>
+    template.expression.ast(`{
     ...${JSON.stringify(env)},
     NODE_ENV: process.env.NODE_ENV || 'test',
     MODE: process.env.NODE_ENV || 'test',
@@ -41,65 +21,12 @@ const replaceEnv = (template: typeof babelCore.template) =>
     PROD: process.env.NODE_ENV === 'production'
   }`);
 
-function getReplacement(
-  variableName: string,
-  template: typeof babelCore.template
-): babelCore.types.Expression | undefined {
-  return replaceVars
-    .filter(({ regex }) => regex.test(variableName))
-    .map(({ replacement }) => replacement(template, variableName))[0];
-}
-
-export default function importMetaEnvBabelPlugin({
-  template,
-  types: t,
-}: typeof babelCore): babelCore.PluginObj {
-  env = resolve({
-    envFilePath: "./.env",
-    envExampleFilePath: "./.env.example",
-  });
-
   return {
     name: "@import-meta-env/babel",
     visitor: {
-      MemberExpression(path) {
-        const envNode =
-          t.isMemberExpression(path.node.object) && path.node.object;
-        const variableName =
-          t.isIdentifier(path.node.property) && path.node.property.name;
-
-        if (!envNode || !variableName) {
-          return;
-        }
-
-        const isMetaProperty = t.isMetaProperty(envNode.object);
-        const isEnvVar =
-          t.isIdentifier(envNode.property) && envNode.property.name === "env";
-
-        if (!isMetaProperty || !isEnvVar) {
-          return;
-        }
-
-        const replacement = getReplacement(variableName, template);
-
-        if (replacement) {
-          path.replaceWith(replacement);
-        }
-      },
       MetaProperty(path) {
-        const envNode =
-          t.isMemberExpression(path.parentPath.node) && path.parentPath.node;
-
-        if (!envNode) {
-          return;
-        }
-
-        const isEnvVar =
-          t.isIdentifier(envNode.property) && envNode.property.name === "env";
-
-        if (!isEnvVar) {
-          return;
-        }
+        if (!t.isMemberExpression(path.parentPath.node)) return;
+        if (!t.isIdentifier(path.parentPath.node.property)) return;
 
         path.parentPath.replaceWith(replaceEnv(template));
       },
