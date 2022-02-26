@@ -1,6 +1,6 @@
 import tmp from "tmp";
 import { Args, createCommand, main } from "..";
-import { resolve, placeholder } from "../../../shared";
+import { resolveEnv, placeholder } from "../../../shared";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 
 let command = createCommand();
@@ -105,7 +105,7 @@ describe("cli", () => {
       const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
       const di = {
         command: new cmd() as typeof command,
-        resolve,
+        resolveEnv,
       };
 
       // act

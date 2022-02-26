@@ -4,7 +4,7 @@ import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { version } from "../package.json";
 import {
-  resolve,
+  resolveEnv,
   getPackageManagerExecCommand,
   envExampleFilePath,
   envFilePath,
@@ -34,7 +34,7 @@ const createPlugin: (pluginOptions?: PluginOptions) => Plugin[] = (
         // preview
       } else {
         // dev
-        env = resolve({
+        env = resolveEnv({
           envFilePath: pluginOptions?.env ?? envFilePath,
           envExampleFilePath: pluginOptions?.envExample ?? envExampleFilePath,
         });

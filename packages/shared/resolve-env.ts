@@ -2,7 +2,7 @@
 import { config } from "dotenv";
 import { red, yellow } from "picocolors";
 
-export const resolve = ({
+export const resolveEnv = ({
   envFilePath,
   envExampleFilePath,
 }: {

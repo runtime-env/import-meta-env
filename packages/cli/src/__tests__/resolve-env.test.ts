@@ -1,13 +1,13 @@
 import { writeFileSync } from "fs";
 import tmp from "tmp";
-import { resolve } from "../../../shared";
+import { resolveEnv } from "../../../shared";
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe("resolve", () => {
-  test("resolve environment variables from env file", () => {
+describe("resolveEnv", () => {
+  test("resolveEnv environment variables from env file", () => {
     // arrange
     const envFilePath = tmp.tmpNameSync();
     writeFileSync(envFilePath, "FOO=bar\nBAZ=qux");
@@ -15,7 +15,7 @@ describe("resolve", () => {
     writeFileSync(envExampleFilePath, "FOO=");
 
     // act
-    const env = resolve({ envFilePath, envExampleFilePath });
+    const env = resolveEnv({ envFilePath, envExampleFilePath });
 
     // assert
     expect(env).toEqual({
@@ -23,7 +23,7 @@ describe("resolve", () => {
     });
   });
 
-  test("resolve environment variables from environment", () => {
+  test("resolveEnv environment variables from environment", () => {
     // arrange
     process.env.FOO = "bar";
     process.env.BAZ = "qux";
@@ -31,7 +31,7 @@ describe("resolve", () => {
     writeFileSync(envExampleFilePath, "FOO=");
 
     // act
-    const env = resolve({ envExampleFilePath, envFilePath: ".env" });
+    const env = resolveEnv({ envExampleFilePath, envFilePath: ".env" });
 
     // assert
     expect(env).toEqual({
@@ -51,7 +51,7 @@ describe("resolve", () => {
     writeFileSync(envExampleFilePath, "OLD=");
 
     // act
-    const env = resolve({ envFilePath, envExampleFilePath });
+    const env = resolveEnv({ envFilePath, envExampleFilePath });
 
     // assert
     expect(() => (env.NEW = "")).toThrowErrorMatchingInlineSnapshot(
@@ -72,7 +72,7 @@ describe("resolve", () => {
     const envExampleFilePath = tmp.tmpNameSync();
 
     // act
-    resolve({ envFilePath, envExampleFilePath });
+    resolveEnv({ envFilePath, envExampleFilePath });
 
     // assert
     expect(spy.mock.calls).toMatchInlineSnapshot(`
@@ -94,7 +94,7 @@ describe("resolve", () => {
     writeFileSync(envExampleFilePath, "FOO=1\nBAR=2\nBAZ=3\n");
 
     // act
-    const act = () => resolve({ envFilePath, envExampleFilePath });
+    const act = () => resolveEnv({ envFilePath, envExampleFilePath });
 
     // assert
     expect(act).toThrow(

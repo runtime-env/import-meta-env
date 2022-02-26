@@ -1,11 +1,11 @@
 import type babelCore from "@babel/core";
-import { resolve, envFilePath, envExampleFilePath } from "../../shared";
+import { resolveEnv, envFilePath, envExampleFilePath } from "../../shared";
 
 export default function importMetaEnvBabelPlugin({
   template,
   types: t,
 }: typeof babelCore): babelCore.PluginObj {
-  const env = resolve({
+  const env = resolveEnv({
     envFilePath,
     envExampleFilePath,
   });

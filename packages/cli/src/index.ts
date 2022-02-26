@@ -7,7 +7,7 @@ import {
   writeFileSync,
 } from "fs";
 import colors from "picocolors";
-import { resolve, placeholder, virtualFile } from "../../shared";
+import { resolveEnv, placeholder, virtualFile } from "../../shared";
 import glob from "glob";
 import { version } from "../package.json";
 
@@ -78,12 +78,12 @@ export const createCommand = () =>
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
-  resolve: typeof resolve;
+  resolveEnv: typeof resolveEnv;
 }) => {
   di.command.parse();
   const opts: Args = di.command.opts();
 
-  const env = di.resolve({
+  const env = di.resolveEnv({
     envExampleFilePath: opts.example,
     envFilePath: opts.env,
   });
@@ -108,5 +108,5 @@ export const main = (di: {
 };
 
 if (require.main === module) {
-  main({ command: createCommand(), resolve });
+  main({ command: createCommand(), resolveEnv });
 }
