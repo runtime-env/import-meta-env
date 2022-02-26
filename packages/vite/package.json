@@ -4,6 +4,11 @@
   "description": "Load environment variables into import.meta.env object",
   "license": "MIT",
   "author": "Ernest",
+  "keywords": [
+    "vite-plugin",
+    "twelve-factor",
+    "dotenv"
+  ],
   "bin": {
     "import-meta-env": "bin/import-meta-env.js"
   },
