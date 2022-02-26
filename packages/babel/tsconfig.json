@@ -1,18 +1,4 @@
 {
   "include": ["src"],
-  "exclude": ["**/*.test.ts"],
-  "compilerOptions": {
-    "outDir": "dist",
-    "target": "esnext",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "strict": true,
-    "declaration": true,
-    "sourceMap": true,
-    "noImplicitOverride": true,
-    "noUnusedLocals": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "baseUrl": "."
-  }
+  "extends": "../../tsconfig.json"
 }

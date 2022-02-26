@@ -1,6 +1,5 @@
 import type babelCore from "@babel/core";
-import { resolve } from "../../vite/src/env";
-import { envFilePath, envExampleFilePath } from "../../vite/src/shared";
+import { resolve, envFilePath, envExampleFilePath } from "../../shared";
 
 export default function importMetaEnvBabelPlugin({
   template,

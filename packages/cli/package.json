@@ -1,0 +1,47 @@
+{
+  "name": "@import-meta-env/cli",
+  "version": "0.1.0",
+  "description": "Load environment variables into import.meta.env object",
+  "license": "MIT",
+  "author": "Ernest",
+  "keywords": [
+    "twelve-factor",
+    "dotenv"
+  ],
+  "bin": {
+    "import-meta-env": "bin/import-meta-env.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "build": "rimraf bin && pnpm build-cli",
+    "build-cli": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=bin/import-meta-env.js",
+    "release": "standard-version -t cli --releaseCommitMessageFormat 'chore(release): @import-meta-env/cli@{{currentTag}}' --path . && pnpm build",
+    "test": "jest src/__tests__"
+  },
+  "engines": {
+    "node": "^12.20.0 || >= 14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/iendeavor/import-meta-env/issues"
+  },
+  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme",
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
+  },
+  "peerDependencies": {
+    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
+  },
+  "dependencies": {
+    "commander": "^9.0.0",
+    "glob": "^7.2.0",
+    "picocolors": "^1.0.0"
+  }
+}

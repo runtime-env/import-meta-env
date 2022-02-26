@@ -23,7 +23,7 @@ During production, this plugin generates chunks with placeholders, which allow u
 Install and register the plugin:
 
 ```sh
-$ npm i dotenv @import-meta-env/vite
+$ npm i dotenv @import-meta-env/vite @import-meta-env/cli
 ```
 
 ```ts
@@ -63,7 +63,7 @@ console.log(import.meta.env["S3_BUCKET"]); // "YOURS3BUCKET", dynamic key also w
 console.log(import.meta.env.SECRET_KEY); // undefined
 ```
 
-Finally, before serving your application, remember to execute `import-meta-env` binary to inject environment variables.
+Finally, before serving your application, remember to execute [`import-meta-env`](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme) binary to inject environment variables.
 
 Adjust the preview script in your package.json:
 
@@ -78,44 +78,11 @@ Adjust the preview script in your package.json:
 }
 ```
 
-To deploy container with docker or others, you can use [pkg](https://github.com/vercel/pkg) to create a standalone executable.
-
-For example, you can pack the alpine version like this:
-
-```sh
-$ npm i -g pkg
-$ npx pkg ./node_modules/@import-meta-env/vite/bin/import-meta-env.js -t node16-alpine
-```
-
 See also:
 
 - [examples](./examples)
 - [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
-
-## 📖 API
-
-### import-meta-env binary
-
-```sh
-$ npx import-meta-env --help
-Usage: import-meta-env [options]
-
-Inject environment variables from the system or `.env` file.
-
-Options:
-  -V, --version           output the version number
-  -e, --env <path>        .env file path (default: ".env")
-  -x, --example <path>    .env example file path (default: ".env.example")
-  -o, --output <path...>  output file paths (default: "dist/assets/import-meta-env*")
-  -h, --help              display help for command
-```
-
-Since we may switch to different environment variables multiple times, this executable also creates `*.bak` files to restore.
-
-## 🤝 Contributing
-
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull
-requests to us.
+- [@import-meta-env/cli](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli) - A binary package is used to inject environment variables into those placeholders.
 
 ## 📝 License
 

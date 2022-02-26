@@ -3,15 +3,18 @@ import colors from "picocolors";
 import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { version } from "../package.json";
-import { resolve } from "./env";
-import { getPackageManagerExecCommand } from "./get-package-manager-exec-command";
-import { assignManualChunks } from "./assign-manual-chunks";
 import {
-  preserveViteBuiltInEnv,
-  restoreViteBuiltInEnv,
-} from "./transform-built-in-env";
-import { envExampleFilePath, envFilePath, uniqueVariableName } from "./shared";
-import { virtualFile, virtualId, placeholder } from "./shared";
+  resolve,
+  getPackageManagerExecCommand,
+  envExampleFilePath,
+  envFilePath,
+  uniqueVariableName,
+  virtualFile,
+  virtualId,
+  placeholder,
+} from "../../shared";
+import { assignManualChunks } from "./assign-manual-chunks";
+import { withholdViteBuiltInEnv } from "./withhold-built-in-env";
 
 const createPlugin: () => Plugin[] = () => {
   let config: ResolvedConfig;
@@ -37,14 +40,12 @@ const createPlugin: () => Plugin[] = () => {
     },
     transform(code, id) {
       if (id !== virtualId && id.includes("node_modules") === false) {
-        code = preserveViteBuiltInEnv(code);
-
         code = code.replace(
           /import\.meta\.env/g,
           JSON.stringify({ ...env, ...config.env })
         );
 
-        code = restoreViteBuiltInEnv(code);
+        code = withholdViteBuiltInEnv(code);
       }
 
       return code;
@@ -112,11 +113,9 @@ const createPlugin: () => Plugin[] = () => {
           );
         }
 
-        code = preserveViteBuiltInEnv(code);
-
         code = code.replace(/import\.meta\.env/g, uniqueVariableName);
 
-        code = restoreViteBuiltInEnv(code);
+        code = withholdViteBuiltInEnv(code);
       }
       return code;
     },

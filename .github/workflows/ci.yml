@@ -32,14 +32,11 @@ jobs:
       - name: Install deps
         run: pnpm i
 
-      - name: Test @import-meta-env/vite
-        run: pnpm run test --parallel --stream --filter @import-meta-env/vite
+      - name: Test
+        run: pnpm run test --parallel --stream --filter @import-meta-env/*
 
-      - name: Build @import-meta-env/vite
-        run: pnpm run build --parallel --stream --filter @import-meta-env/vite
-
-      - name: Build @import-meta-env/babel
-        run: pnpm run build --parallel --stream --filter @import-meta-env/babel
+      - name: Build
+        run: pnpm run build --parallel --stream --filter @import-meta-env/*
 
       - name: Install binary
         run: pnpm i
@@ -49,21 +46,18 @@ jobs:
           pnpm \
             --parallel \
             --stream \
-            --filter \!html \
-            --filter \!@import-meta-env/vite \
-            --filter \!@import-meta-env/babel \
-            --filter \!vue-ts \
-            --filter \!vue-jsx \
+            --filter *-example \
+            --filter \!vite-html-example \
+            --filter \!vite-vue-* \
             exec sh test.sh
 
-      - name: Build&Test examples/vue-*
+      - name: Build&Test examples/vite-vue-*
         if: ${{ matrix.node_version >= '14' }}
         run: |
           pnpm \
             --parallel \
             --stream \
-            --filter vue-ts \
-            --filter vue-jsx \
+            --filter vite-vue* \
             exec sh test.sh
 
   compatibility:
@@ -80,6 +74,7 @@ jobs:
           - os: windows-latest
             node_version: lts/*
             dotenv_version: latest
+      fail-fast: false
     name: "compatibility: ${{ matrix.os }}, dotenv@${{ matrix.dotenv_version }}, node@${{ matrix.node_version }}"
     steps:
       - name: Checkout
@@ -96,24 +91,23 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: "pnpm"
 
-      - name: Install deps
+      - name: Install package
         run: |
           pnpm i
-          pnpm --parallel --stream --filter @import-meta-env/vite exec pnpm rm dotenv
-          pnpm i -W -D dotenv@${{ matrix.dotenv_version }}
+          pnpm --parallel --stream --filter @import-meta-env/* exec pnpm rm dotenv
+          pnpm --parallel --stream --filter @import-meta-env/* exec pnpm i --save-peer dotenv@${{ matrix.dotenv_version }}
 
-      - name: Test @import-meta-env/vite
-        run: pnpm run test --parallel --stream --filter @import-meta-env/vite
+      - name: Test package
+        run: pnpm run test --parallel --stream --filter @import-meta-env/*
 
-      - name: Build @import-meta-env/vite
-        run: pnpm run build --parallel --stream --filter @import-meta-env/vite
+      - name: Build package
+        run: pnpm run build --parallel --stream --filter @import-meta-env/*
 
       - name: Install binary
-        run: pnpm i
+        run: pnpm i --no-frozen-lockfile
 
       - name: Test example
-        run: |
-          pnpm run test --parallel --stream --filter html
+        run: pnpm run test --parallel --stream --filter vite-html-example
 
   lint:
     runs-on: ubuntu-latest

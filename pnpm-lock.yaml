@@ -4,34 +4,69 @@ importers:
 
   .:
     specifiers:
+      '@babel/core': ^7.17.5
+      '@babel/preset-env': ^7.16.11
+      '@babel/preset-typescript': ^7.16.7
+      '@types/jest': ^27.4.0
+      '@types/node': ^17.0.8
+      '@types/tmp': ^0.2.3
+      babel-jest: ^27.5.1
+      esbuild: ^0.14.23
+      jest: ^27.5.1
+      picocolors: ^1.0.0
       prettier: ^2.5.1
+      rimraf: ^3.0.2
+      standard-version: ^9.3.2
+      tmp: ^0.2.1
+      typescript: ^4.5.4
     devDependencies:
+      '@babel/core': 7.17.5
+      '@babel/preset-env': 7.16.11_@babel+core@7.17.5
+      '@babel/preset-typescript': 7.16.7_@babel+core@7.17.5
+      '@types/jest': 27.4.0
+      '@types/node': 17.0.8
+      '@types/tmp': 0.2.3
+      babel-jest: 27.5.1_@babel+core@7.17.5
+      esbuild: 0.14.23
+      jest: 27.5.1
+      picocolors: 1.0.0
       prettier: 2.5.1
+      rimraf: 3.0.2
+      standard-version: 9.3.2
+      tmp: 0.2.1
+      typescript: 4.5.4
 
   packages/babel:
     specifiers:
-      '@babel/core': ^7.17.5
       dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
-      esbuild: ^0.14.11
-      rimraf: ^3.0.2
-      standard-version: ^9.3.2
-      typescript: ^4.5.4
-      vite: ^2.7.13
+      picocolors: ^1.0.0
+    dependencies:
+      picocolors: 1.0.0
     devDependencies:
-      '@babel/core': 7.17.5
       dotenv: 15.0.1
-      esbuild: 0.14.23
-      rimraf: 3.0.2
-      standard-version: 9.3.2
-      typescript: 4.5.4
-      vite: 2.8.4
 
-  packages/babel/examples/jest:
+  packages/cli:
+    specifiers:
+      '@types/glob': ^7.2.0
+      commander: ^9.0.0
+      dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
+      glob: ^7.2.0
+      picocolors: ^1.0.0
+    dependencies:
+      commander: 9.0.0
+      glob: 7.2.0
+      picocolors: 1.0.0
+    devDependencies:
+      '@types/glob': 7.2.0
+      dotenv: 15.0.1
+
+  packages/examples/babel-jest-example:
     specifiers:
       '@babel/core': ^7.17.5
       '@babel/preset-env': ^7.16.11
       '@babel/preset-typescript': ^7.16.7
       '@import-meta-env/babel': workspace:*
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@types/jest': ^27.4.0
       babel-jest: ^27.5.1
@@ -43,8 +78,9 @@ importers:
       '@babel/core': 7.17.5
       '@babel/preset-env': 7.16.11_@babel+core@7.17.5
       '@babel/preset-typescript': 7.16.7_@babel+core@7.17.5
-      '@import-meta-env/babel': link:../..
-      '@import-meta-env/vite': link:../../../vite
+      '@import-meta-env/babel': link:../../babel
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@types/jest': 27.4.0
       babel-jest: 27.5.1_@babel+core@7.17.5
       cross-env: 7.0.3
@@ -52,125 +88,95 @@ importers:
       typescript: 4.5.4
       vite: 2.8.4
 
-  packages/babel/examples/mocha:
+  packages/examples/babel-mocha-example:
     specifiers:
       '@babel/core': ^7.17.5
       '@babel/preset-env': ^7.16.11
-      '@babel/preset-typescript': ^7.16.7
       '@babel/register': ^7.17.0
       '@import-meta-env/babel': workspace:*
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       mocha: ^9.2.1
-      typescript: ^4.4.4
       vite: ^2.8.4
     devDependencies:
       '@babel/core': 7.17.5
       '@babel/preset-env': 7.16.11_@babel+core@7.17.5
-      '@babel/preset-typescript': 7.16.7_@babel+core@7.17.5
       '@babel/register': 7.17.0_@babel+core@7.17.5
-      '@import-meta-env/babel': link:../..
-      '@import-meta-env/vite': link:../../../vite
+      '@import-meta-env/babel': link:../../babel
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       mocha: 9.2.1
-      typescript: 4.5.4
       vite: 2.8.4
 
-  packages/vite:
+  packages/examples/vite-built-in-import-meta-env-example:
     specifiers:
-      '@babel/core': ^7.17.5
-      '@babel/preset-env': ^7.16.11
-      '@babel/preset-typescript': ^7.16.7
-      '@types/glob': ^7.2.0
-      '@types/jest': ^27.4.0
-      '@types/node': ^17.0.8
-      '@types/object-hash': ^2.2.1
-      '@types/tmp': ^0.2.3
-      babel-jest: ^27.5.1
-      commander: ^9.0.0
-      dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
-      esbuild: ^0.14.11
-      glob: ^7.2.0
-      jest: ^27.5.1
-      object-hash: ^3.0.0
-      picocolors: ^1.0.0
-      rimraf: ^3.0.2
-      standard-version: ^9.3.2
-      tmp: ^0.2.1
-      ts-node: ^10.5.0
-      typescript: ^4.5.4
-      vite: ^2.7.13
-    dependencies:
-      commander: 9.0.0
-      glob: 7.2.0
-      object-hash: 3.0.0
-      picocolors: 1.0.0
-    devDependencies:
-      '@babel/core': 7.17.5
-      '@babel/preset-env': 7.16.11_@babel+core@7.17.5
-      '@babel/preset-typescript': 7.16.7_@babel+core@7.17.5
-      '@types/glob': 7.2.0
-      '@types/jest': 27.4.0
-      '@types/node': 17.0.8
-      '@types/object-hash': 2.2.1
-      '@types/tmp': 0.2.3
-      babel-jest: 27.5.1_@babel+core@7.17.5
-      dotenv: 15.0.1
-      esbuild: 0.14.11
-      jest: 27.5.1_ts-node@10.5.0
-      rimraf: 3.0.2
-      standard-version: 9.3.2
-      tmp: 0.2.1
-      ts-node: 10.5.0_faf01e1d5a40372a98081522dcafc186
-      typescript: 4.5.4
-      vite: 2.7.13
-
-  packages/vite/examples/config-build-assets-dir:
-    specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/config-build-out-dir:
+  packages/examples/vite-config-build-assets-dir-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/html:
+  packages/examples/vite-config-build-out-dir-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
+      '@import-meta-env/vite': workspace:*
+      cross-env: ^7.0.3
+      vite: ^2.8.4
+    devDependencies:
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
+      cross-env: 7.0.3
+      vite: 2.8.4
+
+  packages/examples/vite-html-example:
+    specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       rimraf: ^3.0.2
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       rimraf: 3.0.2
       vite: 2.8.4
 
-  packages/vite/examples/legacy:
+  packages/examples/vite-legacy-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@vitejs/plugin-legacy': ^1.6.4
       cross-env: ^7.0.3
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@vitejs/plugin-legacy': 1.6.4_vite@2.8.4
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/lit:
+  packages/examples/vite-lit-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       lit: ^2.2.0
@@ -178,13 +184,15 @@ importers:
     dependencies:
       lit: 2.2.0
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/preact:
+  packages/examples/vite-preact-example:
     specifiers:
       '@babel/core': ^7.17.5
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@preact/preset-vite': ^2.1.5
       cross-env: ^7.0.3
@@ -194,13 +202,15 @@ importers:
       preact: 10.6.6
     devDependencies:
       '@babel/core': 7.17.5
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@preact/preset-vite': 2.1.7_698d816b37024fcdfcf21e366e54063a
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/react:
+  packages/examples/vite-react-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@types/react': ^17.0.33
       '@types/react-dom': ^17.0.10
@@ -216,7 +226,8 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       remove: 0.1.5
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
       '@vitejs/plugin-react': 1.1.4
@@ -224,70 +235,69 @@ importers:
       typescript: 4.5.4
       vite: 2.8.4
 
-  packages/vite/examples/svelte:
+  packages/examples/vite-svelte-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@sveltejs/vite-plugin-svelte': ^1.0.0-next.37
       cross-env: ^7.0.3
       svelte: ^3.44.0
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.37_svelte@3.46.4+vite@2.8.4
       cross-env: 7.0.3
       svelte: 3.46.4
       vite: 2.8.4
 
-  packages/vite/examples/vanilla:
+  packages/examples/vite-vanilla-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/vanilla-ts:
+  packages/examples/vite-vanilla-ts-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@types/node': ^17.0.8
       cross-env: ^7.0.3
       typescript: ^4.4.4
       vite: ^2.8.4
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@types/node': 17.0.8
       cross-env: 7.0.3
       typescript: 4.5.4
       vite: 2.8.4
 
-  packages/vite/examples/vite-built-in-import-meta-env:
+  packages/examples/vite-vitest-example:
     specifiers:
-      '@import-meta-env/vite': workspace:*
-      cross-env: ^7.0.3
-      vite: ^2.8.4
-    devDependencies:
-      '@import-meta-env/vite': link:../..
-      cross-env: 7.0.3
-      vite: 2.8.4
-
-  packages/vite/examples/vitest:
-    specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       cross-env: ^7.0.3
       typescript: ^4.4.4
       vite: ^2.8.4
       vitest: ^0.2.5
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       cross-env: 7.0.3
       typescript: 4.5.4
       vite: 2.8.4
       vitest: 0.2.5
 
-  packages/vite/examples/vue-jsx:
+  packages/examples/vite-vue-jsx-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@vitejs/plugin-vue': ^2.0.0
       '@vitejs/plugin-vue-jsx': ^1.3.3
@@ -297,14 +307,16 @@ importers:
     dependencies:
       vue: 3.2.29
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@vitejs/plugin-vue': 2.1.0_vite@2.8.4+vue@3.2.29
       '@vitejs/plugin-vue-jsx': 1.3.3
       cross-env: 7.0.3
       vite: 2.8.4
 
-  packages/vite/examples/vue-ts:
+  packages/examples/vite-vue-ts-example:
     specifiers:
+      '@import-meta-env/cli': workspace:*
       '@import-meta-env/vite': workspace:*
       '@vitejs/plugin-vue': ^2.0.0
       cross-env: ^7.0.3
@@ -316,13 +328,35 @@ importers:
     dependencies:
       vue: 3.2.29
     devDependencies:
-      '@import-meta-env/vite': link:../..
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/vite': link:../../vite
       '@vitejs/plugin-vue': 2.1.0_vite@2.8.4+vue@3.2.29
       cross-env: 7.0.3
       pug: 3.0.2
       typescript: 4.5.4
       vite: 2.8.4
       vue-tsc: 0.29.8_typescript@4.5.4
+
+  packages/vite:
+    specifiers:
+      '@types/node': ^17.0.8
+      '@types/object-hash': ^2.2.1
+      dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
+      object-hash: ^3.0.0
+      picocolors: ^1.0.0
+      ts-node: ^10.5.0
+      typescript: ^4.5.4
+      vite: ^2.7.13
+    dependencies:
+      object-hash: 3.0.0
+      picocolors: 1.0.0
+    devDependencies:
+      '@types/node': 17.0.8
+      '@types/object-hash': 2.2.1
+      dotenv: 15.0.1
+      ts-node: 10.5.0_faf01e1d5a40372a98081522dcafc186
+      typescript: 4.5.4
+      vite: 2.7.13
 
 packages:
 
@@ -1696,51 +1730,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@jest/core/27.5.1_ts-node@10.5.0:
-    resolution: {integrity: sha512-AK6/UTrvQD0Cd24NSqmIA6rKsu0tKIxfiCducZvqxYdmMisOYAsdItspT+fQDQYARPf8XgjAFZi0ogW2agH5nQ==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    peerDependencies:
-      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
-    peerDependenciesMeta:
-      node-notifier:
-        optional: true
-    dependencies:
-      '@jest/console': 27.5.1
-      '@jest/reporters': 27.5.1
-      '@jest/test-result': 27.5.1
-      '@jest/transform': 27.5.1
-      '@jest/types': 27.5.1
-      '@types/node': 17.0.8
-      ansi-escapes: 4.3.2
-      chalk: 4.1.2
-      emittery: 0.8.1
-      exit: 0.1.2
-      graceful-fs: 4.2.9
-      jest-changed-files: 27.5.1
-      jest-config: 27.5.1_ts-node@10.5.0
-      jest-haste-map: 27.5.1
-      jest-message-util: 27.5.1
-      jest-regex-util: 27.5.1
-      jest-resolve: 27.5.1
-      jest-resolve-dependencies: 27.5.1
-      jest-runner: 27.5.1
-      jest-runtime: 27.5.1
-      jest-snapshot: 27.5.1
-      jest-util: 27.5.1
-      jest-validate: 27.5.1
-      jest-watcher: 27.5.1
-      micromatch: 4.0.4
-      rimraf: 3.0.2
-      slash: 3.0.0
-      strip-ansi: 6.0.1
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - ts-node
-      - utf-8-validate
-    dev: true
-
   /@jest/environment/27.5.1:
     resolution: {integrity: sha512-/WQjhPJe3/ghaol/4Bq480JKXV/Rfw8nQdN7f41fM8VDHLcxKXou6QyXAh3EFr9/bVG3x74z1NWDkP87EiY8gA==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -1908,7 +1897,7 @@ packages:
       babel-plugin-transform-hook-names: 1.0.2_@babel+core@7.17.5
       debug: 4.3.3
       kolorist: 1.5.1
-      resolve: 1.21.0
+      resolve: 1.22.0
       vite: 2.8.4
     transitivePeerDependencies:
       - preact
@@ -2183,7 +2172,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.16.7_@babel+core@7.17.5
       '@rollup/pluginutils': 4.1.2
       react-refresh: 0.11.0
-      resolve: 1.21.0
+      resolve: 1.22.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2319,7 +2308,7 @@ packages:
       '@vue/shared': 3.2.29
       estree-walker: 2.0.2
       magic-string: 0.25.7
-      postcss: 8.4.5
+      postcss: 8.4.6
       source-map: 0.6.1
     dev: false
 
@@ -3344,14 +3333,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-android-arm64/0.14.11:
-    resolution: {integrity: sha512-6iHjgvMnC/SzDH8TefL+/3lgCjYWwAd1LixYfmz/TBPbDQlxcuSkX0yiQgcJB9k+ibZ54yjVXziIwGdlc+6WNw==}
-    cpu: [arm64]
-    os: [android]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-android-arm64/0.14.23:
     resolution: {integrity: sha512-k9sXem++mINrZty1v4FVt6nC5BQCFG4K2geCIUUqHNlTdFnuvcqsY7prcKZLFhqVC1rbcJAr9VSUGFL/vD4vsw==}
     engines: {node: '>=12'}
@@ -3363,14 +3344,6 @@ packages:
 
   /esbuild-darwin-64/0.13.15:
     resolution: {integrity: sha512-ihOQRGs2yyp7t5bArCwnvn2Atr6X4axqPpEdCFPVp7iUj4cVSdisgvEKdNR7yH3JDjW6aQDw40iQFoTqejqxvQ==}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-darwin-64/0.14.11:
-    resolution: {integrity: sha512-olq84ikh6TiBcrs3FnM4eR5VPPlcJcdW8BnUz/lNoEWYifYQ+Po5DuYV1oz1CTFMw4k6bQIZl8T3yxL+ZT2uvQ==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
@@ -3394,14 +3367,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-darwin-arm64/0.14.11:
-    resolution: {integrity: sha512-Jj0ieWLREPBYr/TZJrb2GFH8PVzDqiQWavo1pOFFShrcmHWDBDrlDxPzEZ67NF/Un3t6sNNmeI1TUS/fe1xARg==}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-darwin-arm64/0.14.23:
     resolution: {integrity: sha512-yat73Z/uJ5tRcfRiI4CCTv0FSnwErm3BJQeZAh+1tIP0TUNh6o+mXg338Zl5EKChD+YGp6PN+Dbhs7qa34RxSw==}
     engines: {node: '>=12'}
@@ -3413,14 +3378,6 @@ packages:
 
   /esbuild-freebsd-64/0.13.15:
     resolution: {integrity: sha512-G3dLBXUI6lC6Z09/x+WtXBXbOYQZ0E8TDBqvn7aMaOCzryJs8LyVXKY4CPnHFXZAbSwkCbqiPuSQ1+HhrNk7EA==}
-    cpu: [x64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-freebsd-64/0.14.11:
-    resolution: {integrity: sha512-C5sT3/XIztxxz/zwDjPRHyzj/NJFOnakAanXuyfLDwhwupKPd76/PPHHyJx6Po6NI6PomgVp/zi6GRB8PfrOTA==}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
@@ -3444,14 +3401,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-freebsd-arm64/0.14.11:
-    resolution: {integrity: sha512-y3Llu4wbs0bk4cwjsdAtVOesXb6JkdfZDLKMt+v1U3tOEPBdSu6w8796VTksJgPfqvpX22JmPLClls0h5p+L9w==}
-    cpu: [arm64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-freebsd-arm64/0.14.23:
     resolution: {integrity: sha512-uyPqBU/Zcp6yEAZS4LKj5jEE0q2s4HmlMBIPzbW6cTunZ8cyvjG6YWpIZXb1KK3KTJDe62ltCrk3VzmWHp+iLg==}
     engines: {node: '>=12'}
@@ -3463,14 +3412,6 @@ packages:
 
   /esbuild-linux-32/0.13.15:
     resolution: {integrity: sha512-ZvTBPk0YWCLMCXiFmD5EUtB30zIPvC5Itxz0mdTu/xZBbbHJftQgLWY49wEPSn2T/TxahYCRDWun5smRa0Tu+g==}
-    cpu: [ia32]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-32/0.14.11:
-    resolution: {integrity: sha512-Cg3nVsxArjyLke9EuwictFF3Sva+UlDTwHIuIyx8qpxRYAOUTmxr2LzYrhHyTcGOleLGXUXYsnUVwKqnKAgkcg==}
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
@@ -3494,14 +3435,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-linux-64/0.14.11:
-    resolution: {integrity: sha512-oeR6dIrrojr8DKVrxtH3xl4eencmjsgI6kPkDCRIIFwv4p+K7ySviM85K66BN01oLjzthpUMvBVfWSJkBLeRbg==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-linux-64/0.14.23:
     resolution: {integrity: sha512-H0gztDP60qqr8zoFhAO64waoN5yBXkmYCElFklpd6LPoobtNGNnDe99xOQm28+fuD75YJ7GKHzp/MLCLhw2+vQ==}
     engines: {node: '>=12'}
@@ -3513,14 +3446,6 @@ packages:
 
   /esbuild-linux-arm/0.13.15:
     resolution: {integrity: sha512-wUHttDi/ol0tD8ZgUMDH8Ef7IbDX+/UsWJOXaAyTdkT7Yy9ZBqPg8bgB/Dn3CZ9SBpNieozrPRHm0BGww7W/jA==}
-    cpu: [arm]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-arm/0.14.11:
-    resolution: {integrity: sha512-vcwskfD9g0tojux/ZaTJptJQU3a7YgTYsptK1y6LQ/rJmw7U5QJvboNawqM98Ca3ToYEucfCRGbl66OTNtp6KQ==}
     cpu: [arm]
     os: [linux]
     requiresBuild: true
@@ -3544,14 +3469,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-linux-arm64/0.14.11:
-    resolution: {integrity: sha512-+e6ZCgTFQYZlmg2OqLkg1jHLYtkNDksxWDBWNtI4XG4WxuOCUErLqfEt9qWjvzK3XBcCzHImrajkUjO+rRkbMg==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-linux-arm64/0.14.23:
     resolution: {integrity: sha512-c4MLOIByNHR55n3KoYf9hYDfBRghMjOiHLaoYLhkQkIabb452RWi+HsNgB41sUpSlOAqfpqKPFNg7VrxL3UX9g==}
     engines: {node: '>=12'}
@@ -3569,14 +3486,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-linux-mips64le/0.14.11:
-    resolution: {integrity: sha512-Rrs99L+p54vepmXIb87xTG6ukrQv+CzrM8eoeR+r/OFL2Rg8RlyEtCeshXJ2+Q66MXZOgPJaokXJZb9snq28bw==}
-    cpu: [mips64el]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-linux-mips64le/0.14.23:
     resolution: {integrity: sha512-kHKyKRIAedYhKug2EJpyJxOUj3VYuamOVA1pY7EimoFPzaF3NeY7e4cFBAISC/Av0/tiV0xlFCt9q0HJ68IBIw==}
     engines: {node: '>=12'}
@@ -3588,14 +3497,6 @@ packages:
 
   /esbuild-linux-ppc64le/0.13.15:
     resolution: {integrity: sha512-h6gYF+OsaqEuBjeesTBtUPw0bmiDu7eAeuc2OEH9S6mV9/jPhPdhOWzdeshb0BskRZxPhxPOjqZ+/OqLcxQwEQ==}
-    cpu: [ppc64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-ppc64le/0.14.11:
-    resolution: {integrity: sha512-JyzziGAI0D30Vyzt0HDihp4s1IUtJ3ssV2zx9O/c+U/dhUHVP2TmlYjzCfCr2Q6mwXTeloDcLS4qkyvJtYptdQ==}
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
@@ -3620,14 +3521,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-linux-s390x/0.14.11:
-    resolution: {integrity: sha512-DoThrkzunZ1nfRGoDN6REwmo8ZZWHd2ztniPVIR5RMw/Il9wiWEYBahb8jnMzQaSOxBsGp0PbyJeVLTUatnlcw==}
-    cpu: [s390x]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-linux-s390x/0.14.23:
     resolution: {integrity: sha512-GHMDCyfy7+FaNSO8RJ8KCFsnax8fLUsOrj9q5Gi2JmZMY0Zhp75keb5abTFCq2/Oy6KVcT0Dcbyo/bFb4rIFJA==}
     engines: {node: '>=12'}
@@ -3639,14 +3532,6 @@ packages:
 
   /esbuild-netbsd-64/0.13.15:
     resolution: {integrity: sha512-3+yE9emwoevLMyvu+iR3rsa+Xwhie7ZEHMGDQ6dkqP/ndFzRHkobHUKTe+NCApSqG5ce2z4rFu+NX/UHnxlh3w==}
-    cpu: [x64]
-    os: [netbsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-netbsd-64/0.14.11:
-    resolution: {integrity: sha512-12luoRQz+6eihKYh1zjrw0CBa2aw3twIiHV/FAfjh2NEBDgJQOY4WCEUEN+Rgon7xmLh4XUxCQjnwrvf8zhACw==}
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
@@ -3670,14 +3555,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-openbsd-64/0.14.11:
-    resolution: {integrity: sha512-l18TZDjmvwW6cDeR4fmizNoxndyDHamGOOAenwI4SOJbzlJmwfr0jUgjbaXCUuYVOA964siw+Ix+A+bhALWg8Q==}
-    cpu: [x64]
-    os: [openbsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-openbsd-64/0.14.23:
     resolution: {integrity: sha512-uYYNqbVR+i7k8ojP/oIROAHO9lATLN7H2QeXKt2H310Fc8FJj4y3Wce6hx0VgnJ4k1JDrgbbiXM8rbEgQyg8KA==}
     engines: {node: '>=12'}
@@ -3689,14 +3566,6 @@ packages:
 
   /esbuild-sunos-64/0.13.15:
     resolution: {integrity: sha512-lbivT9Bx3t1iWWrSnGyBP9ODriEvWDRiweAs69vI+miJoeKwHWOComSRukttbuzjZ8r1q0mQJ8Z7yUsDJ3hKdw==}
-    cpu: [x64]
-    os: [sunos]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-sunos-64/0.14.11:
-    resolution: {integrity: sha512-bmYzDtwASBB8c+0/HVOAiE9diR7+8zLm/i3kEojUH2z0aIs6x/S4KiTuT5/0VKJ4zk69kXel1cNWlHBMkmavQg==}
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
@@ -3720,14 +3589,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-windows-32/0.14.11:
-    resolution: {integrity: sha512-J1Ys5hMid8QgdY00OBvIolXgCQn1ARhYtxPnG6ESWNTty3ashtc4+As5nTrsErnv8ZGUcWZe4WzTP/DmEVX1UQ==}
-    cpu: [ia32]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-windows-32/0.14.23:
     resolution: {integrity: sha512-Kttmi3JnohdaREbk6o9e25kieJR379TsEWF0l39PQVHXq3FR6sFKtVPgY8wk055o6IB+rllrzLnbqOw/UV60EA==}
     engines: {node: '>=12'}
@@ -3745,14 +3606,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-windows-64/0.14.11:
-    resolution: {integrity: sha512-h9FmMskMuGeN/9G9+LlHPAoiQk9jlKDUn9yA0MpiGzwLa82E7r1b1u+h2a+InprbSnSLxDq/7p5YGtYVO85Mlg==}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /esbuild-windows-64/0.14.23:
     resolution: {integrity: sha512-JtIT0t8ymkpl6YlmOl6zoSWL5cnCgyLaBdf/SiU/Eg3C13r0NbHZWNT/RDEMKK91Y6t79kTs3vyRcNZbfu5a8g==}
     engines: {node: '>=12'}
@@ -3764,14 +3617,6 @@ packages:
 
   /esbuild-windows-arm64/0.13.15:
     resolution: {integrity: sha512-zzvyCVVpbwQQATaf3IG8mu1IwGEiDxKkYUdA4FpoCHi1KtPa13jeScYDjlW0Qh+ebWzpKfR2ZwvqAQkSWNcKjA==}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-windows-arm64/0.14.11:
-    resolution: {integrity: sha512-dZp7Krv13KpwKklt9/1vBFBMqxEQIO6ri7Azf8C+ob4zOegpJmha2XY9VVWP/OyQ0OWk6cEeIzMJwInRZrzBUQ==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
@@ -3809,31 +3654,6 @@ packages:
       esbuild-windows-32: 0.13.15
       esbuild-windows-64: 0.13.15
       esbuild-windows-arm64: 0.13.15
-    dev: true
-
-  /esbuild/0.14.11:
-    resolution: {integrity: sha512-xZvPtVj6yecnDeFb3KjjCM6i7B5TCAQZT77kkW/CpXTMnd6VLnRPKrUB1XHI1pSq6a4Zcy3BGueQ8VljqjDGCg==}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      esbuild-android-arm64: 0.14.11
-      esbuild-darwin-64: 0.14.11
-      esbuild-darwin-arm64: 0.14.11
-      esbuild-freebsd-64: 0.14.11
-      esbuild-freebsd-arm64: 0.14.11
-      esbuild-linux-32: 0.14.11
-      esbuild-linux-64: 0.14.11
-      esbuild-linux-arm: 0.14.11
-      esbuild-linux-arm64: 0.14.11
-      esbuild-linux-mips64le: 0.14.11
-      esbuild-linux-ppc64le: 0.14.11
-      esbuild-linux-s390x: 0.14.11
-      esbuild-netbsd-64: 0.14.11
-      esbuild-openbsd-64: 0.14.11
-      esbuild-sunos-64: 0.14.11
-      esbuild-windows-32: 0.14.11
-      esbuild-windows-64: 0.14.11
-      esbuild-windows-arm64: 0.14.11
     dev: true
 
   /esbuild/0.14.23:
@@ -4167,7 +3987,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.15.0
+      uglify-js: 3.15.1
     dev: true
 
   /hard-rejection/2.1.0:
@@ -4555,36 +4375,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jest-cli/27.5.1_ts-node@10.5.0:
-    resolution: {integrity: sha512-Hc6HOOwYq4/74/c62dEE3r5elx8wjYqxY0r0G/nFrLDPMFRu6RA/u8qINOIkvhxG7mMQ5EJsOGfRpI8L6eFUVw==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    hasBin: true
-    peerDependencies:
-      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
-    peerDependenciesMeta:
-      node-notifier:
-        optional: true
-    dependencies:
-      '@jest/core': 27.5.1_ts-node@10.5.0
-      '@jest/test-result': 27.5.1
-      '@jest/types': 27.5.1
-      chalk: 4.1.2
-      exit: 0.1.2
-      graceful-fs: 4.2.9
-      import-local: 3.1.0
-      jest-config: 27.5.1_ts-node@10.5.0
-      jest-util: 27.5.1
-      jest-validate: 27.5.1
-      prompts: 2.4.2
-      yargs: 16.2.0
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - ts-node
-      - utf-8-validate
-    dev: true
-
   /jest-config/27.5.1:
     resolution: {integrity: sha512-5sAsjm6tGdsVbW9ahcChPAFCk4IlkQUknH5AvKjuLTSlcO/wCZKyFdn7Rg0EkC+OGgWODEy2hDpWB1PgzH0JNA==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -4618,47 +4408,6 @@ packages:
       pretty-format: 27.5.1
       slash: 3.0.0
       strip-json-comments: 3.1.1
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-    dev: true
-
-  /jest-config/27.5.1_ts-node@10.5.0:
-    resolution: {integrity: sha512-5sAsjm6tGdsVbW9ahcChPAFCk4IlkQUknH5AvKjuLTSlcO/wCZKyFdn7Rg0EkC+OGgWODEy2hDpWB1PgzH0JNA==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    peerDependencies:
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      ts-node:
-        optional: true
-    dependencies:
-      '@babel/core': 7.17.5
-      '@jest/test-sequencer': 27.5.1
-      '@jest/types': 27.5.1
-      babel-jest: 27.5.1_@babel+core@7.17.5
-      chalk: 4.1.2
-      ci-info: 3.3.0
-      deepmerge: 4.2.2
-      glob: 7.2.0
-      graceful-fs: 4.2.9
-      jest-circus: 27.5.1
-      jest-environment-jsdom: 27.5.1
-      jest-environment-node: 27.5.1
-      jest-get-type: 27.5.1
-      jest-jasmine2: 27.5.1
-      jest-regex-util: 27.5.1
-      jest-resolve: 27.5.1
-      jest-runner: 27.5.1
-      jest-util: 27.5.1
-      jest-validate: 27.5.1
-      micromatch: 4.0.4
-      parse-json: 5.2.0
-      pretty-format: 27.5.1
-      slash: 3.0.0
-      strip-json-comments: 3.1.1
-      ts-node: 10.5.0_faf01e1d5a40372a98081522dcafc186
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -4854,7 +4603,7 @@ packages:
       jest-pnp-resolver: 1.2.2_jest-resolve@27.5.1
       jest-util: 27.5.1
       jest-validate: 27.5.1
-      resolve: 1.21.0
+      resolve: 1.22.0
       resolve.exports: 1.1.0
       slash: 3.0.0
     dev: true
@@ -5018,27 +4767,6 @@ packages:
       '@jest/core': 27.5.1
       import-local: 3.1.0
       jest-cli: 27.5.1
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - ts-node
-      - utf-8-validate
-    dev: true
-
-  /jest/27.5.1_ts-node@10.5.0:
-    resolution: {integrity: sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    hasBin: true
-    peerDependencies:
-      node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
-    peerDependenciesMeta:
-      node-notifier:
-        optional: true
-    dependencies:
-      '@jest/core': 27.5.1_ts-node@10.5.0
-      import-local: 3.1.0
-      jest-cli: 27.5.1_ts-node@10.5.0
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -5461,6 +5189,7 @@ packages:
     resolution: {integrity: sha512-F8mf7R3iT9bvThBoW4tGXhXFHCctyCiUUPrWF8WaTqa3h96d9QybkSeba43XVOOE3oiLfkVDe4bT8MeGmkrTxw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: true
 
   /nanoid/3.2.0:
     resolution: {integrity: sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==}
@@ -5472,7 +5201,6 @@ packages:
     resolution: {integrity: sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
@@ -5742,6 +5470,7 @@ packages:
       nanoid: 3.1.32
       picocolors: 1.0.0
       source-map-js: 1.0.1
+    dev: true
 
   /postcss/8.4.6:
     resolution: {integrity: sha512-OovjwIzs9Te46vlEx7+uXB0PLijpwjXGKXjVGGPIGubGpq7uh5Xgf6D6FiJ/SzJMBosHDp6a2hiXOS97iBXcaA==}
@@ -5750,7 +5479,6 @@ packages:
       nanoid: 3.3.1
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: true
 
   /preact/10.6.6:
     resolution: {integrity: sha512-dgxpTFV2vs4vizwKohYKkk7g7rmp1wOOcfd4Tz3IB3Wi+ivZzsn/SpeKJhRENSE+n8sUfsAl4S3HiCVT923ABw==}
@@ -5830,7 +5558,7 @@ packages:
       jstransformer: 1.0.0
       pug-error: 2.0.0
       pug-walk: 2.0.0
-      resolve: 1.21.0
+      resolve: 1.22.0
     dev: true
 
   /pug-lexer/5.0.1:
@@ -6216,11 +5944,11 @@ packages:
   /source-map-js/1.0.1:
     resolution: {integrity: sha512-4+TN2b3tqOCd/kaGRJ/sTYA0tR0mdXx26ipdolxcwtJVqEnqNYvlCAt1q3ypy4QMlYus+Zh34RNtYLoq2oQ4IA==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -6627,8 +6355,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js/3.15.0:
-    resolution: {integrity: sha512-x+xdeDWq7FiORDvyIJ0q/waWd4PhjBNOm5dQUOq2AKC0IEjxOS66Ha9tctiVDGcRQuh69K7fgU5oRuTK4cysSg==}
+  /uglify-js/3.15.1:
+    resolution: {integrity: sha512-FAGKF12fWdkpvNJZENacOH0e/83eG6JyVQyanIJaBXCN1J11TUQv1T1/z8S+Z0CG0ZPk1nPcreF/c7lrTd0TEQ==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true

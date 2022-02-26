@@ -11,7 +11,8 @@
   "scripts": {
     "build": "rimraf dist bin && pnpm build-bundle",
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
-    "release": "standard-version -t babel --releaseCommitMessageFormat 'chore(release): @import-meta-env/babel@{{currentTag}}' --path . && pnpm build"
+    "release": "standard-version -t babel --releaseCommitMessageFormat 'chore(release): @import-meta-env/babel@{{currentTag}}' --path . && pnpm build",
+    "test": "echo \"no test\""
   },
   "repository": {
     "type": "git",
@@ -23,16 +24,12 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/babel#readme",
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0",
-    "esbuild": "^0.14.11",
-    "rimraf": "^3.0.2",
-    "standard-version": "^9.3.2",
-    "typescript": "^4.5.4",
-    "vite": "^2.7.13"
+    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
   },
   "peerDependencies": {
-    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0",
-    "vite": "^2.7.13"
+    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0"
   }
 }

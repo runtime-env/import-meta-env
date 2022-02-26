@@ -1,5 +1,5 @@
 import { UserConfig } from "vite";
-import { virtualId, virtualFile } from "./shared";
+import { virtualId, virtualFile } from "../../shared";
 
 type OutputOptions = Exclude<
   Exclude<
