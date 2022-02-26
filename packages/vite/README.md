@@ -84,6 +84,10 @@ See also:
 - [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
 - [@import-meta-env/cli](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli) - A binary package is used to inject environment variables into those placeholders.
 
+## 📖 API
+
+Please see [types.ts](./src/types.ts)
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details

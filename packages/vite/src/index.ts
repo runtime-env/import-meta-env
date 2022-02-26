@@ -15,8 +15,11 @@ import {
 } from "../../shared";
 import { assignManualChunks } from "./assign-manual-chunks";
 import { withholdViteBuiltInEnv } from "./withhold-built-in-env";
+import { PluginOptions } from "./types";
 
-const createPlugin: () => Plugin[] = () => {
+const createPlugin: (pluginOptions?: PluginOptions) => Plugin[] = (
+  pluginOptions
+) => {
   let config: ResolvedConfig;
   let env: Record<string, string> = {};
 
@@ -32,8 +35,8 @@ const createPlugin: () => Plugin[] = () => {
       } else {
         // dev
         env = resolve({
-          envFilePath,
-          envExampleFilePath,
+          envFilePath: pluginOptions?.env ?? envFilePath,
+          envExampleFilePath: pluginOptions?.envExample ?? envExampleFilePath,
         });
       }
       config = _config;
