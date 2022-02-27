@@ -15,7 +15,8 @@ import {
 } from "../../shared";
 import { PluginOptions } from "./types";
 import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
-import { mergeManualChunks } from "./vite/merge-manual-chunks";
+import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
+import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
 
 type ViteResolvedConfig = Parameters<
   Exclude<
@@ -136,7 +137,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
         if (isDev) {
         } else {
-          return mergeManualChunks(config);
+          return viteMergeManualChunks(config);
         }
       },
 
@@ -164,6 +165,30 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
           "import.meta.env"
         );
         return html;
+      },
+    },
+
+    rollup: {
+      outputOptions(options) {
+        // console.debug("rollup::outputOptions");
+
+        if (isDev) {
+        } else {
+          return rollupMergeManualChunks(options);
+        }
+      },
+
+      buildStart() {
+        // console.debug("rollup::buildStart");
+
+        isDev = process.env.NODE_ENV !== "production";
+
+        if (isDev) {
+          env = resolveEnv({
+            envFilePath,
+            envExampleFilePath,
+          });
+        }
       },
     },
 
