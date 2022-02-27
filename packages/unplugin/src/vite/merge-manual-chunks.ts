@@ -1,5 +1,5 @@
 import { createUnplugin } from "unplugin";
-import { virtualId, virtualFile } from "../../../shared";
+import { virtualFile } from "../../../shared";
 import {
   OutputOptions,
   mergeManualChunks as mergeManualChunksForObject,
@@ -19,7 +19,7 @@ export const mergeManualChunks = (config: UserConfig): UserConfig => {
   if (originalOutput === undefined) {
     output = {
       manualChunks: {
-        [virtualFile]: [virtualId],
+        [virtualFile]: [virtualFile],
       },
     };
   } else if (Array.isArray(originalOutput)) {

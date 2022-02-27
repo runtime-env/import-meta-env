@@ -1,4 +1,4 @@
-import { virtualId, virtualFile } from "../../../shared";
+import { virtualFile } from "../../../shared";
 
 export type GetManualChunk = (
   id: string,
@@ -23,7 +23,7 @@ export function mergeManualChunks(
     output = {
       ...originalOutput,
       manualChunks: {
-        [virtualFile]: [virtualId],
+        [virtualFile]: [virtualFile],
       },
     };
   } else if (typeof manualChunks === "function") {
@@ -31,7 +31,7 @@ export function mergeManualChunks(
       ...originalOutput,
       manualChunks: (id, api) => {
         const result = manualChunks(id, api);
-        if (result === undefined && id === virtualId) {
+        if (result === undefined && id === virtualFile) {
           return virtualFile;
         }
         return result;
@@ -41,7 +41,7 @@ export function mergeManualChunks(
     output = {
       ...originalOutput,
       manualChunks: {
-        [virtualFile]: [virtualId],
+        [virtualFile]: [virtualFile],
         ...manualChunks,
       },
     };

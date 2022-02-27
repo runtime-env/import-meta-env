@@ -10,7 +10,6 @@ import {
   envFilePath as defaultEnvFilePath,
   uniqueVariableName,
   virtualFile,
-  virtualId,
   placeholder,
 } from "../../shared";
 import { PluginOptions } from "./types";
@@ -39,7 +38,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   function loadProd(id: string) {
     // console.debug("loadProd: ", id);
 
-    if (id === virtualId) {
+    if (id === virtualFile) {
       const parsedExample = (() => {
         const { parsed, error } = dotenvConfig({ path: ".env.example" });
         if (error) {
@@ -73,7 +72,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   function transformDev(code: string, id: string) {
     // console.debug("transformDev: ", id);
 
-    if (id !== virtualId && id.includes("node_modules") === false) {
+    if (id !== virtualFile && id.includes("node_modules") === false) {
       switch (meta.framework) {
         case "vite":
           code = code.replace(
@@ -96,7 +95,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   function transformProd(code: string, id: string) {
     // console.debug("transformProd: ", id);
 
-    if (id !== virtualId && id.includes("node_modules") === false) {
+    if (id !== virtualFile && id.includes("node_modules") === false) {
       if (isTransformingJs(code, id) || isTransformingSvelte(code, id)) {
         code =
           `import ${uniqueVariableName} from '${virtualFile}';\n` +
@@ -203,11 +202,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       if (isDev) {
       } else {
         if (id === virtualFile) {
-          return virtualId;
-        }
-
-        if (id === virtualId) {
-          return virtualId;
+          return virtualFile;
         }
       }
     },
