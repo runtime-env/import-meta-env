@@ -37,7 +37,7 @@ See also:
 
 - [examples](https://github.com/iendeavor/import-meta-env/tree/main/packages/examples)
 - [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
-- [@import-meta-env/vite](https://github.com/iendeavor/import-meta-env/tree/main/packages/vite) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.
+- [@import-meta-env/unplugin](https://github.com/iendeavor/import-meta-env/tree/main/packages/unplugin) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.
 
 ## 📖 API
 

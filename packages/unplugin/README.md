@@ -121,19 +121,10 @@ console.log(import.meta.env["S3_BUCKET"]); // "YOURS3BUCKET", dynamic key also w
 console.log(import.meta.env.SECRET_KEY); // undefined
 ```
 
-Finally, before serving your application, remember to execute [`import-meta-env`](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme) binary to inject environment variables.
+Finally, before serving your application, remember to execute [`import-meta-env`](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme) binary to inject environment variables, for example:
 
-Adjust the preview script in your package.json:
-
-```json
-{
-  "scripts": {
-    // If you have a `.env` file:
-    "preview": "import-meta-env && vite preview",
-    // If you don't have a `.env` file:
-    "preview": "cross-env S3_BUCKET=YOURS3BUCKET import-meta-env && vite preview"
-  }
-}
+```sh
+$ cross-env S3_BUCKET=YOURS3BUCKET import-meta-env && your-serve-script
 ```
 
 See also:
