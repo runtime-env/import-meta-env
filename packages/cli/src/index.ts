@@ -99,9 +99,10 @@ export const main = (di: {
     }
     if (outputFileName.endsWith(backupFileExt)) return;
 
+    const code = readFileSync(outputFileName, "utf8");
+    if (code.includes(placeholder) === false) return;
     copyFileSync(outputFileName, backupFileName);
 
-    const code = readFileSync(outputFileName, "utf8");
     const outputCode = code.replace(placeholder, JSON.stringify(env));
     writeFileSync(outputFileName, outputCode);
   });
