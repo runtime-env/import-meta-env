@@ -29,19 +29,19 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: "pnpm"
 
-      - name: Install deps
+      - name: Install dependencies
         run: pnpm i
 
-      - name: Test
-        run: pnpm run test --stream --filter @import-meta-env/*
-
-      - name: Build
+      - name: Build packages
         run: pnpm run build --parallel --stream --filter @import-meta-env/*
 
       - name: Install binary
         run: pnpm i
 
-      - name: Build&Test examples
+      - name: Test packages
+        run: pnpm run test --stream --filter @import-meta-env/*
+
+      - name: Test examples
         run: |
           pnpm \
             --stream \
@@ -50,7 +50,7 @@ jobs:
             --filter \!vite-vue-* \
             exec sh test.sh
 
-      - name: Build&Test examples/vite-vue-*
+      - name: Test examples (vite-vue-*)
         if: ${{ matrix.node_version >= '14' }}
         run: |
           pnpm \
@@ -89,22 +89,22 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: "pnpm"
 
-      - name: Install package
+      - name: Install packages
         run: |
           pnpm i
           pnpm --parallel --stream --filter @import-meta-env/* exec pnpm rm dotenv
           pnpm --parallel --stream --filter @import-meta-env/* exec pnpm i --save-peer dotenv@${{ matrix.dotenv_version }}
 
-      - name: Test package
-        run: pnpm run test --stream --filter @import-meta-env/*
-
-      - name: Build package
+      - name: Build packages
         run: pnpm run build --parallel --stream --filter @import-meta-env/*
 
       - name: Install binary
         run: pnpm i --no-frozen-lockfile
 
-      - name: Test example
+      - name: Test packages
+        run: pnpm run test --stream --filter @import-meta-env/*
+
+      - name: Test examples
         run: pnpm run test --stream --filter vite-html-example
 
   lint:
@@ -126,7 +126,7 @@ jobs:
           node-version: 16
           cache: "pnpm"
 
-      - name: Install deps
+      - name: Install dependencies
         run: pnpm install
 
       - name: Check formatting
