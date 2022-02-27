@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "vite-html-example",
+  "name": "vite-starter-example",
   "version": "0.0.0",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",

@@ -1,0 +1,28 @@
+{
+  "name": "rollup-starter-example",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@import-meta-env/cli": "workspace:*",
+    "@import-meta-env/unplugin": "workspace:*",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "concurrently": "7.0.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.68.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "serve": "^13.0.2"
+  },
+  "scripts": {
+    "watch": "rollup -c -w",
+    "start": "serve public",
+    "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:start pnpm:watch",
+    "build": "rimraf dist && pnpm build:pre && pnpm build:post",
+    "build:pre": "rollup -c --environment NODE_ENV:production",
+    "build:post": "cp public/index.html dist/index.html",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist",
+    "test": "node test.js"
+  }
+}

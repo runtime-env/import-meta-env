@@ -46,7 +46,7 @@ jobs:
           pnpm \
             --stream \
             --filter *-example \
-            --filter \!vite-html-example \
+            --filter \!*starter-example \
             --filter \!vite-vue-* \
             exec sh test.sh
 
@@ -105,7 +105,7 @@ jobs:
         run: pnpm run test --stream --filter @import-meta-env/*
 
       - name: Test examples
-        run: pnpm run test --stream --filter vite-html-example
+        run: pnpm run test --stream --filter *starter-example
 
   lint:
     runs-on: ubuntu-latest
