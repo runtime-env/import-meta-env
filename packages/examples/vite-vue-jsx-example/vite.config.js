@@ -1,6 +1,6 @@
 const vueJsxPlugin = require("@vitejs/plugin-vue-jsx");
 const vuePlugin = require("@vitejs/plugin-vue");
-const dotenvPlugin = require("@import-meta-env/vite");
+const importMetaEnv = require("@import-meta-env/vite");
 const createSharedViteConfig = require("../shared-vite-config.mjs").default;
 
 /**
@@ -8,7 +8,7 @@ const createSharedViteConfig = require("../shared-vite-config.mjs").default;
  */
 module.exports = {
   plugins: [
-    dotenvPlugin(),
+    importMetaEnv(),
     vueJsxPlugin({
       include: [/\.[jt]sx$/],
     }),
