@@ -1,8 +1,6 @@
 {
-  "name": "vite-svelte-example",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "vite-svelte-example",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",

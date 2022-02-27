@@ -1,7 +1,6 @@
 {
-  "name": "vite-preact-example",
   "private": true,
-  "version": "0.0.0",
+  "name": "vite-preact-example",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",

@@ -1,15 +1,6 @@
 {
+  "private": true,
   "name": "rollup-starter-example",
-  "devDependencies": {
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
-    "@rollup/plugin-node-resolve": "^11.2.1",
-    "concurrently": "7.0.0",
-    "cross-env": "^7.0.3",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.68.0",
-    "serve": "^13.0.2"
-  },
   "scripts": {
     "dev:watch": "rollup -c -w",
     "dev:start": "serve public",
@@ -19,5 +10,15 @@
     "build:post": "cp public/index.html dist/index.html",
     "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist -p 4173",
     "test": "node test.js"
+  },
+  "devDependencies": {
+    "@import-meta-env/cli": "workspace:*",
+    "@import-meta-env/unplugin": "workspace:*",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "concurrently": "7.0.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.68.0",
+    "serve": "^13.0.2"
   }
 }

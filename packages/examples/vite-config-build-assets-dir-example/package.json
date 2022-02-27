@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "vite-config-build-assets-dir-example",
-  "version": "0.0.0",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
