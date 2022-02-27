@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import importMetaEnv from "@import-meta-env/vite";
+import importMetaEnv from "@import-meta-env/unplugin";
 import createSharedViteConfig from "../shared-vite-config.mjs";
 
 // https://vitejs.dev/config/
@@ -8,5 +8,5 @@ export default defineConfig({
     outDir: "custom-out-dir",
     ...createSharedViteConfig().build,
   },
-  plugins: [importMetaEnv()],
+  plugins: [importMetaEnv.vite()],
 });

@@ -14,7 +14,7 @@
     "@babel/register": "^7.17.0",
     "@import-meta-env/babel": "workspace:*",
     "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/vite": "workspace:*",
+    "@import-meta-env/unplugin": "workspace:*",
     "cross-env": "^7.0.3",
     "mocha": "^9.2.1",
     "vite": "^2.8.4"

@@ -13,7 +13,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/vite": "workspace:*",
+    "@import-meta-env/unplugin": "workspace:*",
     "@preact/preset-vite": "^2.1.5",
     "cross-env": "^7.0.3",
     "vite": "^2.8.4"

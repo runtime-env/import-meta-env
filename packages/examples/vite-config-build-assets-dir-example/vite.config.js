@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import importMetaEnv from "@import-meta-env/vite";
+import importMetaEnv from "@import-meta-env/unplugin";
 import createSharedViteConfig from "../shared-vite-config.mjs";
 
 const assetsDir = "custom-assets-dir";
@@ -10,5 +10,5 @@ export default defineConfig({
     assetsDir,
     ...createSharedViteConfig(assetsDir).build,
   },
-  plugins: [importMetaEnv()],
+  plugins: [importMetaEnv.vite()],
 });
