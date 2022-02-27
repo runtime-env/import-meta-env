@@ -191,6 +191,18 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
     },
 
+    webpack: (compiler) => {
+      const mode = compiler.options.mode ?? "production"; // default mode is production;
+      isDev = mode !== "production";
+
+      if (isDev) {
+        env = resolveEnv({
+          envFilePath,
+          envExampleFilePath,
+        });
+      }
+    },
+
     buildStart() {
       // console.debug("buildStart");
       // console.debug("env:", env);
