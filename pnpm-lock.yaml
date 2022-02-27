@@ -112,32 +112,22 @@ importers:
 
   packages/examples/rollup-starter-example:
     specifiers:
-      '@babel/core': ^7.17.5
-      '@babel/preset-env': ^7.16.11
       '@import-meta-env/cli': workspace:*
       '@import-meta-env/unplugin': workspace:*
-      '@rollup/plugin-babel': ^5.3.1
-      '@rollup/plugin-commonjs': ^17.1.0
       '@rollup/plugin-node-resolve': ^11.2.1
       concurrently: 7.0.0
       cross-env: ^7.0.3
       rimraf: ^3.0.2
       rollup: ^2.68.0
-      rollup-plugin-terser: ^7.0.2
       serve: ^13.0.2
     devDependencies:
-      '@babel/core': 7.17.5
-      '@babel/preset-env': 7.16.11_@babel+core@7.17.5
       '@import-meta-env/cli': link:../../cli
       '@import-meta-env/unplugin': link:../../unplugin
-      '@rollup/plugin-babel': 5.3.1_@babel+core@7.17.5+rollup@2.68.0
-      '@rollup/plugin-commonjs': 17.1.0_rollup@2.68.0
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.68.0
       concurrently: 7.0.0
       cross-env: 7.0.3
       rimraf: 3.0.2
       rollup: 2.68.0
-      rollup-plugin-terser: 7.0.2_rollup@2.68.0
       serve: 13.0.2
 
   packages/examples/vite-built-in-import-meta-env-example:
@@ -1990,39 +1980,6 @@ packages:
       vite: 2.8.4
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@rollup/plugin-babel/5.3.1_@babel+core@7.17.5+rollup@2.68.0:
-    resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
-    engines: {node: '>= 10.0.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-      '@types/babel__core': ^7.1.9
-      rollup: ^1.20.0||^2.0.0
-    peerDependenciesMeta:
-      '@types/babel__core':
-        optional: true
-    dependencies:
-      '@babel/core': 7.17.5
-      '@babel/helper-module-imports': 7.16.7
-      '@rollup/pluginutils': 3.1.0_rollup@2.68.0
-      rollup: 2.68.0
-    dev: true
-
-  /@rollup/plugin-commonjs/17.1.0_rollup@2.68.0:
-    resolution: {integrity: sha512-PoMdXCw0ZyvjpCMT5aV4nkL0QywxP29sODQsSGeDpr/oI49Qq9tRtAsb/LbYbDzFlOydVEqHmmZWFtXJEAX9ew==}
-    engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      rollup: ^2.30.0
-    dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@2.68.0
-      commondir: 1.0.1
-      estree-walker: 2.0.2
-      glob: 7.2.0
-      is-reference: 1.2.1
-      magic-string: 0.25.7
-      resolve: 1.22.0
-      rollup: 2.68.0
     dev: true
 
   /@rollup/plugin-node-resolve/11.2.1_rollup@2.68.0:
@@ -4747,12 +4704,6 @@ packages:
     resolution: {integrity: sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==}
     dev: true
 
-  /is-reference/1.2.1:
-    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
-    dependencies:
-      '@types/estree': 0.0.51
-    dev: true
-
   /is-regex/1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
     engines: {node: '>= 0.4'}
@@ -5287,15 +5238,6 @@ packages:
       chalk: 4.1.2
       jest-util: 27.5.1
       string-length: 4.0.2
-    dev: true
-
-  /jest-worker/26.6.2:
-    resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
-    engines: {node: '>= 10.13.0'}
-    dependencies:
-      '@types/node': 17.0.8
-      merge-stream: 2.0.0
-      supports-color: 7.2.0
     dev: true
 
   /jest-worker/27.5.1:
@@ -6481,18 +6423,6 @@ packages:
       glob: 7.2.0
     dev: true
 
-  /rollup-plugin-terser/7.0.2_rollup@2.68.0:
-    resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
-    peerDependencies:
-      rollup: ^2.0.0
-    dependencies:
-      '@babel/code-frame': 7.16.7
-      jest-worker: 26.6.2
-      rollup: 2.68.0
-      serialize-javascript: 4.0.0
-      terser: 5.11.0
-    dev: true
-
   /rollup/2.64.0:
     resolution: {integrity: sha512-+c+lbw1lexBKSMb1yxGDVfJ+vchJH3qLbmavR+awDinTDA2C5Ug9u7lkOzj62SCu0PKUExsW36tpgW7Fmpn3yQ==}
     engines: {node: '>=10.0.0'}
@@ -6580,12 +6510,6 @@ packages:
       chainsaw: 0.0.9
       hashish: 0.0.4
     dev: false
-
-  /serialize-javascript/4.0.0:
-    resolution: {integrity: sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw==}
-    dependencies:
-      randombytes: 2.1.0
-    dev: true
 
   /serialize-javascript/6.0.0:
     resolution: {integrity: sha512-Qr3TosvguFt8ePWqsvRfrKyQXIiW+nGbYpy8XK24NQHE83caxWt+mIymTT19DGFbNWNLfEwsrkSmN64lVWB9ag==}

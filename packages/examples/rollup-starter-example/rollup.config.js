@@ -1,6 +1,4 @@
 import resolve from "@rollup/plugin-node-resolve";
-// import { terser } from "rollup-plugin-terser";
-import babel from "@rollup/plugin-babel";
 import importMetaEnv from "@import-meta-env/unplugin";
 
 const dev = {
@@ -22,17 +20,7 @@ const prod = {
     chunkFileNames: `[name].js`,
     entryFileNames: `[name].js`,
   },
-  plugins: [
-    resolve(),
-    babel({
-      exclude: "node_modules/**",
-      presets: [["@babel/env", { modules: false }]],
-    }),
-    importMetaEnv.rollup(),
-
-    // Make output files easier to read.
-    // terser(),
-  ],
+  plugins: [resolve(), importMetaEnv.rollup()],
 };
 
 const isDev = process.env.NODE_ENV !== "production";
