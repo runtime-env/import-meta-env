@@ -15,7 +15,7 @@ import {
 } from "../../shared";
 import { PluginOptions } from "./types";
 import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
-import { assignManualChunks } from "./vite/assign-manual-chunks";
+import { mergeManualChunks } from "./vite/merge-manual-chunks";
 
 type ViteResolvedConfig = Parameters<
   Exclude<
@@ -136,7 +136,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
         if (isDev) {
         } else {
-          return assignManualChunks(config);
+          return mergeManualChunks(config);
         }
       },
 

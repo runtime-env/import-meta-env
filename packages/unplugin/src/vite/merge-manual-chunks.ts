@@ -19,7 +19,7 @@ type OutputOptions = Exclude<
   undefined | any[]
 >;
 
-export const assignManualChunks = (config: UserConfig): UserConfig => {
+export const mergeManualChunks = (config: UserConfig): UserConfig => {
   let output: OutputOptions | OutputOptions[];
 
   const originalOutput = config.build?.rollupOptions?.output;
@@ -31,10 +31,10 @@ export const assignManualChunks = (config: UserConfig): UserConfig => {
     };
   } else if (Array.isArray(originalOutput)) {
     output = originalOutput.map((originalOutput) =>
-      assignManualChunksForObject(originalOutput)
+      mergeManualChunksForObject(originalOutput)
     );
   } else {
-    output = assignManualChunksForObject(originalOutput);
+    output = mergeManualChunksForObject(originalOutput);
   }
 
   return {
@@ -49,7 +49,7 @@ export const assignManualChunks = (config: UserConfig): UserConfig => {
   };
 };
 
-function assignManualChunksForObject(
+export function mergeManualChunksForObject(
   originalOutput: OutputOptions
 ): OutputOptions {
   let output: OutputOptions;
