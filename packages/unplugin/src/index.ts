@@ -232,7 +232,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     transformInclude(id) {
       // console.debug("transformIncludes: ", id);
 
-      return true;
+      return id.includes("node_modules") === false;
     },
 
     transform(code, id) {
