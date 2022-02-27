@@ -10,6 +10,8 @@ import colors from "picocolors";
 import { resolveEnv, placeholder, virtualFile } from "../../shared";
 import glob from "glob";
 import { version } from "../package.json";
+import { isBackupFileName } from "./is-backup-file-name";
+import { tryToRestore } from "./try-to-restore";
 
 const backupFileExt = ".bak";
 const virtualFileGlob = `dist/assets/${virtualFile}*`;
@@ -90,14 +92,10 @@ export const main = (di: {
   (opts.output ?? generateDefaultOutput()).forEach((outputFileName) => {
     if (lstatSync(outputFileName).isFile() === false) return;
 
+    if (isBackupFileName(outputFileName)) return;
+
     const backupFileName = outputFileName + backupFileExt;
-    if (
-      outputFileName.endsWith(backupFileExt) === false &&
-      existsSync(backupFileName)
-    ) {
-      copyFileSync(backupFileName, outputFileName);
-    }
-    if (outputFileName.endsWith(backupFileExt)) return;
+    tryToRestore(backupFileName);
 
     const code = readFileSync(outputFileName, "utf8");
     if (code.includes(placeholder) === false) return;
