@@ -33,7 +33,7 @@ jobs:
         run: pnpm i
 
       - name: Test
-        run: pnpm run test --parallel --stream --filter @import-meta-env/*
+        run: pnpm run test --stream --filter @import-meta-env/*
 
       - name: Build
         run: pnpm run build --parallel --stream --filter @import-meta-env/*
@@ -44,7 +44,6 @@ jobs:
       - name: Build&Test examples
         run: |
           pnpm \
-            --parallel \
             --stream \
             --filter *-example \
             --filter \!vite-html-example \
@@ -55,7 +54,6 @@ jobs:
         if: ${{ matrix.node_version >= '14' }}
         run: |
           pnpm \
-            --parallel \
             --stream \
             --filter vite-vue* \
             exec sh test.sh
@@ -98,7 +96,7 @@ jobs:
           pnpm --parallel --stream --filter @import-meta-env/* exec pnpm i --save-peer dotenv@${{ matrix.dotenv_version }}
 
       - name: Test package
-        run: pnpm run test --parallel --stream --filter @import-meta-env/*
+        run: pnpm run test --stream --filter @import-meta-env/*
 
       - name: Build package
         run: pnpm run build --parallel --stream --filter @import-meta-env/*
@@ -107,7 +105,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile
 
       - name: Test example
-        run: pnpm run test --parallel --stream --filter vite-html-example
+        run: pnpm run test --stream --filter vite-html-example
 
   lint:
     runs-on: ubuntu-latest
