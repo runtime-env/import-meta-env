@@ -43,9 +43,9 @@ const p = function polyfill() {
 p();
 document.querySelector("#app").innerHTML = `
         <h1>Hello: ${e.HELLO}</h1>
-        <h1>MODE: ${"production"}</h1>
-        <h1>BASE_URL: ${"/"}</h1>
-        <h1>PROD: ${true}</h1>
-        <h1>DEV: ${false}</h1>
+        <h1>MODE: ${e.MODE}</h1>
+        <h1>BASE_URL: ${e.BASE_URL}</h1>
+        <h1>PROD: ${e.PROD}</h1>
+        <h1>DEV: ${e.DEV}</h1>
         <h1>ALL: ${JSON.stringify(e)}</h1>
       `;
