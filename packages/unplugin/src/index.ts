@@ -25,7 +25,8 @@ type ViteResolvedConfig = Parameters<
 >["0"];
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
-  // console.debug(options, meta);
+  const debug = false;
+  debug && console.debug(options, meta);
 
   const envFilePath = options?.env ?? defaultEnvFilePath;
   const envExampleFilePath = options?.envExample ?? defaultEnvExampleFilePath;
@@ -36,7 +37,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   let viteConfig: ViteResolvedConfig;
 
   function loadProd(id: string) {
-    // console.debug("loadProd: ", id);
+    debug && console.debug("loadProd: ", id);
 
     if (id === virtualFile) {
       const parsedExample = (() => {
@@ -70,7 +71,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   }
 
   function transformDev(code: string, id: string) {
-    // console.debug("transformDev: ", id);
+    debug && console.debug("transformDev: ", id);
 
     if (id !== virtualFile && id.includes("node_modules") === false) {
       switch (meta.framework) {
@@ -93,7 +94,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   }
 
   function transformProd(code: string, id: string) {
-    // console.debug("transformProd: ", id);
+    debug && console.debug("transformProd: ", id);
 
     if (id !== virtualFile && id.includes("node_modules") === false) {
       if (isTransformingJs(code, id) || isTransformingSvelte(code, id)) {
@@ -125,14 +126,14 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       enforce: "pre",
 
       apply(_, env) {
-        // console.debug("apply");
+        debug && console.debug("apply");
 
         isDev = env.command === "serve";
         return true;
       },
 
       config(config) {
-        // console.debug("config:", config);
+        debug && console.debug("config:", config);
 
         if (isDev) {
         } else {
@@ -141,7 +142,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
 
       configResolved(_config) {
-        // console.debug("configResolved");
+        debug && console.debug("configResolved");
 
         if (_config.isProduction) {
           // running in `vite preview`
@@ -157,7 +158,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
 
       transformIndexHtml(html) {
-        // console.debug("transformIndexHtml");
+        debug && console.debug("transformIndexHtml");
 
         html = html.replace(
           new RegExp(uniqueVariableName, "g"),
@@ -169,7 +170,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
     rollup: {
       outputOptions(options) {
-        // console.debug("rollup::outputOptions");
+        debug && console.debug("rollup::outputOptions");
 
         if (isDev) {
         } else {
@@ -178,7 +179,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
 
       buildStart() {
-        // console.debug("rollup::buildStart");
+        debug && console.debug("rollup::buildStart");
 
         isDev = isDev ?? process.env.NODE_ENV !== "production";
 
@@ -204,12 +205,12 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     buildStart() {
-      // console.debug("buildStart");
-      // console.debug("env:", env);
+      debug && console.debug("buildStart");
+      debug && console.debug("env:", env);
     },
 
     resolveId(id, importer) {
-      // console.debug("resolveId: ", id, importer);
+      debug && console.debug("resolveId: ", id, importer);
 
       if (isDev) {
       } else {
@@ -220,7 +221,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     load(id) {
-      // console.debug("load: ", id);
+      debug && console.debug("load: ", id);
 
       if (isDev) {
         return null;
@@ -230,13 +231,13 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     transformInclude(id) {
-      // console.debug("transformIncludes: ", id);
+      debug && console.debug("transformIncludes: ", id);
 
       return id.includes("node_modules") === false;
     },
 
     transform(code, id) {
-      // console.debug("transform: ", id);
+      debug && console.debug("transform: ", id);
 
       if (isDev) {
         return transformDev(code, id);
@@ -246,7 +247,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     buildEnd() {
-      // console.debug("buildEnd");
+      debug && console.debug("buildEnd");
 
       const execCommand = getPackageManagerExecCommand();
 
