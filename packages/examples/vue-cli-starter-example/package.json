@@ -2,7 +2,7 @@
   "name": "vue-cli-starter-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve",
+    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
     "preview": "cross-env HELLO=import-meta-env node node_modules/@import-meta-env/cli/bin/import-meta-env -o dist/js/* && serve dist -p 4173",
     "test": "node test.js"

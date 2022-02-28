@@ -3,7 +3,7 @@
   "name": "webpack-starter-example",
   "scripts": {
     "dev:watch": "webpack --watch",
-    "dev:start": "serve dist -p 8080",
+    "dev:start": "serve dist -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && webpack",
     "preview": "cross-env HELLO=import-meta-env import-meta-env -o dist/* && serve dist -p 4173",
