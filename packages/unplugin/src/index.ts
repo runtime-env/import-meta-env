@@ -97,6 +97,9 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
   function transformProd(code: string, id: string) {
     debug && console.debug("transformProd: ", id);
+    debug && console.debug("=== code before ===");
+    debug && console.debug(code);
+    debug && console.debug("==================");
 
     if (id !== virtualFile && id.includes("node_modules") === false) {
       if (isTransformingJs(code, id) || isTransformingSvelte(code, id)) {
@@ -117,6 +120,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
       code = withholdViteBuiltInEnv(code);
     }
+
+    debug && console.debug("=== code after ===");
+    debug && console.debug(code);
+    debug && console.debug("==================");
 
     return code;
   }
