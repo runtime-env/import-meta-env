@@ -1,0 +1,47 @@
+{
+  "name": "vue-cli-starter-example",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "preview": "cross-env HELLO=import-meta-env node node_modules/@import-meta-env/cli/bin/import-meta-env -o dist/js/* && serve dist -p 4173",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@import-meta-env/cli": "../../cli",
+    "@import-meta-env/unplugin": "../../unplugin",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "serve": "^13.0.2",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
