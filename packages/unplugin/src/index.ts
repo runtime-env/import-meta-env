@@ -16,6 +16,7 @@ import { PluginOptions } from "./types";
 import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
 import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
 import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
+import { extname } from "path";
 
 type ViteResolvedConfig = Parameters<
   Exclude<
@@ -234,7 +235,22 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     transformInclude(id) {
       debug && console.debug("transformIncludes: ", id);
 
-      return id.includes("node_modules") === false;
+      const allowExtensions = [
+        ".js",
+        ".ts",
+        ".jsx",
+        ".tsx",
+        ".vue",
+        ".svelte",
+        ".mjs",
+        ".cjs",
+        meta.framework !== "webpack" && ".html",
+      ].filter(Boolean);
+
+      return (
+        id.includes("node_modules") === false &&
+        allowExtensions.includes(extname(id))
+      );
     },
 
     transform(code, id) {
