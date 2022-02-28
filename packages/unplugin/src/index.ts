@@ -32,7 +32,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const envExampleFilePath = options?.envExample ?? defaultEnvExampleFilePath;
   let env: Record<string, string> = {};
 
-  let isDev: boolean;
+  let shouldInlineEnv = options?.shouldInlineEnv;
 
   let viteConfig: ViteResolvedConfig;
 
@@ -128,14 +128,14 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       apply(_, env) {
         debug && console.debug("apply");
 
-        isDev = env.command === "serve";
+        shouldInlineEnv = shouldInlineEnv ?? env.command === "serve";
         return true;
       },
 
       config(config) {
         debug && console.debug("config:", config);
 
-        if (isDev) {
+        if (shouldInlineEnv) {
         } else {
           return viteMergeManualChunks(config);
         }
@@ -172,7 +172,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       outputOptions(options) {
         debug && console.debug("rollup::outputOptions");
 
-        if (isDev) {
+        if (shouldInlineEnv) {
         } else {
           return rollupMergeManualChunks(options);
         }
@@ -181,9 +181,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       buildStart() {
         debug && console.debug("rollup::buildStart");
 
-        isDev = isDev ?? process.env.NODE_ENV !== "production";
+        shouldInlineEnv =
+          shouldInlineEnv ?? process.env.NODE_ENV !== "production";
 
-        if (isDev) {
+        if (shouldInlineEnv) {
           env = resolveEnv({
             envFilePath,
             envExampleFilePath,
@@ -194,9 +195,9 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
     webpack: (compiler) => {
       const mode = compiler.options.mode ?? "production"; // default mode is production;
-      isDev = mode !== "production";
+      shouldInlineEnv = shouldInlineEnv ?? mode !== "production";
 
-      if (isDev) {
+      if (shouldInlineEnv) {
         env = resolveEnv({
           envFilePath,
           envExampleFilePath,
@@ -212,7 +213,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     resolveId(id, importer) {
       debug && console.debug("resolveId: ", id, importer);
 
-      if (isDev) {
+      if (shouldInlineEnv) {
       } else {
         if (id === virtualFile) {
           return virtualFile;
@@ -223,7 +224,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     load(id) {
       debug && console.debug("load: ", id);
 
-      if (isDev) {
+      if (shouldInlineEnv) {
         return null;
       } else {
         return loadProd(id);
@@ -239,7 +240,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     transform(code, id) {
       debug && console.debug("transform: ", id);
 
-      if (isDev) {
+      if (shouldInlineEnv) {
         return transformDev(code, id);
       } else {
         return transformProd(code, id);
@@ -251,7 +252,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
       const execCommand = getPackageManagerExecCommand();
 
-      if (isDev) {
+      if (shouldInlineEnv) {
       } else {
         console.info(
           [
