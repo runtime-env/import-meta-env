@@ -2,7 +2,7 @@
   "private": true,
   "name": "webpack-starter-example",
   "scripts": {
-    "dev:watch": "webpack --watch --mode development",
+    "dev:watch": "webpack --watch",
     "dev:start": "serve dist -p 8080",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && webpack",

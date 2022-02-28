@@ -191,7 +191,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug("rollup::buildStart");
 
         shouldInlineEnv =
-          shouldInlineEnv ?? process.env.NODE_ENV !== "production";
+          shouldInlineEnv ?? process.env.ROLLUP_WATCH === "true";
 
         if (shouldInlineEnv) {
           env = resolveEnv({
@@ -207,8 +207,14 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         compiler.options.plugins.push(new ImportMetaPlugin());
       }
 
-      const mode = compiler.options.mode ?? "production"; // default mode is production;
-      shouldInlineEnv = shouldInlineEnv ?? mode !== "production";
+      const developmentModes: typeof compiler.options.mode[] = [
+        "development",
+        "none",
+      ];
+      shouldInlineEnv =
+        shouldInlineEnv ??
+        compiler.options.watch ??
+        developmentModes.includes(compiler.options.mode);
 
       if (shouldInlineEnv) {
         env = resolveEnv({

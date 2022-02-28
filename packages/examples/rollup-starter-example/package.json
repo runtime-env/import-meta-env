@@ -6,7 +6,7 @@
     "dev:start": "serve public",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && pnpm build:pre && pnpm build:post",
-    "build:pre": "rollup -c --environment NODE_ENV:production",
+    "build:pre": "rollup -c",
     "build:post": "cp public/index.html dist/index.html",
     "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist -p 4173",
     "test": "node test.js"

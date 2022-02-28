@@ -20,11 +20,14 @@ export interface PluginOptions {
    * This is useful if you want to use the plugin in unknown dev server environments
    *
    * @default
+   * `true` if following conditions are met, otherwise `false`:
    *
-   * true, "if running with `vite` or `vite dev`"
-   * true, "if webpack mode is NOT `production` or `undefined`"
-   * true, "if `NODE_ENV` is NOT `production`"
-   * false, "otherwise"
+   * ```text
+   * vite:    if running with dev server, i.e. `vite`, `vite dev`, or `vite serve`
+   * webpack: if running with watch mode or `mode` is `development` or `none`
+   * rollup:  if running with watch mode
+   * others:  if `NODE_ENV` is NOT `production`
+   * ```
    */
   shouldInlineEnv?: boolean;
 }

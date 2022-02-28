@@ -23,6 +23,4 @@ const prod = {
   plugins: [resolve(), importMetaEnv.rollup()],
 };
 
-const isDev = process.env.NODE_ENV !== "production";
-
-export default isDev ? dev : prod;
+export default process.env.ROLLUP_WATCH === "true" ? dev : prod;
