@@ -31,7 +31,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const envExampleFilePath = options?.envExample ?? defaultEnvExampleFilePath;
   let env: Record<string, string> = {};
 
-  let isDev = false;
+  let isDev: boolean;
 
   let viteConfig: ViteResolvedConfig;
 
@@ -180,7 +180,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       buildStart() {
         // console.debug("rollup::buildStart");
 
-        isDev = process.env.NODE_ENV !== "production";
+        isDev = isDev ?? process.env.NODE_ENV !== "production";
 
         if (isDev) {
           env = resolveEnv({
