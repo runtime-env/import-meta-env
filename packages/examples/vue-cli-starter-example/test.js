@@ -8,6 +8,8 @@ const rimraf = require("rimraf");
 rimraf.sync("dist");
 
 // act
+child_process.execSync("pnpm rm @vue/cli-plugin-babel");
+child_process.execSync("pnpm i -D @vue/cli-plugin-babel");
 child_process.execSync("pnpm run build");
 child_process.execSync(
   "pnpm exec cross-env HELLO=import-meta-env import-meta-env -o dist/js/*"

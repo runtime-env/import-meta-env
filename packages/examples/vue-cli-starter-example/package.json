@@ -15,6 +15,7 @@
     "@babel/core": "^7.12.16",
     "@import-meta-env/cli": "workspace:*",
     "@import-meta-env/unplugin": "workspace:*",
+    "@vue/cli-plugin-babel": "^5.0.1",
     "@vue/cli-service": "^5.0.1",
     "cross-env": "^7.0.3",
     "serve": "^13.0.2",

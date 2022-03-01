@@ -2,42 +2,42 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 694:
+/***/ 7129:
 /***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 
-;// CONCATENATED MODULE: ./_virtual_import-meta-env
-console.assert("d3612f0e3785495502e39a5f98aae571e7b0e53f"); // Invalidate the cache when the .env.example changes.
-const e = __import_meta_env_placeholder__;
-/* harmony default export */ var _virtual_import_meta_env = (e);
-// EXTERNAL MODULE: ../../../node_modules/.pnpm/vue@2.6.14/node_modules/vue/dist/vue.runtime.esm.js
-var vue_runtime_esm = __webpack_require__(195);
-;// CONCATENATED MODULE: ../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/index.js??vue-loader-options!../../../node_modules/.pnpm/unplugin@0.3.2_91f583c933d394a657f8bf3ad1ec898b/node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[28].use[0]!./src/App.vue?vue&type=template&id=e40ff198&
+// EXTERNAL MODULE: ../../../node_modules/.pnpm/core-js@3.21.0/node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__(5846);
+// EXTERNAL MODULE: ../../../node_modules/.pnpm/core-js@3.21.0/node_modules/core-js/modules/es.promise.js
+var es_promise = __webpack_require__(5396);
+// EXTERNAL MODULE: ../../../node_modules/.pnpm/core-js@3.21.0/node_modules/core-js/modules/es.object.assign.js
+var es_object_assign = __webpack_require__(5066);
+// EXTERNAL MODULE: ../../../node_modules/.pnpm/core-js@3.21.0/node_modules/core-js/modules/es.promise.finally.js
+var es_promise_finally = __webpack_require__(5418);
+// EXTERNAL MODULE: ../../../node_modules/.pnpm/vue@2.6.14/node_modules/vue/dist/vue.runtime.esm.js + 1 modules
+var vue_runtime_esm = __webpack_require__(791);
+;// CONCATENATED MODULE: ../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/index.js??vue-loader-options!../../../node_modules/.pnpm/unplugin@0.3.2_91f583c933d394a657f8bf3ad1ec898b/node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[30].use[0]!./src/App.vue?vue&type=template&id=e40ff198&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('h1',[_vm._v("Hello: "+_vm._s(_vm.hello))])}
 var staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/index.js??vue-loader-options!../../../node_modules/.pnpm/unplugin@0.3.2_91f583c933d394a657f8bf3ad1ec898b/node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[28].use[0]!./src/App.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ../../../node_modules/.pnpm/thread-loader@3.0.4_webpack@5.69.1/node_modules/thread-loader/dist/cjs.js!../../../node_modules/.pnpm/babel-loader@8.2.3_9351ded4f79a023849d74b5df047d562/node_modules/babel-loader/lib/index.js??clonedRuleSet-40[0].rules[0].use[1]!../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/index.js??vue-loader-options!../../../node_modules/.pnpm/unplugin@0.3.2_91f583c933d394a657f8bf3ad1ec898b/node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[30].use[0]!./src/App.vue?vue&type=script&lang=js&
 //
 //
 //
 //
-
-
 /* harmony default export */ var Appvue_type_script_lang_js_ = ({
   name: "App",
-
-  data() {
+  data: function data() {
     return {
-      hello: _virtual_import_meta_env.HELLO,
+      hello: /* unsupported import.meta.env.HELLO */ undefined.HELLO
     };
-  },
+  }
 });
-
 ;// CONCATENATED MODULE: ./src/App.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_Appvue_type_script_lang_js_ = (Appvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ../../../node_modules/.pnpm/vue-loader@15.9.8_474e651fe0c0b168012e8979d7a735ab/node_modules/vue-loader/lib/runtime/componentNormalizer.js
-var componentNormalizer = __webpack_require__(166);
+var componentNormalizer = __webpack_require__(1166);
 ;// CONCATENATED MODULE: ./src/App.vue
 
 
@@ -63,12 +63,14 @@ var component = (0,componentNormalizer/* default */.Z)(
 
 
 
+
+
 vue_runtime_esm/* default.config.productionTip */.Z.config.productionTip = false;
-
 new vue_runtime_esm/* default */.Z({
-  render: (h) => h(App),
+  render: function render(h) {
+    return h(App);
+  }
 }).$mount("#app");
-
 
 /***/ })
 
@@ -225,9 +227,9 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], function() { return __webpack_require__(694); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], function() { return __webpack_require__(7129); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=app-legacy.c73ca042.js.map
+//# sourceMappingURL=app-legacy.3d67644e.js.map
