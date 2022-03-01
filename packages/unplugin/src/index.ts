@@ -79,12 +79,15 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         case "vite":
           code = code.replace(
             /import\.meta\.env/g,
-            JSON.stringify({ ...env, ...viteConfig.env })
+            "(" + JSON.stringify({ ...env, ...viteConfig.env }) + ")"
           );
           break;
 
         default:
-          code = code.replace(/import\.meta\.env/g, JSON.stringify(env));
+          code = code.replace(
+            /import\.meta\.env/g,
+            "(" + JSON.stringify(env) + ")"
+          );
           break;
       }
     }

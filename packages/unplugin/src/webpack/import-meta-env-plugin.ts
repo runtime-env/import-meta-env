@@ -8,7 +8,7 @@ export class ImportMetaPlugin {
         .for("import.meta.env")
         .tap("ImportMetaPlugin", (expr) => {
           const dep = new dependencies.ConstDependency(
-            placeholder,
+            "(" + placeholder + ")",
             expr.range!
           );
           dep.loc = expr.loc!;
