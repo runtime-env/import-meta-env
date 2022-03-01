@@ -12,6 +12,7 @@ import glob from "glob";
 import { version } from "../package.json";
 import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
+import { isSourceMap } from "./is-source-map";
 
 const backupFileExt = ".bak";
 const virtualFileGlob = `dist/assets/${virtualFile}*`;
@@ -92,6 +93,7 @@ export const main = (di: {
   (opts.output ?? generateDefaultOutput()).forEach((outputFileName) => {
     if (lstatSync(outputFileName).isFile() === false) return;
 
+    if (isSourceMap(outputFileName)) return;
     if (isBackupFileName(outputFileName)) return;
 
     const backupFileName = outputFileName + backupFileExt;
