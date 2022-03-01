@@ -17,7 +17,6 @@ import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
 import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
 import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
 import { extname } from "path";
-import { ImportMetaPlugin } from "./webpack/import-meta-env-plugin";
 
 type ViteResolvedConfig = Parameters<
   Exclude<
@@ -206,10 +205,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     webpack: (compiler) => {
-      if (process.env.npm_package_devDependencies__vue_cli_service) {
-        compiler.options.plugins.push(new ImportMetaPlugin());
-      }
-
       const developmentModes: typeof compiler.options.mode[] = [
         "development",
         "none",
@@ -313,7 +308,10 @@ const isTransformingJs = (code: string, id: string) =>
   [".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext)) &&
   id.includes("?vue&type=template") === false;
 
-const isTransformingVue = (code: string, id: string) => id.endsWith(".vue");
+const isTransformingVue = (code: string, id: string) =>
+  id.endsWith(".vue") ||
+  id.includes("?vue&type=template") ||
+  id.includes("?vue&type=script");
 
 const isTransformingSvelte = (code: string, id: string) =>
   id.endsWith(".svelte");
