@@ -33,18 +33,19 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm run build --parallel --stream --filter @import-meta-env/*
+        run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
 
       - name: Install binary
         run: pnpm i
 
       - name: Test packages
-        run: pnpm run test --stream --filter @import-meta-env/*
+        run: pnpm run test --parallel --aggregate-output --filter @import-meta-env/*
 
       - name: Test examples
         run: |
           pnpm \
-            --stream \
+            --parallel \
+            --aggregate-output \
             --filter *-example \
             --filter \!*starter-example \
             --filter \!vite-vue-* \
@@ -54,7 +55,8 @@ jobs:
         if: ${{ matrix.node_version >= '14' }}
         run: |
           pnpm \
-            --stream \
+            --parallel \
+            --aggregate-output \
             --filter vite-vue* \
             exec sh test.sh
 
@@ -92,20 +94,20 @@ jobs:
       - name: Install packages
         run: |
           pnpm i
-          pnpm --parallel --stream --filter @import-meta-env/* exec pnpm rm dotenv
-          pnpm --parallel --stream --filter @import-meta-env/* exec pnpm i --save-peer dotenv@${{ matrix.dotenv_version }}
+          pnpm --parallel --aggregate-output --filter @import-meta-env/* exec pnpm rm dotenv
+          pnpm --parallel --aggregate-output --filter @import-meta-env/* exec pnpm i --save-peer dotenv@${{ matrix.dotenv_version }}
 
       - name: Build packages
-        run: pnpm run build --parallel --stream --filter @import-meta-env/*
+        run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
 
       - name: Install binary
         run: pnpm i --no-frozen-lockfile
 
       - name: Test packages
-        run: pnpm run test --stream --filter @import-meta-env/*
+        run: pnpm run test --parallel --aggregate-output --filter @import-meta-env/*
 
       - name: Test examples
-        run: pnpm run test --stream --filter *starter-example
+        run: pnpm run test --parallel --aggregate-output --filter *starter-example
 
   lint:
     runs-on: ubuntu-latest
