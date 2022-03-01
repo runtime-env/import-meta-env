@@ -8,9 +8,9 @@ const rimraf = require("rimraf");
 rimraf.sync("dist");
 
 // act
-child_process.execSync("yarn run build");
+child_process.execSync("pnpm run build");
 child_process.execSync(
-  "yarn cross-env HELLO=import-meta-env node node_modules/@import-meta-env/cli/bin/import-meta-env -o dist/js/*"
+  "pnpm exec cross-env HELLO=import-meta-env import-meta-env -o dist/js/*"
 );
 
 // assert
