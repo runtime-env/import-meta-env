@@ -13,6 +13,7 @@ import {
   placeholder,
 } from "../../shared";
 import { PluginOptions } from "./types";
+import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
 import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
 import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
 import { extname } from "path";
@@ -81,6 +82,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
             /import\.meta\.env/g,
             "(" + JSON.stringify({ ...env, ...viteConfig.env }) + ")"
           );
+
+          code = withholdViteBuiltInEnv(code);
           break;
 
         default:
@@ -117,6 +120,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
 
       code = code.replace(/import\.meta\.env/g, uniqueVariableName);
+
+      code = withholdViteBuiltInEnv(code);
     }
 
     debug && console.debug("=== code after ===");
