@@ -2,7 +2,6 @@ node_modules
 .DS_Store
 dist
 bin
-!**/examples/**/dist
 dist-ssr
 *.local
 .pnpm-debug.log
