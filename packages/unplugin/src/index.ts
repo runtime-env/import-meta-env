@@ -17,6 +17,7 @@ import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
 import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
 import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
 import { extname } from "path";
+import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
 
 type ViteResolvedConfig = Parameters<
   Exclude<
@@ -213,6 +214,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     webpack: (compiler) => {
+      if (process.env.npm_package_devDependencies__vue_cli_service) {
+        compiler.options.plugins.push(new ImportMetaPlugin());
+      }
+
       const developmentModes: typeof compiler.options.mode[] = [
         "development",
         "none",
