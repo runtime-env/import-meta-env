@@ -14,7 +14,7 @@ child_process.execSync(
 );
 
 // assert
-const expectedFileDir = path.resolve(__dirname, "__dist__");
+const expectedFileDir = path.resolve(__dirname, "__fixtures__");
 const expectedFilePaths = collectFilePaths(expectedFileDir);
 const actualFileDir = path.resolve(__dirname, "dist");
 const actualFilePaths = collectFilePaths(actualFileDir);

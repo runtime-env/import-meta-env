@@ -1,7 +1,7 @@
 CHANGELOG.md
 node_modules
 dist
-__dist__
+__fixtures__
 pnpm-lock.yaml
 
 packages/examples/vite-config-build-out-dir-example/custom-out-dir

@@ -8,7 +8,7 @@
 // pnpm exec import-meta-env
 
 // # assert
-// diff -r dist __dist__
+// diff -r dist __fixtures__
 
 const os = require("os");
 const fs = require("fs");
@@ -26,7 +26,7 @@ child_process.execSync(
 );
 
 // assert
-const expectedFileDir = path.resolve(__dirname, "__dist__");
+const expectedFileDir = path.resolve(__dirname, "__fixtures__");
 const expectedFilePaths = collectFilePaths(expectedFileDir);
 const actualFileDir = path.resolve(__dirname, "dist");
 const actualFilePaths = collectFilePaths(actualFileDir);
