@@ -4,7 +4,7 @@ set -e
 rm -rf dist
 
 # act
-pnpm run build
+pnpm exec vite build
 pnpm exec cross-env HELLO=import-meta-env import-meta-env
 
 # assert

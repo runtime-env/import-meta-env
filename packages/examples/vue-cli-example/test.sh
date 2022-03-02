@@ -4,7 +4,7 @@ set -e
 rm -rf dist
 
 # act
-yarn build
+yarn vue-cli-service build
 yarn cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env -o dist/js/*
 
 # assert

@@ -4,7 +4,7 @@ set -e
 rm -rf .next
 
 # act
-pnpm run build
+pnpm exec next build
 pnpm exec cross-env HELLO=import-meta-env import-meta-env -o .next/static/chunks/pages/*
 
 # assert

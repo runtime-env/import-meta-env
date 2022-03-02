@@ -4,7 +4,7 @@ set -e
 rm -rf build
 
 # act
-pnpm run build
+node scripts/build.js
 pnpm exec cross-env HELLO=import-meta-env import-meta-env -o build/static/js/*
 
 # assert

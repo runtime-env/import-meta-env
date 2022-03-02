@@ -5,7 +5,7 @@ rm -rf dist
 rm -rf node_modules/.cache
 
 # act
-yarn generate
+yarn nuxt generate
 yarn cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env -o dist/_nuxt/pages/*
 
 # assert
