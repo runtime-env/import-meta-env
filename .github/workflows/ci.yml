@@ -60,6 +60,48 @@ jobs:
             --filter vite-vue* \
             exec sh test.sh
 
+  yarn-examples:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            node_version: 16
+      fail-fast: false
+    name: "yarn-examples: ${{ matrix.os }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^6
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
+
+      - name: Test vue-cli-example
+        run: |
+          cd packages/examples/vue-cli-example
+          yarn install
+          sh test.sh
+
+      - name: Test create-nuxt-app-example
+        run: |
+          cd packages/examples/create-nuxt-app-example
+          yarn install
+          sh test.sh
+
   compatibility:
     runs-on: ${{ matrix.os }}
     strategy:
