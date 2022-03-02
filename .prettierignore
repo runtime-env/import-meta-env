@@ -6,3 +6,4 @@ pnpm-lock.yaml
 
 packages/examples/vite-config-build-out-dir-example/custom-out-dir
 packages/examples/create-react-app-example/build
+packages/examples/create-next-app-example/.next

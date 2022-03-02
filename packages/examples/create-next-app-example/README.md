@@ -10,7 +10,7 @@ $ pnpm i -D @import-meta-env/cli
 2. Register `import-meta-env` plugin:
 
 ```js
-// nuxt.config.js
+// next.config.js
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
