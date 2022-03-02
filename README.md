@@ -15,6 +15,22 @@
 | [@import-meta-env/cli](./packages/cli#readme)           | [![@import-meta-env/cli version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](./packages/cli/CHANGELOG.md)                | A binary package is used to inject environment variables into those placeholders.                                                                                                                                                                                              |
 | [@import-meta-env/unplugin](./packages/unplugin#readme) | [![@import-meta-env/unplugin version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](./packages/unplugin/CHANGELOG.md) | Inject environment variables into the `import.meta.env` object **_after_** building the application instead of statically replacing it during production.                                                                                                                      |
 
+## Examples
+
+> Sort by alphabetical order.
+
+- [create-next-app](./packages/examples/create-next-app-example)
+- [create-nuxt-app](./packages/examples/create-nuxt-app-example)
+- [create-react-app](./packages/examples/create-react-app-example)
+- [jest](./packages/examples/babel-jest-example)
+- [mocha](./packages/examples/babel-mocha-example)
+- [rollup](./packages/examples/rollup-starter-example)
+- [vite](./packages/examples/vite-starter-example)
+- [vitest](./packages/examples/vite-vitest-example)
+- [vue-cli](./packages/examples/vue-cli-example)
+- [webpack](./packages/examples/webpack-starter-example)
+- [others](./packages/examples)
+
 ## License
 
 MIT
