@@ -104,23 +104,31 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     debug && console.debug("==================");
 
     if (id !== virtualFile && id.includes("node_modules") === false) {
-      if (isTransformingJs(code, id) || isTransformingSvelte(code, id)) {
-        code =
-          `import ${uniqueVariableName} from '${virtualFile}';\n` +
-          code.replace(
-            `import ${uniqueVariableName} from '${virtualFile}';\n`,
-            ""
-          );
-      } else if (isTransformingVue(code, id)) {
-        code = code.replace(
-          /(\<script.*?\>)/,
-          `$1\nimport ${uniqueVariableName} from '${virtualFile}';`
-        );
+      switch (meta.framework) {
+        case "webpack":
+          code = code.replace(/import\.meta\.env/g, `(${placeholder})`);
+          break;
+
+        default:
+          if (isTransformingJs(code, id) || isTransformingSvelte(code, id)) {
+            code =
+              `import ${uniqueVariableName} from '${virtualFile}';\n` +
+              code.replace(
+                `import ${uniqueVariableName} from '${virtualFile}';\n`,
+                ""
+              );
+          } else if (isTransformingVue(code, id)) {
+            code = code.replace(
+              /(\<script.*?\>)/,
+              `$1\nimport ${uniqueVariableName} from '${virtualFile}';`
+            );
+          }
+
+          code = code.replace(/import\.meta\.env/g, uniqueVariableName);
+
+          code = withholdViteBuiltInEnv(code);
+          break;
       }
-
-      code = code.replace(/import\.meta\.env/g, uniqueVariableName);
-
-      code = withholdViteBuiltInEnv(code);
     }
 
     debug && console.debug("=== code after ===");
