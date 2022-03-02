@@ -79,6 +79,10 @@ export const createCommand = () =>
       }
     });
 
+const placeholderVariants = ['"', "'"].map((q) =>
+  placeholder.replace(new RegExp("'", "g"), q)
+);
+
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
   resolveEnv: typeof resolveEnv;
@@ -100,10 +104,14 @@ export const main = (di: {
     tryToRestore(backupFileName);
 
     const code = readFileSync(outputFileName, "utf8");
-    if (code.includes(placeholder) === false) return;
+
+    if (placeholderVariants.some((p) => code.includes(p)) === false) return;
     copyFileSync(outputFileName, backupFileName);
 
-    const outputCode = code.replace(placeholder, JSON.stringify(env));
+    let outputCode = code;
+    placeholderVariants.forEach((p) => {
+      outputCode = outputCode.replace(new RegExp(p, "g"), JSON.stringify(env));
+    });
     writeFileSync(outputFileName, outputCode);
   });
 };
