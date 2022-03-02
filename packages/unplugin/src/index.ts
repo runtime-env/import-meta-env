@@ -31,7 +31,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   debug && console.debug(options, meta);
 
   const envFilePath = options?.env ?? defaultEnvFilePath;
-  const envExampleFilePath = options?.envExample ?? defaultEnvExampleFilePath;
+  const envExampleFilePath = options?.example ?? defaultEnvExampleFilePath;
   let env: Record<string, string> = {};
 
   let shouldInlineEnv = options?.shouldInlineEnv;

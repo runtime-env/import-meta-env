@@ -11,7 +11,7 @@ export interface PluginOptions {
    *
    * @default ".env.example"
    */
-  envExample?: string;
+  example?: string;
 
   /**
    * Explicity set whether to inline current environment variables into the code,
