@@ -1,0 +1,29 @@
+{
+  "name": "vue-cli-example",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "preview": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env -o dist/js/* && serve -s dist"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@import-meta-env/cli": "../../cli",
+    "@import-meta-env/unplugin": "../../unplugin",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "serve": "^13.0.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
