@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.1...unplugin0.1.2) (2022-03-02)
+
+
+### Bug Fixes
+
+* add missing import statement ([504d8f3](https://github.com/iendeavor/import-meta-env/commit/504d8f3fc9866fa3d48dfea1a888d810dd851f08))
+* cannot resolve virtual module, inline placeholder for webpack instead ([470b4bb](https://github.com/iendeavor/import-meta-env/commit/470b4bbabb89700c59b3fc44f96203a66fe7a55d))
+* missing parentheses when using with arrow functions ([3697ce7](https://github.com/iendeavor/import-meta-env/commit/3697ce7b0939dd6514a5e854f12348ac9bf47faa))
+* **unplugin:** inline env when running in webpack/rollup watch mode ([aca790b](https://github.com/iendeavor/import-meta-env/commit/aca790bd3b8cffa7acd1b26667d2f031601e94d5))
+* vue-cli webpack ImportMetaPlugin transforms unknown import.meta properties to void 0, intercept it ([083f6bc](https://github.com/iendeavor/import-meta-env/commit/083f6bc3c13a9ea86a3e92ac6fc29618daa7ce33))
+
 ### [0.1.1](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.0...unplugin0.1.1) (2022-02-28)
 
 
