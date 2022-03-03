@@ -8,8 +8,7 @@
     "build": "rimraf dist && pnpm build:pre && pnpm build:post",
     "build:pre": "rollup -c",
     "build:post": "cp public/index.html dist/index.html",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist -p 4173",
-    "test": "node test.js"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist -p 4173"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",

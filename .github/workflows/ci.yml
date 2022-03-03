@@ -47,7 +47,7 @@ jobs:
             --parallel \
             --aggregate-output \
             --filter *-example \
-            --filter \!*starter-example \
+            --filter \!compatibility-example \
             --filter \!vite-vue-* \
             exec sh test.sh
 
@@ -155,7 +155,7 @@ jobs:
         run: pnpm run test --parallel --aggregate-output --filter @import-meta-env/*
 
       - name: Test examples
-        run: pnpm run test --parallel --aggregate-output --filter *starter-example
+        run: pnpm run test --parallel --aggregate-output --filter compatibility-example
 
   lint:
     runs-on: ubuntu-latest

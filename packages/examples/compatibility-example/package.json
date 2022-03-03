@@ -1,12 +1,13 @@
 {
   "private": true,
-  "name": "webpack-starter-example",
+  "name": "compatibility-example",
   "scripts": {
     "dev:watch": "webpack --watch",
     "dev:start": "serve dist -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && webpack",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && serve dist -p 4173",
+    "test": "node test.js"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",

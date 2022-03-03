@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env && vite preview",
-    "test": "node test.js"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && vite preview"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",
