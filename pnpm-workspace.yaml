@@ -2,3 +2,4 @@ packages:
   - "packages/**"
   - "!packages/examples/create-nuxt-app-example"
   - "!packages/examples/vue-cli-example"
+  - "!packages/examples/nuxt-bridge-example"

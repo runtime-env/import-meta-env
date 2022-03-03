@@ -102,6 +102,12 @@ jobs:
           yarn install
           sh test.sh
 
+      - name: Test nuxt-bridge-example
+        run: |
+          cd packages/examples/nuxt-bridge-example
+          yarn install
+          sh test.sh
+
   compatibility:
     runs-on: ${{ matrix.os }}
     strategy:

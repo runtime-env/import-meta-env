@@ -24,6 +24,7 @@
 - [create-react-app](./packages/examples/create-react-app-example)
 - [jest](./packages/examples/babel-jest-example)
 - [mocha](./packages/examples/babel-mocha-example)
+- [nuxt-bridge](./packages/examples/nuxt-bridge-example)
 - [rollup](./packages/examples/rollup-starter-example)
 - [vite](./packages/examples/vite-starter-example)
 - [vitest](./packages/examples/vite-vitest-example)
