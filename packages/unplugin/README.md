@@ -94,6 +94,8 @@ build({
 
 </details>
 
+<br />
+
 Create a `.env.example` file in the root of your project:
 
 ```sh
@@ -102,6 +104,8 @@ Create a `.env.example` file in the root of your project:
 # only the keys defined in this file can be accessed.
 S3_BUCKET=
 ```
+
+<br />
 
 Add `.env` file to .gitignore, and create a `.env` file in the project's root directory:
 
@@ -113,6 +117,8 @@ S3_BUCKET="YOURS3BUCKET"
 SECRET_KEY="YOURSECRETKEYGOESHERE"
 ```
 
+<br />
+
 `import.meta.env` now has the keys and values you defined on your system:
 
 ```ts
@@ -121,11 +127,15 @@ console.log(import.meta.env["S3_BUCKET"]); // "YOURS3BUCKET", dynamic key also w
 console.log(import.meta.env.SECRET_KEY); // undefined
 ```
 
+<br />
+
 Finally, before serving your application, remember to execute [`import-meta-env`](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme) binary to inject environment variables, for example:
 
 ```sh
 $ cross-env S3_BUCKET=YOURS3BUCKET import-meta-env && your-serve-script
 ```
+
+<br />
 
 See also:
 
