@@ -2,48 +2,55 @@
 
 1. Install package:
 
-```sh
-$ yarn add -D @import-meta-env/unplugin
-$ yarn add -D @import-meta-env/cli
-```
+   ```sh
+   $ yarn add -D @import-meta-env/unplugin
+   $ yarn add @import-meta-env/cli dotenv
+   ```
 
-2. Register `import-meta-env` plugin:
+1. Register `import-meta-env` plugin:
 
-```js
-// nuxt.config.js
-import { defineNuxtConfig } from "@nuxt/bridge";
-import importMetaEnv from "@import-meta-env/unplugin";
+   ```js
+   // nuxt.config.js
+   import { defineNuxtConfig } from "@nuxt/bridge";
+   import importMetaEnv from "@import-meta-env/unplugin";
 
-export default defineNuxtConfig({
-  build: {
-    extend(config) {
-      config.plugins.push(importMetaEnv.webpack());
-    },
-  },
-});
-```
+   export default defineNuxtConfig({
+     build: {
+       extend(config) {
+         config.plugins.push(importMetaEnv.webpack());
+       },
+     },
+   });
+   ```
 
-3. Set environment variables:
+1. List public environment variables under `.env.example`.
 
-```sh
-$ export HELLO=import-meta-env
-```
+   ```
+   # .env.example
+   HELLO=
+   ```
 
-4. Start dev server:
+1. Set environment variables:
 
-```sh
-$ yarn nuxi dev
-```
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
 
-5. Build production:
+1. Start dev server:
 
-```sh
-$ yarn nuxi build
-```
+   ```sh
+   $ yarn nuxi dev
+   ```
 
-6. Serve production:
+1. Build production:
 
-```sh
-$ node node_modules/.bin/import-meta-env
-$ yarn nuxi preview
-```
+   ```sh
+   $ yarn nuxi build
+   ```
+
+1. Serve production:
+
+   ```sh
+   $ node node_modules/.bin/import-meta-env
+   $ yarn nuxi preview
+   ```

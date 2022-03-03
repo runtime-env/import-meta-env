@@ -2,51 +2,58 @@
 
 1. Install package:
 
-```sh
-$ pnpm i -D @import-meta-env/unplugin
-$ pnpm i -D @import-meta-env/cli
-```
+   ```sh
+   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @import-meta-env/cli
+   ```
 
-2. Register `import-meta-env` plugin:
+1. Register `import-meta-env` plugin:
 
-```js
-// vite.config.js
+   ```js
+   // vite.config.js
 
-const importMetaEnv = require("@import-meta-env/unplugin");
+   const importMetaEnv = require("@import-meta-env/unplugin");
 
-/**
- * @type {import('vite').UserConfig}
- */
-module.exports = {
-  // ...
-  plugins: [
-    // ...
-    importMetaEnv.vite(),
-  ],
-};
-```
+   /**
+    * @type {import('vite').UserConfig}
+    */
+   module.exports = {
+     // ...
+     plugins: [
+       // ...
+       importMetaEnv.vite(),
+     ],
+   };
+   ```
 
-3. Set environment variables:
+1. List public environment variables under `.env.example`.
 
-```sh
-$ export HELLO=import-meta-env
-```
+   ```
+   # .env.example
+   HELLO=
+   ```
 
-4. Start dev server:
+1. Set environment variables:
 
-```sh
-$ pnpm exec vite
-```
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
 
-5. Build production:
+1. Start dev server:
 
-```sh
-$ pnpm exec vite build
-```
+   ```sh
+   $ pnpm exec vite
+   ```
 
-6. Serve production:
+1. Build production:
 
-```sh
-$ pnpm exec import-meta-env
-$ pnpm exec vite preview
-```
+   ```sh
+   $ pnpm exec vite build
+   ```
+
+1. Serve production:
+
+   ```sh
+   $ pnpm exec import-meta-env
+   $ pnpm exec vite preview
+   ```

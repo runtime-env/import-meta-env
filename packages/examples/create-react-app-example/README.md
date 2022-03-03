@@ -2,49 +2,56 @@
 
 1. Install package:
 
-```sh
-$ pnpm i -D @import-meta-env/unplugin
-$ pnpm i -D @import-meta-env/cli
-```
+   ```sh
+   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @import-meta-env/cli
+   ```
 
-2. Register `import-meta-env` plugin:
+1. Register `import-meta-env` plugin:
 
-```js
-// config/webpack.config.js
+   ```js
+   // config/webpack.config.js
 
-module.exports = function (webpackEnv) {
-  // ...
-  return {
-    // ...
-    plugins: [
-      // ...
-      require("@import-meta-env/unplugin").webpack(),
-    ],
-  },
-};
-```
+   module.exports = function (webpackEnv) {
+     // ...
+     return {
+       // ...
+       plugins: [
+         // ...
+         require("@import-meta-env/unplugin").webpack(),
+       ],
+     },
+   };
+   ```
 
-3. Set environment variables:
+1. List public environment variables under `.env.example`.
 
-```sh
-$ export HELLO=import-meta-env
-```
+   ```
+   # .env.example
+   HELLO=
+   ```
 
-4. Start dev server:
+1. Set environment variables:
 
-```sh
-$ node scripts/start.js
-```
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
 
-5. Build production:
+1. Start dev server:
 
-```sh
-$ node scripts/build.js
-```
+   ```sh
+   $ node scripts/start.js
+   ```
 
-6. Serve production:
+1. Build production:
 
-```sh
-$ pnpm exec import-meta-env
-$ pnpm exec serve -s build
-```
+   ```sh
+   $ node scripts/build.js
+   ```
+
+1. Serve production:
+
+   ```sh
+   $ pnpm exec import-meta-env
+   $ pnpm exec serve -s build
+   ```

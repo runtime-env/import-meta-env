@@ -1,53 +1,94 @@
 # Setup
 
-1. Install package:
+> This example contains server side and client side usage.
 
-```sh
-$ pnpm i -D @import-meta-env/unplugin
-$ pnpm i -D @import-meta-env/cli
-```
+## Server Side
 
-2. Register `import-meta-env` plugin:
+You should read sensitive credentials environment variables from the [`process.env` object](https://nodejs.org/dist/latest-v8.x/docs/api/process.html#process_process_env) instead of `import.meta.env`:
 
 ```js
-// next.config.js
+// pages/api/process-env.js
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // ...
-
-  webpack: (config) => {
-    config.plugins.push(require("@import-meta-env/unplugin").webpack());
-
-    return config;
-  },
-};
-
-module.exports = nextConfig;
+export default function handler(req, res) {
+  res
+    .status(200)
+    .json(JSON.stringify({ SECRET_NUMBER: process.env.SECRET_NUMBER }));
+}
 ```
 
-3. Set environment variables:
+If you need to read environment variables from `.env` file, you can use `dotenv`:
 
-```sh
-$ export HELLO=import-meta-env
-$ export SECRET_NUMBER=42
+```js
+import dotenv from "dotenv";
+
+export default function handler(req, res) {
+  dotenv.config();
+
+  res
+    .status(200)
+    .json(JSON.stringify({ SECRET_NUMBER: process.env.SECRET_NUMBER }));
+}
 ```
 
-4. Start dev server:
+Only the keys listed in the `.env.example` file will be exposed to `import.meta.env`, so you can share the `.env` file between the server side (`process.env`) and the client side (`import.meta.env`).
 
-```sh
-$ pnpm exec next dev
-```
+## Client Side
 
-5. Build production:
+1. Install package:
 
-```sh
-$ pnpm exec next build
-```
+   ```sh
+   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @import-meta-env/cli
+   ```
 
-6. Serve production:
+1. Register `import-meta-env` plugin:
 
-```sh
-$ pnpm exec import-meta-env
-$ pnpm exec next start
-```
+   ```js
+   // next.config.js
+
+   /** @type {import('next').NextConfig} */
+   const nextConfig = {
+     // ...
+
+     webpack: (config) => {
+       config.plugins.push(require("@import-meta-env/unplugin").webpack());
+
+       return config;
+     },
+   };
+
+   module.exports = nextConfig;
+   ```
+
+1. List public environment variables under `.env.example`.
+
+   ```
+   # .env.example
+   HELLO=
+   ```
+
+1. Set environment variables:
+
+   ```sh
+   $ export HELLO=import-meta-env
+   $ export SECRET_NUMBER=42
+   ```
+
+1. Start dev server:
+
+   ```sh
+   $ pnpm exec next dev
+   ```
+
+1. Build production:
+
+   ```sh
+   $ pnpm exec next build
+   ```
+
+1. Serve production:
+
+   ```sh
+   $ pnpm exec import-meta-env
+   $ pnpm exec next start
+   ```

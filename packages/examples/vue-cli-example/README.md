@@ -2,46 +2,53 @@
 
 1. Install package:
 
-```sh
-$ yarn add -D @import-meta-env/unplugin
-$ yarn add -D @import-meta-env/cli
-```
+   ```sh
+   $ yarn add -D @import-meta-env/unplugin
+   $ yarn add -D @import-meta-env/cli
+   ```
 
-2. Register `import-meta-env` plugin:
+1. Register `import-meta-env` plugin:
 
-```js
-// vue.config.js
-const { defineConfig } = require("@vue/cli-service");
-const importMetaEnv = require("@import-meta-env/unplugin");
+   ```js
+   // vue.config.js
+   const { defineConfig } = require("@vue/cli-service");
+   const importMetaEnv = require("@import-meta-env/unplugin");
 
-module.exports = defineConfig({
-  configureWebpack: {
-    plugins: [importMetaEnv.webpack()],
-  },
-});
-```
+   module.exports = defineConfig({
+     configureWebpack: {
+       plugins: [importMetaEnv.webpack()],
+     },
+   });
+   ```
 
-3. Set environment variables:
+1. List public environment variables under `.env.example`.
 
-```sh
-$ export HELLO=import-meta-env
-```
+   ```
+   # .env.example
+   HELLO=
+   ```
 
-4. Start dev server:
+1. Set environment variables:
 
-```sh
-$ yarn vue-cli-service serve
-```
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
 
-5. Build production:
+1. Start dev server:
 
-```sh
-$ yarn vue-cli-service build
-```
+   ```sh
+   $ yarn vue-cli-service serve
+   ```
 
-6. Serve production:
+1. Build production:
 
-```sh
-$ node node_modules/.bin/import-meta-env
-$ yarn serve -s dist
-```
+   ```sh
+   $ yarn vue-cli-service build
+   ```
+
+1. Serve production:
+
+   ```sh
+   $ node node_modules/.bin/import-meta-env
+   $ yarn serve -s dist
+   ```

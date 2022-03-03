@@ -2,33 +2,40 @@
 
 1. Install package:
 
-```sh
-$ pnpm i -D @import-meta-env/unplugin
-```
+   ```sh
+   $ pnpm i -D @import-meta-env/unplugin
+   ```
 
-2. Register `import-meta-env` plugin:
+1. Register `import-meta-env` plugin:
 
-```js
-// vite.config.ts
+   ```js
+   // vite.config.ts
 
-import { defineConfig } from "vite";
-import importMetaEnv from "@import-meta-env/unplugin";
+   import { defineConfig } from "vite";
+   import importMetaEnv from "@import-meta-env/unplugin";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  // ...
-  plugins: [importMetaEnv.vite()],
-});
-```
+   // https://vitejs.dev/config/
+   export default defineConfig({
+     // ...
+     plugins: [importMetaEnv.vite()],
+   });
+   ```
 
-3. Set environment variables:
+1. List public environment variables under `.env.example`.
 
-```sh
-$ export HELLO=import-meta-env
-```
+   ```
+   # .env.example
+   HELLO=
+   ```
 
-4. Run tests:
+1. Set environment variables:
 
-```sh
-$ pnpm exec vitest
-```
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
+
+1. Run tests:
+
+   ```sh
+   $ pnpm exec vitest
+   ```

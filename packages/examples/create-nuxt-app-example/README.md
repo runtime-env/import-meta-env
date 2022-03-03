@@ -2,49 +2,56 @@
 
 1. Install package:
 
-```sh
-$ yarn add -D @import-meta-env/unplugin
-$ yarn add -D @import-meta-env/cli
-```
+   ```sh
+   $ yarn add -D @import-meta-env/unplugin
+   $ yarn add @import-meta-env/cli dotenv
+   ```
 
-2. Register `import-meta-env` plugin:
+1. Register `import-meta-env` plugin:
 
-```js
-// nuxt.config.js
-import importMetaEnv from "@import-meta-env/unplugin";
+   ```js
+   // nuxt.config.js
+   import importMetaEnv from "@import-meta-env/unplugin";
 
-export default {
-  // ...
+   export default {
+     // ...
 
-  build: {
-    extend(config, { isDev, isClient }) {
-      config.plugins.push(importMetaEnv.webpack());
-    },
-  },
-};
-```
+     build: {
+       extend(config, { isDev, isClient }) {
+         config.plugins.push(importMetaEnv.webpack());
+       },
+     },
+   };
+   ```
 
-3. Set environment variables:
+1. List public environment variables under `.env.example`.
 
-```sh
-$ export HELLO=import-meta-env
-```
+   ```
+   # .env.example
+   HELLO=
+   ```
 
-4. Start dev server:
+1. Set environment variables:
 
-```sh
-$ yarn nuxt
-```
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
 
-5. Build production:
+1. Start dev server:
 
-```sh
-$ yarn nuxt build
-```
+   ```sh
+   $ yarn nuxt
+   ```
 
-6. Serve production:
+1. Build production:
 
-```sh
-$ node node_modules/.bin/import-meta-env
-$ yarn nuxt start
-```
+   ```sh
+   $ yarn nuxt build
+   ```
+
+1. Serve production:
+
+   ```sh
+   $ node node_modules/.bin/import-meta-env
+   $ yarn nuxt start
+   ```

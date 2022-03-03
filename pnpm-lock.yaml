@@ -141,13 +141,13 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2
     dependencies:
+      '@import-meta-env/cli': link:../../cli
+      cross-env: 7.0.3
       next: 12.1.0_33bdac975a6e334c49640fab91e2abb4
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
-      '@import-meta-env/cli': link:../../cli
       '@import-meta-env/unplugin': link:../../unplugin
-      cross-env: 7.0.3
 
   packages/examples/create-react-app-example:
     specifiers:
@@ -4888,7 +4888,6 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-    dev: true
 
   /cross-spawn/6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==}
