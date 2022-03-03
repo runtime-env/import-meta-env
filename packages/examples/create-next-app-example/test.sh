@@ -5,7 +5,7 @@ rm -rf .next
 
 # act
 pnpm exec next build
-pnpm exec cross-env HELLO=import-meta-env import-meta-env -o .next/static/chunks/pages/*
+pnpm exec cross-env HELLO=import-meta-env import-meta-env
 
 # assert
 diff -r .next/static/chunks/pages/index*.js __fixtures__/index*.js

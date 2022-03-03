@@ -45,6 +45,6 @@ $ yarn nuxt build
 6. Serve production:
 
 ```sh
-$ node node_modules/.bin/import-meta-env -o .nuxt/dist/client/* .nuxt/dist/server/*
+$ node node_modules/.bin/import-meta-env
 $ yarn nuxt start
 ```

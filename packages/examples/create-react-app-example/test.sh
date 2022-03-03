@@ -5,7 +5,7 @@ rm -rf build
 
 # act
 node scripts/build.js
-pnpm exec cross-env HELLO=import-meta-env import-meta-env -o build/static/js/*
+pnpm exec cross-env HELLO=import-meta-env import-meta-env
 
 # assert
 diff -r build/static/js/main*.js __fixtures__

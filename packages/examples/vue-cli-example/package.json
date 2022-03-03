@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vue-cli-service serve",
     "build": "vue-cli-service build",
-    "preview": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env -o dist/js/* && serve -s dist"
+    "preview": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env && serve -s dist"
   },
   "dependencies": {
     "core-js": "^3.8.3",

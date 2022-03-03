@@ -44,6 +44,6 @@ $ yarn nuxi build
 6. Serve production:
 
 ```sh
-$ node node_modules/.bin/import-meta-env -o .output/public/_nuxt/pages/* .output/server/chunks/app/pages/*
+$ node node_modules/.bin/import-meta-env
 $ yarn nuxi preview
 ```

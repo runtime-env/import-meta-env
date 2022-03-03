@@ -51,7 +51,7 @@ Options:
   -V, --version           output the version number
   -e, --env <path>        The .env file path to load (default: ".env")
   -x, --example <path>    The .env example file path to load (default: ".env.example")
-  -o, --output <path...>  The output file paths to inject in-place (default: "dist/assets/import-meta-env*")
+  -o, --output <path...>  The output file paths to inject in-place (default: ["dist/**/*",".next/**/*",".nuxt/**/*",".output/**/*","build/**/*"])
   -h, --help              display help for command
 ```
 

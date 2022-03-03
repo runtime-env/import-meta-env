@@ -59,7 +59,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env node scripts/start.js",
     "build": "node scripts/build.js",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env -o build/static/js/* && serve -s build",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env && serve -s build",
     "test": "cross-env HELLO=import-meta-env node scripts/test.js"
   },
   "eslintConfig": {

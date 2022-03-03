@@ -45,6 +45,6 @@ $ node scripts/build.js
 6. Serve production:
 
 ```sh
-$ pnpm exec import-meta-env -o build/static/js/*
+$ pnpm exec import-meta-env
 $ pnpm exec serve -s build
 ```

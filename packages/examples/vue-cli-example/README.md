@@ -42,6 +42,6 @@ $ yarn vue-cli-service build
 6. Serve production:
 
 ```sh
-$ node node_modules/.bin/import-meta-env -o dist/js/*
+$ node node_modules/.bin/import-meta-env
 $ yarn serve -s dist
 ```

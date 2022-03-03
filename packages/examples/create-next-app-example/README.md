@@ -47,6 +47,6 @@ $ pnpm exec next build
 6. Serve production:
 
 ```sh
-$ pnpm exec import-meta-env -o .next/static/chunks/pages/*
+$ pnpm exec import-meta-env
 $ pnpm exec next start
 ```

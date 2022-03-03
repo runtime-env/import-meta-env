@@ -7,7 +7,7 @@ import {
   writeFileSync,
 } from "fs";
 import colors from "picocolors";
-import { resolveEnv, placeholder, virtualFile } from "../../shared";
+import { resolveEnv, placeholder } from "../../shared";
 import glob from "glob";
 import { version } from "../package.json";
 import { isBackupFileName } from "./is-backup-file-name";
@@ -15,13 +15,20 @@ import { tryToRestore } from "./try-to-restore";
 import { isSourceMap } from "./is-source-map";
 
 const backupFileExt = ".bak";
-const virtualFileGlob = `dist/assets/${virtualFile}*`;
-const generateDefaultOutput = () => {
-  const outputFilePaths = glob
-    .sync(virtualFileGlob)
-    .filter((path) => path.includes("node_modules") === false);
+const defaultOutput = [
+  "dist/**/*",
+  ".next/**/*",
+  ".nuxt/**/*",
+  ".output/**/*",
+  "build/**/*",
+];
 
-  return outputFilePaths;
+const resolveOutputFileNames = (outputPaths: string[]) => {
+  return outputPaths
+    .map((path) => glob.sync(path))
+    .flat()
+    .filter((path) => existsSync(path))
+    .filter((path) => lstatSync(path).isFile());
 };
 
 export interface Args {
@@ -42,8 +49,8 @@ export const createCommand = () =>
     )
     .option(
       "-o, --output <path...>",
-      `The output file paths to inject in-place (default: ${JSON.stringify(
-        virtualFileGlob
+      `The output file/dir paths to inject in-place (default: ${JSON.stringify(
+        defaultOutput
       )})`
     )
     .action((args: Args) => {
@@ -56,23 +63,12 @@ export const createCommand = () =>
         if (require.main === module) process.exit(1);
       }
 
-      const outputFilePaths = args.output ?? generateDefaultOutput();
-      if (outputFilePaths.length === 0) {
-        console.error(colors.red(`[import-meta-env]: Output file not found`));
-        if (require.main === module) process.exit(1);
-      }
-
-      const notFoundOutputFilePaths = outputFilePaths.filter(
-        (outputFilePath) => {
-          return existsSync(outputFilePath) === false;
-        }
-      );
-      if (notFoundOutputFilePaths.length > 0) {
+      const output = args.output ?? defaultOutput;
+      const foundOutputFilePaths = resolveOutputFileNames(output);
+      if (foundOutputFilePaths.length === 0) {
         console.error(
           colors.red(
-            `[import-meta-env]: Output file not found: ${notFoundOutputFilePaths.join(
-              ", "
-            )}`
+            `[import-meta-env]: Output file not found: ${output.join(", ")}`
           )
         );
         if (require.main === module) process.exit(1);
@@ -94,7 +90,9 @@ export const main = (di: {
     envExampleFilePath: opts.example,
     envFilePath: opts.env,
   });
-  (opts.output ?? generateDefaultOutput()).forEach((outputFileName) => {
+
+  const output = opts.output ?? defaultOutput;
+  resolveOutputFileNames(output).forEach((outputFileName) => {
     if (lstatSync(outputFileName).isFile() === false) return;
 
     if (isSourceMap(outputFileName)) return;

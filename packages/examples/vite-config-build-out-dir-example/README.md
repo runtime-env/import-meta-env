@@ -43,6 +43,6 @@ $ pnpm exec vite build
 6. Serve production:
 
 ```sh
-$ pnpm exec import-meta-env -o custom-out-dir/assets/import-meta-env*
+$ pnpm exec import-meta-env -o "custom-out-dir/**/*"
 $ pnpm exec vite preview
 ```

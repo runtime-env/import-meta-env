@@ -29,7 +29,7 @@ describe("cli", () => {
             "[31m[import-meta-env]: Example file not found: foo[39m",
           ],
           Array [
-            "[31m[import-meta-env]: Output file not found[39m",
+            "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
       `);
@@ -63,7 +63,7 @@ describe("cli", () => {
       `);
     });
 
-    test("it should warn if output files not found 2", () => {
+    test("it should warn if output files not found (default)", () => {
       // arrange
       const envExampleFilePath = tmp.fileSync();
       const spy = jest.spyOn(console, "error").mockImplementation();
@@ -77,7 +77,7 @@ describe("cli", () => {
       expect(spy.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
-            "[31m[import-meta-env]: Output file not found[39m",
+            "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
       `);

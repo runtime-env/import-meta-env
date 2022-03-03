@@ -48,6 +48,6 @@ $ pnpm exec webpack
 6. Serve production:
 
 ```sh
-$ pnpm exec import-meta-env -o dist/*
+$ pnpm exec import-meta-env
 $ pnpm exec serve dist
 ```
