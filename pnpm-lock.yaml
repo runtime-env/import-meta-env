@@ -278,6 +278,25 @@ importers:
       cross-env: 7.0.3
       serve: 13.0.2
 
+  packages/examples/process-env-example:
+    specifiers:
+      '@import-meta-env/cli': workspace:^0.1.2
+      '@import-meta-env/unplugin': workspace:^0.1.2
+      cross-env: ^7.0.3
+      next: 12.1.0
+      react: 17.0.2
+      react-dom: 17.0.2
+      swr: ^1.2.2
+    dependencies:
+      next: 12.1.0_33bdac975a6e334c49640fab91e2abb4
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      swr: 1.2.2_react@17.0.2
+    devDependencies:
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/unplugin': link:../../unplugin
+      cross-env: 7.0.3
+
   packages/examples/rollup-starter-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
@@ -10975,6 +10994,14 @@ packages:
       csso: 4.2.0
       picocolors: 1.0.0
       stable: 0.1.8
+    dev: false
+
+  /swr/1.2.2_react@17.0.2:
+    resolution: {integrity: sha512-ky0BskS/V47GpW8d6RU7CPsr6J8cr7mQD6+do5eky3bM0IyJaoi3vO8UhvrzJaObuTlGhPl2szodeB2dUd76Xw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /symbol-tree/3.2.4:

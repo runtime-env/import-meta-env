@@ -98,10 +98,12 @@ build({
 
 Create a `.env.example` file in the root of your project:
 
+**Warning: the keys defined in this file will be exposed to client side.**
+
+You should read **server side only environment variables** from `process.env.*` instead of `import.meta.env` (see `process.env` example [here](../examples/process-env-example/)).
+
 ```sh
 # .env.example
-# To prevent exposure of sensitive credentials to clients,
-# only the keys defined in this file can be accessed.
 S3_BUCKET=
 ```
 
