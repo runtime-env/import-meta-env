@@ -2,10 +2,11 @@
 
 [![CI](https://github.com/iendeavor/import-meta-env/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/iendeavor/import-meta-env/actions/workflows/ci.yml)
 
-- 🔑 [Twelve-Factor App](https://12factor.net/config) Ready
-- ⚡️ Zero Configuration
-- 💡 Easy-to-Use
-- 🛠️ Test Runner Support
+This plugin helps us inject environment variables into the `import.meta.env` object **_after_** building the application instead of statically replacing it during production.
+
+- All Environment Are Supported (CSR, SSR, Static-Site, Test Runners)
+- [Twelve-Factor App](https://12factor.net/config) Ready
+- Zero Configuration
 
 ## Packages
 
