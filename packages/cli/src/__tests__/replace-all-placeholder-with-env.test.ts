@@ -52,7 +52,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
   test("it works with single quotes", () => {
     // arrange
     const code = `
-      const hello = '${placeholder}'.HELLO;
+      const hello = ${placeholder.replace(/^"/, "'").replace(/"$/, "'")}.HELLO;
     `;
     const env = {
       HELLO: "world",
@@ -64,7 +64,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = '{\\"HELLO\\":\\"world\\"}'.HELLO;
+            const hello = {\\"HELLO\\":\\"world\\"}.HELLO;
           "
     `);
   });
@@ -72,7 +72,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
   test("it works with double quotes", () => {
     // arrange
     const code = `
-      const hello = "${placeholder}".HELLO;
+      const hello = ${placeholder.replace(/^'/, '"').replace(/'$/, '"')}.HELLO;
     `;
     const env = {
       HELLO: "world",
@@ -84,7 +84,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = \\"{\\"HELLO\\":\\"world\\"}\\".HELLO;
+            const hello = {\\"HELLO\\":\\"world\\"}.HELLO;
           "
     `);
   });
