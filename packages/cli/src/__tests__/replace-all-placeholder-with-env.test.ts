@@ -88,4 +88,30 @@ describe("replaceAllPlaceholderWithEnv", () => {
           "
     `);
   });
+
+  test("it should works with arrow function", () => {
+    // arrange
+    const code = `
+      ()=>${placeholder}.HELLO;
+      () =>
+
+          ${placeholder}.HELLO;
+    `;
+    const env = {
+      HELLO: "world",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv(code, env);
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            ()=>({\\"HELLO\\":\\"world\\"}).HELLO;
+            () =>
+
+                ({\\"HELLO\\":\\"world\\"}).HELLO;
+          "
+    `);
+  });
 });
