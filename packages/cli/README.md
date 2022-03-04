@@ -10,7 +10,7 @@
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
-## 🚀 Quick Start
+## Quick Start
 
 Install package:
 
@@ -39,7 +39,7 @@ See also:
 - [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
 - [@import-meta-env/unplugin](https://github.com/iendeavor/import-meta-env/tree/main/packages/unplugin) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.
 
-## 📖 API
+## API
 
 ```
 $ npx import-meta-env --help
@@ -59,6 +59,6 @@ Options:
 
 Since we may switch to different environment variables multiple times, this executable also creates `*.bak` files to restore.
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details

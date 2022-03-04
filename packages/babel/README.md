@@ -12,7 +12,7 @@ This plugin is intended to provide an approximation of some of [import-meta-env]
 
 This project use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
-## 🚀 Quick Start
+## Quick Start
 
 Install and register the plugin:
 
@@ -46,6 +46,6 @@ See also:
 - [@import-meta-env/cli](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli) - A binary package is used to inject environment variables into those placeholders.
 - [@import-meta-env/unplugin](https://github.com/iendeavor/import-meta-env/tree/main/packages/unplugin) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details

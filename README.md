@@ -34,7 +34,7 @@ Before serving, run script to inject environment variables (e.g., run `npx impor
 console.log({ HELLO: "import-meta-env" }.HELLO);
 ```
 
-That's it!
+That's it! The complete example with a detailed tutorial can be found [here](./packages/examples/hello-world-example/).
 
 ## Packages
 

@@ -16,7 +16,7 @@ Environment variables should be easy to change between deployments **_without_**
 
 During production, this plugin generates chunks with placeholders, which allow us to statically replace environment variables **_after_** building the application (don't worry, we provide an executable for this, you don't need to write them yourself) .
 
-## 🚀 Quick Start
+## Quick Start
 
 Install and register the plugin:
 
@@ -145,10 +145,10 @@ See also:
 - [@import-meta-env/babel](https://github.com/iendeavor/import-meta-env/tree/main/packages/babel) - Provide an approximation of this plugin's specific transformations when running the code in other environments, for example, running tests with a NodeJS based test runner.
 - [@import-meta-env/cli](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli) - A binary package is used to inject environment variables into those placeholders.
 
-## 📖 API
+## API
 
 Please see [types.ts](./src/types.ts)
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details

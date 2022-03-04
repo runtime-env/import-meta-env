@@ -18,7 +18,7 @@
    };
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example` (you can configure it [here](../../unplugin/README.md#api)).
 
    ```
    # .env.example
@@ -31,13 +31,19 @@
    $ export HELLO=world
    ```
 
+   Or, you can use `.env` file:
+
+   ```sh
+   $ echo "HELLO=world" > .env
+   ```
+
 1. Build production:
 
    ```sh
    $ pnpm exec webpack
    ```
 
-1. Inject environment variables:
+1. Inject environment variables (see more about this script [here](../../cli/README.md#api)):
 
    ```sh
    $ pnpm exec import-meta-env
