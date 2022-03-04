@@ -109,9 +109,14 @@ S3_BUCKET=
 
 <br />
 
-Add `.env` file to .gitignore, and create a `.env` file in the project's root directory:
+Set environment variables directly on your system:
 
-(⚠ This step is completely optional, you should set environment variables directly on your system if you can.)
+```sh
+$ export S3_BUCKET=YOURS3BUCKET
+$ export SECRET_KEY=YOURSECRETKEYGOESHERE
+```
+
+Or add `.env` file to `.gitignore`, and create a `.env` file in the project's root directory:
 
 ```sh
 # .env

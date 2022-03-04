@@ -33,9 +33,9 @@ Adjust scripts in your package.json or elsewhere:
 {
   "scripts": {
     // If you have a `.env` file:
-    "foo": "foo",
+    "test": "jest",
     // If you don't have a `.env` file:
-    "foo": "cross-env S3_BUCKET=YOURS3BUCKET foo"
+    "test": "cross-env S3_BUCKET=YOURS3BUCKET jest"
   }
 }
 ```
