@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/iendeavor/import-meta-env/compare/babel0.1.3...babel0.1.4) (2022-03-04)
+
+
+### Bug Fixes
+
+* babel plugin should also support env, example options ([9960aae](https://github.com/iendeavor/import-meta-env/commit/9960aae34edf5d0d02e56fb286f790b0289a9cbb))
+* it should only inject vite specific environment variables when using vite ([52f0fb6](https://github.com/iendeavor/import-meta-env/commit/52f0fb6800c751afcedd7e9270ad1aa9bac6b9e1))
+
 ### [0.1.3](https://github.com/iendeavor/import-meta-env/compare/babel0.1.2...babel0.1.3) (2022-02-28)
 
 
