@@ -1,5 +1,6 @@
 import tmp from "tmp";
-import { Args, createCommand, main } from "..";
+import { main } from "..";
+import { Args, createCommand } from "../create-command";
 import { resolveEnv, placeholder } from "../../../shared";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 
