@@ -23,7 +23,7 @@ $ npm i @import-meta-env/babel
 ```js
 // babel.config.js
 module.exports = {
-  plugins: ["module:@import-meta-env/babel"],
+  plugins: [["module:@import-meta-env/babel", { example: ".env.example" }]],
 };
 ```
 
@@ -45,6 +45,39 @@ See also:
 - [examples](https://github.com/iendeavor/import-meta-env/tree/main/packages/examples)
 - [@import-meta-env/cli](https://github.com/iendeavor/import-meta-env/tree/main/packages/cli) - A binary package is used to inject environment variables into those placeholders.
 - [@import-meta-env/unplugin](https://github.com/iendeavor/import-meta-env/tree/main/packages/unplugin) - Inject environment variables into the import.meta.env object after building the application instead of statically replacing it during production.
+
+## Plugin Options
+
+```js
+// babel.config.js
+module.exports = {
+  plugins: [
+    [
+      "module:@import-meta-env/babel",
+      /* Plugin options goes here */
+      {
+        env: ".env.example",
+      },
+    ],
+  ],
+};
+```
+
+```ts
+interface PluginOptions {
+  /**
+   * The .env file path to load
+   *
+   * @default ".env"
+   */
+  env?: string;
+
+  /**
+   * The .env example file path to load
+   */
+  example: string;
+}
+```
 
 ## License
 

@@ -13,7 +13,7 @@
 
    module.exports = {
      // ...
-     plugins: ["module:@import-meta-env/babel"],
+     plugins: [["module:@import-meta-env/babel", { example: ".env.example" }]],
    };
    ```
 
