@@ -36,7 +36,7 @@ export const main = (di: {
     const code = readFileSync(outputFileName, "utf8");
 
     if (placeholderVariants.some((p) => code.includes(p)) === false) return;
-    copyFileSync(outputFileName, backupFileName);
+    if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
     let outputCode = code;
     placeholderVariants.forEach((p) => {

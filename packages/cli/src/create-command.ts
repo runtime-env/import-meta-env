@@ -9,6 +9,7 @@ export interface Args {
   env: string;
   example: string;
   output: string[];
+  disposable: boolean;
 }
 
 export const createCommand = () =>
@@ -26,6 +27,10 @@ export const createCommand = () =>
       `The output file/dir paths to inject in-place (default: ${JSON.stringify(
         defaultOutput
       )})`
+    )
+    .option(
+      "--disposable",
+      "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files."
     )
     .action((args: Args) => {
       if (existsSync(args.example) === false) {
