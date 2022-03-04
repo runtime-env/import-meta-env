@@ -4,10 +4,8 @@ import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
 import { isSourceMap } from "./is-source-map";
 import { Args, createCommand } from "./create-command";
-import { defaultOutput } from "./shared";
+import { backupFileExt, defaultOutput } from "./shared";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
-
-const backupFileExt = ".bak";
 
 const placeholderVariants = ['"', "'"].map((q) =>
   placeholder.replace(new RegExp("'", "g"), q)
