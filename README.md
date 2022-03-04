@@ -8,6 +8,34 @@ This plugin helps us inject environment variables into the `import.meta.env` obj
 - [Twelve-Factor App](https://12factor.net/config) Ready
 - Zero Configuration
 
+## How does this works?
+
+Write your code:
+
+```js
+// src/main.js
+
+console.log(import.meta.env.HELLO);
+```
+
+After bundling it (e.g., run `npx webpack`):
+
+```js
+// dist/main.js
+
+console.log("__import_meta_env_placeholder__".HELLO);
+```
+
+Before serving, run script to inject environment variables (e.g., run `npx import-meta-env`):
+
+```js
+// dist/main.js
+
+console.log({ HELLO: "import-meta-env" }.HELLO);
+```
+
+That's it!
+
 ## Packages
 
 | Package                                                 | Version (click for changelogs)                                                                                                       | Description                                                                                                                                                                                                                                                                    |
