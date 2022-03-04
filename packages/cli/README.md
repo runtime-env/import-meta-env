@@ -41,7 +41,7 @@ See also:
 
 ## 📖 API
 
-```sh
+```
 $ npx import-meta-env --help
 Usage: import-meta-env [options]
 
