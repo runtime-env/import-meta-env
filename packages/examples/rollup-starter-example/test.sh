@@ -5,7 +5,7 @@ rm -rf dist
 
 # act
 pnpm exec rollup -c
-pnpm exec cross-env HELLO=import-meta-env import-meta-env
+pnpm exec cross-env HELLO=import-meta-env import-meta-env --example .env.example
 
 # assert
 diff -r dist __fixtures__

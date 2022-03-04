@@ -30,7 +30,16 @@ export default function handler(req, res) {
 }
 ```
 
-Only the keys listed in the `.env.example` file will be exposed to `import.meta.env`, so you can share the `.env` file between the server side (`process.env`) and the client side (`import.meta.env`).
+You can safely list all environment variables under `.env.example`.
+
+This file is used as an information file for all team members to know what keys and values may be needed.
+
+```
+SECRET_NUMBER=
+HELLO=
+```
+
+Only the keys listed in the `.env.example.pub` file will be exposed to `import.meta.env` (see below).
 
 ## Client Side
 
@@ -51,7 +60,11 @@ Only the keys listed in the `.env.example` file will be exposed to `import.meta.
      // ...
 
      webpack: (config) => {
-       config.plugins.push(require("@import-meta-env/unplugin").webpack());
+       config.plugins.push(
+         require("@import-meta-env/unplugin").webpack({
+           example: ".env.example.pub",
+         })
+       );
 
        return config;
      },
@@ -60,10 +73,10 @@ Only the keys listed in the `.env.example` file will be exposed to `import.meta.
    module.exports = nextConfig;
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.pub`.
 
    ```
-   # .env.example
+   # .env.example.pub
    HELLO=
    ```
 
@@ -89,6 +102,6 @@ Only the keys listed in the `.env.example` file will be exposed to `import.meta.
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env
+   $ pnpm exec import-meta-env --example .env.example.pub
    $ pnpm exec next start
    ```

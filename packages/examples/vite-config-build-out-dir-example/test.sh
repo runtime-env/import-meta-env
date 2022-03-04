@@ -5,7 +5,7 @@ rm -rf custom-out-dir
 
 # act
 pnpm exec vite build
-pnpm exec cross-env HELLO=import-meta-env import-meta-env -o "custom-out-dir/**/*"
+pnpm exec cross-env HELLO=import-meta-env import-meta-env --example .env.example -o "custom-out-dir/**/*"
 
 # assert
 diff -r custom-out-dir __fixtures__

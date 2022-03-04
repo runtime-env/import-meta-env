@@ -16,14 +16,14 @@
    const dev = {
      plugins: [
        // ...,
-       importMetaEnv.rollup(),
+       importMetaEnv.rollup({ example: ".env.example" }),
      ],
    };
 
    const prod = {
      plugins: [
        // ...,
-       importMetaEnv.rollup(),
+       importMetaEnv.rollup({ example: ".env.example" }),
      ],
    };
 
@@ -62,6 +62,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env
+   $ pnpm exec import-meta-env --example .env.example
    $ pnpm exec serve dist
    ```

@@ -18,7 +18,7 @@
        // ...
        plugins: [
          // ...
-         require("@import-meta-env/unplugin").webpack(),
+         require("@import-meta-env/unplugin").webpack({ example: '.env.example' }),
        ],
      },
    };
@@ -52,6 +52,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env
+   $ pnpm exec import-meta-env --example .env.example
    $ pnpm exec serve -s build
    ```

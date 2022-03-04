@@ -14,7 +14,7 @@
    const importMetaEnv = require("@import-meta-env/unplugin");
 
    module.exports = {
-     plugins: [importMetaEnv.webpack()],
+     plugins: [importMetaEnv.webpack({ example: ".env.example" })],
    };
    ```
 
@@ -46,5 +46,5 @@
 1. Inject environment variables (see more about this script [here](../../cli/README.md#api)):
 
    ```sh
-   $ pnpm exec import-meta-env
+   $ pnpm exec import-meta-env --example .env.example
    ```

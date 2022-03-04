@@ -36,7 +36,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend(config, { isDev, isClient }) {
-      config.plugins.push(importMetaEnv.webpack());
+      config.plugins.push(importMetaEnv.webpack({ example: ".env.example" }));
 
       // Make output files easier to read.
       config.optimization.minimize = false;

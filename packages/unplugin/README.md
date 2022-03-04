@@ -34,7 +34,7 @@ import ImportMetaEnvPlugin from "./@import-meta-env/unplugin";
 export default {
   plugins: [
     ImportMetaEnvPlugin.vite({
-      /* options */
+      example: ".env.example.pub",
     }),
   ],
 };
@@ -52,7 +52,7 @@ import ImportMetaEnvPlugin from "./@import-meta-env/unplugin";
 export default {
   plugins: [
     ImportMetaEnvPlugin.rollup({
-      /* options */
+      example: ".env.example.pub",
     }),
   ],
 };
@@ -68,7 +68,7 @@ export default {
 module.exports = {
   plugins: [
     require("./@import-meta-env/unplugin").webpack({
-      /* options */
+      example: ".env.example.pub",
     }),
   ],
 };
@@ -86,7 +86,7 @@ import { build } from "esbuild";
 build({
   plugins: [
     require("./@import-meta-env/unplugin").esbuild({
-      /* options */
+      example: ".env.example.pub",
     }),
   ],
 });
@@ -96,14 +96,14 @@ build({
 
 <br />
 
-Create a `.env.example` file in the root of your project:
+Create a `.env.example.pub` file in the root of your project:
 
 **Warning: the keys defined in this file will be exposed to client side.**
 
 You should read **server side only environment variables** from `process.env.*` instead of `import.meta.env` (see `process.env` example [here](../examples/process-env-example/)).
 
 ```sh
-# .env.example
+# .env.example.pub
 S3_BUCKET=
 ```
 

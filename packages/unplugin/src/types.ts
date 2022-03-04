@@ -8,10 +8,8 @@ export interface PluginOptions {
 
   /**
    * The .env example file path to load
-   *
-   * @default ".env.example"
    */
-  example?: string;
+  example: string;
 
   /**
    * Explicity set whether to inline current environment variables into the code,

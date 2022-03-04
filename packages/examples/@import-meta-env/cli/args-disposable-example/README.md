@@ -18,7 +18,9 @@
      // ...
      plugins: [
        // ...
-       importMetaEnv.webpack(),
+       importMetaEnv.webpack({
+         example: ".env.example",
+       }),
      ],
    };
    ```
@@ -55,6 +57,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env --disposable
+   $ pnpm exec import-meta-env --example .env.example --disposable
    $ pnpm exec serve dist
    ```

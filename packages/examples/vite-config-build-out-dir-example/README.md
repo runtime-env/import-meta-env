@@ -18,7 +18,7 @@
    // https://vitejs.dev/config/
    export default defineConfig({
      // ...
-     plugins: [importMetaEnv.vite()],
+     plugins: [importMetaEnv.vite({ example: ".env.example" })],
    });
    ```
 
@@ -50,6 +50,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env -o "custom-out-dir/**/*"
+   $ pnpm exec import-meta-env --example .env.example -o "custom-out-dir/**/*"
    $ pnpm exec vite preview
    ```

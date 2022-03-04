@@ -5,6 +5,6 @@ import createSharedViteConfig from "../shared-vite-config.mjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [svelte(), importMetaEnv.vite()],
+  plugins: [svelte(), importMetaEnv.vite({ example: ".env.example" })],
   ...createSharedViteConfig(),
 });

@@ -17,10 +17,9 @@ export const createCommand = () =>
     .version(version)
     .description("Inject environment variables from the system or `.env` file.")
     .option("-e, --env <path>", "The .env file path to load", ".env")
-    .option(
+    .requiredOption(
       "-x, --example <path>",
-      "The .env example file path to load",
-      ".env.example"
+      "The .env example file path to load"
     )
     .option(
       "-o, --output <path...>",

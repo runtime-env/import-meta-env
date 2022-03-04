@@ -563,7 +563,7 @@ module.exports = function (webpackEnv) {
       ].filter(Boolean),
     },
     plugins: [
-      require("@import-meta-env/unplugin").webpack(),
+      require("@import-meta-env/unplugin").webpack({ example: ".env.example" }),
 
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(

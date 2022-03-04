@@ -7,7 +7,7 @@ module.exports = defineConfig({
   filenameHashing: false,
   productionSourceMap: false,
   configureWebpack: {
-    plugins: [importMetaEnv.webpack()],
+    plugins: [importMetaEnv.webpack({ example: ".env.example" })],
     optimization: {
       // Make output files easier to read.
       minimize: false,

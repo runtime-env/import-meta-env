@@ -17,7 +17,9 @@
    export default defineNuxtConfig({
      build: {
        extend(config) {
-         config.plugins.push(importMetaEnv.webpack());
+         config.plugins.push(
+           importMetaEnv.webpack({ example: ".env.example" })
+         );
        },
      },
    });
@@ -51,6 +53,6 @@
 1. Serve production:
 
    ```sh
-   $ node node_modules/.bin/import-meta-env
+   $ node node_modules/.bin/import-meta-env --example .env.example
    $ yarn nuxi preview
    ```

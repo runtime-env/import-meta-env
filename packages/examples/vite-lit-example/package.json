@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
-    "import-meta-env": "cross-env HELLO=import-meta-env import-meta-env"
+    "import-meta-env": "cross-env HELLO=import-meta-env import-meta-env --example .env.example"
   },
   "dependencies": {
     "lit": "^2.2.0"

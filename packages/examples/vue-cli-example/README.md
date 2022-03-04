@@ -16,7 +16,7 @@
 
    module.exports = defineConfig({
      configureWebpack: {
-       plugins: [importMetaEnv.webpack()],
+       plugins: [importMetaEnv.webpack({ example: ".env.example" })],
      },
    });
    ```
@@ -49,6 +49,6 @@
 1. Serve production:
 
    ```sh
-   $ node node_modules/.bin/import-meta-env
+   $ node node_modules/.bin/import-meta-env --example .env.example
    $ yarn serve -s dist
    ```

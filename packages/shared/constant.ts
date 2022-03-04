@@ -13,5 +13,3 @@ export const uniqueVariableName = (() => {
 })();
 
 export const envFilePath = ".env";
-
-export const envExampleFilePath = ".env.example";

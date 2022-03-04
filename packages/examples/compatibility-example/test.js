@@ -10,7 +10,7 @@ rimraf.sync("dist");
 // act
 child_process.execSync("pnpm run build");
 child_process.execSync(
-  "pnpm exec cross-env HELLO=import-meta-env import-meta-env"
+  "pnpm exec cross-env HELLO=import-meta-env import-meta-env --example .env.example"
 );
 
 // assert

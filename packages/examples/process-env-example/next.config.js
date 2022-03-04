@@ -5,7 +5,9 @@ const nextConfig = {
   compress: false,
 
   webpack: (config) => {
-    config.plugins.push(require("@import-meta-env/unplugin").webpack());
+    config.plugins.push(
+      require("@import-meta-env/unplugin").webpack({ example: ".env.example" })
+    );
 
     // Make output files easier to read.
     config.optimization.minimize = false;

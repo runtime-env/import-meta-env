@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env next dev",
     "build": "next build",
-    "start": "cross-env HELLO=import-meta-env import-meta-env && next start"
+    "start": "cross-env HELLO=import-meta-env import-meta-env --example .env.example && next start"
   },
   "dependencies": {
     "@import-meta-env/cli": "workspace:*",

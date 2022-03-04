@@ -50,7 +50,7 @@ Inject environment variables from the system or `.env` file.
 Options:
   -V, --version           output the version number
   -e, --env <path>        The .env file path to load (default: ".env")
-  -x, --example <path>    The .env example file path to load (default: ".env.example")
+  -x, --example <path>    The .env example file path to load
   -o, --output <path...>  The output file paths to inject in-place (default: ["dist/**/*",".next/**/*",".nuxt/**/*",".output/**/*","build/**/*"])
   --disposable            Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when
                           environment variable changes, In production, enable this option to avoid generating unnecessary backup files.

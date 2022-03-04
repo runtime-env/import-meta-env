@@ -6,7 +6,6 @@ import { version } from "../package.json";
 import {
   resolveEnv,
   getPackageManagerExecCommand,
-  envExampleFilePath as defaultEnvExampleFilePath,
   envFilePath as defaultEnvFilePath,
   uniqueVariableName,
   virtualFile,
@@ -31,7 +30,12 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   debug && console.debug(options, meta);
 
   const envFilePath = options?.env ?? defaultEnvFilePath;
-  const envExampleFilePath = options?.example ?? defaultEnvExampleFilePath;
+  const envExampleFilePath = options?.example;
+  if (envExampleFilePath === undefined) {
+    throw Error(
+      `example option is required. Please specify it in the plugin options.`
+    );
+  }
   let env: Record<string, string> = {};
 
   let shouldInlineEnv = options?.shouldInlineEnv;
