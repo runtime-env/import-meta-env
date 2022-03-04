@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.2...unplugin0.1.3) (2022-03-04)
+
+
+### Features
+
+* for security reasons, example file paths should be explicitly defined ([23b098f](https://github.com/iendeavor/import-meta-env/commit/23b098f0a5921dabfdd51cab1d345cc0c8c0eda1))
+* make api consistent with cli ([8f0491c](https://github.com/iendeavor/import-meta-env/commit/8f0491cd85cca70c781f82ad3cfcd3dd4d37d01a))
+
+
+### Bug Fixes
+
+* it should load user-defined example file instead of hardcoding .env.example ([329002b](https://github.com/iendeavor/import-meta-env/commit/329002b2f6f79162096463f3bd8558d680b4fe7b))
+
 ### [0.1.2](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.1...unplugin0.1.2) (2022-03-02)
 
 
