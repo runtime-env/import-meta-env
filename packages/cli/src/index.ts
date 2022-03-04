@@ -1,15 +1,12 @@
 import { copyFileSync, lstatSync, readFileSync, writeFileSync } from "fs";
-import { resolveEnv, placeholder } from "../../shared";
+import { resolveEnv } from "../../shared";
 import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
 import { isSourceMap } from "./is-source-map";
 import { Args, createCommand } from "./create-command";
-import { backupFileExt, defaultOutput } from "./shared";
+import { backupFileExt, defaultOutput, placeholderVariants } from "./shared";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
-
-const placeholderVariants = ['"', "'"].map((q) =>
-  placeholder.replace(new RegExp("'", "g"), q)
-);
+import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
@@ -38,10 +35,7 @@ export const main = (di: {
     if (placeholderVariants.some((p) => code.includes(p)) === false) return;
     if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
-    let outputCode = code;
-    placeholderVariants.forEach((p) => {
-      outputCode = outputCode.replace(new RegExp(p, "g"), JSON.stringify(env));
-    });
+    const outputCode = replaceAllPlaceholderWithEnv(code, env);
     writeFileSync(outputFileName, outputCode);
   });
 };

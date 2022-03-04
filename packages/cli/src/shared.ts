@@ -1,3 +1,5 @@
+import { placeholder } from "../../shared";
+
 export const backupFileExt = ".bak";
 
 export const defaultOutput = [
@@ -12,3 +14,7 @@ export const defaultOutput = [
   // create-react-app
   "build/**/*",
 ];
+
+export const placeholderVariants = ['"', "'"].map((q) =>
+  placeholder.replace(new RegExp("'", "g"), q)
+);
