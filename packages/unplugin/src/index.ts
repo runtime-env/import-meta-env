@@ -43,7 +43,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
     if (id === virtualFile) {
       const parsedExample = (() => {
-        const { parsed, error } = dotenvConfig({ path: ".env.example" });
+        const { parsed, error } = dotenvConfig({ path: envExampleFilePath });
         if (error) {
           return {};
         }
@@ -65,7 +65,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
 
       return [
-        `console.assert("${hashValue}"); // Invalidate the cache when the .env.example changes.`,
+        `console.assert("${hashValue}"); // Invalidate the cache when the ${envExampleFilePath} changes.`,
         envCode,
         `export default e;`,
       ].join("\n");

@@ -78,7 +78,10 @@ describe("resolveEnv", () => {
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "[33m[import-meta-env]: .env.example file not found, skip process.
+          "[33m[import-meta-env]: ${envExampleFilePath.replace(
+            /\\/g,
+            "\\\\"
+          )} file not found, skip process.
       [39m",
         ],
       ]
@@ -107,7 +110,10 @@ describe("resolveEnv", () => {
         ],
         Array [
           "
-      The following variables were defined in .env.example file but are not defined in the environment:
+      The following variables were defined in ${envExampleFilePath.replace(
+        /\\/g,
+        "\\\\"
+      )} file but are not defined in the environment:
 
       \`\`\`
       BAR=2
@@ -117,7 +123,7 @@ describe("resolveEnv", () => {
       Here's what you can do:
       - Set them to environment variables on your system.
       - Add them to .env file.
-      - Remove them from .env.example file.
+      - Remove them from ${envExampleFilePath.replace(/\\/g, "\\\\")} file.
       ",
         ],
       ]

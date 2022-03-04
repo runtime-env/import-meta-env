@@ -27,7 +27,9 @@ export const resolveEnv = ({
     }
 
     console.warn(
-      yellow("[import-meta-env]: .env.example file not found, skip process.\n")
+      yellow(
+        `[import-meta-env]: ${envExampleFilePath} file not found, skip process.\n`
+      )
     );
 
     return {};
@@ -46,7 +48,7 @@ export const resolveEnv = ({
 
     const environmentVariablesAreMissing = [
       "",
-      `The following variables were defined in .env.example file but are not defined in the environment:`,
+      `The following variables were defined in ${envExampleFilePath} file but are not defined in the environment:`,
       "",
       "```",
       ...missingEnv,
@@ -55,7 +57,7 @@ export const resolveEnv = ({
       `Here's what you can do:`,
       `- Set them to environment variables on your system.`,
       `- Add them to .env file.`,
-      `- Remove them from .env.example file.`,
+      `- Remove them from ${envExampleFilePath} file.`,
       "",
     ].join("\n");
     console.error(
