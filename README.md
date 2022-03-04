@@ -28,6 +28,8 @@ console.log("__import_meta_env_placeholder__".HELLO);
 
 Before serving, run script to inject environment variables (e.g., run `npx import-meta-env`):
 
+Tip: use [`pkg`](https://github.com/vercel/pkg) to package the `import-meta-env` binary into an executable that can be run even on devices without Node.js installed.
+
 ```js
 // dist/main.js
 
