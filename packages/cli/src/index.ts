@@ -28,7 +28,7 @@ export const main = (di: {
     if (isBackupFileName(outputFileName)) return;
 
     const backupFileName = outputFileName + backupFileExt;
-    tryToRestore(backupFileName);
+    if (!opts.disposable) tryToRestore(backupFileName);
 
     const code = readFileSync(outputFileName, "utf8");
 
