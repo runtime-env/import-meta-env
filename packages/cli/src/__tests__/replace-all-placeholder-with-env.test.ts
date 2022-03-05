@@ -114,4 +114,24 @@ describe("replaceAllPlaceholderWithEnv", () => {
           "
     `);
   });
+
+  test("it should support dynamic key access", () => {
+    // arrange
+    const code = `
+      ${placeholder}['dynamicKey'];
+    `;
+    const env = {
+      dynamicKey: "dynamic",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv(code, env);
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            {\\"dynamicKey\\":\\"dynamic\\"}['dynamicKey'];
+          "
+    `);
+  });
 });
