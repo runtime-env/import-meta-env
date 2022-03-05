@@ -8,7 +8,7 @@ This plugin helps us inject environment variables into the `import.meta.env` obj
 - [Twelve-Factor App](https://12factor.net/config) Ready
 - Zero Configuration
 
-## How does this works?
+## How does this work?
 
 Write your code:
 
