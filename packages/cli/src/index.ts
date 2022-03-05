@@ -4,9 +4,10 @@ import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
 import { isSourceMap } from "./is-source-map";
 import { Args, createCommand } from "./create-command";
-import { backupFileExt, defaultOutput, placeholderVariants } from "./shared";
+import { backupFileExt, defaultOutput } from "./shared";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
 import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
+import { shouldInjectEnv } from "./should-inject-env";
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
@@ -31,7 +32,7 @@ export const main = (di: {
 
     const code = readFileSync(outputFileName, "utf8");
 
-    if (placeholderVariants.some((p) => code.includes(p)) === false) return;
+    if (shouldInjectEnv(code) === false) return;
     if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
     const outputCode = replaceAllPlaceholderWithEnv({ code, env });
