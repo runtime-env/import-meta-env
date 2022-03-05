@@ -134,4 +134,24 @@ describe("replaceAllPlaceholderWithEnv", () => {
           "
     `);
   });
+
+  test("it should not replace placeholder which contains zero-width space", () => {
+    // arrange
+    const code = `
+      ${placeholder.slice(0, 8) + "\u200b" + placeholder.slice(8)}.HELLO;
+    `;
+    const env = {
+      HELLO: "world",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            '__impor​t_meta_env_placeholder__'.HELLO;
+          "
+    `);
+  });
 });
