@@ -16,7 +16,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     };
 
     // act
-    const result = replaceAllPlaceholderWithEnv(code, env);
+    const result = replaceAllPlaceholderWithEnv({ code, env });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
@@ -38,7 +38,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     };
 
     // act
-    const result = replaceAllPlaceholderWithEnv(code, env);
+    const result = replaceAllPlaceholderWithEnv({ code, env });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
@@ -59,7 +59,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     };
 
     // act
-    const result = replaceAllPlaceholderWithEnv(code, env);
+    const result = replaceAllPlaceholderWithEnv({ code, env });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
@@ -79,7 +79,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     };
 
     // act
-    const result = replaceAllPlaceholderWithEnv(code, env);
+    const result = replaceAllPlaceholderWithEnv({ code, env });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
@@ -102,7 +102,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     };
 
     // act
-    const result = replaceAllPlaceholderWithEnv(code, env);
+    const result = replaceAllPlaceholderWithEnv({ code, env });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
@@ -125,7 +125,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     };
 
     // act
-    const result = replaceAllPlaceholderWithEnv(code, env);
+    const result = replaceAllPlaceholderWithEnv({ code, env });
 
     // assert
     expect(result).toMatchInlineSnapshot(`

@@ -35,7 +35,7 @@ export const main = (di: {
     if (placeholderVariants.some((p) => code.includes(p)) === false) return;
     if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
-    const outputCode = replaceAllPlaceholderWithEnv(code, env);
+    const outputCode = replaceAllPlaceholderWithEnv({ code, env });
     writeFileSync(outputFileName, outputCode);
   });
 };
