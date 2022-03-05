@@ -22,8 +22,7 @@ export const main = (di: {
 
   const output = opts.output ?? defaultOutput;
   resolveOutputFileNames(output).forEach((outputFileName) => {
-    if (lstatSync(outputFileName).isFile() === false) return;
-
+    if (lstatSync(outputFileName).isDirectory()) return;
     if (isSourceMap(outputFileName)) return;
     if (isBackupFileName(outputFileName)) return;
 
