@@ -1,4 +1,4 @@
-(self["webpackChunkvue_cli_example"] = self["webpackChunkvue_cli_example"] || []).push([[998],{
+(self["webpackChunkvue_cli_5_example"] = self["webpackChunkvue_cli_5_example"] || []).push([[998],{
 
 /***/ 9662:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {

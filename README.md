@@ -59,7 +59,7 @@ That's it! The complete example with a detailed tutorial can be found [here](./p
 - [rollup](./packages/examples/rollup-starter-example)
 - [vite](./packages/examples/vite-starter-example)
 - [vitest](./packages/examples/vite-vitest-example)
-- [vue-cli](./packages/examples/vue-cli-example)
+- [@vue/cli@5](./packages/examples/vue-cli-5-example)
 - [webpack](./packages/examples/webpack-starter-example)
 - [others](./packages/examples)
 

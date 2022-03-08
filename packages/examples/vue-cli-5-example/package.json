@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli-example",
+  "name": "vue-cli-5-example",
   "private": true,
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vue-cli-service serve",

@@ -84,7 +84,7 @@ const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.Z)(HelloWorldvue_t
   },
   computed: {
     msg() {
-      return '__import_meta_env_placeholder__'.HELLO;
+      return {"HELLO":"import-meta-env"}.HELLO;
     }
 
   }
@@ -276,7 +276,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkvue_cli_example"] = self["webpackChunkvue_cli_example"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkvue_cli_5_example"] = self["webpackChunkvue_cli_5_example"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	}();
