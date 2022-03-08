@@ -1,0 +1,28 @@
+{
+  "name": "vue-cli-4-example",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "preview": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env --example .env.example && serve -s dist"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@import-meta-env/babel": "../../babel",
+    "@import-meta-env/cli": "../../cli",
+    "@vue/cli-plugin-babel": "~4.5.15",
+    "@vue/cli-plugin-router": "~4.5.15",
+    "@vue/cli-plugin-vuex": "~4.5.15",
+    "@vue/cli-service": "~4.5.15",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
