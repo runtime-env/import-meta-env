@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/iendeavor/import-meta-env/compare/babel0.1.4...babel0.1.5) (2022-03-08)
+
+
+### Features
+
+* **babel:** support @vue/cli@4 ([9e8b014](https://github.com/iendeavor/import-meta-env/commit/9e8b0147fc3ffe2fa25e38d239ee748b576636cc))
+
 ### [0.1.4](https://github.com/iendeavor/import-meta-env/compare/babel0.1.3...babel0.1.4) (2022-03-04)
 
 
