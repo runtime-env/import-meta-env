@@ -1,5 +1,6 @@
 CHANGELOG.md
 node_modules
+bin
 dist
 __fixtures__
 pnpm-lock.yaml
