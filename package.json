@@ -1,5 +1,10 @@
 {
   "private": true,
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress serve docs --port 4173"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
@@ -15,6 +20,7 @@
     "rimraf": "^3.0.2",
     "standard-version": "^9.3.2",
     "tmp": "^0.2.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "vitepress": "^0.22.3"
   }
 }
