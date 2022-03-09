@@ -55,6 +55,7 @@ That's it! The complete example with a detailed tutorial can be found [here](./p
 - [create-next-app](./packages/examples/create-next-app-example)
 - [create-nuxt-app](./packages/examples/create-nuxt-app-example)
 - [create-react-app](./packages/examples/create-react-app-example)
+- [create-vue-app](./packages/examples/create-vue-app-example)
 - [jest](./packages/examples/jest-example)
 - [mocha](./packages/examples/mocha-example)
 - [nuxt-bridge](./packages/examples/nuxt-bridge-example)

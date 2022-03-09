@@ -1,0 +1,19 @@
+{
+  "name": "create-vue-app-example",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env HELLO=import-meta-env vite",
+    "build": "vite build",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example && vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.31"
+  },
+  "devDependencies": {
+    "@import-meta-env/cli": "workspace:*",
+    "@import-meta-env/unplugin": "workspace:*",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "cross-env": "^7.0.3",
+    "vite": "^2.8.6"
+  }
+}
