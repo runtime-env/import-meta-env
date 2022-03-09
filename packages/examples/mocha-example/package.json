@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "babel-mocha-example",
+  "name": "mocha-example",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",

@@ -1,6 +1,6 @@
 packages:
   - "packages/**"
   - "!packages/examples/create-nuxt-app-example"
-  - "!packages/examples/vue-cli-4-example"
-  - "!packages/examples/vue-cli-5-example"
+  - "!packages/examples/@vue+cli@4-example"
+  - "!packages/examples/@vue+cli@5-example"
   - "!packages/examples/nuxt-bridge-example"

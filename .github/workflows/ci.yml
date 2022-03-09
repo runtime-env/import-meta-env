@@ -90,15 +90,15 @@ jobs:
       - name: Build packages
         run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
 
-      - name: Test vue-cli-4-example
+      - name: Test @vue+cli@4-example
         run: |
-          cd packages/examples/vue-cli-4-example
+          cd packages/examples/@vue+cli@4-example
           yarn install
           sh test.sh
 
-      - name: Test vue-cli-5-example
+      - name: Test @vue+cli@5-example
         run: |
-          cd packages/examples/vue-cli-5-example
+          cd packages/examples/@vue+cli@5-example
           yarn install
           sh test.sh
 

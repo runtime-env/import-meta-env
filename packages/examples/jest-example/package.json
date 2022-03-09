@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "babel-jest-example",
+  "name": "jest-example",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "tsc && vite build",

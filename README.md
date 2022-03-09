@@ -50,17 +50,17 @@ That's it! The complete example with a detailed tutorial can be found [here](./p
 
 > Sort by alphabetical order.
 
+- [@vue/cli@4](./packages/examples/@vue+cli@4-example)
+- [@vue/cli@5](./packages/examples/@vue+cli@5-example)
 - [create-next-app](./packages/examples/create-next-app-example)
 - [create-nuxt-app](./packages/examples/create-nuxt-app-example)
 - [create-react-app](./packages/examples/create-react-app-example)
-- [jest](./packages/examples/babel-jest-example)
-- [mocha](./packages/examples/babel-mocha-example)
+- [jest](./packages/examples/jest-example)
+- [mocha](./packages/examples/mocha-example)
 - [nuxt-bridge](./packages/examples/nuxt-bridge-example)
 - [rollup](./packages/examples/rollup-starter-example)
 - [vite](./packages/examples/vite-starter-example)
 - [vitest](./packages/examples/vite-vitest-example)
-- [@vue/cli@4](./packages/examples/vue-cli-4-example)
-- [@vue/cli@5](./packages/examples/vue-cli-5-example)
 - [webpack](./packages/examples/webpack-starter-example)
 - [others](./packages/examples)
 
