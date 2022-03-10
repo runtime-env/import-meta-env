@@ -5,10 +5,12 @@ tagline: Populates your environment variables at run-time rather than build-time
 actionText: Get Started
 actionLink: /guide
 features:
-  - title: Learn Once, Write Anywhere
-    details: Works with Vite, Webpack, Rollup as well as test frameworks such as Jest and Mocha.
+  - title: Strict
+    details: Code has no access to arbitrary environment variables by default
   - title: Isomorphic
     details: CSR, SSR, and SSG compatible.
+  - title: Learn Once, Write Anywhere
+    details: Works with Vite, Webpack, Rollup as well as test frameworks such as Jest and Mocha.
 footer: MIT Licensed | Copyright © 2021-present Ernest
 ---
 

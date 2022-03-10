@@ -10,7 +10,7 @@ During production, this plugin statically replace `import.meta.env` with placeho
 
   **.env.example.public**
 
-  ```
+  ```ini
   S3_BUCKET=
   ```
 
@@ -23,7 +23,7 @@ During production, this plugin statically replace `import.meta.env` with placeho
 
   **.env.example**
 
-  ```
+  ```ini
   S3_BUCKET=
   SECRET_KEY=
   ```
@@ -125,3 +125,34 @@ Replace placeholders with environment variables:
 ```bash
 npx import-meta-env --example .env.example.public # or use pnpm exec
 ```
+
+## Advanced
+
+### .env file
+
+For convenience, you can also create a `.env` file in your project instead of expose it in system
+
+```ini
+S3_BUCKET="YOURS3BUCKET" # It will only load this key and value because we only defined it in the `.env.example.public` file.
+SECRET_KEY="YOURSECRETKEYGOESHERE"
+```
+
+::: warning
+Remember to add `.env` to `.gitignore`.
+:::
+
+### `process.env`
+
+For server side only environment variables (credentials), you should import `dotenv` directly:
+
+```js
+require("dotenv").config();
+```
+
+and `process.env` now has the keys and values you defined in your .env file:
+
+```js
+console.log(process.env.SECRET_KEY); // "YOURSECRETKEYGOESHERE"
+```
+
+See more information on the [dotenv](https://github.com/motdotla/dotenv#readme).
