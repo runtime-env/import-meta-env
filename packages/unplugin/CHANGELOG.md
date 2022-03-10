@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.3...unplugin0.1.4) (2022-03-10)
+
+
+### Features
+
+* support dotenv@8, 9, 10 too ([f7af582](https://github.com/iendeavor/import-meta-env/commit/f7af5828a716c3348a8373e50b0e20c9c42c86c3))
+
 ### [0.1.3](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.2...unplugin0.1.3) (2022-03-04)
 
 
