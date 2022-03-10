@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/iendeavor/import-meta-env/compare/babel0.1.5...babel0.1.6) (2022-03-10)
+
+
+### Features
+
+* support dotenv@8, 9, 10 too ([f7af582](https://github.com/iendeavor/import-meta-env/commit/f7af5828a716c3348a8373e50b0e20c9c42c86c3))
+
 ### [0.1.5](https://github.com/iendeavor/import-meta-env/compare/babel0.1.4...babel0.1.5) (2022-03-08)
 
 
