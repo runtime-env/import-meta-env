@@ -130,10 +130,10 @@ npx import-meta-env --example .env.example.public # or use pnpm exec
 
 ### .env file
 
-For convenience, you can also create a `.env` file in your project instead of expose it in system
+In local development, for convenience, you can also create a `.env` file in the project instead of manipulating environment variables in the system:
 
 ```ini
-S3_BUCKET="YOURS3BUCKET" # It will only load this key and value because we only defined it in the `.env.example.public` file.
+S3_BUCKET="YOURS3BUCKET" # Import-meta-env will only load this key and value because we only defined it in the `.env.example.public` file.
 SECRET_KEY="YOURSECRETKEYGOESHERE"
 ```
 
@@ -143,7 +143,7 @@ Remember to add `.env` to `.gitignore`.
 
 ### `process.env`
 
-For server side only environment variables (credentials), you should import `dotenv` directly:
+For server side only environment variables (credentials), you should use `dotenv` directly:
 
 ```js
 require("dotenv").config();
