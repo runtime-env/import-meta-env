@@ -4,12 +4,13 @@ import {
   envFilePath as defaultEnvFilePath,
   placeholder,
 } from "../../shared";
+import { PluginOptions } from "./types";
 
 export default function importMetaEnvBabelPlugin({
   template,
   types: t,
 }: typeof babelCore): babelCore.PluginObj<{
-  opts?: { env?: string; example?: string; shouldInlineEnv?: boolean };
+  opts?: PluginOptions;
 }> {
   let env: Record<string, string> | undefined = undefined;
 

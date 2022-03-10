@@ -7,7 +7,7 @@ export interface PluginOptions {
   env?: string;
 
   /**
-   * The .env example file path to load
+   * The public .env example file path to load
    */
   example: string;
 
