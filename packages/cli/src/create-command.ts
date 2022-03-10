@@ -15,7 +15,9 @@ export interface Args {
 export const createCommand = () =>
   new Command()
     .version(version)
-    .description("Inject environment variables from the system or `.env` file.")
+    .description(
+      "Populates your environment variables from the system or `.env` file."
+    )
     .option("-e, --env <path>", "The .env file path to load", ".env")
     .requiredOption(
       "-x, --example <path>",
