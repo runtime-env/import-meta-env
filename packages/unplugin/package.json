@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/unplugin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Load environment variables into import.meta.env object",
   "license": "MIT",
   "author": "Ernest",

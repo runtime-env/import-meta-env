@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.4...unplugin0.1.5) (2022-03-11)
+
+
+### Bug Fixes
+
+* svelte file may contains multiple script tag ([ae4d23c](https://github.com/iendeavor/import-meta-env/commit/ae4d23ccf1f4329110779c627844ac95cedd3325))
+
 ### [0.1.4](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.3...unplugin0.1.4) (2022-03-10)
 
 
