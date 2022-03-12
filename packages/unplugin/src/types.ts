@@ -1,3 +1,5 @@
+export type Env = Record<string, string>;
+
 export interface PluginOptions {
   /**
    * The .env file path to load
