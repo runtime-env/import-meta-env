@@ -6,7 +6,6 @@
     "build": "svelte-kit build",
     "package": "svelte-kit package",
     "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example -o \".svelte-kit/output/**\" && svelte-kit preview",
-    "prepare": "# svelte-kit sync",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
