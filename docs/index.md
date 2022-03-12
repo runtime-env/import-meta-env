@@ -6,11 +6,11 @@ actionText: Get Started
 actionLink: /guide
 features:
   - title: Strict
-    details: Code has no access to arbitrary environment variables by default
-  - title: Isomorphic
-    details: CSR, SSR, and SSG compatible.
+    details: Code has no access to arbitrary environment variables by default.
+  - title: Cross-platform
+    details: Populate your environment variables anywhere, such as the Alpine Linux nginx image. Powered by pkg.
   - title: Learn Once, Write Anywhere
-    details: Works with Vite, Webpack, Rollup as well as test frameworks such as Jest and Mocha.
+    details: Vite, Webpack and Rollup, CSR, SSR and SSG, Jest and Mocha, etc. are all supported.
 footer: MIT Licensed | Copyright © 2021-present Ernest
 ---
 
