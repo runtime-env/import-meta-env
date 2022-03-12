@@ -27,7 +27,7 @@ type ViteResolvedConfig = Parameters<
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = false;
-  debug && console.debug(options, meta);
+  debug && console.debug("factory::", options, meta);
 
   const envFilePath = options?.env ?? defaultEnvFilePath;
   const envExampleFilePath = options?.example;
@@ -43,8 +43,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   let viteConfig: ViteResolvedConfig;
 
   function loadProd(id: string) {
-    debug && console.debug("loadProd: ", id);
-
     if (id === virtualFile) {
       const parsedExample = (() => {
         const { parsed, error } = dotenvConfig({ path: envExampleFilePath });
@@ -77,8 +75,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   }
 
   function transformDev(code: string, id: string) {
-    debug && console.debug("transformDev: ", id);
-
     if (id !== virtualFile && id.includes("node_modules") === false) {
       switch (meta.framework) {
         case "vite":
@@ -103,11 +99,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   }
 
   function transformProd(code: string, id: string) {
-    debug && console.debug("transformProd: ", id);
-    debug && console.debug("=== code before ===");
-    debug && console.debug(code);
-    debug && console.debug("==================");
-
     if (id !== virtualFile && id.includes("node_modules") === false) {
       switch (meta.framework) {
         case "webpack":
@@ -156,10 +147,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
     }
 
-    debug && console.debug("=== code after ===");
-    debug && console.debug(code);
-    debug && console.debug("==================");
-
     return code;
   }
 
@@ -170,14 +157,14 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       enforce: "pre",
 
       apply(_, env) {
-        debug && console.debug("apply");
+        debug && console.debug("apply::");
 
         shouldInlineEnv = shouldInlineEnv ?? env.command === "serve";
         return true;
       },
 
       config(config) {
-        debug && console.debug("config:", config);
+        debug && console.debug("config::", config);
 
         if (shouldInlineEnv) {
         } else {
@@ -186,7 +173,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
 
       configResolved(_config) {
-        debug && console.debug("configResolved");
+        debug && console.debug("configResolved::");
 
         if (_config.isProduction) {
           // running in `vite preview`
@@ -202,7 +189,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
 
       transformIndexHtml(html) {
-        debug && console.debug("transformIndexHtml");
+        debug && console.debug("transformIndexHtml::");
 
         html = html.replace(
           new RegExp(uniqueVariableName, "g"),
@@ -214,7 +201,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
     rollup: {
       outputOptions(options) {
-        debug && console.debug("rollup::outputOptions");
+        debug && console.debug("rollup::outputOptions::");
 
         if (shouldInlineEnv) {
         } else {
@@ -223,7 +210,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       },
 
       buildStart() {
-        debug && console.debug("rollup::buildStart");
+        debug && console.debug("rollup::buildStart::");
 
         shouldInlineEnv =
           shouldInlineEnv ?? process.env.ROLLUP_WATCH === "true";
@@ -260,12 +247,12 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     buildStart() {
-      debug && console.debug("buildStart");
-      debug && console.debug("env:", env);
+      debug && console.debug("buildStart::");
+      debug && console.debug("env::", env);
     },
 
     resolveId(id, importer) {
-      debug && console.debug("resolveId: ", id, importer);
+      debug && console.debug("resolveId::", id, importer);
 
       if (shouldInlineEnv) {
       } else {
@@ -276,17 +263,18 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     load(id) {
-      debug && console.debug("load: ", id);
+      debug && console.debug("load::", id);
 
       if (shouldInlineEnv) {
         return null;
       } else {
+        debug && console.debug("loadProd::", id);
         return loadProd(id);
       }
     },
 
     transformInclude(id) {
-      debug && console.debug("transformIncludes: ", id);
+      debug && console.debug("transformIncludes::", id);
 
       const allowExtensions = [
         ".js",
@@ -307,17 +295,28 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     transform(code, id) {
-      debug && console.debug("transform: ", id);
-
       if (shouldInlineEnv) {
-        return transformDev(code, id);
+        debug && console.debug("transformDev::", id);
+
+        code = transformDev(code, id);
       } else {
-        return transformProd(code, id);
+        debug && console.debug("transformProd::", id);
+        debug && console.debug("=== code before ===");
+        debug && console.debug(code);
+        debug && console.debug("==================");
+
+        code = transformProd(code, id);
+
+        debug && console.debug("=== code after ===");
+        debug && console.debug(code);
+        debug && console.debug("==================");
       }
+
+      return code;
     },
 
     buildEnd() {
-      debug && console.debug("buildEnd");
+      debug && console.debug("buildEnd::");
 
       const execCommand = getPackageManagerExecCommand();
 
