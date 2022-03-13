@@ -18,7 +18,7 @@ export function transformProd({
         break;
 
       default:
-        if (isTransformingJs(code, id)) {
+        if (isTransformingJs(code, id) || isTransformingTs(code, id)) {
           code =
             `import ${uniqueVariableName} from '${virtualFile}';\n` +
             code.replace(
@@ -63,7 +63,11 @@ export function transformProd({
 }
 
 const isTransformingJs = (code: string, id: string) =>
-  [".js", ".ts", ".jsx", ".tsx"].some((ext) => id.endsWith(ext)) &&
+  [".js", ".jsx"].some((ext) => id.endsWith(ext)) &&
+  id.includes("?vue&type=template") === false;
+
+const isTransformingTs = (code: string, id: string) =>
+  [".ts", ".tsx"].some((ext) => id.endsWith(ext)) &&
   id.includes("?vue&type=template") === false;
 
 const isTransformingVue = (code: string, id: string) =>
