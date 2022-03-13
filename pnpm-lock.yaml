@@ -710,6 +710,32 @@ importers:
       webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
       webpack-cli: 4.9.2_webpack@5.69.1
 
+  packages/examples/webpack-ts-loader-example:
+    specifiers:
+      '@import-meta-env/cli': workspace:*
+      '@import-meta-env/unplugin': workspace:*
+      concurrently: 7.0.0
+      cross-env: ^7.0.3
+      html-webpack-plugin: ^5.5.0
+      rimraf: ^3.0.2
+      serve: ^13.0.2
+      ts-loader: ^9.2.8
+      typescript: ^4.6.2
+      webpack: ^5.69.1
+      webpack-cli: ^4.9.2
+    devDependencies:
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/unplugin': link:../../unplugin
+      concurrently: 7.0.0
+      cross-env: 7.0.3
+      html-webpack-plugin: 5.5.0_webpack@5.69.1
+      rimraf: 3.0.2
+      serve: 13.0.2
+      ts-loader: 9.2.8_typescript@4.6.2+webpack@5.69.1
+      typescript: 4.6.2
+      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
+      webpack-cli: 4.9.2_webpack@5.69.1
+
   packages/unplugin:
     specifiers:
       '@types/node': ^17.0.8
@@ -11858,6 +11884,21 @@ packages:
   /tryer/1.0.1:
     resolution: {integrity: sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==}
     dev: false
+
+  /ts-loader/9.2.8_typescript@4.6.2+webpack@5.69.1:
+    resolution: {integrity: sha512-gxSak7IHUuRtwKf3FIPSW1VpZcqF9+MBrHOvBp9cjHh+525SjtCIJKVGjRKIAfxBwDGDGCFF00rTfzB1quxdSw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      typescript: '*'
+      webpack: ^5.0.0
+    dependencies:
+      chalk: 4.1.2
+      enhanced-resolve: 5.9.1
+      micromatch: 4.0.4
+      semver: 7.3.5
+      typescript: 4.6.2
+      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
+    dev: true
 
   /ts-node/10.5.0_faf01e1d5a40372a98081522dcafc186:
     resolution: {integrity: sha512-6kEJKwVxAJ35W4akuiysfKwKmjkbYxwQMTBaAxo9KKAx/Yd26mPUyhGz3ji+EsJoAgrLqVsYHNuuYwQe22lbtw==}

@@ -161,3 +161,34 @@ If you need to populate server-side environment variables (i.e., `process.env`) 
 
 1. For [NEXT.js](https://nextjs.org/), you can use [serverRuntimeConfig](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration).
 2. For [NuxtJS](https://nuxtjs.org/), you can use [privateRuntimeConfig](https://nuxtjs.org/docs/configuration-glossary/configuration-runtime-config).
+
+### IntelliSense for TypeScript
+
+You may want to get TypeScript IntelliSense for user-defined env variables.
+
+To achieve, you can create an `env.d.ts`, then define `ImportMeta` like this:
+
+```ts
+// env.d.ts
+interface ImportMeta {
+  readonly env: {
+    readonly S3_BUCKET: string;
+  };
+}
+```
+
+For Vite project, you can augment [ImportMetaEnv](https://vitejs.dev/guide/env-and-mode.html#intellisense-for-typescript) like this:
+
+```ts
+// src/env.d.ts
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly S3_BUCKET: string;
+  // more env variables...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
