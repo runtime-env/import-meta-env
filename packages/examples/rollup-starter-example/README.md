@@ -16,24 +16,24 @@
    const dev = {
      plugins: [
        // ...,
-       importMetaEnv.rollup({ example: ".env.example" }),
+       importMetaEnv.rollup({ example: ".env.example.public" }),
      ],
    };
 
    const prod = {
      plugins: [
        // ...,
-       importMetaEnv.rollup({ example: ".env.example" }),
+       importMetaEnv.rollup({ example: ".env.example.public" }),
      ],
    };
 
    // ...
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
@@ -62,6 +62,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example
+   $ pnpm exec import-meta-env --example .env.example.public
    $ pnpm exec serve dist
    ```

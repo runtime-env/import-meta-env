@@ -8,7 +8,7 @@ const createSharedViteConfig = require("../shared-vite-config.mjs").default;
  */
 module.exports = {
   plugins: [
-    importMetaEnv.vite({ example: ".env.example" }),
+    importMetaEnv.vite({ example: ".env.example.public" }),
     vueJsxPlugin({
       include: [/\.[jt]sx$/],
     }),

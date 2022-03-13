@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin(),
-    importMetaEnv.webpack({ example: ".env.example" }),
+    importMetaEnv.webpack({ example: ".env.example.public" }),
   ],
   optimization: {
     // Make output files easier to read.

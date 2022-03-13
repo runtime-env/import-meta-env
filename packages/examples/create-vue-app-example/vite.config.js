@@ -8,7 +8,7 @@ import createSharedViteConfig from "../shared-vite-config.mjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), importMetaEnv.vite({ example: ".env.example" })],
+  plugins: [vue(), importMetaEnv.vite({ example: ".env.example.public" })],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

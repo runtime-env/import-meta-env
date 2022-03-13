@@ -18,15 +18,15 @@
      // ...
      plugins: [
        // ...
-       importMetaEnv.webpack({ example: ".env.example" }),
+       importMetaEnv.webpack({ example: ".env.example.public" }),
      ],
    };
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
@@ -55,6 +55,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example
+   $ pnpm exec import-meta-env --example .env.example.public
    $ pnpm exec serve dist
    ```

@@ -5,7 +5,7 @@ rm -rf dist
 
 # act
 pnpm exec vite build
-pnpm exec import-meta-env --env .custom-env-path --example .env.example
+pnpm exec import-meta-env --env .custom-env-path --example .env.example.public
 
 # assert
 diff -r dist __fixtures__

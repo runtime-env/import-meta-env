@@ -3,7 +3,7 @@
   "name": "hello-world-example",
   "scripts": {
     "build": "rimraf dist && webpack",
-    "before-serve": "cross-env HELLO=world import-meta-env --example .env.example"
+    "before-serve": "cross-env HELLO=world import-meta-env --example .env.example.public"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",

@@ -18,17 +18,17 @@
      build: {
        extend(config) {
          config.plugins.push(
-           importMetaEnv.webpack({ example: ".env.example" })
+           importMetaEnv.webpack({ example: ".env.example.public" })
          );
        },
      },
    });
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
@@ -53,6 +53,6 @@
 1. Serve production:
 
    ```sh
-   $ node node_modules/.bin/import-meta-env --example .env.example
+   $ node node_modules/.bin/import-meta-env --example .env.example.public
    $ yarn nuxi preview
    ```

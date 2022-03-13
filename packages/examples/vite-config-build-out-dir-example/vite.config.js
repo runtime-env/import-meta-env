@@ -8,5 +8,5 @@ export default defineConfig({
     outDir: "custom-out-dir",
     ...createSharedViteConfig().build,
   },
-  plugins: [importMetaEnv.vite({ example: ".env.example" })],
+  plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
 });

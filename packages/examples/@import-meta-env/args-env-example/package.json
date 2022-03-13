@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "import-meta-env --env .custom-env-path --example .env.example && vite preview",
+    "preview": "import-meta-env --env .custom-env-path --example .env.example.public && vite preview",
     "test": "jest --no-cache"
   },
   "devDependencies": {

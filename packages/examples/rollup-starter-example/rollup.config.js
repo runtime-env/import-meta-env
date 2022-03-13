@@ -7,7 +7,10 @@ const dev = {
     dir: "public/assets",
     format: "esm",
   },
-  plugins: [resolve(), importMetaEnv.rollup({ example: ".env.example" })],
+  plugins: [
+    resolve(),
+    importMetaEnv.rollup({ example: ".env.example.public" }),
+  ],
 };
 
 const prod = {
@@ -20,7 +23,10 @@ const prod = {
     chunkFileNames: `[name].js`,
     entryFileNames: `[name].js`,
   },
-  plugins: [resolve(), importMetaEnv.rollup({ example: ".env.example" })],
+  plugins: [
+    resolve(),
+    importMetaEnv.rollup({ example: ".env.example.public" }),
+  ],
 };
 
 export default process.env.ROLLUP_WATCH === "true" ? dev : prod;

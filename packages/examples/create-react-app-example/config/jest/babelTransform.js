@@ -24,7 +24,9 @@ module.exports = babelJest.createTransformer({
       },
     ],
   ],
-  plugins: [["module:@import-meta-env/babel", { example: ".env.example" }]],
+  plugins: [
+    ["module:@import-meta-env/babel", { example: ".env.example.public" }],
+  ],
   babelrc: false,
   configFile: false,
 });

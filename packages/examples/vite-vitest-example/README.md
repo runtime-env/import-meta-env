@@ -17,14 +17,14 @@
    // https://vitejs.dev/config/
    export default defineConfig({
      // ...
-     plugins: [importMetaEnv.vite({ example: ".env.example" })],
+     plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
    });
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 

@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env nuxt",
-    "start": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env --example .env.example && nuxt start",
+    "start": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env --example .env.example.public && nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {

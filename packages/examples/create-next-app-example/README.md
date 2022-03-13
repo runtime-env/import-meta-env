@@ -19,7 +19,7 @@
      webpack: (config) => {
        config.plugins.push(
          require("@import-meta-env/unplugin").webpack({
-           example: ".env.example",
+           example: ".env.example.public",
          })
        );
 
@@ -30,10 +30,10 @@
    module.exports = nextConfig;
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
@@ -58,6 +58,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example
+   $ pnpm exec import-meta-env --example .env.example.public
    $ pnpm exec next start
    ```

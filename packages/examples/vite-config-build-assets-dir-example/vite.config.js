@@ -10,5 +10,5 @@ export default defineConfig({
     assetsDir,
     ...createSharedViteConfig(assetsDir).build,
   },
-  plugins: [importMetaEnv.vite({ example: ".env.example" })],
+  plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
 });

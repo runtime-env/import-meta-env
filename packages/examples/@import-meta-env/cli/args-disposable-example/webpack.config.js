@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin(),
     importMetaEnv.webpack({
-      example: ".env.example",
+      example: ".env.example.public",
     }),
   ],
   optimization: {

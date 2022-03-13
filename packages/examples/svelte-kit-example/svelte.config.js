@@ -17,7 +17,7 @@ const config = {
     },
 
     vite: {
-      plugins: [importMetaEnv.vite({ example: ".env.example" })],
+      plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
     },
   },
 };

@@ -3,7 +3,7 @@ import importMetaEnv from "@import-meta-env/unplugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [importMetaEnv.vite({ example: ".env.example" })],
+  plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
   build: {
     lib: {
       entry: "src/my-element.js",

@@ -17,7 +17,7 @@
      // ...
      kit: {
        vite: {
-         plugins: [importMetaEnv.vite({ example: ".env.example" })],
+         plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
        },
      },
    };
@@ -25,10 +25,10 @@
    export default config;
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
@@ -53,6 +53,6 @@
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example --output ".svelte-kit/output/**"
+   $ pnpm exec import-meta-env --example .env.example.public --output ".svelte-kit/output/**"
    $ pnpm exec svelte-kit preview
    ```

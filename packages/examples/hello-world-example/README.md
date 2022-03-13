@@ -14,14 +14,14 @@
    const importMetaEnv = require("@import-meta-env/unplugin");
 
    module.exports = {
-     plugins: [importMetaEnv.webpack({ example: ".env.example" })],
+     plugins: [importMetaEnv.webpack({ example: ".env.example.public" })],
    };
    ```
 
-1. List public environment variables under `.env.example` (you can configure it [here](../../unplugin/README.md#api)).
+1. List public environment variables under `.env.example.public` (you can configure it [here](../../unplugin/README.md#api)).
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
@@ -46,5 +46,5 @@
 1. Inject environment variables (see more about this script [here](../../cli/README.md#api)):
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example
+   $ pnpm exec import-meta-env --example .env.example.public
    ```

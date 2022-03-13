@@ -39,7 +39,7 @@ SECRET_NUMBER=
 HELLO=
 ```
 
-Only the keys listed in the `.env.example.pub` file will be exposed to `import.meta.env` (see below).
+Only the keys listed in the `.env.example.public` file will be exposed to `import.meta.env` (see below).
 
 ## Client Side
 
@@ -62,7 +62,7 @@ Only the keys listed in the `.env.example.pub` file will be exposed to `import.m
      webpack: (config) => {
        config.plugins.push(
          require("@import-meta-env/unplugin").webpack({
-           example: ".env.example.pub",
+           example: ".env.example.public",
          })
        );
 
@@ -73,10 +73,10 @@ Only the keys listed in the `.env.example.pub` file will be exposed to `import.m
    module.exports = nextConfig;
    ```
 
-1. List public environment variables under `.env.example.pub`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example.pub
+   # .env.example.public
    HELLO=
    ```
 
@@ -102,6 +102,6 @@ Only the keys listed in the `.env.example.pub` file will be exposed to `import.m
 1. Serve production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example.pub
+   $ pnpm exec import-meta-env --example .env.example.public
    $ pnpm exec next start
    ```

@@ -13,14 +13,16 @@
 
    module.exports = {
      // ...
-     plugins: [["module:@import-meta-env/babel", { example: ".env.example" }]],
+     plugins: [
+       ["module:@import-meta-env/babel", { example: ".env.example.public" }],
+     ],
    };
    ```
 
-1. List public environment variables under `.env.example`.
+1. List public environment variables under `.env.example.public`.
 
    ```
-   # .env.example
+   # .env.example.public
    HELLO=
    ```
 
