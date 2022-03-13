@@ -6,7 +6,7 @@ During production, this plugin statically replace `import.meta.env` with placeho
 
 ## Getting Started
 
-- **Step. 1.** Every project must have a `.env.example.public` file to determines which environment variables will be used.
+- **Step. 1.** Every project must have a `.env.example.public` file to determine which environment variables will be used.
 
   **.env.example.public**
 
@@ -15,19 +15,7 @@ During production, this plugin statically replace `import.meta.env` with placeho
   ```
 
   ::: danger
-  You **MUST** not add sensitive environment variables to your **.env.example.public** file, these environment variables will be exposed to clients!
-  :::
-
-  ::: details Details
-  A separate `.env.example` file is usually created, which defines all required environment variables, either provided by users for their own development environment, or communicated elsewhere with project collaborators.
-
-  **.env.example**
-
-  ```ini
-  S3_BUCKET=
-  SECRET_KEY=
-  ```
-
+  You MUST NOT add sensitive environment variables to your .env.example.public file, these environment variables will be exposed to clients!
   :::
 
 - **Step. 2.** Choose the appropriate plugin based on your project settings:
@@ -126,6 +114,13 @@ Replace placeholders with environment variables:
 npx import-meta-env --example .env.example.public # or use pnpm exec
 ```
 
+You can use [pkg](https://github.com/vercel/pkg) to package `@import-meta-env/cli` into an executable that can be run even on devices without Node.js installed, for example:
+
+```bash
+npm i -D pkg
+npx pkg node_modules/@import-meta-env/cli/bin/import-meta-env.js --target node16-alpine
+```
+
 ## Advanced
 
 ### .env file
@@ -133,26 +128,36 @@ npx import-meta-env --example .env.example.public # or use pnpm exec
 In local development, for convenience, you can also create a `.env` file in the project instead of manipulating environment variables in the system:
 
 ```ini
-S3_BUCKET="YOURS3BUCKET" # Import-meta-env will only load this key and value because we only defined it in the `.env.example.public` file.
+# Import-meta-env will only load `S3_BUCKET`'s value
+# because we only defined it in the `.env.example.public` file.
+S3_BUCKET="YOURS3BUCKET"
 SECRET_KEY="YOURSECRETKEYGOESHERE"
 ```
 
-::: warning
-Remember to add `.env` to `.gitignore`.
-:::
+### .env.example file
+
+A separate `.env.example` file is usually created, which defines all required environment variables, either provided by users for their own development environment, or communicated elsewhere with project collaborators.
+
+**.env.example**
+
+```ini
+S3_BUCKET=
+SECRET_KEY=
+```
 
 ### `process.env`
 
-For server side only environment variables (credentials), you should use `dotenv` directly:
+For server-side only environment variables (credentials) you should use [EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/) or similar:
 
 ```js
-require("dotenv").config();
+new webpack.DefinePlugin(["SECRET_KEY"]);
 ```
-
-and `process.env` now has the keys and values you defined in your .env file:
 
 ```js
 console.log(process.env.SECRET_KEY); // "YOURSECRETKEYGOESHERE"
 ```
 
-See more information on the [dotenv](https://github.com/motdotla/dotenv#readme).
+If you need to populate server-side environment variables (i.e., `process.env`) at run-time:
+
+1. For [NEXT.js](https://nextjs.org/), you can use [serverRuntimeConfig](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration).
+2. For [NuxtJS](https://nuxtjs.org/), you can use [privateRuntimeConfig](https://nuxtjs.org/docs/configuration-glossary/configuration-runtime-config).

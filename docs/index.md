@@ -28,11 +28,9 @@ console.log(import.meta.env.HELLO);
 console.log("__import_meta_env_placeholder__".HELLO);
 ```
 
-<p style="text-align: center;"><b>Run the <code>import-meta-env</code> command to transform it</b> <i>wherever</i> your environment variables exist:</p>
+<p style="text-align: center;"><b>Run the <code>import-meta-env</code> command to populate it</b>:</p>
 
 ```js
 // dist/index.js
 console.log({ HELLO: "there" }.HELLO);
 ```
-
-> The `import-meta-env` is a node script, you can use [pkg](https://github.com/vercel/pkg) to package the `import-meta-env` binary into an executable that can be run even on devices _without Node.js_ installed (e.g., in [Alpine Linux](https://alpinelinux.org/) docker image).
