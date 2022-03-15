@@ -27,6 +27,8 @@ During production, this plugin statically replace `import.meta.env` with placeho
 
 ### Babel
 
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
+
 Install package:
 
 ```bash
@@ -44,6 +46,8 @@ module.exports = {
 ```
 
 ### Unplugin
+
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)
 
 Install package:
 
@@ -101,6 +105,8 @@ export default {
 :::
 
 ### CLI
+
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](https://www.npmjs.com/package/@import-meta-env/cli)
 
 Install package:
 
