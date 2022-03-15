@@ -1,8 +1,10 @@
 import { placeholder } from "../../../shared";
-import { Compiler, javascript, dependencies } from "webpack";
+import type { Compiler, javascript } from "webpack";
 
 export class ImportMetaPlugin {
   apply(compiler: Compiler) {
+    const { dependencies } = require("webpack");
+
     const parserHandler = (parser: javascript.JavascriptParser) => {
       parser.hooks.expression
         .for("import.meta.env")
