@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.6...unplugin0.1.7) (2022-03-15)
+
+
+### Bug Fixes
+
+* require webpack on demand ([f6304d0](https://github.com/iendeavor/import-meta-env/commit/f6304d0741f799b20a6b61d17dbef2eb88885a95))
+
 ### [0.1.6](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.5...unplugin0.1.6) (2022-03-13)
 
 
