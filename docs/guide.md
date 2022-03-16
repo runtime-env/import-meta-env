@@ -2,11 +2,11 @@
 
 Environment variables should be easy to change between deployments **without** rebuilding the application or changing any code.
 
-During production, this plugin statically replace `import.meta.env` with placeholders, which allow us to statically replace environment variables **after** building the application.
+During production, this plugin statically replace `import.meta.env` with placeholders, which allow us to populate environment variables **after building the application**.
 
 ## Getting Started
 
-- **Step. 1.** Every project must have a `.env.example.public` file to determine which environment variables will be used.
+- **Step. 1.** Create a `.env.example.public` file to indicate which environment variables should be loaded:
 
   **.env.example.public**
 
@@ -15,7 +15,9 @@ During production, this plugin statically replace `import.meta.env` with placeho
   ```
 
   ::: danger
-  You MUST NOT add sensitive environment variables to your .env.example.public file, these environment variables will be exposed to clients!
+  You MUST NOT add sensitive environment variables to your `.env.example.public` file, **these environment variables will be exposed to clients**!
+
+  For sensitive (server-side only) environment variables you should use [process.env](#process-env).
   :::
 
 - **Step. 2.** Choose the appropriate plugin based on your project settings:
@@ -23,7 +25,19 @@ During production, this plugin statically replace `import.meta.env` with placeho
   - If you're already using Babel, you can use the [Babel](#babel).
   - or you can use the [Unplugin](#unplugin), which work with Webpack, Rollup, and Vite.
 
-- **Step. 3.** Finally, you need to use the [CLI](#cli) to replace the placeholders with real environment variables before serving the application.
+- **Step. 3.** During production, `import.meta.env` will be statically replaced with placeholders and you need to populate environment variables using the [CLI](#cli) before serving your application.
+
+::: warning
+If an environment variable is not found, import-meta-env will throw an `ReferenceError` error.
+:::
+
+::: warning
+Environment variables are always strings.
+:::
+
+::: info
+You need to restart your dev server after changing the environment variables.
+:::
 
 ### Babel
 
@@ -114,7 +128,7 @@ Install package:
 npm i -D @import-meta-env/cli
 ```
 
-Replace placeholders with environment variables:
+Populate environment variables:
 
 ```bash
 npx import-meta-env --example .env.example.public # or use pnpm exec
@@ -170,7 +184,7 @@ If you need to populate server-side environment variables (i.e., `process.env`) 
 
 ### IntelliSense for TypeScript
 
-You may want to get TypeScript IntelliSense for user-defined env variables.
+You may want to get TypeScript IntelliSense for user-defined environment variables.
 
 To achieve, you can create an `env.d.ts`, then define `ImportMeta` like this:
 
@@ -183,7 +197,27 @@ interface ImportMeta {
 }
 ```
 
-For Vite project, you can augment [ImportMetaEnv](https://vitejs.dev/guide/env-and-mode.html#intellisense-for-typescript) like this:
+## Framework-specific Notes
+
+### Vite
+
+<br/>
+
+#### The [Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
+
+During production, the following variables will be statically replaced just like Vite:
+
+- [Built-in](https://vitejs.dev/guide/env-and-mode.html#env-variables) variables: `MODE`, `BASE_URL`, `PROD`, and `DEV`.
+
+- [Server-side rendering](https://vitejs.dev/guide/ssr.html#conditional-logic) variable: `SSR`.
+
+- [@vitejs/plugin-legacy](https://vitejs.dev/plugins/#vitejs-plugin-legacy) variable: `LEGACY`.
+
+- [envPrefix](https://vitejs.dev/config/index.html#envprefix) variables. You can disable it by setting `envPrefix` to `[]` (**Recommended**).
+
+#### IntelliSense for TypeScript
+
+For Vite projects, you can augment [ImportMetaEnv](https://vitejs.dev/guide/env-and-mode.html#intellisense-for-typescript) like this:
 
 ```ts
 // src/env.d.ts
