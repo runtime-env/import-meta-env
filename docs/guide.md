@@ -225,10 +225,6 @@ interface ImportMeta {
 }
 ```
 
-::: warning
-Environment variables are always strings.
-:::
-
 ## FAQ
 
 ### Boolean Values
@@ -255,7 +251,7 @@ Since we sometimes need to host multiple servers at the same time, you will need
 
 Yes. But only one can be loaded at a time, for example:
 
-```
+```bash
 npx import-meta-env --env .env.development --example .env.example.public
 ```
 
