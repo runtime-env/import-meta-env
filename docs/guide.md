@@ -170,7 +170,7 @@ SECRET_KEY=
 For server-side only environment variables (credentials) you should use [EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/) or similar:
 
 ```js
-new webpack.DefinePlugin(["SECRET_KEY"]);
+new webpack.EnvironmentPlugin(["SECRET_KEY"]);
 ```
 
 ```js
