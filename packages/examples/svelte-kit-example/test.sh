@@ -6,7 +6,7 @@ rm -rf .svelte
 # act
 pnpm exec svelte-kit build
 pnpm exec cross-env HELLO=import-meta-env import-meta-env --example .env.example.public --output ".svelte-kit/output/**"
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ "$(uname)" == "Darwin" ]; then
   sed -i '' "s/\"VITE_SVELTEKIT_APP_VERSION\"\: \".............\", //g" .svelte-kit/output/server/chunks/import-meta-env-*.js
 else
   sed -i -e "s|\"VITE_SVELTEKIT_APP_VERSION\"\: \".............\", ||g" .svelte-kit/output/server/chunks/import-meta-env-*.js
