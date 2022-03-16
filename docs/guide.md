@@ -31,14 +31,6 @@ During production, this plugin statically replace `import.meta.env` with placeho
 If an environment variable is not found, import-meta-env will throw an `ReferenceError` error.
 :::
 
-::: warning
-Environment variables are always strings.
-:::
-
-::: info
-You need to restart your dev server after changing the environment variables.
-:::
-
 ### Babel
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
@@ -232,3 +224,43 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 ```
+
+::: warning
+Environment variables are always strings.
+:::
+
+## FAQ
+
+### Boolean Values
+
+Environment variables are always strings.
+
+For booleans you can use `JSON.parse`:
+
+```bash
+export DEBUG=true
+```
+
+```js
+if (JSON.parse(import.meta.env.DEBUG) === true) {
+  console.log("DEBUG is `'true'`.");
+}
+```
+
+### Changes to .env file is not updated
+
+Since we sometimes need to host multiple servers at the same time, you will need to restart your dev server after changing the environment variables.
+
+### Can I have multiple .env files?
+
+Yes. But only one can be loaded at a time, for example:
+
+```
+npx import-meta-env --env .env.development --example .env.example.public
+```
+
+Your config should vary between deploys, and you should not share values between environments.
+
+### Should I commit my .env file?
+
+No. We strongly recommend against committing your `.env` file to version control. It should only contain environment-specific values, such as API base URL.
