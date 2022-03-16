@@ -148,8 +148,8 @@ jobs:
       - name: Install packages
         run: |
           pnpm i
-          pnpm --parallel --aggregate-output --filter @import-meta-env/* exec pnpm rm dotenv
-          pnpm --parallel --aggregate-output --filter @import-meta-env/* exec pnpm i --save-peer dotenv@${{ matrix.dotenv_version }}
+          pnpm rm dotenv
+          pnpm i -D -W dotenv@${{ matrix.dotenv_version }}
 
       - name: Build packages
         run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
