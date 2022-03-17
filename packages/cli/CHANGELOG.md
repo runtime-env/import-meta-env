@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/iendeavor/import-meta-env/compare/cli0.1.4...cli0.1.5) (2022-03-17)
+
 ### [0.1.4](https://github.com/iendeavor/import-meta-env/compare/cli0.1.3...cli0.1.4) (2022-03-10)
 
 
