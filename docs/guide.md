@@ -231,15 +231,29 @@ interface ImportMeta {
 
 Environment variables are always strings.
 
-For booleans you can use `JSON.parse`:
-
 ```bash
-export DEBUG=true
+export DEBUG=whatever # true
+export DEBUG= # false
 ```
 
+The easiest way to do this is to treat `""` and `undefined` (also known as falsy values) as `false`, otherwise treat them as `true`:
+
 ```js
-if (JSON.parse(import.meta.env.DEBUG) === true) {
-  console.log("DEBUG is `'true'`.");
+if (import.meta.env.DEBUG) {
+  console.log("DEBUG is anything but the empty string and undefined.");
+} else {
+  console.log("DEBUG is the empty string.");
+}
+```
+
+If you need to convert it to `boolean` type:
+
+```diff
+- if (  import.meta.env.DEBUG) {
++ if (!!import.meta.env.DEBUG === true) {
+  console.log("DEBUG is anything but the empty string and undefined.");
+} else {
+  console.log("DEBUG is the empty string.");
 }
 ```
 
