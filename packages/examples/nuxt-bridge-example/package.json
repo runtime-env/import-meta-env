@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env nuxi dev",
     "build": "nuxi build",
-    "preview": "cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env --example .env.example.public && nuxi preview"
+    "preview": "cross-env HELLO=import-meta-env npx import-meta-env --example .env.example.public && nuxi preview"
   },
   "dependencies": {
     "@import-meta-env/cli": "../../cli",

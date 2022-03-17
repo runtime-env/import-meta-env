@@ -5,7 +5,7 @@ rm -rf dist
 
 # act
 yarn vue-cli-service build
-yarn cross-env HELLO=import-meta-env node node_modules/.bin/import-meta-env --example .env.example.public
+yarn cross-env HELLO=import-meta-env npx import-meta-env --example .env.example.public
 
 # assert
 diff -r dist __fixtures__

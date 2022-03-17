@@ -49,6 +49,6 @@
 1. Serve production:
 
    ```sh
-   $ node node_modules/.bin/import-meta-env --example .env.example.public
+   $ npx import-meta-env --example .env.example.public
    $ yarn serve -s dist
    ```
