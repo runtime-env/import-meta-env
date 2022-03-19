@@ -70,7 +70,7 @@ Add it to bundler config:
 const ImportMetaEnvPlugin = require("@import-meta-env/unplugin");
 
 module.exports = {
-  plugins: [ImportMetaEnvPlugin.webpack({ example: ".env.example" })],
+  plugins: [ImportMetaEnvPlugin.webpack({ example: ".env.example.public" })],
 };
 ```
 
