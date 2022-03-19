@@ -3,12 +3,12 @@
   "name": "rollup-starter-example",
   "scripts": {
     "dev:watch": "rollup -c -w",
-    "dev:start": "serve public",
+    "dev:start": "pnpm -w run serve -- -d public -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && pnpm build:pre && pnpm build:post",
     "build:pre": "rollup -c",
     "build:post": "cp public/index.html dist/index.html",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && serve dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && pnpm -w run serve -- -d dist -p 4173"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",
@@ -17,7 +17,6 @@
     "concurrently": "7.0.0",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
-    "rollup": "^2.68.0",
-    "serve": "^13.0.2"
+    "rollup": "^2.68.0"
   }
 }

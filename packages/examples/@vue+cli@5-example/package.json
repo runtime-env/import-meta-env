@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "preview": "cross-env HELLO=import-meta-env npx import-meta-env --example .env.example.public && serve -s dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env npx import-meta-env --example .env.example.public && pnpm -w run serve -- -d dist -p 4173"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -17,8 +17,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.0",
-    "serve": "^13.0.2"
+    "dotenv": "^16.0.0"
   },
   "browserslist": [
     "> 1%",

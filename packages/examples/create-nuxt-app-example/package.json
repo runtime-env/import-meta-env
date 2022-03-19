@@ -20,7 +20,6 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@import-meta-env/unplugin": "../../unplugin",
-    "serve": "^13.0.2"
+    "@import-meta-env/unplugin": "../../unplugin"
   }
 }
