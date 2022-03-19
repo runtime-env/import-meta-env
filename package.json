@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "build": "pnpm run build --aggregate-output --filter @import-meta-env/*",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress serve docs --port 4173"

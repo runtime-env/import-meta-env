@@ -5,7 +5,7 @@
     "dev": "cross-env HELLO=import-meta-env svelte-kit dev",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public -o \".svelte-kit/output/**\" && svelte-kit preview",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public -o \".svelte-kit/output/**\" && svelte-kit preview --port 4173",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
