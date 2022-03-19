@@ -11,3 +11,5 @@ packages/examples/create-next-app-example/.next
 packages/examples/create-nuxt-app-example/.nuxt
 packages/examples/process-env-example/.next
 packages/examples/svelte-kit-example/.svelte-kit
+packages/examples/nuxt-bridge-example/.output
+packages/examples/nuxt-bridge-example/.nuxt
