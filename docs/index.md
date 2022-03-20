@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: Import-meta-env
-tagline: Populates your environment variables at run-time rather than build-time.
+tagline: Populates your environment variables after build-time.
 actionText: Get Started
 actionLink: /guide
 features:
