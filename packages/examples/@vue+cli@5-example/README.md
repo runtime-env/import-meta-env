@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ yarn add -D @import-meta-env/unplugin
    $ yarn add -D @import-meta-env/cli
+   $ yarn add -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:
@@ -37,18 +37,17 @@
 1. Start dev server:
 
    ```sh
-   $ yarn vue-cli-service serve
+   $ yarn run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ yarn vue-cli-service build
+   $ yarn run build
    ```
 
-1. Serve production:
+1. Preview production:
 
    ```sh
-   $ npx import-meta-env --example .env.example.public
-   $ yarn serve -s dist
+   $ yarn run preview
    ```

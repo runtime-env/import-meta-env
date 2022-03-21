@@ -3,7 +3,8 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/unplugin @import-meta-env/cli dotenv
+   $ pnpm i -D @import-meta-env/cli
+   $ pnpm i -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:
@@ -40,11 +41,11 @@
 1. Build production:
 
    ```sh
-   $ pnpm exec webpack
+   $ pnpm run build
    ```
 
-1. Inject environment variables (see more about this script [here](../../cli/README.md#api)):
+1. Populate environment variables (see more about this script [here](../../cli/README.md#api)):
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example.public
+   $ pnpm run populate
    ```

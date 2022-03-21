@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
+   $ yarn add @import-meta-env/cli
    $ yarn add -D @import-meta-env/unplugin
-   $ yarn add @import-meta-env/cli dotenv
    ```
 
 1. Register `import-meta-env` plugin:
@@ -41,18 +41,17 @@
 1. Start dev server:
 
    ```sh
-   $ yarn nuxi dev
+   $ yarn run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ yarn nuxi build
+   $ yarn run build
    ```
 
-1. Serve production:
+1. Preview production:
 
    ```sh
-   $ npx import-meta-env --example .env.example.public
-   $ yarn nuxi preview
+   $ yarn run preview
    ```

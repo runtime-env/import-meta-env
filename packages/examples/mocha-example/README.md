@@ -3,7 +3,7 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/babel dotenv
+   $ pnpm i -D @import-meta-env/babel
    ```
 
 1. Register `babel` plugin:
@@ -35,5 +35,5 @@
 1. Run tests:
 
    ```sh
-   $ pnpm exec mocha
+   $ pnpm run test
    ```

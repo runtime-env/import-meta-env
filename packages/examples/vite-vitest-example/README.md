@@ -37,5 +37,5 @@
 1. Run tests:
 
    ```sh
-   $ pnpm exec vitest
+   $ pnpm run test
    ```

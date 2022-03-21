@@ -3,8 +3,9 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @import-meta-env/babel
    $ pnpm i -D @import-meta-env/cli
+   $ pnpm i -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:
@@ -24,6 +25,18 @@
    };
    ```
 
+   ```js
+   // config/jest/babelTransform.js
+
+   module.exports = babelJest.createTransformer({
+     // ...
+     plugins: [
+       // ...
+       ["module:@import-meta-env/babel", { example: ".env.example.public" }],
+     ],
+   });
+   ```
+
 1. List public environment variables under `.env.example.public`.
 
    ```
@@ -37,21 +50,26 @@
    $ export HELLO=import-meta-env
    ```
 
+1. Run tests:
+
+   ```sh
+   $ pnpm run test
+   ```
+
 1. Start dev server:
 
    ```sh
-   $ node scripts/start.js
+   $ pnpm run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ node scripts/build.js
+   $ pnpm run build
    ```
 
-1. Serve production:
+1. Preview production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example.public
-   $ pnpm exec serve -s build
+   $ pnpm run preview
    ```

@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/unplugin
    $ pnpm i -D @import-meta-env/cli
+   $ pnpm i -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:
@@ -40,18 +40,17 @@
 1. Start dev server:
 
    ```sh
-   $ pnpm exec vite dev
+   $ pnpm run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ pnpm exec vite build
+   $ pnpm run build
    ```
 
-1. Serve production:
+1. Preview production:
 
    ```sh
-   $ pnpm exec import-meta-env --example .env.example.public
-   $ pnpm exec vite preview
+   $ pnpm run preview
    ```
