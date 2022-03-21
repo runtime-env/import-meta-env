@@ -13,9 +13,9 @@ import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-
 import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
 import { extname } from "path";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
-import { loadProd } from "./loadProd";
-import { transformDev } from "./transformDev";
-import { transformProd } from "./transformProd";
+import { loadProd } from "./load-prod";
+import { transformDev } from "./transform-dev";
+import { transformProd } from "./transform-prod";
 
 type ViteResolvedConfig = Parameters<
   Exclude<
