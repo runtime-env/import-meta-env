@@ -2,20 +2,14 @@
   "private": true,
   "name": "mocha-example",
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env vite",
-    "build": "vite build",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview",
     "test": "cross-env HELLO=import-meta-env mocha"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
-    "@babel/register": "^7.17.0",
+    "@babel/register": "^7.17.7",
     "@import-meta-env/babel": "workspace:*",
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
     "cross-env": "^7.0.3",
-    "mocha": "^9.2.1",
-    "vite": "^2.8.4"
+    "mocha": "^9.2.1"
   }
 }

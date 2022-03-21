@@ -14,6 +14,6 @@
 - [nuxt-bridge](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/nuxt-bridge-example)
 - [rollup](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/rollup-starter-example)
 - [vite](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/vite-starter-example)
-- [vitest](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/vite-vitest-example)
+- [vitest](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/vitest-example)
 - [webpack](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/webpack-starter-example)
 - [others](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples)

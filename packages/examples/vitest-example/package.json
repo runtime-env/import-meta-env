@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "vite-vitest-example",
+  "name": "vitest-example",
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "tsc && vite build",
