@@ -153,6 +153,10 @@ Populate environment variables:
 npx import-meta-env --example .env.example.public
 ```
 
+::: info
+You can run `import-meta-env` multiple times (unless `disposable` flag is set to `true`) ) to populate different environment variables without rebuild application.
+:::
+
 ## Framework-specific Notes
 
 ### Vite
