@@ -8,6 +8,7 @@
 - [create-nuxt-app](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/create-nuxt-app-example)
 - [create-react-app](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/create-react-app-example)
 - [create-vue-app](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/create-vue-app-example)
+- [docker](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/docker-starter-example)
 - [jest](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/jest-example)
 - [mocha](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/mocha-example)
 - [nuxt-bridge](https://github.com/iendeavor/import-meta-env/blob/develop/packages/examples/nuxt-bridge-example)
