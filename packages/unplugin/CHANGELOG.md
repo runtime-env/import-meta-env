@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.7...unplugin0.1.8) (2022-03-22)
+
+
+### Bug Fixes
+
+* dotenv@11 drop support node@10 ([9406384](https://github.com/iendeavor/import-meta-env/commit/940638468ce164a214a74dbd11035c1cf4898759))
+* should expose LEGACY and SSR flags ([18ead93](https://github.com/iendeavor/import-meta-env/commit/18ead9321ce0d4bb3eaa15dadb1573717070fa68))
+* should not add import statement to html ([6b11b4d](https://github.com/iendeavor/import-meta-env/commit/6b11b4dc021e1bb0371814c5fa9fd881810c4b67))
+
 ### [0.1.7](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.6...unplugin0.1.7) (2022-03-15)
 
 
