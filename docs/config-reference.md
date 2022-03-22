@@ -2,11 +2,11 @@
 
 ## Babel Config
 
-Please see [types.ts](https://github.com/iendeavor/import-meta-env/blob/develop/packages/babel/src/types.ts)
+Please see [types.ts](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/babel/src/types.ts)
 
 ## Unplugin Config
 
-Please see [types.ts](https://github.com/iendeavor/import-meta-env/blob/develop/packages/unplugin/src/types.ts)
+Please see [types.ts](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/unplugin/src/types.ts)
 
 ## CLI Arguments
 
