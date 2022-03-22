@@ -4,6 +4,7 @@
 
 - [@vue/cli@4](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/examples/@vue+cli@4-example)
 - [@vue/cli@5](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/examples/@vue+cli@5-example)
+- [babel](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/examples/babel-starter-example)
 - [create-next-app](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/examples/create-next-app-example)
 - [create-nuxt-app](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/examples/create-nuxt-app-example)
 - [create-react-app](https://github.com/iendeavor/import-meta-env/blob/HEAD/packages/examples/create-react-app-example)

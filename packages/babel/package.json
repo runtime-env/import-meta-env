@@ -12,7 +12,7 @@
     "build": "rimraf dist bin && pnpm build-bundle",
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
     "release": "standard-version -t babel --releaseCommitMessageFormat 'chore(release): @import-meta-env/babel@{{currentTag}}' --path . && pnpm build",
-    "test": "echo \"no test\""
+    "test": "echo \"no test (run babel-starter-example's test instead)\""
   },
   "repository": {
     "type": "git",

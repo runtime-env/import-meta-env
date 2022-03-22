@@ -89,6 +89,7 @@ jobs:
       matrix:
         example:
           [
+            "babel-starter-example",
             "create-next-app-example",
             "create-react-app-example",
             "create-vue-app-example",
