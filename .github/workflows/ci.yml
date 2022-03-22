@@ -93,7 +93,6 @@ jobs:
             "create-next-app-example",
             "create-react-app-example",
             "create-vue-app-example",
-            "hello-world-example",
             "jest-example",
             "mocha-example",
             "process-env-example",

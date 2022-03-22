@@ -248,22 +248,6 @@ importers:
       cross-env: 7.0.3
       vite: 2.8.6
 
-  packages/examples/hello-world-example:
-    specifiers:
-      '@import-meta-env/cli': workspace:*
-      '@import-meta-env/unplugin': workspace:*
-      cross-env: ^7.0.3
-      rimraf: ^3.0.2
-      webpack: ^5.69.1
-      webpack-cli: ^4.9.2
-    devDependencies:
-      '@import-meta-env/cli': link:../../cli
-      '@import-meta-env/unplugin': link:../../unplugin
-      cross-env: 7.0.3
-      rimraf: 3.0.2
-      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
-      webpack-cli: 4.9.2_webpack@5.69.1
-
   packages/examples/jest-example:
     specifiers:
       '@babel/core': ^7.17.5
@@ -4593,7 +4577,7 @@ packages:
       vite: ^2.0.0
     dependencies:
       '@babel/standalone': 7.16.12
-      core-js: 3.21.1
+      core-js: 3.21.0
       magic-string: 0.25.7
       regenerator-runtime: 0.13.9
       systemjs: 6.12.1
@@ -5003,7 +4987,7 @@ packages:
       webpack-cli: 4.x.x
     dependencies:
       envinfo: 7.8.1
-      webpack-cli: 4.9.2
+      webpack-cli: 4.9.2_webpack@5.69.1
     dev: true
 
   /@webpack-cli/serve/1.6.1_webpack-cli@4.9.2:
@@ -5015,7 +4999,7 @@ packages:
       webpack-dev-server:
         optional: true
     dependencies:
-      webpack-cli: 4.9.2
+      webpack-cli: 4.9.2_webpack@5.69.1
     dev: true
 
   /@xtuc/ieee754/1.2.0:
@@ -6261,6 +6245,7 @@ packages:
   /core-js/3.21.1:
     resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
     requiresBuild: true
+    dev: false
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -8250,7 +8235,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
+      webpack: 5.69.1_esbuild@0.14.23
 
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
@@ -12529,7 +12514,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
+      webpack: 5.69.1_esbuild@0.14.23
 
   /terser/5.12.0:
     resolution: {integrity: sha512-R3AUhNBGWiFc77HXag+1fXpAxTAFRQTJemlJKjAgD9r8xXTpjNKqIXwHM/o7Rh+O0kUJtS3WQVdBeMKFk5sw9A==}
