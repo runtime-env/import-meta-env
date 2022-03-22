@@ -1,19 +1,12 @@
-const runTest = require("../run-test");
+const colors = require("picocolors");
 
-const commands = [
-  "pnpm exec rimraf dist",
-  "pnpm exec vite build",
-  "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
-];
-const longRunningCommands = ["pnpm exec vite preview --port 4189"];
-const expected = ["Hello: foo", "Is legacy? false"].join("\n");
-const url = "http://localhost:4189";
-const waitMs = 1000;
+(async () => {
+  console.log("test dev...");
+  await require("./test.dev.js")();
 
-runTest({
-  commands,
-  longRunningCommands,
-  expected,
-  url,
-  waitMs,
-});
+  console.log("test prod...");
+  await require("./test.prod.js")();
+
+  console.log(colors.green("✔ Test passed!"));
+  process.exit(0);
+})();

@@ -552,6 +552,7 @@ importers:
     specifiers:
       '@import-meta-env/cli': workspace:*
       '@import-meta-env/unplugin': workspace:*
+      '@vitejs/plugin-legacy': ^1.6.4
       cross-env: ^7.0.3
       typescript: ^4.4.4
       vite: ^2.8.4
@@ -559,6 +560,7 @@ importers:
     devDependencies:
       '@import-meta-env/cli': link:../../cli
       '@import-meta-env/unplugin': link:../../unplugin
+      '@vitejs/plugin-legacy': 1.6.4_vite@2.8.6
       cross-env: 7.0.3
       typescript: 4.6.2
       vite: 2.8.6
@@ -3579,6 +3581,20 @@ packages:
       vite: 2.8.4
     dev: true
 
+  /@vitejs/plugin-legacy/1.6.4_vite@2.8.6:
+    resolution: {integrity: sha512-geH2F3hTRN++E4n9NZ0JFumxIWUKqW4FA9PAgM7Q6RvUOUUYW4tlURhEmCBYfZSN24H/yX3mEolX+wFVErsAYQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      vite: ^2.0.0
+    dependencies:
+      '@babel/standalone': 7.16.12
+      core-js: 3.21.1
+      magic-string: 0.25.7
+      regenerator-runtime: 0.13.9
+      systemjs: 6.12.1
+      vite: 2.8.6
+    dev: true
+
   /@vitejs/plugin-react/1.1.4:
     resolution: {integrity: sha512-cMUBDonNY8PPeHWjIrYKbRn6bLSunh/Ixo2XLLBd3DM0uYBZft+c+04zkGhhN1lAwvoRKJ2FdtvhGhPgViHc6w==}
     engines: {node: '>=12.0.0'}
@@ -5198,7 +5214,6 @@ packages:
   /core-js/3.21.1:
     resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
     requiresBuild: true
-    dev: false
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
