@@ -14,7 +14,7 @@ const expected = [
   'process.env: {"SECRET_NUMBER":"bar"}',
 ].join("\n");
 const url = "http://localhost:4183";
-const waitMs = 1000;
+const waitMs = 3000;
 
 runTest({
   commands,
