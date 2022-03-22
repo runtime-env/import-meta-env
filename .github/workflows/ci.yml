@@ -120,7 +120,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node_version: [12, 14, 16, 17]
-        dotenv_version: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+        dotenv_version: [11, 12, 13, 14, 15, 16]
         include:
           - os: macos-latest
             node_version: lts/*
