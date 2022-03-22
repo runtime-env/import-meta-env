@@ -305,6 +305,26 @@ importers:
       '@import-meta-env/unplugin': link:../../unplugin
       cross-env: 7.0.3
 
+  packages/examples/rollup-plugin-babel-example:
+    specifiers:
+      '@import-meta-env/babel': workspace:*
+      '@import-meta-env/cli': workspace:*
+      '@rollup/plugin-babel': ^5.3.1
+      '@rollup/plugin-node-resolve': ^11.2.1
+      concurrently: 7.0.0
+      cross-env: ^7.0.3
+      rimraf: ^3.0.2
+      rollup: ^2.68.0
+    devDependencies:
+      '@import-meta-env/babel': link:../../babel
+      '@import-meta-env/cli': link:../../cli
+      '@rollup/plugin-babel': 5.3.1_@babel+core@7.17.5+rollup@2.68.0
+      '@rollup/plugin-node-resolve': 11.2.1_rollup@2.68.0
+      concurrently: 7.0.0
+      cross-env: 7.0.3
+      rimraf: 3.0.2
+      rollup: 2.68.0
+
   packages/examples/rollup-starter-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
@@ -591,7 +611,7 @@ importers:
       concurrently: 7.0.0
       cross-env: 7.0.3
       rimraf: 3.0.2
-      webpack: 5.69.1_webpack-cli@4.9.2
+      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
       webpack-cli: 4.9.2_webpack@5.69.1
 
   packages/examples/webpack-starter-example:
@@ -3756,7 +3776,6 @@ packages:
       '@babel/helper-module-imports': 7.16.7
       '@rollup/pluginutils': 3.1.0_rollup@2.68.0
       rollup: 2.68.0
-    dev: false
 
   /@rollup/plugin-node-resolve/11.2.1_rollup@2.68.0:
     resolution: {integrity: sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg==}
@@ -5001,7 +5020,7 @@ packages:
       webpack: 4.x.x || 5.x.x
       webpack-cli: 4.x.x
     dependencies:
-      webpack: 5.69.1_webpack-cli@4.9.2
+      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
       webpack-cli: 4.9.2_webpack@5.69.1
     dev: true
 
@@ -5412,7 +5431,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.69.1_webpack-cli@4.9.2
+      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
     dev: true
 
   /babel-loader/8.2.3_9351ded4f79a023849d74b5df047d562:
@@ -8271,7 +8290,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
+      webpack: 5.69.1_esbuild@0.14.23
 
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
@@ -12547,31 +12566,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.12.0
-      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
-
-  /terser-webpack-plugin/5.3.1_webpack@5.69.1:
-    resolution: {integrity: sha512-GvlZdT6wPQKbDNW/GDQzZFg/j4vKU96yl2q6mcUkzKOgW4gwf1Z8cZToUCrz31XHlPWH8MVb1r2tFtdDtTGJ7g==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@swc/core': '*'
-      esbuild: '*'
-      uglify-js: '*'
-      webpack: ^5.1.0
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      esbuild:
-        optional: true
-      uglify-js:
-        optional: true
-    dependencies:
-      jest-worker: 27.5.1
-      schema-utils: 3.1.1
-      serialize-javascript: 6.0.0
-      source-map: 0.6.1
-      terser: 5.12.0
-      webpack: 5.69.1_webpack-cli@4.9.2
-    dev: true
+      webpack: 5.69.1_esbuild@0.14.23
 
   /terser/5.12.0:
     resolution: {integrity: sha512-R3AUhNBGWiFc77HXag+1fXpAxTAFRQTJemlJKjAgD9r8xXTpjNKqIXwHM/o7Rh+O0kUJtS3WQVdBeMKFk5sw9A==}
@@ -13361,7 +13356,7 @@ packages:
       import-local: 3.1.0
       interpret: 2.2.0
       rechoir: 0.7.1
-      webpack: 5.69.1_webpack-cli@4.9.2
+      webpack: 5.69.1_f5e990f4d017c389eca81b2e6e0fb67c
       webpack-merge: 5.8.0
     dev: true
 
@@ -13541,47 +13536,6 @@ packages:
       schema-utils: 3.1.1
       tapable: 2.2.1
       terser-webpack-plugin: 5.3.1_esbuild@0.14.23+webpack@5.69.1
-      watchpack: 2.3.1
-      webpack-cli: 4.9.2_webpack@5.69.1
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
-    dev: true
-
-  /webpack/5.69.1_webpack-cli@4.9.2:
-    resolution: {integrity: sha512-+VyvOSJXZMT2V5vLzOnDuMz5GxEqLk7hKWQ56YxPW/PQRUuKimPqmEIJOx8jHYeyo65pKbapbW464mvsKbaj4A==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    peerDependencies:
-      webpack-cli: '*'
-    peerDependenciesMeta:
-      webpack-cli:
-        optional: true
-    dependencies:
-      '@types/eslint-scope': 3.7.3
-      '@types/estree': 0.0.51
-      '@webassemblyjs/ast': 1.11.1
-      '@webassemblyjs/wasm-edit': 1.11.1
-      '@webassemblyjs/wasm-parser': 1.11.1
-      acorn: 8.7.0
-      acorn-import-assertions: 1.8.0_acorn@8.7.0
-      browserslist: 4.19.3
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.9.1
-      es-module-lexer: 0.9.3
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.9
-      json-parse-better-errors: 1.0.2
-      loader-runner: 4.2.0
-      mime-types: 2.1.34
-      neo-async: 2.6.2
-      schema-utils: 3.1.1
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.1_webpack@5.69.1
       watchpack: 2.3.1
       webpack-cli: 4.9.2_webpack@5.69.1
       webpack-sources: 3.2.3
