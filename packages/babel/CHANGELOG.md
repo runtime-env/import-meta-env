@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/iendeavor/import-meta-env/compare/babel0.1.6...babel0.1.7) (2022-03-22)
+
+
+### Bug Fixes
+
+* dotenv@11 drop support node@10 ([9406384](https://github.com/iendeavor/import-meta-env/commit/940638468ce164a214a74dbd11035c1cf4898759))
+
 ### [0.1.6](https://github.com/iendeavor/import-meta-env/compare/babel0.1.5...babel0.1.6) (2022-03-10)
 
 
