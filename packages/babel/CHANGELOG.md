@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/iendeavor/import-meta-env/compare/babel0.1.7...babel0.1.8) (2022-03-22)
+
+
+### Bug Fixes
+
+* we couldn't transform Vite specific environment variables in babel context ([418b3e1](https://github.com/iendeavor/import-meta-env/commit/418b3e13567fb1deb74d78f1aa4ed74c53a86fb9))
+
 ### [0.1.7](https://github.com/iendeavor/import-meta-env/compare/babel0.1.6...babel0.1.7) (2022-03-22)
 
 
