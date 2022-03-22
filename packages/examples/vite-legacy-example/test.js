@@ -7,6 +7,9 @@ const colors = require("picocolors");
   console.log("test prod...");
   await require("./test.prod.js")();
 
+  console.log("test legacy prod...");
+  await require("./test.legacy.prod.js")();
+
   console.log(colors.green("✔ Test passed!"));
   process.exit(0);
 })();
