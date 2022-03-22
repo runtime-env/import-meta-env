@@ -24,19 +24,20 @@ To solve this, this plugin exposes environment variables on a special `import.me
 
 ```js
 // src/index.js
-console.log(import.meta.env.HELLO);
+console.log(`Hello, ${import.meta.env.HELLO}.`);
 ```
 
 During production it will be statically replaced with a placeholder:
 
 ```js
 // dist/index.js
-console.log("__import_meta_env_placeholder__".HELLO);
+console.log(`Hello, ${"__import_meta_env_placeholder__".HELLO}.`);
 ```
 
 Then we can run the script anywhere, populating files with environment variables from the system:
 
 ```js
 // dist/index.js
-console.log({ HELLO: "there" }.HELLO);
+console.log(`Hello, ${{ HELLO: "import-meta-env" }.HELLO}.`);
+// > Hello, import-meta-env.
 ```
