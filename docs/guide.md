@@ -78,6 +78,10 @@ module.exports = {
 };
 ```
 
+::: warning
+This plugin is not compatible with the Vite, you should use the [Unplugin](#unplugin) instead.
+:::
+
 ### Unplugin
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)

@@ -14,24 +14,8 @@ export default function importMetaEnvBabelPlugin({
 }> {
   let env: Record<string, string> | undefined = undefined;
 
-  const isVite =
-    process.env.npm_package_devDependencies_vite ||
-    process.env.npm_package_dependencies_vite;
-  const viteSpecificEnv = isVite
-    ? {
-        NODE_ENV: process.env.NODE_ENV || "test",
-        MODE: process.env.NODE_ENV || "test",
-        BASE_URL: "/",
-        DEV: process.env.NODE_ENV !== "production",
-        PROD: process.env.NODE_ENV === "production",
-      }
-    : {};
-
   const replaceEnv = (template: typeof babelCore.template) =>
-    template.expression.ast(`{
-    ...${JSON.stringify(env)},
-    ...${JSON.stringify(viteSpecificEnv)},
-  }`);
+    template.expression.ast(JSON.stringify(env));
   const replaceEnvForProd = (template: typeof babelCore.template) =>
     template.expression.ast(`({ env: ${placeholder} })`);
 
