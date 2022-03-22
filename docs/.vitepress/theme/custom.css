@@ -1,0 +1,13 @@
+:root {
+  --c-brand: rgb(0, 0, 0, 0.75);
+  --c-brand-light: rgb(0, 0, 0, 1);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+}

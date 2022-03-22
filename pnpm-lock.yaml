@@ -14,6 +14,7 @@ importers:
       babel-jest: ^27.5.1
       chai: ^4.3.6
       commander: ^9.0.0
+      darkreader: ^4.9.46
       dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
       esbuild: ^0.14.23
       express: ^4.17.3
@@ -37,6 +38,7 @@ importers:
       babel-jest: 27.5.1_@babel+core@7.17.5
       chai: 4.3.6
       commander: 9.0.0
+      darkreader: 4.9.46
       dotenv: 15.0.1
       esbuild: 0.14.23
       express: 4.17.3
@@ -6609,6 +6611,10 @@ packages:
   /dargs/7.0.0:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
     engines: {node: '>=8'}
+    dev: true
+
+  /darkreader/4.9.46:
+    resolution: {integrity: sha512-K+MG74C8mGXvrsY47geAQdAbKU2mw8zVCa/WT4vtW3UDgzYCmthCcLnY0+FR3RQRMOyY2fULxqREZhfVQ346AA==}
     dev: true
 
   /data-urls/2.0.0:
