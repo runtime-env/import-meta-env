@@ -16,7 +16,9 @@ footer: MIT Licensed | Copyright © 2021-present Ernest
 
 ## The Problem
 
-Since there is no such environment variable in the browser environment. We typically use <a href="https://webpack.js.org/plugins/environment-plugin/">Webpack</a> or <a href="https://github.com/rollup/plugins/tree/master/packages/replace#usage">Rollup</a> to statically replace all occurrences of `process.env` (or <a href="https://vitejs.dev/guide/env-and-mode.html">Vite</a>'s `import.meta.env`) with the given string value. **This means it can only be configured at build time.**
+Since there is no such environment variable in the browser environment. We typically use <a href="https://webpack.js.org/plugins/environment-plugin/">Webpack</a> or <a href="https://github.com/rollup/plugins/tree/master/packages/replace#usage">Rollup</a> to statically replace all occurrences of `process.env` (or <a href="https://vitejs.dev/guide/env-and-mode.html">Vite</a>'s `import.meta.env`) with the given string value. This means it can only be configured at build time.
+
+This is not ideal as we cannot reuse the same production output. This slows down our pipeline. It also wastes our time and money.
 
 ## Solution
 
