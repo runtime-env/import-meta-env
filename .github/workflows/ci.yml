@@ -111,6 +111,7 @@ jobs:
             "vite-vue-jsx-example",
             "vite-vue-ts-example",
             "vitest-example",
+            "webpack-babel-loader-example",
             "webpack-starter-example",
             "webpack-ts-loader-example",
           ]
