@@ -10,10 +10,11 @@
     "test": "node test.js"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
+    "@import-meta-env/cli": "../../cli",
+    "@import-meta-env/unplugin": "../../unplugin",
     "concurrently": "7.0.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
     "html-webpack-plugin": "^5.5.0",
     "rimraf": "^3.0.2",
     "webpack": "^5.69.1",

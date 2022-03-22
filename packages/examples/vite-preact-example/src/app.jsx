@@ -1,3 +1,3 @@
 export function App() {
-  return <p>Hello: {import.meta.env.HELLO}</p>;
+  return <h1>Hello: {import.meta.env.HELLO}</h1>;
 }

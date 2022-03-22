@@ -1,1 +1,1 @@
-console.log(import.meta.env.HELLO);
+console.log(`Hello: ${import.meta.env.HELLO}`);

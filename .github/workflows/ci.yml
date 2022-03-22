@@ -5,15 +5,19 @@ on:
   pull_request:
 
 jobs:
-  lts:
+  import-meta-env:
+    name: "import-meta-env - node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         include:
           - os: ubuntu-latest
             node_version: 16
+
       fail-fast: false
-    name: "lts: ${{ matrix.os }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -31,159 +35,204 @@ jobs:
 
       - name: Install dependencies
         run: pnpm i
-
-      - name: Build packages
-        run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
-
-      - name: Install binary
-        run: pnpm i
-
-      - name: Test packages
-        run: pnpm run test --parallel --aggregate-output --filter @import-meta-env/*
-
-      - name: Test examples
-        run: |
-          pnpm \
-            --parallel \
-            --aggregate-output \
-            --filter *-example \
-            --filter \!compatibility-example \
-            --filter \!vite-vue-* \
-            exec sh test.sh
-
-      - name: Test examples (vite-vue-*)
-        if: ${{ matrix.node_version >= '14' }}
-        run: |
-          pnpm \
-            --parallel \
-            --aggregate-output \
-            --filter vite-vue* \
-            exec sh test.sh
-
-  yarn-examples:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            node_version: 16
-      fail-fast: false
-    name: "yarn-examples: ${{ matrix.os }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ^6
-
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
-
-      - name: Test @vue+cli@4-example
-        run: |
-          cd packages/examples/@vue+cli@4-example
-          yarn install
-          sh test.sh
-
-      - name: Test @vue+cli@5-example
-        run: |
-          cd packages/examples/@vue+cli@5-example
-          yarn install
-          sh test.sh
-
-      - name: Test create-nuxt-app-example
-        run: |
-          cd packages/examples/create-nuxt-app-example
-          yarn install
-          sh test.sh
-
-      - name: Test nuxt-bridge-example
-        run: |
-          cd packages/examples/nuxt-bridge-example
-          yarn install
-          sh test.sh
-
-  compatibility:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node_version: [12, 14, 16, 17]
-        dotenv_version: [11, 12, 13, 14, 15, 16]
-        include:
-          - os: macos-latest
-            node_version: lts/*
-            dotenv_version: latest
-          - os: windows-latest
-            node_version: lts/*
-            dotenv_version: latest
-      fail-fast: false
-    name: "compatibility: ${{ matrix.os }}, dotenv@${{ matrix.dotenv_version }}, node@${{ matrix.node_version }}"
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ^6
-
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install packages
-        run: |
-          pnpm i
-          pnpm rm dotenv
-          pnpm i -D -W dotenv@${{ matrix.dotenv_version }}
-
-      - name: Build packages
-        run: pnpm run build --parallel --aggregate-output --filter @import-meta-env/*
-
-      - name: Install binary
-        run: pnpm i --no-frozen-lockfile
-
-      - name: Test packages
-        run: pnpm run test --parallel --aggregate-output --filter @import-meta-env/*
-
-      - name: Test examples
-        run: pnpm run test --parallel --aggregate-output --filter compatibility-example
-
-  lint:
-    runs-on: ubuntu-latest
-    name: "lint"
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6
-
-      - name: Set node version to 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install
 
       - name: Check formatting
         run: pnpm prettier --check .
+
+      - name: Build packages
+        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+
+      - name: Install binary
+        run: pnpm i
+
+      - name: Test packages
+        run: pnpm run test --aggregate-output --filter @import-meta-env/*
+
+  docker-examples:
+    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        example: ["docker-starter-example"]
+
+        include:
+          - os: ubuntu-latest
+            node_version: 16
+
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "npm"
+          cache-dependency-path: packages/examples/${{ matrix.example }}/package-lock.json
+
+      - name: Test ${{ matrix.example }}
+        run: |
+          cd packages/examples/${{ matrix.example }}
+          npm i
+          node test.js
+
+  pnpm-examples:
+    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        example:
+          [
+            "create-next-app-example",
+            "create-react-app-example",
+            "create-vue-app-example",
+            "hello-world-example",
+            "jest-example",
+            "mocha-example",
+            "process-env-example",
+            "rollup-starter-example",
+            "svelte-kit-example",
+            "vite-built-in-import-meta-env-example",
+            "vite-config-build-assets-dir-example",
+            "vite-config-build-out-dir-example",
+            "vite-legacy-example",
+            "vite-preact-example",
+            "vite-react-example",
+            "vite-starter-example",
+            "vite-svelte-example",
+            "vite-vanilla-example",
+            "vite-vanilla-ts-example",
+            "vite-vue-jsx-example",
+            "vite-vue-ts-example",
+            "vitest-example",
+            "webpack-starter-example",
+            "webpack-ts-loader-example",
+          ]
+        include:
+          - os: ubuntu-latest
+            node_version: 16
+
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^6
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+
+      - name: Install binary
+        run: pnpm i
+
+      - name: Test ${{ matrix.example }}
+        run: |
+          cd packages/examples/${{ matrix.example }}
+          node test.js
+
+  yarn-examples:
+    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        example:
+          [
+            "@vue+cli@4-example",
+            "@vue+cli@5-example",
+            "create-nuxt-app-example",
+            "nuxt-bridge-example",
+          ]
+
+        include:
+          - os: ubuntu-latest
+            node_version: 16
+
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^6
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+
+      - name: Test ${{ matrix.example }}
+        run: |
+          cd packages/examples/${{ matrix.example }}
+          yarn install
+          node test.js
+
+  compatibility-examples:
+    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        node_version: [12, 14, 16]
+        os: ["ubuntu-latest"]
+        example: ["compatibility-example"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^6
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+
+      - name: Test ${{ matrix.example }}
+        run: |
+          cd packages/examples/${{ matrix.example }}
+          yarn install
+          node test.js

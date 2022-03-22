@@ -1,1 +1,0 @@
-System.register(["./import-meta-env-legacy.js"],(function(){"use strict";var e;return{setters:[function(t){e=t.e}],execute:function(){document.querySelector("#app").innerHTML="\n  <h1>Hello: ".concat(e.HELLO,"</h1>\n  <h1>Is legacy? ").concat(!0,"</h1>\n")}}}));

@@ -20,6 +20,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@import-meta-env/unplugin": "../../unplugin"
+    "@import-meta-env/unplugin": "../../unplugin",
+    "rimraf": "^3.0.2"
   }
 }

@@ -1,103 +1,36 @@
-const os = require("os");
-const fs = require("fs");
-const path = require("path");
-const child_process = require("child_process");
-const rimraf = require("rimraf");
+const childProcess = require("child_process");
+const colors = require("picocolors");
+const runTest = require("../run-test");
 
-// set up
-rimraf.sync("dist");
+(async () => {
+  const commands = [
+    "yarn rimraf dist .env",
+    "yarn webpack",
+    "echo HELLO=something-with-a-#-hash > .env",
+    "yarn import-meta-env --example .env.example.public",
+  ];
+  const waitMs = 1000;
 
-// act
-child_process.execSync("pnpm run build");
-child_process.execSync(
-  "pnpm exec cross-env HELLO=import-meta-env import-meta-env --example .env.example.public"
-);
+  await runTest({
+    commands: ["yarn add -D dotenv@^16", ...commands],
+    longRunningCommands: ["pnpm -w serve -- -d dist -p 4201"],
+    expected: "Hello: something-with-a-",
+    url: "http://localhost:4201",
+    waitMs,
+    noExit: true,
+  });
 
-// assert
-const expectedFileDir = path.resolve(__dirname, "__fixtures__");
-const expectedFilePaths = collectFilePaths(expectedFileDir);
-const actualFileDir = path.resolve(__dirname, "dist");
-const actualFilePaths = collectFilePaths(actualFileDir);
+  await runTest({
+    commands: ["yarn add -D dotenv@^12", ...commands],
+    longRunningCommands: ["pnpm -w serve -- -d dist -p 4202"],
+    expected: "Hello: something-with-a-#-hash",
+    url: "http://localhost:4202",
+    waitMs,
+    noExit: true,
+  });
 
-const expectedFileRelPaths = mapRelativePaths(
-  expectedFileDir,
-  expectedFilePaths
-);
-const actualFileRelPaths = mapRelativePaths(actualFileDir, actualFilePaths);
-if (
-  JSON.stringify(expectedFileRelPaths) !== JSON.stringify(actualFileRelPaths)
-) {
-  throw Error(
-    [
-      "file added or removed:",
-      `expectedFilePaths: ${JSON.stringify(expectedFileRelPaths, null, 2)}`,
-      `actualFilePaths: ${JSON.stringify(actualFileRelPaths, null, 2)}`,
-    ].join("\n")
-  );
-}
-
-expectedFilePaths.forEach((expectedFilePath) => {
-  const relativePath = path.relative(expectedFileDir, expectedFilePath);
-  const actualFilePath = path.resolve(actualFileDir, relativePath);
-  const actualFileContent = normalizeEOF(
-    fs.readFileSync(actualFilePath, "utf8")
-  );
-  const expectedFileContent = normalizeEOF(
-    fs.readFileSync(expectedFilePath, "utf8")
-  );
-  if (actualFileContent !== expectedFileContent) {
-    throw Error(
-      [
-        "content added or removed:",
-        "<",
-        `${actualFileContent
-          .split(os.EOL)
-          .map((l) => ">\t" + l)
-          .join(os.EOL)}`,
-        "---",
-        `${expectedFileContent
-          .split(os.EOL)
-          .map((l) => "<\t" + l)
-          .join(os.EOL)}`,
-        ">",
-      ].join(os.EOL)
-    );
-  }
-});
-
-console.log("Pass!");
-
-/**
- * @param {string} dir
- * @returns {string[]}
- */
-function collectFilePaths(dir) {
-  const files = fs.readdirSync(dir);
-  const result = [];
-  for (const file of files) {
-    const filePath = path.resolve(dir, file);
-    if (fs.statSync(filePath).isDirectory()) {
-      result.push(...collectFilePaths(filePath));
-    } else {
-      result.push(filePath);
-    }
-  }
-  return result;
-}
-
-/**
- * @param {string} dir
- * @param {string[]} filePaths
- * @returns {string[]}
- */
-function mapRelativePaths(dir, filePaths) {
-  return filePaths.map((filePath) => path.relative(dir, filePath));
-}
-
-/**
- * @param {string} s
- * @returns {string}
- */
-function normalizeEOF(s) {
-  return s.replace(/\r\n/g, "\n");
-}
+  childProcess.execSync("yarn rimraf .env", { stdio: "inherit" });
+  childProcess.execSync("yarn add dotenv", { stdio: "inherit" });
+  console.log(colors.green("✔ Test passed!"));
+  process.exit(0);
+})();
