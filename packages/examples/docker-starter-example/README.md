@@ -7,7 +7,7 @@
     ```Dockerfile
     FROM node:latest as build-stage
     # Build import-meta-env binary for alpine linux
-    RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node16-alpine -o import-meta-env
+    RUN npx pkg ./node_modules/.bin/import-meta-env -t node16-alpine -o import-meta-env
 
     FROM nginx:stable-alpine as production-stage
     # Remember to copy import-meta-env binary and env example file

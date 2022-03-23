@@ -5,7 +5,7 @@ COPY ./ .
 
 RUN npm install
 RUN npm run build
-RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node16-alpine -o import-meta-env
+RUN npx pkg ./node_modules/.bin/import-meta-env -t node16-alpine -o import-meta-env
 
 ###############################################################################
 

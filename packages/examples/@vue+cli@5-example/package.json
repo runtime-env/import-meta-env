@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "cross-env HELLO=import-meta-env vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "preview": "cross-env HELLO=import-meta-env npx import-meta-env --example .env.example.public && pnpm -w run serve -- -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && pnpm -w run serve -- -d dist -p 4173"
   },
   "dependencies": {
     "core-js": "^3.8.3",

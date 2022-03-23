@@ -5,7 +5,7 @@
     "dev": "cross-env HELLO=import-meta-env nuxt",
     "build": "yarn generate",
     "preview": "yarn start",
-    "start": "cross-env HELLO=import-meta-env npx import-meta-env --example .env.example.public && nuxt start --port 4173",
+    "start": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && nuxt start --port 4173",
     "generate": "nuxt generate"
   },
   "dependencies": {
