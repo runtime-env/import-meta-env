@@ -54,9 +54,12 @@ importers:
 
   packages/babel:
     specifiers:
+      '@babel/core': ^7.17.8
       picocolors: ^1.0.0
     dependencies:
       picocolors: 1.0.0
+    devDependencies:
+      '@babel/core': 7.17.8
 
   packages/cli:
     specifiers:
