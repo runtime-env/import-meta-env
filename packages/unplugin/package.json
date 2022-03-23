@@ -5,11 +5,10 @@
   "license": "MIT",
   "author": "Ernest",
   "keywords": [
-    "plugin",
-    "rollup",
-    "vite",
-    "webpack",
-    "esbuild",
+    "unplugin",
+    "rollup-plugin",
+    "vite-plugin",
+    "webpack-plugin",
     "twelve-factor",
     "dotenv"
   ],

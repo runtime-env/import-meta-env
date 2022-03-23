@@ -7,6 +7,9 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "babel-plugin"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist bin && pnpm build-bundle",
