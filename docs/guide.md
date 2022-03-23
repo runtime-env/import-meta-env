@@ -172,11 +172,9 @@ It will also replace `import.meta.env` appearing in JavaScript strings. Therefor
 :::
 
 ::: info
-By default, `import-meta-env` will do the best for you. It will automatically determine the mode of the project.
+By default, **import-meta-env** will automatically determine the mode (development or production) and replace `import.meta.env` with environment variables or placeholders, respectively.
 
-For [babel plugin](#install-babel-plugin), you can override this by setting the `NODE_ENV` environment variable to `"development"` or `"production"`.
-
-For [unplugin](#install-unplugin), you can override this by setting the `shouldInlineEnv` option.
+You can override this by setting the `shouldInlineEnv` option for the [babel plugin](#install-babel-plugin) and the [unplugin](#install-unplugin).
 
 For more information, see [API](api).
 :::
