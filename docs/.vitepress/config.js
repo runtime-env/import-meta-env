@@ -12,8 +12,8 @@ export default defineConfig({
         link: "/guide",
       },
       {
-        text: "Config Reference",
-        link: "/config-reference",
+        text: "API",
+        link: "/api",
       },
       {
         text: "Examples",

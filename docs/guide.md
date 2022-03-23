@@ -1,130 +1,66 @@
 ## Getting Started
 
-### Step. 1
+### The `.env.example.public` File
 
-Create a `.env.example.public` file to explicitly define which environment variables should be exposed:
+First, for security reasons, we need to explicitly define which environment variables should be exposed to the browser.
 
-**.env.example.public**
+You can do this by creating a `.env.example.public` file in your project:
 
 ```ini
 S3_BUCKET=
 ```
 
 ::: danger
-You MUST ONLY add public environment variables to your `.env.example.public` file, **these environment variables will be exposed to clients**!
-
-For sensitive (server-side only) environment variables you should use [process.env](#process-env).
+If you're building a server-rendered website, you may want to access sensitive (server-side only) environment variables, in which case you should use [process.env](#process-env).
 :::
 
-### Step. 2
+### Installation
 
-Choose the appropriate plugin based on your project settings:
+1. Choose a transformation plugin:
 
-- If you're already using Babel, you can use the [Babel](#babel).
-- or you can use the [Unplugin](#unplugin), which work with Webpack, Rollup, and Vite.
+   - If you're already using Babel, you can install [babel plugin](#install-babel-plugin).
+   - If you're already using Rollup, Vite, or Webpack, you can install [unplugin](#install-unplugin).
 
-During development, `import.meta.env` will be statically replaced with real environment variables.
+2. You will also need to install the [CLI](#install-cli) to populate your environment variables after production.
 
-During production, `import.meta.env` will be statically replaced with placeholders.
-
-### Step. 3
-
-Before serving your production build, you need to install the [CLI](#cli) and then:
-
-- To preview locally, you just need to run `import-meta-env` to populate the environment variables:
-
-  ```bash
-  npx import-meta-env --example .env.example.public
-  ```
-
-- During deployment, for example you might want to deploy a production build to any static file server, in which case you would need to copy-paste `.env.examples.public` and run `import-meta-env` to populate environment variables like local preview.
-
-  Since you may deploy your application to devices that don't have Node.js installed (e.g., the Alpine Linux nginx image), first you need to use [pkg](https://github.com/vercel/pkg) to package the `import-meta-env` script into a runnable executable, for example:
-
-  ```bash
-  npm i -D pkg
-  pkg node_modules/@import-meta-env/cli/bin/import-meta-env.js --target node16-alpine
-  ```
-
-  Now you can run `import-meta-env` script like above:
-
-  ```bash
-  ./import-meta-env --example .env.example.public
-  ```
-
-## Packages
-
-::: warning
-If an environment variable is not found, these packages will throw an `ReferenceError` error.
-:::
-
-### Babel
+#### Install Babel Plugin
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
 
-Install package:
-
-```bash
-npm i -D @import-meta-env/babel
-```
-
-Add it to babel config:
-
-```js
-module.exports = {
-  plugins: [
-    ["module:@import-meta-env/babel", { example: ".env.example.public" }],
-  ],
-};
-```
-
 ::: warning
-This plugin is not compatible with the Vite, you should use the [Unplugin](#unplugin) instead.
+This Babel plugin is not compatible with the Vite, you should use the [Unplugin](#install-unplugin) instead.
 :::
 
-### Unplugin
+Install it with your favorite package manager:
+
+```bash
+npm install --save-dev @import-meta-env/babel
+```
+
+Specify the plugin:
+
+```json
+// babel.config.json
+{
+  "plugins": [
+    ["module:@import-meta-env/babel", { "example": ".env.example.public" }]
+  ]
+}
+```
+
+Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/babel-starter-example), [babel-loader](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-babel-loader-example), [jest](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/jest-example), [rollup-plugin-babel](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/rollup-plugin-babel-example)
+
+#### Install Unplugin
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)
 
-Install package:
+Install it with your favorite package manager:
 
 ```bash
-npm i -D @import-meta-env/unplugin
+npm install --save-dev @import-meta-env/unplugin
 ```
 
-Add it to bundler config:
-
-::: details Webpack
-
-```js
-// webpack.config.js
-const ImportMetaEnvPlugin = require("@import-meta-env/unplugin");
-
-module.exports = {
-  plugins: [ImportMetaEnvPlugin.webpack({ example: ".env.example.public" })],
-};
-```
-
-:::
-
-::: details Vite
-
-```ts
-// vite.config.ts
-import { defineConfig } from "vite";
-import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
-
-export default defineConfig({
-  plugins: [
-    ImportMetaEnvPlugin.vite({
-      example: ".env.example.public",
-    }),
-  ],
-});
-```
-
-:::
-::: details Rollup
+Rollup:
 
 ```js
 // rollup.config.js
@@ -139,69 +75,117 @@ export default {
 };
 ```
 
-:::
+Vite:
 
-### CLI
+```ts
+// vite.config.ts
+import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
+
+export default {
+  plugins: [
+    ImportMetaEnvPlugin.vite({
+      example: ".env.example.public",
+    }),
+  ],
+};
+```
+
+Webpack:
+
+```js
+// webpack.config.js
+module.exports = {
+  plugins: [
+    require("@import-meta-env/unplugin").webpack({
+      example: ".env.example.public",
+    }),
+  ],
+};
+```
+
+Related examples: [rollup](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/rollup-starter-example), [vite](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/vite-starter-example), [webpack](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-starter-example)
+
+#### Install CLI
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](https://www.npmjs.com/package/@import-meta-env/cli)
 
-Install package:
+Install it with your favorite package manager:
 
 ```bash
-npm i -D @import-meta-env/cli
+npm install --save-dev @import-meta-env/cli
 ```
 
-Populate environment variables:
+### Using Environment Variables
+
+Suppose you have the following environment variables:
 
 ```bash
-npx import-meta-env --example .env.example.public
+export S3_BUCKET=YOURS3BUCKET
 ```
 
-::: info
-You can run `import-meta-env` multiple times (unless `disposable` flag is set to `true`) ) to populate different environment variables without rebuild application.
+You can access the environment variables in code like:
+
+```js
+console.log(import.meta.env.S3_BUCKET);
+```
+
+In development, `import.meta.env` will be statically replaced with the environment variables.
+
+```js
+console.log("YOURS3BUCKET");
+```
+
+During production, `import.meta.env` will be statically replaced with a placeholder string.
+
+```js
+console.log('__import_meta_env_placeholder__'.S3_BUCKET));
+```
+
+Therefore, before serving your production build, you need to run the CLI to populate the environment variables:
+
+```bash
+./node_modules/.bin/import-meta-env --example .env.example.public
+```
+
+and it will output:
+
+```js
+console.log({"S3_BUCKET":"YOURS3BUCKET"}.S3_BUCKET));
+```
+
+Since you may deploy your application to devices that don't have Node.js installed (for example, an Alpine Linux nginx image), in this case you'll need to use [pkg](https://github.com/vercel/pkg) to package the `import-meta-env` script into a runnable executable:
+
+```bash
+npx pkg ./node_modules/.bin/import-meta-env --target node16-alpine --output import-meta-env-alpine
+```
+
+and use it as usual to populate environment variables:
+
+```bash
+./import-meta-env-alpine --example .env.example.public
+```
+
+Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example)
+
+::: warning
+It will also replace `import.meta.env` appearing in JavaScript strings. Therefore, you may see errors like `Uncaught SyntaxError`, e.g. `"import.meta.env"` will be transformed into `"({"S3_BUCKET":"YOURS3BUCKET"})"`. To avoid this, you can break the string up with a unicode zero-width space, e.g. `import.meta\u200b.env`.
 :::
 
-## Framework-specific Notes
+::: info
+By default, `import-meta-env` will do the best for you. It will automatically determine the mode of the project.
 
-### Vite
+For [babel plugin](#install-babel-plugin), you can override this by setting the `NODE_ENV` environment variable to `"development"` or `"production"`.
 
-<br/>
+For [unplugin](#install-unplugin), you can override this by setting the `shouldInlineEnv` option.
 
-#### The [Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
-
-During production, the following variables will be statically replaced just like Vite:
-
-- [Built-in](https://vitejs.dev/guide/env-and-mode.html#env-variables) variables: `MODE`, `BASE_URL`, `PROD`, and `DEV`.
-
-- [Server-side rendering](https://vitejs.dev/guide/ssr.html#conditional-logic) variable: `SSR`.
-
-- [@vitejs/plugin-legacy](https://vitejs.dev/plugins/#vitejs-plugin-legacy) variable: `LEGACY`.
-
-- [envPrefix](https://vitejs.dev/config/index.html#envprefix) variables. You can disable it by setting `envPrefix` to `[]` (**Recommended**).
-
-#### IntelliSense for TypeScript
-
-For Vite projects, you can augment [ImportMetaEnv](https://vitejs.dev/guide/env-and-mode.html#intellisense-for-typescript) like this:
-
-```ts
-// src/env.d.ts
-/// <reference types="vite/client" />
-
-interface ImportMetaEnv {
-  readonly S3_BUCKET: string;
-  // more env variables...
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
-```
+For more information, see [API](api).
+:::
 
 ## Extra Topics
 
 ### .env file
 
-In local development, for convenience, you can also create a `.env` file in the project instead of manipulating environment variables in the system:
+In local development, for convenience, you can also create a `.env` (default value) file in the project instead of manipulating environment variables in the system:
 
 ```ini
 # Import-meta-env will only load `S3_BUCKET`'s value
@@ -253,6 +237,42 @@ interface ImportMeta {
 }
 ```
 
+## Framework-specific Notes
+
+### Vite
+
+<br/>
+
+#### The [Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
+
+During production, the following variables will be statically replaced just like Vite:
+
+- [Built-in](https://vitejs.dev/guide/env-and-mode.html#env-variables) variables: `MODE`, `BASE_URL`, `PROD`, and `DEV`.
+
+- [Server-side rendering](https://vitejs.dev/guide/ssr.html#conditional-logic) variable: `SSR`.
+
+- [@vitejs/plugin-legacy](https://vitejs.dev/plugins/#vitejs-plugin-legacy) variable: `LEGACY`.
+
+- [envPrefix](https://vitejs.dev/config/index.html#envprefix) variables. You can disable it by setting `envPrefix` to `[]` (**Recommended**).
+
+#### IntelliSense for TypeScript
+
+For Vite projects, you can augment [ImportMetaEnv](https://vitejs.dev/guide/env-and-mode.html#intellisense-for-typescript) like this:
+
+```ts
+// src/env.d.ts
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly S3_BUCKET: string;
+  // more env variables...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
+
 ## FAQ
 
 ### Why use ImportMeta?
@@ -293,18 +313,20 @@ If you need to convert it to `boolean` type:
 
 ### Changes to .env file is not updated
 
-Since we sometimes need to host multiple servers at the same time, you will need to restart your dev server after changing the environment variables.
+In dev server, since we sometimes need to host multiple servers at the same time, you will need to restart your dev server after changing the environment variables.
+
+In production, you can run `import-meta-env` multiple times (unless `disposable` flag is set to `true`) ) to re-populate different environment variables without rebuild your application.
 
 ### Can I have multiple .env files?
 
-Yes. But only one can be loaded at a time, for example:
+Yes. You can choose which one to be used by passing the `env` option to `import-meta-env`:
 
 ```bash
-npx import-meta-env --env .env.development --example .env.example.public
+./node_modules/.bin/import-meta-env --env .env.development --example .env.example.public
 ```
 
-Your config should vary between deploys, and you should not share values between environments.
+Your config should vary between deployments, and you shouldn't share values between environments, so it only loads one .env file at a time.
 
 ### Should I commit my .env file?
 
-No. We strongly recommend against committing your `.env` file to version control. It should only contain environment-specific values, such as API base URL.
+No. We strongly recommend against committing your `.env` file to version control.

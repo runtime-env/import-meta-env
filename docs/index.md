@@ -36,7 +36,7 @@ During production it will be statically replaced with a placeholder:
 console.log(`Hello, ${"__import_meta_env_placeholder__".HELLO}.`);
 ```
 
-Then we can run the script anywhere, populating files with environment variables from the system:
+Then we can run the [CLI](guide.html#install-cli) anywhere, populating files with environment variables from the system:
 
 ```js
 // dist/index.js

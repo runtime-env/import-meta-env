@@ -36,4 +36,4 @@ pnpm run preview
 pnpm run test
 ```
 
-> For the `yarn` examples (the examples directory will contain a yarn.lock file), you need to replace `pnpm` with `yarn`.
+> For the `npm` or `yarn` examples (the examples directory will contain a `package-lock.json` or `yarn.lock` file), you need to replace `pnpm` with `npm` or `yarn` respectively.

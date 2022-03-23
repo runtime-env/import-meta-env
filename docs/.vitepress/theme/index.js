@@ -1,5 +1,4 @@
 import DefaultTheme from "vitepress/theme";
-import "./custom.css";
 
 if (typeof window !== "undefined") {
   import("darkreader").then((darkreader) => {
