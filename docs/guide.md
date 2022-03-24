@@ -162,7 +162,7 @@ console.log({"S3_BUCKET":"YOURS3BUCKET"}.S3_BUCKET));
 Since you may deploy your application to devices that don't have Node.js installed (for example, an Alpine Linux nginx image), in this case you'll need to use [pkg](https://github.com/vercel/pkg) to package the `import-meta-env` script into a runnable executable:
 
 ```bash
-npx pkg ./node_modules/.bin/import-meta-env --target node16-alpine --output import-meta-env-alpine
+npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js --target node16-alpine --output import-meta-env-alpine
 ```
 
 and use it as usual to populate environment variables:
