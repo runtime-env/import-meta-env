@@ -11,7 +11,13 @@ S3_BUCKET=
 ```
 
 ::: danger
-If you're building a server-rendered website, you may want to access sensitive (server-side only) environment variables, in which case you should use [process.env](#process-env).
+If you're building a server-rendered website, you may want to access sensitive (server-side only) environment variables, in which case you should use [process.env](#process-env):
+
+```js
+const S3_BUCKET = import.meta.env.S3_BUCKET;
+const SECRET_KEY = process.env.SECRET_KEY;
+```
+
 :::
 
 ### Installation
