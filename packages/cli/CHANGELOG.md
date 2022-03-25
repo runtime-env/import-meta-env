@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/iendeavor/import-meta-env/compare/cli0.1.6...cli0.1.7) (2022-03-25)
+
+
+### Bug Fixes
+
+* sanitize environment variables ([a90f9ad](https://github.com/iendeavor/import-meta-env/commit/a90f9ad47dec0b7903ddfe9f1cd73bc975d78a19))
+
 ### [0.1.6](https://github.com/iendeavor/import-meta-env/compare/cli0.1.5...cli0.1.6) (2022-03-22)
 
 
