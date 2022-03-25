@@ -1,4 +1,5 @@
 import { placeholderVariants } from "./shared";
+import serialize from "serialize-javascript";
 
 export const replaceAllPlaceholderWithEnv = ({
   code,
@@ -12,9 +13,9 @@ export const replaceAllPlaceholderWithEnv = ({
   placeholderVariants.forEach((p) => {
     outputCode = outputCode.replace(
       new RegExp("=>([\\s]*)" + p, "g"),
-      "=>$1(" + JSON.stringify(env) + ")"
+      "=>$1(" + serialize(env) + ")"
     );
-    outputCode = outputCode.replace(new RegExp(p, "g"), JSON.stringify(env));
+    outputCode = outputCode.replace(new RegExp(p, "g"), serialize(env));
   });
 
   return outputCode;

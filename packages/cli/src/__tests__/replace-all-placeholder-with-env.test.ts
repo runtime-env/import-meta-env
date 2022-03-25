@@ -154,4 +154,25 @@ describe("replaceAllPlaceholderWithEnv", () => {
           "
     `);
   });
+
+  test("it should escape HTML entities", () => {
+    // arrange
+    const code = `
+      const hello = '${placeholder}'.HELLO;
+    `;
+    const env = {
+      HELLO:
+        "as</script><script>alert('You have an XSS vulnerability!')</script>",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const hello = '{\\"HELLO\\":\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\"}'.HELLO;
+          "
+    `);
+  });
 });
