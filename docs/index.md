@@ -16,30 +16,40 @@ footer: MIT Licensed | Copyright © 2021-present Ernest
 
 ## The Problem
 
-Since there is no such environment variable in the browser environment. We typically use <a href="https://webpack.js.org/plugins/environment-plugin/">Webpack</a> or <a href="https://github.com/rollup/plugins/tree/master/packages/replace#usage">Rollup</a> to statically replace all occurrences of `process.env` (or <a href="https://vitejs.dev/guide/env-and-mode.html">Vite</a>'s `import.meta.env`) with the given string value. This means it can only be configured at build time.
+Since there is no such environment variable in the browser environment. We typically use <a href="https://webpack.js.org/plugins/environment-plugin/">Webpack</a> or <a href="https://github.com/rollup/plugins/tree/master/packages/replace#usage">Rollup</a> to statically replace all occurrences of `process.env.KEY` (or <a href="https://vitejs.dev/guide/env-and-mode.html">Vite</a>'s `import.meta.env.KEY`) with the given string value.
 
-This is not ideal as we cannot reuse the same production output. This slows down our pipeline. It also wastes our time and money.
+This can be a problem because we might want to put environment variables into the [Kubernetes ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) or pass them when running the container:
+
+```bash
+docker run -d -p 8080:80 --env API_BASE_URL=https://httpbin.org my-app
+```
+
+But at this stage, we can't change the environment variables anymore, because `API_BASE_URL` has been replaced with some values during the build process.
 
 ## Solution
 
-To solve this, this plugin exposes environment variables on a special `import.meta.env`[<sup>?</sup>](guide.html#why-use-importmeta) object:
+To achieve this, this plugin exposes environment variables on a special `import.meta.env`[<sup>?</sup>](guide.html#why-use-importmeta) object:
 
 ```js
 // src/index.js
-console.log(`Hello, ${import.meta.env.HELLO}.`);
+console.log(`API base URL is: ${import.meta.env.API_BASE_URL}.`);
 ```
 
 During production it will be statically replaced with a placeholder:
 
 ```js
 // dist/index.js
-console.log(`Hello, ${"__import_meta_env_placeholder__".HELLO}.`);
+console.log(
+  `API base URL is: ${"__import_meta_env_placeholder__".API_BASE_URL}.`
+);
 ```
 
 Then we can run the [CLI](guide.html#install-cli) anywhere, populating files with environment variables from the system:
 
 ```js
 // dist/index.js
-console.log(`Hello, ${{ HELLO: "import-meta-env" }.HELLO}.`);
-// > Hello, import-meta-env.
+console.log(
+  `API base URL is: ${{ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL}.`
+);
+// > API base URL is: https://httpbin.org.
 ```
