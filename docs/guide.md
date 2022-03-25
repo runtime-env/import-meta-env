@@ -1,5 +1,17 @@
 ## Getting Started
 
+[![License - MIT](https://img.shields.io/github/license/iendeavor/import-meta-env?color=blue&label=License)](https://github.com/iendeavor/import-meta-env/blob/main/LICENSE)
+<span>&nbsp;</span>
+[![SemVer version](https://img.shields.io/badge/Sem%20Ver-2.0.0-black.svg)](https://semver.org/)
+<span>&nbsp;</span>
+[![CI](https://github.com/iendeavor/import-meta-env/actions/workflows/ci.yml/badge.svg)](https://github.com/iendeavor/import-meta-env/actions/workflows/ci.yml)
+
+[![@import-meta-env/babel version](https://img.shields.io/npm/v/@import-meta-env/babel.svg?label=%40import-meta-env/babel)](https://www.npmjs.com/package/@import-meta-env/babel)
+<span>&nbsp;</span>
+[![@import-meta-env/cli version](https://img.shields.io/npm/v/@import-meta-env/cli.svg?label=%40import-meta-env/cli)](https://www.npmjs.com/package/@import-meta-env/cli)
+<span>&nbsp;</span>
+[![@import-meta-env/unplugin version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg?label=%40import-meta-env/unplugin)](https://www.npmjs.com/package/@import-meta-env/unplugin)
+
 ### The `.env.example.public` File
 
 First, for security reasons, we need to explicitly define which environment variables should be exposed to the browser.
