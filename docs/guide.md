@@ -269,7 +269,9 @@ During production, the following variables will be statically replaced just like
 
 - [@vitejs/plugin-legacy](https://vitejs.dev/plugins/#vitejs-plugin-legacy) variable: `LEGACY`.
 
-- [envPrefix](https://vitejs.dev/config/index.html#envprefix) variables. You can disable it by setting `envPrefix` to `[]` (**Recommended**).
+:::warning
+Other environment variables still need to be populated via the [CLI](#install-cli), you can assume the [`envPrefix`](https://vitejs.dev/config/index.html#envprefix) option is set to `[]` internally.
+:::
 
 #### IntelliSense for TypeScript
 
