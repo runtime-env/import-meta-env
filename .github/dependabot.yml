@@ -1,6 +1,13 @@
 version: 2
 updates:
   - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    target-branch: develop
+    versioning-strategy: lockfile-only
+
+  - package-ecosystem: npm
     directory: "/packages/babel/"
     schedule:
       interval: daily
