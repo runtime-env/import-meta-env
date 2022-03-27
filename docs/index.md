@@ -48,8 +48,6 @@ Then we can run the [CLI](guide.html#install-cli) anywhere, populating files wit
 
 ```js
 // dist/index.js
-console.log(
-  `API base URL is: ${{ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL}.`
-);
+console.log(`API base URL is: ${"https://httpbin.org"}.`);
 // > API base URL is: https://httpbin.org.
 ```

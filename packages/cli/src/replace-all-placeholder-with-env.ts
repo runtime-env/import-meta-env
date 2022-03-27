@@ -11,6 +11,19 @@ export const replaceAllPlaceholderWithEnv = ({
   let outputCode = code;
 
   placeholderVariants.forEach((p) => {
+    Object.keys(env).forEach((k) => {
+      outputCode = outputCode.replace(
+        new RegExp(`${p}\\.${k}\\b`, "g"),
+        serialize(env[k])
+      );
+      outputCode = outputCode.replace(
+        new RegExp(`\\(${p}\\)\\.${k}\\b`, "g"),
+        serialize(env[k])
+      );
+    });
+  });
+
+  placeholderVariants.forEach((p) => {
     outputCode = outputCode.replace(
       new RegExp("=>([\\s]*)" + p, "g"),
       "=>$1(" + serialize(env) + ")"

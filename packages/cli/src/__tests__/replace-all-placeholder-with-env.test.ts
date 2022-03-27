@@ -9,7 +9,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
   test("it replace placeholder with env", () => {
     // arrange
     const code = `
-      const hello = '${placeholder}'.HELLO;
+      const hello = '${placeholder}';
     `;
     const env = {
       HELLO: "world",
@@ -21,7 +21,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = '{\\"HELLO\\":\\"world\\"}'.HELLO;
+            const hello = '{\\"HELLO\\":\\"world\\"}';
           "
     `);
   });
@@ -64,7 +64,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = {\\"HELLO\\":\\"world\\"}.HELLO;
+            const hello = \\"world\\";
           "
     `);
   });
@@ -84,7 +84,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = {\\"HELLO\\":\\"world\\"}.HELLO;
+            const hello = \\"world\\";
           "
     `);
   });
@@ -107,10 +107,10 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            ()=>({\\"HELLO\\":\\"world\\"}).HELLO;
+            ()=>\\"world\\";
             () =>
 
-                ({\\"HELLO\\":\\"world\\"}).HELLO;
+                \\"world\\";
           "
     `);
   });
@@ -172,6 +172,48 @@ describe("replaceAllPlaceholderWithEnv", () => {
     expect(result).toMatchInlineSnapshot(`
       "
             const hello = '{\\"HELLO\\":\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\"}'.HELLO;
+          "
+    `);
+  });
+
+  test("it should NOT minimize when env key is part of accessing key", () => {
+    // arrange
+    const code = `
+      const shouldBeUndefined = ${placeholder
+        .replace(/^'/, '"')
+        .replace(/'$/, '"')}.KEY;
+    `;
+    const env = {
+      K: "value",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const shouldBeUndefined = {\\"K\\":\\"value\\"}.KEY;
+          "
+    `);
+  });
+
+  test("it should minimize when placeholder is wrapped with parentheses", () => {
+    // arrange
+    const code = `
+      const value = (${placeholder.replace(/^'/, '"').replace(/'$/, '"')}).KEY;
+    `;
+    const env = {
+      KEY: "value",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const value = \\"value\\";
           "
     `);
   });
