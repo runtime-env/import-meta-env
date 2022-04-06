@@ -4,7 +4,7 @@
 
    ```sh
    $ yarn add @import-meta-env/cli
-   $ yarn add -D @import-meta-env/unplugin
+   $ yarn add @import-meta-env/unplugin --dev
    ```
 
 1. Register `import-meta-env` plugin:

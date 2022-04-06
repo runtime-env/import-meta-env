@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ yarn add -D @import-meta-env/babel
-   $ yarn add -D @import-meta-env/cli
+   $ yarn add @import-meta-env/babel --dev
+   $ yarn add @import-meta-env/cli --dev
    ```
 
 1. Register `babel` plugin:
