@@ -75,7 +75,7 @@ Only the keys listed in the `.env.example.public` file will be exposed to `impor
 
 1. List public environment variables under `.env.example.public`.
 
-   ```
+   ```ini
    # .env.example.public
    HELLO=
    ```

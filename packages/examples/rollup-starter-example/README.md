@@ -32,7 +32,7 @@
 
 1. List public environment variables under `.env.example.public`.
 
-   ```
+   ```ini
    # .env.example.public
    HELLO=
    ```
