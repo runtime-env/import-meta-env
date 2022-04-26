@@ -37,6 +37,10 @@ export const resolveEnv = ({
 
   const missingKeys: string[] = [];
   const env = Object.keys(parsedExample).reduce((acc, key) => {
+    if (parsedExample[key] === "__not_required__") {
+      return Object.assign(acc, { [key]: undefined });
+    }
+
     if (Object.prototype.hasOwnProperty.call(parsed, key) === false) {
       missingKeys.push(key);
     }

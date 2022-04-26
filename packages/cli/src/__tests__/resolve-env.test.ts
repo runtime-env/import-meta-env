@@ -129,4 +129,48 @@ describe("resolveEnv", () => {
       ]
     `);
   });
+
+  test(`do not throw if any environment variable in file is not defined and optional `, () => {
+    // arrange
+    const envFilePath = tmp.tmpNameSync();
+    writeFileSync(envFilePath, "FOO=42\n");
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(
+      envExampleFilePath,
+      "FOO=1\nBAR=__not_required__\nBAZ=__not_required__\n"
+    );
+
+    // act
+    const env = resolveEnv({ envFilePath, envExampleFilePath });
+
+    // assert
+    expect(env).toEqual({
+      FOO: "42",
+      BAR: undefined,
+      BAZ: undefined,
+    });
+  });
+
+  test(`do not throw if any environment variable is not defined and optional `, () => {
+    // arrange
+    process.env.FOO = "42";
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(
+      envExampleFilePath,
+      "FOO=1\nBAR=__not_required__\nBAZ=__not_required__\n"
+    );
+
+    // act
+    const env = resolveEnv({ envExampleFilePath, envFilePath: ".env" });
+
+    // assert
+    expect(env).toEqual({
+      FOO: "42",
+      BAR: undefined,
+      BAZ: undefined,
+    });
+
+    // cleanup
+    delete process.env.FOO;
+  });
 });

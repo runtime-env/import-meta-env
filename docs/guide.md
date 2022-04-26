@@ -212,13 +212,14 @@ SECRET_KEY="YOURSECRETKEYGOESHERE"
 
 ### .env.example file
 
-A separate `.env.example` file is usually created, which defines all required environment variables, either provided by users for their own development environment, or communicated elsewhere with project collaborators.
+A separate `.env.example` file is usually created, which defines all by default required environment variables, either provided by users for their own development environment, or communicated elsewhere with project collaborators. There is possibility to mark optional environment variables by using predefined value \_\_not_required\_\_.
 
 **.env.example**
 
 ```ini
 S3_BUCKET=
 SECRET_KEY=
+OPTIONAL_PARAMETER=__not_required__
 ```
 
 ### `process.env`
