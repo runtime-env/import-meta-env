@@ -299,34 +299,34 @@ Since `process.env` is a Node specific object, we should not use it in browser e
 
 For server-side rendering, it is also more precise to use `import.meta.env` (heavily inspired by Vite) and `process.env` respectively.
 
-### Boolean Values
+### Value Type
 
 Environment variables are always strings.
 
-```bash
-export DEBUG=whatever # true
-export DEBUG= # false
-```
+For booleans, you can treat `""` and `undefined` as `false`, otherwise treat them as `true`:
 
-The easiest way to do this is to treat `""` and `undefined` (also known as falsy values) as `false`, otherwise treat them as `true`:
+```bash
+export DEBUG=1
+```
 
 ```js
-if (import.meta.env.DEBUG) {
-  console.log("DEBUG is anything but the empty string and undefined.");
-} else {
-  console.log("DEBUG is the empty string.");
-}
+console.log(import.meta.env.DEBUG) // 1
+
+const DEBUG = !!import.meta.env.DEBUG;
+console.log(DEBUG) // true
 ```
 
-If you need to convert it to `boolean` type:
+For numbers, you can use `parseInt` or `parseFloat`:
 
-```diff
-- if (  import.meta.env.DEBUG) {
-+ if (!!import.meta.env.DEBUG === true) {
-  console.log("DEBUG is anything but the empty string and undefined.");
-} else {
-  console.log("DEBUG is the empty string.");
-}
+```bash
+export PORT=8080
+```
+
+```js
+console.log(import.meta.env.PORT) // "8080"
+
+const PORT = parseInt(import.meta.env.PORT, 10);
+console.log(PORT) // 8080
 ```
 
 ### Changes to .env file is not updated
