@@ -12,11 +12,23 @@
 <span>&nbsp;</span>
 [![@import-meta-env/unplugin version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg?label=%40import-meta-env/unplugin)](https://www.npmjs.com/package/@import-meta-env/unplugin)
 
-### The `.env.example.public` File
+### Setup
 
-First, for security reasons, we need to explicitly define which environment variables should be exposed to the browser.
+1. Create the [`.env.example.public` file](#the-env-example-public-file).
 
-You can do this by creating a `.env.example.public` file in your project:
+2. Choose a transformation plugin:
+
+   - If you're already using Babel, you can install [babel plugin](#install-babel-plugin).
+   - If you're already using Rollup, Vite, or Webpack, you can install [unplugin](#install-unplugin).
+   - If none of the above, please file an issue on [GitHub](https://github.com/iendeavor/import-meta-env/issues).
+
+3. Install the [CLI](#install-cli).
+
+#### The `.env.example.public` File
+
+For security reasons, we need to explicitly define which environment variables should be exposed to the browser.
+
+You can do this by creating a `.env.example.public` (can be named anything) file in your project root:
 
 ```ini
 S3_BUCKET=
@@ -31,15 +43,6 @@ const SECRET_KEY = process.env.SECRET_KEY;
 ```
 
 :::
-
-### Installation
-
-1. Choose a transformation plugin:
-
-   - If you're already using Babel, you can install [babel plugin](#install-babel-plugin).
-   - If you're already using Rollup, Vite, or Webpack, you can install [unplugin](#install-unplugin).
-
-2. You will also need to install the [CLI](#install-cli) to populate your environment variables after production.
 
 #### Install Babel Plugin
 
@@ -133,7 +136,7 @@ Install it with your favorite package manager:
 npm install --save-dev @import-meta-env/cli
 ```
 
-### Using Environment Variables
+### Usage
 
 Suppose you have the following environment variables:
 
@@ -310,10 +313,10 @@ export DEBUG=1
 ```
 
 ```js
-console.log(import.meta.env.DEBUG) // 1
+console.log(import.meta.env.DEBUG); // 1
 
 const DEBUG = !!import.meta.env.DEBUG;
-console.log(DEBUG) // true
+console.log(DEBUG); // true
 ```
 
 For numbers, you can use `parseInt` or `parseFloat`:
@@ -323,10 +326,10 @@ export PORT=8080
 ```
 
 ```js
-console.log(import.meta.env.PORT) // "8080"
+console.log(import.meta.env.PORT); // "8080"
 
 const PORT = parseInt(import.meta.env.PORT, 10);
-console.log(PORT) // 8080
+console.log(PORT); // 8080
 ```
 
 ### Changes to .env file is not updated
