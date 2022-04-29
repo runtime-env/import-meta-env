@@ -30,7 +30,7 @@ describe("cli", () => {
             "[31m[import-meta-env]: Example file not found: foo[39m",
           ],
           Array [
-            "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
+            "[31m[import-meta-env]: File not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
       `);
@@ -49,7 +49,6 @@ describe("cli", () => {
           "test",
           "--example",
           envExampleFilePath.name,
-          "--output",
           "foo",
           "bar",
         ]);
@@ -58,7 +57,7 @@ describe("cli", () => {
       expect(spy.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
-            "[31m[import-meta-env]: Output file not found: foo, bar[39m",
+            "[31m[import-meta-env]: File not found: foo, bar[39m",
           ],
         ]
       `);
@@ -78,7 +77,7 @@ describe("cli", () => {
       expect(spy.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
-            "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
+            "[31m[import-meta-env]: File not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
       `);
@@ -100,10 +99,16 @@ describe("cli", () => {
           ({
             env: envFilePath.name,
             example: envExampleFilePath.name,
-            output: [outputFile.name],
           } as Args)
       );
-      const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
+      const cmd = jest.fn(
+        () =>
+          ({
+            parse,
+            opts,
+            processedArgs: [[outputFile.name]],
+          } as unknown as typeof command)
+      );
       const di = {
         command: new cmd() as typeof command,
         resolveEnv,

@@ -26,13 +26,13 @@ describe("create-command", () => {
           "[31m[import-meta-env]: Example file not found: foo[39m",
         ],
         Array [
-          "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
+          "[31m[import-meta-env]: File not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
         ],
       ]
     `);
   });
 
-  test("it should warn if output files not found", () => {
+  test("it should warn if file not found", () => {
     // arrange
     const envExampleFilePath = tmp.fileSync();
     const spy = jest.spyOn(console, "error").mockImplementation();
@@ -45,7 +45,6 @@ describe("create-command", () => {
         "test",
         "--example",
         envExampleFilePath.name,
-        "--output",
         "foo",
         "bar",
       ]);
@@ -54,13 +53,13 @@ describe("create-command", () => {
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "[31m[import-meta-env]: Output file not found: foo, bar[39m",
+          "[31m[import-meta-env]: File not found: foo, bar[39m",
         ],
       ]
     `);
   });
 
-  test("it should warn if output files not found (default)", () => {
+  test("it should warn if file not found (default)", () => {
     // arrange
     const envExampleFilePath = tmp.fileSync();
     const spy = jest.spyOn(console, "error").mockImplementation();
@@ -74,7 +73,7 @@ describe("create-command", () => {
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
+          "[31m[import-meta-env]: File not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
         ],
       ]
     `);

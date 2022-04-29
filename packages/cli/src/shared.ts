@@ -2,7 +2,7 @@ import { placeholder } from "../../shared";
 
 export const backupFileExt = ".bak";
 
-export const defaultOutput = [
+export const defaultFileGlobs = [
   // vite, webpack, vue-cli, nuxt 2 static-site
   "dist/**/*",
   // create-next-app

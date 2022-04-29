@@ -1,16 +1,16 @@
 import { writeFileSync, mkdirSync } from "fs";
 import { resolve } from "path";
 import tmp from "tmp";
-import { resolveOutputFileNames } from "../resolve-output-file-names";
+import { collectFilePathsFromGlobs } from "../collect-file-paths-from-globs";
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe("resolveOutputFileNames", () => {
+describe("collectFilePathsFromGlobs", () => {
   test("it should accepts an array", () => {
     // act
-    const act = () => resolveOutputFileNames([]);
+    const act = () => collectFilePathsFromGlobs([]);
 
     // assert
     expect(act).not.toThrow();
@@ -24,7 +24,7 @@ describe("resolveOutputFileNames", () => {
     const spy = jest.spyOn(require("glob"), "sync");
 
     // act
-    resolveOutputFileNames([tmpDirGlob]);
+    collectFilePathsFromGlobs([tmpDirGlob]);
 
     // assert
     expect(spy).toHaveBeenCalledWith(tmpDirGlob);
@@ -38,7 +38,7 @@ describe("resolveOutputFileNames", () => {
     writeFileSync(resolve(tmpDir2.name, "bar"), "", "utf8");
 
     // act
-    const result = resolveOutputFileNames([
+    const result = collectFilePathsFromGlobs([
       resolve(tmpDir1.name, "*"),
       resolve(tmpDir2.name, "*"),
     ]);
@@ -57,7 +57,7 @@ describe("resolveOutputFileNames", () => {
     mkdirSync(resolve(tmpDir.name, "bar"));
 
     // act
-    const result = resolveOutputFileNames([resolve(tmpDir.name, "*")]);
+    const result = collectFilePathsFromGlobs([resolve(tmpDir.name, "*")]);
 
     // assert
     expect(result).toEqual([resolve(tmpDir.name, "foo")]);
@@ -71,7 +71,7 @@ describe("resolveOutputFileNames", () => {
     writeFileSync(resolve(tmpDir.name, "bar", "baz"), "", "utf8");
 
     // act
-    const result = resolveOutputFileNames([resolve(tmpDir.name, "**", "*")]);
+    const result = collectFilePathsFromGlobs([resolve(tmpDir.name, "**", "*")]);
 
     // assert
     expect(result).toEqual([

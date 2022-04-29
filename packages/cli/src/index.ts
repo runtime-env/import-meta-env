@@ -4,8 +4,8 @@ import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
 import { isSourceMap } from "./is-source-map";
 import { Args, createCommand } from "./create-command";
-import { backupFileExt, defaultOutput } from "./shared";
-import { resolveOutputFileNames } from "./resolve-output-file-names";
+import { backupFileExt } from "./shared";
+import { collectFilePathsFromGlobs } from "./collect-file-paths-from-globs";
 import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
 import { shouldInjectEnv } from "./should-inject-env";
 
@@ -15,28 +15,28 @@ export const main = (di: {
 }) => {
   di.command.parse();
   const opts: Args = di.command.opts();
+  const [fileGlobs] = di.command.processedArgs as [string[]];
 
   const env = di.resolveEnv({
     envExampleFilePath: opts.example,
     envFilePath: opts.env,
   });
 
-  const output = opts.output ?? defaultOutput;
-  resolveOutputFileNames(output).forEach((outputFileName) => {
-    if (lstatSync(outputFileName).isDirectory()) return;
-    if (isSourceMap(outputFileName)) return;
-    if (isBackupFileName(outputFileName)) return;
+  collectFilePathsFromGlobs(fileGlobs).forEach((filePath) => {
+    if (lstatSync(filePath).isDirectory()) return;
+    if (isSourceMap(filePath)) return;
+    if (isBackupFileName(filePath)) return;
 
-    const backupFileName = outputFileName + backupFileExt;
+    const backupFileName = filePath + backupFileExt;
     if (!opts.disposable) tryToRestore(backupFileName);
 
-    const code = readFileSync(outputFileName, "utf8");
+    const code = readFileSync(filePath, "utf8");
 
     if (shouldInjectEnv(code) === false) return;
-    if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
+    if (!opts.disposable) copyFileSync(filePath, backupFileName);
 
     const outputCode = replaceAllPlaceholderWithEnv({ code, env });
-    writeFileSync(outputFileName, outputCode);
+    writeFileSync(filePath, outputCode);
   });
 };
 
