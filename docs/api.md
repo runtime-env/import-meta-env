@@ -20,6 +20,8 @@ Options:
   -x, --example <path>  The .env example file path to load
   --disposable          Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project
                         when environment variable changes, In production, enable this option to avoid generating unnecessary backup files.
+  --compression <path>  A file path which should expose three functions: `shouldProcess`, `compress` and `decompress`. Please refer to the
+                        `CompressionModule` interface for more details.
   -h, --help            display help for command
 ```
 

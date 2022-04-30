@@ -3,6 +3,8 @@ import { main } from "..";
 import { Args, createCommand } from "../create-command";
 import { resolveEnv, placeholder } from "../../../shared";
 import { existsSync, readFileSync, writeFileSync } from "fs";
+import path from "path";
+import zlib from "zlib";
 
 let command = createCommand();
 
@@ -125,6 +127,58 @@ describe("cli", () => {
       expect(existsSync(backupFileName)).toBe(true);
       expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(
         placeholder
+      );
+    });
+
+    test("it should call compression module", async () => {
+      // arrange
+      const envFilePath = tmp.fileSync();
+      writeFileSync(envFilePath.name, "FOO=bar\nBAZ=qux");
+      const envExampleFilePath = tmp.fileSync();
+      writeFileSync(envExampleFilePath.name, "FOO=");
+      const compressionModuleFilePath = tmp.fileSync();
+      writeFileSync(
+        compressionModuleFilePath.name,
+        `
+const zlib = require("zlib");
+
+module.exports = {
+  shouldProcess: ({ path }) => true,
+  compressSync: ({ buffer, path }) => zlib.gzipSync(buffer),
+  decompressSync: ({ buffer, path }) => zlib.gunzipSync(buffer),
+};
+`
+      );
+      const outputFile = tmp.fileSync();
+      writeFileSync(outputFile.name, zlib.gzipSync(placeholder));
+      const parse = jest.fn();
+      const opts = jest.fn(
+        () =>
+          ({
+            env: envFilePath.name,
+            example: envExampleFilePath.name,
+            compression: compressionModuleFilePath.name,
+          } as Args)
+      );
+      const cmd = jest.fn(
+        () =>
+          ({
+            parse,
+            opts,
+            processedArgs: [[outputFile.name]],
+          } as unknown as typeof command)
+      );
+      const di = {
+        command: new cmd() as typeof command,
+        resolveEnv,
+      };
+
+      // act
+      main(di);
+
+      // assert
+      expect(readFileSync(outputFile.name, { encoding: "utf8" })).toBe(
+        zlib.gzipSync(JSON.stringify({ FOO: "bar" })).toString("utf8")
       );
     });
   });

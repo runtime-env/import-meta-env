@@ -1,4 +1,5 @@
 import { copyFileSync, lstatSync, readFileSync, writeFileSync } from "fs";
+import { resolve } from "path";
 import { resolveEnv } from "../../shared";
 import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
@@ -8,6 +9,7 @@ import { backupFileExt } from "./shared";
 import { collectFilePathsFromGlobs } from "./collect-file-paths-from-globs";
 import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
 import { shouldInjectEnv } from "./should-inject-env";
+import { CompressionModule } from "./compression-module";
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
@@ -30,12 +32,47 @@ export const main = (di: {
     const backupFileName = filePath + backupFileExt;
     if (!opts.disposable) tryToRestore(backupFileName);
 
-    const code = readFileSync(filePath, "utf8");
+    const originalCodeBuffer = readFileSync(filePath);
 
-    if (shouldInjectEnv(code) === false) return;
+    let compressionModule: CompressionModule;
+    if (opts.compression) {
+      compressionModule = require(resolve(process.cwd(), opts.compression));
+    } else {
+      compressionModule = {
+        shouldProcess: () => false,
+        compressSync: ({ buffer }) => buffer,
+        decompressSync: ({ buffer }) => buffer,
+      };
+    }
+
+    const shouldProcessCompression = compressionModule.shouldProcess({
+      path: filePath,
+    });
+
+    const decompressedCode = shouldProcessCompression
+      ? compressionModule
+          .decompressSync({
+            buffer: originalCodeBuffer,
+            path: filePath,
+          })
+          .toString()
+      : originalCodeBuffer.toString("utf-8");
+
+    if (shouldInjectEnv(decompressedCode) === false) return;
     if (!opts.disposable) copyFileSync(filePath, backupFileName);
 
-    const outputCode = replaceAllPlaceholderWithEnv({ code, env });
+    const replacedCode = replaceAllPlaceholderWithEnv({
+      code: decompressedCode,
+      env,
+    });
+
+    const outputCode = shouldProcessCompression
+      ? compressionModule.compressSync({
+          buffer: Buffer.from(replacedCode),
+          path: filePath,
+        })
+      : replacedCode;
+
     writeFileSync(filePath, outputCode);
   });
 };

@@ -9,6 +9,7 @@ export interface Args {
   env: string;
   example: string;
   disposable: boolean;
+  compression: string;
 }
 
 export const createCommand = () =>
@@ -27,6 +28,10 @@ export const createCommand = () =>
       "--disposable",
       "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files."
     )
+    .option(
+      "--compression <path>",
+      `A file path which should expose three functions: \`shouldProcess\`, \`compress\` and \`decompress\`. Please refer to the \`CompressionModule\` interface for more details.`
+    )
     .action((fileGlobs: string[], args: Args) => {
       if (existsSync(args.example) === false) {
         console.error(
@@ -42,6 +47,18 @@ export const createCommand = () =>
         console.error(
           colors.red(
             `[import-meta-env]: File not found: ${fileGlobs.join(", ")}`
+          )
+        );
+        if (require.main === module) process.exit(1);
+      }
+
+      if (
+        args.compression !== undefined &&
+        existsSync(args.compression) === false
+      ) {
+        console.error(
+          colors.red(
+            `[import-meta-env]: Compression module file not found: ${args.compression}`
           )
         );
         if (require.main === module) process.exit(1);
