@@ -39,24 +39,17 @@ export const main = (di: {
       compressionModule = require(resolve(process.cwd(), opts.compression));
     } else {
       compressionModule = {
-        shouldProcess: () => false,
         compressSync: ({ buffer }) => buffer,
         decompressSync: ({ buffer }) => buffer,
       };
     }
 
-    const shouldProcessCompression = compressionModule.shouldProcess({
-      path: filePath,
-    });
-
-    const decompressedCode = shouldProcessCompression
-      ? compressionModule
-          .decompressSync({
-            buffer: originalCodeBuffer,
-            path: filePath,
-          })
-          .toString()
-      : originalCodeBuffer.toString("utf-8");
+    const decompressedCode = compressionModule
+      .decompressSync({
+        buffer: originalCodeBuffer,
+        path: filePath,
+      })
+      .toString();
 
     if (shouldInjectEnv(decompressedCode) === false) return;
     if (!opts.disposable) copyFileSync(filePath, backupFileName);
@@ -66,12 +59,10 @@ export const main = (di: {
       env,
     });
 
-    const outputCode = shouldProcessCompression
-      ? compressionModule.compressSync({
-          buffer: Buffer.from(replacedCode),
-          path: filePath,
-        })
-      : replacedCode;
+    const outputCode = compressionModule.compressSync({
+      buffer: Buffer.from(replacedCode),
+      path: filePath,
+    });
 
     writeFileSync(filePath, outputCode);
   });

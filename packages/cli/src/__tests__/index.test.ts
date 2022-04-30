@@ -143,7 +143,6 @@ describe("cli", () => {
 const zlib = require("zlib");
 
 module.exports = {
-  shouldProcess: ({ path }) => true,
   compressSync: ({ buffer, path }) => zlib.gzipSync(buffer),
   decompressSync: ({ buffer, path }) => zlib.gunzipSync(buffer),
 };

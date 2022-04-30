@@ -30,7 +30,7 @@ export const createCommand = () =>
     )
     .option(
       "--compression <path>",
-      `A file path which should expose three functions: \`shouldProcess\`, \`compress\` and \`decompress\`. Please refer to the \`CompressionModule\` interface for more details.`
+      `A file path which should expose two functions: \`compress\` and \`decompress\`. Please refer to the \`CompressionModule\` interface for more details.`
     )
     .action((fileGlobs: string[], args: Args) => {
       if (existsSync(args.example) === false) {
