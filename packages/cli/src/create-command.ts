@@ -30,7 +30,7 @@ export const createCommand = () =>
     )
     .option(
       "--compression <path>",
-      `A file path which should expose two functions: \`compressSync\` and \`decompressSync\`. Please refer to the \`CompressionModule\` interface for more details.`
+      `A file path which should expose two functions: \`compressSync\` and \`decompressSync\`. Please refer to the \`CompressionModule\` interface (https://github.com/iendeavor/import-meta-env/blob/main/packages/cli/src/compression-module.ts) for more details.`
     )
     .action((fileGlobs: string[], args: Args) => {
       if (existsSync(args.example) === false) {
