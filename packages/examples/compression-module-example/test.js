@@ -2,7 +2,7 @@ const runTest = require("../run-test");
 
 const commands = [
   "pnpm exec rimraf dist",
-  "pnpm exec webpack",
+  "pnpm cross-env NODE_ENV=production pnpm exec webpack",
   "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public --compression-module compression.js",
 ];
 const longRunningCommands = ["pnpm -w serve -- -d dist -p 4203 --br"];
