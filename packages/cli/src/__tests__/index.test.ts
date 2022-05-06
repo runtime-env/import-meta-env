@@ -156,7 +156,7 @@ module.exports = {
           ({
             env: envFilePath.name,
             example: envExampleFilePath.name,
-            compression: compressionModuleFilePath.name,
+            compressionModule: compressionModuleFilePath.name,
           } as Args)
       );
       const cmd = jest.fn(

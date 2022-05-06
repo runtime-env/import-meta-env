@@ -35,8 +35,11 @@ export const main = (di: {
     const originalCodeBuffer = readFileSync(filePath);
 
     let compressionModule: CompressionModule;
-    if (opts.compression) {
-      compressionModule = require(resolve(process.cwd(), opts.compression));
+    if (opts.compressionModule) {
+      compressionModule = require(resolve(
+        process.cwd(),
+        opts.compressionModule
+      ));
     } else {
       compressionModule = {
         compressSync: ({ buffer }) => buffer,

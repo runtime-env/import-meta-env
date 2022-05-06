@@ -100,7 +100,7 @@ importers:
       cross-env: 7.0.3
       rimraf: 3.0.2
 
-  packages/examples/compression-example:
+  packages/examples/compression-module-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
       '@import-meta-env/unplugin': workspace:*
@@ -402,7 +402,7 @@ importers:
       '@import-meta-env/cli': link:../../cli
       '@import-meta-env/unplugin': link:../../unplugin
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.324_svelte@3.46.4
+      '@sveltejs/kit': 1.0.0-next.326_svelte@3.46.4
       '@types/cookie': 0.4.1
       cross-env: 7.0.3
       svelte: 3.46.4
@@ -3889,7 +3889,7 @@ packages:
   /@sveltejs/adapter-cloudflare/1.0.0-next.19:
     resolution: {integrity: sha512-LET3DUYpl+deoKhkWCzhHUT7iipYkgVkOcRIJX7qT4m23A+MAbzcAC3npgwEYSe9RokOSWMVBr3tVujeES5EeA==}
     dependencies:
-      esbuild: 0.14.23
+      esbuild: 0.14.38
       worktop: 0.8.0-next.13
     dev: true
 
@@ -3897,18 +3897,18 @@ packages:
     resolution: {integrity: sha512-fM3aBHsr7syCGfIJcuB1mEoZwynqyOxVijvmyrd9OWHi6MP3bXSP+GhKDMtDpQRwejJJiwuZNTx2PUbV3uirvA==}
     dependencies:
       '@iarna/toml': 2.2.5
-      esbuild: 0.14.23
+      esbuild: 0.14.38
       tiny-glob: 0.2.9
     dev: true
 
   /@sveltejs/adapter-vercel/1.0.0-next.50:
     resolution: {integrity: sha512-yta0AkuWEr7qrm8LB34F4ZdCtMxj+cHD4huwrRYCgjv+PSJHLPwe7aH53+Mhrv6La0TgeyQ/f2lTyhBMXZXn9Q==}
     dependencies:
-      esbuild: 0.14.23
+      esbuild: 0.14.38
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.324_svelte@3.46.4:
-    resolution: {integrity: sha512-/CGW9rQpHQLBb2EcMw08yelD/C9hTsypymctUWdhryMTI8n1VWb0gkUcSHsz8n8oAAbKLXqwyHqeLATfcIMg2w==}
+  /@sveltejs/kit/1.0.0-next.326_svelte@3.46.4:
+    resolution: {integrity: sha512-prJqmXZ2H1wmFfnMw7wDujfbkcA8vuubuqUkpVVmXhfh2+SEzQscPTNwxoE5EJxb5sywtLWEvYx3hv1gPS4Lvg==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:

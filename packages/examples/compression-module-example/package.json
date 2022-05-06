@@ -1,12 +1,12 @@
 {
   "private": true,
-  "name": "webpack-compression-example",
+  "name": "compression-module-example",
   "scripts": {
     "dev:watch": "webpack --watch",
     "dev:start": "pnpm -w run serve -- -d dist -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && webpack",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public --compression ./compression.js && pnpm -w run serve -- -d dist -p 4173 --br"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public --compression-module ./compression.js && pnpm -w run serve -- -d dist -p 4173 --br"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",

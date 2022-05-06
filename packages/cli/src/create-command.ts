@@ -9,7 +9,7 @@ export interface Args {
   env: string;
   example: string;
   disposable: boolean;
-  compression: string;
+  compressionModule: string;
 }
 
 export const createCommand = () =>
@@ -29,7 +29,7 @@ export const createCommand = () =>
       "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files."
     )
     .option(
-      "--compression <path>",
+      "--compression-module <path>",
       `A file path which should expose two functions: \`compressSync\` and \`decompressSync\`. Please refer to the \`CompressionModule\` interface (https://github.com/iendeavor/import-meta-env/blob/main/packages/cli/src/compression-module.ts) for more details.`
     )
     .action((fileGlobs: string[], args: Args) => {
@@ -53,12 +53,12 @@ export const createCommand = () =>
       }
 
       if (
-        args.compression !== undefined &&
-        existsSync(args.compression) === false
+        args.compressionModule !== undefined &&
+        existsSync(args.compressionModule) === false
       ) {
         console.error(
           colors.red(
-            `[import-meta-env]: Compression module file not found: ${args.compression}`
+            `[import-meta-env]: Compression module file not found: ${args.compressionModule}`
           )
         );
         if (require.main === module) process.exit(1);
