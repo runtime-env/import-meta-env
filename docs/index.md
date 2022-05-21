@@ -16,15 +16,11 @@ footer: MIT Licensed | Copyright © 2021-present Ernest
 
 ## The Problem
 
-Since there is no such environment variable in the browser environment. We typically use <a href="https://webpack.js.org/plugins/environment-plugin/">Webpack</a> or <a href="https://github.com/rollup/plugins/tree/master/packages/replace#usage">Rollup</a> to statically replace all occurrences of `process.env.KEY` (or <a href="https://vitejs.dev/guide/env-and-mode.html">Vite</a>'s `import.meta.env.KEY`) with the given string value.
+Since there is no such environment variable in the browser environment, we need to use [webpack.EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/) or [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace#usage) to replace the variables in your code with the corresponding environment variables at compile time.
 
-This can be a problem because we might want to put environment variables into the [Kubernetes ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) or pass them when running the container:
+_This can be a problem if your environment variables are not available at compile time._
 
-```bash
-docker run -d -p 8080:80 --env API_BASE_URL=https://httpbin.org my-app
-```
-
-But at this stage, we can't change the environment variables anymore, because `API_BASE_URL` has been replaced with some values during the build process.
+For example, you may want to build a application in Github Actions, but your environment variables are configured in Google Kubernetes Engine.
 
 ## Solution
 
@@ -35,7 +31,7 @@ To achieve this, this plugin exposes environment variables on a special `import.
 console.log(`API base URL is: ${import.meta.env.API_BASE_URL}.`);
 ```
 
-During production it will be statically replaced with a placeholder:
+During production (e.g., in Github Actions), it will be statically replaced with a placeholder:
 
 ```js
 // dist/index.js
@@ -44,7 +40,7 @@ console.log(
 );
 ```
 
-Then we can run the [CLI](guide.html#install-cli) anywhere, populating files with environment variables from the system:
+Then we can run the [CLI](guide.html#install-cli) anywhere (e.g., in Google Kubernetes Engine), populating files with environment variables from the system:
 
 ```js
 // dist/index.js
