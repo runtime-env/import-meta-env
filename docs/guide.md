@@ -189,7 +189,7 @@ and use it like above to populate environment variables:
 Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example)
 
 ::: warning
-**Import-meta-env** will replace all `import.meta.env` appearing in JavaScript strings, so you may see errors like:
+**Import-meta-env** will also replace all `import.meta.env` appearing in JavaScript strings, so you may see errors like:
 
 ```js
 console.log("import.meta.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
