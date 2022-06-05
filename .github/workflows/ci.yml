@@ -238,3 +238,50 @@ jobs:
           cd packages/examples/${{ matrix.example }}
           yarn install
           node test.js
+
+  docs:
+    name: "docs"
+
+    if: github.ref_name == 'main'
+
+    needs:
+      - import-meta-env
+      - docker-examples
+      - pnpm-examples
+      - yarn-examples
+      - compatibility-examples
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build docs
+        run: pnpm run docs:build
+
+      - name: Commit files
+        run: |
+          cd docs/.vitepress/dist
+          git init
+          git branch -m gh-pages
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "docs: deploy"
+
+      - name: Push docs
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: docs/.vitepress/dist
+          force: true
