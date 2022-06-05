@@ -189,7 +189,37 @@ and use it like above to populate environment variables:
 Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example)
 
 ::: warning
-It will also replace `import.meta.env` appearing in JavaScript strings. Therefore, you may see errors like `Uncaught SyntaxError`, e.g. `"import.meta.env"` will be transformed into `"({"S3_BUCKET":"YOUR_S3_BUCKET"})"`. To avoid this, you can break the string up with a unicode zero-width space, e.g. `import.meta\u200b.env`.
+**Import-meta-env** will replace all `import.meta.env` appearing in JavaScript strings, so you may see errors like:
+
+```js
+console.log("import.meta.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
+```
+
+will be transformed into:
+
+```js
+console.log(
+  ""__import_meta_env_placeholder__".S3_BUCKET is:",
+// ^ SyntaxError: missing ) after argument list
+  "__import_meta_env_placeholder__".S3_BUCKET
+);
+```
+
+To avoid this, you can break the string up with a unicode zero-width space, e.g.:
+
+```js
+console.log("import.meta\u200b.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
+```
+
+output:
+
+```js
+console.log(
+  "import.meta\u200b.env.S3_BUCKET is:",
+  "__import_meta_env_placeholder__".S3_BUCKET
+);
+```
+
 :::
 
 ::: info
