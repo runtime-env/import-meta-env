@@ -17,7 +17,7 @@ export default defineConfig({
       },
       {
         text: "Examples",
-        link: "/examples",
+        link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
       },
       {
         text: "GitHub",
