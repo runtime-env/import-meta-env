@@ -25,7 +25,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^6
+          version: ^7
 
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v2
@@ -40,13 +40,13 @@ jobs:
         run: pnpm prettier --check .
 
       - name: Build packages
-        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
 
       - name: Install binary
         run: pnpm i
 
       - name: Test packages
-        run: pnpm run test --aggregate-output --filter @import-meta-env/*
+        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run test
 
   docker-examples:
     name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
@@ -141,7 +141,7 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
 
       - name: Install binary
         run: pnpm i
@@ -191,7 +191,7 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
 
       - name: Test ${{ matrix.example }}
         run: |
@@ -231,7 +231,7 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm run build --aggregate-output --filter @import-meta-env/*
+        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
 
       - name: Test ${{ matrix.example }}
         run: |

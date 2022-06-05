@@ -11,6 +11,7 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && pnpm -w run serve -- -d dist -p 4173"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@import-meta-env/babel": "workspace:*",
     "@import-meta-env/cli": "workspace:*",
     "@rollup/plugin-babel": "^5.3.1",
