@@ -1,5 +1,7 @@
 # Import-meta-env
 
+**Note: You can also follow [iendeavor/runtime-environment-variables-example](https://github.com/iendeavor/runtime-environment-variables-example) to implement a runtime environment variable solution without using this library.**
+
 Populates your environment variables after build-time.
 
 [Get Started](/guide.html#getting-started)
