@@ -6,7 +6,7 @@ const commands = [
   "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
   "cp public/index.html dist/index.html",
 ];
-const longRunningCommands = ["pnpm -w serve -- -d dist -p 4184"];
+const longRunningCommands = ["pnpm -w serve -d dist -p 4184"];
 const expected = "Hello: foo";
 const url = "http://localhost:4184";
 const waitMs = 1000;

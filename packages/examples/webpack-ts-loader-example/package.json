@@ -3,10 +3,10 @@
   "name": "webpack-ts-loader-example",
   "scripts": {
     "dev:watch": "webpack --watch",
-    "dev:start": "pnpm -w run serve -- -d dist -p 3000",
+    "dev:start": "pnpm -w run serve -d dist -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env NODE_ENV=development concurrently pnpm:dev:start pnpm:dev:watch",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && pnpm -w run serve -- -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && pnpm -w run serve -d dist -p 4173"
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",

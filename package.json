@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "pnpm": "^7"
+  },
   "scripts": {
     "build": "pnpm --recursive --aggregate-output --filter @import-meta-env/* run build",
     "serve": "node scripts/serve.js",

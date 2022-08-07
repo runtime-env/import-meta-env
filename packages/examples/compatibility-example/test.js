@@ -13,7 +13,7 @@ const runTest = require("../run-test");
 
   await runTest({
     commands: ["yarn add -D dotenv@^16", ...commands],
-    longRunningCommands: ["pnpm -w serve -- -d dist -p 4201"],
+    longRunningCommands: ["pnpm -w serve -d dist -p 4201"],
     expected: "Hello: something-with-a-",
     url: "http://localhost:4201",
     waitMs,
@@ -22,7 +22,7 @@ const runTest = require("../run-test");
 
   await runTest({
     commands: ["yarn add -D dotenv@^12", ...commands],
-    longRunningCommands: ["pnpm -w serve -- -d dist -p 4202"],
+    longRunningCommands: ["pnpm -w serve -d dist -p 4202"],
     expected: "Hello: something-with-a-#-hash",
     url: "http://localhost:4202",
     waitMs,
