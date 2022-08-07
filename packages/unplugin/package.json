@@ -26,7 +26,7 @@
     "test": "jest"
   },
   "engines": {
-    "node": "^12.20.0 || >= 14"
+    "node": ">= 14"
   },
   "repository": {
     "type": "git",

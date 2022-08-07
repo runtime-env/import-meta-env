@@ -208,7 +208,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        node_version: [12, 14, 16]
+        node_version: [14, 16]
         os: ["ubuntu-latest"]
         example: ["compatibility-example"]
 
