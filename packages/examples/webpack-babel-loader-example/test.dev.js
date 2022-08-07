@@ -8,9 +8,12 @@ module.exports = () => {
   });
 
   // act
-  childProcess.execSync("pnpm exec cross-env HELLO=foo webpack", {
-    stdio: "inherit",
-  });
+  childProcess.execSync(
+    "pnpm exec cross-env HELLO=foo NODE_ENV=development webpack",
+    {
+      stdio: "inherit",
+    }
+  );
   const output = childProcess.execSync("node dist/main.js").toString().trim();
 
   // assert
