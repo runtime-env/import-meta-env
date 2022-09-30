@@ -3,20 +3,20 @@
 1. Install package:
 
    ```sh
-   $ yarn add -D @import-meta-env/cli
-   $ yarn add -D @import-meta-env/unplugin
+   $ yarn add -D @final-env/cli
+   $ yarn add -D @final-env/unplugin
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // vue.config.js
    const { defineConfig } = require("@vue/cli-service");
-   const importMetaEnv = require("@import-meta-env/unplugin");
+   const runtimeConfig = require("@final-env/unplugin");
 
    module.exports = defineConfig({
      configureWebpack: {
-       plugins: [importMetaEnv.webpack({ example: ".env.example.public" })],
+       plugins: [runtimeConfig.webpack({ example: ".env.example.public" })],
      },
    });
    ```
@@ -31,7 +31,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Start dev server:

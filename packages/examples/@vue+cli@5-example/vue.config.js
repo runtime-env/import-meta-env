@@ -1,5 +1,5 @@
 const { defineConfig } = require("@vue/cli-service");
-const importMetaEnv = require("@import-meta-env/unplugin");
+const runtimeConfig = require("@final-env/unplugin");
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -7,7 +7,7 @@ module.exports = defineConfig({
   filenameHashing: false,
   productionSourceMap: false,
   configureWebpack: {
-    plugins: [importMetaEnv.webpack({ example: ".env.example.public" })],
+    plugins: [runtimeConfig.webpack({ example: ".env.example.public" })],
     optimization: {
       // Make output files easier to read.
       minimize: false,

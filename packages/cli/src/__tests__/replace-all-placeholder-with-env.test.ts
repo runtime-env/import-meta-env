@@ -6,10 +6,10 @@ afterEach(() => {
 });
 
 describe("replaceAllPlaceholderWithEnv", () => {
-  test("it replace placeholder with env", () => {
+  test("it replace placeholder with env object", () => {
     // arrange
     const code = `
-      const hello = '${placeholder}'.HELLO;
+      const hello = eval('"${placeholder}"');
     `;
     const env = {
       HELLO: "world",
@@ -21,7 +21,27 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = '{\\"HELLO\\":\\"world\\"}'.HELLO;
+            const hello = eval('({\\"HELLO\\":\\"world\\"})');
+          "
+    `);
+  });
+
+  test("it replace placeholder with env", () => {
+    // arrange
+    const code = `
+      const hello = eval('"${placeholder}.HELLO"');
+    `;
+    const env = {
+      HELLO: "world",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const hello = eval('\\"world\\"');
           "
     `);
   });
@@ -29,8 +49,8 @@ describe("replaceAllPlaceholderWithEnv", () => {
   test("it replace all placeholder with env", () => {
     // arrange
     const code = `
-      const foo = '${placeholder}'.FOO;
-      const bar = '${placeholder}'.BAR;
+      const foo = eval('"${placeholder}.FOO"');
+      const bar = eval('"${placeholder}.BAR"');
     `;
     const env = {
       FOO: "foo",
@@ -43,16 +63,16 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const foo = '{\\"FOO\\":\\"foo\\",\\"BAR\\":\\"bar\\"}'.FOO;
-            const bar = '{\\"FOO\\":\\"foo\\",\\"BAR\\":\\"bar\\"}'.BAR;
+            const foo = eval('\\"foo\\"');
+            const bar = eval('\\"bar\\"');
           "
     `);
   });
 
-  test("it works with single quotes", () => {
+  test("it works with escaped double quotes", () => {
     // arrange
     const code = `
-      const hello = ${placeholder.replace(/^"/, "'").replace(/"$/, "'")}.HELLO;
+      const hello = eval('\\"${placeholder}.HELLO\\"');
     `;
     const env = {
       HELLO: "world",
@@ -64,53 +84,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = {\\"HELLO\\":\\"world\\"}.HELLO;
-          "
-    `);
-  });
-
-  test("it works with double quotes", () => {
-    // arrange
-    const code = `
-      const hello = ${placeholder.replace(/^'/, '"').replace(/'$/, '"')}.HELLO;
-    `;
-    const env = {
-      HELLO: "world",
-    };
-
-    // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
-
-    // assert
-    expect(result).toMatchInlineSnapshot(`
-      "
-            const hello = {\\"HELLO\\":\\"world\\"}.HELLO;
-          "
-    `);
-  });
-
-  test("it should works with arrow function", () => {
-    // arrange
-    const code = `
-      ()=>${placeholder}.HELLO;
-      () =>
-
-          ${placeholder}.HELLO;
-    `;
-    const env = {
-      HELLO: "world",
-    };
-
-    // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
-
-    // assert
-    expect(result).toMatchInlineSnapshot(`
-      "
-            ()=>({\\"HELLO\\":\\"world\\"}).HELLO;
-            () =>
-
-                ({\\"HELLO\\":\\"world\\"}).HELLO;
+            const hello = eval('\\\\\\"world\\\\\\"');
           "
     `);
   });
@@ -118,7 +92,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
   test("it should support dynamic key access", () => {
     // arrange
     const code = `
-      ${placeholder}['dynamicKey'];
+      eval('"${placeholder}"')['dynamicKey'];
     `;
     const env = {
       dynamicKey: "dynamic",
@@ -130,27 +104,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            {\\"dynamicKey\\":\\"dynamic\\"}['dynamicKey'];
-          "
-    `);
-  });
-
-  test("it should not replace placeholder which contains zero-width space", () => {
-    // arrange
-    const code = `
-      ${placeholder.slice(0, 8) + "\u200b" + placeholder.slice(8)}.HELLO;
-    `;
-    const env = {
-      HELLO: "world",
-    };
-
-    // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
-
-    // assert
-    expect(result).toMatchInlineSnapshot(`
-      "
-            '__impor​t_meta_env_placeholder__'.HELLO;
+            eval('({\\"dynamicKey\\":\\"dynamic\\"})')['dynamicKey'];
           "
     `);
   });
@@ -158,7 +112,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
   test("it should escape HTML entities", () => {
     // arrange
     const code = `
-      const hello = '${placeholder}'.HELLO;
+      const hello = eval('"${placeholder}.HELLO"');
     `;
     const env = {
       HELLO:
@@ -171,7 +125,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = '{\\"HELLO\\":\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\"}'.HELLO;
+            const hello = eval('\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\"');
           "
     `);
   });

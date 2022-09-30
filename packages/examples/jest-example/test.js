@@ -2,7 +2,7 @@ const childProcess = require("child_process");
 const colors = require("picocolors");
 
 childProcess.execSync(
-  "pnpm exec cross-env HELLO=import-meta-env pnpm exec jest --no-cache tests",
+  "pnpm exec cross-env HELLO=final-env pnpm exec jest --no-cache tests",
   {
     stdio: "inherit",
   }

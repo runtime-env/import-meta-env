@@ -13,7 +13,7 @@ export interface PluginOptions {
 
   /**
    * Explicity set whether to inline current environment variables into the code,
-   * instead of inject environment variables via `import-meta-env` later.
+   * instead of inject environment variables via `final-env` later.
    *
    * @default
    * process.env.NODE_ENV !== 'production'

@@ -1,1 +1,1 @@
-export const hello = import.meta.env.HELLO;
+export const hello = __ENV__.HELLO;

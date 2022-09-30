@@ -6,7 +6,7 @@ const nextConfig = {
 
   webpack: (config) => {
     config.plugins.push(
-      require("@import-meta-env/unplugin").webpack({
+      require("@final-env/unplugin").webpack({
         example: ".env.example.public",
       })
     );

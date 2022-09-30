@@ -6,12 +6,12 @@
 
     ```Dockerfile
     FROM node:latest as build-stage
-    # Build import-meta-env binary for alpine linux
-    RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node16-alpine -o import-meta-env
+    # Build final-env binary for alpine linux
+    RUN npx pkg ./node_modules/@final-env/cli/bin/final-env.js -t node16-alpine -o final-env
 
     FROM nginx:stable-alpine as production-stage
-    # Remember to copy import-meta-env binary and env example file
-    COPY --from=build-stage /app/import-meta-env /app/import-meta-env
+    # Remember to copy final-env binary and env example file
+    COPY --from=build-stage /app/final-env /app/final-env
     COPY .env.example.public /app/.env.example.public
     ```
 
@@ -19,7 +19,7 @@
 
     ```sh
     # Populate the environment variables
-    ./import-meta-env --example .env.example.public
+    ./final-env --example .env.example.public
     ```
 
 1.  Create a [nginx.conf](./nginx.conf) file in the root of your project

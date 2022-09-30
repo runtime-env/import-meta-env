@@ -5,8 +5,8 @@ on:
   pull_request:
 
 jobs:
-  import-meta-env:
-    name: "import-meta-env - node@${{ matrix.node_version }}, ${{ matrix.os }}"
+  final-env:
+    name: "final-env - node@${{ matrix.node_version }}, ${{ matrix.os }}"
 
     runs-on: ${{ matrix.os }}
 
@@ -14,7 +14,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            node_version: 16
+            node_version: 18
 
       fail-fast: false
 
@@ -40,13 +40,13 @@ jobs:
         run: pnpm prettier --check .
 
       - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+        run: pnpm --recursive --aggregate-output --filter @final-env/* run build
 
       - name: Install binary
         run: pnpm i
 
       - name: Test packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run test
+        run: pnpm --recursive --aggregate-output --filter @final-env/* run test
 
   docker-examples:
     name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
@@ -59,7 +59,7 @@ jobs:
 
         include:
           - os: ubuntu-latest
-            node_version: 16
+            node_version: 18
 
       fail-fast: false
 
@@ -98,8 +98,6 @@ jobs:
             "process-env-example",
             "rollup-plugin-babel-example",
             "rollup-starter-example",
-            "svelte-kit-example",
-            "vite-built-in-import-meta-env-example",
             "vite-config-build-assets-dir-example",
             "vite-config-build-out-dir-example",
             "vite-legacy-example",
@@ -141,7 +139,7 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+        run: pnpm --recursive --aggregate-output --filter @final-env/* run build
 
       - name: Install binary
         run: pnpm i
@@ -164,6 +162,7 @@ jobs:
             "@vue+cli@5-example",
             "create-nuxt-app-example",
             "nuxt-bridge-example",
+            "svelte-kit-example",
           ]
 
         include:
@@ -191,7 +190,7 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+        run: pnpm --recursive --aggregate-output --filter @final-env/* run build
 
       - name: Test ${{ matrix.example }}
         run: |
@@ -208,7 +207,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        node_version: [14, 16]
+        node_version: [14, 16, 18]
         os: ["ubuntu-latest"]
         example: ["compatibility-example"]
 
@@ -231,7 +230,7 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+        run: pnpm --recursive --aggregate-output --filter @final-env/* run build
 
       - name: Test ${{ matrix.example }}
         run: |
@@ -245,7 +244,7 @@ jobs:
     if: github.ref_name == 'main'
 
     needs:
-      - import-meta-env
+      - final-env
       - docker-examples
       - pnpm-examples
       - yarn-examples

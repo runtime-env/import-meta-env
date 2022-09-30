@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync } = require("fs");
 
-const filePath = "bin/import-meta-env.js";
+const filePath = "bin/final-env.js";
 
 const oldContent = readFileSync(filePath, "utf-8");
 const newContent = `#!/usr/bin/env node\n'use strict';\n${oldContent}`;

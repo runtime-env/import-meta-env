@@ -2,16 +2,16 @@
   "private": true,
   "name": "vite-vue-ts-example",
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env vite",
+    "dev": "cross-env HELLO=final-env vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
+    "preview": "cross-env HELLO=final-env final-env --example .env.example.public && vite preview"
   },
   "dependencies": {
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
+    "@final-env/cli": "workspace:*",
+    "@final-env/unplugin": "workspace:*",
     "@vitejs/plugin-vue": "^2.0.0",
     "cross-env": "^7.0.3",
     "pug": "^3.0.2",

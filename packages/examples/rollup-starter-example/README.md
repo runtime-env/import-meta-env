@@ -3,27 +3,27 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/cli
-   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @final-env/cli
+   $ pnpm i -D @final-env/unplugin
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // rollup.config.js
-   import importMetaEnv from "@import-meta-env/unplugin";
+   import runtimeConfig from "@final-env/unplugin";
 
    const dev = {
      plugins: [
        // ...,
-       importMetaEnv.rollup({ example: ".env.example.public" }),
+       runtimeConfig.rollup({ example: ".env.example.public" }),
      ],
    };
 
    const prod = {
      plugins: [
        // ...,
-       importMetaEnv.rollup({ example: ".env.example.public" }),
+       runtimeConfig.rollup({ example: ".env.example.public" }),
      ],
    };
 
@@ -40,7 +40,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Start dev server:

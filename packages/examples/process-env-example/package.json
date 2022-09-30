@@ -2,10 +2,10 @@
   "name": "process-env-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env SECRET_NUMBER=42 HELLO=import-meta-env next dev",
+    "dev": "cross-env SECRET_NUMBER=42 HELLO=final-env next dev",
     "build": "next build",
     "preview": "pnpm start",
-    "start": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && cross-env SECRET_NUMBER=42 next start -p 4173"
+    "start": "cross-env HELLO=final-env final-env --example .env.example.public && cross-env SECRET_NUMBER=42 next start -p 4173"
   },
   "dependencies": {
     "next": "12.1.0",
@@ -14,8 +14,8 @@
     "swr": "^1.2.2"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "workspace:^0.1.2",
-    "@import-meta-env/unplugin": "workspace:^0.1.2",
+    "@final-env/cli": "workspace:^0.1.2",
+    "@final-env/unplugin": "workspace:^0.1.2",
     "cross-env": "^7.0.3"
   }
 }

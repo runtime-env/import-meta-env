@@ -15,7 +15,7 @@ export interface PluginOptions {
 
   /**
    * Explicitly set whether to inline current environment variables into the code,
-   * instead of inject environment variables via `import-meta-env` later.
+   * instead of inject environment variables via `final-env` later.
    *
    * This is useful if you want to use the plugin in unknown dev server environments
    *

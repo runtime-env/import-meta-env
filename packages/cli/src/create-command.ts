@@ -36,9 +36,7 @@ export const createCommand = () =>
     .action((args: Args) => {
       if (existsSync(args.example) === false) {
         console.error(
-          colors.red(
-            `[import-meta-env]: Example file not found: ${args.example}`
-          )
+          colors.red(`[final-env]: Example file not found: ${args.example}`)
         );
         if (require.main === module) process.exit(1);
       }
@@ -47,9 +45,7 @@ export const createCommand = () =>
       const foundOutputFilePaths = resolveOutputFileNames(output);
       if (foundOutputFilePaths.length === 0) {
         console.error(
-          colors.red(
-            `[import-meta-env]: Output file not found: ${output.join(", ")}`
-          )
+          colors.red(`[final-env]: Output file not found: ${output.join(", ")}`)
         );
         if (require.main === module) process.exit(1);
       }

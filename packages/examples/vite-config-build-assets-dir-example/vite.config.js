@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import importMetaEnv from "@import-meta-env/unplugin";
+import runtimeConfig from "@final-env/unplugin";
 import createSharedViteConfig from "../shared-vite-config.mjs";
 
 const assetsDir = "custom-assets-dir";
@@ -10,5 +10,5 @@ export default defineConfig({
     assetsDir,
     ...createSharedViteConfig(assetsDir).build,
   },
-  plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
+  plugins: [runtimeConfig.vite({ example: ".env.example.public" })],
 });

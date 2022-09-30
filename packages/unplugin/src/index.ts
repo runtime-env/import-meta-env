@@ -5,24 +5,11 @@ import {
   resolveEnv,
   getPackageManagerExecCommand,
   envFilePath as defaultEnvFilePath,
-  uniqueVariableName,
-  virtualFile,
 } from "../../shared";
 import { PluginOptions } from "./types";
-import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
-import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
-import { extname } from "path";
-import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
-import { loadProd } from "./load-prod";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
-
-type ViteResolvedConfig = Parameters<
-  Exclude<
-    ReturnType<ReturnType<typeof createUnplugin>["vite"]>["configResolved"],
-    undefined
-  >
->["0"];
+import { extname } from "path";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = false;
@@ -39,14 +26,12 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
   let shouldInlineEnv = options?.shouldInlineEnv;
 
-  let viteConfig: ViteResolvedConfig;
-
   return {
-    name: "import-meta-env",
+    name: "final-env",
+
+    enforce: "post",
 
     vite: {
-      enforce: "pre",
-
       apply(_, env) {
         debug && console.debug("apply::");
 
@@ -54,20 +39,16 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         return true;
       },
 
-      config(config) {
-        debug && console.debug("config::", config);
-
-        if (shouldInlineEnv) {
-        } else {
-          return viteMergeManualChunks(config);
-        }
-      },
-
       configResolved(_config) {
         debug && console.debug("configResolved::");
 
         if (_config.isProduction) {
-          // running in `vite preview`
+          // running in `vite build` and `vite preview`
+          env = resolveEnv({
+            envFilePath,
+            envExampleFilePath,
+            exampleOnly: true,
+          });
         } else {
           // running in `vite dev`
           env = resolveEnv({
@@ -75,31 +56,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
             envExampleFilePath,
           });
         }
-
-        viteConfig = _config;
-      },
-
-      transformIndexHtml(html) {
-        debug && console.debug("transformIndexHtml::");
-
-        html = html.replace(
-          new RegExp(uniqueVariableName, "g"),
-          "import.meta.env"
-        );
-        return html;
       },
     },
 
     rollup: {
-      outputOptions(options) {
-        debug && console.debug("rollup::outputOptions::");
-
-        if (shouldInlineEnv) {
-        } else {
-          return rollupMergeManualChunks(options);
-        }
-      },
-
       buildStart() {
         debug && console.debug("rollup::buildStart::");
 
@@ -111,15 +71,17 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
             envFilePath,
             envExampleFilePath,
           });
+        } else {
+          env = resolveEnv({
+            envFilePath,
+            envExampleFilePath,
+            exampleOnly: true,
+          });
         }
       },
     },
 
     webpack: (compiler) => {
-      if (process.env.npm_package_devDependencies__vue_cli_service) {
-        compiler.options.plugins.push(new ImportMetaPlugin());
-      }
-
       const developmentModes: typeof compiler.options.mode[] = [
         "development",
         "none",
@@ -134,33 +96,12 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
           envFilePath,
           envExampleFilePath,
         });
-      }
-    },
-
-    buildStart() {
-      debug && console.debug("buildStart::");
-      debug && console.debug("env::", env);
-    },
-
-    resolveId(id, importer) {
-      debug && console.debug("resolveId::", id, importer);
-
-      if (shouldInlineEnv) {
       } else {
-        if (id === virtualFile) {
-          return virtualFile;
-        }
-      }
-    },
-
-    load(id) {
-      debug && console.debug("load::", id);
-
-      if (shouldInlineEnv) {
-        return null;
-      } else {
-        debug && console.debug("loadProd::", id);
-        return loadProd({ id, envExampleFilePath, meta, viteConfig });
+        env = resolveEnv({
+          envFilePath,
+          envExampleFilePath,
+          exampleOnly: true,
+        });
       }
     },
 
@@ -189,14 +130,14 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       if (shouldInlineEnv) {
         debug && console.debug("transformDev::", id);
 
-        code = transformDev({ code, id, env, meta, viteConfig });
+        code = transformDev({ code, id, env });
       } else {
         debug && console.debug("transformProd::", id);
         debug && console.debug("=== code before ===");
         debug && console.debug(code);
         debug && console.debug("==================");
 
-        code = transformProd({ code, id, meta });
+        code = transformProd({ code, id, env });
 
         debug && console.debug("=== code after ===");
         debug && console.debug(code);
@@ -216,10 +157,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         console.info(
           [
             "",
-            `${colors.cyan("import-meta-env v" + version)}`,
+            `${colors.cyan("final-env v" + version)}`,
             `${colors.green("✓")} environment files are generated.`,
             colors.yellow(
-              `Remember to inject (\`${execCommand} import-meta-env\`) environment variables before serving your application.`
+              `Remember to inject (\`${execCommand} final-env\`) environment variables before serving your application.`
             ),
             "",
           ].join("\n")

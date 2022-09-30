@@ -3,11 +3,11 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/babel
-   $ pnpm i -D @import-meta-env/cli
+   $ pnpm i -D @final-env/babel
+   $ pnpm i -D @final-env/cli
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // rollup.config.js
@@ -17,10 +17,7 @@
        // ...,
        babel({
          plugins: [
-           [
-             "module:@import-meta-env/babel",
-             { example: ".env.example.public" },
-           ],
+           ["module:@final-env/babel", { example: ".env.example.public" }],
          ],
        }),
      ],
@@ -31,10 +28,7 @@
        // ...,
        babel({
          plugins: [
-           [
-             "module:@import-meta-env/babel",
-             { example: ".env.example.public" },
-           ],
+           ["module:@final-env/babel", { example: ".env.example.public" }],
          ],
        }),
      ],
@@ -53,7 +47,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Start dev server:

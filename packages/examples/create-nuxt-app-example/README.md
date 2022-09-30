@@ -3,15 +3,15 @@
 1. Install package:
 
    ```sh
-   $ yarn add -D @import-meta-env/unplugin
-   $ yarn add @import-meta-env/cli
+   $ yarn add -D @final-env/unplugin
+   $ yarn add @final-env/cli
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // nuxt.config.js
-   import importMetaEnv from "@import-meta-env/unplugin";
+   import runtimeConfig from "@final-env/unplugin";
 
    export default {
      // ...
@@ -19,7 +19,7 @@
      build: {
        extend(config, { isDev, isClient }) {
          config.plugins.push(
-           importMetaEnv.webpack({ example: ".env.example.public" })
+           runtimeConfig.webpack({ example: ".env.example.public" })
          );
        },
      },
@@ -36,7 +36,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Start dev server:

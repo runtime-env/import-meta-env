@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   setup() {
     return {
-      hello: import.meta.env.HELLO,
+      hello: __ENV__.HELLO,
     };
   },
 });

@@ -8,7 +8,7 @@ export default {
 
   data() {
     return {
-      hello: import.meta.env.HELLO,
+      hello: __ENV__.HELLO,
     };
   },
 };

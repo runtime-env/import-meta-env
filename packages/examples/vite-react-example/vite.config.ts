@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import importMetaEnv from "@import-meta-env/unplugin";
+import runtimeConfig from "@final-env/unplugin";
 import createSharedViteConfig from "../shared-vite-config.mjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), importMetaEnv.vite({ example: ".env.example.public" })],
+  plugins: [react(), runtimeConfig.vite({ example: ".env.example.public" })],
   ...createSharedViteConfig(),
 });

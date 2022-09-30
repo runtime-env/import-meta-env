@@ -2,14 +2,14 @@
   "name": "create-nuxt-app-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env nuxt",
+    "dev": "cross-env HELLO=final-env nuxt",
     "build": "yarn generate",
     "preview": "yarn start",
-    "start": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && nuxt start --port 4173",
+    "start": "cross-env HELLO=final-env ./node_modules/.bin/final-env --example .env.example.public && nuxt start --port 4173",
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@import-meta-env/cli": "../../cli",
+    "@final-env/cli": "../../cli",
     "core-js": "^3.19.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
@@ -20,7 +20,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@import-meta-env/unplugin": "../../unplugin",
+    "@final-env/unplugin": "../../unplugin",
     "rimraf": "^3.0.2"
   }
 }

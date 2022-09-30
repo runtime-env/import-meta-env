@@ -3,7 +3,7 @@ const runTest = require("../run-test");
 const commands = [
   "pnpm exec rimraf dist",
   "pnpm exec rollup -c",
-  "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
+  "pnpm exec cross-env HELLO=foo pnpm exec final-env --example .env.example.public",
   "cp public/index.html dist/index.html",
 ];
 const longRunningCommands = ["pnpm -w serve -d dist -p 4184"];

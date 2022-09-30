@@ -6,7 +6,7 @@ const colors = require("picocolors");
   copyFileSync("../run-test.js", "./run-test.js");
   const runTest = require("./run-test");
 
-  const image = "import-meta-env-docker-starter-example";
+  const image = "final-env-docker-starter-example";
   childProcess.execSync(`docker build -t ${image} .`, {
     stdio: "inherit",
   });

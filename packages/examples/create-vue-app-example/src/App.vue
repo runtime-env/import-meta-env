@@ -1,5 +1,5 @@
 <script setup>
-const hello = import.meta.env.HELLO;
+const hello = __ENV__.HELLO;
 </script>
 
 <template>

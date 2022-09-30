@@ -2,19 +2,19 @@
   "name": "create-next-app-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env next dev",
+    "dev": "cross-env HELLO=final-env next dev",
     "build": "next build",
     "preview": "pnpm start",
-    "start": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && next start --port 4173"
+    "start": "cross-env HELLO=final-env final-env --example .env.example.public && next start --port 4173"
   },
   "dependencies": {
-    "@import-meta-env/cli": "workspace:*",
+    "@final-env/cli": "workspace:*",
     "cross-env": "^7.0.3",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@import-meta-env/unplugin": "workspace:*"
+    "@final-env/unplugin": "workspace:*"
   }
 }

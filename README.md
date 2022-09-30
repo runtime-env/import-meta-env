@@ -1,3 +1,3 @@
-# import.meta.env
+# final-env
 
-[Documentation](https://iendeavor.github.io/import-meta-env/)
+[Documentation](https://iendeavor.github.io/final-env/)

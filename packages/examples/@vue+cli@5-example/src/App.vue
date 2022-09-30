@@ -7,7 +7,7 @@ export default {
   name: "App",
   computed: {
     hello() {
-      return import.meta.env.HELLO;
+      return __ENV__.HELLO;
     },
   },
 };

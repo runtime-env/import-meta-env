@@ -4,7 +4,7 @@
 
 ## Server Side
 
-You should read sensitive credentials environment variables from the [`process.env` object](https://nodejs.org/dist/latest-v8.x/docs/api/process.html#process_process_env) instead of `import.meta.env`:
+You should read sensitive credentials environment variables from the [`process.env` object](https://nodejs.org/dist/latest-v8.x/docs/api/process.html#process_process_env) instead of `__ENV__`:
 
 ```js
 // pages/api/process-env.js
@@ -39,18 +39,18 @@ SECRET_NUMBER=
 HELLO=
 ```
 
-Only the keys listed in the `.env.example.public` file will be exposed to `import.meta.env` (see below).
+Only the keys listed in the `.env.example.public` file will be exposed to `__ENV__` (see below).
 
 ## Client Side
 
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/cli
-   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @final-env/cli
+   $ pnpm i -D @final-env/unplugin
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // next.config.js
@@ -61,7 +61,7 @@ Only the keys listed in the `.env.example.public` file will be exposed to `impor
 
      webpack: (config) => {
        config.plugins.push(
-         require("@import-meta-env/unplugin").webpack({
+         require("@final-env/unplugin").webpack({
            example: ".env.example.public",
          })
        );
@@ -83,7 +83,7 @@ Only the keys listed in the `.env.example.public` file will be exposed to `impor
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    $ export SECRET_NUMBER=42
    ```
 

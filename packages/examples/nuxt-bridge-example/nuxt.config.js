@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from "@nuxt/bridge";
-import importMetaEnv from "@import-meta-env/unplugin";
+import runtimeConfig from "@final-env/unplugin";
 
 export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   build: {
     extend(config) {
       config.plugins.push(
-        importMetaEnv.webpack({ example: ".env.example.public" })
+        runtimeConfig.webpack({ example: ".env.example.public" })
       );
 
       // Make output files easier to read.

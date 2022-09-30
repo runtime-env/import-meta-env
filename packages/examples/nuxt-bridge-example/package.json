@@ -2,12 +2,12 @@
   "name": "nuxt-bridge-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env nuxi dev",
+    "dev": "cross-env HELLO=final-env nuxi dev",
     "build": "nuxi build",
-    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && cross-env PORT=4173 nuxi preview"
+    "preview": "cross-env HELLO=final-env ./node_modules/.bin/final-env --example .env.example.public && cross-env PORT=4173 nuxi preview"
   },
   "dependencies": {
-    "@import-meta-env/cli": "../../cli",
+    "@final-env/cli": "../../cli",
     "core-js": "^3.19.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
@@ -18,7 +18,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@import-meta-env/unplugin": "../../unplugin",
+    "@final-env/unplugin": "../../unplugin",
     "@nuxt/bridge": "npm:@nuxt/bridge-edge"
   }
 }

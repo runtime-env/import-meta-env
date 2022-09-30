@@ -3,7 +3,7 @@ const runTest = require("../run-test");
 const commands = [
   "yarn rimraf .nuxt .output",
   "yarn nuxi build",
-  "yarn cross-env HELLO=foo yarn import-meta-env --example .env.example.public",
+  "yarn cross-env HELLO=foo yarn final-env --example .env.example.public",
 ];
 const longRunningCommands = ["yarn cross-env PORT=4182 nuxi preview"];
 const expected = "Hello: foo";

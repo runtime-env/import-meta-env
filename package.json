@@ -1,10 +1,11 @@
 {
+  "name": "final-env-monorepo",
   "private": true,
   "engines": {
     "pnpm": "^7"
   },
   "scripts": {
-    "build": "pnpm --recursive --aggregate-output --filter @import-meta-env/* run build",
+    "build": "pnpm --recursive --aggregate-output --filter @final-env/* run build",
     "serve": "node scripts/serve.js",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -33,6 +34,13 @@
     "standard-version": "^9.3.2",
     "tmp": "^0.2.1",
     "typescript": "^4.5.4",
-    "vitepress": "1.0.0-alpha.1"
+    "vitepress": "1.0.0-alpha.17"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
   }
 }

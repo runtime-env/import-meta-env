@@ -2,11 +2,11 @@
 
 ## Getting Started
 
-[![License - MIT](https://img.shields.io/github/license/iendeavor/import-meta-env?color=blue&label=License)](https://github.com/iendeavor/import-meta-env/blob/main/LICENSE)
+[![License - MIT](https://img.shields.io/github/license/iendeavor/final-env?color=blue&label=License)](https://github.com/iendeavor/final-env/blob/main/LICENSE)
 
 [![SemVer version](https://img.shields.io/badge/Sem%20Ver-2.0.0-black.svg)](https://semver.org/)
 
-[![CI](https://github.com/iendeavor/import-meta-env/actions/workflows/ci.yml/badge.svg)](https://github.com/iendeavor/import-meta-env/actions/workflows/ci.yml)
+[![CI](https://github.com/iendeavor/final-env/actions/workflows/ci.yml/badge.svg)](https://github.com/iendeavor/final-env/actions/workflows/ci.yml)
 
 ### The `.env.example` File
 
@@ -30,7 +30,7 @@ S3_BUCKET=
 
 #### Install Babel Plugin
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
+[![NPM version](https://img.shields.io/npm/v/@final-env/babel.svg)](https://www.npmjs.com/package/@final-env/babel)
 
 ::: warning
 This plugin is not compatible with the Vite, you should use the [Unplugin](#install-unplugin) instead.
@@ -39,9 +39,9 @@ This plugin is not compatible with the Vite, you should use the [Unplugin](#inst
 Install it with your favorite package manager:
 
 ```bash
-npm install @import-meta-env/babel --save-dev
-yarn add @import-meta-env/babel --dev
-pnpm add -D @import-meta-env/babel
+npm install @final-env/babel --save-dev
+yarn add @final-env/babel --dev
+pnpm add -D @final-env/babel
 ```
 
 Register the plugin:
@@ -49,22 +49,22 @@ Register the plugin:
 ```json
 // babel.config.json
 {
-  "plugins": [["module:@import-meta-env/babel", { "example": ".env.example" }]]
+  "plugins": [["module:@final-env/babel", { "example": ".env.example" }]]
 }
 ```
 
-Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/babel-starter-example), [babel-loader](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-babel-loader-example), [jest](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/jest-example), [rollup-plugin-babel](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/rollup-plugin-babel-example)
+Related examples: [babel](https://github.com/iendeavor/final-env/blob/main/packages/examples/babel-starter-example), [babel-loader](https://github.com/iendeavor/final-env/blob/main/packages/examples/webpack-babel-loader-example), [jest](https://github.com/iendeavor/final-env/blob/main/packages/examples/jest-example), [rollup-plugin-babel](https://github.com/iendeavor/final-env/blob/main/packages/examples/rollup-plugin-babel-example)
 
 #### Install Unplugin
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)
+[![NPM version](https://img.shields.io/npm/v/@final-env/unplugin.svg)](https://www.npmjs.com/package/@final-env/unplugin)
 
 Install it with your favorite package manager:
 
 ```bash
-npm install @import-meta-env/unplugin --save-dev
-yarn add @import-meta-env/unplugin --dev
-pnpm add -D @import-meta-env/unplugin
+npm install @final-env/unplugin --save-dev
+yarn add @final-env/unplugin --dev
+pnpm add -D @final-env/unplugin
 ```
 
 Register the plugin:
@@ -73,7 +73,7 @@ Rollup:
 
 ```js
 // rollup.config.js
-import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
+import ImportMetaEnvPlugin from "@final-env/unplugin";
 
 export default {
   plugins: [
@@ -88,7 +88,7 @@ Vite:
 
 ```ts
 // vite.config.ts
-import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
+import ImportMetaEnvPlugin from "@final-env/unplugin";
 
 export default {
   plugins: [
@@ -105,25 +105,25 @@ Webpack:
 // webpack.config.js
 module.exports = {
   plugins: [
-    require("@import-meta-env/unplugin").webpack({
+    require("@final-env/unplugin").webpack({
       example: ".env.example",
     }),
   ],
 };
 ```
 
-Related examples: [rollup](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/rollup-starter-example), [vite](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/vite-starter-example), [webpack](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-starter-example)
+Related examples: [rollup](https://github.com/iendeavor/final-env/blob/main/packages/examples/rollup-starter-example), [vite](https://github.com/iendeavor/final-env/blob/main/packages/examples/vite-starter-example), [webpack](https://github.com/iendeavor/final-env/blob/main/packages/examples/webpack-starter-example)
 
 #### Install CLI
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](https://www.npmjs.com/package/@import-meta-env/cli)
+[![NPM version](https://img.shields.io/npm/v/@final-env/cli.svg)](https://www.npmjs.com/package/@final-env/cli)
 
 Install it with your favorite package manager:
 
 ```bash
-npm install @import-meta-env/cli --save-dev
-yarn add @import-meta-env/cli --dev
-pnpm add -D @import-meta-env/cli
+npm install @final-env/cli --save-dev
+yarn add @final-env/cli --dev
+pnpm add -D @final-env/cli
 ```
 
 ### Using Environment Variables
@@ -139,12 +139,12 @@ export S3_BUCKET=YOUR_S3_BUCKET
 You can access the environment variables in code like:
 
 ```js
-console.log(import.meta.env.S3_BUCKET);
+console.log(__ENV__.S3_BUCKET);
 ```
 
 #### Development
 
-In development, `import.meta.env` will simply be replaced with environment variables.
+In development, `__ENV__` will simply be replaced with environment variables.
 
 ```js
 console.log("YOUR_S3_BUCKET");
@@ -152,16 +152,16 @@ console.log("YOUR_S3_BUCKET");
 
 #### Production
 
-During production, `import.meta.env` will be temporarily replaced with a placeholder string.
+During production, `__ENV__` will be temporarily replaced with a placeholder string.
 
 ```js
-console.log('__import_meta_env_placeholder__'.S3_BUCKET));
+console.log('__env_placeholder__'.S3_BUCKET));
 ```
 
 Therefore, before serving your production build, you need to run the CLI to populate the environment variables:
 
 ```bash
-./node_modules/.bin/import-meta-env --example .env.example
+./node_modules/.bin/final-env --example .env.example
 ```
 
 ... and it will output:
@@ -170,60 +170,57 @@ Therefore, before serving your production build, you need to run the CLI to popu
 console.log("YOUR_S3_BUCKET");
 ```
 
-Since your application may be deployed on a system that doesn't have Node.js installed, you can use [pkg](https://github.com/vercel/pkg) to package the `import-meta-env` script into a standalone binary.
+Since your application may be deployed on a system that doesn't have Node.js installed, you can use [pkg](https://github.com/vercel/pkg) to package the `final-env` script into a standalone binary.
 
 For example, you may host your application on the [Alpine Linux nginx image](https://hub.docker.com/_/nginx)):
 
 ```bash
-npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
+npx pkg ./node_modules/@final-env/cli/bin/final-env.js \
   --target node16-alpine \
-  --output import-meta-env-alpine
+  --output final-env-alpine
 ```
 
 and use it like above to populate environment variables:
 
 ```bash
-./import-meta-env-alpine --example .env.example
+./final-env-alpine --example .env.example
 ```
 
-Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example)
+Related examples: [docker](https://github.com/iendeavor/final-env/blob/main/packages/examples/docker-starter-example)
 
 ::: warning
-**Import-meta-env** will also replace all `import.meta.env` appearing in JavaScript strings, so you may see errors like:
+**final-env** will also replace all `__ENV__` appearing in JavaScript strings, so you may see errors like:
 
 ```js
-console.log("import.meta.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
+console.log("__ENV__.S3_BUCKET is:", __ENV__.S3_BUCKET);
 ```
 
 will be transformed into:
 
 ```js
 console.log(
-  ""__import_meta_env_placeholder__".S3_BUCKET is:",
+  ""__env_placeholder__".S3_BUCKET is:",
 // ^ SyntaxError: missing ) after argument list
-  "__import_meta_env_placeholder__".S3_BUCKET
+  "__env_placeholder__".S3_BUCKET
 );
 ```
 
 To avoid this, you can break the string up with a unicode zero-width space, e.g.:
 
 ```js
-console.log("import.meta\u200b.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
+console.log("__ENV\u200b__.S3_BUCKET is:", __ENV__.S3_BUCKET);
 ```
 
 output:
 
 ```js
-console.log(
-  "import.meta\u200b.env.S3_BUCKET is:",
-  "__import_meta_env_placeholder__".S3_BUCKET
-);
+console.log("__ENV\u200b__.S3_BUCKET is:", "__env_placeholder__".S3_BUCKET);
 ```
 
 :::
 
 ::: info
-By default, **import-meta-env** will automatically determine the mode (development or production) and replace `import.meta.env` with environment variables or placeholders, respectively.
+By default, **final-env** will automatically determine the mode (development or production) and replace `__ENV__` with environment variables or placeholders, respectively.
 
 You can override this by setting the `shouldInlineEnv` option for the [babel plugin](#install-babel-plugin) and the [unplugin](#install-unplugin).
 
@@ -237,14 +234,14 @@ For more information, see [API](api).
 In local development, for convenience, you can create a `.env.defaults` file in the project instead of manipulating environment variables in the system:
 
 ```ini
-# Import-meta-env will only load `S3_BUCKET`'s value if you only defined it in the `.env.example` file.
+# final-env will only load `S3_BUCKET`'s value if you only defined it in the `.env.example` file.
 S3_BUCKET="YOUR_S3_BUCKET"
 SECRET_KEY="YOUR_SECRET_KEY_GOES_HERE"
 ```
 
 ### Sensitive Environment Variables
 
-You may want to define all necessary environment variables in .env.example (i.e. including credentials), in this case, you can creating two example files, and pass the `.env.example.public` file to `import-meta-env` options:
+You may want to define all necessary environment variables in .env.example (i.e. including credentials), in this case, you can creating two example files, and pass the `.env.example.public` file to `final-env` options:
 
 ```ini
 # .env.example
@@ -270,10 +267,10 @@ SECRET_KEY=
 PUBLIC_S3_BUCKET=
 ```
 
-In addition, you should use `process.env` to access the sensitive environment variables in your code instead of accessing the environment variables by `import.meta.env`, this could help you to identify the sensitive environment variables in your code:
+In addition, you should use `process.env` to access the sensitive environment variables in your code instead of accessing the environment variables by `__ENV__`, this could help you to identify the sensitive environment variables in your code:
 
 ```js
-const S3_BUCKET = import.meta.env.S3_BUCKET;
+const S3_BUCKET = __ENV__.S3_BUCKET;
 const SECRET_KEY = process.env.SECRET_KEY;
 ```
 
@@ -290,7 +287,7 @@ console.log(process.env.SECRET_KEY); // "YOUR_SECRET_KEY_GOES_HERE"
 If you need to populate the sensitive environment variables at run-time, you need to find out another way to do it, for example:
 
 1. For [NEXT.js](https://nextjs.org/), you can use [serverRuntimeConfig](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration).
-2. For [NuxtJS](https://nuxtjs.org/), you can use [privateRuntimeConfig](https://nuxtjs.org/docs/configuration-glossary/configuration-runtime-config).
+2. For [NuxtJS](https://nuxtjs.org/), you can use [privateRuntimeConfig](https://nuxtjs.org/docs/configuration-glossary/configuration-final-env).
 
 ### IntelliSense for TypeScript
 
@@ -349,7 +346,7 @@ interface ImportMeta {
 
 Since `process.env` is a Node specific object, we should not use it in browser environment.
 
-For server-side rendering, it is also more precise to use `import.meta.env` (heavily inspired by Vite) and `process.env` respectively.
+For server-side rendering, it is also more precise to use `__ENV__` (heavily inspired by Vite) and `process.env` respectively.
 
 ### Boolean Values
 
@@ -363,7 +360,7 @@ export DEBUG= # false
 The easiest way to do this is to treat `""` and `undefined` as `false`, otherwise treat them as `true`:
 
 ```js
-if (import.meta.env.DEBUG) {
+if (__ENV__.DEBUG) {
   console.log("DEBUG is anything but the empty string and undefined.");
 } else {
   console.log("DEBUG is the empty string.");
@@ -373,8 +370,8 @@ if (import.meta.env.DEBUG) {
 If you need to convert it to `boolean` type:
 
 ```diff
-- if (  import.meta.env.DEBUG) {
-+ if (!!import.meta.env.DEBUG === true) {
+- if (  __ENV__.DEBUG) {
++ if (!!__ENV__.DEBUG === true) {
   console.log("DEBUG is anything but the empty string and undefined.");
 } else {
   console.log("DEBUG is the empty string.");
@@ -392,10 +389,10 @@ This is useful, for example:
 
 ### Can I have multiple `.env` files?
 
-Yes. You can choose which one to be used by passing the `env` option to `import-meta-env`, for example, you can pass `.env.local` to `import-meta-env`:
+Yes. You can choose which one to be used by passing the `env` option to `final-env`, for example, you can pass `.env.local` to `final-env`:
 
 ```bash
-./node_modules/.bin/import-meta-env \
+./node_modules/.bin/final-env \
   --env .env.local \
   --example .env.example
 ```

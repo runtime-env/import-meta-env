@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ yarn add -D @import-meta-env/babel
-   $ yarn add -D @import-meta-env/cli
+   $ yarn add -D @final-env/babel
+   $ yarn add -D @final-env/cli
    ```
 
 1. Register `babel` plugin:
@@ -14,9 +14,7 @@
 
    module.exports = {
      // ...
-     plugins: [
-       ["module:@import-meta-env/babel", { example: ".env.example.public" }],
-     ],
+     plugins: [["module:@final-env/babel", { example: ".env.example.public" }]],
    };
    ```
 
@@ -30,7 +28,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Start dev server:

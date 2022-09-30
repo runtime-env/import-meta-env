@@ -78,7 +78,7 @@ describe("resolveEnv", () => {
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "[33m[import-meta-env]: ${envExampleFilePath.replace(
+          "[33m[final-env]: ${envExampleFilePath.replace(
             /\\/g,
             "\\\\"
           )} file not found, skip process.
@@ -106,7 +106,7 @@ describe("resolveEnv", () => {
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "[31m[import-meta-env]: Some environment variables are not defined.[39m",
+          "[31m[final-env]: Some environment variables are not defined.[39m",
         ],
         Array [
           "

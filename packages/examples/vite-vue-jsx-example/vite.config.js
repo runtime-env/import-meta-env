@@ -1,6 +1,6 @@
 const vueJsxPlugin = require("@vitejs/plugin-vue-jsx");
 const vuePlugin = require("@vitejs/plugin-vue");
-const importMetaEnv = require("@import-meta-env/unplugin");
+const runtimeConfig = require("@final-env/unplugin");
 const createSharedViteConfig = require("../shared-vite-config.mjs").default;
 
 /**
@@ -8,7 +8,7 @@ const createSharedViteConfig = require("../shared-vite-config.mjs").default;
  */
 module.exports = {
   plugins: [
-    importMetaEnv.vite({ example: ".env.example.public" }),
+    runtimeConfig.vite({ example: ".env.example.public" }),
     vueJsxPlugin({
       include: [/\.[jt]sx$/],
     }),

@@ -2,13 +2,13 @@
   "private": true,
   "name": "jest-example",
   "scripts": {
-    "test": "cross-env HELLO=import-meta-env jest --no-cache"
+    "test": "cross-env HELLO=final-env jest --no-cache"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@import-meta-env/babel": "workspace:*",
+    "@final-env/babel": "workspace:*",
     "@types/jest": "^27.4.0",
     "babel-jest": "^27.5.1",
     "cross-env": "^7.0.3",

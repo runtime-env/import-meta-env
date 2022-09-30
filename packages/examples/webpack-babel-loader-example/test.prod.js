@@ -12,7 +12,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    "pnpm exec cross-env HELLO=foo import-meta-env --example .env.example.public",
+    "pnpm exec cross-env HELLO=foo final-env --example .env.example.public",
     {
       stdio: "inherit",
     }

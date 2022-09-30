@@ -1,9 +1,9 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "Import-meta-env",
+  title: "final-env",
 
-  base: "/import-meta-env/",
+  base: "/final-env/",
 
   themeConfig: {
     nav: [
@@ -17,11 +17,11 @@ export default defineConfig({
       },
       {
         text: "Examples",
-        link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
+        link: "https://github.com/iendeavor/final-env/tree/main/packages/examples",
       },
       {
         text: "GitHub",
-        link: "https://github.com/iendeavor/import-meta-env",
+        link: "https://github.com/iendeavor/final-env",
       },
     ],
   },

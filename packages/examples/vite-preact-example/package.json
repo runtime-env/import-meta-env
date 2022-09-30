@@ -2,17 +2,17 @@
   "private": true,
   "name": "vite-preact-example",
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env vite",
+    "dev": "cross-env HELLO=final-env vite",
     "build": "vite build",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
+    "preview": "cross-env HELLO=final-env final-env --example .env.example.public && vite preview"
   },
   "dependencies": {
     "preact": "^10.5.15"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
+    "@final-env/cli": "workspace:*",
+    "@final-env/unplugin": "workspace:*",
     "@preact/preset-vite": "^2.1.5",
     "cross-env": "^7.0.3",
     "vite": "^2.8.4"

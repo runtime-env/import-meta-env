@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <>
       <p>
-        import.meta.{"\0"}env: {JSON.stringify(import.meta.env)}
+        __ENV{"\0"}__: {JSON.stringify(__ENV__)}
       </p>
       <p>process.env: {JSON.stringify(data)}</p>
     </>

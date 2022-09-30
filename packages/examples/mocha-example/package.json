@@ -2,13 +2,13 @@
   "private": true,
   "name": "mocha-example",
   "scripts": {
-    "test": "cross-env HELLO=import-meta-env mocha"
+    "test": "cross-env HELLO=final-env mocha"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.7",
-    "@import-meta-env/babel": "workspace:*",
+    "@final-env/babel": "workspace:*",
     "cross-env": "^7.0.3",
     "mocha": "^9.2.1"
   }

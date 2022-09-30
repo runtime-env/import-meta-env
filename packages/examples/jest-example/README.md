@@ -3,7 +3,7 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/babel
+   $ pnpm i -D @final-env/babel
    ```
 
 1. Register `babel` plugin:
@@ -13,9 +13,7 @@
 
    module.exports = {
      // ...
-     plugins: [
-       ["module:@import-meta-env/babel", { example: ".env.example.public" }],
-     ],
+     plugins: [["module:@final-env/babel", { example: ".env.example.public" }]],
    };
    ```
 
@@ -29,7 +27,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Run tests:

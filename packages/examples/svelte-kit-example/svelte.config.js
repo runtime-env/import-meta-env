@@ -1,6 +1,6 @@
 import adapter from "@sveltejs/adapter-auto";
 import preprocess from "svelte-preprocess";
-import importMetaEnv from "@import-meta-env/unplugin";
+import runtimeConfig from "@final-env/unplugin";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -17,7 +17,7 @@ const config = {
     },
 
     vite: {
-      plugins: [importMetaEnv.vite({ example: ".env.example.public" })],
+      plugins: [runtimeConfig.vite({ example: ".env.example.public" })],
     },
   },
 };

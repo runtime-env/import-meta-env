@@ -9,7 +9,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    "pnpm exec cross-env HELLO=foo ./node_modules/.bin/babel src --out-dir dist",
+    "pnpm exec cross-env FOO=1 BAR=2 ./node_modules/.bin/babel src --out-dir dist",
     {
       stdio: "inherit",
     }
@@ -17,5 +17,5 @@ module.exports = () => {
   const output = childProcess.execSync("node dist/index.js").toString().trim();
 
   // assert
-  expect(output).to.equal("Hello: foo");
+  expect(output).to.equal('Foo: 1\nBar: 2\nAll: {"FOO":"1","BAR":"2"}');
 };

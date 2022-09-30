@@ -3,13 +3,13 @@ const runTest = require("../run-test");
 const commands = [
   "pnpm exec rimraf .next",
   "pnpm exec next build",
-  "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
+  "pnpm exec cross-env HELLO=foo pnpm exec final-env --example .env.example.public",
 ];
 const longRunningCommands = [
   "pnpm exec cross-env SECRET_NUMBER=bar pnpm exec next start -p 4183",
 ];
 const expected = [
-  'import.meta.\x00env: {"HELLO":"foo"}',
+  '__ENV\x00__: {"HELLO":"foo"}',
   "",
   'process.env: {"SECRET_NUMBER":"bar"}',
 ].join("\n");

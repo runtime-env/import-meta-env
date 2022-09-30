@@ -15,6 +15,8 @@ export const defaultOutput = [
   "build/**/*",
 ];
 
+export { placeholder };
+
 export const placeholderVariants = ['"', "'"].map((q) =>
   placeholder.replace(new RegExp("'", "g"), q)
 );

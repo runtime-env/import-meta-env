@@ -5,9 +5,11 @@ import { red, yellow } from "picocolors";
 export const resolveEnv = ({
   envFilePath,
   envExampleFilePath,
+  exampleOnly,
 }: {
   envFilePath: string;
   envExampleFilePath: string;
+  exampleOnly?: boolean;
 }): Record<string, string> => {
   const parsed = (() => {
     const { parsed, error } = config({ path: envFilePath });
@@ -28,7 +30,7 @@ export const resolveEnv = ({
 
     console.warn(
       yellow(
-        `[import-meta-env]: ${envExampleFilePath} file not found, skip process.\n`
+        `[final-env]: ${envExampleFilePath} file not found, skip process.\n`
       )
     );
 
@@ -43,7 +45,7 @@ export const resolveEnv = ({
 
     return Object.assign(acc, { [key]: parsed[key] });
   }, {});
-  if (missingKeys.length) {
+  if (!exampleOnly && missingKeys.length) {
     const missingEnv = missingKeys.map((key) => `${key}=${parsedExample[key]}`);
 
     const environmentVariablesAreMissing = [
@@ -61,7 +63,7 @@ export const resolveEnv = ({
       "",
     ].join("\n");
     console.error(
-      red(`[import-meta-env]: Some environment variables are not defined.`)
+      red(`[final-env]: Some environment variables are not defined.`)
     );
     console.error(environmentVariablesAreMissing);
 

@@ -3,10 +3,10 @@
 ## Setup
 
 ```bash
-git clone https://github.com/iendeavor/import-meta-env
-cd import-meta-env
+git clone https://github.com/iendeavor/final-env
+cd final-env
 pnpm run install
-# Before running the examples, you must build the import-meta-env package:
+# Before running the examples, you must build the final-env package:
 pnpm run build
 ```
 

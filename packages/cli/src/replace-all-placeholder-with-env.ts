@@ -1,4 +1,4 @@
-import { placeholderVariants } from "./shared";
+import { placeholder } from "./shared";
 import serialize from "serialize-javascript";
 
 export const replaceAllPlaceholderWithEnv = ({
@@ -10,13 +10,24 @@ export const replaceAllPlaceholderWithEnv = ({
 }): string => {
   let outputCode = code;
 
-  placeholderVariants.forEach((p) => {
+  Object.keys(env).forEach((key) => {
     outputCode = outputCode.replace(
-      new RegExp("=>([\\s]*)" + p, "g"),
-      "=>$1(" + serialize(env) + ")"
+      new RegExp(`eval\\\('\\\\"${placeholder}\.${key}\\\\"'\\\)`, "g"),
+      `eval('\\"${serialize(env[key]).slice(1, -1)}\\"')`
     );
-    outputCode = outputCode.replace(new RegExp(p, "g"), serialize(env));
+    outputCode = outputCode.replace(
+      new RegExp(`eval\\\('"${placeholder}\.${key}"'\\\)`, "g"),
+      `eval('${serialize(env[key])}')`
+    );
   });
+  outputCode = outputCode.replace(
+    new RegExp(`eval\\\('\\\\"${placeholder}\\\\"'\\\)`, "g"),
+    `eval('(\\"${serialize(env).slice(1, -1)})\\"')`
+  );
+  outputCode = outputCode.replace(
+    new RegExp(`eval\\\('"${placeholder}"'\\\)`, "g"),
+    `eval('(${serialize(env)})')`
+  );
 
   return outputCode;
 };

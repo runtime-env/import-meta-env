@@ -3,18 +3,18 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/cli
-   $ pnpm i -D @import-meta-env/babel
+   $ pnpm i -D @final-env/cli
+   $ pnpm i -D @final-env/babel
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // babel.config.js
 
    const plugins = [
      // ...
-     ["module:@import-meta-env/babel", { example: ".env.example.public" }],
+     ["module:@final-env/babel", { example: ".env.example.public" }],
    ];
 
    module.exports = { plugins };
@@ -30,7 +30,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Build development:

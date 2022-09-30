@@ -3,16 +3,16 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/cli
-   $ pnpm i -D @import-meta-env/unplugin
+   $ pnpm i -D @final-env/cli
+   $ pnpm i -D @final-env/unplugin
    ```
 
-1. Register `import-meta-env` plugin:
+1. Register `final-env` plugin:
 
    ```js
    // vite.config.js
 
-   const importMetaEnv = require("@import-meta-env/unplugin");
+   const runtimeConfig = require("@final-env/unplugin");
 
    /**
     * @type {import('vite').UserConfig}
@@ -21,7 +21,7 @@
      // ...
      plugins: [
        // ...
-       importMetaEnv.vite({ example: ".env.example.public" }),
+       runtimeConfig.vite({ example: ".env.example.public" }),
      ],
    };
    ```
@@ -36,7 +36,7 @@
 1. Set environment variables:
 
    ```sh
-   $ export HELLO=import-meta-env
+   $ export HELLO=final-env
    ```
 
 1. Start dev server:

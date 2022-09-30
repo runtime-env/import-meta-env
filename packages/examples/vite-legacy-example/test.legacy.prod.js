@@ -12,7 +12,7 @@ module.exports = () => {
   childProcess.execSync("pnpm exec rimraf dist", { stdio: "inherit" });
   childProcess.execSync("pnpm exec vite build", { stdio: "inherit" });
   childProcess.execSync(
-    "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
+    "pnpm exec cross-env HELLO=foo pnpm exec final-env --example .env.example.public",
     { stdio: "inherit" }
   );
   writeFileSync(

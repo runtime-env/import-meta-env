@@ -3,7 +3,7 @@ const runTest = require("../run-test");
 const commands = [
   "yarn rimraf dist",
   "yarn vue-cli-service build",
-  "yarn cross-env HELLO=foo yarn import-meta-env --example .env.example.public",
+  "yarn cross-env HELLO=foo yarn final-env --example .env.example.public",
 ];
 const longRunningCommands = ["pnpm -w run serve -d dist -p 4175"];
 const expected = "Hello: foo";

@@ -3,7 +3,7 @@ const runTest = require("../run-test");
 const commands = [
   "pnpm exec rimraf .next",
   "pnpm exec next build",
-  "pnpm exec cross-env HELLO=foo import-meta-env --example .env.example.public",
+  "pnpm exec cross-env HELLO=foo final-env --example .env.example.public",
 ];
 const longRunningCommands = ["pnpm exec next start --port 4177"];
 const expected = "Hello: foo";

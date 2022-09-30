@@ -1,7 +1,7 @@
 {
-  "name": "@import-meta-env/cli",
+  "name": "@final-env/cli",
   "version": "0.1.7",
-  "description": "Load environment variables into import.meta.env object",
+  "description": "Complete solution for runtime environment variables",
   "license": "MIT",
   "author": "Ernest",
   "keywords": [
@@ -9,15 +9,15 @@
     "dotenv"
   ],
   "bin": {
-    "import-meta-env": "bin/import-meta-env.js"
+    "final-env": "bin/final-env.js"
   },
   "files": [
     "bin"
   ],
   "scripts": {
     "build": "rimraf bin && pnpm build-cli",
-    "build-cli": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=bin/import-meta-env.js && node ./scripts/patchBin.js",
-    "release": "standard-version -t cli --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/cli@{{currentTag}}' --path . && pnpm build",
+    "build-cli": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=bin/final-env.js && node ./scripts/patchBin.js",
+    "release": "standard-version -t cli --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @final-env/cli@{{currentTag}}' --path . && pnpm build",
     "test": "jest src/__tests__"
   },
   "engines": {
@@ -25,13 +25,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "url": "git+https://github.com/iendeavor/final-env.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/iendeavor/import-meta-env/issues"
+    "url": "https://github.com/iendeavor/final-env/issues"
   },
-  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme",
+  "homepage": "https://github.com/iendeavor/final-env/tree/main/packages/cli#readme",
   "devDependencies": {
     "@types/glob": "^7.2.0",
     "@types/serialize-javascript": "^5.0.2"

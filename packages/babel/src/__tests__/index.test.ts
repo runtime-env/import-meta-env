@@ -2,6 +2,7 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import pluginTester from "babel-plugin-tester";
 import importMetaEnvBabelPlugin from "../index";
+import { placeholder } from "../../../shared";
 
 export const createTempFile = (code: string) => {
   const tmpFile = tmp.fileSync();
@@ -29,21 +30,17 @@ describe("importMetaEnvBabelPlugin", () => {
     tests: [
       {
         title: "It should be transformed to given env (entire env)",
-        code: "import.meta.env",
+        code: "__ENV__",
         output: `
-({
-  HELLO: "foo",
-});
+eval('({\"HELLO\":\"foo\"})');
           `.trim(),
       },
 
       {
         title: "It should be transformed to given env (key accessing)",
-        code: "import.meta.env.HELLO",
+        code: "__ENV__.HELLO",
         output: `
-({
-  HELLO: "foo",
-}.HELLO);
+eval('"foo"');
           `.trim(),
       },
     ],
@@ -62,21 +59,17 @@ describe("importMetaEnvBabelPlugin", () => {
     tests: [
       {
         title: "It should be transformed to placeholder (entire env)",
-        code: "import.meta.env",
+        code: "__ENV__",
         output: `
-({
-  env: "__import_meta_env_placeholder__",
-}.env);
+eval('"${placeholder}"');
           `.trim(),
       },
 
       {
         title: "It should be transformed to placeholder (key accessing)",
-        code: "import.meta.env.HELLO",
+        code: "__ENV__.HELLO",
         output: `
-({
-  env: "__import_meta_env_placeholder__",
-}.env.HELLO);
+eval('"${placeholder}.HELLO"');
           `.trim(),
       },
     ],

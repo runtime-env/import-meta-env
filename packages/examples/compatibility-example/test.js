@@ -5,9 +5,9 @@ const runTest = require("../run-test");
 (async () => {
   const commands = [
     "yarn rimraf dist .env",
-    "yarn webpack",
+    "yarn cross-env NODE_ENV=production yarn webpack",
     "echo HELLO=something-with-a-#-hash > .env",
-    "yarn import-meta-env --example .env.example.public",
+    "yarn final-env --example .env.example.public",
   ];
   const waitMs = 1000;
 

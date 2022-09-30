@@ -56,11 +56,14 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env node scripts/start.js",
+    "dev": "cross-env HELLO=final-env node scripts/start.js",
     "build": "node scripts/build.js",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && pnpm -w run serve -d build -p 4173"
+    "preview": "cross-env HELLO=final-env final-env --example .env.example.public && pnpm -w run serve -d build -p 4173"
   },
   "eslintConfig": {
+    "globals": {
+      "__ENV__": "readonly"
+    },
     "extends": [
       "react-app",
       "react-app/jest"
@@ -81,9 +84,9 @@
   "devDependencies": {
     "@babel/plugin-syntax-flow": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
-    "@import-meta-env/babel": "workspace:*",
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
+    "@final-env/babel": "workspace:*",
+    "@final-env/cli": "workspace:*",
+    "@final-env/unplugin": "workspace:*",
     "@testing-library/dom": "^7.21.4",
     "autoprefixer": "^10.0.2",
     "cross-env": "^7.0.3",

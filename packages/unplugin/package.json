@@ -1,7 +1,7 @@
 {
-  "name": "@import-meta-env/unplugin",
+  "name": "@final-env/unplugin",
   "version": "0.1.8",
-  "description": "Load environment variables into import.meta.env object",
+  "description": "Complete solution for runtime environment variables",
   "license": "MIT",
   "author": "Ernest",
   "keywords": [
@@ -18,38 +18,33 @@
   "main": "dist/index.js",
   "types": "dist/unplugin/src/index.d.ts",
   "scripts": {
-    "build": "rimraf dist bin && pnpm build-types && pnpm build-bundle",
-    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:unplugin --external:dotenv --external:webpack --outfile=dist/index.js && pnpm run patch-dist",
+    "build": "rimraf dist && pnpm build-types && pnpm build-bundle",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:unplugin --external:dotenv --outfile=dist/index.js && pnpm run patch-dist",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
     "patch-dist": "ts-node ../../scripts/patchEsbuildDist.ts dist/index.js createPlugin",
-    "release": "standard-version -t unplugin --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/unplugin@{{currentTag}}' --path . && pnpm build",
-    "test": "jest"
+    "release": "standard-version -t unplugin --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @final-env/unplugin@{{currentTag}}' --path . && pnpm build"
   },
   "engines": {
     "node": ">= 14"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "url": "git+https://github.com/iendeavor/final-env.git",
     "directory": "packages/unplugin"
   },
   "bugs": {
-    "url": "https://github.com/iendeavor/import-meta-env/issues"
+    "url": "https://github.com/iendeavor/final-env/issues"
   },
-  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/unplugin#readme",
+  "homepage": "https://github.com/iendeavor/final-env/tree/main/packages/unplugin#readme",
   "devDependencies": {
     "@types/node": "^17.0.8",
-    "@types/object-hash": "^2.2.1",
     "ts-node": "^10.5.0",
-    "typescript": "^4.5.4",
-    "vite": "^2.7.13",
-    "webpack": "^5.69.1"
+    "typescript": "^4.5.4"
   },
   "peerDependencies": {
     "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
   },
   "dependencies": {
-    "object-hash": "^3.0.0",
     "picocolors": "^1.0.0",
     "unplugin": "^0.3.2"
   }

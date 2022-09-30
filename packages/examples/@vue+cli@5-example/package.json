@@ -2,9 +2,9 @@
   "name": "@vue/cli-5-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve --port 3000",
+    "dev": "cross-env HELLO=final-env vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && pnpm -w run serve -d dist -p 4173"
+    "preview": "cross-env HELLO=final-env ./node_modules/.bin/final-env --example .env.example.public && pnpm -w run serve -d dist -p 4173"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -12,10 +12,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
-    "@import-meta-env/cli": "../../cli",
-    "@import-meta-env/unplugin": "../../unplugin",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@final-env/cli": "../../cli",
+    "@final-env/unplugin": "../../unplugin",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "rimraf": "^3.0.2"

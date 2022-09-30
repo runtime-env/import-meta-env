@@ -1,5 +1,5 @@
 import resolve from "@rollup/plugin-node-resolve";
-import importMetaEnv from "@import-meta-env/unplugin";
+import runtimeConfig from "@final-env/unplugin";
 
 const dev = {
   input: "src/main.js",
@@ -9,7 +9,7 @@ const dev = {
   },
   plugins: [
     resolve(),
-    importMetaEnv.rollup({ example: ".env.example.public" }),
+    runtimeConfig.rollup({ example: ".env.example.public" }),
   ],
 };
 
@@ -25,7 +25,7 @@ const prod = {
   },
   plugins: [
     resolve(),
-    importMetaEnv.rollup({ example: ".env.example.public" }),
+    runtimeConfig.rollup({ example: ".env.example.public" }),
   ],
 };
 

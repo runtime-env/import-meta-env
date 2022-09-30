@@ -27,10 +27,10 @@ describe("cli", () => {
       expect(spy.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
-            "[31m[import-meta-env]: Example file not found: foo[39m",
+            "[31m[final-env]: Example file not found: foo[39m",
           ],
           Array [
-            "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
+            "[31m[final-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
       `);
@@ -58,7 +58,7 @@ describe("cli", () => {
       expect(spy.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
-            "[31m[import-meta-env]: Output file not found: foo, bar[39m",
+            "[31m[final-env]: Output file not found: foo, bar[39m",
           ],
         ]
       `);
@@ -78,7 +78,7 @@ describe("cli", () => {
       expect(spy.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
-            "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
+            "[31m[final-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
       `);
@@ -93,7 +93,7 @@ describe("cli", () => {
       const envExampleFilePath = tmp.fileSync();
       writeFileSync(envExampleFilePath.name, "FOO=");
       const outputFile = tmp.fileSync();
-      writeFileSync(outputFile.name, placeholder);
+      writeFileSync(outputFile.name, `eval('"${placeholder}"')`);
       const parse = jest.fn();
       const opts = jest.fn(
         () =>
@@ -114,12 +114,12 @@ describe("cli", () => {
 
       // assert
       expect(readFileSync(outputFile.name, { encoding: "utf8" })).toBe(
-        JSON.stringify({ FOO: "bar" })
+        `eval('(${JSON.stringify({ FOO: "bar" })})')`
       );
       const backupFileName = outputFile.name + ".bak";
       expect(existsSync(backupFileName)).toBe(true);
       expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(
-        placeholder
+        `eval('"${placeholder}"')`
       );
     });
   });

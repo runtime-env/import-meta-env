@@ -12,7 +12,7 @@ const dev = {
     babel({
       babelHelpers: "bundled",
       plugins: [
-        ["module:@import-meta-env/babel", { example: ".env.example.public" }],
+        ["module:@final-env/babel", { example: ".env.example.public" }],
       ],
     }),
   ],
@@ -34,7 +34,7 @@ const prod = {
       babelHelpers: "bundled",
       plugins: [
         [
-          "module:@import-meta-env/babel",
+          "module:@final-env/babel",
           { example: ".env.example.public", shouldInlineEnv: false },
         ],
       ],

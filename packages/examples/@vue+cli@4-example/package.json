@@ -2,17 +2,19 @@
   "name": "@vue/cli-4-example",
   "private": true,
   "scripts": {
-    "dev": "cross-env HELLO=import-meta-env vue-cli-service serve --port 3000",
+    "dev": "cross-env HELLO=final-env vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && pnpm -w run serve -d dist -p 4173"
+    "preview": "cross-env HELLO=final-env ./node_modules/.bin/final-env --example .env.example.public && pnpm -w run serve -d dist -p 4173"
   },
   "dependencies": {
+    "@final-env/unplugin": "../../unplugin",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@import-meta-env/babel": "../../babel",
-    "@import-meta-env/cli": "../../cli",
+    "@babel/core": "^7.19.3",
+    "@final-env/babel": "../../babel",
+    "@final-env/cli": "../../cli",
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
     "cross-env": "^7.0.3",

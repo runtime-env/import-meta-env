@@ -1,13 +1,13 @@
 # API
 
-## @import-meta-env/babel
+## @final-env/babel
 
-Please see [types.ts](https://github.com/iendeavor/import-meta-env/blob/main/packages/babel/src/types.ts)
+Please see [types.ts](https://github.com/iendeavor/final-env/blob/main/packages/babel/src/types.ts)
 
-## @import-meta-env/cli
+## @final-env/cli
 
-Please execute `./node_modules/.bin/import-meta-env --help`.
+Please execute `./node_modules/.bin/final-env --help`.
 
-## @import-meta-env/unplugin
+## @final-env/unplugin
 
-Please see [types.ts](https://github.com/iendeavor/import-meta-env/blob/main/packages/unplugin/src/types.ts)
+Please see [types.ts](https://github.com/iendeavor/final-env/blob/main/packages/unplugin/src/types.ts)

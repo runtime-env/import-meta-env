@@ -1,4 +1,4 @@
-import importMetaEnv from "@import-meta-env/unplugin";
+import runtimeConfig from "@final-env/unplugin";
 
 export default {
   target: "static",
@@ -37,7 +37,7 @@ export default {
   build: {
     extend(config, { isDev, isClient }) {
       config.plugins.push(
-        importMetaEnv.webpack({ example: ".env.example.public" })
+        runtimeConfig.webpack({ example: ".env.example.public" })
       );
 
       // Make output files easier to read.

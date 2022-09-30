@@ -1,1 +1,1 @@
-console.log(`Hello: ${import.meta.env.HELLO}`);
+console.log(`Hello: ${__ENV__.HELLO}`);
