@@ -99,5 +99,5 @@ By default, **import-meta-env** will automatically determine the mode (developme
 
 You can override this by setting the `shouldInlineEnv` option for the [babel plugin](#install-babel-plugin) and the [unplugin](#install-unplugin).
 
-For more information, see [API](api).
+For more information, see [API](/api).
 :::
