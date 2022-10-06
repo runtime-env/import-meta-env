@@ -98,7 +98,6 @@ jobs:
             "process-env-example",
             "rollup-plugin-babel-example",
             "rollup-starter-example",
-            "svelte-kit-example",
             "vite-built-in-import-meta-env-example",
             "vite-config-build-assets-dir-example",
             "vite-config-build-out-dir-example",
