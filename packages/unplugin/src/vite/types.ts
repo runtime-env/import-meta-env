@@ -1,8 +1,3 @@
-import { createUnplugin } from "unplugin";
+import type { ResolvedConfig } from "vite";
 
-export type ViteResolvedConfig = Parameters<
-  Exclude<
-    ReturnType<ReturnType<typeof createUnplugin>["vite"]>["configResolved"],
-    undefined
-  >
->["0"];
+export type ViteResolvedConfig = ResolvedConfig;

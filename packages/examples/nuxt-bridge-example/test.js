@@ -1,11 +1,11 @@
 const runTest = require("../run-test");
 
 const commands = [
-  "yarn rimraf .nuxt .output",
-  "yarn nuxi build",
-  "yarn cross-env HELLO=foo yarn import-meta-env --example .env.example.public",
+  "npx rimraf .nuxt .output",
+  "npx nuxi build",
+  "npx cross-env HELLO=foo npx import-meta-env --example .env.example.public",
 ];
-const longRunningCommands = ["yarn cross-env PORT=4182 nuxi preview"];
+const longRunningCommands = ["npx cross-env PORT=4182 nuxi preview"];
 const expected = "Hello: foo";
 const url = "http://localhost:4182";
 const waitMs = 1000;

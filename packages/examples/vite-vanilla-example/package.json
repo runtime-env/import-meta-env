@@ -10,6 +10,6 @@
     "@import-meta-env/cli": "workspace:*",
     "@import-meta-env/unplugin": "workspace:*",
     "cross-env": "^7.0.3",
-    "vite": "^2.8.4"
+    "vite": "^3.1.4"
   }
 }

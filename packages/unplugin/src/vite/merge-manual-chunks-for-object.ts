@@ -1,10 +1,19 @@
 import { virtualFile } from "../../../shared";
-import { OutputOptions } from "rollup";
+import { UserConfig } from "vite";
 
-export function mergeManualChunks(
-  originalOutput: OutputOptions
-): OutputOptions {
-  let output: OutputOptions;
+type OutputOptions = Exclude<
+  Exclude<
+    Exclude<UserConfig["build"], undefined>["rollupOptions"],
+    undefined
+  >["output"],
+  undefined
+>;
+export type OutputOptionsForObject = Exclude<OutputOptions, any[]>;
+
+export function mergeManualChunksForObject(
+  originalOutput: OutputOptionsForObject
+): OutputOptionsForObject {
+  let output: OutputOptionsForObject;
 
   const manualChunks = originalOutput.manualChunks;
   if (manualChunks === undefined) {

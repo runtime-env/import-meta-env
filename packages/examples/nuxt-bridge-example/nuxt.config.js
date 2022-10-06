@@ -2,6 +2,10 @@ import { defineNuxtConfig } from "@nuxt/bridge";
 import importMetaEnv from "@import-meta-env/unplugin";
 
 export default defineNuxtConfig({
+  bridge: {
+    vite: true,
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "nuxt-bridge-example",
@@ -27,25 +31,21 @@ export default defineNuxtConfig({
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    function () {
+      // install vite plugin
+      this.nuxt.hook("vite:extend", async (vite) => {
+        vite.config.plugins = vite.config.plugins || [];
+        vite.config.plugins.push(
+          importMetaEnv.vite({ example: ".env.example.public" })
+        );
+      });
+    },
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    extend(config) {
-      config.plugins.push(
-        importMetaEnv.webpack({ example: ".env.example.public" })
-      );
-
-      // Make output files easier to read.
-      config.optimization.minimize = false;
-
-      // Make output files easier to diff.
-      config.output.filename = "[name].js";
-      config.output.chunkFilename = "[name].js";
-      config.devtool = false;
-    },
-  },
+  build: {},
 });

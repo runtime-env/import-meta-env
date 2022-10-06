@@ -23,7 +23,7 @@ export interface PluginOptions {
    * `true` if following conditions are met, otherwise `false`:
    *
    * ```text
-   * vite:    if running with dev server, i.e. `vite`, `vite dev`, or `vite serve`
+   * vite:    if mode is not `"production"`
    * webpack: if running with watch mode or `mode` is `development` or `none`
    * rollup:  if running with watch mode
    * others:  if `NODE_ENV` is NOT `production`

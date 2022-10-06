@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ yarn add @import-meta-env/cli
-   $ yarn add -D @import-meta-env/unplugin
+   $ npm add @import-meta-env/cli
+   $ npm add -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:

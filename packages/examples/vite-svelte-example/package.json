@@ -9,9 +9,9 @@
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",
     "@import-meta-env/unplugin": "workspace:*",
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.37",
+    "@sveltejs/vite-plugin-svelte": "^1.0.8",
     "cross-env": "^7.0.3",
     "svelte": "^3.44.0",
-    "vite": "^2.8.4"
+    "vite": "^3.1.4"
   }
 }

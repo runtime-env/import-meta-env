@@ -16,13 +16,7 @@ import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
 import { loadProd } from "./load-prod";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
-
-type ViteResolvedConfig = Parameters<
-  Exclude<
-    ReturnType<ReturnType<typeof createUnplugin>["vite"]>["configResolved"],
-    undefined
-  >
->["0"];
+import { ViteResolvedConfig } from "./vite/types";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
@@ -50,7 +44,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       apply(_, env) {
         debug && console.debug("apply::");
 
-        shouldInlineEnv = shouldInlineEnv ?? env.command === "serve";
+        shouldInlineEnv = shouldInlineEnv ?? env.mode !== "production";
         return true;
       },
 
@@ -66,10 +60,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       configResolved(_config) {
         debug && console.debug("configResolved::");
 
-        if (_config.isProduction) {
-          // running in `vite preview`
-        } else {
-          // running in `vite dev`
+        if (shouldInlineEnv) {
           env = resolveEnv({
             envFilePath,
             envExampleFilePath,
@@ -153,16 +144,20 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
     },
 
-    load(id) {
-      debug && console.debug("load::", id);
+    ...(meta.framework === "webpack"
+      ? {}
+      : {
+          load(id) {
+            debug && console.debug("load::", id);
 
-      if (shouldInlineEnv) {
-        return null;
-      } else {
-        debug && console.debug("loadProd::", id);
-        return loadProd({ id, envExampleFilePath, meta, viteConfig });
-      }
-    },
+            if (shouldInlineEnv) {
+              return null;
+            } else {
+              debug && console.debug("loadProd::", id);
+              return loadProd({ id, envExampleFilePath, meta, viteConfig });
+            }
+          },
+        }),
 
     transformInclude(id) {
       debug && console.debug("transformIncludes::", id);

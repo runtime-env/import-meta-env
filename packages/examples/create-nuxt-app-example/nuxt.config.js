@@ -1,4 +1,4 @@
-import importMetaEnv from "@import-meta-env/unplugin";
+import importMetaEnv from "@import-meta-env/babel";
 
 export default {
   target: "static",
@@ -35,11 +35,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend(config, { isDev, isClient }) {
-      config.plugins.push(
-        importMetaEnv.webpack({ example: ".env.example.public" })
-      );
+    babel: {
+      plugins: [
+        ["module:@import-meta-env/babel", { example: ".env.example.public" }],
+      ],
+    },
 
+    extend(config, { isDev, isClient }) {
       // Make output files easier to read.
       config.optimization.minimize = false;
 

@@ -36,6 +36,10 @@ Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main
 
 ## Install Unplugin
 
+::: warning
+This plugin is not compatible with the Webpack 4, you should use the [Babel](#install-babel) instead.
+:::
+
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)
 
 Install it with your favorite package manager:

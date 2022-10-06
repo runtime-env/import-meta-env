@@ -1,19 +1,12 @@
-import { createUnplugin } from "unplugin";
+import { UserConfig } from "vite";
 import { virtualFile } from "../../../shared";
 import {
-  OutputOptions,
-  mergeManualChunks as mergeManualChunksForObject,
-} from "../rollup/merge-manual-chunks";
-
-export type UserConfig = Parameters<
-  Exclude<
-    ReturnType<ReturnType<typeof createUnplugin>["vite"]>["config"],
-    undefined
-  >
->["0"];
+  OutputOptionsForObject,
+  mergeManualChunksForObject,
+} from "./merge-manual-chunks-for-object";
 
 export const mergeManualChunks = (config: UserConfig): UserConfig => {
-  let output: OutputOptions | OutputOptions[];
+  let output: OutputOptionsForObject | OutputOptionsForObject[];
 
   const originalOutput = config.build?.rollupOptions?.output;
   if (originalOutput === undefined) {

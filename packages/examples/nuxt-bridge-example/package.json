@@ -7,18 +7,13 @@
     "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && cross-env PORT=4173 nuxi preview"
   },
   "dependencies": {
-    "@import-meta-env/cli": "../../cli",
-    "core-js": "^3.19.3",
+    "@import-meta-env/cli": "file:../../cli",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27747000.69db93e",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.0",
-    "nuxt-edge": "latest",
-    "vue": "^2.6.14",
-    "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "nuxt-edge": "^2.16.0-27720022.54e852f"
   },
   "devDependencies": {
-    "@import-meta-env/unplugin": "../../unplugin",
-    "@nuxt/bridge": "npm:@nuxt/bridge-edge"
+    "@import-meta-env/unplugin": "file:../../unplugin",
+    "dotenv": "^16.0.3"
   }
 }
