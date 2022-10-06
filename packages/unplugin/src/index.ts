@@ -25,7 +25,7 @@ type ViteResolvedConfig = Parameters<
 >["0"];
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
-  const debug = false;
+  const debug = process.env.DEBUG_IMPORT_META_ENV;
   debug && console.debug("factory::", options, meta);
 
   const envFilePath = options?.env ?? defaultEnvFilePath;
