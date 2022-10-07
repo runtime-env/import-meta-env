@@ -7,6 +7,10 @@ const commands = [
 ];
 const longRunningCommands = ["pnpm exec vite preview --port 4197"];
 const expected = [
+  "Js: foo",
+  "",
+  "Js with setup: foo",
+  "",
   "HTML: foo",
   "",
   "HTML with setup: foo",
