@@ -356,6 +356,21 @@ importers:
       rimraf: 3.0.2
       rollup: 2.68.0
 
+  packages/examples/vite-alpine-example:
+    specifiers:
+      '@import-meta-env/cli': workspace:^0.1.7
+      '@import-meta-env/unplugin': workspace:^0.1.8
+      alpinejs: ^3.10.3
+      cross-env: ^7.0.3
+      vite: ^3.1.0
+    dependencies:
+      alpinejs: 3.10.3
+    devDependencies:
+      '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/unplugin': link:../../unplugin
+      cross-env: 7.0.3
+      vite: 3.1.4
+
   packages/examples/vite-built-in-import-meta-env-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
@@ -5219,6 +5234,12 @@ packages:
       magic-string: 0.25.7
     dev: true
 
+  /@vue/reactivity/3.1.5:
+    resolution: {integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==}
+    dependencies:
+      '@vue/shared': 3.1.5
+    dev: false
+
   /@vue/reactivity/3.2.29:
     resolution: {integrity: sha512-Ryhb6Gy62YolKXH1gv42pEqwx7zs3n8gacRVZICSgjQz8Qr8QeCcFygBKYfJm3o1SccR7U+bVBQDWZGOyG1k4g==}
     dependencies:
@@ -5303,6 +5324,10 @@ packages:
       '@vue/shared': 3.2.40
       vue: 3.2.40
     dev: true
+
+  /@vue/shared/3.1.5:
+    resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+    dev: false
 
   /@vue/shared/3.2.29:
     resolution: {integrity: sha512-BjNpU8OK6Z0LVzGUppEk0CMYm/hKDnZfYdjSmPOs0N+TR1cLKJAkDwW8ASZUvaaSLEi6d3hVM7jnWnX+6yWnHw==}
@@ -5632,6 +5657,12 @@ packages:
       '@algolia/requester-node-http': 4.14.2
       '@algolia/transporter': 4.14.2
     dev: true
+
+  /alpinejs/3.10.3:
+    resolution: {integrity: sha512-nt/w4hLq9pPaexCsHmO5zV5Alvq4yu9n0Iclti6aV0HmiqLWH/axUb0pn8z3XVuVNcj8EOXOQw+WpwPzMzLBWg==}
+    dependencies:
+      '@vue/reactivity': 3.1.5
+    dev: false
 
   /ansi-colors/4.1.1:
     resolution: {integrity: sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==}
