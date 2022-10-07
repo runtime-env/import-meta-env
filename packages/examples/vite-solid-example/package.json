@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "vite-solid-example",
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "cross-env HELLO=import-meta-env vite",
+    "build": "vite build",
+    "serve": "vite run preview",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@import-meta-env/cli": "workspace:^0.1.7",
+    "@import-meta-env/unplugin": "workspace:^0.1.8",
+    "cross-env": "^7.0.3",
+    "typescript": "^4.8.2",
+    "vite": "^3.0.9",
+    "vite-plugin-solid": "^2.3.0"
+  },
+  "dependencies": {
+    "solid-js": "^1.5.1"
+  }
+}
