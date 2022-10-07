@@ -21,7 +21,7 @@
     "build": "rimraf dist bin && pnpm build-types && pnpm build-bundle",
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:unplugin --external:dotenv --external:webpack --outfile=dist/index.js && pnpm run patch-dist",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
-    "patch-dist": "ts-node ../../scripts/patchEsbuildDist.ts dist/index.js createPlugin",
+    "patch-dist": "ts-node ./scripts/patchEsbuildDist.ts",
     "release": "standard-version -t unplugin --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/unplugin@{{currentTag}}' --path . && pnpm build",
     "test": "jest"
   },
