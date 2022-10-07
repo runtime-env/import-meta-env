@@ -6,5 +6,5 @@ You can do this by creating a `.env.example` file in your project:
 
 ```ini
 # .env.example
-S3_BUCKET=
+API_BASE_URL=
 ```

@@ -9,6 +9,7 @@ export default defineConfig({
     nav: [
       {
         text: "Guide",
+        activeMatch: "/guide/",
         link: "/guide/getting-started/the-env-example-file",
       },
       {

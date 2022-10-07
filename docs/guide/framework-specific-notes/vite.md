@@ -23,7 +23,7 @@ For Vite projects, you can augment [ImportMetaEnv](https://vitejs.dev/guide/env-
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly S3_BUCKET: string;
+  readonly API_BASE_URL: string;
   // more env variables...
 }
 

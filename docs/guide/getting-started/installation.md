@@ -1,11 +1,11 @@
 # Installation
 
-1. Choose a transformation plugin:
+1. Choose a transformation plugin to replace `import.meta.env.KEY` with placeholders:
 
    - If you're already using Babel, you can install [babel plugin](#install-babel-plugin).
    - If you're already using Rollup, Vite, or Webpack, you can install [unplugin](#install-unplugin).
 
-2. You will also need to install the [CLI](#install-cli) to populate your environment variables after production.
+2. You will also need to install the [CLI](#install-cli) to replace placeholders with environment variables after production.
 
 ## Install Babel Plugin
 

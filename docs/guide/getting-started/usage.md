@@ -1,17 +1,11 @@
 # Usage
 
-Suppose you have the following environment variables:
-
-```bash
-export S3_BUCKET=YOUR_S3_BUCKET
-```
-
 ## Accessing Environment Variables
 
 You can access the environment variables in code like:
 
 ```js
-console.log(import.meta.env.S3_BUCKET);
+console.log(import.meta.env.API_BASE_URL);
 ```
 
 ## Development
@@ -19,18 +13,18 @@ console.log(import.meta.env.S3_BUCKET);
 In development, `import.meta.env` will simply be replaced with environment variables.
 
 ```js
-console.log("YOUR_S3_BUCKET");
+console.log("https://httpbin.org");
 ```
 
 ## Production
 
-During production, `import.meta.env` will be temporarily replaced with a placeholder string.
+During production, `import.meta.env` will be temporarily replaced with placeholders.
 
 ```js
-console.log('__import_meta_env_placeholder__'.S3_BUCKET));
+console.log('__import_meta_env_placeholder__'.API_BASE_URL));
 ```
 
-Therefore, before serving your production build, you need to run the CLI to populate the environment variables:
+Therefore, before serving your production build, you need to run the CLI to replace placeholders with environment variables:
 
 ```bash
 ./node_modules/.bin/import-meta-env --example .env.example
@@ -39,7 +33,7 @@ Therefore, before serving your production build, you need to run the CLI to popu
 ... and it will output:
 
 ```js
-console.log("YOUR_S3_BUCKET");
+console.log("https://httpbin.org");
 ```
 
 Since your application may be deployed on a system that doesn't have Node.js installed, you can use [pkg](https://github.com/vercel/pkg) to package the `import-meta-env` script into a standalone binary.
@@ -52,7 +46,7 @@ npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
   --output import-meta-env-alpine
 ```
 
-and use it like above to populate environment variables:
+and use it like above to replace placeholders with environment variables:
 
 ```bash
 ./import-meta-env-alpine --example .env.example
@@ -64,31 +58,34 @@ Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/mai
 **Import-meta-env** will also replace all `import.meta.env` appearing in JavaScript strings, so you may see errors like:
 
 ```js
-console.log("import.meta.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
+console.log("import.meta.env.API_BASE_URL is:", import.meta.env.API_BASE_URL);
 ```
 
 will be transformed into:
 
 ```js
 console.log(
-  ""__import_meta_env_placeholder__".S3_BUCKET is:",
+  ""__import_meta_env_placeholder__".API_BASE_URL is:",
 // ^ SyntaxError: missing ) after argument list
-  "__import_meta_env_placeholder__".S3_BUCKET
+  "__import_meta_env_placeholder__".API_BASE_URL
 );
 ```
 
 To avoid this, you can break the string up with a unicode zero-width space, e.g.:
 
 ```js
-console.log("import.meta\u200b.env.S3_BUCKET is:", import.meta.env.S3_BUCKET);
+console.log(
+  "import.meta\u200b.env.API_BASE_URL is:",
+  import.meta.env.API_BASE_URL
+);
 ```
 
 output:
 
 ```js
 console.log(
-  "import.meta\u200b.env.S3_BUCKET is:",
-  "__import_meta_env_placeholder__".S3_BUCKET
+  "import.meta\u200b.env.API_BASE_URL is:",
+  "__import_meta_env_placeholder__".API_BASE_URL
 );
 ```
 

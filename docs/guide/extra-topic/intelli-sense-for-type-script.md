@@ -8,7 +8,7 @@ To achieve, you can create an `env.d.ts`, then define `ImportMeta` like this:
 // env.d.ts
 interface ImportMeta {
   readonly env: {
-    readonly S3_BUCKET: string;
+    readonly API_BASE_URL: string;
   };
 }
 ```
