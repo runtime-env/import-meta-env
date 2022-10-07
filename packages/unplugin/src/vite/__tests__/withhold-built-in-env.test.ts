@@ -13,7 +13,7 @@ const envs = {
     // act
     const result = withholdViteBuiltInEnv(code);
 
-    // asesrt
+    // assert
     expect(result).toMatchInlineSnapshot(`
       "const envs = {
         BASE_URL: import.meta.env.BASE_URL;
