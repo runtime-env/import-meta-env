@@ -13,7 +13,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist bin && pnpm build-bundle",
-    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:vite --external:dotenv --outfile=dist/index.js",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node14 --external:vite --external:dotenv --outfile=dist/index.js",
     "release": "standard-version -t babel --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/babel@{{currentTag}}' --path . && pnpm build",
     "test": "jest"
   },
