@@ -7,8 +7,8 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "workspace:^0.1.7",
-    "@import-meta-env/unplugin": "workspace:^0.1.8",
+    "@import-meta-env/cli": "workspace:*",
+    "@import-meta-env/unplugin": "workspace:*",
     "cross-env": "^7.0.3",
     "vite": "^3.1.0"
   },

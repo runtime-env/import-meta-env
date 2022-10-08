@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/typescript": "workspace:^0.1.0",
+    "@import-meta-env/typescript": "workspace:*",
     "@import-meta-env/unplugin": "workspace:*",
     "concurrently": "7.0.0",
     "cross-env": "^7.0.3",

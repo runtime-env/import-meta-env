@@ -1,15 +1,15 @@
-FROM node:latest as build-stage
+FROM node:18.10.0-alpine3.15 as build-stage
 WORKDIR /app
 
 COPY ./ .
 
 RUN npm install
 RUN npm run build
-RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node16-alpine -o import-meta-env
+RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node18-alpine -o import-meta-env
 
 ###############################################################################
 
-FROM nginx:stable-alpine as production-stage
+FROM nginx:1.22.0-alpine as production-stage
 RUN mkdir /app
 
 COPY --from=build-stage /app/dist /app/dist
