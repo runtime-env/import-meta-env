@@ -1,4 +1,4 @@
-# Setup
+# process.env example
 
 > This example contains server side and client side usage.
 
@@ -16,32 +16,14 @@ export default function handler(req, res) {
 }
 ```
 
-If you need to read environment variables from `.env` file, you can use `dotenv`:
-
-```js
-import dotenv from "dotenv";
-
-export default function handler(req, res) {
-  dotenv.config();
-
-  res
-    .status(200)
-    .json(JSON.stringify({ SECRET_NUMBER: process.env.SECRET_NUMBER }));
-}
-```
-
-You can safely list all environment variables under `.env.example`.
-
-This file is used as an information file for all team members to know what keys and values may be needed.
+To provide all team members with information on which keys and values may be required,
+you can list them under `.env.example.private`.
 
 ```
 SECRET_NUMBER=
-HELLO=
 ```
 
-Only the keys listed in the `.env.example.public` file will be exposed to `import.meta.env` (see below).
-
-## Client Side
+## Setup
 
 1. Install package:
 
