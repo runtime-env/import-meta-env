@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "@nrwl/react/babel",
+      {
+        "runtime": "automatic"
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module:@import-meta-env/babel",
+      {
+        "example": ".env.example.public"
+      }
+    ]
+  ]
+}

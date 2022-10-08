@@ -6,3 +6,4 @@ packages:
   - "!packages/examples/nuxt-bridge-example"
   - "!packages/examples/docker-starter-example"
   - "!packages/examples/compatibility-example"
+  - "!packages/examples/nx-react-example"
