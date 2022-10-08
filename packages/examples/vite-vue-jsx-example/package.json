@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@import-meta-env/cli": "workspace:*",
+    "@import-meta-env/typescript": "workspace:^0.1.0",
     "@import-meta-env/unplugin": "workspace:*",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^1.3.3",

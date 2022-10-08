@@ -1,5 +1,7 @@
 # Installation
 
+> If your toolchain is not listed below, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
+
 1. Choose a transformation plugin to replace `import.meta.env.KEY` with placeholders:
 
    - If you're already using Babel, you can install [babel plugin](#install-babel-plugin).
@@ -7,13 +9,18 @@
 
 2. You will also need to install the [CLI](#install-cli) to replace placeholders with environment variables after production.
 
+3. Optional plugins:
+   - [typescript plugin](#install-typescript-plugin)
+
 ## Install Babel Plugin
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
+**Temporarily replace `import.meta.env` with placeholders.**
 
 ::: warning
 This plugin is not compatible with the Vite, you should use the [Unplugin](#install-unplugin) instead.
 :::
+
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
 
 Install it with your favorite package manager:
 
@@ -36,8 +43,10 @@ Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main
 
 ## Install Unplugin
 
+**Temporarily replace `import.meta.env` with placeholders.**
+
 ::: warning
-This plugin is not compatible with the Webpack 4, you should use the [Babel](#install-babel) instead.
+This plugin is not compatible with the Webpack 4, you should use the [Babel](#install-babel-plugin) instead.
 :::
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)
@@ -99,6 +108,8 @@ Related examples: [rollup](https://github.com/iendeavor/import-meta-env/blob/mai
 
 ## Install CLI
 
+**Replace placeholders with environment variables.**
+
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](https://www.npmjs.com/package/@import-meta-env/cli)
 
 Install it with your favorite package manager:
@@ -108,3 +119,64 @@ npm install @import-meta-env/cli --save-dev
 yarn add @import-meta-env/cli --dev
 pnpm add -D @import-meta-env/cli
 ```
+
+## Install Typescript Plugin
+
+**Automatically generate `.d.ts` from `.env.example`.**
+
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/typescript.svg)](https://www.npmjs.com/package/@import-meta-env/typescript)
+
+Install it with your favorite package manager:
+
+```bash
+npm install @import-meta-env/typescript --save-dev
+yarn add @import-meta-env/typescript --dev
+pnpm add -D @import-meta-env/typescript
+```
+
+Register the plugin:
+
+Rollup:
+
+```js
+// rollup.config.js
+import ImportMetaEnvTypescriptPlugin from "@import-meta-env/typescript";
+
+export default {
+  plugins: [
+    ImportMetaEnvTypescriptPlugin.rollup({
+      example: ".env.example",
+    }),
+  ],
+};
+```
+
+Vite:
+
+```ts
+// vite.config.ts
+import ImportMetaEnvTypescriptPlugin from "@import-meta-env/typescript";
+
+export default {
+  plugins: [
+    ImportMetaEnvTypescriptPlugin.vite({
+      example: ".env.example",
+    }),
+  ],
+};
+```
+
+Webpack:
+
+```js
+// webpack.config.js
+module.exports = {
+  plugins: [
+    require("@import-meta-env/typescript").webpack({
+      example: ".env.example",
+    }),
+  ],
+};
+```
+
+Related examples: [vite-vanilla-ts-example](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/vite-vanilla-ts-example), [webpack-ts-loader-example](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-ts-loader-example)

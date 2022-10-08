@@ -1,0 +1,51 @@
+{
+  "name": "@import-meta-env/typescript",
+  "version": "0.1.0",
+  "description": "Automatically generate .d.ts from .env.example",
+  "license": "MIT",
+  "author": "Ernest",
+  "keywords": [
+    "typescript",
+    "unplugin",
+    "rollup-plugin",
+    "vite-plugin",
+    "webpack-plugin",
+    "twelve-factor",
+    "dotenv"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist bin && pnpm build-types && pnpm build-bundle",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:unplugin --external:dotenv --external:webpack --outfile=dist/index.js && pnpm run patch-dist",
+    "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
+    "patch-dist": "node ./scripts/patchEsbuildDist.mjs",
+    "release": "standard-version -t typescript --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/typescript@{{currentTag}}' --path . && pnpm build"
+  },
+  "engines": {
+    "node": ">= 14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "directory": "packages/typescript"
+  },
+  "bugs": {
+    "url": "https://github.com/iendeavor/import-meta-env/issues"
+  },
+  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/typescript#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0",
+    "unplugin": "^0.3.2"
+  }
+}
