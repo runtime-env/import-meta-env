@@ -9,8 +9,8 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && node ../../../scripts/serve -d dist -p 4173"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "latest",
-    "@import-meta-env/unplugin": "latest",
+    "@import-meta-env/cli": "^0.1.7",
+    "@import-meta-env/unplugin": "^0.1.8",
     "chai": "^4.3.6",
     "concurrently": "7.0.0",
     "cross-env": "^7.0.3",
