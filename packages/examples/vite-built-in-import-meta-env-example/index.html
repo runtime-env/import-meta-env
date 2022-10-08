@@ -10,6 +10,7 @@
     <script type="module">
       document.querySelector("#app").innerHTML = `
         <h1>Hello: ${import.meta.env.HELLO}</h1>
+        <h1>Prefixed key: ${import.meta.env.VITE_PREFIXED_KEY}</h1>
         <h1>MODE: ${import.meta.env.MODE}</h1>
         <h1>BASE_URL: ${import.meta.env.BASE_URL}</h1>
         <h1>PROD: ${import.meta.env.PROD}</h1>

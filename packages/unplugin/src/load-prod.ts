@@ -1,7 +1,7 @@
-import { config as dotenvConfig } from "dotenv";
 import hash from "object-hash";
 import { UnpluginContextMeta } from "unplugin";
 import { virtualFile, placeholder } from "../../shared";
+import { parseExample } from "./parse-example";
 import { ViteResolvedConfig } from "./vite/types";
 
 export function loadProd({
@@ -13,21 +13,17 @@ export function loadProd({
   id: string;
   envExampleFilePath: string;
   meta: UnpluginContextMeta;
-  viteConfig: ViteResolvedConfig;
+  viteConfig?: ViteResolvedConfig;
 }) {
   if (id === virtualFile) {
-    const parsedExample = (() => {
-      const { parsed, error } = dotenvConfig({ path: envExampleFilePath });
-      if (error) {
-        return {};
-      }
-      return parsed!;
-    })();
+    const parsedExample = parseExample({ envExampleFilePath });
     const hashValue = hash.keys(parsedExample);
 
     let envCode;
     switch (meta.framework) {
       case "vite":
+        if (viteConfig === void 0)
+          throw Error("[@import-meta-env/unplugin] internal error");
         envCode = `const e = Object.assign(${placeholder}, ${JSON.stringify(
           viteConfig.env
         )});`;

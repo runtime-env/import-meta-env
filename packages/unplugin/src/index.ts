@@ -17,6 +17,7 @@ import { loadProd } from "./load-prod";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
+import { warnEnvPrefix } from "./vite/warn-env-prefix";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
@@ -42,7 +43,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         : {}
       : {};
 
-  let viteConfig: ViteResolvedConfig;
+  let viteConfig: undefined | ViteResolvedConfig;
 
   return {
     name: "import-meta-env",
@@ -188,6 +189,13 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     transform(code, id) {
+      if (meta.framework === "vite")
+        warnEnvPrefix({
+          envExampleFilePath,
+          viteConfigEnvPrefix: viteConfig?.envPrefix,
+          warn: this.warn.bind(this),
+        });
+
       if (shouldInlineEnv) {
         debug && console.debug("transformDev::", id);
 

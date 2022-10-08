@@ -15,11 +15,13 @@ export function transformDev({
   id: string;
   meta: UnpluginContextMeta;
   env: Env;
-  viteConfig: ViteResolvedConfig;
+  viteConfig?: ViteResolvedConfig;
 }) {
   if (id !== virtualFile && id.includes("node_modules") === false) {
     switch (meta.framework) {
       case "vite":
+        if (viteConfig === void 0)
+          throw Error("[@import-meta-env/unplugin] internal error");
         code = code.replace(
           /import\.meta\.env/g,
           "(" +
