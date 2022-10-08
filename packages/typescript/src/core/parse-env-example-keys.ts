@@ -6,7 +6,9 @@ import { red } from "picocolors";
 export const parseEnvExampleKeys = (path?: string) => {
   path = resolve(process.cwd(), path ?? ".env.example");
   if (existsSync(path) === false) {
-    console.error(red("[import-meta-env] No .env.example file found."));
+    console.error(
+      red("[@import-meta-env/typescript] No .env.example file found.")
+    );
     return [];
   }
   const content = readFileSync(path, "utf8");

@@ -42,6 +42,15 @@ export default defineConfig({
           ],
         },
         {
+          text: "Integration",
+          items: [
+            {
+              text: "TypeScript",
+              link: "/guide/integration/typescript",
+            },
+          ],
+        },
+        {
           text: "Extra Topic",
           items: [
             {
@@ -51,10 +60,6 @@ export default defineConfig({
             {
               text: "Local development",
               link: "/guide/extra-topic/local-development",
-            },
-            {
-              text: "IntelliSense for type script",
-              link: "/guide/extra-topic/intelli-sense-for-type-script",
             },
           ],
         },

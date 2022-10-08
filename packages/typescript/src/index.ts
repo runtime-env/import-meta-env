@@ -1,2 +1,1 @@
-import { default as createPlugin } from "./core";
-export default createPlugin;
+export { default as createDeclaration } from "./core/create-declaration";

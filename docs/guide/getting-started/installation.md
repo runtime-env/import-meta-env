@@ -122,7 +122,7 @@ pnpm add -D @import-meta-env/cli
 
 ## Install Typescript Plugin
 
-**Automatically generate `.d.ts` from `.env.example`.**
+**CLI tool to automatically generate `.d.ts` from `.env.example`.**
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/typescript.svg)](https://www.npmjs.com/package/@import-meta-env/typescript)
 
@@ -132,51 +132,6 @@ Install it with your favorite package manager:
 npm install @import-meta-env/typescript --save-dev
 yarn add @import-meta-env/typescript --dev
 pnpm add -D @import-meta-env/typescript
-```
-
-Register the plugin:
-
-Rollup:
-
-```js
-// rollup.config.js
-import ImportMetaEnvTypescriptPlugin from "@import-meta-env/typescript";
-
-export default {
-  plugins: [
-    ImportMetaEnvTypescriptPlugin.rollup({
-      example: ".env.example",
-    }),
-  ],
-};
-```
-
-Vite:
-
-```ts
-// vite.config.ts
-import ImportMetaEnvTypescriptPlugin from "@import-meta-env/typescript";
-
-export default {
-  plugins: [
-    ImportMetaEnvTypescriptPlugin.vite({
-      example: ".env.example",
-    }),
-  ],
-};
-```
-
-Webpack:
-
-```js
-// webpack.config.js
-module.exports = {
-  plugins: [
-    require("@import-meta-env/typescript").webpack({
-      example: ".env.example",
-    }),
-  ],
-};
 ```
 
 Related examples: [vite-vanilla-ts-example](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/vite-vanilla-ts-example), [webpack-ts-loader-example](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-ts-loader-example)
