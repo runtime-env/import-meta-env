@@ -10,7 +10,9 @@ command.parse();
 const opts = command.opts();
 
 const app = express();
-app.use(express.static(path.resolve(process.env.INIT_CWD, opts.dist)));
+app.use(
+  express.static(path.resolve(process.env.INIT_CWD ?? process.cwd(), opts.dist))
+);
 
 app.listen(opts.port, () => {
   console.log(`Listening on port http://localhost:${opts.port}`);

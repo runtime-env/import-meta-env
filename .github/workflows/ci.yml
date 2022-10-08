@@ -167,7 +167,6 @@ jobs:
             "@vue+cli@4-example",
             "@vue+cli@5-example",
             "create-nuxt-app-example",
-            "nuxt-bridge-example",
           ]
 
         include:
@@ -201,6 +200,50 @@ jobs:
         run: |
           cd packages/examples/${{ matrix.example }}
           yarn install
+          node test.js
+
+  npm-examples:
+    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        example:
+          - "nuxt-bridge-example"
+          - "nx-react-example"
+
+        include:
+          - os: ubuntu-latest
+            node_version: 16
+
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+
+      - name: Test ${{ matrix.example }}
+        run: |
+          cd packages/examples/${{ matrix.example }}
+          npm install
           node test.js
 
   compatibility-examples:
