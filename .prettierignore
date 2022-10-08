@@ -13,3 +13,4 @@ packages/examples/create-nuxt-app-example/.nuxt
 packages/examples/process-env-example/.next
 packages/examples/nuxt-bridge-example/.output
 packages/examples/nuxt-bridge-example/.nuxt
+packages/examples/esbuild-starter-example/out.js*

@@ -61,6 +61,23 @@ pnpm add -D @import-meta-env/unplugin
 
 Register the plugin:
 
+Esbuild:
+
+```js
+// esbuild.config.js
+const { build } = require("esbuild");
+const importMetaEnv = require("@import-meta-env/unplugin");
+
+build({
+  plugins: [
+    importMetaEnv.esbuild({
+      example: ".env.example",
+      shouldInlineEnv: process.env.NODE_ENV !== "production",
+    }),
+  ],
+});
+```
+
 Rollup:
 
 ```js

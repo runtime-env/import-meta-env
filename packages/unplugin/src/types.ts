@@ -26,6 +26,7 @@ export interface PluginOptions {
    * vite:    if mode is not `"production"`
    * webpack: if mode is `"development"` or `"none"`
    * rollup:  if `NODE_ENV` is not `"production"`
+   * esbuild: (needs to be set explicitly)
    * ```
    */
   shouldInlineEnv?: boolean;

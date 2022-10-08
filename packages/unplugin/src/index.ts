@@ -29,9 +29,18 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       `example option is required. Please specify it in the plugin options.`
     );
   }
-  let env: Record<string, string> = {};
 
   let shouldInlineEnv = options?.shouldInlineEnv;
+
+  let env: Record<string, string> =
+    meta.framework === "esbuild"
+      ? shouldInlineEnv
+        ? resolveEnv({
+            envFilePath,
+            envExampleFilePath,
+          })
+        : {}
+      : {};
 
   let viteConfig: ViteResolvedConfig;
 
