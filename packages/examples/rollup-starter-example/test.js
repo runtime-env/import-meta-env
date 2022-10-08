@@ -2,7 +2,7 @@ const runTest = require("../run-test");
 
 const commands = [
   "pnpm exec rimraf dist",
-  "pnpm exec rollup -c",
+  "pnpm exec cross-env NODE_ENV=production rollup -c",
   "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
   "cp public/index.html dist/index.html",
 ];
