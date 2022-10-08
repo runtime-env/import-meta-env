@@ -9,6 +9,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@import-meta-env/babel": "workspace:*",
+    "@import-meta-env/typescript": "workspace:*",
     "@types/jest": "^27.4.0",
     "babel-jest": "^27.5.1",
     "cross-env": "^7.0.3",

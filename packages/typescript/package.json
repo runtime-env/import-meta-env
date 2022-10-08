@@ -4,25 +4,19 @@
   "description": "Automatically generate .d.ts from .env.example",
   "license": "MIT",
   "author": "Ernest",
-  "keywords": [
-    "typescript",
-    "unplugin",
-    "rollup-plugin",
-    "vite-plugin",
-    "webpack-plugin",
-    "twelve-factor",
-    "dotenv"
-  ],
+  "bin": {
+    "import-meta-env-typescript": "bin/import-meta-env-typescript.js"
+  },
   "files": [
     "dist"
   ],
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "scripts": {
-    "build": "rimraf dist bin && pnpm build-types && pnpm build-bundle",
-    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:unplugin --external:dotenv --external:webpack --outfile=dist/index.js && pnpm run patch-dist",
+    "build": "rimraf dist bin && pnpm build-types && pnpm build-bundle && pnpm build-bin",
+    "build-bin": "esbuild src/bin.ts --bundle --platform=node --target=node12 --external:dotenv --external:webpack --outfile=bin/import-meta-env-typescript.js && node ./scripts/patchBin.js",
+    "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node12 --external:dotenv --outfile=dist/index.js",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
-    "patch-dist": "node ./scripts/patchEsbuildDist.mjs",
     "release": "standard-version -t typescript --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/typescript@{{currentTag}}' --path . && pnpm build"
   },
   "engines": {
@@ -45,7 +39,7 @@
     "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
   },
   "dependencies": {
-    "picocolors": "^1.0.0",
-    "unplugin": "^0.3.2"
+    "commander": "^9.0.0",
+    "picocolors": "^1.0.0"
   }
 }

@@ -10,7 +10,7 @@ Please execute `./node_modules/.bin/import-meta-env --help`.
 
 ## @import-meta-env/typescript
 
-<<< @/../packages/typescript/src/types.ts
+Please execute `./node_modules/.bin/import-meta-env-typescript --help`.
 
 ## @import-meta-env/unplugin
 

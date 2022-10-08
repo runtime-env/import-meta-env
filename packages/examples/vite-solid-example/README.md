@@ -3,8 +3,15 @@
 1. Install package:
 
    ```sh
+   $ pnpm i -D @import-meta-env/typescript
    $ pnpm i -D @import-meta-env/cli
    $ pnpm i -D @import-meta-env/unplugin
+   ```
+
+1. Run `typescript` plugin
+
+   ```sh
+   pnpm exec import-meta-env-typescript --example .env.example.public --outDir src
    ```
 
 1. Register `import-meta-env` plugin:
