@@ -29,4 +29,4 @@ const prod = {
   ],
 };
 
-export default process.env.ROLLUP_WATCH === "true" ? dev : prod;
+export default process.env.NODE_ENV === "production" ? prod : dev;

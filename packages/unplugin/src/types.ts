@@ -24,9 +24,8 @@ export interface PluginOptions {
    *
    * ```text
    * vite:    if mode is not `"production"`
-   * webpack: if running with watch mode or `mode` is `development` or `none`
-   * rollup:  if running with watch mode
-   * others:  if `NODE_ENV` is NOT `production`
+   * webpack: if mode is `"development"` or `"none"`
+   * rollup:  if `NODE_ENV` is not `"production"`
    * ```
    */
   shouldInlineEnv?: boolean;

@@ -95,7 +95,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug("rollup::buildStart::");
 
         shouldInlineEnv =
-          shouldInlineEnv ?? process.env.ROLLUP_WATCH === "true";
+          shouldInlineEnv ?? process.env.NODE_ENV !== "production";
 
         if (shouldInlineEnv) {
           env = resolveEnv({
@@ -116,9 +116,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         "none",
       ];
       shouldInlineEnv =
-        shouldInlineEnv ??
-        compiler.options.watch ??
-        developmentModes.includes(compiler.options.mode);
+        shouldInlineEnv ?? developmentModes.includes(compiler.options.mode);
 
       if (shouldInlineEnv) {
         env = resolveEnv({

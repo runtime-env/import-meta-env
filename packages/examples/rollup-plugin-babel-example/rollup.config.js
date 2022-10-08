@@ -33,13 +33,10 @@ const prod = {
     babel({
       babelHelpers: "bundled",
       plugins: [
-        [
-          "module:@import-meta-env/babel",
-          { example: ".env.example.public", shouldInlineEnv: false },
-        ],
+        ["module:@import-meta-env/babel", { example: ".env.example.public" }],
       ],
     }),
   ],
 };
 
-export default process.env.ROLLUP_WATCH === "true" ? dev : prod;
+export default process.env.NODE_ENV === "production" ? prod : dev;
