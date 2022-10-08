@@ -59,7 +59,7 @@ jobs:
 
         include:
           - os: ubuntu-latest
-            node_version: 16
+            node_version: 18
 
       fail-fast: false
 
