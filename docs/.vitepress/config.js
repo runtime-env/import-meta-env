@@ -10,7 +10,7 @@ export default defineConfig({
       {
         text: "Guide",
         activeMatch: "/guide/",
-        link: "/guide/getting-started/the-env-example-file",
+        link: "/guide/getting-started/prerequisite",
       },
       {
         text: "API",
@@ -28,8 +28,8 @@ export default defineConfig({
           text: "Getting Started",
           items: [
             {
-              text: "The `.env.example` file",
-              link: "/guide/getting-started/the-env-example-file",
+              text: "Prerequisite",
+              link: "/guide/getting-started/prerequisite",
             },
             {
               text: "Installation",
@@ -86,14 +86,6 @@ export default defineConfig({
             {
               text: "Changes to environment variables is not updated",
               link: "/guide/faq/changes-to-environment-variables-is-not-updated",
-            },
-            {
-              text: "Can i have multiple env files",
-              link: "/guide/faq/can-i-have-multiple-env-files",
-            },
-            {
-              text: "Should i commit my env file",
-              link: "/guide/faq/should-i-commit-my-env-file",
             },
           ],
         },

@@ -2,7 +2,7 @@
 
 Runtime environment variable solution
 
-[Get Started](/guide/getting-started/the-env-example-file.html)
+[Get Started](/guide/getting-started/prerequisite.html)
 
 ## How it Works
 
