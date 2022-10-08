@@ -445,6 +445,7 @@ importers:
   packages/examples/vite-react-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
+      '@import-meta-env/typescript': workspace:^0.1.0
       '@import-meta-env/unplugin': workspace:*
       '@types/react': ^17.0.33
       '@types/react-dom': ^17.0.10
@@ -461,6 +462,7 @@ importers:
       remove: 0.1.5
     devDependencies:
       '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/typescript': link:../../typescript
       '@import-meta-env/unplugin': link:../../unplugin
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
@@ -533,6 +535,7 @@ importers:
   packages/examples/vite-vanilla-ts-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
+      '@import-meta-env/typescript': workspace:^0.1.0
       '@import-meta-env/unplugin': workspace:*
       '@types/node': ^17.0.8
       cross-env: ^7.0.3
@@ -540,6 +543,7 @@ importers:
       vite: ^3.1.4
     devDependencies:
       '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/typescript': link:../../typescript
       '@import-meta-env/unplugin': link:../../unplugin
       '@types/node': 17.0.8
       cross-env: 7.0.3
@@ -549,6 +553,7 @@ importers:
   packages/examples/vite-vue-jsx-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
+      '@import-meta-env/typescript': workspace:^0.1.0
       '@import-meta-env/unplugin': workspace:*
       '@vitejs/plugin-vue': ^3.1.2
       '@vitejs/plugin-vue-jsx': ^1.3.3
@@ -559,6 +564,7 @@ importers:
       vue: 3.2.29
     devDependencies:
       '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/typescript': link:../../typescript
       '@import-meta-env/unplugin': link:../../unplugin
       '@vitejs/plugin-vue': 3.1.2_vite@3.1.4+vue@3.2.29
       '@vitejs/plugin-vue-jsx': 1.3.3
@@ -568,6 +574,7 @@ importers:
   packages/examples/vite-vue-ts-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
+      '@import-meta-env/typescript': workspace:^0.1.0
       '@import-meta-env/unplugin': workspace:*
       '@vitejs/plugin-vue': ^3.1.2
       cross-env: ^7.0.3
@@ -580,6 +587,7 @@ importers:
       vue: 3.2.29
     devDependencies:
       '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/typescript': link:../../typescript
       '@import-meta-env/unplugin': link:../../unplugin
       '@vitejs/plugin-vue': 3.1.2_vite@3.1.4+vue@3.2.29
       cross-env: 7.0.3
@@ -591,6 +599,7 @@ importers:
   packages/examples/vitest-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
+      '@import-meta-env/typescript': workspace:^0.1.0
       '@import-meta-env/unplugin': workspace:*
       '@vitejs/plugin-legacy': ^2.2.0
       cross-env: ^7.0.3
@@ -600,6 +609,7 @@ importers:
       vitest: ^0.2.5
     devDependencies:
       '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/typescript': link:../../typescript
       '@import-meta-env/unplugin': link:../../unplugin
       '@vitejs/plugin-legacy': 2.2.0_terser@5.15.1+vite@3.1.4
       cross-env: 7.0.3
@@ -655,6 +665,7 @@ importers:
   packages/examples/webpack-ts-loader-example:
     specifiers:
       '@import-meta-env/cli': workspace:*
+      '@import-meta-env/typescript': workspace:^0.1.0
       '@import-meta-env/unplugin': workspace:*
       concurrently: 7.0.0
       cross-env: ^7.0.3
@@ -666,6 +677,7 @@ importers:
       webpack-cli: ^4.9.2
     devDependencies:
       '@import-meta-env/cli': link:../../cli
+      '@import-meta-env/typescript': link:../../typescript
       '@import-meta-env/unplugin': link:../../unplugin
       concurrently: 7.0.0
       cross-env: 7.0.3
@@ -675,6 +687,19 @@ importers:
       typescript: 4.6.2
       webpack: 5.69.1_webpack-cli@4.9.2
       webpack-cli: 4.9.2_webpack@5.69.1
+
+  packages/typescript:
+    specifiers:
+      '@types/node': ^17.0.8
+      picocolors: ^1.0.0
+      typescript: ^4.5.4
+      unplugin: ^0.3.2
+    dependencies:
+      picocolors: 1.0.0
+      unplugin: 0.3.3
+    devDependencies:
+      '@types/node': 17.0.21
+      typescript: 4.8.4
 
   packages/unplugin:
     specifiers:
@@ -13727,6 +13752,26 @@ packages:
   /unpipe/1.0.0:
     resolution: {integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=}
     engines: {node: '>= 0.8'}
+
+  /unplugin/0.3.3:
+    resolution: {integrity: sha512-WjZWpUqqcYPQ/efR00Zm2m1+J1LitwoZ4uhHV4VdZ+IpW0Nh/qnDYtVf+nLhozXdGxslMPecOshVR7NiWFl4gA==}
+    peerDependencies:
+      esbuild: '>=0.13'
+      rollup: ^2.50.0
+      vite: ^2.3.0
+      webpack: 4 || 5
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      webpack-virtual-modules: 0.4.5
+    dev: false
 
   /unplugin/0.9.6:
     resolution: {integrity: sha512-YYLtfoNiie/lxswy1GOsKXgnLJTE27la/PeCGznSItk+8METYZErO+zzV9KQ/hXhPwzIJsfJ4s0m1Rl7ZCWZ4Q==}
