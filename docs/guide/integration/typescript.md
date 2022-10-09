@@ -1,8 +1,24 @@
 # TypeScript
 
-`@import-meta-env/typescript` can automatically generate a declaration file for environment variables from `.env.example` for you.
+Automatically generate `import-meta-env.d.ts` from `.env.example`.
 
-By default, when running `./node_modules/.bin/import-meta-env-typescript --example .env.example`, the CLI will create an `import-meta-env.d.ts` file in your project root:
+## Installation
+
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/typescript.svg)](https://www.npmjs.com/package/@import-meta-env/typescript)
+
+```bash
+$ npm install @import-meta-env/typescript --save-dev
+```
+
+Related examples: [vite-vanilla-ts-example](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/vite-vanilla-ts-example), [webpack-ts-loader-example](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-ts-loader-example)
+
+## Using the CLI
+
+```bash
+$ npx import-meta-env-typescript --example .env.example
+```
+
+By default, when running above command, the CLI will create an `import-meta-env.d.ts` file in your project root:
 
 ```ts
 // import-meta-env.d.ts

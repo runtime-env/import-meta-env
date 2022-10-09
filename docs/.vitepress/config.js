@@ -1,4 +1,7 @@
 import { defineConfig } from "vitepress";
+import fs from "fs";
+import path from "path";
+import { sentenceCase } from "change-case";
 
 export default defineConfig({
   title: "Import-meta-env",
@@ -10,90 +13,64 @@ export default defineConfig({
       {
         text: "Guide",
         activeMatch: "/guide/",
-        link: "/guide/getting-started/prerequisite",
+        link: "/guide/getting-started/introduction",
       },
       {
         text: "API",
         link: "/api",
       },
-      {
-        text: "Examples",
-        link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
-      },
     ],
 
-    sidebar: {
-      "/guide": [
-        {
-          text: "Getting Started",
-          items: [
-            {
-              text: "Prerequisite",
-              link: "/guide/getting-started/prerequisite",
-            },
-            {
-              text: "Installation",
-              link: "/guide/getting-started/installation",
-            },
-            {
-              text: "Usage",
-              link: "/guide/getting-started/usage",
-            },
-          ],
-        },
-        {
-          text: "Integration",
-          items: [
-            {
-              text: "TypeScript",
-              link: "/guide/integration/typescript",
-            },
-          ],
-        },
-        {
-          text: "Extra Topic",
-          items: [
-            {
-              text: "Sensitive environment variables",
-              link: "/guide/extra-topic/sensitive-environment-variables",
-            },
-            {
-              text: "Local development",
-              link: "/guide/extra-topic/local-development",
-            },
-          ],
-        },
-        {
-          text: "Framework Specific Notes",
-          items: [
-            {
-              text: "Vite",
-              link: "/guide/framework-specific-notes/vite",
-            },
-          ],
-        },
-        {
-          text: "FAQ",
-          items: [
-            {
-              text: "Why use import meta",
-              link: "/guide/faq/why-use-import-meta",
-            },
-            {
-              text: "Environment variables are always strings",
-              link: "/guide/faq/environment-variables-are-always-strings",
-            },
-            {
-              text: "Changes to environment variables is not updated",
-              link: "/guide/faq/changes-to-environment-variables-is-not-updated",
-            },
-          ],
-        },
-      ],
-    },
+    sidebar: sidebar(),
 
     socialLinks: [
       { icon: "github", link: "https://github.com/iendeavor/import-meta-env" },
     ],
   },
 });
+
+function sidebar() {
+  return {
+    "/guide": genSidebarItems(path.resolve(__dirname, "..", "guide")),
+  };
+}
+
+function genSidebarItems(rootDir) {
+  /**
+   * @type {import('vitepress').DefaultTheme.SidebarItem[]}
+   */
+  const sidebarItems = [];
+
+  const dirs = fs.readdirSync(rootDir).filter((p) => p !== "__order.json");
+
+  if (fs.existsSync(path.resolve(rootDir, "__order.json"))) {
+    /**
+     * @type {string[]}
+     */
+    const order = JSON.parse(
+      fs.readFileSync(path.resolve(rootDir, "__order.json"))
+    );
+    dirs.sort(
+      (a, b) =>
+        order.indexOf(a.replace(/\.md$/, "")) -
+        order.indexOf(b.replace(/\.md$/, ""))
+    );
+  }
+
+  dirs.forEach((p) => {
+    const absP = path.resolve(rootDir, p);
+    if (fs.lstatSync(absP).isDirectory()) {
+      sidebarItems.push({
+        text: sentenceCase(p),
+        items: genSidebarItems(absP),
+      });
+    } else {
+      sidebarItems.push({
+        text: sentenceCase(p.replace(/\.md$/, "")),
+        link: absP.replace(path.resolve(__dirname, ".."), ""),
+      });
+    }
+  });
+
+  return sidebarItems;
+}

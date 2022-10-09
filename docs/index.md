@@ -1,30 +1,26 @@
-# Import-meta-env
+---
+layout: home
 
-Runtime environment variable solution
+title: Import-meta-env
+titleTemplate: Runtime environment variable solution
 
-[Get Started](/guide/getting-started/prerequisite.html)
+hero:
+  name: Import-meta-env
+  text: Runtime environment variable solution
+  tagline: Import-meta-env gives you all the features you need for runtime environment variables.
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/getting-started/introduction.html
+    - theme: alt
+      text: Examples
+      link: https://github.com/iendeavor/import-meta-env/tree/main/packages/examples
 
-## How it Works
-
-This plugin exposes environment variables on a special `import.meta.env`[<sup>?</sup>](/guide/faq/why-use-import-meta.html) object:
-
-```js
-// src/index.js
-console.log(import.meta.env.API_BASE_URL);
-```
-
-During bundle step (for example, running Webpack in Github Actions), the code will be temporarily replaced with a placeholder:
-
-```js
-// dist/index.js
-console.log("__import_meta_env_placeholder__".API_BASE_URL);
-```
-
-You can then run the [CLI](/guide/getting-started/usage.html#production) anywhere to populating the bundle files with environment variables _without rebuilding your application_.
-
-For example, [`docker run --env API_BASE_URL=https://httpbin.org ...`](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file):
-
-```js
-// dist/index.js
-console.log("https://httpbin.org");
-```
+features:
+  - title: Security First
+    details: No environment variables will be exposed to clients by default.
+  - title: Rich Features
+    details: Out-of-the-box support for Babel, Webpack, Jest and more.
+  - title: Cross-platform
+    details: Operating systems without Node.js are supported. Powered by pkg.
+---

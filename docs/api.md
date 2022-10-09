@@ -6,11 +6,11 @@
 
 ## @import-meta-env/cli
 
-Please execute `./node_modules/.bin/import-meta-env --help`.
+Please execute `npx import-meta-env --help`.
 
 ## @import-meta-env/typescript
 
-Please execute `./node_modules/.bin/import-meta-env-typescript --help`.
+Please execute `npx import-meta-env-typescript --help`.
 
 ## @import-meta-env/unplugin
 
