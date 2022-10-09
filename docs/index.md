@@ -7,7 +7,7 @@ titleTemplate: Runtime environment variable solution
 hero:
   name: Import-meta-env
   text: Runtime environment variable solution
-  tagline: Import-meta-env gives you all the features you need for runtime environment variables.
+  tagline: Build once, deploy anywhere.
   actions:
     - theme: brand
       text: Get Started
