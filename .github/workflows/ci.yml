@@ -80,6 +80,7 @@ jobs:
           - "vite-config-build-out-dir-example"
           - "vite-legacy-example"
           - "vite-preact-example"
+          - "vite-qwik-example"
           - "vite-react-example"
           - "vite-solid-example"
           - "vite-starter-example"
