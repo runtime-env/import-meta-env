@@ -8,6 +8,21 @@ export default defineConfig({
 
   base: "/import-meta-env/",
 
+  head: [
+    [
+      "script",
+      {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=G-9QTYWHDXCJ",
+      },
+    ],
+    [
+      "script",
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){window.dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-9QTYWHDXCJ');",
+    ],
+  ],
+
   themeConfig: {
     nav: [
       {
