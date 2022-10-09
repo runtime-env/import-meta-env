@@ -48,6 +48,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   return {
     name: "import-meta-env",
 
+    enforce: meta.framework === "webpack" ? "post" : void 0,
+
     vite: {
       enforce: "pre",
 

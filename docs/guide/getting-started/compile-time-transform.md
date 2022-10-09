@@ -17,17 +17,18 @@ Currently we support [Babel plugin](#babel-plugin) and [Unplugin](#unplugin) tra
 1. If you use Webpack 5 and Jest, you can use the [Unplugin](#unplugin) for development/production, and the [Babel plugin](#babel-plugin) for testing.
 2. If you use Vite, you can use [Unplugin](#unplugin) for development/production, and testing.
 
-| Compatibility                         | [Babel plugin](#babel-plugin)                                                                 | [Unplugin](#unplugin) |
-| ------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------- |
-| [Babel](https://babeljs.io/)          | :heavy_check_mark:                                                                            |                       |
-| [ESbuild](https://esbuild.github.io/) |                                                                                               | :heavy_check_mark:    |
-| [Rollup](https://rollupjs.org/)       | :heavy_check_mark: [@rollup/plugin-babel](https://www.npmjs.com/package/@rollup/plugin-babel) | :heavy_check_mark:    |
-| [Vite](https://vitejs.dev/)           |                                                                                               | :heavy_check_mark:    |
-| [Vitest](https://vitejs.dev/)         |                                                                                               | :heavy_check_mark:    |
-| [Webpack](https://webpack.js.org/) 4  | :heavy_check_mark: [babel-loader](https://www.npmjs.com/package/babel-loader)                 |                       |
-| [Webpack](https://webpack.js.org/) 5  | :heavy_check_mark: [babel-loader](https://www.npmjs.com/package/babel-loader)                 | :heavy_check_mark:    |
-| [Jest](https://jestjs.io/)            | :heavy_check_mark: [babel-jest](https://www.npmjs.com/package/babel-jest)                     |                       |
-| [Mocha](https://mochajs.org/)         | :heavy_check_mark: [@babel/register](https://npm.im/@babel/register)                          |                       |
+| Compatibility                         | [Babel plugin](#babel-plugin)                                                                 | [Unplugin](#unplugin)                                                                                                 |
+| ------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [Angular CLI](https://angular.io/cli) |                                                                                               | :heavy_check_mark: [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack) |
+| [Babel](https://babeljs.io/)          | :heavy_check_mark:                                                                            |                                                                                                                       |
+| [ESbuild](https://esbuild.github.io/) |                                                                                               | :heavy_check_mark:                                                                                                    |
+| [Jest](https://jestjs.io/)            | :heavy_check_mark: [babel-jest](https://www.npmjs.com/package/babel-jest)                     |                                                                                                                       |
+| [Mocha](https://mochajs.org/)         | :heavy_check_mark: [@babel/register](https://npm.im/@babel/register)                          |                                                                                                                       |
+| [Rollup](https://rollupjs.org/)       | :heavy_check_mark: [@rollup/plugin-babel](https://www.npmjs.com/package/@rollup/plugin-babel) | :heavy_check_mark:                                                                                                    |
+| [Vite](https://vitejs.dev/)           |                                                                                               | :heavy_check_mark:                                                                                                    |
+| [Vitest](https://vitejs.dev/)         |                                                                                               | :heavy_check_mark:                                                                                                    |
+| [Webpack](https://webpack.js.org/) 4  | :heavy_check_mark: [babel-loader](https://www.npmjs.com/package/babel-loader)                 |                                                                                                                       |
+| [Webpack](https://webpack.js.org/) 5  | :heavy_check_mark: [babel-loader](https://www.npmjs.com/package/babel-loader)                 | :heavy_check_mark:                                                                                                    |
 
 If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
 
