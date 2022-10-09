@@ -210,6 +210,7 @@ jobs:
     strategy:
       matrix:
         example:
+          - "angular-example"
           - "nuxt-bridge-example"
           - "nx-react-example"
 
