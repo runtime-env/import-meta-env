@@ -1,27 +1,92 @@
-# AngularExample
+# Setup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+1. Install package:
 
-## Development server
+   ```sh
+   $ npm install @angular-builders/custom-webpack --save-dev
+   $ npm install @import-meta-env/{cli,typescript,unplugin} --save-dev
+   ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Run `typescript` plugin
 
-## Code scaffolding
+   ```sh
+   npx import-meta-env-typescript --example .env.example.public --outDir src
+   ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Change builders:
 
-## Build
+   ```json5
+   // angular.json
+   {
+     "projects": {
+       "angular-example": {
+         "architect": {
+           "build": {
+             "builder": "@angular-builders/custom-webpack:browser",
+             "options": {
+               "customWebpackConfig": {
+                 "path": "./extra-webpack.config.js",
+                 "mergeRules": {
+                   "plugins": "merge"
+                 }
+               },
+             },
+           },
+           "serve": {
+             "builder": "@angular-builders/custom-webpack:dev-server",
+           },
+           "test": {
+             "builder": "@angular-builders/custom-webpack:karma",
+             "options": {
+               "customWebpackConfig": {
+                 "path": "./extra-webpack.config.js",
+                 "mergeRules": {
+                   "plugins": "merge"
+                 }
+               },
+             }
+           }
+         }
+       }
+     }
+   }
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Register `import-meta-env` plugin:
 
-## Running unit tests
+   ```js
+   // extra-webpack.config.js
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   module.exports = {
+     plugins: [
+       require('@import-meta-env/unplugin').webpack({
+         example: '.env.example.public'
+       })
+     ]
+   }
+   ```
 
-## Running end-to-end tests
+1. List public environment variables under `.env.example.public`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```
+   # .env.example.public
+   HELLO=
+   ```
 
-## Further help
+1. Set environment variables:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```sh
+   $ export HELLO=import-meta-env
+   ```
+
+1. Start dev server:
+
+   ```sh
+   $ npm run start
+   ```
+
+1. Build production:
+
+   ```sh
+   $ npm run build
+   ```

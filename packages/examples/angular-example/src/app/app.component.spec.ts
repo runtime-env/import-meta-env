@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-example'`, () => {
+  it(`should have hello`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-example');
+    expect(app.hello).toEqual('import-meta-env');
   });
 
-  it('should render title', () => {
+  it('should render hello', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-example app is running!');
+    expect(compiled.querySelector('div')?.textContent).toContain('Hello: import-meta-env');
   });
 });
