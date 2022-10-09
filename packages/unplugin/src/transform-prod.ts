@@ -14,14 +14,7 @@ export function transformProd({
   if (id !== virtualFile && id.includes("node_modules") === false) {
     switch (meta.framework) {
       case "webpack":
-        if (isTransformingTs(code, id)) {
-          code = code.replace(
-            /import\.meta\.env/g,
-            `((${placeholder}) as any)`
-          );
-        } else {
-          code = code.replace(/import\.meta\.env/g, `(${placeholder})`);
-        }
+        code = code.replace(/import\.meta\.env/g, `(${placeholder})`);
         break;
 
       default:
