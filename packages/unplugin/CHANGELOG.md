@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.8...unplugin0.1.9) (2022-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* no longer support node 12
+* default value of `shouldInlineEnv` is changed
+* drop support for webpack 4
+* no longer support node 12
+
+### Features
+
+* deprecate node 12 ([33003ca](https://github.com/iendeavor/import-meta-env/commit/33003ca1045dcaa28dde6d12f577b07aa6e0951a))
+* no longer support node 12 ([9086406](https://github.com/iendeavor/import-meta-env/commit/908640683e0dff593816c75903da51f971943863))
+* support angular cli ([a16ecfe](https://github.com/iendeavor/import-meta-env/commit/a16ecfebbecb5bfc57d98221bda0fd755458394f))
+* support esbuild ([59ca8d2](https://github.com/iendeavor/import-meta-env/commit/59ca8d22048f59b99b9c4d735577313fa33a1a39))
+* warn vite prefixed keys ([72fa434](https://github.com/iendeavor/import-meta-env/commit/72fa4344d7b9fd32355448d0ce5d7d9a2917d627)), closes [#14](https://github.com/iendeavor/import-meta-env/issues/14)
+
+
+### Bug Fixes
+
+* cannot work with vue cli when using package manager other than yarn ([5606334](https://github.com/iendeavor/import-meta-env/commit/5606334de3f1e1ff27b2c29ac029aeb396e7934f))
+* cjs types ([ec36534](https://github.com/iendeavor/import-meta-env/commit/ec365346fb7e9b6b3b51bb97f6c3a80744273f7a))
+* we may run build production in watch mode ([48539bf](https://github.com/iendeavor/import-meta-env/commit/48539bfde3823f82d24cfb43aa0bf9deef5cafa4))
+
+
+### Build System
+
+* bump unplugin ([b0fc120](https://github.com/iendeavor/import-meta-env/commit/b0fc120ff2c3c0b32f9fa6f41dbdf0192d6387e7))
+
 ### [0.1.8](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.7...unplugin0.1.8) (2022-03-22)
 
 
