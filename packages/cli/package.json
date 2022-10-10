@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/cli",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Load environment variables into import.meta.env object",
   "license": "MIT",
   "author": "Ernest",
