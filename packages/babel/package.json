@@ -15,7 +15,7 @@
     "build": "rimraf dist bin && pnpm build-bundle",
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node14 --external:vite --external:dotenv --outfile=dist/index.js",
     "pack": "rm -f *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
-    "release": "standard-version --skip.tag --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/babel@{{currentTag}}' --path .",
+    "release": "standard-version --skip.tag -t babel --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/babel@{{currentTag}}' --path .",
     "test": "jest"
   },
   "repository": {

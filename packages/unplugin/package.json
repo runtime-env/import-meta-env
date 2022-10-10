@@ -23,7 +23,7 @@
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
     "pack": "rm -f *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "patch-dist": "ts-node ./scripts/patchEsbuildDist.ts",
-    "release": "standard-version --skip.tag --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/unplugin@{{currentTag}}' --path .",
+    "release": "standard-version --skip.tag -t unplugin --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/unplugin@{{currentTag}}' --path .",
     "test": "jest"
   },
   "engines": {
