@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/iendeavor/import-meta-env/compare/babel0.1.9...babel0.1.10) (2022-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* no longer support node 12
+
+### Features
+
+* no longer support node 12 ([9086406](https://github.com/iendeavor/import-meta-env/commit/908640683e0dff593816c75903da51f971943863))
+
 ### [0.1.9](https://github.com/iendeavor/import-meta-env/compare/babel0.1.8...babel0.1.9) (2022-03-25)
 
 
