@@ -119,9 +119,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     webpack: (compiler) => {
-      if (process.env.npm_package_devDependencies__vue_cli_service) {
-        compiler.options.plugins.push(new ImportMetaPlugin());
-      }
+      compiler.options.plugins.push(new ImportMetaPlugin());
 
       const developmentModes: typeof compiler.options.mode[] = [
         "development",
