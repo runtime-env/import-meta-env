@@ -6,10 +6,10 @@ import { readFileSync, writeFileSync } from "fs";
   let code = readFileSync(indexPath, "utf-8");
   const moduleExportsLine = `module.exports = __toCommonJS(src_exports);`;
   if (code.includes(moduleExportsLine)) {
-    code = code.replace(
-      moduleExportsLine,
-      `module.exports = createPlugin;\ncreatePlugin['default'] = createPlugin;`
-    );
+    code = code.replace(moduleExportsLine, "");
+    code =
+      code +
+      `\nmodule.exports = createPlugin;\ncreatePlugin['default'] = createPlugin;`;
 
     writeFileSync(indexPath, code);
 

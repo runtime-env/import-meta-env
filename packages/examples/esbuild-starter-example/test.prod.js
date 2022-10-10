@@ -3,11 +3,11 @@ const { expect } = require("chai");
 
 module.exports = () => {
   // arrange
-  childProcess.execSync("pnpm exec rimraf out.js*", {
+  childProcess.execSync("npx rimraf out.js*", {
     stdio: "inherit",
   });
   childProcess.execSync(
-    "pnpm exec cross-env NODE_ENV=production node esbuild.config.js",
+    "npx cross-env NODE_ENV=production node esbuild.config.js",
     {
       stdio: "inherit",
     }
@@ -15,7 +15,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    "pnpm exec cross-env HELLO=foo import-meta-env --example .env.example.public --output out.js",
+    "npx cross-env HELLO=foo import-meta-env --example .env.example.public --output out.js",
     {
       stdio: "inherit",
     }

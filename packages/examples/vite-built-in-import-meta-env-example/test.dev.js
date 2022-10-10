@@ -2,7 +2,7 @@ const runTest = require("../run-test");
 
 const commands = [];
 const longRunningCommands = [
-  "pnpm exec cross-env HELLO=foo VITE_PREFIXED_KEY=compile-time vite dev --port 3001",
+  "npx cross-env HELLO=foo VITE_PREFIXED_KEY=compile-time vite dev --port 3001",
 ];
 const expected = [
   "Hello: foo",

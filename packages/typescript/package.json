@@ -17,6 +17,7 @@
     "build-bin": "esbuild src/bin.ts --bundle --platform=node --target=node14 --external:dotenv --external:webpack --outfile=bin/import-meta-env-typescript.js && node ./scripts/patchBin.js",
     "build-bundle": "esbuild src/index.ts --bundle --platform=node --target=node14 --external:dotenv --outfile=dist/index.js",
     "build-types": "tsc -p . --emitDeclarationOnly --outDir dist",
+    "pack": "rm -f *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "release": "standard-version -t typescript --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/typescript@{{currentTag}}' --path . && pnpm build"
   },
   "engines": {

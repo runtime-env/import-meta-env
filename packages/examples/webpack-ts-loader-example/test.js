@@ -1,11 +1,11 @@
 const runTest = require("../run-test");
 
 const commands = [
-  "pnpm exec rimraf dist",
-  "pnpm exec cross-env NODE_ENV=production webpack",
-  "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
+  "npx rimraf dist",
+  "npx cross-env NODE_ENV=production webpack",
+  "npx cross-env HELLO=foo npx import-meta-env --example .env.example.public",
 ];
-const longRunningCommands = ["pnpm -w serve -d dist -p 4199"];
+const longRunningCommands = ["node ../serve.js -d dist -p 4199"];
 const expected = "Hello: foo";
 const url = "http://localhost:4199";
 const waitMs = 1000;

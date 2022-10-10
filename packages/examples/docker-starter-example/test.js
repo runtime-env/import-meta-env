@@ -3,6 +3,14 @@ const { copyFileSync, rmSync } = require("fs");
 const colors = require("picocolors");
 
 (async () => {
+  copyFileSync(
+    "../../cli/import-meta-env-cli-test.tgz",
+    "./import-meta-env-cli-test.tgz"
+  );
+  copyFileSync(
+    "../../unplugin/import-meta-env-unplugin-test.tgz",
+    "./import-meta-env-unplugin-test.tgz"
+  );
   copyFileSync("../run-test.js", "./run-test.js");
   const runTest = require("./run-test");
 

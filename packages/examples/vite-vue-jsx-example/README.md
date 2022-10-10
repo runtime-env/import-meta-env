@@ -3,15 +3,15 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/typescript
-   $ pnpm i -D @import-meta-env/cli
-   $ pnpm i -D @import-meta-env/unplugin
+   $ npm i -D @import-meta-env/typescript
+   $ npm i -D @import-meta-env/cli
+   $ npm i -D @import-meta-env/unplugin
    ```
 
 1. Run `typescript` plugin
 
    ```sh
-   pnpm exec import-meta-env-typescript --example .env.example.public
+   npx import-meta-env-typescript --example .env.example.public
    ```
 
 1. Register `import-meta-env` plugin:
@@ -49,17 +49,17 @@
 1. Start dev server:
 
    ```sh
-   $ pnpm run dev
+   $ npm run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ pnpm run build
+   $ npm run build
    ```
 
 1. Preview production:
 
    ```sh
-   $ pnpm run preview
+   $ npm run preview
    ```

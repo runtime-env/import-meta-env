@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/babel
-   $ pnpm i -D @import-meta-env/cli
+   $ npm i -D @import-meta-env/babel
+   $ npm i -D @import-meta-env/cli
    ```
 
 1. Register `import-meta-env` plugin:
@@ -59,17 +59,17 @@
 1. Start dev server:
 
    ```sh
-   $ pnpm run dev
+   $ npm run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ pnpm run build
+   $ npm run build
    ```
 
 1. Preview production:
 
    ```sh
-   $ pnpm run preview
+   $ npm run preview
    ```

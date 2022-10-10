@@ -3,16 +3,16 @@ const { expect } = require("chai");
 
 module.exports = () => {
   // arrange
-  childProcess.execSync("pnpm exec rimraf dist", {
+  childProcess.execSync("npx rimraf dist", {
     stdio: "inherit",
   });
-  childProcess.execSync("pnpm exec cross-env NODE_ENV=production webpack", {
+  childProcess.execSync("npx cross-env NODE_ENV=production webpack", {
     stdio: "inherit",
   });
 
   // act
   childProcess.execSync(
-    "pnpm exec cross-env HELLO=foo import-meta-env --example .env.example.public",
+    "npx cross-env HELLO=foo import-meta-env --example .env.example.public",
     {
       stdio: "inherit",
     }
