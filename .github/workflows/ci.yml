@@ -186,6 +186,66 @@ jobs:
           npm add ../../unplugin/import-meta-env-unplugin-test.tgz
           npm run _test
 
+  release:
+    name: release
+
+    if: github.ref_name == 'main'
+
+    needs:
+      - import-meta-env
+      - npm-node-18-examples
+      - npm-node-16-examples
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package:
+          - babel
+          - cli
+          - typescript
+          - unplugin
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Publish
+        uses: JS-DevTools/npm-publish@v1
+        id: publish
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: packages/${{ matrix.package }}/package.json
+          tag: latest
+          access: public
+          dry-run: false
+          check-version: true
+          greater-version-only: true
+
+      - name: Tag
+        uses: anothrNick/github-tag-action@v1
+        if: steps.publish.outputs.type != 'none'
+        env:
+          CUSTOM_TAG: ${{ matrix.package }}${{ steps.publish.outputs.version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   docs:
     name: "docs"
 
