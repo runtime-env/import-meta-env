@@ -203,6 +203,7 @@ jobs:
         package:
           - babel
           - cli
+          - flow
           - typescript
           - unplugin
 
