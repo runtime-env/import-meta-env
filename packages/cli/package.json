@@ -17,6 +17,7 @@
   "scripts": {
     "build": "rimraf bin && pnpm build-cli",
     "build-cli": "esbuild src/index.ts --bundle --platform=node --target=node14 --external:dotenv --outfile=bin/import-meta-env.js && node ./scripts/patchBin.js",
+    "pack": "rm -f *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "release": "standard-version -t cli --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/cli@{{currentTag}}' --path . && pnpm build",
     "test": "jest src/__tests__"
   },

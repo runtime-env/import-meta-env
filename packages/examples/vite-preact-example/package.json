@@ -2,6 +2,7 @@
   "private": true,
   "name": "vite-preact-example",
   "scripts": {
+    "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
     "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
@@ -11,10 +12,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
     "@preact/preset-vite": "^2.4.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "vite": "^3.1.4"
   }
 }

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "_test": "node test.js && npm run test",
     "start": "cross-env HELLO=import-meta-env nx serve",
     "build": "nx build",
     "test": "cross-env HELLO=import-meta-env nx test"
@@ -16,9 +17,6 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@import-meta-env/babel": "file:../../babel",
-    "@import-meta-env/cli": "file:../../cli",
-    "@import-meta-env/typescript": "file:../../typescript",
     "@nrwl/cli": "14.8.3",
     "@nrwl/cypress": "14.8.3",
     "@nrwl/eslint-plugin-nx": "14.8.3",
@@ -37,6 +35,7 @@
     "babel-jest": "28.1.1",
     "cross-env": "^7.0.3",
     "cypress": "^10.7.0",
+    "dotenv": "^16.0.3",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",

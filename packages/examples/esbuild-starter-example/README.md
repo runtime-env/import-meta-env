@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/cli
-   $ pnpm i -D @import-meta-env/unplugin
+   $ npm i -D @import-meta-env/cli
+   $ npm i -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:
@@ -39,11 +39,11 @@
 1. Build production:
 
    ```sh
-   $ pnpm run build
+   $ npm run build
    ```
 
 1. Populate environment variables (see more about this script [here](../../cli/README.md#api)):
 
    ```sh
-   $ pnpm run populate
+   $ npm run populate
    ```

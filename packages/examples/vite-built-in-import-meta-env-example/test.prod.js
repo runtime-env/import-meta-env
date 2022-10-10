@@ -1,11 +1,11 @@
 const runTest = require("../run-test");
 
 const commands = [
-  "pnpm exec rimraf dist",
-  "pnpm exec cross-env VITE_PREFIXED_KEY=compile-time vite build",
-  "pnpm exec cross-env HELLO=foo VITE_PREFIXED_KEY=runtime pnpm exec import-meta-env --example .env.example.public",
+  "npx rimraf dist",
+  "npx cross-env VITE_PREFIXED_KEY=compile-time vite build",
+  "npx cross-env HELLO=foo VITE_PREFIXED_KEY=runtime npx import-meta-env --example .env.example.public",
 ];
-const longRunningCommands = ["pnpm exec vite preview --port 4186"];
+const longRunningCommands = ["npx vite preview --port 4186"];
 const expected = [
   "Hello: foo",
   "Prefixed key: compile-time",

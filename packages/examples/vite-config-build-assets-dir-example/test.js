@@ -1,11 +1,11 @@
 const runTest = require("../run-test");
 
 const commands = [
-  "pnpm exec rimraf dist",
-  "pnpm exec vite build",
-  "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
+  "npx rimraf dist",
+  "npx vite build",
+  "npx cross-env HELLO=foo npx import-meta-env --example .env.example.public",
 ];
-const longRunningCommands = ["pnpm exec vite preview --port 4187"];
+const longRunningCommands = ["npx vite preview --port 4187"];
 const expected = "Hello: foo";
 const url = "http://localhost:4187";
 const waitMs = 1000;

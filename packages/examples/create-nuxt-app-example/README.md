@@ -3,8 +3,8 @@
 1. Install package:
 
    ```sh
-   $ yarn add -D @import-meta-env/unplugin
-   $ yarn add @import-meta-env/cli
+   $ npm i @import-meta-env/cli
+   $ npm i -D @import-meta-env/unplugin
    ```
 
 1. Register `import-meta-env` plugin:
@@ -42,17 +42,17 @@
 1. Start dev server:
 
    ```sh
-   $ yarn run dev
+   $ npm run dev
    ```
 
 1. Build production:
 
    ```sh
-   $ yarn run build
+   $ npm run build
    ```
 
 1. Preview production:
 
    ```sh
-   $ yarn run preview
+   $ npm run preview
    ```

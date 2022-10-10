@@ -42,7 +42,7 @@ jobs:
         run: pnpm prettier --check .
 
       - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+        run: node scripts/build.js
 
       - name: Install binary
         run: pnpm i
@@ -50,15 +50,48 @@ jobs:
       - name: Test packages
         run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run test
 
-  docker-examples:
+  npm-node-18-examples:
     name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
 
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        example: ["docker-starter-example"]
-
+        example:
+          - "@vue+cli@5-example"
+          - "angular-example"
+          - "babel-starter-example"
+          - "compatibility-example"
+          - "create-next-app-example"
+          - "create-react-app-example"
+          - "create-vue-app-example"
+          - "docker-starter-example"
+          - "esbuild-starter-example"
+          - "jest-example"
+          - "mocha-example"
+          - "nuxt-bridge-example"
+          - "nx-react-example"
+          - "process-env-example"
+          - "rollup-plugin-babel-example"
+          - "rollup-starter-example"
+          - "vite-alpine-example"
+          - "vite-built-in-import-meta-env-example"
+          - "vite-config-build-assets-dir-example"
+          - "vite-config-build-out-dir-example"
+          - "vite-legacy-example"
+          - "vite-preact-example"
+          - "vite-react-example"
+          - "vite-solid-example"
+          - "vite-starter-example"
+          - "vite-svelte-example"
+          - "vite-vanilla-example"
+          - "vite-vanilla-ts-example"
+          - "vite-vue-jsx-example"
+          - "vite-vue-ts-example"
+          - "vitest-example"
+          - "webpack-babel-loader-example"
+          - "webpack-starter-example"
+          - "webpack-ts-loader-example"
         include:
           - os: ubuntu-latest
             node_version: 18
@@ -69,20 +102,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7
+
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node_version }}
-          cache: "npm"
-          cache-dependency-path: packages/examples/${{ matrix.example }}/package-lock.json
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Pack packages
+        run: pnpm run pack
 
       - name: Test ${{ matrix.example }}
         run: |
-          cd packages/examples/${{ matrix.example }}
+          cd packages/examples
           npm i
-          node test.js
+          cd ${{ matrix.example }}
+          npm i
+          npm add ../../babel/import-meta-env-babel-test.tgz
+          npm add ../../cli/import-meta-env-cli-test.tgz
+          npm add ../../typescript/import-meta-env-typescript-test.tgz
+          npm add ../../unplugin/import-meta-env-unplugin-test.tgz
+          npm run _test
 
-  pnpm-examples:
+  npm-node-16-examples:
     name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
 
     runs-on: ${{ matrix.os }}
@@ -90,36 +142,8 @@ jobs:
     strategy:
       matrix:
         example:
-          [
-            "babel-starter-example",
-            "create-next-app-example",
-            "create-react-app-example",
-            "create-vue-app-example",
-            "esbuild-starter-example",
-            "jest-example",
-            "mocha-example",
-            "process-env-example",
-            "rollup-plugin-babel-example",
-            "rollup-starter-example",
-            "vite-alpine-example",
-            "vite-built-in-import-meta-env-example",
-            "vite-config-build-assets-dir-example",
-            "vite-config-build-out-dir-example",
-            "vite-legacy-example",
-            "vite-preact-example",
-            "vite-react-example",
-            "vite-solid-example",
-            "vite-starter-example",
-            "vite-svelte-example",
-            "vite-vanilla-example",
-            "vite-vanilla-ts-example",
-            "vite-vue-jsx-example",
-            "vite-vue-ts-example",
-            "vitest-example",
-            "webpack-babel-loader-example",
-            "webpack-starter-example",
-            "webpack-ts-loader-example",
-          ]
+          - "@vue+cli@4-example"
+          - "create-nuxt-app-example"
         include:
           - os: ubuntu-latest
             node_version: 16
@@ -145,147 +169,22 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+        run: pnpm run build
 
-      - name: Install binary
-        run: pnpm i
-
-      - name: Test ${{ matrix.example }}
-        run: |
-          cd packages/examples/${{ matrix.example }}
-          node test.js
-
-  yarn-examples:
-    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        example:
-          [
-            "@vue+cli@4-example",
-            "@vue+cli@5-example",
-            "create-nuxt-app-example",
-          ]
-
-        include:
-          - os: ubuntu-latest
-            node_version: 16
-
-      fail-fast: false
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ^7
-
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
+      - name: Pack packages
+        run: pnpm run pack
 
       - name: Test ${{ matrix.example }}
         run: |
-          cd packages/examples/${{ matrix.example }}
-          yarn install
-          node test.js
-
-  npm-examples:
-    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        example:
-          - "angular-example"
-          - "nuxt-bridge-example"
-          - "nx-react-example"
-
-        include:
-          - os: ubuntu-latest
-            node_version: 16
-
-      fail-fast: false
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ^7
-
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
-
-      - name: Test ${{ matrix.example }}
-        run: |
-          cd packages/examples/${{ matrix.example }}
-          npm install
-          node test.js
-
-  compatibility-examples:
-    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      max-parallel: 1
-      fail-fast: false
-      matrix:
-        node_version: [14, 16]
-        os: ["ubuntu-latest"]
-        example: ["compatibility-example"]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: ^7
-
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run build
-
-      - name: Test ${{ matrix.example }}
-        run: |
-          cd packages/examples/${{ matrix.example }}
-          yarn install
-          node test.js
+          cd packages/examples
+          npm i
+          cd ${{ matrix.example }}
+          npm i
+          npm add ../../babel/import-meta-env-babel-test.tgz
+          npm add ../../cli/import-meta-env-cli-test.tgz
+          npm add ../../typescript/import-meta-env-typescript-test.tgz
+          npm add ../../unplugin/import-meta-env-unplugin-test.tgz
+          npm run _test
 
   docs:
     name: "docs"
@@ -294,10 +193,8 @@ jobs:
 
     needs:
       - import-meta-env
-      - docker-examples
-      - pnpm-examples
-      - yarn-examples
-      - compatibility-examples
+      - npm-node-18-examples
+      - npm-node-16-examples
 
     runs-on: ubuntu-latest
 

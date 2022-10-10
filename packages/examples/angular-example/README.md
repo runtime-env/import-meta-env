@@ -3,8 +3,10 @@
 1. Install package:
 
    ```sh
-   $ npm install @angular-builders/custom-webpack --save-dev
-   $ npm install @import-meta-env/{cli,typescript,unplugin} --save-dev
+   $ npm i -D @angular-builders/custom-webpack
+   $ npm i -D @import-meta-env/cli
+   $ npm i -D @import-meta-env/typescript
+   $ npm i -D @import-meta-env/unplugin
    ```
 
 1. Run `typescript` plugin

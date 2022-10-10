@@ -2,14 +2,14 @@
   "private": true,
   "name": "esbuild-starter-example",
   "scripts": {
+    "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env node esbuild.config.js",
     "build": "cross-env NODE_ENV=production node esbuild.config.js app.js",
     "populate": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public --output out.js"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "workspace:*",
-    "@import-meta-env/unplugin": "workspace:*",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.15.10",
     "rimraf": "^3.0.2"
   }

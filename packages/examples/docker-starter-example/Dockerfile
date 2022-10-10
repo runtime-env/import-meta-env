@@ -3,7 +3,9 @@ WORKDIR /app
 
 COPY ./ .
 
-RUN npm install
+RUN npm i
+RUN npm i -D import-meta-env-cli-test.tgz
+RUN npm i -D import-meta-env-unplugin-test.tgz
 RUN npm run build
 RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node18-alpine -o import-meta-env
 

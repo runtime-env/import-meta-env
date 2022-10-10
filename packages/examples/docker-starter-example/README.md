@@ -5,11 +5,11 @@
 1.  Create a [Dockerfile](./Dockerfile) file in the root of your project.
 
     ```Dockerfile
-    FROM node:latest as build-stage
+    FROM node:18.10.0-alpine3.15 as build-stage
     # Build import-meta-env binary for alpine linux
     RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node16-alpine -o import-meta-env
 
-    FROM nginx:stable-alpine as production-stage
+    FROM nginx:1.22.0-alpine as production-stage
     # Remember to copy import-meta-env binary and env example file
     COPY --from=build-stage /app/import-meta-env /app/import-meta-env
     COPY .env.example.public /app/.env.example.public

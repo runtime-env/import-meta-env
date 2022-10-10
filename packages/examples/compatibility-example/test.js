@@ -4,16 +4,16 @@ const runTest = require("../run-test");
 
 (async () => {
   const commands = [
-    "yarn rimraf dist .env",
-    "yarn webpack",
+    "npx rimraf dist .env",
+    "npx cross-env NODE_ENV=production webpack",
     "echo HELLO=something-with-a-#-hash > .env",
-    "yarn import-meta-env --example .env.example.public",
+    "npx import-meta-env --example .env.example.public",
   ];
   const waitMs = 1000;
 
   await runTest({
-    commands: ["yarn add -D dotenv@^16", ...commands],
-    longRunningCommands: ["pnpm -w serve -d dist -p 4201"],
+    commands: ["npm add -D dotenv@^15", ...commands],
+    longRunningCommands: ["node ../serve.js -d dist -p 4201"],
     expected: "Hello: something-with-a-",
     url: "http://localhost:4201",
     waitMs,
@@ -21,16 +21,16 @@ const runTest = require("../run-test");
   });
 
   await runTest({
-    commands: ["yarn add -D dotenv@^12", ...commands],
-    longRunningCommands: ["pnpm -w serve -d dist -p 4202"],
+    commands: ["npm add -D dotenv@^12", ...commands],
+    longRunningCommands: ["node ../serve.js -d dist -p 4202"],
     expected: "Hello: something-with-a-#-hash",
     url: "http://localhost:4202",
     waitMs,
     noExit: true,
   });
 
-  childProcess.execSync("yarn rimraf .env", { stdio: "inherit" });
-  childProcess.execSync("yarn add dotenv", { stdio: "inherit" });
+  childProcess.execSync("npx rimraf .env", { stdio: "inherit" });
+  childProcess.execSync("npm add -D dotenv@^15", { stdio: "inherit" });
   console.log(colors.green("✔ Test passed!"));
   process.exit(0);
 })();

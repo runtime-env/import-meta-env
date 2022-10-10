@@ -2,21 +2,20 @@
   "name": "create-nuxt-app-example",
   "private": true,
   "scripts": {
+    "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env nuxt",
-    "build": "yarn generate",
-    "preview": "yarn start",
+    "build": "npm run generate",
+    "preview": "npm run start",
     "start": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && nuxt start --port 4173",
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@import-meta-env/cli": "../../cli",
     "core-js": "^3.19.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "nuxt": "^2.15.8"
   },
   "devDependencies": {
-    "@import-meta-env/babel": "../../babel",
     "rimraf": "^3.0.2"
   }
 }

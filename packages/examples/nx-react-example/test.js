@@ -6,7 +6,7 @@ const commands = [
   'npx cross-env HELLO=foo npx import-meta-env --example .env.example.public',
 ];
 const longRunningCommands = [
-  'node ../../../scripts/serve -d dist/apps/app -p 4207',
+  'node ../serve.js -d dist/apps/app -p 4207',
 ];
 const expected = 'Hello: foo';
 const url = 'http://localhost:4207';

@@ -3,16 +3,16 @@ const { readFileSync, writeFileSync } = require("fs");
 const runTest = require("../run-test");
 
 const commands = [];
-const longRunningCommands = ["pnpm exec vite preview --port 4203"];
+const longRunningCommands = ["npx vite preview --port 4203"];
 const expected = ["Hello: foo", "Is legacy? true"].join("\n");
 const url = "http://localhost:4203";
 const waitMs = 1000;
 
 module.exports = () => {
-  childProcess.execSync("pnpm exec rimraf dist", { stdio: "inherit" });
-  childProcess.execSync("pnpm exec vite build", { stdio: "inherit" });
+  childProcess.execSync("npx rimraf dist", { stdio: "inherit" });
+  childProcess.execSync("npx vite build", { stdio: "inherit" });
   childProcess.execSync(
-    "pnpm exec cross-env HELLO=foo pnpm exec import-meta-env --example .env.example.public",
+    "npx cross-env HELLO=foo npx import-meta-env --example .env.example.public",
     { stdio: "inherit" }
   );
   writeFileSync(

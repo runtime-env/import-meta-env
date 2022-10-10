@@ -3,14 +3,14 @@
 1. Install package:
 
    ```sh
-   $ pnpm i -D @import-meta-env/typescript
-   $ pnpm i -D @import-meta-env/babel
+   $ npm i -D @import-meta-env/typescript
+   $ npm i -D @import-meta-env/babel
    ```
 
 1. Run `typescript` plugin
 
    ```sh
-   pnpm exec import-meta-env-typescript --example .env.example.public --outDir src
+   npx import-meta-env-typescript --example .env.example.public --outDir src
    ```
 
 1. Register `babel` plugin:
@@ -42,5 +42,5 @@
 1. Run tests:
 
    ```sh
-   $ pnpm run test
+   $ npm run test
    ```

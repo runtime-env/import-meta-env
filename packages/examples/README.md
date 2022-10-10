@@ -5,35 +5,33 @@
 ```bash
 git clone https://github.com/iendeavor/import-meta-env
 cd import-meta-env
-pnpm run install
+npm run install
 # Before running the examples, you must build the import-meta-env package:
-pnpm run build
+npm run build
 ```
 
 ## Running Examples
 
 ```bash
 cd <example_directory>
-pnpm run install
+npm run install
 ```
 
 Each example may have the following scripts:
 
 ```bash
 # run in dev server mode
-pnpm run dev
+npm run dev
 
 # build production code
-pnpm run build
+npm run build
 
 # populate environment variables into production code
-pnpm run populate
+npm run populate
 
 # preview production code
-pnpm run preview
+npm run preview
 
 # run tests
-pnpm run test
+npm run test
 ```
-
-> For the `npm` or `yarn` examples (the examples directory will contain a `package-lock.json` or `yarn.lock` file), you need to replace `pnpm` with `npm` or `yarn` respectively.
