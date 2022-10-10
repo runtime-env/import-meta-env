@@ -1,5 +1,6 @@
 packages:
   - "packages/babel"
   - "packages/cli"
+  - "packages/flow"
   - "packages/typescript"
   - "packages/unplugin"
