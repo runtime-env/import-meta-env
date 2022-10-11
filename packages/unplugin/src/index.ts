@@ -5,15 +5,11 @@ import {
   resolveEnv,
   getPackageManagerExecCommand,
   envFilePath as defaultEnvFilePath,
-  uniqueVariableName,
-  virtualFile,
+  placeholder,
 } from "../../shared";
 import { PluginOptions } from "./types";
-import { mergeManualChunks as viteMergeManualChunks } from "./vite/merge-manual-chunks";
-import { mergeManualChunks as rollupMergeManualChunks } from "./rollup/merge-manual-chunks";
 import { extname } from "path";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
-import { loadProd } from "./load-prod";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
@@ -60,15 +56,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         return true;
       },
 
-      config(config) {
-        debug && console.debug("config::", config);
-
-        if (shouldInlineEnv) {
-        } else {
-          return viteMergeManualChunks(config);
-        }
-      },
-
       configResolved(_config) {
         debug && console.debug("configResolved::");
 
@@ -85,24 +72,24 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       transformIndexHtml(html) {
         debug && console.debug("transformIndexHtml::");
 
+        debug && console.debug("=== index.html before ===");
+        debug && console.debug(html);
+        debug && console.debug("==================");
+
         html = html.replace(
-          new RegExp(uniqueVariableName, "g"),
+          new RegExp(`\\(${placeholder}\\)`, "g"),
           "import.meta.env"
         );
+
+        debug && console.debug("=== index.html after ===");
+        debug && console.debug(html);
+        debug && console.debug("==================");
+
         return html;
       },
     },
 
     rollup: {
-      outputOptions(options) {
-        debug && console.debug("rollup::outputOptions::");
-
-        if (shouldInlineEnv) {
-        } else {
-          return rollupMergeManualChunks(options);
-        }
-      },
-
       buildStart() {
         debug && console.debug("rollup::buildStart::");
 
@@ -140,32 +127,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       debug && console.debug("buildStart::");
       debug && console.debug("env::", env);
     },
-
-    resolveId(id, importer) {
-      debug && console.debug("resolveId::", id, importer);
-
-      if (shouldInlineEnv) {
-      } else {
-        if (id === virtualFile) {
-          return virtualFile;
-        }
-      }
-    },
-
-    ...(meta.framework === "webpack"
-      ? {}
-      : {
-          load(id) {
-            debug && console.debug("load::", id);
-
-            if (shouldInlineEnv) {
-              return null;
-            } else {
-              debug && console.debug("loadProd::", id);
-              return loadProd({ id, envExampleFilePath, meta, viteConfig });
-            }
-          },
-        }),
 
     transformInclude(id) {
       debug && console.debug("transformIncludes::", id);
@@ -206,7 +167,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug(code);
         debug && console.debug("==================");
 
-        code = transformProd({ code, id, meta });
+        code = transformProd({ code, id, meta, viteConfig });
 
         debug && console.debug("=== code after ===");
         debug && console.debug(code);

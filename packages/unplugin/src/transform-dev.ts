@@ -1,8 +1,7 @@
-import { virtualFile } from "../../shared";
 import { UnpluginContextMeta } from "unplugin";
 import { Env } from "./types";
 import { ViteResolvedConfig } from "./vite/types";
-import { withholdViteBuiltInEnv } from "./vite/withhold-built-in-env";
+import { preserveViteBuiltInEnv } from "./vite/preserve-built-in-env";
 
 export function transformDev({
   code,
@@ -17,7 +16,7 @@ export function transformDev({
   env: Env;
   viteConfig?: ViteResolvedConfig;
 }) {
-  if (id !== virtualFile && id.includes("node_modules") === false) {
+  if (id.includes("node_modules") === false) {
     switch (meta.framework) {
       case "vite":
         if (viteConfig === void 0)
@@ -46,7 +45,10 @@ export function transformDev({
             ")"
         );
 
-        code = withholdViteBuiltInEnv(code);
+        code = preserveViteBuiltInEnv({
+          code,
+          envPrefix: viteConfig.envPrefix,
+        });
         break;
 
       default:
