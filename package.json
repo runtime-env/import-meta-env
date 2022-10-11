@@ -1,8 +1,6 @@
 {
   "private": true,
-  "engines": {
-    "pnpm": "^7"
-  },
+  "packageManager": "pnpm@7.9.5",
   "scripts": {
     "build": "pnpm --recursive --aggregate-output run build",
     "pack": "pnpm --recursive --aggregate-output run pack",
