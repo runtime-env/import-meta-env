@@ -5,10 +5,10 @@ test("builtIn", () => {
   expect(builtIn).toEqual({
     BASE_URL: "/",
     DEV: true,
-    HELLO: "import-meta-env",
     MODE: "development",
     PROD: false,
     SSR: true,
     LEGACY: false,
+    VITE_PREFIXED_KEY: "compile-time",
   });
 });

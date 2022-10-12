@@ -40,15 +40,5 @@ export default {
         ["module:@import-meta-env/babel", { example: ".env.example.public" }],
       ],
     },
-
-    extend(config, { isDev, isClient }) {
-      // Make output files easier to read.
-      config.optimization.minimize = false;
-
-      // Make output files easier to diff.
-      config.output.filename = "[name].js";
-      config.output.chunkFilename = "[name].js";
-      config.devtool = false;
-    },
   },
 };

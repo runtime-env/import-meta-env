@@ -2,7 +2,7 @@
   "private": true,
   "name": "jest-example",
   "scripts": {
-    "_test": "npm run test",
+    "_test": "node test.js",
     "test": "cross-env HELLO=import-meta-env jest --no-cache ./**/*.test.ts"
   },
   "devDependencies": {

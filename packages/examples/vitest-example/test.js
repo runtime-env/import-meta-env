@@ -1,8 +1,9 @@
-const childProcess = require("child_process");
 const colors = require("picocolors");
 
-childProcess.execSync("npx cross-env HELLO=import-meta-env npx vitest run", {
-  stdio: "inherit",
-});
+(async () => {
+  console.log("test vitest...");
+  await require("./test.vitest.js")();
 
-console.log(colors.green("✔ Test passed!"));
+  console.log(colors.green("✔ Test passed!"));
+  process.exit(0);
+})();

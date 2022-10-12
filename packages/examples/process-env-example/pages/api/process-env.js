@@ -1,7 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default function handler(req, res) {
-  res
-    .status(200)
-    .json(JSON.stringify({ SECRET_NUMBER: process.env.SECRET_NUMBER }));
+  res.status(200).json(
+    JSON.stringify({
+      SECRET1: process.env.SECRET1,
+      SECRET2: process.env.SECRET2,
+    })
+  );
 }

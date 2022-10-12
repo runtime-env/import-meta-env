@@ -3,9 +3,9 @@
   "name": "vite-built-in-import-meta-env-example",
   "scripts": {
     "_test": "node test.js",
-    "dev": "cross-env HELLO=import-meta-env vite",
-    "build": "vite build",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
+    "dev": "cross-env HELLO=import-meta-env VITE_PREFIXED_KEY=compile-time vite",
+    "build": "cross-env VITE_PREFIXED_KEY=compile-time vite build",
+    "preview": "cross-env HELLO=import-meta-env VITE_PREFIXED_KEY=runtime import-meta-env --example .env.example.public && vite preview"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

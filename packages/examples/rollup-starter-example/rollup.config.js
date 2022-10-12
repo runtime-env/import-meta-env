@@ -18,10 +18,6 @@ const prod = {
   output: {
     dir: "dist/assets",
     format: "esm",
-
-    // Make output files easier to diff.
-    chunkFileNames: `[name].js`,
-    entryFileNames: `[name].js`,
   },
   plugins: [
     resolve(),

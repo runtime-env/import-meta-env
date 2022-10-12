@@ -1,13 +1,22 @@
 const runTest = require("../run-test");
+const getPort = require("../get-port");
 
-const commands = [];
-const longRunningCommands = ["npx cross-env HELLO=foo vite dev --port 3002"];
-const expected = ["Hello: foo", "Is legacy? false"].join("\n");
-const url = "http://localhost:3002";
-const waitMs = 1000;
+module.exports = async () => {
+  const port = await getPort();
+  const hello = Math.random();
 
-module.exports = () =>
-  runTest({
+  const commands = [
+    "npx rimraf dist node_modules/.vite",
+    "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
+  ];
+  const longRunningCommands = [
+    `npx cross-env HELLO=${hello} vite dev --port ${port}`,
+  ];
+  const expected = `Hello: ${hello}\nIs legacy? false`;
+  const url = `http://localhost:${port}`;
+  const waitMs = 1000;
+
+  await runTest({
     commands,
     longRunningCommands,
     expected,
@@ -15,3 +24,4 @@ module.exports = () =>
     waitMs,
     noExit: true,
   });
+};

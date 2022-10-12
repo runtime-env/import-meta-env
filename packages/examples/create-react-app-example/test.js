@@ -1,19 +1,12 @@
-const runTest = require("../run-test");
+const colors = require("picocolors");
 
-const commands = [
-  "npx rimraf build",
-  "node scripts/build.js",
-  "npx cross-env HELLO=foo npx import-meta-env --example .env.example.public",
-];
-const longRunningCommands = ["node ../serve.js -d build -p 4179"];
-const expected = "Hello: foo";
-const url = "http://localhost:4179";
-const waitMs = 1000;
+(async () => {
+  console.log("test dev...");
+  await require("./test.dev.js")();
 
-runTest({
-  commands,
-  longRunningCommands,
-  expected,
-  url,
-  waitMs,
-});
+  console.log("test prod...");
+  await require("./test.prod.js")();
+
+  console.log(colors.green("✔ Test passed!"));
+  process.exit(0);
+})();

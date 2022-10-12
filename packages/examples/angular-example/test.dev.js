@@ -1,15 +1,21 @@
 const runTest = require("../run-test");
+const getPort = require("../get-port");
 
-const commands = [];
-const longRunningCommands = [
-  "npx cross-env MODE=development HELLO=foo ng serve --port 4209",
-];
-const expected = "Hello: foo"
-const url = "http://localhost:4209";
-const waitMs = 10000;
+module.exports = async () => {
+  const port = await getPort();
+  const hello = Math.random();
 
-module.exports = () =>
-  runTest({
+  const commands = [
+    "npx rimraf dist .angular node_modules/.cli-ngcc",
+    "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
+  ];
+  const longRunningCommands = [
+    `npx cross-env MODE=development HELLO=${hello} ng serve --port ${port}`,
+  ];
+  const expected = `Hello: ${hello}`;
+  const url = `http://localhost:${port}`;
+  const waitMs = 10000;
+  await runTest({
     commands,
     longRunningCommands,
     expected,
@@ -17,3 +23,4 @@ module.exports = () =>
     waitMs,
     noExit: true,
   });
+};
