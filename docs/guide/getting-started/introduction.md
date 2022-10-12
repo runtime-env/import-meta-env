@@ -20,7 +20,7 @@ API_BASE_URL=
 
 ## Define Environment Variables
 
-We make no assumptions about the source of environment variables.
+We make no assumptions about the source of environment variables, but for convenience, we will load environment variables from the `.env` file (you can change this via the `env` option).
 
 1. You can define environment variables in an ad-hoc manner:
 
@@ -42,17 +42,15 @@ We make no assumptions about the source of environment variables.
    ($env:API_BASE_URL = "https://httpbin.org") -and (npx import-meta-env --example .env.example)
    ```
 
-2. Or you can define environment variables in files:
+2. Or you can define environment variables in `.env` file:
 
    ```ini
-   # .env.development
+   # .env
    API_BASE_URL=https://httpbin.org
    ```
 
-   and use [dotenv](https://www.npmjs.com/package/dotenv-cli) or [env-cmd](https://www.npmjs.com/package/env-cmd) to load environment variables from that file:
-
    ```bash
-   $ dotenv -e .env.development npx import-meta-env --example .env.example
+   $ npx import-meta-env --example .env.example
    ```
 
 ## Access Environment Variables

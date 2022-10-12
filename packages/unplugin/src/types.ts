@@ -4,6 +4,8 @@ export interface PluginOptions {
   /**
    * The .env file path to load
    *
+   * You can out-out this by passing an empty string
+   *
    * @default ".env"
    */
   env?: string;

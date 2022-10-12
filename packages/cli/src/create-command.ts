@@ -18,7 +18,11 @@ export const createCommand = () =>
     .description(
       "Populates your environment variables from the system or `.env` file."
     )
-    .option("-e, --env <path>", "The .env file path to load", ".env")
+    .option(
+      "-e, --env <path>",
+      "The .env file path to load. You can out-out this by passing an empty string.",
+      ".env"
+    )
     .requiredOption(
       "-x, --example <path>",
       "The .env example file path to load"
