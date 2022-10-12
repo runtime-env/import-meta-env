@@ -8,7 +8,6 @@ import {
   placeholder,
 } from "../../shared";
 import { PluginOptions } from "./types";
-import { extname } from "path";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
@@ -129,24 +128,15 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     transformInclude(id) {
-      debug && console.debug("transformIncludes::", id);
+      const include = [/\.[jt]sx?$/, /\.vue$/, /\.vue\?(vue)/, /\.svelte$/];
+      const exclude = [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/];
+      const shouldInclude =
+        include.some((re) => re.test(id)) &&
+        exclude.every((re) => re.test(id) === false);
 
-      const allowExtensions = [
-        ".js",
-        ".ts",
-        ".jsx",
-        ".tsx",
-        ".vue",
-        ".svelte",
-        ".mjs",
-        ".cjs",
-        meta.framework !== "webpack" && ".html",
-      ].filter(Boolean);
+      debug && console.debug("transformIncludes::", shouldInclude, id);
 
-      return (
-        id.includes("node_modules") === false &&
-        allowExtensions.includes(extname(id))
-      );
+      return shouldInclude;
     },
 
     transform(code, id) {
@@ -159,8 +149,15 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
       if (shouldInlineEnv) {
         debug && console.debug("transformDev::", id);
+        debug && console.debug("=== code before ===");
+        debug && console.debug(code);
+        debug && console.debug("==================");
 
         code = transformDev({ code, id, env, meta, viteConfig });
+
+        debug && console.debug("=== code after ===");
+        debug && console.debug(code);
+        debug && console.debug("==================");
       } else {
         debug && console.debug("transformProd::", id);
         debug && console.debug("=== code before ===");
