@@ -128,10 +128,6 @@ jobs:
           npm i
           cd ${{ matrix.example }}
           npm i
-          npm add ../../babel/import-meta-env-babel-test.tgz
-          npm add ../../cli/import-meta-env-cli-test.tgz
-          npm add ../../typescript/import-meta-env-typescript-test.tgz
-          npm add ../../unplugin/import-meta-env-unplugin-test.tgz
           npm run _test
 
   npm-node-16-examples:
@@ -180,10 +176,6 @@ jobs:
           npm i
           cd ${{ matrix.example }}
           npm i
-          npm add ../../babel/import-meta-env-babel-test.tgz
-          npm add ../../cli/import-meta-env-cli-test.tgz
-          npm add ../../typescript/import-meta-env-typescript-test.tgz
-          npm add ../../unplugin/import-meta-env-unplugin-test.tgz
           npm run _test
 
   release:

@@ -19,8 +19,4 @@ module.exports = {
       },
     ],
   },
-  optimization: {
-    // Make output files easier to read.
-    minimize: false,
-  },
 };

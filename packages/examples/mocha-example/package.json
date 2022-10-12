@@ -2,7 +2,7 @@
   "private": true,
   "name": "mocha-example",
   "scripts": {
-    "_test": "npm run test",
+    "_test": "node test.js",
     "test": "cross-env HELLO=import-meta-env mocha"
   },
   "devDependencies": {

@@ -2,17 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  compress: false,
-
   webpack: (config) => {
     config.plugins.push(
       require("@import-meta-env/unplugin").webpack({
         example: ".env.example.public",
       })
     );
-
-    // Make output files easier to read.
-    config.optimization.minimize = false;
 
     return config;
   },

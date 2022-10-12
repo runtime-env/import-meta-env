@@ -9,6 +9,7 @@ module.exports = ({
   expected,
   url,
   waitMs,
+  waitUntil,
   noExit,
 }) => {
   const childProcessList = [];
@@ -39,7 +40,7 @@ module.exports = ({
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url, {
-      waitUntil: "networkidle0",
+      waitUntil: waitUntil || "networkidle0",
     });
 
     // act

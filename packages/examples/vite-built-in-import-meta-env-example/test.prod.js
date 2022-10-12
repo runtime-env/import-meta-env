@@ -1,25 +1,33 @@
 const runTest = require("../run-test");
+const getPort = require("../get-port");
 
-const commands = [
-  "npx rimraf dist",
-  "npx cross-env VITE_PREFIXED_KEY=compile-time vite build",
-  "npx cross-env HELLO=foo VITE_PREFIXED_KEY=runtime npx import-meta-env --example .env.example.public",
-];
-const longRunningCommands = ["npx vite preview --port 4186"];
-const expected = [
-  "Hello: foo",
-  "Prefixed key: compile-time",
-  "MODE: production",
-  "BASE_URL: /",
-  "PROD: true",
-  "DEV: false",
-  'All: {"HELLO":"foo","VITE_PREFIXED_KEY":"compile-time","BASE_URL":"/","MODE":"production","DEV":false,"PROD":true}',
-].join("\n");
-const url = "http://localhost:4186";
-const waitMs = 1000;
+module.exports = async () => {
+  const port = await getPort();
+  const hello = Math.random();
+  const compileTime = Math.random();
+  const runtime = Math.random();
 
-module.exports = () =>
-  runTest({
+  const commands = [
+    "npx rimraf dist node_modules/.vite",
+    "npm add ../../cli/import-meta-env-cli-test.tgz",
+    "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
+    `npx cross-env VITE_PREFIXED_KEY=${compileTime} vite build`,
+    `npx cross-env HELLO=${hello} VITE_PREFIXED_KEY=${runtime} npx import-meta-env --example .env.example.public`,
+  ];
+  const longRunningCommands = [`npx vite preview --port ${port}`];
+  const expected = [
+    `Hello: ${hello}`,
+    `Prefixed key: ${compileTime}`,
+    "MODE: production",
+    "BASE_URL: /",
+    "PROD: true",
+    "DEV: false",
+    `All: {"HELLO":"${hello}","VITE_PREFIXED_KEY":"${compileTime}","BASE_URL":"/","MODE":"production","DEV":false,"PROD":true}`,
+  ].join("\n");
+  const url = `http://localhost:${port}`;
+  const waitMs = 1000;
+
+  await runTest({
     commands,
     longRunningCommands,
     expected,
@@ -27,3 +35,4 @@ module.exports = () =>
     waitMs,
     noExit: true,
   });
+};

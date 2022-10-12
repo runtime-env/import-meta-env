@@ -1,8 +1,9 @@
-const childProcess = require("child_process");
 const colors = require("picocolors");
 
-childProcess.execSync("npx cross-env HELLO=import-meta-env npx mocha", {
-  stdio: "inherit",
-});
+(async () => {
+  console.log("test mocha...");
+  await require("./test.mocha.js")();
 
-console.log(colors.green("✔ Test passed!"));
+  console.log(colors.green("✔ Test passed!"));
+  process.exit(0);
+})();

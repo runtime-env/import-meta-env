@@ -3,7 +3,14 @@ const { expect } = require("chai");
 
 module.exports = () => {
   // arrange
+  const hello = Math.random();
   childProcess.execSync("npx rimraf dist", {
+    stdio: "inherit",
+  });
+  childProcess.execSync("npm add ../../babel/import-meta-env-babel-test.tgz", {
+    stdio: "inherit",
+  });
+  childProcess.execSync("npm add ../../cli/import-meta-env-cli-test.tgz", {
     stdio: "inherit",
   });
   childProcess.execSync("npx cross-env NODE_ENV=production webpack", {
@@ -12,7 +19,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    "npx cross-env HELLO=foo import-meta-env --example .env.example.public",
+    `npx cross-env HELLO=${hello} import-meta-env --example .env.example.public`,
     {
       stdio: "inherit",
     }
@@ -20,5 +27,5 @@ module.exports = () => {
   const output = childProcess.execSync("node dist/main.js").toString().trim();
 
   // assert
-  expect(output).to.equal("Hello: foo");
+  expect(output).to.equal(`Hello: ${hello}`);
 };

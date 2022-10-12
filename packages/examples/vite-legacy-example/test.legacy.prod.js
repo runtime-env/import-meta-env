@@ -1,20 +1,13 @@
-const childProcess = require("child_process");
 const { readFileSync, writeFileSync } = require("fs");
 const runTest = require("../run-test");
+const getPort = require("../get-port");
 
-const commands = [];
-const longRunningCommands = ["npx vite preview --port 4203"];
-const expected = ["Hello: foo", "Is legacy? true"].join("\n");
-const url = "http://localhost:4203";
-const waitMs = 1000;
+module.exports = async () => {
+  await require("./test.prod.js")();
 
-module.exports = () => {
-  childProcess.execSync("npx rimraf dist", { stdio: "inherit" });
-  childProcess.execSync("npx vite build", { stdio: "inherit" });
-  childProcess.execSync(
-    "npx cross-env HELLO=foo npx import-meta-env --example .env.example.public",
-    { stdio: "inherit" }
-  );
+  const port = await getPort();
+  const hello = Math.random();
+
   writeFileSync(
     "dist/index.html",
     readFileSync("dist/index.html", "utf8")
@@ -26,8 +19,15 @@ module.exports = () => {
       .replace("<script nomodule", "<script ")
       .replace("<script nomodule", "<script ")
   );
+  const commands = [
+    `npx cross-env HELLO=${hello} npx import-meta-env --example .env.example.public`,
+  ];
+  const longRunningCommands = [`npx vite preview --port ${port}`];
+  const expected = `Hello: ${hello}\nIs legacy? true`;
+  const url = `http://localhost:${port}`;
+  const waitMs = 1000;
 
-  return runTest({
+  await runTest({
     commands,
     longRunningCommands,
     expected,
