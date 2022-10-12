@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.9...unplugin0.1.10) (2022-10-12)
+
+
+### Bug Fixes
+
+* import virtual module multiple times ([b47b603](https://github.com/iendeavor/import-meta-env/commit/b47b603a444a021bc891d7270dd40c119ee265d6)), closes [#15](https://github.com/iendeavor/import-meta-env/issues/15)
+* vue files are not transformed when using with @vue/cli@5 ([c148f86](https://github.com/iendeavor/import-meta-env/commit/c148f865c9e4aca26f946f4b8b7d54fd8a75f81e))
+
 ### [0.1.9](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.8...unplugin0.1.9) (2022-10-10)
 
 
