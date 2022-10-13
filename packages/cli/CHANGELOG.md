@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/iendeavor/import-meta-env/compare/cli0.1.8...cli0.2.0) (2022-10-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v8 ([3023dd4](https://github.com/iendeavor/import-meta-env/commit/3023dd430922ceded97874b09dd637ec5574ce85))
+* literal string (placeholder) may be removed by minifier ([10c567c](https://github.com/iendeavor/import-meta-env/commit/10c567c288dfee2da866910cf895fb1c00fa338d))
+
 ### [0.1.8](https://github.com/iendeavor/import-meta-env/compare/cli0.1.7...cli0.1.8) (2022-10-10)
 
 
