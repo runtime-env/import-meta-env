@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/iendeavor/import-meta-env/compare/babel0.1.10...babel0.2.0) (2022-10-13)
+
+
+### Bug Fixes
+
+* literal string (placeholder) may be removed by minifier ([10c567c](https://github.com/iendeavor/import-meta-env/commit/10c567c288dfee2da866910cf895fb1c00fa338d))
+
 ### [0.1.10](https://github.com/iendeavor/import-meta-env/compare/babel0.1.9...babel0.1.10) (2022-10-10)
 
 
