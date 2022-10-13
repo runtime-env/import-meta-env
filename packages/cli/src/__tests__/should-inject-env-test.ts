@@ -17,20 +17,17 @@ describe("shouldInjectEnv", () => {
     expect(result).toBe(false);
   });
 
-  it("should return true if the code contains placeholder in single quote", () => {
-    // arrange
-    const code = `'${placeholder}'`;
-
+  it("should return true if the code contains placeholder in double quote", () => {
     // act
-    const result = shouldInjectEnv(code);
+    const result = shouldInjectEnv(placeholder);
 
     // assert
     expect(result).toBe(true);
   });
 
-  it("should return true if the code contains placeholder in double quote", () => {
+  it("should return true if the code contains placeholder in single quote", () => {
     // arrange
-    const code = `"${placeholder}"`;
+    const code = placeholder.replace(/"/g, `'`);
 
     // act
     const result = shouldInjectEnv(code);

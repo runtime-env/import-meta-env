@@ -1,4 +1,4 @@
-import { placeholderVariants } from "./shared";
+import { placeholderRegExpList } from "./shared";
 import serialize from "serialize-javascript";
 
 export const replaceAllPlaceholderWithEnv = ({
@@ -10,12 +10,17 @@ export const replaceAllPlaceholderWithEnv = ({
 }): string => {
   let outputCode = code;
 
-  placeholderVariants.forEach((p) => {
-    outputCode = outputCode.replace(
-      new RegExp("=>([\\s]*)" + p, "g"),
-      "=>$1(" + serialize(env) + ")"
-    );
-    outputCode = outputCode.replace(new RegExp(p, "g"), serialize(env));
+  placeholderRegExpList.forEach((regExp) => {
+    if (
+      regExp.toString().includes(`"var import_meta_env={};import_meta_env"`)
+    ) {
+      outputCode = outputCode.replace(
+        regExp,
+        `eval("(${serialize(env).replace(/"/g, '\\"')})")`
+      );
+    } else {
+      outputCode = outputCode.replace(regExp, `eval('(${serialize(env)})')`);
+    }
   });
 
   return outputCode;

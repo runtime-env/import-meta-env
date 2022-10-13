@@ -5,7 +5,7 @@ import {
   resolveEnv,
   getPackageManagerExecCommand,
   envFilePath as defaultEnvFilePath,
-  placeholder,
+  createPlaceholderRegExp,
 } from "../../shared";
 import { PluginOptions } from "./types";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
@@ -75,10 +75,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug(html);
         debug && console.debug("==================");
 
-        html = html.replace(
-          new RegExp(`\\(${placeholder}\\)`, "g"),
-          "import.meta.env"
-        );
+        html = html.replace(createPlaceholderRegExp(""), "import.meta.env");
 
         debug && console.debug("=== index.html after ===");
         debug && console.debug(html);

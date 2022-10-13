@@ -114,7 +114,7 @@ describe("cli", () => {
 
       // assert
       expect(readFileSync(outputFile.name, { encoding: "utf8" })).toBe(
-        JSON.stringify({ FOO: "bar" })
+        `eval("({\\\"FOO\\\":\\\"bar\\\"})")`
       );
       const backupFileName = outputFile.name + ".bak";
       expect(existsSync(backupFileName)).toBe(true);

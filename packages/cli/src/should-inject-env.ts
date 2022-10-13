@@ -1,5 +1,5 @@
-import { placeholderVariants } from "./shared";
+import { placeholderRegExpList } from "./shared";
 
 export const shouldInjectEnv = (code: string): boolean => {
-  return placeholderVariants.some((p) => code.includes(p));
+  return placeholderRegExpList.some((regExp) => regExp.test(code));
 };

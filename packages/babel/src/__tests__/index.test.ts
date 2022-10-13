@@ -65,7 +65,7 @@ describe("importMetaEnvBabelPlugin", () => {
         code: "import.meta.env",
         output: `
 ({
-  env: "__import_meta_env_placeholder__",
+  env: eval("var import_meta_env={};import_meta_env"),
 }.env);
           `.trim(),
       },
@@ -75,7 +75,7 @@ describe("importMetaEnvBabelPlugin", () => {
         code: "import.meta.env.HELLO",
         output: `
 ({
-  env: "__import_meta_env_placeholder__",
+  env: eval("var import_meta_env={};import_meta_env"),
 }.env.HELLO);
           `.trim(),
       },
