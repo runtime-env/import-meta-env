@@ -74,12 +74,12 @@ In production, the compile-time transform tool temporarily replaces `import.meta
 
 ```js
 // dist/index.js
-console.log("__import_meta_env_placeholder__".API_BASE_URL);
+console.log(eval("var import_meta_env={};import_meta_env").API_BASE_URL);
 ```
 
 Then, at runtime, you need to replace these _placeholders_ with _environment variables_ using the [runtime transform](/guide/getting-started/runtime-transform.html) tool.
 
 ```js
 // dist/index.js
-console.log("https://httpbin.org");
+console.log(eval('({"API_BASE_URL":"https://httpbin.org"})').API_BASE_URL);
 ```

@@ -15,7 +15,7 @@ export function transformProd({
   viteConfig?: ViteResolvedConfig;
 }) {
   if (id.includes("node_modules") === false) {
-    code = code.replace(/import\.meta\.env/g, `(${placeholder})`);
+    code = code.replace(/import\.meta\.env/g, placeholder);
 
     if (meta.framework === "vite") {
       if (viteConfig === void 0)
