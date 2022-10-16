@@ -2,6 +2,7 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import pluginTester from "babel-plugin-tester";
 import importMetaEnvBabelPlugin from "../index";
+import { placeholder } from "../../../shared";
 
 export const createTempFile = (code: string) => {
   const tmpFile = tmp.fileSync();
@@ -29,21 +30,24 @@ describe("importMetaEnvBabelPlugin", () => {
     tests: [
       {
         title: "It should be transformed to given env (entire env)",
-        code: "import.meta.env",
+        code: "console.log(() => import.meta.env);",
         output: `
-({
+console.log(() => ({
   HELLO: "foo",
-});
+}));
           `.trim(),
       },
 
       {
         title: "It should be transformed to given env (key accessing)",
-        code: "import.meta.env.HELLO",
+        code: "console.log(() => import.meta.env.HELLO);",
         output: `
-({
-  HELLO: "foo",
-}.HELLO);
+console.log(
+  () =>
+    ({
+      HELLO: "foo",
+    }.HELLO)
+);
           `.trim(),
       },
     ],
@@ -62,21 +66,17 @@ describe("importMetaEnvBabelPlugin", () => {
     tests: [
       {
         title: "It should be transformed to placeholder (entire env)",
-        code: "import.meta.env",
+        code: "console.log(() => import.meta.env);",
         output: `
-({
-  env: eval("var import_meta_env={};import_meta_env"),
-}.env);
+console.log(() => ${placeholder});
           `.trim(),
       },
 
       {
         title: "It should be transformed to placeholder (key accessing)",
-        code: "import.meta.env.HELLO",
+        code: "console.log(() => import.meta.env.HELLO);",
         output: `
-({
-  env: eval("var import_meta_env={};import_meta_env"),
-}.env.HELLO);
+console.log(() => ${placeholder}.HELLO);
           `.trim(),
       },
     ],
