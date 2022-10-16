@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/iendeavor/import-meta-env/compare/unplugin0.2.0...unplugin0.2.1) (2022-10-16)
+
+
+### Bug Fixes
+
+* eval may being blocked by CSP ([8778ceb](https://github.com/iendeavor/import-meta-env/commit/8778ceb356c9696177a295c4347d3c5fc6f7f723))
+* use object-assign for better backward compatibility ([6ba6596](https://github.com/iendeavor/import-meta-env/commit/6ba6596edf5c9f96020ca9809c7062545273880a))
+
 ## [0.2.0](https://github.com/iendeavor/import-meta-env/compare/unplugin0.1.10...unplugin0.2.0) (2022-10-13)
 
 
