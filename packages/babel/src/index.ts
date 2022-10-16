@@ -17,7 +17,7 @@ export default function importMetaEnvBabelPlugin({
   const replaceEnv = (template: typeof babelCore.template) =>
     template.expression.ast(JSON.stringify(env));
   const replaceEnvForProd = (template: typeof babelCore.template) =>
-    template.expression.ast(`({ env: ${placeholder} })`);
+    template.expression.ast(placeholder);
 
   return {
     name: "@import-meta-env/babel",
@@ -46,7 +46,7 @@ export default function importMetaEnvBabelPlugin({
 
           path.parentPath.replaceWith(replaceEnv(template));
         } else {
-          path.replaceWith(replaceEnvForProd(template));
+          path.parentPath.replaceWith(replaceEnvForProd(template));
         }
       },
     },
