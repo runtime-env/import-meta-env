@@ -76,7 +76,9 @@ console.log(() => ${placeholder});
         title: "It should be transformed to placeholder (key accessing)",
         code: "console.log(() => import.meta.env.HELLO);",
         output: `
-console.log(() => ${placeholder}.HELLO);
+console.log(
+  () => ${placeholder}.HELLO
+);
           `.trim(),
       },
     ],

@@ -1,13 +1,12 @@
 export const virtualFile = "import-meta-env";
 
-// 1. Placeholder cannot be literal string (e.g., `import_meta_env`), because some minifier will remove it.
-// 2. Placeholder cannot be `eval("import_meta_env")`, because prerenderer will result in SyntaxError.
-export const placeholder = `eval("var import_meta_env={};import_meta_env")`;
+// 1. Placeholders cannot be literal string (e.g., `import_meta_env`), because some minifier will remove it.
+// 2. Placeholders cannot be `eval("import_meta_env")`, because prerenderer will result in SyntaxError.
+// 3. Placeholders cannot contain `eval` as it would violate CSP.
+// 4. Placeholders need to contain quotes so that the CLI knows which quotes (i.e. `'` or `"`) to use to avoid SyntaxError.
+export const placeholder = `Object.create(globalThis["import_meta_env".slice()] || null)`;
 
 export const createPlaceholderRegExp = (suffix: string) =>
-  new RegExp(
-    placeholder.replace(/\(/g, "\\(").replace(/\)/g, "\\)") + suffix,
-    "g"
-  );
+  new RegExp(placeholder.replace(/([\(\)\[\]\|])/g, "\\$1") + suffix, "g");
 
 export const envFilePath = ".env";

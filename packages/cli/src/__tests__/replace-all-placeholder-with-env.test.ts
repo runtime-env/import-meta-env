@@ -21,7 +21,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = eval(\\"({\\\\\\"HELLO\\\\\\":\\\\\\"world\\\\\\"})\\").HELLO;
+            const hello = ({\\"HELLO\\":\\"world\\"}).HELLO;
           "
     `);
   });
@@ -43,8 +43,8 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const foo = eval(\\"({\\\\\\"FOO\\\\\\":\\\\\\"foo\\\\\\",\\\\\\"BAR\\\\\\":\\\\\\"bar\\\\\\"})\\").FOO;
-            const bar = eval(\\"({\\\\\\"FOO\\\\\\":\\\\\\"foo\\\\\\",\\\\\\"BAR\\\\\\":\\\\\\"bar\\\\\\"})\\").BAR;
+            const foo = ({\\"FOO\\":\\"foo\\",\\"BAR\\":\\"bar\\"}).FOO;
+            const bar = ({\\"FOO\\":\\"foo\\",\\"BAR\\":\\"bar\\"}).BAR;
           "
     `);
   });
@@ -64,7 +64,27 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = eval('({\\"HELLO\\":\\"world\\"})').HELLO;
+            const hello = ({\\\\\\"HELLO\\\\\\":\\\\\\"world\\\\\\"}).HELLO;
+          "
+    `);
+  });
+
+  test("it works with minified placeholder", () => {
+    // arrange
+    const code = `
+      const hello = ${placeholder.replace(/\s/g, "")}.HELLO;
+    `;
+    const env = {
+      HELLO: "world",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const hello = ({\\"HELLO\\":\\"world\\"}).HELLO;
           "
     `);
   });
@@ -85,7 +105,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = eval(\\"({\\\\\\"HELLO\\\\\\":\\\\\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\\\\\"})\\").HELLO;
+            const hello = ({\\"HELLO\\":\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\"}).HELLO;
           "
     `);
   });
