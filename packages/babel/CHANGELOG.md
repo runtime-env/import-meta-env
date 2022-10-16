@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/iendeavor/import-meta-env/compare/babel0.2.0...babel0.2.1) (2022-10-16)
+
+
+### Bug Fixes
+
+* eval may being blocked by CSP ([8778ceb](https://github.com/iendeavor/import-meta-env/commit/8778ceb356c9696177a295c4347d3c5fc6f7f723))
+
 ## [0.2.0](https://github.com/iendeavor/import-meta-env/compare/babel0.1.10...babel0.2.0) (2022-10-13)
 
 
