@@ -11,15 +11,13 @@ export const replaceAllPlaceholderWithEnv = ({
   let outputCode = code;
 
   placeholderRegExpList.forEach((regExp) => {
-    if (
-      regExp.toString().includes(`"var import_meta_env={};import_meta_env"`)
-    ) {
+    if (regExp.toString().includes(`"`)) {
+      outputCode = outputCode.replace(regExp, `(${serialize(env)})`);
+    } else {
       outputCode = outputCode.replace(
         regExp,
-        `eval("(${serialize(env).replace(/"/g, '\\"')})")`
+        `(${serialize(env).replace(/"/g, '\\"')})`
       );
-    } else {
-      outputCode = outputCode.replace(regExp, `eval('(${serialize(env)})')`);
     }
   });
 

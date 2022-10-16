@@ -22,10 +22,10 @@ const all = ${placeholder}
       "const envs = {
         BASE_URL: import.meta.env.BASE_URL,
         VITE_FOO: import.meta.env.VITE_FOO,
-        FOO: eval(\\"var import_meta_env={};import_meta_env\\").FOO,
-        ALL: Object.assign({},eval(\\"var import_meta_env={};import_meta_env\\"),import.meta.env),
+        FOO: Object.create(globalThis[\\"import_meta_env\\".slice()] || null).FOO,
+        ALL: Object.assign({},Object.create(globalThis[\\"import_meta_env\\".slice()] || null),import.meta.env),
       };
-      const all = Object.assign({},eval(\\"var import_meta_env={};import_meta_env\\"),import.meta.env)"
+      const all = Object.assign({},Object.create(globalThis[\\"import_meta_env\\".slice()] || null),import.meta.env)"
     `);
   });
 });

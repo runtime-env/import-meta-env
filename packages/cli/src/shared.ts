@@ -15,11 +15,18 @@ export const defaultOutput = [
   "build/**/*",
 ];
 
-export const placeholderRegExpList = [`"`, `'`]
-  .map((q) =>
-    placeholder
-      .replace(/\(/g, "\\(")
-      .replace(/\)/g, "\\)")
-      .replace(new RegExp(`"`, "g"), q)
-  )
-  .map((p) => new RegExp(p, "g"));
+const placeholderRegExpList1 = [`"`, `'`].map((q) =>
+  placeholder
+    .replace(/([\(\)\[\]\|])/g, "\\$1")
+    .replace(new RegExp(`"`, "g"), q)
+);
+const placeholderRegExpList2 = [
+  ...placeholderRegExpList1,
+  ...placeholderRegExpList1.map((placeholder) =>
+    placeholder.replace(/\s/g, "\\s*")
+  ),
+];
+
+export const placeholderRegExpList = placeholderRegExpList2.map(
+  (p) => new RegExp(p, "g")
+);
