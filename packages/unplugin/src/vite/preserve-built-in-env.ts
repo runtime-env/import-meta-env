@@ -34,11 +34,11 @@ export function preserveViteBuiltInEnv({
 
   code = code.replace(
     createPlaceholderRegExp("([^.])"),
-    `({...${placeholder},...import.meta.env})$1`
+    `Object.assign({},${placeholder},import.meta.env)$1`
   );
   code = code.replace(
     createPlaceholderRegExp("$"),
-    `({...${placeholder},...import.meta.env})`
+    `Object.assign({},${placeholder},import.meta.env)`
   );
 
   return code;

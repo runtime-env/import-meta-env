@@ -23,9 +23,9 @@ const all = ${placeholder}
         BASE_URL: import.meta.env.BASE_URL,
         VITE_FOO: import.meta.env.VITE_FOO,
         FOO: eval(\\"var import_meta_env={};import_meta_env\\").FOO,
-        ALL: ({...eval(\\"var import_meta_env={};import_meta_env\\"),...import.meta.env}),
+        ALL: Object.assign({},eval(\\"var import_meta_env={};import_meta_env\\"),import.meta.env),
       };
-      const all = ({...eval(\\"var import_meta_env={};import_meta_env\\"),...import.meta.env})"
+      const all = Object.assign({},eval(\\"var import_meta_env={};import_meta_env\\"),import.meta.env)"
     `);
   });
 });

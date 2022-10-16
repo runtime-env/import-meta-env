@@ -16,3 +16,21 @@ During production, the following environment variables will be _statically repla
 These environment variables take precedence over runtime environment variables.
 :::
 
+## Browser Compatibility
+
+[Unplugin](/guide/getting-started/compile-time-transform.html#unplugin) will use the [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method in the following cases, and **you should make sure to manually include the appropriate polyfill**:
+
+1. Access the entire object: `import.meta.env`.
+2. Access properties using [bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#bracket_notation): `import.meta.env[KEY]`.
+
+For example:
+
+```js
+console.log(import.meta.env);
+```
+
+will result in:
+
+```js
+console.log(Object.assign({}, /* runtime environment variables */, /* vite's built-in environment variables */))
+```
