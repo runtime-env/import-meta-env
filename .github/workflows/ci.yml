@@ -234,6 +234,7 @@ jobs:
           - babel
           - cli
           - flow
+          - swc
           - typescript
           - unplugin
 
