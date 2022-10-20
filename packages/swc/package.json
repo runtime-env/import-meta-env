@@ -1,0 +1,36 @@
+{
+  "name": "@import-meta-env/swc",
+  "version": "0.1.0",
+  "description": "Load environment variables into import.meta.env object",
+  "license": "MIT",
+  "author": "Ernest",
+  "keywords": [
+    "swc-plugin"
+  ],
+  "main": "import_meta_env_swc.wasm",
+  "scripts": {
+    "prepare": "rustup target add wasm32-wasi",
+    "build": "cargo build --all --release --target wasm32-wasi",
+    "prepack": "cp target/wasm32-wasi/release/import_meta_env_swc.wasm .",
+    "pack": "rm -rf *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
+    "release": "standard-version --skip.tag -t swc --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/swc@{{currentTag}}' --path .",
+    "test": "cargo test --all --color always"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "directory": "packages/swc"
+  },
+  "bugs": {
+    "url": "https://github.com/iendeavor/import-meta-env/issues"
+  },
+  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/swc#readme",
+  "peerDependencies": {
+    "@import-meta-env/cli": "^0.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@import-meta-env/cli": {
+      "optional": true
+    }
+  }
+}
