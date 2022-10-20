@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "swc-example",
+  "scripts": {
+    "_test": "node test.js",
+    "dev": "echo HELLO=import-meta-env > .env && npx cross-env SWC_ENV=development swc src -d dist",
+    "build": "npx cross-env SWC_ENV=production swc src -d dist",
+    "populate": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.3.8",
+    "cross-env": "^7.0.3"
+  }
+}

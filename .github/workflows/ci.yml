@@ -35,6 +35,18 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: "pnpm"
 
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          targets: wasm32-wasi
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "cargo-test"
+
       - name: Install dependencies
         run: pnpm i
 
@@ -74,6 +86,7 @@ jobs:
           - "process-env-example"
           - "rollup-plugin-babel-example"
           - "rollup-starter-example"
+          - "swc-example"
           - "vite-alpine-example"
           - "vite-built-in-import-meta-env-example"
           - "vite-config-build-assets-dir-example"
@@ -113,6 +126,18 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: "pnpm"
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          targets: wasm32-wasi
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "cargo-test"
 
       - name: Install dependencies
         run: pnpm i
@@ -161,6 +186,18 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: "pnpm"
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          targets: wasm32-wasi
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "cargo-test"
 
       - name: Install dependencies
         run: pnpm i
@@ -214,6 +251,18 @@ jobs:
         with:
           node-version: 18
           cache: "pnpm"
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          targets: wasm32-wasi
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "cargo-test"
 
       - name: Install dependencies
         run: pnpm i

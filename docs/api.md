@@ -8,6 +8,10 @@
 
 Please execute `npx import-meta-env --help`.
 
+## @import-meta-env/swc
+
+<<< @/../packages/swc/src/config.rs
+
 ## @import-meta-env/typescript
 
 Please execute `npx import-meta-env-typescript --help`.

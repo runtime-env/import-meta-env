@@ -2,5 +2,6 @@ packages:
   - "packages/babel"
   - "packages/cli"
   - "packages/flow"
+  - "packages/swc"
   - "packages/typescript"
   - "packages/unplugin"
