@@ -38,6 +38,9 @@ jobs:
           override: true
           target: wasm32-wasi
 
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
       - name: Install dependencies
         run: pnpm i
 
@@ -88,6 +91,9 @@ jobs:
           override: true
           target: wasm32-wasi
 
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
       - name: Install dependencies
         run: pnpm i
 
@@ -126,6 +132,9 @@ jobs:
           profile: minimal
           override: true
           target: wasm32-wasi
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
 
       - name: Install dependencies
         run: pnpm i
