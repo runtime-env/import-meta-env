@@ -220,17 +220,12 @@ jobs:
           node-version: ${{ matrix.node_version }}
 
       - name: Test ${{ matrix.example }}
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 10
-          max_attempts: 2
-          retry_on: error
-          command: |
-            cd packages/examples
-            npm i
-            cd ${{ matrix.example }}
-            npm i
-            npm run _test
+        run: |
+          cd packages/examples
+          npm i
+          cd ${{ matrix.example }}
+          npm i
+          npm run _test
 
   npm-node-16-examples:
     needs:
@@ -267,17 +262,12 @@ jobs:
           node-version: ${{ matrix.node_version }}
 
       - name: Test ${{ matrix.example }}
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 10
-          max_attempts: 2
-          retry_on: error
-          command: |
-            cd packages/examples
-            npm i
-            cd ${{ matrix.example }}
-            npm i
-            npm run _test
+        run: |
+          cd packages/examples
+          npm i
+          cd ${{ matrix.example }}
+          npm i
+          npm run _test
 
   release:
     name: Release
