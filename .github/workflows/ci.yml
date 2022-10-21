@@ -7,17 +7,12 @@ on:
   pull_request:
 
 jobs:
-  import-meta-env:
-    name: "import-meta-env - node@${{ matrix.node_version }}, ${{ matrix.os }}"
+  build:
+    name: Build
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            node_version: 16
-
       fail-fast: false
 
     steps:
@@ -29,10 +24,10 @@ jobs:
         with:
           version: ^7
 
-      - name: Set node version to ${{ matrix.node_version }}
+      - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version: 18
           cache: "pnpm"
 
       - name: Install Rust
@@ -41,29 +36,110 @@ jobs:
           toolchain: stable
           profile: minimal
           override: true
-          targets: wasm32-wasi
+          target: wasm32-wasi
 
-      - uses: Swatinem/rust-cache@v2
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Pack packages
+        run: pnpm run pack
+
+      - uses: actions/upload-artifact@v3
         with:
-          shared-key: "cargo-test"
+          name: artifact
+          path: |
+            ./
+            !.git/
+            !**/node_modules/
+            !packages/swc/target/
+            !packages/examples/
+
+  lint:
+    name: Lint
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          target: wasm32-wasi
 
       - name: Install dependencies
         run: pnpm i
 
       - name: Check formatting
-        run: pnpm prettier --check .
+        run: |
+          pnpm prettier --check .
+          cd packages/swc && cargo fmt --check
 
-      - name: Build packages
-        run: node scripts/build.js
+  test:
+    name: Test
 
-      - name: Install binary
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm@7
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          target: wasm32-wasi
+
+      - name: Install dependencies
         run: pnpm i
 
       - name: Test packages
         run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run test
 
   npm-node-18-examples:
-    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+    needs:
+      - build
+      - lint
+      - test
+
+    name: "Test example - ${{ matrix.example }}"
 
     runs-on: ${{ matrix.os }}
 
@@ -116,37 +192,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/download-artifact@v3
         with:
-          version: ^7
+          name: artifact
 
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
-          targets: wasm32-wasi
-
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "cargo-test"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm run build
-
-      - name: Pack packages
-        run: pnpm run pack
 
       - name: Test ${{ matrix.example }}
         run: |
@@ -157,7 +210,12 @@ jobs:
           npm run _test
 
   npm-node-16-examples:
-    name: "example - ${{ matrix.example }}, node@${{ matrix.node_version }}, ${{ matrix.os }}"
+    needs:
+      - build
+      - lint
+      - test
+
+    name: "Test example - ${{ matrix.example }}"
 
     runs-on: ${{ matrix.os }}
 
@@ -176,37 +234,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/download-artifact@v3
         with:
-          version: ^7
+          name: artifact
 
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
-          cache: "pnpm"
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
-          targets: wasm32-wasi
-
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "cargo-test"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm run build
-
-      - name: Pack packages
-        run: pnpm run pack
 
       - name: Test ${{ matrix.example }}
         run: |
@@ -217,12 +252,14 @@ jobs:
           npm run _test
 
   release:
-    name: release
+    name: Release
 
     if: github.ref_name == 'main'
 
     needs:
-      - import-meta-env
+      - build
+      - lint
+      - test
       - npm-node-18-examples
       - npm-node-16-examples
 
@@ -242,6 +279,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -252,24 +293,6 @@ jobs:
         with:
           node-version: 18
           cache: "pnpm"
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
-          targets: wasm32-wasi
-
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "cargo-test"
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build packages
-        run: pnpm run build
 
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
@@ -291,12 +314,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   docs:
-    name: "docs"
+    name: Docs
 
     if: github.ref_name == 'main'
 
     needs:
-      - import-meta-env
+      - build
+      - lint
+      - test
       - npm-node-18-examples
       - npm-node-16-examples
 
@@ -305,6 +330,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
