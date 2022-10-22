@@ -176,6 +176,18 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv {
+            mode: Mode::Inline { env: vec![] }
+        }),
+        spec_access_other_meta_property_should_be_ignored,
+        // Input codes
+        r#"function _() { new.target.env; }"#,
+        // Output codes after transformed with plugin
+        r#"function _() { new.target.env; }"#
+    );
+
+    test!(
+        Default::default(),
+        |_| as_folder(TransformImportMetaEnv {
             mode: Mode::Inline {
                 env: vec![
                     ("KEY1".to_string(), "value1".to_string()),
