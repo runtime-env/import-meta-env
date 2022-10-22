@@ -23,12 +23,13 @@ export default function importMetaEnvBabelPlugin({
     name: "@import-meta-env/babel",
     visitor: {
       MetaProperty(path, state) {
+        if (!t.isMemberExpression(path.parentPath.node)) return;
+        if (!t.isIdentifier(path.parentPath.node.property)) return;
+        if (path.parentPath.node.property.name !== "env") return;
+
         const shouldInlineEnv =
           state.opts?.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
         if (shouldInlineEnv) {
-          if (!t.isMemberExpression(path.parentPath.node)) return;
-          if (!t.isIdentifier(path.parentPath.node.property)) return;
-
           if (env === undefined) {
             let envFilePath = state.opts?.env || defaultEnvFilePath;
             let envExampleFilePath: string | undefined = state.opts?.example;
