@@ -36,7 +36,7 @@ describe("restore", () => {
 
     // assert
     expect(act).toThrowErrorMatchingInlineSnapshot(
-      `"Invalid backup file name \\"foo/bar.js.invalid\\""`
+      `"Invalid backup file name "foo/bar.js.invalid""`
     );
   });
 

@@ -21,7 +21,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({\\"HELLO\\":\\"world\\"}).HELLO;
+            const hello = ({"HELLO":"world"}).HELLO;
           "
     `);
   });
@@ -43,8 +43,8 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const foo = ({\\"FOO\\":\\"foo\\",\\"BAR\\":\\"bar\\"}).FOO;
-            const bar = ({\\"FOO\\":\\"foo\\",\\"BAR\\":\\"bar\\"}).BAR;
+            const foo = ({"FOO":"foo","BAR":"bar"}).FOO;
+            const bar = ({"FOO":"foo","BAR":"bar"}).BAR;
           "
     `);
   });
@@ -64,7 +64,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({\\\\\\"HELLO\\\\\\":\\\\\\"world\\\\\\"}).HELLO;
+            const hello = ({\\"HELLO\\":\\"world\\"}).HELLO;
           "
     `);
   });
@@ -84,7 +84,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({\\"HELLO\\":\\"world\\"}).HELLO;
+            const hello = ({"HELLO":"world"}).HELLO;
           "
     `);
   });
@@ -105,7 +105,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({\\"HELLO\\":\\"as\\\\u003C\\\\u002Fscript\\\\u003E\\\\u003Cscript\\\\u003Ealert('You have an XSS vulnerability!')\\\\u003C\\\\u002Fscript\\\\u003E\\"}).HELLO;
+            const hello = ({"HELLO":"as\\u003C\\u002Fscript\\u003E\\u003Cscript\\u003Ealert('You have an XSS vulnerability!')\\u003C\\u002Fscript\\u003E"}).HELLO;
           "
     `);
   });

@@ -25,11 +25,11 @@ describe("cli", () => {
 
       // assert
       expect(spy.mock.calls).toMatchInlineSnapshot(`
-        Array [
-          Array [
+        [
+          [
             "[31m[import-meta-env]: Example file not found: foo[39m",
           ],
-          Array [
+          [
             "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
@@ -56,8 +56,8 @@ describe("cli", () => {
 
       // assert
       expect(spy.mock.calls).toMatchInlineSnapshot(`
-        Array [
-          Array [
+        [
+          [
             "[31m[import-meta-env]: Output file not found: foo, bar[39m",
           ],
         ]
@@ -76,8 +76,8 @@ describe("cli", () => {
 
       // assert
       expect(spy.mock.calls).toMatchInlineSnapshot(`
-        Array [
-          Array [
+        [
+          [
             "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
           ],
         ]
