@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/iendeavor/import-meta-env/compare/cli0.2.1...cli0.2.2) (2022-10-22)
+
+
+### Features
+
+* swc plugin ([da27eb7](https://github.com/iendeavor/import-meta-env/commit/da27eb7f305a4cb2e415588b78387d53a29f193d))
+
+
+### Bug Fixes
+
+* wrong peer deps range ([f54e5ec](https://github.com/iendeavor/import-meta-env/commit/f54e5ec3b7610203fbd24f734a3ff5af61d903dc))
+
 ### [0.2.1](https://github.com/iendeavor/import-meta-env/compare/cli0.2.0...cli0.2.1) (2022-10-16)
 
 
