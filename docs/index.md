@@ -2,12 +2,12 @@
 layout: home
 
 title: Import-meta-env
-titleTemplate: Runtime environment variable solution
+titleTemplate: Build once, deploy anywhere
 
 hero:
   name: Import-meta-env
-  text: Runtime environment variable solution
-  tagline: Build once, deploy anywhere.
+  text: Build once, deploy anywhere
+  tagline: Startup/Runtime environment variable solution for JavaScript. It helps in developing applications following the 12-factor principles.
   actions:
     - theme: brand
       text: Get Started
@@ -18,9 +18,7 @@ hero:
 
 features:
   - title: Security First
-    details: No environment variables will be exposed to clients by default.
-  - title: Rich Features
-    details: Out-of-the-box support for Babel, Webpack, Jest and more.
-  - title: Cross-platform
-    details: Operating systems without Node.js are supported. Powered by pkg.
+    details: No environment variables will be exposed to clients unless you define it.
+  - title: Framework Agnostic
+    details: Currently support for Babel, SWC, and Unplugin for ESbuild, Rollup, Vite, and Webpack.
 ---

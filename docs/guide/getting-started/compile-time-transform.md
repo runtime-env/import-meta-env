@@ -3,7 +3,7 @@
 Temporarily replace `import.meta.env` with _placeholders_.
 
 ::: info
-By default, **import-meta-env** will automatically determine the mode (development/testing or production) and replace `import.meta.env` with environment variables or placeholders, respectively.
+By default, **import-meta-env** will automatically determine the mode (development, testing, or production) and replace `import.meta.env` with environment variables or placeholders, respectively.
 
 You can override this by setting the `shouldInlineEnv` option.
 

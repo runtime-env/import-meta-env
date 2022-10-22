@@ -2,20 +2,54 @@
 
 ## Prerequisite
 
-To prevent accidentally leaking environment variables to clients, only variables listed in a special _example file_ (for example, `.env.example`) will be exposed to your client source code.
+Before we begin, to prevent accidental leakage environment variables to clients, you need to create a `.env.example` file (you can change it later) to explicitly define which environment variables are considered public.
 
-For example, If your environment variables are:
+For example, if you have the following environment variables:
 
 ```bash
 export API_BASE_URL=https://httpbin.org
 export SECRET_KEY=****
 ```
 
-and `.env.example` is defined as follows, then only `API_BASE_URL` will be exposed, not `SECRET_KEY`:
+And `.env.example` is defined as follows:
 
 ```ini
 # .env.example
 API_BASE_URL=
+```
+
+Then only the `API_BASE_URL` will be exposed to your clients.
+
+## Transform
+
+Now you can use environment variables by accessing `import.meta.env`[<sup>?</sup>](/guide/faq/why-use-import-meta.html):
+
+```js
+// main.js
+console.log(import.meta.env.API_BASE_URL);
+```
+
+In development, we just need to statically replace `import.meta.env` with environment variables, you can do this with [compile-time transform](/guide/getting-started/compile-time-transform.html) tools, it will work like [Webpack's EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/):
+
+```js
+// dist/index.js
+console.log({ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL);
+```
+
+But during production, since we need to pass environment variables at runtime, we need to use the same compile-time transform tool to temporarily replace `import.meta.env` with placeholders:
+
+```js
+// dist/index.js
+console.log(
+  Object.create(globalThis["import_meta_env".slice()] || null).API_BASE_URL
+);
+```
+
+Then, at runtime, we use the [runtime transform](/guide/getting-started/runtime-transform.html) tool to replace the placeholders with runtime environment variables:
+
+```js
+// dist/index.js
+console.log({ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL);
 ```
 
 ## Define Environment Variables
@@ -52,36 +86,3 @@ We make no assumptions about the source of environment variables, but for conven
    ```bash
    $ npx import-meta-env --example .env.example
    ```
-
-## Access Environment Variables
-
-Import-meta-env exposes environment variables on the special `import.meta.env`[<sup>?</sup>](/guide/faq/why-use-import-meta.html) object (inspired by [Vite](https://vitejs.dev/guide/env-and-mode.html)).
-
-```js
-// src/index.js
-console.log(import.meta.env.API_BASE_URL);
-```
-
-## Transform Environment Variables
-
-### Development / Testing
-
-In development and testing, as usual, the [compile-time transform](/guide/getting-started/compile-time-transform.html) tools will simply replace `import.meta.env` with _environment variables_.
-
-### Production
-
-In production, the compile-time transform tool temporarily replaces `import.meta.env` with _placeholders_:
-
-```js
-// dist/index.js
-console.log(
-  Object.create(globalThis["import_meta_env".slice()] || null).API_BASE_URL
-);
-```
-
-Then, at runtime, you need to replace these _placeholders_ with _environment variables_ using the [runtime transform](/guide/getting-started/runtime-transform.html) tool.
-
-```js
-// dist/index.js
-console.log({ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL);
-```
