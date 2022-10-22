@@ -6,6 +6,12 @@
     "pack": "pnpm --recursive --aggregate-output run pack",
     "serve": "node scripts/serve.js",
     "test": "pnpm --recursive --aggregate-output --workspace-concurrency=1 run test",
+    "lint": "pnpm run lint:prettier && pnpm run lint:cargo",
+    "lint:prettier": "pnpm prettier --check .",
+    "lint:cargo": "cd packages/swc && cargo fmt --check",
+    "lint-fix": "pnpm run lint-fix:prettier && pnpm run lint-fix:cargo",
+    "lint-fix:prettier": "pnpm prettier --write .",
+    "lint-fix:cargo": "cd packages/swc && cargo fmt",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress serve docs --port 4173"
