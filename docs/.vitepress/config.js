@@ -41,6 +41,12 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/iendeavor/import-meta-env" },
     ],
+
+    footer: {
+      message: "Released under the MIT License.",
+      copyright:
+        "Created by <a href='https://github.com/iendeavor' target='_blank'>Ernest</a>",
+    },
   },
 });
 
