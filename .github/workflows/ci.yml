@@ -149,7 +149,7 @@ jobs:
         run: pnpm i
 
       - name: Test packages
-        run: pnpm --recursive --aggregate-output --filter @import-meta-env/* run test
+        run: pnpm run test
 
   npm-node-18-examples:
     needs:

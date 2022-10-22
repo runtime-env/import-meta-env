@@ -5,6 +5,7 @@
     "build": "pnpm --recursive --aggregate-output run build",
     "pack": "pnpm --recursive --aggregate-output run pack",
     "serve": "node scripts/serve.js",
+    "test": "pnpm --recursive --aggregate-output --workspace-concurrency=1 run test",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress serve docs --port 4173"
