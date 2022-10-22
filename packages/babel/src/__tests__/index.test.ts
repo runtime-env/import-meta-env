@@ -17,6 +17,34 @@ describe("importMetaEnvBabelPlugin", () => {
   const example = createTempFile("HELLO=");
 
   pluginTester({
+    title: "should ignore non-import.meta properties",
+
+    plugin: importMetaEnvBabelPlugin,
+
+    pluginOptions: {
+      env,
+      example,
+      shouldInlineEnv: true,
+    },
+
+    tests: [
+      {
+        title: "It should ignore non-import.meta properties 1",
+        code: `
+function _() {
+  new.target.env;
+}
+          `.trim(),
+        output: `
+function _() {
+  new.target.env;
+}
+                  `.trim(),
+      },
+    ],
+  });
+
+  pluginTester({
     title: "should ignore non-env properties",
 
     plugin: importMetaEnvBabelPlugin,
@@ -35,7 +63,7 @@ describe("importMetaEnvBabelPlugin", () => {
       },
 
       {
-        title: "It should ignore non-env-properties 1",
+        title: "It should ignore non-env-properties 2",
         code: "console.log(() => import.meta.url);",
         output: "console.log(() => import.meta.url);",
       },

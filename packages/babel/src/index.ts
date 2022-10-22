@@ -26,6 +26,8 @@ export default function importMetaEnvBabelPlugin({
         if (!t.isMemberExpression(path.parentPath.node)) return;
         if (!t.isIdentifier(path.parentPath.node.property)) return;
         if (path.parentPath.node.property.name !== "env") return;
+        if ((path.parentPath.node.object as any)?.meta?.name !== "import")
+          return;
 
         const shouldInlineEnv =
           state.opts?.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
