@@ -13,3 +13,4 @@ const oldTgzName = name + "-" + version + ".tgz";
 const newTgzName = name + "-" + "test" + ".tgz";
 
 fs.renameSync(oldTgzName, newTgzName);
+console.log(`Rename ${oldTgzName} to ${newTgzName}.`);
