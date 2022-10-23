@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx ng build",
-    `npx cross-env MODE=production HELLO=${hello} npx import-meta-env --example .env.example.public`,
+    `npx cross-env MODE=production HELLO=${hello} npx import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`node ../serve.js -d dist/angular-example -p ${port}`];
   const expected = `Hello: ${hello}`;

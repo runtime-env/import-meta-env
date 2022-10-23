@@ -7,7 +7,7 @@
     "dev": "cross-env HELLO=import-meta-env vite",
     "build": "vite build",
     "serve": "vite run preview",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && vite preview"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && vite preview"
   },
   "license": "MIT",
   "devDependencies": {

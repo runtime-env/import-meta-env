@@ -5,7 +5,7 @@
     "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && node ../serve.js -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
   },
   "dependencies": {
     "core-js": "^3.6.5",

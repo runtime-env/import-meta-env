@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx nuxi build",
-    `npx cross-env HELLO=${hello} npx import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`npx cross-env PORT=${port} nuxi preview`];
   const expected = `Hello: ${hello}`;

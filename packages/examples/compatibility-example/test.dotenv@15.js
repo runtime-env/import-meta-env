@@ -13,7 +13,7 @@ module.exports = async () => {
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx cross-env NODE_ENV=production webpack",
     `echo HELLO=${hello}-with-a-#-hash > .env`,
-    "npx import-meta-env --example .env.example.public",
+    "npx import-meta-env -x .env.example.public",
   ];
   const waitMs = 1000;
 

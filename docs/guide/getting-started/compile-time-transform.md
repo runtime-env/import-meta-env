@@ -12,26 +12,18 @@ For more information, see [API](/api).
 
 ## Compatibility
 
-Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin), and [Unplugin](#unplugin) transforms, you can use one or both, for example:
+Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
 
-1. If you use Webpack 5 and Jest, you can use the [Unplugin](#unplugin) for development/production, and the [Babel plugin](#babel-plugin) for testing.
-2. If you use Vite, you can use [Unplugin](#unplugin) for development/production, and testing.
+You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
 
-| Compatibility                         | [Babel plugin](#babel-plugin)                                                                 | [Unplugin](#unplugin)                                                                                                 | [SWC plugin](#swc-plugin) |
-| ------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| [Angular CLI](https://angular.io/cli) |                                                                                               | :heavy_check_mark: [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack) |
-| [Babel](https://babeljs.io/)          | :heavy_check_mark:                                                                            |                                                                                                                       |
-| [ESbuild](https://esbuild.github.io/) |                                                                                               | :heavy_check_mark:                                                                                                    |
-| [Jest](https://jestjs.io/)            | :heavy_check_mark: [babel-jest](https://www.npmjs.com/package/babel-jest)                     |                                                                                                                       |
-| [Mocha](https://mochajs.org/)         | :heavy_check_mark: [@babel/register](https://npm.im/@babel/register)                          |                                                                                                                       |
-| [Rollup](https://rollupjs.org/)       | :heavy_check_mark: [@rollup/plugin-babel](https://www.npmjs.com/package/@rollup/plugin-babel) | :heavy_check_mark:                                                                                                    |
-| [SWC](https://swc.rs/)                |                                                                                               |                                                                                                                       | :heavy_check_mark:        |
-| [Vite](https://vitejs.dev/)           |                                                                                               | :heavy_check_mark:                                                                                                    |
-| [Vitest](https://vitejs.dev/)         |                                                                                               | :heavy_check_mark:                                                                                                    |
-| [Webpack](https://webpack.js.org/) 4  | :heavy_check_mark: [babel-loader](https://www.npmjs.com/package/babel-loader)                 |                                                                                                                       |
-| [Webpack](https://webpack.js.org/) 5  | :heavy_check_mark: [babel-loader](https://www.npmjs.com/package/babel-loader)                 | :heavy_check_mark:                                                                                                    |
+1. You can use [babel-loader](https://www.npmjs.com/package/babel-loader) + [Babel plugin](#babel-plugin) for development, testing and production.
+2. Alternatively, you can use [Unplugin](#unplugin) for development and production, and [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
+3. Alternatively, you can use the [swc-loader](https://www.npmjs.com/package/swc-loader) + [SWC plugin](#swc-plugin) for development, production, and the [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
 
-If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
+But there are some exceptions:
+
+1. Vite is only compatible with [Unplugin](#unplugin).
+2. Webpack 4 is not compatible with [Unplugin](#unplugin).
 
 ## Babel Plugin
 
@@ -40,10 +32,10 @@ If your toolchain is not supported, please feel free to [file an issue](https://
 ### Installation
 
 ```bash
-$ npm install @import-meta-env/babel --save-dev
+$ npm i -D @import-meta-env/babel
 ```
 
-### Using the plugin
+### Usage
 
 ```json
 {
@@ -60,10 +52,10 @@ Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main
 ### Installation
 
 ```bash
-$ npm install @import-meta-env/swc --save-dev
+$ npm i -D @import-meta-env/swc
 ```
 
-### Using the plugin
+### Usage
 
 .swcrc:
 
@@ -94,10 +86,10 @@ Related examples: [swc](https://github.com/iendeavor/import-meta-env/blob/main/p
 ### Installation
 
 ```bash
-$ npm install @import-meta-env/unplugin --save-dev
+$ npm i -D @import-meta-env/unplugin
 ```
 
-### Using the plugin
+### Usage
 
 ESbuild:
 

@@ -13,7 +13,7 @@ export interface Args {
 export const createCommand = () =>
   new Command()
     .version(version)
-    .description("Generate import-meta-env.d.ts from .env.example")
+    .description("Generate declaration file from .env.example")
     .requiredOption(
       "-x, --example <path>",
       "The .env example file path to load"

@@ -9,7 +9,7 @@
     "build": "rimraf dist && npm run build:pre && npm run build:post",
     "build:pre": "cross-env NODE_ENV=production rollup -c",
     "build:post": "cp public/index.html dist/index.html",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && node ../serve.js -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

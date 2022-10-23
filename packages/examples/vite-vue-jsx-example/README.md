@@ -11,7 +11,7 @@
 1. Run `typescript` plugin
 
    ```sh
-   npx import-meta-env-typescript --example .env.example.public
+   npx import-meta-env-typescript -x .env.example.public
    ```
 
 1. Register `import-meta-env` plugin:

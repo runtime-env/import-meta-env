@@ -16,7 +16,7 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
-    "preview": "qwik build preview && cross-env HELLO=import-meta-env import-meta-env --example .env.example.public --output \"server/**/*\" \"dist/**/*\" && vite preview --open",
+    "preview": "qwik build preview && cross-env HELLO=import-meta-env import-meta-env -x .env.example.public --output \"server/**/*\" \"dist/**/*\" && vite preview --open",
     "start": "vite --open --mode ssr",
     "qwik": "qwik"
   },

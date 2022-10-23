@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../babel/import-meta-env-babel-test.tgz",
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     `npx cross-env NODE_ENV=production rollup -c`,
-    `npx cross-env HELLO=${hello} npx import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,
     "cp public/index.html dist/index.html",
   ];
   const longRunningCommands = [`node ../serve.js -d dist -p ${port}`];

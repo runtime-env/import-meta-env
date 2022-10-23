@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx vite build",
-    `npx cross-env HELLO=${hello} npx import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`npx vite preview --port ${port}`];
   const expected = `Hello: ${hello}\nIs legacy? false`;

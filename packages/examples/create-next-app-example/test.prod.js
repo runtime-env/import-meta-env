@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx next build",
-    `npx cross-env HELLO=${hello} import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`npx next start --port ${port}`];
   const expected = `Hello: ${hello}`;

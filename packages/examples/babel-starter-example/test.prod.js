@@ -23,7 +23,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    `npx cross-env HELLO=${hello} SECRET2=${secret} import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} SECRET2=${secret} import-meta-env -x .env.example.public`,
     {
       stdio: "inherit",
     }

@@ -19,7 +19,7 @@
 
     ```sh
     # Populate the environment variables
-    ./import-meta-env --example .env.example.public
+    ./import-meta-env -x .env.example.public
     ```
 
 1.  Create a [nginx.conf](./nginx.conf) file in the root of your project

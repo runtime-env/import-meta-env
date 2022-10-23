@@ -7,7 +7,7 @@
     "dev:start": "node ../serve.js -d dist -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env NODE_ENV=development concurrently npm:dev:*",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env --example .env.example.public && node ../serve.js -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
   },
   "devDependencies": {
     "chai": "^4.3.6",

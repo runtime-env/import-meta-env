@@ -61,19 +61,19 @@ We make no assumptions about the source of environment variables, but for conven
    Unix systems:
 
    ```bash
-   $ API_BASE_URL=https://httpbin.org npx import-meta-env --example .env.example
+   $ API_BASE_URL=https://httpbin.org npx import-meta-env -x .env.example
    ```
 
    Windows (cmd.exe):
 
    ```
-   set "API_BASE_URL=https://httpbin.org" && npx import-meta-env --example .env.example
+   set "API_BASE_URL=https://httpbin.org" && npx import-meta-env -x .env.example
    ```
 
    Windows (Powershell):
 
    ```
-   ($env:API_BASE_URL = "https://httpbin.org") -and (npx import-meta-env --example .env.example)
+   ($env:API_BASE_URL = "https://httpbin.org") -and (npx import-meta-env -x .env.example)
    ```
 
 2. Or you can define environment variables in `.env` file:
@@ -84,5 +84,5 @@ We make no assumptions about the source of environment variables, but for conven
    ```
 
    ```bash
-   $ npx import-meta-env --example .env.example
+   $ npx import-meta-env -x .env.example
    ```

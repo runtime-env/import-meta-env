@@ -5,7 +5,7 @@
     "_test": "node test.js",
     "dev": "echo HELLO=import-meta-env > .env && npx cross-env SWC_ENV=development swc src -d dist",
     "build": "npx cross-env SWC_ENV=production swc src -d dist",
-    "populate": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public"
+    "populate": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env -x .env.example.public"
   },
   "license": "MIT",
   "devDependencies": {

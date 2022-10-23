@@ -20,7 +20,7 @@ module.exports = async () => {
       .replace("<script nomodule", "<script ")
   );
   const commands = [
-    `npx cross-env HELLO=${hello} npx import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`npx vite preview --port ${port}`];
   const expected = `Hello: ${hello}\nIs legacy? true`;

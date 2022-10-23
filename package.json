@@ -12,8 +12,8 @@
     "lint-fix": "pnpm run lint-fix:prettier && pnpm run lint-fix:cargo",
     "lint-fix:prettier": "pnpm prettier --write .",
     "lint-fix:cargo": "cd packages/swc && cargo fmt",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:dev": "node scripts/gen-api-docs.js && vitepress dev docs",
+    "docs:build": "node scripts/gen-api-docs.js && vitepress build docs",
     "docs:preview": "vitepress serve docs --port 4173"
   },
   "devDependencies": {

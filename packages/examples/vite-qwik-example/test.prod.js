@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx qwik build preview",
-    `npx cross-env HELLO=${hello} npx import-meta-env --example .env.example.public --output dist/**/* server/**/*`,
+    `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public --output dist/**/* server/**/*`,
   ];
   const longRunningCommands = [`npx vite preview --port ${port}`];
   const expected = `Hello: ${hello}`;

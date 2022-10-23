@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../babel/import-meta-env-babel-test.tgz",
     "npx nuxt generate",
-    `npx cross-env HELLO=${hello} import-meta-env --example .env.example.public`,
+    `npx cross-env HELLO=${hello} import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`npx nuxt start --port ${port}`];
   const expected = `Hello: ${hello}`;

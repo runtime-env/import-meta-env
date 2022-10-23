@@ -5,7 +5,7 @@
     "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env VITE_PREFIXED_KEY=compile-time vite",
     "build": "cross-env VITE_PREFIXED_KEY=compile-time vite build",
-    "preview": "cross-env HELLO=import-meta-env VITE_PREFIXED_KEY=runtime import-meta-env --example .env.example.public && vite preview"
+    "preview": "cross-env HELLO=import-meta-env VITE_PREFIXED_KEY=runtime import-meta-env -x .env.example.public && vite preview"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

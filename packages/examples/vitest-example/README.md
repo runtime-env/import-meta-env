@@ -10,7 +10,7 @@
 1. Run `typescript` plugin
 
    ```sh
-   npx import-meta-env-typescript --example .env.example.public --outDir src
+   npx import-meta-env-typescript -x .env.example.public --outDir src
    ```
 
 1. Register `import-meta-env` plugin:

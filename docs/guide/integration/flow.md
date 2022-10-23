@@ -1,19 +1,19 @@
 # Flow
 
-Automatically generate flow type from `.env.example`.
+Generate flow type from `.env.example`.
 
 ## Installation
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/flow.svg)](https://www.npmjs.com/package/@import-meta-env/flow)
 
 ```bash
-$ npm install @import-meta-env/flow --save-dev
+$ npm i -D @import-meta-env/flow
 ```
 
-## Using the CLI
+## Usage
 
 ```bash
-$ npx import-meta-env-flow --example .env.example
+$ npx import-meta-env-flow -x .env.example
 ```
 
 By default, when running above command, the CLI will create an `import-meta-env.js` file in your project root:

@@ -5,7 +5,7 @@
     "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env nuxi dev",
     "build": "nuxi build",
-    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env --example .env.example.public && cross-env PORT=4173 nuxi preview"
+    "preview": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env -x .env.example.public && cross-env PORT=4173 nuxi preview"
   },
   "dependencies": {
     "cross-env": "^7.0.3",

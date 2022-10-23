@@ -6,7 +6,7 @@
     "dev": "cross-env HELLO=import-meta-env SECRET1=secret1 SECRET2=secret2 next dev",
     "build": "next build",
     "preview": "npm run start",
-    "start": "cross-env HELLO=import-meta-env SECRET1=secret1 import-meta-env --example .env.example.public && cross-env SECRET1=secret1 SECRET2=secret2 next start -p 4173"
+    "start": "cross-env HELLO=import-meta-env SECRET1=secret1 import-meta-env -x .env.example.public && cross-env SECRET1=secret1 SECRET2=secret2 next start -p 4173"
   },
   "dependencies": {
     "next": "12.1.0",
