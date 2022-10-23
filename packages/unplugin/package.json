@@ -59,6 +59,6 @@
   "dependencies": {
     "object-hash": "^3.0.0",
     "picocolors": "^1.0.0",
-    "unplugin": "^0.9.6"
+    "unplugin": "^0.10.0"
   }
 }
