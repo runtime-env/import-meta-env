@@ -1,6 +1,7 @@
 # Compile-time Transform
 
-Temporarily replace `import.meta.env` with _placeholders_.
+- In development, statically replace `import.meta.env` with environment variables.
+- In production, temporarily replace `import.meta.env` with placeholders.
 
 ::: info
 By default, **import-meta-env** will automatically determine the mode (development, testing, or production) and replace `import.meta.env` with environment variables or placeholders, respectively.
