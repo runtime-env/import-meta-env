@@ -1,4 +1,4 @@
-import { parseExample } from "../parse-example";
+import { resolveEnvExample } from "../../../shared/resolve-env-example";
 import { ViteResolvedConfig } from "./types";
 
 const DEFAULT_PREFIX_KEY = "VITE_";
@@ -12,7 +12,7 @@ export const warnEnvPrefix = ({
   viteConfigEnvPrefix?: ViteResolvedConfig["envPrefix"];
   warn: (message: any) => void;
 }) => {
-  const example = parseExample({ envExampleFilePath });
+  const example = resolveEnvExample({ envExampleFilePath });
   const prefixKeys = [
     ...new Set(
       typeof viteConfigEnvPrefix === "undefined"
@@ -24,7 +24,7 @@ export const warnEnvPrefix = ({
   ];
 
   const messages = new Set();
-  Object.keys(example).forEach((key) => {
+  example.forEach((key) => {
     prefixKeys.forEach((prefixKey) => {
       if (key.startsWith(prefixKey)) {
         messages.add(
