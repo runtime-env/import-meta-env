@@ -5,7 +5,7 @@
     "build": "pnpm --recursive --aggregate-output run build",
     "pack": "pnpm --recursive --aggregate-output run pack",
     "serve": "node scripts/serve.js",
-    "test": "pnpm --recursive --aggregate-output --workspace-concurrency=1 run test",
+    "test": "jest packages/shared && pnpm --recursive --aggregate-output --workspace-concurrency=1 run test",
     "lint": "pnpm run lint:prettier && pnpm run lint:cargo",
     "lint:prettier": "pnpm prettier --check .",
     "lint:cargo": "cd packages/swc && cargo fmt --check",

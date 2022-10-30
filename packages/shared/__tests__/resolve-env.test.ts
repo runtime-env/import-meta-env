@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import tmp from "tmp";
-import { resolveEnv } from "../../../shared";
+import { resolveEnv } from "../resolve-env";
 
 afterEach(() => {
   jest.clearAllMocks();
