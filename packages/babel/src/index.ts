@@ -1,19 +1,24 @@
 import { declare } from "@babel/helper-plugin-utils";
 import type babelCore from "@babel/core";
-import {
-  resolveEnv,
-  envFilePath as defaultEnvFilePath,
-  placeholder,
-} from "../../shared";
+import { NodePath } from "@babel/core";
+import { resolveEnv, envFilePath as defaultEnvFilePath } from "../../shared";
 import { PluginOptions } from "./types";
 
 export default declare<PluginOptions>(({ template, types: t }, options) => {
+  const now = Date.now();
+
+  // an unique id to avoid naming conflicts
+  const id = `import_meta_env_${now}`;
+
+  // a random number to invalid cache
+  const fileName = `import_meta_env_${now}.js`;
+
   let env: Record<string, string> | undefined = undefined;
 
   const replaceEnv = (template: typeof babelCore.template) =>
     template.expression.ast(JSON.stringify(env));
   const replaceEnvForProd = (template: typeof babelCore.template) =>
-    template.expression.ast(placeholder);
+    template.expression.ast(id);
 
   return {
     name: "@import-meta-env/babel",
@@ -46,6 +51,35 @@ export default declare<PluginOptions>(({ template, types: t }, options) => {
           path.parentPath.replaceWith(replaceEnv(template));
         } else {
           path.parentPath.replaceWith(replaceEnvForProd(template));
+
+          let program: null | NodePath = path;
+          while (program?.isProgram() === false) {
+            program = program?.parentPath;
+          }
+          if (program === null || !program.isProgram()) return;
+          const body = program.get("body");
+          if (!Array.isArray(body)) return;
+          for (const path of body) {
+            if (!path.isImportDeclaration()) break;
+            const specifiers = path.get("specifiers");
+            if (!Array.isArray(specifiers)) break;
+            for (const specifier of specifiers) {
+              if (!specifier.isImportDefaultSpecifier()) break;
+
+              const local = specifier.get("local");
+              const container = local.container;
+              if (Array.isArray(container)) break;
+              if ((container as any).local?.name !== id) break;
+
+              return;
+            }
+          }
+
+          body[0]?.insertBefore(
+            template(`import ${id} from "${fileName}"`, {
+              sourceType: "module",
+            })()
+          );
         }
       },
     },

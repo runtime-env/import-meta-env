@@ -2,7 +2,6 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import pluginTester from "babel-plugin-tester";
 import importMetaEnvBabelPlugin from "../index";
-import { placeholder } from "../../../shared";
 
 export const createTempFile = (code: string) => {
   const tmpFile = tmp.fileSync();
@@ -11,6 +10,16 @@ export const createTempFile = (code: string) => {
 
   return tmpFile.name;
 };
+
+let dateSpy: jest.SpyInstance;
+
+beforeEach(() => {
+  dateSpy = jest.spyOn(Date, "now").mockImplementation(() => 1234);
+});
+
+afterEach(() => {
+  dateSpy.mockRestore();
+});
 
 describe("importMetaEnvBabelPlugin", () => {
   const env = createTempFile("HELLO=foo");
@@ -119,20 +128,33 @@ console.log(
 
     tests: [
       {
-        title: "It should be transformed to placeholder (entire env)",
+        title: "It should be transformed (entire env)",
         code: "console.log(() => import.meta.env);",
         output: `
-console.log(() => ${placeholder});
+import import_meta_env_1234 from "import_meta_env_1234.js";
+console.log(() => import_meta_env_1234);
           `.trim(),
       },
 
       {
-        title: "It should be transformed to placeholder (key accessing)",
+        title: "It should be transformed (key accessing)",
         code: "console.log(() => import.meta.env.HELLO);",
         output: `
-console.log(
-  () => ${placeholder}.HELLO
-);
+import import_meta_env_1234 from "import_meta_env_1234.js";
+console.log(() => import_meta_env_1234.HELLO);
+          `.trim(),
+      },
+
+      {
+        title: "It should only importing virtual file once",
+        code: `
+console.log(() => import.meta.env.HELLO);
+console.log(() => import.meta.env.HELLO2);
+`,
+        output: `
+import import_meta_env_1234 from "import_meta_env_1234.js";
+console.log(() => import_meta_env_1234.HELLO);
+console.log(() => import_meta_env_1234.HELLO2);
           `.trim(),
       },
     ],
