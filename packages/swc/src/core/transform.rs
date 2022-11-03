@@ -238,9 +238,9 @@ mod tests {
         }),
         spec_placeholder_mode_access_env_prop_should_not_be_inlined,
         // Input codes
-        r#"import.meta.env"#,
+        r#"import.meta.env.HELLO"#,
         // Output codes after transformed with plugin
-        r#"Object.create(globalThis["import_meta_env".slice()] || null)"#
+        r#"Object.create(globalThis["import_meta_env".slice()] || null).HELLO"#
     );
 
     test!(
