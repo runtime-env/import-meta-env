@@ -1,14 +1,15 @@
+use std::vec;
+
 use serde;
 use string_cache::Atom;
 use swc_core::{
     common::DUMMY_SP,
     ecma::{
         ast::{
-            BinExpr, BinaryOp, CallExpr, Callee, ComputedPropName, Expr, ExprOrSpread, Ident,
-            KeyValueProp, Lit, MemberExpr, MemberProp, MetaPropKind, Null, ObjectLit, Prop,
-            PropName, PropOrSpread, Str,
+            Expr, Ident, ImportDecl, ImportDefaultSpecifier, ImportSpecifier, KeyValueProp, Lit,
+            MemberExpr, MetaPropKind, ModuleDecl, ModuleItem, ObjectLit, Program, Prop, PropName,
+            PropOrSpread, Str,
         },
-        atoms::js_word,
         visit::{VisitMut, VisitMutWith},
     },
 };
@@ -16,10 +17,83 @@ use swc_core::{
 use super::mode::Mode;
 
 pub struct TransformImportMetaEnv {
-    pub mode: Mode,
+    mode: Mode,
+    id: String,
+}
+
+impl TransformImportMetaEnv {
+    pub fn new(mode: Mode, timestamp: u128) -> TransformImportMetaEnv {
+        TransformImportMetaEnv {
+            mode,
+            id: format!("import_meta_env_{}", timestamp),
+        }
+    }
 }
 
 impl VisitMut for TransformImportMetaEnv {
+    fn visit_mut_program(&mut self, n: &mut Program) {
+        n.visit_mut_children_with(self);
+
+        match &self.mode {
+            Mode::Inline { env: _ } => return,
+            Mode::Placeholder => (),
+        }
+
+        if n.is_module() == false {
+            return;
+        }
+
+        let module = n.as_mut_module().unwrap();
+        if module
+            .body
+            .iter()
+            .any(|element| match element.as_module_decl() {
+                Some(module_decl) => match module_decl.as_import() {
+                    Some(import_decl) => {
+                        import_decl
+                            .specifiers
+                            .iter()
+                            .any(|import_specifier| match import_specifier.as_default() {
+                                Some(import_default_specifier) => {
+                                    import_default_specifier.local.sym
+                                        == Atom::from(self.id.clone())
+                                }
+                                None => false,
+                            })
+                    }
+                    None => false,
+                },
+                None => false,
+            })
+        {
+            return;
+        }
+
+        let body = &mut module.body;
+
+        body.insert(
+            0,
+            ModuleItem::ModuleDecl(ModuleDecl::Import(ImportDecl {
+                span: DUMMY_SP,
+                specifiers: vec![ImportSpecifier::Default(ImportDefaultSpecifier {
+                    span: DUMMY_SP,
+                    local: Ident {
+                        span: DUMMY_SP,
+                        sym: Atom::from(self.id.clone()),
+                        optional: false,
+                    },
+                })],
+                src: Box::new(Str {
+                    span: DUMMY_SP,
+                    value: Atom::from(format!("{}.js", &self.id)),
+                    raw: None,
+                }),
+                type_only: false,
+                asserts: None,
+            })),
+        )
+    }
+
     fn visit_mut_expr(&mut self, n: &mut Expr) {
         n.visit_mut_children_with(self);
 
@@ -29,7 +103,7 @@ impl VisitMut for TransformImportMetaEnv {
 
         let new_expr = match &self.mode {
             Mode::Inline { env } => create_inline_obj(&env),
-            Mode::Placeholder => create_placeholder_obj(),
+            Mode::Placeholder => create_placeholder_obj(self.id.clone()),
         };
         let old_member_expr = n.as_member().unwrap();
         if is_visiting_import_meta_env(old_member_expr) {
@@ -80,60 +154,11 @@ fn create_inline_obj(env: &Vec<(String, String)>) -> Expr {
     })
 }
 
-fn create_placeholder_obj() -> Expr {
-    Expr::Call(CallExpr {
-        callee: Callee::Expr(Box::new(Expr::Member(MemberExpr {
-            obj: Box::new(Expr::Ident(Ident {
-                sym: js_word!("Object"),
-                optional: false,
-                span: DUMMY_SP,
-            })),
-            prop: MemberProp::Ident(Ident {
-                sym: Atom::from(r#"create"#),
-                optional: false,
-                span: DUMMY_SP,
-            }),
-            span: DUMMY_SP,
-        }))),
-        args: vec![ExprOrSpread {
-            spread: None,
-            expr: Box::new(Expr::Bin(BinExpr {
-                op: BinaryOp::LogicalOr,
-                left: Box::new(Expr::Member(MemberExpr {
-                    obj: Box::new(Expr::Ident(Ident {
-                        sym: Atom::from(r#"globalThis"#),
-                        optional: false,
-                        span: DUMMY_SP,
-                    })),
-                    prop: MemberProp::Computed(ComputedPropName {
-                        expr: Box::new(Expr::Call(CallExpr {
-                            callee: Callee::Expr(Box::new(Expr::Member(MemberExpr {
-                                obj: Box::new(Expr::Lit(Lit::Str(Str {
-                                    value: Atom::from(r#"import_meta_env"#),
-                                    raw: None,
-                                    span: DUMMY_SP,
-                                }))),
-                                prop: MemberProp::Ident(Ident {
-                                    sym: Atom::from(r#"slice"#),
-                                    optional: false,
-                                    span: DUMMY_SP,
-                                }),
-                                span: DUMMY_SP,
-                            }))),
-                            args: vec![],
-                            type_args: None,
-                            span: DUMMY_SP,
-                        })),
-                        span: DUMMY_SP,
-                    }),
-                    span: DUMMY_SP,
-                })),
-                right: Box::new(Expr::Lit(Lit::Null(Null { span: DUMMY_SP }))),
-                span: DUMMY_SP,
-            })),
-        }],
-        type_args: None,
+fn create_placeholder_obj(id: String) -> Expr {
+    Expr::Ident(Ident {
         span: DUMMY_SP,
+        sym: Atom::from(id),
+        optional: false,
     })
 }
 
@@ -151,9 +176,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline { env: vec![] }
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Inline { env: vec![] }, 0,)),
         spec_access_other_import_meta_should_be_ignored_1,
         // Input codes
         r#"import.meta"#,
@@ -163,9 +186,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline { env: vec![] }
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Inline { env: vec![] }, 0,)),
         spec_access_other_import_meta_should_be_ignored_2,
         // Input codes
         r#"import.meta.url"#,
@@ -175,9 +196,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline { env: vec![] }
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Inline { env: vec![] }, 0,)),
         spec_access_other_meta_property_should_be_ignored,
         // Input codes
         r#"function _() { new.target.env; }"#,
@@ -187,14 +206,15 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline {
+        |_| as_folder(TransformImportMetaEnv::new(
+            Mode::Inline {
                 env: vec![
                     ("KEY1".to_string(), "value1".to_string()),
                     ("KEY2".to_string(), "value2".to_string())
                 ]
-            }
-        }),
+            },
+            0,
+        )),
         spec_inline_mode_access_all_env_should_be_inlined,
         // Input codes
         r#"import.meta.env"#,
@@ -204,14 +224,15 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline {
+        |_| as_folder(TransformImportMetaEnv::new(
+            Mode::Inline {
                 env: vec![
                     ("KEY1".to_string(), "value1".to_string()),
                     ("KEY2".to_string(), "value2".to_string())
                 ]
-            }
-        }),
+            },
+            0,
+        )),
         spec_inline_mode_access_env_prop_should_be_inlined,
         // Input codes
         r#"import.meta.env.KEY1"#,
@@ -221,45 +242,43 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Placeholder
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Placeholder, 0,)),
         spec_placeholder_mode_access_all_env_should_not_be_inlined,
         // Input codes
         r#"import.meta.env"#,
         // Output codes after transformed with plugin
-        r#"Object.create(globalThis["import_meta_env".slice()] || null)"#
+        r#"
+        import_meta_env_0
+        "#
     );
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Placeholder
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Placeholder, 0,)),
         spec_placeholder_mode_access_env_prop_should_not_be_inlined,
         // Input codes
         r#"import.meta.env.HELLO"#,
         // Output codes after transformed with plugin
-        r#"Object.create(globalThis["import_meta_env".slice()] || null).HELLO"#
+        r#"
+        import_meta_env_0.HELLO
+        "#
     );
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Placeholder
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Placeholder, 42)),
         spec_call_expr,
         // Input codes
         r#"parseInt(import.meta.env.PORT, 10)"#,
         // Output codes after transformed with plugin
-        r#"parseInt(Object.create(globalThis["import_meta_env".slice()] || null).PORT, 10)"#
+        r#"
+        parseInt(import_meta_env_42.PORT, 10)
+        "#
     );
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv {
-            mode: Mode::Placeholder
-        }),
+        |_| as_folder(TransformImportMetaEnv::new(Mode::Placeholder, 0,)),
         spec_return_stmt,
         // Input codes
         r#"
@@ -275,9 +294,9 @@ mod tests {
         r#"
         function API_URL () {
             return [
-                Object.create(globalThis["import_meta_env".slice()] || null).PROTOCOL,
+                import_meta_env_0.PROTOCOL,
                 "//",
-                Object.create(globalThis["import_meta_env".slice()] || null).HOST,
+                import_meta_env_0.HOST,
             ].join("");
         }
         "#

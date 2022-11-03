@@ -1,6 +1,8 @@
 mod config;
 mod core;
 
+use std::time;
+
 use crate::{
     config::Config,
     core::{mode::Mode, resolve_env::resolve_env, transform::TransformImportMetaEnv},
@@ -35,15 +37,22 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
                 != "production"
         }
     };
+
+    let now = time::SystemTime::now()
+        .duration_since(time::UNIX_EPOCH)
+        .unwrap()
+        .as_millis();
     if should_inline_env {
-        program.fold_with(&mut as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline {
+        program.fold_with(&mut as_folder(TransformImportMetaEnv::new(
+            Mode::Inline {
                 env: resolve_env(config.env_path, config.env_example_path),
             },
-        }))
+            now,
+        )))
     } else {
-        program.fold_with(&mut as_folder(TransformImportMetaEnv {
-            mode: Mode::Placeholder,
-        }))
+        program.fold_with(&mut as_folder(TransformImportMetaEnv::new(
+            Mode::Placeholder,
+            now,
+        )))
     }
 }
