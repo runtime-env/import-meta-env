@@ -6,7 +6,18 @@ export const virtualFile = "import-meta-env";
 // 4. Placeholders need to contain quotes so that the CLI knows which quotes (i.e. `'` or `"`) to use to avoid SyntaxError.
 export const placeholder = `Object.create(globalThis["import_meta_env".slice()] || null)`;
 
-export const createPlaceholderRegExp = (suffix: string) =>
-  new RegExp(placeholder.replace(/([\(\)\[\]\|])/g, "\\$1") + suffix, "g");
+export const createPlaceholderRegExp = (
+  suffix: string,
+  quote: "single" | "double" = "double"
+) =>
+  new RegExp(
+    "\\b" +
+      placeholder
+        .replace(/([\(\)\[\]\|])/g, "\\$1")
+        .replace(/\s/g, "\\s*")
+        .replace(/"/g, quote === "double" ? '"' : "'") +
+      suffix,
+    "g"
+  );
 
 export const envFilePath = ".env";

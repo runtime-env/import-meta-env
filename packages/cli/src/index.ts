@@ -1,5 +1,6 @@
 import { copyFileSync, lstatSync, readFileSync, writeFileSync } from "fs";
 import { resolveEnv } from "../../shared";
+import { resolveEnvExample } from "../../shared/resolve-env-example";
 import { isBackupFileName } from "./is-backup-file-name";
 import { tryToRestore } from "./try-to-restore";
 import { isSourceMap } from "./is-source-map";
@@ -12,6 +13,7 @@ import { shouldInjectEnv } from "./should-inject-env";
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
   resolveEnv: typeof resolveEnv;
+  resolveEnvExample: typeof resolveEnvExample;
 }) => {
   di.command.parse();
   const opts: Args = di.command.opts();
@@ -19,6 +21,10 @@ export const main = (di: {
   const env = di.resolveEnv({
     envExampleFilePath: opts.example,
     envFilePath: opts.env,
+  });
+
+  const example = di.resolveEnvExample({
+    envExampleFilePath: opts.example,
   });
 
   const output = opts.output ?? defaultOutput;
@@ -35,11 +41,11 @@ export const main = (di: {
     if (shouldInjectEnv(code) === false) return;
     if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
-    const outputCode = replaceAllPlaceholderWithEnv({ code, env });
+    const outputCode = replaceAllPlaceholderWithEnv({ code, env, example });
     writeFileSync(outputFileName, outputCode);
   });
 };
 
 if (require.main === module) {
-  main({ command: createCommand(), resolveEnv });
+  main({ command: createCommand(), resolveEnv, resolveEnvExample });
 }

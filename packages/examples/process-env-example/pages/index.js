@@ -18,9 +18,6 @@ export default function Index() {
   return (
     <>
       <div>
-        import.meta.{"\0"}env: {JSON.stringify(import.meta.env)}
-      </div>
-      <div>
         import.meta.{"\0"}env.HELLO: {import.meta.env.HELLO}
       </div>
       <div>

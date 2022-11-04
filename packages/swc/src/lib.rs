@@ -36,14 +36,21 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
         }
     };
     if should_inline_env {
-        program.fold_with(&mut as_folder(TransformImportMetaEnv {
-            mode: Mode::Inline {
-                env: resolve_env(config.env_path, config.env_example_path),
-            },
-        }))
+        program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Inline {
+            env: resolve_env(config.env_path, config.env_example_path.clone()),
+            env_example: resolve_env(
+                Some(config.env_example_path.clone()),
+                config.env_example_path.clone(),
+            ),
+        })))
     } else {
-        program.fold_with(&mut as_folder(TransformImportMetaEnv {
-            mode: Mode::Placeholder,
-        }))
+        program.fold_with(&mut as_folder(TransformImportMetaEnv::new(
+            Mode::Placeholder {
+                env_example: resolve_env(
+                    Some(config.env_example_path.clone()),
+                    config.env_example_path.clone(),
+                ),
+            },
+        )))
     }
 }

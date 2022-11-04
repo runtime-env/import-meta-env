@@ -1,5 +1,8 @@
-import { placeholderRegExpList } from "./shared";
+import { createPlaceholderRegExp } from "../../shared";
 
 export const shouldInjectEnv = (code: string): boolean => {
-  return placeholderRegExpList.some((regExp) => regExp.test(code));
+  return (
+    createPlaceholderRegExp(`\\.\\w+\\b`, "double").test(code) ||
+    createPlaceholderRegExp(`\\.\\w+\\b`, "single").test(code)
+  );
 };

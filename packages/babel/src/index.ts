@@ -5,47 +5,76 @@ import {
   envFilePath as defaultEnvFilePath,
   placeholder,
 } from "../../shared";
+import { resolveEnvExample } from "../../shared/resolve-env-example";
 import { PluginOptions } from "./types";
 
-export default declare<PluginOptions>(({ template, types: t }, options) => {
-  let env: Record<string, string> | undefined = undefined;
+export default declare<PluginOptions>(({ template, types }, options) => {
+  const shouldInlineEnv =
+    options.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
 
-  const replaceEnv = (template: typeof babelCore.template) =>
-    template.expression.ast(JSON.stringify(env));
-  const replaceEnvForProd = (template: typeof babelCore.template) =>
-    template.expression.ast(placeholder);
+  const envExampleFilePath = options.example;
+  if (envExampleFilePath === undefined) {
+    throw Error(
+      `example option is required. Please specify it in the plugin options.`
+    );
+  }
+  const envExample = resolveEnvExample({ envExampleFilePath });
+
+  const env = shouldInlineEnv
+    ? (() => {
+        const envFilePath = options.env || defaultEnvFilePath;
+        return resolveEnv({
+          envFilePath,
+          envExampleFilePath,
+        });
+      })()
+    : Object.create(null);
+
+  const replaceEnv = (template: typeof babelCore.template, property: string) =>
+    template.expression.ast(JSON.stringify(env[property]));
+  const replaceEnvForProd = (
+    template: typeof babelCore.template,
+    property: string
+  ) => template.expression.ast(`(${placeholder}).${property}`);
 
   return {
     name: "@import-meta-env/babel",
     visitor: {
-      MetaProperty(path, state) {
-        if (!t.isMemberExpression(path.parentPath.node)) return;
-        if (!t.isIdentifier(path.parentPath.node.property)) return;
-        if (path.parentPath.node.property.name !== "env") return;
-        if ((path.parentPath.node.object as any)?.meta?.name !== "import")
+      Identifier(path, state) {
+        if (!types.isIdentifier(path)) return;
+
+        // {}.{}
+        if (!types.isMemberExpression(path.parentPath)) return;
+        // {}.{}.{}
+        if (!types.isMemberExpression(path.parentPath.node)) return;
+        // {}.{}.{}.{}
+        if (!types.isMemberExpression(path.parentPath.node.object)) return;
+
+        // {}.{}.{}.PROPERTY
+        if (path.parentPath.computed) return;
+        if (!types.isIdentifier(path.parentPath.node.property)) return;
+
+        // {}.{}.env.PROPERTY
+        if (!types.isIdentifier(path.parentPath.node.object.property)) return;
+        if (path.parentPath.node.object.property.name !== "env") return;
+
+        // import.meta.env.PROPERTY
+        if (!types.isMetaProperty(path.parentPath.node.object.object)) return;
+        if (path.parentPath.node.object.object.property.name !== "meta") return;
+        if (path.parentPath.node.object.object.meta.name !== "import") return;
+
+        // import.meta.env.PUBLIC_PROPERTY
+        if (envExample.includes(path.parentPath.node.property.name) === false)
           return;
 
-        const shouldInlineEnv =
-          options.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
         if (shouldInlineEnv) {
-          if (env === undefined) {
-            let envFilePath = options.env || defaultEnvFilePath;
-            let envExampleFilePath: string | undefined = options.example;
-            if (envExampleFilePath === undefined) {
-              throw Error(
-                `example option is required. Please specify it in the plugin options.`
-              );
-            }
-
-            env = resolveEnv({
-              envFilePath,
-              envExampleFilePath,
-            });
-          }
-
-          path.parentPath.replaceWith(replaceEnv(template));
+          path.parentPath.replaceWith(
+            replaceEnv(template, path.parentPath.node.property.name)
+          );
         } else {
-          path.parentPath.replaceWith(replaceEnvForProd(template));
+          path.parentPath.replaceWith(
+            replaceEnvForProd(template, path.parentPath.node.property.name)
+          );
         }
       },
     },

@@ -13,6 +13,7 @@ import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
 import { warnEnvPrefix } from "./vite/warn-env-prefix";
+import { resolveEnvExample } from "packages/shared/resolve-env-example";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
@@ -25,6 +26,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       `example option is required. Please specify it in the plugin options.`
     );
   }
+  const example = resolveEnvExample({ envExampleFilePath });
 
   let shouldInlineEnv = options?.shouldInlineEnv;
 
@@ -150,7 +152,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug(code);
         debug && console.debug("==================");
 
-        code = transformDev({ code, id, env, meta, viteConfig });
+        code = transformDev({ code, id, env, example, meta, viteConfig });
 
         debug && console.debug("=== code after ===");
         debug && console.debug(code);
@@ -161,7 +163,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug(code);
         debug && console.debug("==================");
 
-        code = transformProd({ code, id, meta, viteConfig });
+        code = transformProd({ code, id, example, meta, viteConfig });
 
         debug && console.debug("=== code after ===");
         debug && console.debug(code);

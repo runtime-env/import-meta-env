@@ -1,4 +1,4 @@
-import { createPlaceholderRegExp, placeholder } from "../../../shared";
+import { createPlaceholderRegExp } from "../../../shared";
 
 const builtInEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR", "LEGACY"];
 
@@ -11,7 +11,7 @@ export function preserveViteBuiltInEnv({
 }) {
   builtInEnvKeys.forEach((key) => {
     code = code.replace(
-      createPlaceholderRegExp(`\.${key}`),
+      createPlaceholderRegExp(`\\.${key}\\b`),
       `import.meta.env.${key}`
     );
   });
@@ -27,19 +27,10 @@ export function preserveViteBuiltInEnv({
   })();
   normalizedEnPrefix.forEach((prefix) => {
     code = code.replace(
-      createPlaceholderRegExp(`\.${prefix}`),
+      createPlaceholderRegExp(`\\.${prefix}`),
       `import.meta.env.${prefix}`
     );
   });
-
-  code = code.replace(
-    createPlaceholderRegExp("([^.])"),
-    `Object.assign({},${placeholder},import.meta.env)$1`
-  );
-  code = code.replace(
-    createPlaceholderRegExp("$"),
-    `Object.assign({},${placeholder},import.meta.env)`
-  );
 
   return code;
 }

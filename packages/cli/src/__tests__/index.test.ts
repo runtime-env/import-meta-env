@@ -2,6 +2,7 @@ import tmp from "tmp";
 import { main } from "..";
 import { Args, createCommand } from "../create-command";
 import { resolveEnv, placeholder } from "../../../shared";
+import { resolveEnvExample } from "../../../shared/resolve-env-example";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 
 let command = createCommand();
@@ -93,7 +94,8 @@ describe("cli", () => {
       const envExampleFilePath = tmp.fileSync();
       writeFileSync(envExampleFilePath.name, "FOO=");
       const outputFile = tmp.fileSync();
-      writeFileSync(outputFile.name, placeholder);
+      const code = `${placeholder}.FOO`;
+      writeFileSync(outputFile.name, code);
       const parse = jest.fn();
       const opts = jest.fn(
         () =>
@@ -107,6 +109,7 @@ describe("cli", () => {
       const di = {
         command: new cmd() as typeof command,
         resolveEnv,
+        resolveEnvExample,
       };
 
       // act
@@ -114,13 +117,11 @@ describe("cli", () => {
 
       // assert
       expect(readFileSync(outputFile.name, { encoding: "utf8" })).toBe(
-        `({\"FOO\":\"bar\"})`
+        `\"bar\"`
       );
       const backupFileName = outputFile.name + ".bak";
       expect(existsSync(backupFileName)).toBe(true);
-      expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(
-        placeholder
-      );
+      expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(code);
     });
   });
 });

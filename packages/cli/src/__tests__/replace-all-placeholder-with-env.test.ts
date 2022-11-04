@@ -6,106 +6,155 @@ afterEach(() => {
 });
 
 describe("replaceAllPlaceholderWithEnv", () => {
-  test("it replace placeholder with env", () => {
+  test("not exists", () => {
     // arrange
     const code = `
-      const hello = ${placeholder}.HELLO;
+      const notExists = ${placeholder}.NOT_EXISTS;
     `;
-    const env = {
-      HELLO: "world",
-    };
+    const env = {};
+    const example = [] as const;
 
     // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({"HELLO":"world"}).HELLO;
+            const notExists = ${placeholder}.NOT_EXISTS;
           "
     `);
   });
 
-  test("it replace all placeholder with env", () => {
+  test("exists", () => {
     // arrange
     const code = `
-      const foo = ${placeholder}.FOO;
-      const bar = ${placeholder}.BAR;
+      const exists = ${placeholder}.EXISTS;
     `;
     const env = {
-      FOO: "foo",
-      BAR: "bar",
+      EXISTS: "value",
     };
+    const example = ["EXISTS"];
 
     // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const foo = ({"FOO":"foo","BAR":"bar"}).FOO;
-            const bar = ({"FOO":"foo","BAR":"bar"}).BAR;
+            const exists = "value";
           "
     `);
   });
 
-  test("it works with single quotes", () => {
+  test("multiple", () => {
     // arrange
     const code = `
-      const hello = ${placeholder.replace(/"/g, "'")}.HELLO;
+      const exists1 = ${placeholder}.EXISTS1;
+      const exists2 = ${placeholder}.EXISTS2;
     `;
     const env = {
-      HELLO: "world",
+      EXISTS1: "value1",
+      EXISTS2: "value2",
     };
+    const example = ["EXISTS1", "EXISTS2"];
 
     // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({\\"HELLO\\":\\"world\\"}).HELLO;
+            const exists1 = "value1";
+            const exists2 = "value2";
           "
     `);
   });
 
-  test("it works with minified placeholder", () => {
+  test("single quotes", () => {
     // arrange
     const code = `
-      const hello = ${placeholder.replace(/\s/g, "")}.HELLO;
+      const exists = "${placeholder.replace(/"/g, "'")}.EXISTS";
     `;
     const env = {
-      HELLO: "world",
+      EXISTS: "value",
     };
+    const example = ["EXISTS"];
 
     // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({"HELLO":"world"}).HELLO;
+            const exists = "\\"value\\"";
           "
     `);
   });
 
-  test("it should escape HTML entities", () => {
+  test("double quotes", () => {
     // arrange
     const code = `
-      const hello = ${placeholder}.HELLO;
+      const exists = '${placeholder.replace(/'/g, '"')}.EXISTS';
     `;
     const env = {
-      HELLO:
+      EXISTS: "value",
+    };
+    const example = ["EXISTS"];
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const exists = '"value"';
+          "
+    `);
+  });
+
+  test("spaces", () => {
+    // arrange
+    const code = `
+      const exists1 = ${placeholder.replace(/\s|\t/g, "")}.EXISTS;
+      const exists2 = ${placeholder.replace(/\s|\t/g, "  ")}.EXISTS;
+      const exists3 = ${placeholder.replace(/\s|\t/g, "    ")}.EXISTS;
+    `;
+    const env = {
+      EXISTS: "value",
+    };
+    const example = ["EXISTS"];
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(`
+      "
+            const exists1 = "value";
+            const exists2 = "value";
+            const exists3 = "value";
+          "
+    `);
+  });
+
+  test("escape", () => {
+    // arrange
+    const code = `
+      const exists = ${placeholder}.EXISTS;
+    `;
+    const env = {
+      EXISTS:
         "as</script><script>alert('You have an XSS vulnerability!')</script>",
     };
+    const example = ["EXISTS"];
 
     // act
-    const result = replaceAllPlaceholderWithEnv({ code, env });
+    const result = replaceAllPlaceholderWithEnv({ code, env, example });
 
     // assert
     expect(result).toMatchInlineSnapshot(`
       "
-            const hello = ({"HELLO":"as\\u003C\\u002Fscript\\u003E\\u003Cscript\\u003Ealert('You have an XSS vulnerability!')\\u003C\\u002Fscript\\u003E"}).HELLO;
+            const exists = "as\\u003C\\u002Fscript\\u003E\\u003Cscript\\u003Ealert('You have an XSS vulnerability!')\\u003C\\u002Fscript\\u003E";
           "
     `);
   });
