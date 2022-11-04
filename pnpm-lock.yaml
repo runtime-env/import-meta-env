@@ -53,16 +53,20 @@ importers:
   packages/babel:
     specifiers:
       '@babel/core': 7.19.6
+      '@babel/helper-plugin-utils': ^7.19.0
       '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.1.19
+      '@types/babel__helper-plugin-utils': ^7.10.0
       babel-plugin-tester: 10.1.0
       picocolors: ^1.0.0
     dependencies:
+      '@babel/helper-plugin-utils': 7.19.0
       picocolors: 1.0.0
     devDependencies:
       '@babel/core': 7.19.6
       '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.1.19
+      '@types/babel__helper-plugin-utils': 7.10.0
       babel-plugin-tester: 10.1.0_@babel+core@7.19.6
 
   packages/cli:
@@ -443,7 +447,6 @@ packages:
   /@babel/helper-plugin-utils/7.19.0:
     resolution: {integrity: sha512-40Ryx7I8mT+0gaNxm8JGTZFUITNqdLAgdg0hXzeVZxVD6nFsdhQvip6v8dqkRHzsz1VFpFAaOCHNn0vKBL7Czw==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-remap-async-to-generator/7.18.9_@babel+core@7.19.6:
     resolution: {integrity: sha512-dI7q50YKd8BAv3VEfgg7PS7yD3Rtbi2J1XMXaalXO0W0164hYLnh8zpjRS0mte9MfVp/tltvr/cfdXPvJr1opA==}
@@ -1889,6 +1892,12 @@ packages:
     resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
     dependencies:
       '@babel/types': 7.19.4
+    dev: true
+
+  /@types/babel__helper-plugin-utils/7.10.0:
+    resolution: {integrity: sha512-60YtHzhQ9HAkToHVV+TB4VLzBn9lrfgrsOjiJMtbv/c1jPdekBxaByd6DMsGBzROXWoIL6U3lEFvvbu69RkUoA==}
+    dependencies:
+      '@types/babel__core': 7.1.19
     dev: true
 
   /@types/babel__template/7.4.1:

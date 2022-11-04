@@ -1,3 +1,4 @@
+import { declare } from "@babel/helper-plugin-utils";
 import type babelCore from "@babel/core";
 import {
   resolveEnv,
@@ -6,12 +7,7 @@ import {
 } from "../../shared";
 import { PluginOptions } from "./types";
 
-export default function importMetaEnvBabelPlugin({
-  template,
-  types: t,
-}: typeof babelCore): babelCore.PluginObj<{
-  opts?: PluginOptions;
-}> {
+export default declare<PluginOptions>(({ template, types: t }, options) => {
   let env: Record<string, string> | undefined = undefined;
 
   const replaceEnv = (template: typeof babelCore.template) =>
@@ -30,11 +26,11 @@ export default function importMetaEnvBabelPlugin({
           return;
 
         const shouldInlineEnv =
-          state.opts?.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
+          options.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
         if (shouldInlineEnv) {
           if (env === undefined) {
-            let envFilePath = state.opts?.env || defaultEnvFilePath;
-            let envExampleFilePath: string | undefined = state.opts?.example;
+            let envFilePath = options.env || defaultEnvFilePath;
+            let envExampleFilePath: string | undefined = options.example;
             if (envExampleFilePath === undefined) {
               throw Error(
                 `example option is required. Please specify it in the plugin options.`
@@ -54,4 +50,4 @@ export default function importMetaEnvBabelPlugin({
       },
     },
   };
-}
+});

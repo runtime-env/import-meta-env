@@ -38,12 +38,14 @@
     }
   },
   "dependencies": {
+    "@babel/helper-plugin-utils": "^7.19.0",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.19.6",
     "@types/babel-plugin-tester": "9.0.5",
     "@types/babel__core": "7.1.19",
+    "@types/babel__helper-plugin-utils": "^7.10.0",
     "babel-plugin-tester": "10.1.0"
   }
 }
