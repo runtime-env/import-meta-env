@@ -10,6 +10,5 @@ test("all", () => {
     SSR: true,
     LEGACY: false,
     VITE_PREFIXED_KEY: "compile-time",
-    HELLO: "import-meta-env",
   });
 });

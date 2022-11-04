@@ -18,7 +18,6 @@ module.exports = async () => {
     `npx cross-env SECRET1=${secret1} SECRET2=${secret2} npx next start --port ${port}`,
   ];
   const expected = [
-    `import.meta.\0env: {"HELLO":"${hello}"}`,
     `import.meta.\0env.HELLO: ${hello}`,
     `import.meta.\0env.SECRET1:`,
     `import.meta.\0env.SECRET2:`,

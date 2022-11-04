@@ -18,8 +18,11 @@ describe("shouldInjectEnv", () => {
   });
 
   it("should return true if the code contains placeholder in double quote", () => {
+    // arrange
+    const code = `${placeholder}.FOO`;
+
     // act
-    const result = shouldInjectEnv(placeholder);
+    const result = shouldInjectEnv(code);
 
     // assert
     expect(result).toBe(true);
@@ -27,7 +30,7 @@ describe("shouldInjectEnv", () => {
 
   it("should return true if the code contains placeholder in single quote", () => {
     // arrange
-    const code = placeholder.replace(/"/g, `'`);
+    const code = `${placeholder.replace(/"/g, `'`)}.FOO`;
 
     // act
     const result = shouldInjectEnv(code);

@@ -13,39 +13,59 @@ export const createTempFile = (code: string) => {
 };
 
 describe("importMetaEnvBabelPlugin", () => {
-  const env = createTempFile("HELLO=foo");
-  const example = createTempFile("HELLO=");
+  const env = createTempFile("EXISTS=value\nSECRET=***");
+  const example = createTempFile("EXISTS=");
 
-  pluginTester({
-    title: "should ignore non-import.meta properties",
+  for (let shouldInlineEnv of [true, false]) {
+    pluginTester({
+      title: `(shouldInlineEnv: ${shouldInlineEnv}) It should ignore`,
 
-    plugin: importMetaEnvBabelPlugin,
+      plugin: importMetaEnvBabelPlugin,
 
-    pluginOptions: {
-      env,
-      example,
-      shouldInlineEnv: true,
-    },
+      pluginOptions: {
+        env: shouldInlineEnv ? env : void 0,
+        example,
+        shouldInlineEnv,
+      },
 
-    tests: [
-      {
-        title: "It should ignore non-import.meta properties 1",
-        code: `
+      tests: [
+        {
+          title: "new.target.env.EXISTS",
+          code: `
 function _() {
-  new.target.env;
+  new.target.env.EXISTS;
 }
           `.trim(),
-        output: `
+          output: `
 function _() {
-  new.target.env;
+  new.target.env.EXISTS;
 }
                   `.trim(),
-      },
-    ],
-  });
+        },
+
+        {
+          title: "import.meta.url.EXISTS",
+          code: "console.log(() => import.meta.url.EXISTS);",
+          output: "console.log(() => import.meta.url.EXISTS);",
+        },
+
+        {
+          title: "import.meta.env",
+          code: "console.log(() => import.meta.env);",
+          output: "console.log(() => import.meta.env);",
+        },
+
+        {
+          title: "import.meta.env.NOT_EXISTS",
+          code: "console.log(() => import.meta.env.NOT_EXISTS);",
+          output: "console.log(() => import.meta.env.NOT_EXISTS);",
+        },
+      ],
+    });
+  }
 
   pluginTester({
-    title: "should ignore non-env properties",
+    title: "It should inline with given env",
 
     plugin: importMetaEnvBabelPlugin,
 
@@ -57,58 +77,15 @@ function _() {
 
     tests: [
       {
-        title: "It should ignore non-env-properties 1",
-        code: "console.log(() => import.meta);",
-        output: "console.log(() => import.meta);",
-      },
-
-      {
-        title: "It should ignore non-env-properties 2",
-        code: "console.log(() => import.meta.url);",
-        output: "console.log(() => import.meta.url);",
+        title: "import.meta.env.EXISTS",
+        code: "console.log(() => import.meta.env.EXISTS);",
+        output: `console.log(() => "value");`.trim(),
       },
     ],
   });
 
   pluginTester({
-    title: "should inline env",
-
-    plugin: importMetaEnvBabelPlugin,
-
-    pluginOptions: {
-      env,
-      example,
-      shouldInlineEnv: true,
-    },
-
-    tests: [
-      {
-        title: "It should be transformed to given env (entire env)",
-        code: "console.log(() => import.meta.env);",
-        output: `
-console.log(() => ({
-  HELLO: "foo",
-}));
-          `.trim(),
-      },
-
-      {
-        title: "It should be transformed to given env (key accessing)",
-        code: "console.log(() => import.meta.env.HELLO);",
-        output: `
-console.log(
-  () =>
-    ({
-      HELLO: "foo",
-    }.HELLO)
-);
-          `.trim(),
-      },
-    ],
-  });
-
-  pluginTester({
-    title: "should not inline env",
+    title: "It should replace with placeholder",
 
     plugin: importMetaEnvBabelPlugin,
 
@@ -119,21 +96,13 @@ console.log(
 
     tests: [
       {
-        title: "It should be transformed to placeholder (entire env)",
-        code: "console.log(() => import.meta.env);",
-        output: `
-console.log(() => ${placeholder});
-          `.trim(),
-      },
-
-      {
-        title: "It should be transformed to placeholder (key accessing)",
-        code: "console.log(() => import.meta.env.HELLO);",
+        title: "import.meta.env.EXISTS",
+        code: "console.log(() => import.meta.env.EXISTS);",
         output: `
 console.log(
-  () => ${placeholder}.HELLO
+  () => ${placeholder}.EXISTS
 );
-          `.trim(),
+      `.trim(),
       },
     ],
   });
