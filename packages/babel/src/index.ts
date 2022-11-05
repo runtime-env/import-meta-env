@@ -3,7 +3,7 @@ import type babelCore from "@babel/core";
 import {
   resolveEnv,
   envFilePath as defaultEnvFilePath,
-  placeholder,
+  accessor,
 } from "../../shared";
 import { resolveEnvExample } from "../../shared/resolve-env-example";
 import { PluginOptions } from "./types";
@@ -41,7 +41,7 @@ export default declare<PluginOptions>(({ template, types }, options) => {
   const replaceEnvForRuntime = (
     template: typeof babelCore.template,
     property: string
-  ) => template.expression.ast(`${placeholder}.${property}`);
+  ) => template.expression.ast(`${accessor}.${property}`);
 
   return {
     name: "@import-meta-env/babel",

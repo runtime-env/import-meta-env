@@ -6,6 +6,7 @@ const dev = {
   output: {
     dir: "public/assets",
     format: "esm",
+    sourcemap: true,
   },
   plugins: [
     resolve(),
@@ -18,6 +19,7 @@ const prod = {
   output: {
     dir: "dist/assets",
     format: "esm",
+    sourcemap: true,
   },
   plugins: [
     resolve(),

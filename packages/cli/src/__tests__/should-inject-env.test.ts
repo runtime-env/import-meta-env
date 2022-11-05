@@ -1,4 +1,4 @@
-import { placeholder } from "../../../shared";
+import { scriptPlaceholder } from "../../../shared";
 import { shouldInjectEnv } from "../should-inject-env";
 
 afterEach(() => {
@@ -17,20 +17,9 @@ describe("shouldInjectEnv", () => {
     expect(result).toBe(false);
   });
 
-  it("should return true if the code contains placeholder in double quote", () => {
+  it("should return true if the code contains script placeholder", () => {
     // arrange
-    const code = `${placeholder}.FOO`;
-
-    // act
-    const result = shouldInjectEnv(code);
-
-    // assert
-    expect(result).toBe(true);
-  });
-
-  it("should return true if the code contains placeholder in single quote", () => {
-    // arrange
-    const code = `${placeholder.replace(/"/g, `'`)}.FOO`;
+    const code = scriptPlaceholder;
 
     // act
     const result = shouldInjectEnv(code);

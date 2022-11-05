@@ -1,7 +1,7 @@
 import tmp from "tmp";
 import { main } from "..";
 import { Args, createCommand } from "../create-command";
-import { resolveEnv, placeholder } from "../../../shared";
+import { resolveEnv, accessor, scriptPlaceholder } from "../../../shared";
 import { resolveEnvExample } from "../../../shared/resolve-env-example";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 
@@ -94,7 +94,14 @@ describe("cli", () => {
       const envExampleFilePath = tmp.fileSync();
       writeFileSync(envExampleFilePath.name, "FOO=");
       const outputFile = tmp.fileSync();
-      const code = `${placeholder}.FOO`;
+      const code = `
+<html>
+  <body>
+    ${scriptPlaceholder}
+    <script>${accessor}.FOO</script>
+  </body>
+</html>
+        `.trim();
       writeFileSync(outputFile.name, code);
       const parse = jest.fn();
       const opts = jest.fn(
@@ -116,9 +123,15 @@ describe("cli", () => {
       main(di);
 
       // assert
-      expect(readFileSync(outputFile.name, { encoding: "utf8" })).toBe(
-        `\"bar\"`
-      );
+      expect(readFileSync(outputFile.name, { encoding: "utf8" }))
+        .toMatchInlineSnapshot(`
+        "<html>
+          <body>
+            <script>globalThis.import_meta_env={"FOO":"bar"}</script>
+            <script>Object.create(globalThis.import_meta_env || null).FOO</script>
+          </body>
+        </html>"
+      `);
       const backupFileName = outputFile.name + ".bak";
       expect(existsSync(backupFileName)).toBe(true);
       expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(code);

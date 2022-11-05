@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import pluginTester from "babel-plugin-tester";
 import importMetaEnvBabelPlugin from "../index";
-import { placeholder } from "../../../shared";
+import { accessor } from "../../../shared";
 
 export const createTempFile = (code: string) => {
   const tmpFile = tmp.fileSync();
@@ -85,7 +85,7 @@ function _() {
   });
 
   pluginTester({
-    title: "It should replace with placeholder",
+    title: "It should replace with accessor",
 
     plugin: importMetaEnvBabelPlugin,
 
@@ -99,9 +99,7 @@ function _() {
         title: "import.meta.env.EXISTS",
         code: "console.log(() => import.meta.env.EXISTS);",
         output: `
-console.log(
-  () => ${placeholder}.EXISTS
-);
+console.log(() => ${accessor}.EXISTS);
       `.trim(),
       },
     ],

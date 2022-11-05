@@ -57,6 +57,7 @@
     }
   },
   "dependencies": {
+    "magic-string": "^0.26.7",
     "object-hash": "^3.0.0",
     "picocolors": "^1.0.0",
     "unplugin": "^0.10.0"

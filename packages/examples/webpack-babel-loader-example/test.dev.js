@@ -1,25 +1,25 @@
-const childProcess = require("child_process");
-const { expect } = require("chai");
+const runTest = require("../run-test");
+const getPort = require("../get-port");
 
-module.exports = () => {
-  // arrange
+module.exports = async () => {
+  const port = await getPort();
   const hello = Math.random();
-  childProcess.execSync("npm add ../../babel/import-meta-env-babel-test.tgz", {
-    stdio: "inherit",
-  });
-  childProcess.execSync("npx rimraf dist", {
-    stdio: "inherit",
-  });
 
-  // act
-  childProcess.execSync(
-    `npx cross-env HELLO=${hello} NODE_ENV=development webpack`,
-    {
-      stdio: "inherit",
-    }
-  );
-  const output = childProcess.execSync("node dist/main.js").toString().trim();
-
-  // assert
-  expect(output).to.equal(`Hello: ${hello}`);
+  const commands = [
+    "npx rimraf dist node_modules/.cache",
+    "npm add ../../babel/import-meta-env-babel-test.tgz",
+    `npx cross-env NODE_ENV=development HELLO=${hello} webpack`,
+  ];
+  const longRunningCommands = [`node ../serve.js -d dist -p ${port}`];
+  const expected = `Hello: ${hello}`;
+  const url = `http://localhost:${port}`;
+  const waitMs = 2000;
+  await runTest({
+    commands,
+    longRunningCommands,
+    expected,
+    url,
+    waitMs,
+    noExit: true,
+  });
 };

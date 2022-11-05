@@ -15,9 +15,12 @@ module.exports = () => {
   });
 
   // act
-  childProcess.execSync(`npx cross-env SWC_ENV=development swc src -d dist`, {
-    stdio: "inherit",
-  });
+  childProcess.execSync(
+    `npx cross-env SWC_ENV=development swc src -d dist -s true`,
+    {
+      stdio: "inherit",
+    }
+  );
   const output = childProcess.execSync("node dist/index.js").toString().trim();
 
   // assert
