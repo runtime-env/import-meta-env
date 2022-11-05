@@ -1,20 +1,29 @@
-import { createPlaceholderRegExp } from "../../../shared";
+import { Replacement } from "../replacement";
 
-const builtInEnvKeys = ["BASE_URL", "MODE", "DEV", "PROD", "SSR", "LEGACY"];
+export const builtInEnvKeys = [
+  "BASE_URL",
+  "MODE",
+  "DEV",
+  "PROD",
+  "SSR",
+  "LEGACY",
+];
 
 export function preserveViteBuiltInEnv({
-  code,
   envPrefix,
 }: {
-  code: string;
   envPrefix: undefined | string | string[];
-}) {
-  builtInEnvKeys.forEach((key) => {
-    code = code.replace(
-      createPlaceholderRegExp(`\\.${key}\\b`),
-      `import.meta.env.${key}`
-    );
-  });
+}): Replacement[] {
+  let replacements: Replacement[] = [];
+
+  replacements = replacements.concat(
+    builtInEnvKeys.map((key) => {
+      return {
+        regexp: new RegExp(`\\bimport\\.meta\\.env\\.${key}\\b`),
+        substitution: `import.meta.env.${key}`,
+      };
+    })
+  );
 
   const normalizedEnPrefix = (() => {
     if (envPrefix === void 0) {
@@ -25,12 +34,14 @@ export function preserveViteBuiltInEnv({
       return envPrefix;
     }
   })();
-  normalizedEnPrefix.forEach((prefix) => {
-    code = code.replace(
-      createPlaceholderRegExp(`\\.${prefix}`),
-      `import.meta.env.${prefix}`
-    );
-  });
+  replacements = replacements.concat(
+    normalizedEnPrefix.map((prefix) => {
+      return {
+        regexp: new RegExp(`\\bimport\\.meta\\.env\\.${prefix}`),
+        substitution: `import.meta.env.${prefix}`,
+      };
+    })
+  );
 
-  return code;
+  return replacements;
 }

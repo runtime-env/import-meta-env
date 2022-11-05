@@ -20,7 +20,9 @@ module.exports = {
     extensions: [".ts"],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      templateContent: '<script id="import-meta-env"></script>',
+    }),
     importMetaEnv.webpack({ example: ".env.example.public" }),
   ],
 };

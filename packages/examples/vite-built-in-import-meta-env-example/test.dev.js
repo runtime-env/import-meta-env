@@ -15,7 +15,7 @@ module.exports = async () => {
   ];
   const expected = [
     `Hello: ${hello}`,
-    `Prefixed key: ${compileTime}`,
+    `Vite Prefixed key: ${compileTime}`,
     "MODE: development",
     "BASE_URL: /",
     "PROD: false",

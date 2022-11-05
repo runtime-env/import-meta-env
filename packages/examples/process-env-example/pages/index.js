@@ -20,12 +20,6 @@ export default function Index() {
       <div>
         import.meta.{"\0"}env.HELLO: {import.meta.env.HELLO}
       </div>
-      <div>
-        import.meta.{"\0"}env.SECRET1: {import.meta.env.SECRET1}
-      </div>
-      <div>
-        import.meta.{"\0"}env.SECRET2: {import.meta.env.SECRET2}
-      </div>
       <div>process.env: {JSON.stringify(all.data)}</div>
       <div>process.env.SECRET1: {secret1.data}</div>
       <div>process.env.SECRET2: {secret2.data}</div>

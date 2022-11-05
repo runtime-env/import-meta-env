@@ -2,3 +2,4 @@ node_modules
 .DS_Store
 out.js
 out.js.bak
+out.js.map

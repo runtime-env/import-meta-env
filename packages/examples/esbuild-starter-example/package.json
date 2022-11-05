@@ -3,9 +3,7 @@
   "name": "esbuild-starter-example",
   "scripts": {
     "_test": "node test.js",
-    "dev": "cross-env HELLO=import-meta-env node esbuild.config.js",
-    "build": "cross-env NODE_ENV=production node esbuild.config.js app.js",
-    "populate": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public --output out.js"
+    "dev": "cross-env HELLO=import-meta-env node esbuild.config.js"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

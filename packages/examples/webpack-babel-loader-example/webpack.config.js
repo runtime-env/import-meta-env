@@ -1,3 +1,8 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+/**
+ * @type {import('webpack').Configuration}
+ */
 module.exports = {
   module: {
     rules: [
@@ -19,4 +24,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      templateContent: '<script id="import-meta-env"></script>',
+    }),
+  ],
+  devtool: "source-map",
 };

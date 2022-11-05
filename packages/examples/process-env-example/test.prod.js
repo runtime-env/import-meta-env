@@ -19,8 +19,6 @@ module.exports = async () => {
   ];
   const expected = [
     `import.meta.\0env.HELLO: ${hello}`,
-    `import.meta.\0env.SECRET1:`,
-    `import.meta.\0env.SECRET2:`,
     `process.env: {"SECRET1":"${secret1}","SECRET2":"${secret2}"}`,
     `process.env.SECRET1: ${secret1}`,
     `process.env.SECRET2: ${secret2}`,

@@ -3,9 +3,7 @@
   "name": "swc-example",
   "scripts": {
     "_test": "node test.js",
-    "dev": "echo HELLO=import-meta-env > .env && npx cross-env SWC_ENV=development swc src -d dist",
-    "build": "npx cross-env SWC_ENV=production swc src -d dist",
-    "populate": "cross-env HELLO=import-meta-env ./node_modules/.bin/import-meta-env -x .env.example.public"
+    "dev": "echo HELLO=import-meta-env > .env && npx cross-env SWC_ENV=development swc src -d dist -s true"
   },
   "license": "MIT",
   "devDependencies": {

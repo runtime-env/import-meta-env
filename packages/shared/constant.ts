@@ -1,18 +1,21 @@
 export const virtualFile = "import-meta-env";
 
-// 1. Placeholders cannot be literal string (e.g., `import_meta_env`), because some minifier will remove it.
-// 2. Placeholders cannot be `eval("import_meta_env")`, because prerenderer will result in SyntaxError.
-// 3. Placeholders cannot contain `eval` as it would violate CSP.
-// 4. Placeholders need to contain quotes so that the CLI knows which quotes (i.e. `'` or `"`) to use to avoid SyntaxError.
-export const placeholder = `Object.create(globalThis["import_meta_env".slice()] || null)`;
+export const scriptPlaceholder = '<script id="import-meta-env"></script>';
 
-export const createPlaceholderRegExp = (
+export const createScriptPlaceholderRegExp = () =>
+  new RegExp(`<script id="import-meta-env"></script>`, "g");
+
+// 1. Accessor cannot contain `eval` as it would violate CSP.
+// 2. Accessor need to fallback to empty object, since during prerender there is no environment variables in globalThis.
+export const accessor = `Object.create(globalThis.import_meta_env || null)`;
+
+export const createAccessorRegExp = (
   suffix: string,
   quote: "single" | "double" = "double"
 ) =>
   new RegExp(
     "\\b" +
-      placeholder
+      accessor
         .replace(/([\(\)\[\]\|])/g, "\\$1")
         .replace(/\s/g, "\\s*")
         .replace(/"/g, quote === "double" ? '"' : "'") +

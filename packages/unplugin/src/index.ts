@@ -5,15 +5,16 @@ import {
   resolveEnv,
   getPackageManagerExecCommand,
   envFilePath as defaultEnvFilePath,
-  createPlaceholderRegExp,
+  createAccessorRegExp,
+  createScriptPlaceholderRegExp,
 } from "../../shared";
 import { PluginOptions } from "./types";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
-import { warnEnvPrefix } from "./vite/warn-env-prefix";
 import { resolveEnvExample } from "packages/shared/resolve-env-example";
+import { SourceMap } from "magic-string";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
@@ -80,7 +81,11 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug(html);
         debug && console.debug("==================");
 
-        html = html.replace(createPlaceholderRegExp(""), "import.meta.env");
+        html = html.replace(createAccessorRegExp(""), "import.meta.env");
+
+        if (transformMode === "compile-time") {
+          html = html.replace(createScriptPlaceholderRegExp(), "");
+        }
 
         debug && console.debug("=== index.html after ===");
         debug && console.debug(html);
@@ -146,38 +151,41 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     transform(code, id) {
-      if (meta.framework === "vite")
-        warnEnvPrefix({
-          envExampleFilePath,
-          viteConfigEnvPrefix: viteConfig?.envPrefix,
-          warn: this.warn.bind(this),
+      let result: { code: string; map: SourceMap };
+      debug && console.debug("==================");
+      if (transformMode === "compile-time") {
+        debug && console.debug("=== compile-time transform ===", id);
+        debug && console.debug("=== before ===");
+        debug && console.debug(code);
+
+        result = transformDev({
+          code,
+          id,
+          env,
+          example,
+          meta,
+          viteConfig,
         });
 
-      if (transformMode === "compile-time") {
-        debug && console.debug("transformDev::", id);
-        debug && console.debug("=== code before ===");
-        debug && console.debug(code);
-        debug && console.debug("==================");
-
-        code = transformDev({ code, id, env, example, meta, viteConfig });
-
         debug && console.debug("=== code after ===");
-        debug && console.debug(code);
-        debug && console.debug("==================");
+        debug && console.debug(result.code);
       } else {
-        debug && console.debug("transformProd::", id);
-        debug && console.debug("=== code before ===");
+        debug && console.debug("=== runtime transform ===", id);
+        debug && console.debug("=== before ===");
         debug && console.debug(code);
-        debug && console.debug("==================");
 
-        code = transformProd({ code, id, example, meta, viteConfig });
+        result = transformProd({ code, id, example, meta, viteConfig });
 
-        debug && console.debug("=== code after ===");
-        debug && console.debug(code);
-        debug && console.debug("==================");
+        debug && console.debug("=== after ===");
+        debug && console.debug(result.code);
       }
+      debug && console.debug("==================");
 
-      return code;
+      if (meta.framework === "webpack") {
+        return result.code;
+      } else {
+        return result;
+      }
     },
 
     buildEnd() {

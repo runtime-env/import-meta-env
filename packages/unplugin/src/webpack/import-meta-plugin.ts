@@ -1,4 +1,4 @@
-import { placeholder } from "../../../shared";
+import { accessor } from "../../../shared";
 import type { Compiler, javascript } from "webpack";
 
 export class ImportMetaPlugin {
@@ -9,10 +9,7 @@ export class ImportMetaPlugin {
       parser.hooks.expression
         .for("import.meta.env")
         .tap("ImportMetaPlugin", (expr) => {
-          const dep = new dependencies.ConstDependency(
-            placeholder,
-            expr.range!
-          );
+          const dep = new dependencies.ConstDependency(accessor, expr.range!);
           dep.loc = expr.loc!;
           parser.state.module.addPresentationalDependency(dep);
 

@@ -1,23 +1,26 @@
-const { readFileSync, writeFileSync } = require("fs");
 const runTest = require("../run-test");
 const getPort = require("../get-port");
+const { writeFileSync, readFileSync } = require("fs");
+const { execSync } = require("child_process");
 
 module.exports = async () => {
-  await require("./test.prod.js")();
-
   const port = await getPort();
   const hello = Math.random();
+
+  execSync("npx rimraf dist node_modules/.vite", { stdio: "inherit" });
+  execSync("npm add ../../cli/import-meta-env-cli-test.tgz", {
+    stdio: "inherit",
+  });
+  execSync("npm add ../../unplugin/import-meta-env-unplugin-test.tgz", {
+    stdio: "inherit",
+  });
+  execSync("npx vite build", { stdio: "inherit" });
 
   writeFileSync(
     "dist/index.html",
     readFileSync("dist/index.html", "utf8")
-      .replace(
-        '<script type="module" crossorigin src="/assets/index.js"></script>',
-        ""
-      )
-      .replace("<script nomodule", "<script ")
-      .replace("<script nomodule", "<script ")
-      .replace("<script nomodule", "<script ")
+      .replace(/.*type="module".*/g, "")
+      .replace(/nomodule/g, "")
   );
   const commands = [
     `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,

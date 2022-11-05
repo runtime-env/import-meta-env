@@ -5,10 +5,12 @@ build({
   entryPoints: ["app.js"],
   bundle: true,
   outfile: "out.js",
+  sourcemap: "both",
   plugins: [
     importMetaEnv.esbuild({
       example: ".env.example.public",
-      shouldInlineEnv: process.env.NODE_ENV !== "production",
+      transformMode:
+        process.env.NODE_ENV === "production" ? "runtime" : "compile-time",
     }),
   ],
 });

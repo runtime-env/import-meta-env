@@ -17,7 +17,7 @@ module.exports = async () => {
   const longRunningCommands = [`npx vite preview --port ${port}`];
   const expected = [
     `Hello: ${hello}`,
-    `Prefixed key: ${compileTime}`,
+    `Vite Prefixed key: ${compileTime}`,
     "MODE: production",
     "BASE_URL: /",
     "PROD: true",

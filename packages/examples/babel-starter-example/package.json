@@ -3,9 +3,7 @@
   "name": "babel-starter-example",
   "scripts": {
     "_test": "node test.js",
-    "dev": "rimraf dist && cross-env HELLO=import-meta-env SECRET1=secret1 SECRET2=secret2 ./node_modules/.bin/babel src --out-dir dist",
-    "build": "rimraf dist && cross-env NODE_ENV=production SECRET1=secret1 ./node_modules/.bin/babel src --out-dir dist",
-    "populate": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public"
+    "dev": "rimraf dist && cross-env HELLO=import-meta-env SECRET1=secret1 SECRET2=secret2 ./node_modules/.bin/babel src --out-dir dist"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",

@@ -4,8 +4,8 @@ use swc_core::{
     common::DUMMY_SP,
     ecma::{
         ast::{
-            BinExpr, BinaryOp, CallExpr, Callee, ComputedPropName, Expr, ExprOrSpread, Ident, Lit,
-            MemberExpr, MemberProp, MetaPropKind, Null, Str,
+            BinExpr, BinaryOp, CallExpr, Callee, Expr, ExprOrSpread, Ident, Lit, MemberExpr,
+            MemberProp, MetaPropKind, Null, Str,
         },
         atoms::js_word,
         visit::{VisitMut, VisitMutWith},
@@ -67,7 +67,7 @@ impl VisitMut for TransformImportMetaEnv {
                 }
                 Mode::Runtime { env_example: _ } => {
                     *n = Expr::Member(MemberExpr {
-                        obj: Box::new(create_placeholder_expr()),
+                        obj: Box::new(create_accessor_expr()),
                         span: old_member_expr.span.clone(),
                         prop: old_member_expr.prop.clone(),
                     });
@@ -102,7 +102,7 @@ fn as_is_visiting_import_meta_env_prop(n: &MemberExpr, example_keys: &Vec<String
     Some(())
 }
 
-fn create_placeholder_expr() -> Expr {
+fn create_accessor_expr() -> Expr {
     Expr::Call(CallExpr {
         callee: Callee::Expr(Box::new(Expr::Member(MemberExpr {
             obj: Box::new(Expr::Ident(Ident {
@@ -127,25 +127,9 @@ fn create_placeholder_expr() -> Expr {
                         optional: false,
                         span: DUMMY_SP,
                     })),
-                    prop: MemberProp::Computed(ComputedPropName {
-                        expr: Box::new(Expr::Call(CallExpr {
-                            callee: Callee::Expr(Box::new(Expr::Member(MemberExpr {
-                                obj: Box::new(Expr::Lit(Lit::Str(Str {
-                                    value: Atom::from(r#"import_meta_env"#),
-                                    raw: None,
-                                    span: DUMMY_SP,
-                                }))),
-                                prop: MemberProp::Ident(Ident {
-                                    sym: Atom::from(r#"slice"#),
-                                    optional: false,
-                                    span: DUMMY_SP,
-                                }),
-                                span: DUMMY_SP,
-                            }))),
-                            args: vec![],
-                            type_args: None,
-                            span: DUMMY_SP,
-                        })),
+                    prop: MemberProp::Ident(Ident {
+                        sym: Atom::from(r#"import_meta_env"#),
+                        optional: false,
                         span: DUMMY_SP,
                     }),
                     span: DUMMY_SP,
@@ -280,7 +264,7 @@ mod tests {
         "#,
         // Output codes after transformed with plugin
         r#"
-        const exists = Object.create(globalThis["import_meta_env".slice()] || null).EXISTS;
+        const exists = Object.create(globalThis.import_meta_env || null).EXISTS;
         const not_exists = import.meta.env.NOT_EXISTS;
         "#
     );
@@ -294,7 +278,7 @@ mod tests {
         // Input codes
         r#"parseInt(import.meta.env.PORT, 10)"#,
         // Output codes after transformed with plugin
-        r#"parseInt(Object.create(globalThis["import_meta_env".slice()] || null).PORT, 10)"#
+        r#"parseInt(Object.create(globalThis.import_meta_env || null).PORT, 10)"#
     );
 
     test!(
@@ -320,9 +304,9 @@ mod tests {
         r#"
         function API_URL () {
             return [
-                Object.create(globalThis["import_meta_env".slice()] || null).PROTOCOL,
+                Object.create(globalThis.import_meta_env || null).PROTOCOL,
                 "//",
-                Object.create(globalThis["import_meta_env".slice()] || null).HOST,
+                Object.create(globalThis.import_meta_env || null).HOST,
             ].join("");
         }
         "#
