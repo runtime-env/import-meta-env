@@ -5,6 +5,7 @@ use crate::{
     config::Config,
     core::{mode::Mode, resolve_env::resolve_env, transform::TransformImportMetaEnv},
 };
+use config::TransformMode;
 use swc_core::{
     ecma::{
         ast::Program,
@@ -25,32 +26,38 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
     )
     .expect("invalid config");
 
-    let should_inline_env: bool = {
-        if config.should_inline_env.is_some() {
-            config.should_inline_env.unwrap()
+    let mode = {
+        if config.transform_mode.is_some() {
+            config.transform_mode.unwrap()
         } else {
-            metadata
+            if metadata
                 .get_context(&TransformPluginMetadataContextKind::Env)
                 .unwrap()
-                != "production"
+                == "production"
+            {
+                TransformMode::Runtime
+            } else {
+                TransformMode::CompileTime
+            }
         }
     };
-    if should_inline_env {
-        program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Inline {
-            env: resolve_env(config.env_path, config.env_example_path.clone()),
-            env_example: resolve_env(
-                Some(config.env_example_path.clone()),
-                config.env_example_path.clone(),
-            ),
-        })))
-    } else {
-        program.fold_with(&mut as_folder(TransformImportMetaEnv::new(
-            Mode::Placeholder {
+    match mode {
+        TransformMode::CompileTime => program.fold_with(&mut as_folder(
+            TransformImportMetaEnv::new(Mode::CompileTime {
+                env: resolve_env(config.env_path, config.env_example_path.clone()),
                 env_example: resolve_env(
                     Some(config.env_example_path.clone()),
                     config.env_example_path.clone(),
                 ),
-            },
-        )))
+            }),
+        )),
+        TransformMode::Runtime => {
+            program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+                env_example: resolve_env(
+                    Some(config.env_example_path.clone()),
+                    config.env_example_path.clone(),
+                ),
+            })))
+        }
     }
 }

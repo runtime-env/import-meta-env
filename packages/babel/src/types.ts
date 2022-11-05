@@ -14,11 +14,11 @@ export interface PluginOptions {
   example: string;
 
   /**
-   * Explicity set whether to inline current environment variables into the code,
-   * instead of inject environment variables via `import-meta-env` later.
+   * Compile-time: statically replace `import.meta.env.KEY` with `"value"`
+   * Runtime: statically replace `import.meta.env` with a global accessor
    *
    * @default
-   * process.env.NODE_ENV !== 'production'
+   * process.env.NODE_ENV === "production" ? "runtime" : "compile-time"
    */
-  shouldInlineEnv?: boolean;
+  transformMode?: "compile-time" | "runtime";
 }

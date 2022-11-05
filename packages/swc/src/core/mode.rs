@@ -1,10 +1,10 @@
 pub enum Mode {
-    Inline {
+    CompileTime {
         env: Vec<(String, String)>,
         env_example: Vec<(String, String)>,
     },
 
-    Placeholder {
+    Runtime {
         env_example: Vec<(String, String)>,
     },
 }

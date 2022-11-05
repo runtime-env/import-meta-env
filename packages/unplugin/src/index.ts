@@ -28,11 +28,12 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   }
   const example = resolveEnvExample({ envExampleFilePath });
 
-  let shouldInlineEnv = options?.shouldInlineEnv;
+  let transformMode: undefined | "compile-time" | "runtime" =
+    options?.transformMode;
 
   let env: Record<string, string> =
     meta.framework === "esbuild"
-      ? shouldInlineEnv
+      ? transformMode === "compile-time"
         ? resolveEnv({
             envFilePath,
             envExampleFilePath,
@@ -53,14 +54,16 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       apply(_, env) {
         debug && console.debug("apply::");
 
-        shouldInlineEnv = shouldInlineEnv ?? env.mode !== "production";
+        transformMode =
+          transformMode ??
+          (env.mode !== "production" ? "compile-time" : "runtime");
         return true;
       },
 
       configResolved(_config) {
         debug && console.debug("configResolved::");
 
-        if (shouldInlineEnv) {
+        if (transformMode === "compile-time") {
           env = resolveEnv({
             envFilePath,
             envExampleFilePath,
@@ -91,10 +94,11 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       buildStart() {
         debug && console.debug("rollup::buildStart::");
 
-        shouldInlineEnv =
-          shouldInlineEnv ?? process.env.NODE_ENV !== "production";
+        transformMode =
+          transformMode ??
+          (process.env.NODE_ENV !== "production" ? "compile-time" : "runtime");
 
-        if (shouldInlineEnv) {
+        if (transformMode === "compile-time") {
           env = resolveEnv({
             envFilePath,
             envExampleFilePath,
@@ -110,10 +114,13 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         "development",
         "none",
       ];
-      shouldInlineEnv =
-        shouldInlineEnv ?? developmentModes.includes(compiler.options.mode);
+      transformMode =
+        transformMode ??
+        (developmentModes.includes(compiler.options.mode)
+          ? "compile-time"
+          : "runtime");
 
-      if (shouldInlineEnv) {
+      if (transformMode === "compile-time") {
         env = resolveEnv({
           envFilePath,
           envExampleFilePath,
@@ -146,7 +153,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
           warn: this.warn.bind(this),
         });
 
-      if (shouldInlineEnv) {
+      if (transformMode === "compile-time") {
         debug && console.debug("transformDev::", id);
         debug && console.debug("=== code before ===");
         debug && console.debug(code);
@@ -178,7 +185,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
       const execCommand = getPackageManagerExecCommand();
 
-      if (shouldInlineEnv) {
+      if (transformMode === "compile-time") {
       } else {
         console.info(
           [

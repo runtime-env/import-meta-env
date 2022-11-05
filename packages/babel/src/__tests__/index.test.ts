@@ -16,16 +16,16 @@ describe("importMetaEnvBabelPlugin", () => {
   const env = createTempFile("EXISTS=value\nSECRET=***");
   const example = createTempFile("EXISTS=");
 
-  for (let shouldInlineEnv of [true, false]) {
+  for (let transformMode of ["compile-time", "runtime"] as const) {
     pluginTester({
-      title: `(shouldInlineEnv: ${shouldInlineEnv}) It should ignore`,
+      title: `(transformMode: ${transformMode}) It should ignore`,
 
       plugin: importMetaEnvBabelPlugin,
 
       pluginOptions: {
-        env: shouldInlineEnv ? env : void 0,
+        env: transformMode === "compile-time" ? env : void 0,
         example,
-        shouldInlineEnv,
+        transformMode,
       },
 
       tests: [
@@ -72,7 +72,7 @@ function _() {
     pluginOptions: {
       env,
       example,
-      shouldInlineEnv: true,
+      transformMode: "compile-time",
     },
 
     tests: [
@@ -91,7 +91,7 @@ function _() {
 
     pluginOptions: {
       example,
-      shouldInlineEnv: false,
+      transformMode: "runtime",
     },
 
     tests: [

@@ -15,10 +15,24 @@ pub struct Config {
     pub env_example_path: String,
 
     /**
-     * Explicitly set whether to inline current environment variables into the code,
-     * instead of inject environment variables via `import-meta-env` later.
+     * Compile-time: statically replace `import.meta.env.KEY` with `"value"`
+     * Runtime: statically replace `import.meta.env` with a global accessor
      *
-     * Defaults to `(process.env.SWC_ENV || process.env.NODE_ENV || "production") != "production"`
+     * Default:
+     *
+     * if `TransformPluginMetadataContextKind::Env` equals to `"production"`
+     * then `Some(TransformMode::Runtime)`
+     * otherwise `Some(TransformMode::CompileTime)`
      */
-    pub should_inline_env: Option<bool>,
+    #[serde(rename = "transformMode")]
+    pub transform_mode: Option<TransformMode>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub enum TransformMode {
+    #[serde(rename = "compile-time")]
+    CompileTime,
+
+    #[serde(rename = "runtime")]
+    Runtime,
 }

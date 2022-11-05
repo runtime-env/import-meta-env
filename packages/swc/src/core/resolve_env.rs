@@ -64,7 +64,7 @@ mod tests {
         write!(
             env_file,
             "
-            INLINE=inline
+            COMPILE_TIME=compile-time
             SECRET=***
             "
         )
@@ -76,7 +76,7 @@ mod tests {
         write!(
             env_example_file,
             "
-            INLINE=
+            COMPILE_TIME=
             "
         )
         .unwrap();
@@ -85,6 +85,9 @@ mod tests {
         let result = resolve_env(Some(env_file_name), env_example_file_name);
 
         // assert
-        assert_eq!(result, vec![("INLINE".to_owned(), "inline".to_owned()),])
+        assert_eq!(
+            result,
+            vec![("COMPILE_TIME".to_owned(), "compile-time".to_owned()),]
+        )
     }
 }

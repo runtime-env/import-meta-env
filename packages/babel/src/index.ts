@@ -9,8 +9,11 @@ import { resolveEnvExample } from "../../shared/resolve-env-example";
 import { PluginOptions } from "./types";
 
 export default declare<PluginOptions>(({ template, types }, options) => {
-  const shouldInlineEnv =
-    options.shouldInlineEnv ?? process.env.NODE_ENV !== "production";
+  const transformMode: "compile-time" | "runtime" =
+    options.transformMode ??
+    (process.env.NODE_ENV === "production"
+      ? ("runtime" as const)
+      : ("compile-time" as const));
 
   const envExampleFilePath = options.example;
   if (envExampleFilePath === undefined) {
@@ -20,22 +23,25 @@ export default declare<PluginOptions>(({ template, types }, options) => {
   }
   const envExample = resolveEnvExample({ envExampleFilePath });
 
-  const env = shouldInlineEnv
-    ? (() => {
-        const envFilePath = options.env || defaultEnvFilePath;
-        return resolveEnv({
-          envFilePath,
-          envExampleFilePath,
-        });
-      })()
-    : Object.create(null);
+  const env =
+    transformMode === "compile-time"
+      ? (() => {
+          const envFilePath = options.env || defaultEnvFilePath;
+          return resolveEnv({
+            envFilePath,
+            envExampleFilePath,
+          });
+        })()
+      : Object.create(null);
 
-  const replaceEnv = (template: typeof babelCore.template, property: string) =>
-    template.expression.ast(JSON.stringify(env[property]));
-  const replaceEnvForProd = (
+  const replaceEnvForCompileTime = (
     template: typeof babelCore.template,
     property: string
-  ) => template.expression.ast(`(${placeholder}).${property}`);
+  ) => template.expression.ast(JSON.stringify(env[property]));
+  const replaceEnvForRuntime = (
+    template: typeof babelCore.template,
+    property: string
+  ) => template.expression.ast(`${placeholder}.${property}`);
 
   return {
     name: "@import-meta-env/babel",
@@ -67,13 +73,16 @@ export default declare<PluginOptions>(({ template, types }, options) => {
         if (envExample.includes(path.parentPath.node.property.name) === false)
           return;
 
-        if (shouldInlineEnv) {
+        if (transformMode === "compile-time") {
           path.parentPath.replaceWith(
-            replaceEnv(template, path.parentPath.node.property.name)
+            replaceEnvForCompileTime(
+              template,
+              path.parentPath.node.property.name
+            )
           );
         } else {
           path.parentPath.replaceWith(
-            replaceEnvForProd(template, path.parentPath.node.property.name)
+            replaceEnvForRuntime(template, path.parentPath.node.property.name)
           );
         }
       },
