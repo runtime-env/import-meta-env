@@ -16,20 +16,17 @@ export interface PluginOptions {
   example: string;
 
   /**
-   * Explicitly set whether to inline current environment variables into the code,
-   * instead of inject environment variables via `import-meta-env` later.
-   *
-   * This is useful if you want to use the plugin in unknown dev server environments
+   * Compile-time: statically replace `import.meta.env.KEY` with `"value"`
+   * Runtime: statically replace `import.meta.env` with a global accessor
    *
    * @default
-   * `true` if following conditions are met, otherwise `false`:
    *
    * ```text
-   * vite:    if mode is not `"production"`
-   * webpack: if mode is `"development"` or `"none"`
-   * rollup:  if `NODE_ENV` is not `"production"`
+   * vite:    if mode is not `"production"` then `"compile-time"`, otherwise `"runtime"`
+   * webpack: if mode is `"development"` or `"none"` then `"compile-time"`, otherwise `"runtime"`
+   * rollup:  if `NODE_ENV` is not `"production"` then `"compile-time"`, otherwise `"runtime"`
    * esbuild: (needs to be set explicitly)
    * ```
    */
-  shouldInlineEnv?: boolean;
+  transformMode?: "compile-time" | "runtime";
 }
