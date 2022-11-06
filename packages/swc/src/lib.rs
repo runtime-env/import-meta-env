@@ -44,19 +44,13 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
     match mode {
         TransformMode::CompileTime => program.fold_with(&mut as_folder(
             TransformImportMetaEnv::new(Mode::CompileTime {
-                env: resolve_env(config.env_path, config.env_example_path.clone()),
-                env_example: resolve_env(
-                    Some(config.env_example_path.clone()),
-                    config.env_example_path.clone(),
-                ),
+                env: resolve_env(config.env, config.example.clone()),
+                env_example: resolve_env(Some(config.example.clone()), config.example.clone()),
             }),
         )),
         TransformMode::Runtime => {
             program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-                env_example: resolve_env(
-                    Some(config.env_example_path.clone()),
-                    config.env_example_path.clone(),
-                ),
+                env_example: resolve_env(Some(config.example.clone()), config.example.clone()),
             })))
         }
     }

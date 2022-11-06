@@ -6,7 +6,7 @@
         [
           "@import-meta-env/swc",
           {
-            "env_example_path": ".env.example.public"
+            "example": ".env.example.public"
           }
         ]
       ]

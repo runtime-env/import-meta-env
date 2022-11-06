@@ -7,12 +7,12 @@ pub struct Config {
      *
      * Defaults to ".env"
      */
-    pub env_path: Option<String>,
+    pub env: Option<String>,
 
     /**
      * The public .env example file path to load, related to current working directory.
      */
-    pub env_example_path: String,
+    pub example: String,
 
     /**
      * Compile-time: statically replace `import.meta.env.KEY` with `"value"`
