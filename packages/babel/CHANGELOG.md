@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/iendeavor/import-meta-env/compare/babel0.2.3...babel0.3.0) (2022-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* you have to manually add a script tag to index.html
+* drop support for nuxt and qwik for now
+* remove shouldInlineEnv option, use transformMode option instead
+* no longer support non-static property accessing
+
+### Features
+
+* add transformMode option ([954ab74](https://github.com/iendeavor/import-meta-env/commit/954ab746a04d0ff505be7d4daef8c7986c824b09))
+* drop support for entire object and computed-property accessing ([4e4fd9a](https://github.com/iendeavor/import-meta-env/commit/4e4fd9aa54710eafbb79e79aa340ea53e0e864a7))
+
+
+### Bug Fixes
+
+* generate correct source-maps ([4c1d81d](https://github.com/iendeavor/import-meta-env/commit/4c1d81dc929f104546671fb91e55c26f2fd4061a))
+
 ### [0.2.3](https://github.com/iendeavor/import-meta-env/compare/babel0.2.2...babel0.2.3) (2022-10-22)
 
 
