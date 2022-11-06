@@ -1,12 +1,12 @@
 # Compile-time Transform
 
-- In development, statically replace `import.meta.env` with environment variables.
-- In production, temporarily replace `import.meta.env` with placeholders.
+- Compile-time: statically replace `import.meta.env.KEY` with `"value"`
+- Runtime: statically replace `import.meta.env` with a global accessor
 
 ::: info
-By default, **import-meta-env** will automatically determine the mode (development, testing, or production) and replace `import.meta.env` with environment variables or placeholders, respectively.
+By default, **import-meta-env** will automatically determine the transform mode (development, testing, or production) and replace `import.meta.env` with environment variables or global accessors, respectively.
 
-You can override this by setting the `shouldInlineEnv` option.
+You can override this by setting the `transformMode` option.
 
 For more information, see [API](/api).
 :::
