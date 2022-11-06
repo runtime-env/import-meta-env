@@ -1,6 +1,6 @@
 # Runtime Transform
 
-Replace the temporary _placeholders_ with _environment variables_.
+Inject environment variable definitions into a special script tag defined in index.html.
 
 ## CLI
 

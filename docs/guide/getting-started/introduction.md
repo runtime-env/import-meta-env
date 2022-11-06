@@ -2,55 +2,95 @@
 
 ## Prerequisite
 
-Before we begin, to prevent accidental leakage environment variables to clients, you need to create a `.env.example` file (you can change it later) to explicitly define which environment variables are considered public.
+1. Define public environment variables
 
-For example, if you have the following environment variables:
+   Before we begin, to prevent accidental leakage environment variables to clients, you need to create a example file (e.g., `.env.example`) to explicitly define which environment variables are considered public.
 
-```bash
-export API_BASE_URL=https://httpbin.org
-export SECRET_KEY=****
-```
+   For example, if you have the following environment variables:
 
-And `.env.example` is defined as follows:
+   ```bash
+   export API_BASE_URL=https://httpbin.org
+   export SECRET_KEY=****
+   ```
 
-```ini
-# .env.example
-API_BASE_URL=
-```
+   And `.env.example` is defined as follows:
 
-Then only the `API_BASE_URL` will be exposed to your clients.
+   ```ini
+   # .env.example
+   API_BASE_URL=
+   ```
+
+   Then only the `API_BASE_URL` will be exposed to your clients.
+
+2. Add a special script tag
+
+   In order to inject environment variables into your app, you need to add a special script tag: `<script id="import-meta-env"></script>` to your `index.html`:
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+       <meta charset="UTF-8" />
+     </head>
+     <body>
+       <div id="app"></div>
+
+       <!-- Note: This script tag should be placed before your entry. -->
+       <script id="import-meta-env"></script>
+
+       <script type="module" src="/src/main.ts"></script>
+     </body>
+   </html>
+   ```
 
 ## Transform
 
-Now you can use environment variables by accessing `import.meta.env`[<sup>?</sup>](/guide/faq/why-use-import-meta.html):
+You will use environment variables by accessing `import.meta.env`[<sup>?</sup>](/guide/faq/why-use-import-meta.html):
 
 ```js
 // main.js
 console.log(import.meta.env.API_BASE_URL);
 ```
 
-In development, we just need to statically replace `import.meta.env` with environment variables, you can do this with [compile-time transform](/guide/getting-started/compile-time-transform.html) tools, it will work like [Webpack's EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/):
+1. In development, we just need to statically replace `import.meta.env` with environment variables, you can do this with [compile-time transform](/guide/getting-started/compile-time-transform.html) tools, just like [Webpack's EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/):
 
-```js
-// dist/index.js
-console.log({ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL);
-```
+   ```js
+   // dist/index.js
+   console.log("https://httpbin.org");
+   ```
 
-But during production, since we need to pass environment variables at runtime, we need to use the same compile-time transform tool to temporarily replace `import.meta.env` with placeholders:
+2. During production, compile-time transform tools will replace `import.meta.env` with a global accessor:
 
-```js
-// dist/index.js
-console.log(
-  Object.create(globalThis["import_meta_env".slice()] || null).API_BASE_URL
-);
-```
+   ```js
+   // dist/index.js
+   console.log(Object.create(globalThis.import_meta_env || null).API_BASE_URL);
+   ```
 
-Then, at runtime, we use the [runtime transform](/guide/getting-started/runtime-transform.html) tool to replace the placeholders with runtime environment variables:
+   Then, at runtime, we use the [runtime transform](/guide/getting-started/runtime-transform.html) tool to replace the predefined script tag with runtime environment variables:
 
-```js
-// dist/index.js
-console.log({ API_BASE_URL: "https://httpbin.org" }.API_BASE_URL);
-```
+   ```html
+   <!-- dist/index.html -->
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+       <meta charset="UTF-8" />
+     </head>
+     <body>
+       <div id="app"></div>
+
+       <!-- Note: This script tag should be placed before your entry. -->
+       <script>
+         globalThis.import_meta_env = { API_BASE_URL: "https://httpbin.org" };
+       </script>
+
+       <script type="module" src="/src/main.ts"></script>
+     </body>
+   </html>
+   ```
+
+   ::: info
+   During prerender, `globalThis.import_meta_env` is `undefined`, this is why we wrap it with `Object.create`.
+   :::
 
 ## Define Environment Variables
 
