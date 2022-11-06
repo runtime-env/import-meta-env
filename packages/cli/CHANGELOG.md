@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/iendeavor/import-meta-env/compare/cli0.2.2...cli0.3.0) (2022-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* you have to manually add a script tag to index.html
+* drop support for nuxt and qwik for now
+* no longer support non-static property accessing
+
+### Features
+
+* drop support for entire object and computed-property accessing ([4e4fd9a](https://github.com/iendeavor/import-meta-env/commit/4e4fd9aa54710eafbb79e79aa340ea53e0e864a7))
+
+
+### Bug Fixes
+
+* generate correct source-maps ([4c1d81d](https://github.com/iendeavor/import-meta-env/commit/4c1d81dc929f104546671fb91e55c26f2fd4061a))
+
 ### [0.2.2](https://github.com/iendeavor/import-meta-env/compare/cli0.2.1...cli0.2.2) (2022-10-22)
 
 
