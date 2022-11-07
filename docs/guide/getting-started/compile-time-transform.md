@@ -4,7 +4,7 @@
 - Runtime: statically replace `import.meta.env` with a global accessor
 
 ::: info
-By default, **import-meta-env** will automatically determine the transform mode (development, testing, or production) and replace `import.meta.env` with environment variables or global accessors, respectively.
+By default, **import-meta-env** will automatically determine the transform mode (`compile-time` or `runtime`) and replace `import.meta.env` with environment variables or global accessors, respectively.
 
 You can override this by setting the `transformMode` option.
 

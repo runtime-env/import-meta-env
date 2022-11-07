@@ -1,6 +1,6 @@
 # Runtime Transform
 
-Inject environment variable definitions into a special script tag defined in index.html.
+Inject environment variable definitions into a special script tag defined in `index.html`.
 
 ## CLI
 

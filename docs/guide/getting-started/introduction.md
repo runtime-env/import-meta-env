@@ -4,23 +4,24 @@
 
 1. Define public environment variables
 
-   Before we begin, to prevent accidental leakage environment variables to clients, you need to create a example file (e.g., `.env.example`) to explicitly define which environment variables are considered public.
-
-   For example, if you have the following environment variables:
+   To prevent accidentally leaking environment variables to the client, only keys listed in an example file (e.g., `.env.example`) are exposed. e.g. for the following env variables:
 
    ```bash
    export API_BASE_URL=https://httpbin.org
    export SECRET_KEY=****
    ```
 
-   And `.env.example` is defined as follows:
+   and `.env.example`:
 
    ```ini
-   # .env.example
    API_BASE_URL=
    ```
 
-   Then only the `API_BASE_URL` will be exposed to your clients.
+   Only `API_BASE_URL` will be exposed as `import.meta.env.API_BASE_URL` to your client source code, but `SECRET_KEY` will not.
+
+   ::: warning
+   Since any variables exposed to your source code will end up in your client bundle, the keys listed in `.env.example` should not contain any sensitive information.
+   :::
 
 2. Add a special script tag
 
@@ -45,28 +46,34 @@
 
 ## Transform
 
-You will use environment variables by accessing `import.meta.env`[<sup>?</sup>](/guide/faq/why-use-import-meta.html):
+For this section, we assuming that our source code looks like this:
 
 ```js
 // main.js
 console.log(import.meta.env.API_BASE_URL);
 ```
 
-1. In development, we just need to statically replace `import.meta.env` with environment variables, you can do this with [compile-time transform](/guide/getting-started/compile-time-transform.html) tools, just like [Webpack's EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/):
+::: warning
+During production, these environment variables are statically replaced. It is therefore necessary to always reference them using the full static string.
+
+For example, computed key access like `import.meta.env["API_BASE_URL"]` and entire object access (i.e. `import.meta.env`) will **not** work.
+:::
+
+1. In development, we can use [compile-time transform](/guide/getting-started/compile-time-transform.html) plugins to statically replace `import.meta.env.KEY` with corresponding environment variables, just like [Webpack's EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/):
 
    ```js
    // dist/index.js
    console.log("https://httpbin.org");
    ```
 
-2. During production, compile-time transform tools will replace `import.meta.env` with a global accessor:
+2. In production, the [compile-time transform](/guide/getting-started/compile-time-transform.html) plugins will only replace all `import.meta.env` with a global accessor:
 
    ```js
    // dist/index.js
    console.log(Object.create(globalThis.import_meta_env || null).API_BASE_URL);
    ```
 
-   Then, at runtime, we use the [runtime transform](/guide/getting-started/runtime-transform.html) tool to replace the predefined script tag with runtime environment variables:
+   And at runtime, we need to use the [runtime transform](/guide/getting-started/runtime-transform.html) tool to inject environment variable definitions into the predefined script tag:
 
    ```html
    <!-- dist/index.html -->
@@ -94,7 +101,7 @@ console.log(import.meta.env.API_BASE_URL);
 
 ## Define Environment Variables
 
-We make no assumptions about the source of environment variables, but for convenience, we will load environment variables from the `.env` file (you can change this via the `env` option).
+We make no assumptions about the source of environment variables, but for convenience, we will load environment variables from the `.env` file (you can change this via `env` option).
 
 1. You can define environment variables in an ad-hoc manner:
 
@@ -121,8 +128,4 @@ We make no assumptions about the source of environment variables, but for conven
    ```ini
    # .env
    API_BASE_URL=https://httpbin.org
-   ```
-
-   ```bash
-   $ npx import-meta-env -x .env.example
    ```
