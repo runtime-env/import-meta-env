@@ -24,7 +24,7 @@
     "@types/jest": "29.2.2",
     "@types/node": "18.11.9",
     "@types/tmp": "0.2.3",
-    "babel-jest": "29.3.0",
+    "babel-jest": "29.3.1",
     "chai": "4.3.7",
     "change-case": "4.1.2",
     "commander": "9.4.1",
