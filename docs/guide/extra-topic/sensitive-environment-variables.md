@@ -4,7 +4,7 @@
 
 It's always a good idea to provide all team members with information about required environment variables, including sensitive ones.
 
-To do this, you can create two separate example files and pass the public file to the `import-meta-env` option:
+To do this, you can create two separate example files and pass the public file to the `example` option:
 
 ```ini
 # .env.example.public

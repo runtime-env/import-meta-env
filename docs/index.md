@@ -17,8 +17,10 @@ hero:
       link: https://github.com/iendeavor/import-meta-env/tree/main/packages/examples
 
 features:
-  - title: Security First
+  - title: Security
     details: No environment variables will be exposed to clients unless you define it.
+  - title: Robust
+    details: If any environment variables are missing, an error will occur when injecting.
   - title: Framework Agnostic
-    details: Currently support for Babel, SWC, and Unplugin for ESbuild, Rollup, Vite, and Webpack.
+    details: Support for Babel, SWC, and Unplugin for ESbuild, Rollup, Vite, and Webpack.
 ---

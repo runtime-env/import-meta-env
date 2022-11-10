@@ -34,6 +34,10 @@ export default defineConfig({
         text: "API",
         link: "/api",
       },
+      {
+        text: "Examples",
+        link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
+      },
     ],
 
     sidebar: sidebar(),

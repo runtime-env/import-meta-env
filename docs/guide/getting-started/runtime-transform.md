@@ -1,7 +1,5 @@
 # Runtime Transform
 
-Inject environment variable definitions into a special script tag defined in `index.html`.
-
 ## CLI
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](https://www.npmjs.com/package/@import-meta-env/cli)
@@ -20,7 +18,7 @@ $ npx import-meta-env -x .env.example
 
 Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example)
 
-::: info
+::: tip
 By default, import-meta-env will automatically replace all files in the [common bundle output directories](https://github.com/iendeavor/import-meta-env/blob/e4defac25c89ff1bfd71ec478713720bd82d85d4/packages/cli/src/shared.ts#L5-L16)
 
 You can override this behavior by passing the `--output <path...>` option.

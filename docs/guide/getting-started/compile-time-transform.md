@@ -1,16 +1,5 @@
 # Compile-time Transform
 
-- Compile-time: statically replace `import.meta.env.KEY` with `"value"`
-- Runtime: statically replace `import.meta.env` with a global accessor
-
-::: info
-By default, **import-meta-env** will automatically determine the transform mode (`compile-time` or `runtime`) and replace `import.meta.env` with environment variables or global accessors, respectively.
-
-You can override this by setting the `transformMode` option.
-
-For more information, see [API](/api).
-:::
-
 ## Compatibility
 
 Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
@@ -21,10 +10,12 @@ You can choose one of these or combine multiple plugins, for example if you are 
 2. Alternatively, you can use [Unplugin](#unplugin) for development and production, and [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
 3. Alternatively, you can use the [swc-loader](https://www.npmjs.com/package/swc-loader) + [SWC plugin](#swc-plugin) for development, production, and the [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
 
-But there are some exceptions:
+::: warning
+There are some exceptions:
 
-1. Vite is only compatible with [Unplugin](#unplugin).
-2. Webpack 4 is not compatible with [Unplugin](#unplugin).
+1. Vite is **only** compatible with [Unplugin](#unplugin).
+2. Webpack 4 is **not** compatible with [Unplugin](#unplugin).
+   :::
 
 ## Babel Plugin
 
@@ -40,7 +31,16 @@ $ npm i -D @import-meta-env/babel
 
 ```json
 {
-  "plugins": [["module:@import-meta-env/babel", { "example": ".env.example" }]]
+  "plugins": [
+    [
+      "module:@import-meta-env/babel",
+      {
+        "example": ".env.example"
+        // "env": "...",
+        // "transformMode": "..."
+      }
+    ]
+  ]
 }
 ```
 
@@ -69,7 +69,9 @@ $ npm i -D @import-meta-env/swc
         [
           "@import-meta-env/swc",
           {
-            "env_example_path": ".env.example"
+            "example": ".env.example"
+            // "env": "...",
+            // "transformMode": "..."
           }
         ]
       ]
@@ -103,6 +105,8 @@ build({
   plugins: [
     importMetaEnv.esbuild({
       example: ".env.example",
+      // "env": "...",
+      // "transformMode": "..."
     }),
   ],
 });
@@ -120,6 +124,8 @@ export default {
   plugins: [
     ImportMetaEnvPlugin.rollup({
       example: ".env.example",
+      // "env": "...",
+      // "transformMode": "..."
     }),
   ],
 };
@@ -137,6 +143,8 @@ export default {
   plugins: [
     ImportMetaEnvPlugin.vite({
       example: ".env.example",
+      // "env": "...",
+      // "transformMode": "..."
     }),
   ],
 };
@@ -152,6 +160,8 @@ module.exports = {
   plugins: [
     require("@import-meta-env/unplugin").webpack({
       example: ".env.example",
+      // "env": "...",
+      // "transformMode": "..."
     }),
   ],
 };
