@@ -74,8 +74,12 @@ export function transformDev({
     }
   }
 
+  if (s.hasChanged() === false) {
+    return;
+  }
+
   return {
     code: s.toString(),
-    map: s.generateMap(),
+    map: s.generateMap({ source: id, includeContent: true }),
   };
 }

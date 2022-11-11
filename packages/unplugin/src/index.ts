@@ -151,7 +151,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     transform(code, id) {
-      let result: { code: string; map: SourceMap };
+      let result: undefined | { code: string; map: SourceMap };
       debug && console.debug("==================");
       if (transformMode === "compile-time") {
         debug && console.debug("=== compile-time transform ===", id);
@@ -168,7 +168,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         });
 
         debug && console.debug("=== code after ===");
-        debug && console.debug(result.code);
+        debug && console.debug(result?.code ?? code);
       } else {
         debug && console.debug("=== runtime transform ===", id);
         debug && console.debug("=== before ===");
@@ -177,15 +177,11 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         result = transformProd({ code, id, example, meta, viteConfig });
 
         debug && console.debug("=== after ===");
-        debug && console.debug(result.code);
+        debug && console.debug(result?.code ?? code);
       }
       debug && console.debug("==================");
 
-      if (meta.framework === "webpack") {
-        return result.code;
-      } else {
-        return result;
-      }
+      return result?.code;
     },
 
     buildEnd() {
