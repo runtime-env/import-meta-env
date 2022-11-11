@@ -326,6 +326,14 @@ jobs:
           CUSTOM_TAG: ${{ matrix.package }}${{ steps.publish.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: steps.publish.outputs.type != 'none'
+        with:
+          tag_name: ${{ matrix.package }}${{ steps.publish.outputs.version }}
+          body: "Changelog: https://github.com/iendeavor/import-meta-env/blob/${{ matrix.package }}${{ steps.publish.outputs.version }}/packages/${{ matrix.package }}/CHANGELOG.md"
+          draft: true
+
   docs:
     name: Docs
 
