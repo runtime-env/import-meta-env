@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+.cache
+public/*
+!public/index.html
+.swc
+.env

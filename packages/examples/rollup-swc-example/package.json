@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "rollup-swc-example",
+  "scripts": {
+    "_test": "node test.js",
+    "dev:watch": "rollup -c -w",
+    "dev:start": "node ../serve.js -d public -p 3000",
+    "dev": "rimraf bundle && echo HELLO=import-meta-env > .env && concurrently npm:dev:*",
+    "build": "rimraf dist && npm run build:pre && npm run build:post",
+    "build:pre": "cross-env NODE_ENV=production rollup -c",
+    "build:post": "cp public/index.html dist/index.html",
+    "preview": "echo HELLO=import-meta-env > .env && import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@swc/core": "^1.3.14",
+    "concurrently": "7.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.68.0",
+    "unplugin-swc": "^1.3.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@import-meta-env/swc",
+          {
+            "example": ".env.example.public"
+          }
+        ]
+      ]
+    }
+  }
+}
