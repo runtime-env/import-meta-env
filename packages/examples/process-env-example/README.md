@@ -25,64 +25,26 @@ SECRET_NUMBER=
 
 ## Setup
 
-1. Install package:
+1. Install following packages:
 
    ```sh
-   $ npm i -D @import-meta-env/cli
    $ npm i -D @import-meta-env/unplugin
+   $ npm i @import-meta-env/cli
    ```
 
-1. Register `import-meta-env` plugin:
+1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
 
-   ```js
-   // next.config.js
+1. For this example, we need to config webpack in next.config.js.
 
-   /** @type {import('next').NextConfig} */
-   const nextConfig = {
-     // ...
+1. For this example, we need to add the special script tag to [\_app.js](./pages/_app.js):
 
-     webpack: (config) => {
-       config.plugins.push(
-         require("@import-meta-env/unplugin").webpack({
-           example: ".env.example.public",
-         })
-       );
-
-       return config;
-     },
-   };
-
-   module.exports = nextConfig;
-   ```
-
-1. List public environment variables under `.env.example.public`.
-
-   ```
-   # .env.example.public
-   HELLO=
-   ```
-
-1. Set environment variables:
-
-   ```sh
-   $ export HELLO=import-meta-env
-   $ export SECRET_NUMBER=42
-   ```
-
-1. Start dev server:
-
-   ```sh
-   $ npm run dev
-   ```
-
-1. Build production:
-
-   ```sh
-   $ npm run build
-   ```
-
-1. Preview production:
-
-   ```sh
-   $ npm run preview
+   ```jsx
+   export default function MyApp({ Component, pageProps }) {
+     return (
+       <>
+         <script id="import-meta-env"></script>
+         <Component {...pageProps} />
+       </>
+     );
+   }
    ```

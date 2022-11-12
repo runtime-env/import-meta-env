@@ -1,5 +1,5 @@
 module.exports = {
-  presets: [["@babel/preset-env", { targets: { node: "current" } }]],
+  presets: ["@babel/preset-env"],
   plugins: [
     ["module:@import-meta-env/babel", { example: ".env.example.public" }],
   ],

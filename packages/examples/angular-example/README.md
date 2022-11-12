@@ -1,21 +1,15 @@
 # Setup
 
-1. Install package:
+1. Install following packages:
 
    ```sh
-   $ npm i -D @angular-builders/custom-webpack
-   $ npm i -D @import-meta-env/cli
-   $ npm i -D @import-meta-env/typescript
    $ npm i -D @import-meta-env/unplugin
+   $ npm i -D @import-meta-env/cli
    ```
 
-1. Run `typescript` plugin
+1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
 
-   ```sh
-   npx import-meta-env-typescript -x .env.example.public --outDir src
-   ```
-
-1. Change builders:
+1. In this example, we configure webpack with [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack):
 
    ```json5
    // angular.json
@@ -54,8 +48,6 @@
    }
    ```
 
-1. Register `import-meta-env` plugin:
-
    ```js
    // extra-webpack.config.js
 
@@ -66,29 +58,4 @@
        })
      ]
    }
-   ```
-
-1. List public environment variables under `.env.example.public`.
-
-   ```
-   # .env.example.public
-   HELLO=
-   ```
-
-1. Set environment variables:
-
-   ```sh
-   $ export HELLO=import-meta-env
-   ```
-
-1. Start dev server:
-
-   ```sh
-   $ npm run start
-   ```
-
-1. Build production:
-
-   ```sh
-   $ npm run build
    ```

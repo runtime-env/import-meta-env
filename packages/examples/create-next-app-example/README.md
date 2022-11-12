@@ -1,13 +1,15 @@
 # Setup
 
-1. Install package:
+1. Install following packages:
 
    ```sh
-   $ npm i @import-meta-env/cli
    $ npm i -D @import-meta-env/unplugin
+   $ npm i @import-meta-env/cli
    ```
 
-1. Register `import-meta-env` plugin:
+1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
+
+1. For next, we need to configure webpack in next.config.js:
 
    ```js
    // next.config.js
@@ -30,33 +32,17 @@
    module.exports = nextConfig;
    ```
 
-1. List public environment variables under `.env.example.public`.
+1. Instead of index.html, we need to add the special script tag to [\_app.js](pages/_app.js):
 
-   ```
-   # .env.example.public
-   HELLO=
-   ```
+   ```jsx
+   function MyApp({ Component, pageProps }) {
+     return (
+       <>
+         <script id="import-meta-env"></script>
+         <Component {...pageProps} />
+       </>
+     );
+   }
 
-1. Set environment variables:
-
-   ```sh
-   $ export HELLO=import-meta-env
-   ```
-
-1. Start dev server:
-
-   ```sh
-   $ npm run dev
-   ```
-
-1. Build production:
-
-   ```sh
-   $ npm run build
-   ```
-
-1. Preview production:
-
-   ```sh
-   $ npm run preview
+   export default MyApp;
    ```

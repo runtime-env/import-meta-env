@@ -1,39 +1,11 @@
 # Setup
 
-1. Install package:
+> This example only shows compile-time transform for babel.
+
+1. Install following packages:
 
    ```sh
    $ npm i -D @import-meta-env/babel
    ```
 
-1. Register `babel` plugin:
-
-   ```js
-   // babel.config.js
-
-   module.exports = {
-     // ...
-     plugins: [
-       ["module:@import-meta-env/babel", { example: ".env.example.public" }],
-     ],
-   };
-   ```
-
-1. List public environment variables under `.env.example.public`.
-
-   ```
-   # .env.example.public
-   HELLO=
-   ```
-
-1. Set environment variables:
-
-   ```sh
-   $ export HELLO=import-meta-env
-   ```
-
-1. Run tests:
-
-   ```sh
-   $ npm run test
-   ```
+1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
