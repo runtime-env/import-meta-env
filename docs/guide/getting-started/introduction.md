@@ -121,6 +121,10 @@ Uncaught TypeError: Cannot read properties of undefined (reading 'API_BASE_URL')
 
 ## Full Example
 
+### Install Packages
+
+Install [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s and [runtime transform tool](/guide/getting-started/runtime-transform.html).
+
 ### Write your code
 
 ```ini
