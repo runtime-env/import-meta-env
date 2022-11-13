@@ -335,7 +335,6 @@ jobs:
         with:
           tag_name: ${{ matrix.package }}${{ steps.publish.outputs.version }}
           body: "Changelog: https://github.com/iendeavor/import-meta-env/blob/${{ matrix.package }}${{ steps.publish.outputs.version }}/packages/${{ matrix.package }}/CHANGELOG.md"
-          draft: true
 
   docs:
     name: Docs
