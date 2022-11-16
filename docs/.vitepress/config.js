@@ -2,7 +2,9 @@ import { defineConfig } from "vitepress";
 import fs from "fs";
 import path from "path";
 import { sentenceCase } from "change-case";
+import { SitemapStream } from "sitemap";
 
+const links = [];
 export default defineConfig({
   title: "Import-meta-env",
 
@@ -51,6 +53,28 @@ export default defineConfig({
       copyright:
         "Created by <a href='https://github.com/iendeavor' target='_blank'>Ernest</a>",
     },
+  },
+
+  transformHtml: (_, id, { pageData }) => {
+    if (!/[\\/]404\.html$/.test(id))
+      links.push({
+        // you might need to change this if not using clean urls mode
+        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, "$2"),
+        lastmod: pageData.lastUpdated,
+      });
+  },
+
+  buildEnd: ({ outDir }) => {
+    const sitemap = new SitemapStream({
+      hostname: "https://iendeavor.github.io/import-meta-env/",
+    });
+    const writeStream = fs.createWriteStream(
+      path.resolve(outDir, "sitemap.xml")
+    );
+    sitemap.pipe(writeStream);
+    links.forEach((link) => sitemap.write(link));
+    console.log("links", links);
+    sitemap.end();
   },
 });
 
