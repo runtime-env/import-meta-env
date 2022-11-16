@@ -74,7 +74,7 @@ fn resolve_env_from_file_name(file_name: &str) -> Vec<(String, String)> {
     let file_path = path::Path::new(".").join("cwd").join(file_name);
     let file_content = fs::read_to_string(&file_path).expect(&format!(
         "failed to load file content from {:?}",
-        &file_path
+        &file_name
     ));
     ini::Ini::load_from_str(file_content.as_str())
         .unwrap()
