@@ -1347,9 +1347,9 @@ dependencies = [
 
 [[package]]
 name = "swc_core"
-version = "0.43.3"
+version = "0.43.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0c0f2e82eff0c9861a3ab811239814c6bca300d282a1ec37430187d5399d1010"
+checksum = "fb5d1b1b09298c203bb27a4da67e0315cf98b44185a2b2465281594dd649e6ee"
 dependencies = [
  "once_cell",
  "swc_atoms",
@@ -1587,9 +1587,9 @@ dependencies = [
 
 [[package]]
 name = "swc_plugin_proxy"
-version = "0.22.19"
+version = "0.22.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ac15269c27edd456a5e6a218e917fa2ec009e1ea17ffd94cc2eaa7f96d68805"
+checksum = "f2ee9fe5bd09db8d48a9f7839124b502a53910345eaa38875beac51ff8f2fa21"
 dependencies = [
  "better_scoped_tls",
  "rkyv",
