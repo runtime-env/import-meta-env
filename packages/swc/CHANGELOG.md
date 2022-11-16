@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/iendeavor/import-meta-env/compare/swc0.3.0...swc0.3.1) (2022-11-16)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate swc_core to 0.40.51 ([60e700b](https://github.com/iendeavor/import-meta-env/commit/60e700ba0f2919615f22afb1f1727e4f2cbeaa03))
+* **deps:** update rust crate swc_core to 0.40.52 ([612a48e](https://github.com/iendeavor/import-meta-env/commit/612a48e75504eeb29c0bf268b6fb158eee51ad3f))
+* **deps:** update rust crate swc_core to 0.40.53 ([53848de](https://github.com/iendeavor/import-meta-env/commit/53848de24710efbf2046c7523e51440d4a38ec0a))
+* **deps:** update rust crate swc_core to 0.40.55 ([e87e400](https://github.com/iendeavor/import-meta-env/commit/e87e400000d576eaac7a15ad3c09325631733877))
+* **deps:** update rust crate swc_core to 0.40.56 ([e4aca03](https://github.com/iendeavor/import-meta-env/commit/e4aca03b47e01685baec6f9c6552ad5fe7245e55))
+* **deps:** update rust crate swc_core to 0.41.3 ([c4de18e](https://github.com/iendeavor/import-meta-env/commit/c4de18e200a66a58fc6b65db20559c7160509dd1))
+* **deps:** update rust crate swc_core to 0.43.0 ([e9bfe6f](https://github.com/iendeavor/import-meta-env/commit/e9bfe6fa279485b50c38196903145fcf2492878d))
+* **deps:** update rust crate swc_core to 0.43.15 ([68be35c](https://github.com/iendeavor/import-meta-env/commit/68be35c3fbe31f7152fe9e7de819c00500cbe934))
+* **deps:** update rust crate swc_core to 0.43.3 ([1616a55](https://github.com/iendeavor/import-meta-env/commit/1616a5546df3f413b0f62dc34a21f91272b82e6e))
+* show helpful error message ([c25c34e](https://github.com/iendeavor/import-meta-env/commit/c25c34e464f8873678b2f4085bd265e4e216ffe6))
+* show original file path ([48c44c8](https://github.com/iendeavor/import-meta-env/commit/48c44c8ab33ae4486ea45a35086f9deaa942fd3c))
+
 ## [0.3.0](https://github.com/iendeavor/import-meta-env/compare/swc0.1.0...swc0.3.0) (2022-11-06)
 
 
