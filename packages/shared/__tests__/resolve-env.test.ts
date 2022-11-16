@@ -122,7 +122,7 @@ describe("resolveEnv", () => {
 
       Here's what you can do:
       - Set them to environment variables on your system.
-      - Add them to .env file.
+      - Add them to ${envFilePath.replace(/\\/g, "\\\\")} file.
       - Remove them from ${envExampleFilePath.replace(/\\/g, "\\\\")} file.
       ",
         ],

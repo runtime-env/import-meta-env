@@ -56,7 +56,7 @@ export const resolveEnv = ({
       "",
       `Here's what you can do:`,
       `- Set them to environment variables on your system.`,
-      `- Add them to .env file.`,
+      `- Add them to ${envFilePath} file.`,
       `- Remove them from ${envExampleFilePath} file.`,
       "",
     ].join("\n");
