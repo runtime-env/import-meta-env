@@ -61,6 +61,7 @@ jobs:
             !.git/
             !**/node_modules/
             !packages/swc/target/
+            packages/swc/target/wasm32-wasi/release/import_meta_env_swc.wasm
             !packages/examples/
 
   lint:
