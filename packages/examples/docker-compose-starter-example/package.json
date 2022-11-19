@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "docker-compose-starter-example",
+  "scripts": {
+    "_test": "node test.js",
+    "dev:watch": "webpack --watch",
+    "dev:start": "node ../serve.js -d dist -p 3000",
+    "dev": "rimraf bundle && cross-env HELLO=import-meta-env NODE_ENV=development concurrently npm:dev:*",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "concurrently": "7.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "picocolors": "^1.0.0",
+    "puppeteer": "^13.5.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
