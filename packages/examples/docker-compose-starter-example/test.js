@@ -23,7 +23,7 @@ const colors = require("picocolors");
   ];
   const expected = `Hello: ${hello}`;
   const url = `http://localhost:${port}`;
-  const waitMs = 40000;
+  const waitMs = 60000;
   await runTest({
     commands,
     longRunningCommands,
