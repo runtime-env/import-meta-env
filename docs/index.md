@@ -17,6 +17,8 @@ hero:
       link: https://github.com/iendeavor/import-meta-env/tree/main/packages/examples
 
 features:
+  - title: Save Time & Money
+    details: Speed up your CI/CD pipeline, you no longer need to build multiple bundles for different stages.
   - title: Security First
     details: No environment variables will be exposed to clients unless you define it.
   - title: Compile Safe
