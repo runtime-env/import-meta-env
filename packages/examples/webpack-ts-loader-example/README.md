@@ -13,6 +13,6 @@
 
    ```js
    new HtmlWebpackPlugin({
-      templateContent: '<script id="import-meta-env"></script>',
+      templateContent: `<script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>`,
    }),
    ```

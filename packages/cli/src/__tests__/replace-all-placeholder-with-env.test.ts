@@ -1,4 +1,3 @@
-import { scriptPlaceholder } from "../../../shared";
 import { replaceAllPlaceholderWithEnv } from "../replace-all-placeholder-with-env";
 
 afterEach(() => {
@@ -6,9 +5,45 @@ afterEach(() => {
 });
 
 describe("replaceAllPlaceholderWithEnv", () => {
-  test("scriptPlaceholder", () => {
+  test("scriptPlaceholder (1)", () => {
     // arrange
-    const code = scriptPlaceholder;
+    const code = `JSON.parse('"import_meta_env_placeholder"')`;
+    const env = {
+      KEY1: "value1",
+      KEY2: "value2",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(
+      `"JSON.parse('{"KEY1":"value1","KEY2":"value2"}')"`
+    );
+  });
+
+  test("scriptPlaceholder (2)", () => {
+    // arrange
+    const code = `JSON.parse('\\"import_meta_env_placeholder\\"')`;
+
+    const env = {
+      KEY1: "value1",
+      KEY2: "value2",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(
+      `"JSON.parse('{\\"KEY1\\":\\"value1\\",\\"KEY2\\":\\"value2\\"}')"`
+    );
+  });
+
+  test("scriptPlaceholder (3)", () => {
+    // arrange
+    const code = `JSON.parse(\\'\\\\"import_meta_env_placeholder\\\\"\\')`;
+
     const env = {
       EXISTS1: "value1",
       EXISTS2: "value2",
@@ -19,7 +54,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
 
     // assert
     expect(result).toMatchInlineSnapshot(
-      `"<script>globalThis.import_meta_env={"EXISTS1":"value1","EXISTS2":"value2"}</script>"`
+      `"JSON.parse(\\'{\\\\"EXISTS1\\\\":\\\\"value1\\\\",\\\\"EXISTS2\\\\":\\\\"value2\\\\"}\\')"`
     );
   });
 });

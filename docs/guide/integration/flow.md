@@ -24,7 +24,7 @@ By default, when running above command, the CLI will create an `import-meta-env.
 
 declare type Import$Meta = {
   +env: $ReadOnly<{
-    API_BASE_URL: string,
+    NAME: string,
   }>,
 };
 ```

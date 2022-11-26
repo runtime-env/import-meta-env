@@ -7,7 +7,9 @@
     <title>Alpine.js App</title>
   </head>
   <body>
-    <script id="import-meta-env"></script>
+    <script>
+      globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');
+    </script>
     <div x-data>
       Hello:
       <span x-text="$store.import.meta.env.HELLO"></span>

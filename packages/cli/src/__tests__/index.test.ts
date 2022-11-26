@@ -97,7 +97,8 @@ describe("cli", () => {
       const code = `
 <html>
   <body>
-    ${scriptPlaceholder}
+    <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
+    <script>globalThis.import_meta_env=JSON.parse('\\"import_meta_env_placeholder\\"')</script>
     <script>${accessor}.FOO</script>
   </body>
 </html>
@@ -127,7 +128,8 @@ describe("cli", () => {
         .toMatchInlineSnapshot(`
         "<html>
           <body>
-            <script>globalThis.import_meta_env={"FOO":"bar"}</script>
+            <script>globalThis.import_meta_env=JSON.parse('{"FOO":"bar"}')</script>
+            <script>globalThis.import_meta_env=JSON.parse('{\\"FOO\\":\\"bar\\"}')</script>
             <script>Object.create(globalThis.import_meta_env || null).FOO</script>
           </body>
         </html>"
