@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
-      templateContent: '<script id="import-meta-env"></script>',
+      templateContent: `<script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>`,
     }),
     importMetaEnv.webpack({ example: ".env.example.public" }),
   ],

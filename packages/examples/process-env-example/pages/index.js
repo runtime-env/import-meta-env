@@ -1,8 +1,11 @@
+import { useEffect, useMemo, useState } from "react";
 import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Index() {
+  const env = useImportMetaEnv();
+
   const all = useSWR("/api/process-env", fetcher);
   const secret1 = useSWR("/api/process-env-secret1", fetcher);
   const secret2 = useSWR("/api/process-env-secret2", fetcher);
@@ -18,7 +21,7 @@ export default function Index() {
   return (
     <>
       <div>
-        import.meta.{"\0"}env.HELLO: {import.meta.env.HELLO}
+        import.meta.{"\0"}env.HELLO: {env.HELLO}
       </div>
       <div>process.env: {JSON.stringify(all.data)}</div>
       <div>process.env.SECRET1: {secret1.data}</div>
@@ -26,3 +29,13 @@ export default function Index() {
     </>
   );
 }
+
+const useImportMetaEnv = () => {
+  const [env, setEnv] = useState({ HELLO: "" });
+
+  useEffect(() => {
+    setEnv({ HELLO: import.meta.env.HELLO });
+  }, []);
+
+  return useMemo(() => env, [env]);
+};

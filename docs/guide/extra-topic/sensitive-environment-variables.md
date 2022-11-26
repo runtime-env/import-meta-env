@@ -8,7 +8,7 @@ To do this, you can create two separate example files and pass the public file t
 
 ```ini
 # .env.example.public
-API_BASE_URL=
+NAME=
 ```
 
 ```ini
@@ -21,6 +21,6 @@ SECRET_KEY=
 You should use `process.env` to access sensitive environment variables in your code, since it's server-side only:
 
 ```js
-const API_BASE_URL = import.meta.env.API_BASE_URL;
+const NAME = import.meta.env.NAME;
 const SECRET_KEY = process.env.SECRET_KEY;
 ```

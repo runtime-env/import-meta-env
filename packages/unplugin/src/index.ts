@@ -6,7 +6,6 @@ import {
   getPackageManagerExecCommand,
   envFilePath as defaultEnvFilePath,
   createAccessorRegExp,
-  createScriptPlaceholderRegExp,
 } from "../../shared";
 import { PluginOptions } from "./types";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
@@ -82,10 +81,6 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug("==================");
 
         html = html.replace(createAccessorRegExp(""), "import.meta.env");
-
-        if (transformMode === "compile-time") {
-          html = html.replace(createScriptPlaceholderRegExp(), "");
-        }
 
         debug && console.debug("=== index.html after ===");
         debug && console.debug(html);

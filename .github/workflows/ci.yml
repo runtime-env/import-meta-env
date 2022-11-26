@@ -175,6 +175,7 @@ jobs:
           - "esbuild-starter-example"
           - "jest-example"
           - "mocha-example"
+          # - "nuxt-bridge-example"
           - "nx-react-example"
           - "process-env-example"
           - "rollup-plugin-babel-example"
@@ -187,6 +188,7 @@ jobs:
           - "vite-config-build-out-dir-example"
           - "vite-legacy-example"
           - "vite-preact-example"
+          # - "vite-qwik-example"
           - "vite-react-example"
           - "vite-solid-example"
           - "vite-starter-example"
@@ -242,6 +244,7 @@ jobs:
       matrix:
         example:
           - "@vue+cli@4-example"
+          - "create-nuxt-app-example"
         include:
           - os: ubuntu-latest
             node_version: 16

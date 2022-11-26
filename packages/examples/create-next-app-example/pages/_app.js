@@ -1,7 +1,13 @@
+import Script from "next/script";
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <script id="import-meta-env"></script>
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')`,
+        }}
+      />
       <Component {...pageProps} />
     </>
   );

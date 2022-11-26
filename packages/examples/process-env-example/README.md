@@ -42,7 +42,9 @@ SECRET_NUMBER=
    export default function MyApp({ Component, pageProps }) {
      return (
        <>
-         <script id="import-meta-env"></script>
+         <script>
+           globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')
+         </script>
          <Component {...pageProps} />
        </>
      );

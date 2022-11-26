@@ -17,7 +17,7 @@
 
    See the [`.env.example file`](#env-example-file) section for details.
 
-1. Add a special script tag to be able to inject environment variables later:
+1. Add a special expression to be able to inject environment variables later:
 
    ```diff
    <!-- public/index.html -->
@@ -25,12 +25,12 @@
    <html lang="en">
      <head>
        <meta charset="UTF-8" />
-   +   <script id="import-meta-env"></script>
+   +   <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
      </head>
    </html>
    ```
 
-   See the [special script tag](#special-script-tag) section for details.
+   See the [special expression](#special-expression) section for details.
 
 1. Obtain the environment variable:
 
@@ -80,7 +80,7 @@
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-         <script id="import-meta-env"></script>
+         <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
          <script defer src="main.js"></script>
        </head>
      </html>
@@ -114,7 +114,7 @@
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-         <script id="import-meta-env"></script>
+         <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
          <script defer="defer" src="main.js"></script>
        </head>
      </html>
@@ -162,9 +162,9 @@
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-     -   <script id="import-meta-env"></script>
+     -   <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
      +   <script>
-     +     globalThis.import_meta_env = { NAME: "world" };
+     +     globalThis.import_meta_env = JSON.parse('{"NAME":"world"}');
      +   </script>
          <script defer="defer" src="main.js"></script>
        </head>
@@ -185,12 +185,12 @@ Full working example can be found [here](https://github.com/iendeavor/import-met
 By default, `Import-meta-env` will load environment variables from your system and the `.env` file (you can change or disable this using `env` option):
 
 ```sh
-$ export API_BASE_URL=https://example.com
+$ export NAME=world
 ```
 
 ```ini
 # .env
-API_BASE_URL=https://example.com
+NAME=world
 ```
 
 ## .env.example File
@@ -200,16 +200,16 @@ To prevent accidentally leaking environment variables to the client, only keys l
 For example, if you have these config:
 
 ```sh
-$ export API_BASE_URL=https://example.com
+$ export NAME=world
 $ export SECRET_KEY=****
 ```
 
 ```ini
 # .env.example
-API_BASE_URL=this-value-can-be-anything
+NAME=this-value-can-be-anything
 ```
 
-then only `API_BASE_URL` will be exposed to your client source code, but `SECRET_KEY` will not.
+then only `NAME` will be exposed to your client source code, but `SECRET_KEY` will not.
 
 ::: info
 For security reason, the `example` option does not have default value, you have to explicitly define it.
@@ -258,9 +258,15 @@ Since [compile-time transform plugins](/guide/getting-started/compile-time-trans
 
 Usually, you don't need to define it explicitly, because `Import-meta-env` determines it automatically based on your environment variables (e.g., `process.env.NODE_ENV`). See [API](/api) for details.
 
-### Special Script Tag
+### Special Expression
 
-In order to inject environment variables in production, you also need to add a special script tag:
+In order to inject environment variables in production, you also need to add a special expression in your app:
+
+```js
+globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');
+```
+
+We encourage you to put this special expression in your `index.html` because the `Cache-Control` header is usually set to `no-cache` when requesting `index.html`:
 
 ```html
 <!DOCTYPE html>
@@ -271,24 +277,28 @@ In order to inject environment variables in production, you also need to add a s
   </head>
   <body>
     ...
-    <!-- Add this script tag -->
-    <script id="import-meta-env"></script>
+    <script>
+      globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');
+    </script>
     <script src="src/index.js"></script>
   </body>
 </html>
 ```
 
 ::: info
-This script tag will be statically replaced, you should not add extra attributes to it, for example, the following script tags will be ignored:
+The value of the expression will be statically replaced, the following will not work:
 
-```html
-<script defer id="import-meta-env"></script>
+```js
+globalThis.import_meta_env = JSON.parse('"import_meta_env" + "_placeholder"');
+
+const placeholder = '"import_meta_env_placeholder"';
+globalThis.import_meta_env = JSON.parse(placeholder);
 ```
 
 :::
 
 ::: info
-This script tag should be placed before your entry script, otherwise your code will end up with a `TypeError`:
+This expression should be placed before or at the top of your entry script, otherwise your code will end up with a `TypeError`:
 
 ```txt
 Uncaught TypeError: Cannot read properties of undefined (reading 'NAME')
