@@ -1,8 +1,8 @@
 #!/bin/bash
-set -e
 
 cd /app
-./import-meta-env -x .env.example.public
+# Inject environment variables to index.html
+./import-meta-env-alpine -x .env.example -o dist/index.html || exit 1
 
 cd /app/dist
 nginx -g "daemon off;"

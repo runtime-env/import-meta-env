@@ -12,38 +12,36 @@
 
    ```ini
    # .env.example
-   API_BASE_URL=
+   NAME=
    ```
 
    See the [`.env.example file`](#env-example-file) section for details.
 
-1. Obtain the environment variable:
-
-   ```js
-   // src/index.js
-   console.log(import.meta.env.API_BASE_URL);
-   ```
-
-   See the [syntax](#syntax) section for details.
-
 1. Add a special script tag to be able to inject environment variables later:
 
-   ```html
+   ```diff
    <!-- public/index.html -->
    <!DOCTYPE html>
    <html lang="en">
      <head>
        <meta charset="UTF-8" />
+   +   <script id="import-meta-env"></script>
      </head>
-     <body>
-       <!-- Add this tag: -->
-       <script id="import-meta-env"></script>
-       <script src="src/index.js"></script>
-     </body>
    </html>
    ```
 
    See the [special script tag](#special-script-tag) section for details.
+
+1. Obtain the environment variable:
+
+   ```diff
+   // src/index.js
+   document.querySelector("body").innerHTML = `
+   + <h1>Hello, ${import.meta.env.NAME}</h1>
+   `;
+   ```
+
+   See the [syntax](#syntax) section for details.
 
 ### Transform it
 
@@ -52,14 +50,14 @@
   1. Define environment variables:
 
      ```sh
-     $ export API_BASE_URL=https://dev.example.com
+     $ export NAME=world
      ```
 
      or
 
      ```ini
      # .env
-     API_BASE_URL=https://dev.example.com
+     NAME=world
      ```
 
      See the [`.env` file](#env-file) section for details.
@@ -77,23 +75,23 @@
      ```
 
      ```diff
-     // dist/index.js
-     - console.log(import.meta.env.API_BASE_URL);
-     + console.log("https://dev.example.com");
-     ```
-
-     ```diff
      <!-- dist/index.html -->
      <!DOCTYPE html>
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
+         <script id="import-meta-env"></script>
+         <script defer src="main.js"></script>
        </head>
-       <body>
-     -   <script id="import-meta-env"></script>
-         <script src="dist/index.js"></script>
-       </body>
      </html>
+     ```
+
+     ```diff
+     // dist/main.js
+     // ...
+     - <h1>Hello, ${import.meta.env.NAME}</h1>
+     + <h1>Hello, ${"world"}</h1>
+     // ...
      ```
 
 - In production:
@@ -111,23 +109,23 @@
      ```
 
      ```diff
-     // dist/index.js
-     - console.log(import.meta.env.API_BASE_URL);
-     + console.log(Object.create(globalThis.import_meta_env || null).API_BASE_URL);
-     ```
-
-     ```diff
      <!-- dist/index.html -->
      <!DOCTYPE html>
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-       </head>
-       <body>
          <script id="import-meta-env"></script>
-         <script src="dist/index.js"></script>
-       </body>
+         <script defer="defer" src="main.js"></script>
+       </head>
      </html>
+     ```
+
+     ```diff
+     // dist/main.js
+     // ...
+     - <h1>Hello, ${import.meta.env.NAME}</h1>
+     + <h1>Hello, ${Object.create(globalThis.import_meta_env || null).NAME}</h1>
+     // ...
      ```
 
   1. Install [runtime transform tool](/guide/getting-started/runtime-transform.html).
@@ -141,25 +139,21 @@
      ```
      # Dockerfile
      RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
-       -t node16-alpine \
+       -t node18-alpine \
        -o import-meta-env-alpine
      ```
 
   1. Before starting your container, define environment variables:
 
-     ```bash
-     $ docker run --env API_BASE_URL=https://example.com ...
+     ```sh
+     $ docker run --env NAME=world ...
      ```
 
   1. Transform it again (on the container startup) using the packaged excutable:
 
      ```sh
-     $ ./import-meta-env-alpine -x .env.example
-     ```
-
-     ```diff
-     // dist/index.js
-     console.log(Object.create(globalThis.import_meta_env || null).API_BASE_URL);
+     # start.sh
+     ./import-meta-env-alpine -x .env.example -o dist/index.html || exit 1
      ```
 
      ```diff
@@ -168,15 +162,20 @@
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-       </head>
-       <body>
      -   <script id="import-meta-env"></script>
      +   <script>
-     +     globalThis.import_meta_env = { API_BASE_URL: "https://example.com" };
+     +     globalThis.import_meta_env = { NAME: "world" };
      +   </script>
-         <script src="dist/index.js"></script>
-       </body>
+         <script defer="defer" src="main.js"></script>
+       </head>
      </html>
+     ```
+
+     ```diff
+     // dist/main.js
+     // ...
+     <h1>Hello, ${Object.create(globalThis.import_meta_env || null).NAME}</h1>
+     // ...
      ```
 
 Full working example can be found [here](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example).
@@ -185,7 +184,7 @@ Full working example can be found [here](https://github.com/iendeavor/import-met
 
 By default, `Import-meta-env` will load environment variables from your system and the `.env` file (you can change or disable this using `env` option):
 
-```bash
+```sh
 $ export API_BASE_URL=https://example.com
 ```
 
@@ -200,7 +199,7 @@ To prevent accidentally leaking environment variables to the client, only keys l
 
 For example, if you have these config:
 
-```bash
+```sh
 $ export API_BASE_URL=https://example.com
 $ export SECRET_KEY=****
 ```
@@ -225,7 +224,6 @@ Since any environment variables exposed to your source code will end up in your 
 `Import-meta-env` exposes your environment variables on special environment variable expressions:
 
 ```js
-import.meta.env.API_BASE_URL;
 import.meta.env.FOO;
 import.meta.env.BAR;
 // ...
@@ -237,7 +235,7 @@ Since these environment variables expression are statically transformed. It is t
 In other words, the following are **invalid**:
 
 - Entire object access, i.e. `import.meta.env`
-- Computed key access, e.g. `import.meta.env["API_BASE_URL"]`
+- Computed key access, e.g. `import.meta.env["FOO"]`
   :::
 
 ## Transform
@@ -262,7 +260,7 @@ Usually, you don't need to define it explicitly, because `Import-meta-env` deter
 
 ### Special Script Tag
 
-In order to inject environment variables later, you also need to add a special script tag:
+In order to inject environment variables in production, you also need to add a special script tag:
 
 ```html
 <!DOCTYPE html>
@@ -273,6 +271,7 @@ In order to inject environment variables later, you also need to add a special s
   </head>
   <body>
     ...
+    <!-- Add this script tag -->
     <script id="import-meta-env"></script>
     <script src="src/index.js"></script>
   </body>
@@ -292,7 +291,7 @@ This script tag will be statically replaced, you should not add extra attributes
 This script tag should be placed before your entry script, otherwise your code will end up with a `TypeError`:
 
 ```txt
-Uncaught TypeError: Cannot read properties of undefined (reading 'API_BASE_URL')
+Uncaught TypeError: Cannot read properties of undefined (reading 'NAME')
   at ...
 ```
 

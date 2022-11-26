@@ -5,7 +5,7 @@ const colors = require("picocolors");
 
 (async () => {
   const port = await getPort();
-  const hello = Math.random();
+  const name = Math.random();
   copyFileSync(
     "../../cli/import-meta-env-cli-test.tgz",
     "./import-meta-env-cli-test.tgz"
@@ -22,13 +22,13 @@ const colors = require("picocolors");
     stdio: "inherit",
   });
   const containerId = childProcess
-    .execSync(`docker run -d -p ${port}:80 --env HELLO=${hello} ${image}`)
+    .execSync(`docker run -d -p ${port}:80 --env NAME=${name} ${image}`)
     .toString()
     .trim();
 
   const commands = [];
   const longRunningCommands = [];
-  const expected = `Hello: ${hello}`;
+  const expected = `Hello, ${name}`;
   const url = `http://localhost:${port}`;
   const waitMs = 1000;
   await runTest({

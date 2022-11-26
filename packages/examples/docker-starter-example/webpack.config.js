@@ -1,15 +1,13 @@
-const importMetaEnv = require("@import-meta-env/unplugin");
+const path = require("path");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const importMetaEnv = require("@import-meta-env/unplugin");
 
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
-      templateContent: '<script id="import-meta-env"></script>',
+      template: path.resolve(__dirname, "public", "index.html"),
     }),
-    importMetaEnv.webpack({ example: ".env.example.public" }),
+    importMetaEnv.webpack({ example: ".env.example" }),
   ],
-  optimization: {
-    // Make output files easier to read.
-    minimize: false,
-  },
 };
