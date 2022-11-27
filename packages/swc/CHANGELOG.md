@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/swc0.3.0...swc0.4.0) (2022-11-27)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate serde_json to 1.0.88 ([9a9fd9e](https://github.com/iendeavor/import-meta-env/commit/9a9fd9e68772fc2cf90bd5e9854eb72bd3968693))
+* **deps:** update rust crate serde_json to 1.0.89 ([7cd719e](https://github.com/iendeavor/import-meta-env/commit/7cd719ea590c8e3e37fef1f646f6fc32b03c7cb4))
+* **deps:** update rust crate swc_core to 0.40.51 ([60e700b](https://github.com/iendeavor/import-meta-env/commit/60e700ba0f2919615f22afb1f1727e4f2cbeaa03))
+* **deps:** update rust crate swc_core to 0.40.52 ([612a48e](https://github.com/iendeavor/import-meta-env/commit/612a48e75504eeb29c0bf268b6fb158eee51ad3f))
+* **deps:** update rust crate swc_core to 0.40.53 ([53848de](https://github.com/iendeavor/import-meta-env/commit/53848de24710efbf2046c7523e51440d4a38ec0a))
+* **deps:** update rust crate swc_core to 0.40.55 ([e87e400](https://github.com/iendeavor/import-meta-env/commit/e87e400000d576eaac7a15ad3c09325631733877))
+* **deps:** update rust crate swc_core to 0.40.56 ([e4aca03](https://github.com/iendeavor/import-meta-env/commit/e4aca03b47e01685baec6f9c6552ad5fe7245e55))
+* **deps:** update rust crate swc_core to 0.41.3 ([c4de18e](https://github.com/iendeavor/import-meta-env/commit/c4de18e200a66a58fc6b65db20559c7160509dd1))
+* **deps:** update rust crate swc_core to 0.43.0 ([e9bfe6f](https://github.com/iendeavor/import-meta-env/commit/e9bfe6fa279485b50c38196903145fcf2492878d))
+* **deps:** update rust crate swc_core to 0.43.15 ([68be35c](https://github.com/iendeavor/import-meta-env/commit/68be35c3fbe31f7152fe9e7de819c00500cbe934))
+* **deps:** update rust crate swc_core to 0.43.16 ([713ec2c](https://github.com/iendeavor/import-meta-env/commit/713ec2c7652490fc1e04551d67d71f177861119f))
+* **deps:** update rust crate swc_core to 0.43.18 ([805027e](https://github.com/iendeavor/import-meta-env/commit/805027e039057da3e9ecb5f2598946837ea6e33a))
+* **deps:** update rust crate swc_core to 0.43.23 ([51707d2](https://github.com/iendeavor/import-meta-env/commit/51707d234dd89d5d030434b03cf7b7c83412ee2d))
+* **deps:** update rust crate swc_core to 0.43.24 ([574cb2d](https://github.com/iendeavor/import-meta-env/commit/574cb2df725f7e58baf03cfb444a2364fddc19bc))
+* **deps:** update rust crate swc_core to 0.43.25 ([a6a212c](https://github.com/iendeavor/import-meta-env/commit/a6a212cde29456df9e27ec8c247e26752d3a1d1c))
+* **deps:** update rust crate swc_core to 0.43.27 ([c7b5465](https://github.com/iendeavor/import-meta-env/commit/c7b5465dab35ff84b4e3dfc7b3397635022e8795))
+* **deps:** update rust crate swc_core to 0.43.29 ([cc1b9bc](https://github.com/iendeavor/import-meta-env/commit/cc1b9bc27f0272d6466736d86ab641e9261e0143))
+* **deps:** update rust crate swc_core to 0.43.3 ([1616a55](https://github.com/iendeavor/import-meta-env/commit/1616a5546df3f413b0f62dc34a21f91272b82e6e))
+* **deps:** update rust crate swc_core to 0.43.30 ([b03ad6d](https://github.com/iendeavor/import-meta-env/commit/b03ad6da025a2677ccf27bf7c8c74a8896c7a682))
+* **deps:** update rust crate swc_core to 0.43.31 ([3c3e867](https://github.com/iendeavor/import-meta-env/commit/3c3e867d5a77d07e7735361083197aff4cb593e0))
+* show helpful error message ([10ee301](https://github.com/iendeavor/import-meta-env/commit/10ee301d783312baf56f4cfa5c1dbc4e157f6e0c))
+* show original file path ([1886789](https://github.com/iendeavor/import-meta-env/commit/188678956f0a1f3b611b08646fcf58f5325c1fa3))
+
 ### [0.3.1](https://github.com/iendeavor/import-meta-env/compare/swc0.3.0...swc0.3.1) (2022-11-16)
 
 
