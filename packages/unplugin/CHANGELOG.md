@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/unplugin0.3.2...unplugin0.4.0) (2022-11-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* you need to replace script tag with another placeholder
+
+### Features
+
+* support for programmatically injecting scripts ([8da281d](https://github.com/iendeavor/import-meta-env/commit/8da281dd6eae0f43d4db92e1bbfe28f70f1065bf))
+
+
+### Bug Fixes
+
+* **deps:** update dependency unplugin to v1 ([47f24fa](https://github.com/iendeavor/import-meta-env/commit/47f24fafd62f7b31ed71d7ac1208c73c1f83cc98))
+
 ### [0.3.2](https://github.com/iendeavor/import-meta-env/compare/unplugin0.3.1...unplugin0.3.2) (2022-11-13)
 
 
