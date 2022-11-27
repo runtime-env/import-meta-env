@@ -37,6 +37,10 @@ export default defineConfig({
         link: "/api",
       },
       {
+        text: "Migration",
+        link: "/migration",
+      },
+      {
         text: "Examples",
         link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
       },
