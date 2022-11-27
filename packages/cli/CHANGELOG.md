@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/cli0.3.0...cli0.4.0) (2022-11-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* you need to replace script tag with another placeholder
+
+### Features
+
+* support for programmatically injecting scripts ([8da281d](https://github.com/iendeavor/import-meta-env/commit/8da281dd6eae0f43d4db92e1bbfe28f70f1065bf))
+
 ## [0.3.0](https://github.com/iendeavor/import-meta-env/compare/cli0.2.2...cli0.3.0) (2022-11-06)
 
 
