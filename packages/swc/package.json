@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/swc",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/swc#readme",
   "peerDependencies": {
-    "@import-meta-env/cli": "^0.3.0"
+    "@import-meta-env/cli": "^0.4.0"
   },
   "peerDependenciesMeta": {
     "@import-meta-env/cli": {
