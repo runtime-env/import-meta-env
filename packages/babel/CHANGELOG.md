@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/babel0.3.0...babel0.4.0) (2022-11-27)
+
 ## [0.3.0](https://github.com/iendeavor/import-meta-env/compare/babel0.2.3...babel0.3.0) (2022-11-06)
 
 
