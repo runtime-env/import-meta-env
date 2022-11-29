@@ -1,5 +1,5 @@
 import serialize from "serialize-javascript";
-import { createScriptPlaceholderRegExp } from "../../shared";
+import { createScriptPlaceholderRegExp } from "./constant";
 
 export const replaceAllPlaceholderWithEnv = ({
   code,

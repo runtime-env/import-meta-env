@@ -1,4 +1,4 @@
-import { createScriptPlaceholderRegExp } from "../../shared";
+import { createScriptPlaceholderRegExp } from "./constant";
 
 export const shouldInjectEnv = (code: string): boolean => {
   return (

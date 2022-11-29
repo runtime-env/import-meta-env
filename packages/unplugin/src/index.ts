@@ -5,8 +5,8 @@ import {
   resolveEnv,
   getPackageManagerExecCommand,
   envFilePath as defaultEnvFilePath,
-  createAccessorRegExp,
 } from "../../shared";
+import { createAccessorRegExp } from "./constant";
 import { PluginOptions } from "./types";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
 import { transformDev } from "./transform-dev";
