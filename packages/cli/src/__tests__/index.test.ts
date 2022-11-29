@@ -1,7 +1,7 @@
 import tmp from "tmp";
 import { main } from "..";
 import { Args, createCommand } from "../create-command";
-import { resolveEnv, accessor, scriptPlaceholder } from "../../../shared";
+import { resolveEnv, accessor } from "../../../shared";
 import { resolveEnvExample } from "../../../shared/resolve-env-example";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 

@@ -1,4 +1,3 @@
-import { scriptPlaceholder } from "../../../shared";
 import { shouldInjectEnv } from "../should-inject-env";
 
 afterEach(() => {
