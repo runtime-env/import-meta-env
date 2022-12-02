@@ -34,7 +34,7 @@ For example, you may host your application on a [Alpine Linux nginx image](https
 
 ```bash
 $ npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
-  --target node18-alpine \
+  --target node18-alpine-x64 \
   --output import-meta-env-alpine
 ```
 

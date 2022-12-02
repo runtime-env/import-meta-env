@@ -139,8 +139,8 @@
      ```
      # Dockerfile
      RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
-       -t node18-alpine \
-       -o import-meta-env-alpine
+       --target node18-alpine-x64 \
+       --output import-meta-env-alpine
      ```
 
   1. Before starting your container, define environment variables:

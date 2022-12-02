@@ -11,7 +11,7 @@ RUN npm i -D import-meta-env-cli-test.tgz
 RUN npm i -D import-meta-env-unplugin-test.tgz
 
 RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
-  -t node18-alpine \
+  -t node18-alpine-x64 \
   -o import-meta-env-alpine
 COPY webpack.config.js .env.example ./
 COPY src/* ./src/
