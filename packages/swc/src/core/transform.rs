@@ -256,7 +256,7 @@ mod tests {
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
             env_example: vec![(String::from("EXISTS"), String::from("")),],
         })),
-        spec_runtime_mode_mode_import_meta_env_property,
+        spec_runtime_mode_import_meta_env_property,
         // Input codes
         r#"
         const exists = import.meta.env.EXISTS;
