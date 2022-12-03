@@ -2,7 +2,7 @@
 
 ## CLI
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg)](https://www.npmjs.com/package/@import-meta-env/cli)
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/cli)
 
 ### Installation
 

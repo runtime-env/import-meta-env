@@ -19,7 +19,7 @@ There are some exceptions:
 
 ## Babel Plugin
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg)](https://www.npmjs.com/package/@import-meta-env/babel)
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/babel)
 
 ### Installation
 
@@ -48,7 +48,7 @@ Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main
 
 ## SWC Plugin
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/swc.svg)](https://www.npmjs.com/package/@import-meta-env/swc)
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/swc.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/swc)
 
 ### Installation
 
@@ -84,7 +84,7 @@ Related examples: [swc](https://github.com/iendeavor/import-meta-env/blob/main/p
 
 ## Unplugin
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg)](https://www.npmjs.com/package/@import-meta-env/unplugin)
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/unplugin.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/unplugin)
 
 ### Installation
 

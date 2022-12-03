@@ -4,7 +4,7 @@ Generate declaration file from `.env.example`.
 
 ## Installation
 
-[![NPM version](https://img.shields.io/npm/v/@import-meta-env/typescript.svg)](https://www.npmjs.com/package/@import-meta-env/typescript)
+[![NPM version](https://img.shields.io/npm/v/@import-meta-env/typescript.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/typescript)
 
 ```bash
 $ npm i -D @import-meta-env/typescript
