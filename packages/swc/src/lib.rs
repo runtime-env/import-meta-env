@@ -3,7 +3,10 @@ mod core;
 
 use crate::{
     config::Config,
-    core::{mode::Mode, resolve_env::resolve_env, transform::TransformImportMetaEnv},
+    core::{
+        mode::Mode, resolve_env::resolve_env, resolve_env::resolve_env_example,
+        transform::TransformImportMetaEnv,
+    },
 };
 use config::TransformMode;
 use swc_core::{
@@ -45,12 +48,12 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
         TransformMode::CompileTime => program.fold_with(&mut as_folder(
             TransformImportMetaEnv::new(Mode::CompileTime {
                 env: resolve_env(config.env, config.example.clone()),
-                env_example: resolve_env(Some(config.example.clone()), config.example.clone()),
+                env_example: resolve_env_example(config.example.clone()),
             }),
         )),
         TransformMode::Runtime => {
             program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-                env_example: resolve_env(Some(config.example.clone()), config.example.clone()),
+                env_example: resolve_env_example(config.example.clone()),
             })))
         }
     }

@@ -68,6 +68,12 @@ Here's what you can do:
     filtered_env
 }
 
+pub fn resolve_env_example(env_example_file_name: String) -> Vec<(String, String)> {
+    let env_example = resolve_env_from_file_name(&env_example_file_name);
+
+    env_example
+}
+
 fn resolve_env_from_file_name(file_name: &str) -> Vec<(String, String)> {
     let mut env = vec![];
 
@@ -90,29 +96,28 @@ fn resolve_env_from_file_name(file_name: &str) -> Vec<(String, String)> {
 
 #[cfg(test)]
 mod tests {
-    use super::resolve_env;
+    use super::{resolve_env, resolve_env_example};
     use std::env::set_current_dir;
     use std::fs::{create_dir, File};
     use std::io::Write;
     use tempfile::tempdir;
 
     #[test]
-    fn spec_resolve_env() {
+    fn spec_resolve_env_some() {
         // arrange
         let dir = tempdir().unwrap();
         create_dir(dir.path().join("cwd")).unwrap();
         set_current_dir(dir.path()).unwrap();
-        let env_file_name = ".env".to_owned();
+        let env_file_name = ".foo".to_owned();
         let mut env_file: File = File::create(dir.path().join("cwd").join(&env_file_name)).unwrap();
         write!(
             env_file,
             "
-            COMPILE_TIME=compile-time
+            COMPILE_TIME=some
             SECRET=***
             "
         )
         .unwrap();
-
         let env_example_file_name = ".env.example".to_owned();
         let mut env_example_file: File =
             File::create(dir.path().join("cwd").join(&env_example_file_name)).unwrap();
@@ -130,7 +135,68 @@ mod tests {
         // assert
         assert_eq!(
             result,
-            vec![("COMPILE_TIME".to_owned(), "compile-time".to_owned()),]
+            vec![("COMPILE_TIME".to_owned(), "some".to_owned()),]
         )
+    }
+
+    #[test]
+    fn spec_resolve_env_none() {
+        // arrange
+        let dir = tempdir().unwrap();
+        create_dir(dir.path().join("cwd")).unwrap();
+        set_current_dir(dir.path()).unwrap();
+        let env_file_name = ".env".to_owned();
+        let mut env_file: File = File::create(dir.path().join("cwd").join(&env_file_name)).unwrap();
+        write!(
+            env_file,
+            "
+            COMPILE_TIME=none
+            SECRET=***
+            "
+        )
+        .unwrap();
+        let env_example_file_name = ".env.example".to_owned();
+        let mut env_example_file: File =
+            File::create(dir.path().join("cwd").join(&env_example_file_name)).unwrap();
+        write!(
+            env_example_file,
+            "
+            COMPILE_TIME=
+            "
+        )
+        .unwrap();
+
+        // act
+        let result = resolve_env(None, env_example_file_name);
+
+        // assert
+        assert_eq!(
+            result,
+            vec![("COMPILE_TIME".to_owned(), "none".to_owned()),]
+        )
+    }
+
+    #[test]
+    fn spec_resolve_env_example() {
+        // arrange
+        let dir = tempdir().unwrap();
+        create_dir(dir.path().join("cwd")).unwrap();
+        set_current_dir(dir.path()).unwrap();
+        let env_example_file_name = ".env.example".to_owned();
+        let mut env_example_file: File =
+            File::create(dir.path().join("cwd").join(&env_example_file_name)).unwrap();
+        write!(
+            env_example_file,
+            "
+            COMPILE_TIME=
+            "
+        )
+        .unwrap();
+
+        // act
+        let result = resolve_env_example(env_example_file_name);
+
+        // assert
+        assert_eq!(result, vec![("COMPILE_TIME".to_owned(), "".to_owned()),])
     }
 }

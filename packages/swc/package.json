@@ -14,7 +14,7 @@
     "prepack": "cp target/wasm32-wasi/release/import_meta_env_swc.wasm .",
     "pack": "rm -rf *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "release": "standard-version --skip.tag -t swc --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/swc@{{currentTag}}' --path .",
-    "test": "cargo test --all --color always"
+    "test": "cargo test --all --color always -- --test-threads 1"
   },
   "repository": {
     "type": "git",
