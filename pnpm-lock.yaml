@@ -120,7 +120,7 @@ importers:
   packages/unplugin:
     specifiers:
       '@types/node': 18.11.10
-      '@types/object-hash': 3.0.0
+      '@types/object-hash': 3.0.1
       magic-string: ^0.27.0
       object-hash: ^3.0.0
       picocolors: ^1.0.0
@@ -137,7 +137,7 @@ importers:
       unplugin: 1.0.0
     devDependencies:
       '@types/node': 18.11.10
-      '@types/object-hash': 3.0.0
+      '@types/object-hash': 3.0.1
       rollup: 3.5.1
       ts-node: 10.9.1_eoe7put6ewfbqpy6gs36tihw6y
       typescript: 4.9.3
@@ -2021,8 +2021,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@types/object-hash/3.0.0:
-    resolution: {integrity: sha512-lHH/AKLbBWaKUYuWzzB1M/9XzN94AhG1B2wuoXPTLL6B4KLOfEfGOoTq2u5FVbqgnhCPpgPULr1qH1eYs68ZWA==}
+  /@types/object-hash/3.0.1:
+    resolution: {integrity: sha512-AeyooJR4pesRnPLXONFEpxrdvwYVkBiq26j4Uo4QYcJO2FQhAFmHHWBfRpEzwMtItz7q9JiD50s7HDbHS7PleQ==}
     dev: true
 
   /@types/prettier/2.7.1:
