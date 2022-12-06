@@ -25,7 +25,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.1
       typescript: 4.9.3
-      vitepress: 1.0.0-alpha.29
+      vitepress: 1.0.0-alpha.30
       yaml: 2.1.3
     devDependencies:
       '@babel/core': 7.20.5
@@ -49,7 +49,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.1
       typescript: 4.9.3
-      vitepress: 1.0.0-alpha.29_@types+node@18.11.11
+      vitepress: 1.0.0-alpha.30_@types+node@18.11.11
       yaml: 2.1.3
 
   packages/babel:
@@ -5131,6 +5131,7 @@ packages:
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
   /spdx-correct/3.1.1:
@@ -5587,8 +5588,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress/1.0.0-alpha.29_@types+node@18.11.11:
-    resolution: {integrity: sha512-oaRaeMLcN9M3Bxz97fFVF6Gzm3Aqtb0CijTt5TOW0XPzNPuKA0YpFnsmS97gdKmA+VztM6itRJ8K7JJuU0VS3g==}
+  /vitepress/1.0.0-alpha.30_@types+node@18.11.11:
+    resolution: {integrity: sha512-CjIqKkGAuvoP2IWBFIbYWyiMSHSGYvjPy7eDkdftawguv5a8w4AjM95VV4Lhyacev4AFcgK23FViibRluBMePw==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.0
