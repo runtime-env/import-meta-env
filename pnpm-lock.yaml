@@ -24,7 +24,7 @@ importers:
       sitemap: ^7.1.1
       standard-version: 9.5.0
       tmp: 0.2.1
-      typescript: 4.9.3
+      typescript: 4.9.4
       vitepress: 1.0.0-alpha.30
       yaml: 2.1.3
     devDependencies:
@@ -48,7 +48,7 @@ importers:
       sitemap: 7.1.1
       standard-version: 9.5.0
       tmp: 0.2.1
-      typescript: 4.9.3
+      typescript: 4.9.4
       vitepress: 1.0.0-alpha.30_@types+node@18.11.11
       yaml: 2.1.3
 
@@ -93,13 +93,13 @@ importers:
       '@types/node': 18.11.11
       commander: ^9.0.0
       picocolors: ^1.0.0
-      typescript: 4.9.3
+      typescript: 4.9.4
     dependencies:
       commander: 9.4.1
       picocolors: 1.0.0
     devDependencies:
       '@types/node': 18.11.11
-      typescript: 4.9.3
+      typescript: 4.9.4
 
   packages/swc:
     specifiers: {}
@@ -109,13 +109,13 @@ importers:
       '@types/node': 18.11.11
       commander: ^9.0.0
       picocolors: ^1.0.0
-      typescript: 4.9.3
+      typescript: 4.9.4
     dependencies:
       commander: 9.4.1
       picocolors: 1.0.0
     devDependencies:
       '@types/node': 18.11.11
-      typescript: 4.9.3
+      typescript: 4.9.4
 
   packages/unplugin:
     specifiers:
@@ -126,7 +126,7 @@ importers:
       picocolors: ^1.0.0
       rollup: 3.6.0
       ts-node: 10.9.1
-      typescript: 4.9.3
+      typescript: 4.9.4
       unplugin: 1.0.0
       vite: 3.2.5
       webpack: 5.75.0
@@ -139,8 +139,8 @@ importers:
       '@types/node': 18.11.11
       '@types/object-hash': 3.0.1
       rollup: 3.6.0
-      ts-node: 10.9.1_zhirybrk4zoofuxp64necizyzy
-      typescript: 4.9.3
+      ts-node: 10.9.1_bspv7bpieoza2i5ctiw2ofswem
+      typescript: 4.9.4
       vite: 3.2.5_@types+node@18.11.11
       webpack: 5.75.0
 
@@ -5619,7 +5619,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-node/10.9.1_zhirybrk4zoofuxp64necizyzy:
+  /ts-node/10.9.1_bspv7bpieoza2i5ctiw2ofswem:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -5645,7 +5645,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 4.9.3
+      typescript: 4.9.4
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -5683,8 +5683,8 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typescript/4.9.3:
-    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
+  /typescript/4.9.4:
+    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
