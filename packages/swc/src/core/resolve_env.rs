@@ -77,7 +77,7 @@ mod tests {
     use tempfile::tempdir;
 
     #[test]
-    fn spec_resolve_env_some() {
+    fn spec_specify_env() {
         // arrange
         let dir = tempdir().unwrap();
         create_dir(dir.path().join("cwd")).unwrap();
@@ -114,7 +114,7 @@ mod tests {
     }
 
     #[test]
-    fn spec_resolve_env_none() {
+    fn spec_fallback_to_dot_env() {
         // arrange
         let dir = tempdir().unwrap();
         create_dir(dir.path().join("cwd")).unwrap();
@@ -148,5 +148,18 @@ mod tests {
             result,
             vec![("COMPILE_TIME".to_owned(), "none".to_owned()),]
         )
+    }
+
+    #[test]
+    #[should_panic]
+    fn spec_env_is_required() {
+        // arrange
+        let dir = tempdir().unwrap();
+        create_dir(dir.path().join("cwd")).unwrap();
+        set_current_dir(dir.path()).unwrap();
+        let env_example_file_name = ".env.example".to_owned();
+
+        // act
+        resolve_env(None, env_example_file_name);
     }
 }
