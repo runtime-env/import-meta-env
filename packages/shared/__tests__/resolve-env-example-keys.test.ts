@@ -3,6 +3,18 @@ import tmp from "tmp";
 import { resolveEnvExampleKeys } from "../resolve-env-example-keys";
 
 describe("resolveEnvExampleKeys", () => {
+  test("it should works", () => {
+    // arrange
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(envExampleFilePath, "FOO=file\nBAR=file");
+
+    // act
+    const envExampleKeys = resolveEnvExampleKeys({ envExampleFilePath });
+
+    // assert
+    expect(envExampleKeys).toEqual(["FOO", "BAR"]);
+  });
+
   test("resolved env cannot be mutate", () => {
     // arrange
     const envExampleFilePath = tmp.tmpNameSync();
