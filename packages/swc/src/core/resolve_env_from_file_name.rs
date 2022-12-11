@@ -34,21 +34,33 @@ mod tests {
         let dir = tempdir().unwrap();
         create_dir(dir.path().join("cwd")).unwrap();
         set_current_dir(dir.path()).unwrap();
-        let env_example_file_name = ".env.example".to_owned();
-        let mut env_example_file: File =
-            File::create(dir.path().join("cwd").join(&env_example_file_name)).unwrap();
+        let file_name = "file".to_owned();
+        let mut file: File = File::create(dir.path().join("cwd").join(&file_name)).unwrap();
         write!(
-            env_example_file,
+            file,
             "
-            COMPILE_TIME=
+            FOO=file
             "
         )
         .unwrap();
 
         // act
-        let result = resolve_env_from_file_name(env_example_file_name.as_str());
+        let result = resolve_env_from_file_name(file_name.as_str());
 
         // assert
-        assert_eq!(result, vec![("COMPILE_TIME".to_owned(), "".to_owned()),])
+        assert_eq!(result, vec![("FOO".to_owned(), "file".to_owned()),])
+    }
+
+    #[test]
+    #[should_panic]
+    fn spec_it_should_panic_if_env_example_is_not_found() {
+        // arrange
+        let dir = tempdir().unwrap();
+        create_dir(dir.path().join("cwd")).unwrap();
+        set_current_dir(dir.path()).unwrap();
+        let file_name = ".env.example".to_owned();
+
+        // act
+        resolve_env_from_file_name(file_name.as_str());
     }
 }
