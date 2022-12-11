@@ -4,7 +4,7 @@ mod core;
 use crate::{
     config::Config,
     core::{
-        mode::Mode, resolve_env::resolve_env, resolve_env::resolve_env_example,
+        mode::Mode, resolve_env::resolve_env, resolve_env_example::resolve_env_example,
         transform::TransformImportMetaEnv,
     },
 };
