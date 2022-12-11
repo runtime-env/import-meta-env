@@ -1,8 +1,8 @@
 import { Options } from "../types";
-import { resolveEnvExample } from "../../../shared/resolve-env-example";
+import { resolveEnvExampleKeys } from "../../../shared/resolve-env-example-keys";
 
 const createDeclaration = (options: Options) => {
-  const envExampleKeys = resolveEnvExample({
+  const envExampleKeys = resolveEnvExampleKeys({
     envExampleFilePath: options.example,
   });
   return [

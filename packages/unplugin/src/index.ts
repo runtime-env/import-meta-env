@@ -8,7 +8,7 @@ import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
-import { resolveEnvExample } from "packages/shared/resolve-env-example";
+import { resolveEnvExampleKeys } from "packages/shared/resolve-env-example-keys";
 import { SourceMap } from "magic-string";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
@@ -22,7 +22,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       `example option is required. Please specify it in the plugin options.`
     );
   }
-  const example = resolveEnvExample({ envExampleFilePath });
+  const envExampleKeys = resolveEnvExampleKeys({ envExampleFilePath });
 
   let transformMode: undefined | "compile-time" | "runtime" =
     options?.transformMode;
@@ -153,7 +153,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
           code,
           id,
           env,
-          example,
+          example: envExampleKeys,
           meta,
           viteConfig,
         });
@@ -165,7 +165,13 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug("=== before ===");
         debug && console.debug(code);
 
-        result = transformProd({ code, id, example, meta, viteConfig });
+        result = transformProd({
+          code,
+          id,
+          example: envExampleKeys,
+          meta,
+          viteConfig,
+        });
 
         debug && console.debug("=== after ===");
         debug && console.debug(result?.code ?? code);

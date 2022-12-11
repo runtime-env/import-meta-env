@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "fs";
 import { resolve } from "path";
 import { parse } from "dotenv";
 
-export const resolveEnvExample = ({
+export const resolveEnvExampleKeys = ({
   envExampleFilePath,
 }: {
   envExampleFilePath: string;

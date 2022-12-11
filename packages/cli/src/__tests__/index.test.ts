@@ -2,7 +2,7 @@ import tmp from "tmp";
 import { main } from "..";
 import { Args, createCommand } from "../create-command";
 import { resolveEnv, accessor } from "../../../shared";
-import { resolveEnvExample } from "../../../shared/resolve-env-example";
+import { resolveEnvExampleKeys } from "../../../shared/resolve-env-example-keys";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 
 let command = createCommand();
@@ -117,7 +117,7 @@ describe("cli", () => {
       const di = {
         command: new cmd() as typeof command,
         resolveEnv,
-        resolveEnvExample,
+        resolveEnvExampleKeys,
       };
 
       // act

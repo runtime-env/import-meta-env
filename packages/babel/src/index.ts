@@ -1,7 +1,7 @@
 import { declare } from "@babel/helper-plugin-utils";
 import type babelCore from "@babel/core";
 import { resolveEnv, accessor } from "../../shared";
-import { resolveEnvExample } from "../../shared/resolve-env-example";
+import { resolveEnvExampleKeys } from "../../shared/resolve-env-example-keys";
 import { PluginOptions } from "./types";
 
 export default declare<PluginOptions>(({ template, types }, options) => {
@@ -17,7 +17,7 @@ export default declare<PluginOptions>(({ template, types }, options) => {
       `example option is required. Please specify it in the plugin options.`
     );
   }
-  const envExample = resolveEnvExample({ envExampleFilePath });
+  const envExampleKeys = resolveEnvExampleKeys({ envExampleFilePath });
 
   const env =
     transformMode === "compile-time"
@@ -65,7 +65,9 @@ export default declare<PluginOptions>(({ template, types }, options) => {
         if (path.parentPath.node.object.object.meta.name !== "import") return;
 
         // import.meta.env.PUBLIC_PROPERTY
-        if (envExample.includes(path.parentPath.node.property.name) === false)
+        if (
+          envExampleKeys.includes(path.parentPath.node.property.name) === false
+        )
           return;
 
         if (transformMode === "compile-time") {
