@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/iendeavor/import-meta-env/compare/babel0.4.0...babel0.4.1) (2022-12-11)
+
+
+### Bug Fixes
+
+* should not load .env when env option is empty string ([7446f5f](https://github.com/iendeavor/import-meta-env/commit/7446f5f9adfc68e9c88191dfd9b0b7ab6f37fd4c))
+
 ## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/babel0.3.0...babel0.4.0) (2022-11-27)
 
 ## [0.3.0](https://github.com/iendeavor/import-meta-env/compare/babel0.2.3...babel0.3.0) (2022-11-06)
