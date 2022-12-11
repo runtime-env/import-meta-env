@@ -1,5 +1,6 @@
 // @ts-ignore: the dotenv package will be installed in each project
-import { config } from "dotenv";
+import fs from "fs";
+import { parse } from "dotenv";
 import { red, yellow } from "picocolors";
 
 export const resolveEnv = ({
@@ -9,36 +10,34 @@ export const resolveEnv = ({
   envFilePath: undefined | string;
   envExampleFilePath: string;
 }): Record<string, string> => {
+  envFilePath = envFilePath ?? ".env";
   const parsed = (() => {
     if (envFilePath === "") {
       return { ...process.env };
     }
 
-    const { parsed, error } = config({
-      path: envFilePath ?? ".env",
-    });
-
-    if (error !== undefined) {
+    if (fs.existsSync(envFilePath) === false) {
       return { ...process.env };
     }
+
+    const parsed = parse(fs.readFileSync(envFilePath, "utf8"));
 
     return Object.assign({}, parsed!, process.env);
   })();
 
   const parsedExample = (() => {
-    const { parsed, error } = config({ path: envExampleFilePath });
+    if (fs.existsSync(envExampleFilePath) === false) {
+      console.warn(
+        yellow(
+          `[import-meta-env]: ${envExampleFilePath} file not found, skip process.\n`
+        )
+      );
 
-    if (error === undefined) {
-      return parsed!;
+      return {};
     }
 
-    console.warn(
-      yellow(
-        `[import-meta-env]: ${envExampleFilePath} file not found, skip process.\n`
-      )
-    );
-
-    return {};
+    const parsed = parse(fs.readFileSync(envExampleFilePath, "utf8"));
+    return parsed;
   })();
 
   const missingKeys: string[] = [];

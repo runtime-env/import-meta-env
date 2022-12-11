@@ -14,6 +14,21 @@ afterEach(() => {
 });
 
 describe("resolveEnv", () => {
+  test("should not load environment variables from env file to system", () => {
+    // arrange
+    const envFilePath = tmp.tmpNameSync();
+    writeFileSync(envFilePath, "FOO=file\nBAR=file");
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(envExampleFilePath, "FOO=");
+
+    // act
+    resolveEnv({ envFilePath, envExampleFilePath });
+
+    // assert
+    expect(process.env.FOO).toBe(undefined);
+    expect(process.env.BAR).toBe(undefined);
+  });
+
   test("resolve environment variables from env file", () => {
     // arrange
     const envFilePath = tmp.tmpNameSync();
