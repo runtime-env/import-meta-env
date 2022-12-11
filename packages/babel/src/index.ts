@@ -11,19 +11,15 @@ export default declare<PluginOptions>(({ template, types }, options) => {
       ? ("runtime" as const)
       : ("compile-time" as const));
 
-  const envExampleFilePath = options.example;
-  if (envExampleFilePath === undefined) {
-    throw Error(
-      `example option is required. Please specify it in the plugin options.`
-    );
-  }
-  const envExampleKeys = resolveEnvExampleKeys({ envExampleFilePath });
+  const envExampleKeys = resolveEnvExampleKeys({
+    envExampleFilePath: options.example,
+  });
 
   const env =
     transformMode === "compile-time"
       ? (() => {
           return resolveEnv({
-            envExampleFilePath,
+            envExampleFilePath: options.example,
             envFilePath: options.env,
           });
         })()

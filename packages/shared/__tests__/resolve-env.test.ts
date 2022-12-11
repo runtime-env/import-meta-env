@@ -22,7 +22,7 @@ describe("resolveEnv", () => {
     writeFileSync(envExampleFilePath, "FOO=");
 
     // act
-    resolveEnv({ envFilePath, envExampleFilePath });
+    resolveEnv({ envExampleFilePath, envFilePath });
 
     // assert
     expect(process.env.FOO).toBe(undefined);
@@ -37,7 +37,7 @@ describe("resolveEnv", () => {
     writeFileSync(envExampleFilePath, "FOO=");
 
     // act
-    const env = resolveEnv({ envFilePath, envExampleFilePath });
+    const env = resolveEnv({ envExampleFilePath, envFilePath });
 
     // assert
     expect(env).toEqual({
@@ -59,7 +59,7 @@ describe("resolveEnv", () => {
     jest.spyOn(console, "error").mockImplementation(() => {});
 
     // assert
-    expect(() => resolveEnv({ envFilePath: "", envExampleFilePath })).toThrow();
+    expect(() => resolveEnv({ envExampleFilePath, envFilePath: "" })).toThrow();
   });
 
   test("resolve environment variables from system", () => {
@@ -104,7 +104,7 @@ describe("resolveEnv", () => {
     writeFileSync(envExampleFilePath, "OLD=");
 
     // act
-    const env = resolveEnv({ envFilePath, envExampleFilePath });
+    const env = resolveEnv({ envExampleFilePath, envFilePath });
 
     // assert
     expect(() => (env.NEW = "")).toThrowErrorMatchingInlineSnapshot(
@@ -125,7 +125,7 @@ describe("resolveEnv", () => {
     const envExampleFilePath = tmp.tmpNameSync();
 
     // act
-    resolveEnv({ envFilePath, envExampleFilePath });
+    resolveEnv({ envExampleFilePath, envFilePath });
 
     // assert
     expect(spy.mock.calls).toMatchInlineSnapshot(`
@@ -150,7 +150,7 @@ describe("resolveEnv", () => {
     writeFileSync(envExampleFilePath, "FOO=1\nBAR=2\nBAZ=3\n");
 
     // act
-    const act = () => resolveEnv({ envFilePath, envExampleFilePath });
+    const act = () => resolveEnv({ envExampleFilePath, envFilePath });
 
     // assert
     expect(act).toThrow(

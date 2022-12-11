@@ -15,14 +15,9 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
   debug && console.debug("factory::", options, meta);
 
-  const envFilePath = options?.env;
-  const envExampleFilePath = options?.example;
-  if (envExampleFilePath === undefined) {
-    throw Error(
-      `example option is required. Please specify it in the plugin options.`
-    );
-  }
-  const envExampleKeys = resolveEnvExampleKeys({ envExampleFilePath });
+  const envExampleKeys = resolveEnvExampleKeys({
+    envExampleFilePath: options?.example,
+  });
 
   let transformMode: undefined | "compile-time" | "runtime" =
     options?.transformMode;
@@ -31,8 +26,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     meta.framework === "esbuild"
       ? transformMode === "compile-time"
         ? resolveEnv({
-            envFilePath,
-            envExampleFilePath,
+            envExampleFilePath: options?.example,
+            envFilePath: options?.env,
           })
         : {}
       : {};
@@ -61,8 +56,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
         if (transformMode === "compile-time") {
           env = resolveEnv({
-            envFilePath,
-            envExampleFilePath,
+            envExampleFilePath: options?.example,
+            envFilePath: options?.env,
           });
         }
 
@@ -96,8 +91,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
         if (transformMode === "compile-time") {
           env = resolveEnv({
-            envFilePath,
-            envExampleFilePath,
+            envExampleFilePath: options?.example,
+            envFilePath: options?.env,
           });
         }
       },
@@ -118,8 +113,8 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
       if (transformMode === "compile-time") {
         env = resolveEnv({
-          envFilePath,
-          envExampleFilePath,
+          envExampleFilePath: options?.example,
+          envFilePath: options?.env,
         });
       }
     },

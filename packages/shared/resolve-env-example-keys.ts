@@ -7,10 +7,7 @@ export const resolveEnvExampleKeys = ({
 }: {
   envExampleFilePath: string;
 }): readonly string[] => {
-  envExampleFilePath = resolve(
-    process.cwd(),
-    envExampleFilePath ?? ".env.example"
-  );
+  envExampleFilePath = resolve(process.cwd(), envExampleFilePath);
   if (existsSync(envExampleFilePath) === false) {
     throw ReferenceError(
       `[import-meta-env] failed to load file content from "${envExampleFilePath}".`
