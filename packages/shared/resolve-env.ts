@@ -6,17 +6,23 @@ export const resolveEnv = ({
   envFilePath,
   envExampleFilePath,
 }: {
-  envFilePath: string;
+  envFilePath: undefined | string;
   envExampleFilePath: string;
 }): Record<string, string> => {
   const parsed = (() => {
-    const { parsed, error } = config({ path: envFilePath });
-
-    if (error === undefined) {
-      return Object.assign({}, parsed!, process.env);
+    if (envFilePath === "") {
+      return { ...process.env };
     }
 
-    return { ...process.env };
+    const { parsed, error } = config({
+      path: envFilePath ?? ".env",
+    });
+
+    if (error !== undefined) {
+      return { ...process.env };
+    }
+
+    return Object.assign({}, parsed!, process.env);
   })();
 
   const parsedExample = (() => {

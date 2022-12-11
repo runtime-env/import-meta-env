@@ -4,6 +4,7 @@ import { resolveEnv } from "../resolve-env";
 
 afterEach(() => {
   jest.clearAllMocks();
+  jest.restoreAllMocks();
 });
 
 describe("resolveEnv", () => {
@@ -21,6 +22,24 @@ describe("resolveEnv", () => {
     expect(env).toEqual({
       FOO: "bar",
     });
+  });
+
+  test("resolveEnv environment variables from environment only", () => {
+    // arrange
+    delete process.env.FOO;
+    const dir = tmp.dirSync();
+    process.chdir(dir.name);
+    const envFilePath = tmp.tmpNameSync({
+      dir: dir.name,
+      name: ".env",
+    });
+    writeFileSync(envFilePath, "FOO=bar");
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(envExampleFilePath, "FOO=");
+    jest.spyOn(console, "error").mockImplementation(() => {});
+
+    // assert
+    expect(() => resolveEnv({ envFilePath: "", envExampleFilePath })).toThrow();
   });
 
   test("resolveEnv environment variables from environment", () => {

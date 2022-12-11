@@ -1,11 +1,7 @@
 import { createUnplugin } from "unplugin";
 import colors from "picocolors";
 import { version } from "../package.json";
-import {
-  resolveEnv,
-  getPackageManagerExecCommand,
-  envFilePath as defaultEnvFilePath,
-} from "../../shared";
+import { resolveEnv, getPackageManagerExecCommand } from "../../shared";
 import { createAccessorRegExp } from "./constant";
 import { PluginOptions } from "./types";
 import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
@@ -19,7 +15,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
   debug && console.debug("factory::", options, meta);
 
-  const envFilePath = options?.env ?? defaultEnvFilePath;
+  const envFilePath = options?.env;
   const envExampleFilePath = options?.example;
   if (envExampleFilePath === undefined) {
     throw Error(

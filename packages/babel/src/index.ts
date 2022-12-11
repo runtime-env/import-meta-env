@@ -1,10 +1,6 @@
 import { declare } from "@babel/helper-plugin-utils";
 import type babelCore from "@babel/core";
-import {
-  resolveEnv,
-  envFilePath as defaultEnvFilePath,
-  accessor,
-} from "../../shared";
+import { resolveEnv, accessor } from "../../shared";
 import { resolveEnvExample } from "../../shared/resolve-env-example";
 import { PluginOptions } from "./types";
 
@@ -26,10 +22,9 @@ export default declare<PluginOptions>(({ template, types }, options) => {
   const env =
     transformMode === "compile-time"
       ? (() => {
-          const envFilePath = options.env || defaultEnvFilePath;
           return resolveEnv({
-            envFilePath,
             envExampleFilePath,
+            envFilePath: options.env,
           });
         })()
       : Object.create(null);
