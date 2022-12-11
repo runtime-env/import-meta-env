@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.0...unplugin0.4.1) (2022-12-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency magic-string to ^0.27.0 ([bb83aaf](https://github.com/iendeavor/import-meta-env/commit/bb83aafaf1433f469b9225c43a8bcc36e0377deb))
+* should not load .env when env option is empty string ([7446f5f](https://github.com/iendeavor/import-meta-env/commit/7446f5f9adfc68e9c88191dfd9b0b7ab6f37fd4c))
+
 ## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/unplugin0.3.2...unplugin0.4.0) (2022-11-27)
 
 
