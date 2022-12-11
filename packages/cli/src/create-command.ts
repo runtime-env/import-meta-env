@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { existsSync } from "fs";
+import { resolveEnvExampleKeys } from "../../shared/resolve-env-example-keys";
 import colors from "picocolors";
 import { version } from "../package.json";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
@@ -38,14 +38,9 @@ export const createCommand = () =>
       "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files."
     )
     .action((args: Args) => {
-      if (existsSync(args.example) === false) {
-        console.error(
-          colors.red(
-            `[import-meta-env]: Example file not found: ${args.example}`
-          )
-        );
-        if (require.main === module) process.exit(1);
-      }
+      resolveEnvExampleKeys({
+        envExampleFilePath: args.example,
+      });
 
       const output = args.output ?? defaultOutput;
       const foundOutputFilePaths = resolveOutputFileNames(output);

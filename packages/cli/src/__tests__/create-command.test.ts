@@ -13,23 +13,10 @@ afterEach(() => {
 
 describe("create-command", () => {
   test("it should warn if example not found", () => {
-    // arrange
-    const spy = jest.spyOn(console, "error").mockImplementation();
-
     // act
-    command.exitOverride().parse(["node", "test", "--example", "foo"]);
-
-    // assert
-    expect(spy.mock.calls).toMatchInlineSnapshot(`
-      [
-        [
-          "[31m[import-meta-env]: Example file not found: foo[39m",
-        ],
-        [
-          "[31m[import-meta-env]: Output file not found: dist/**/*, .next/**/*, .nuxt/**/*, .output/**/*, build/**/*[39m",
-        ],
-      ]
-    `);
+    expect(() =>
+      command.exitOverride().parse(["node", "test", "--example", "foo"])
+    ).toThrow();
   });
 
   test("it should warn if output files not found", () => {
