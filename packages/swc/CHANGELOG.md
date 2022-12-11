@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/iendeavor/import-meta-env/compare/swc0.4.0...swc0.4.1) (2022-12-11)
+
+
+### Features
+
+* throw error if env example is failed to resolve instead of warning ([29bacfa](https://github.com/iendeavor/import-meta-env/commit/29bacfacc0f6545b22d6de493302922877a45783))
+
+
+### Bug Fixes
+
+* **deps:** update rust crate swc_core to 0.43.33 ([87704e9](https://github.com/iendeavor/import-meta-env/commit/87704e97449f2bfd18dd556996b50dc136ea5673))
+* **deps:** update rust crate swc_core to 0.43.38 ([32f5870](https://github.com/iendeavor/import-meta-env/commit/32f5870b5d2a520f8be5374861f1127675bc690b))
+* **deps:** update rust crate swc_core to 0.43.41 ([0042e92](https://github.com/iendeavor/import-meta-env/commit/0042e927e956304e874ca0b6168ada81aa80933f))
+* **deps:** update rust crate swc_core to 0.44.0 ([9c84da7](https://github.com/iendeavor/import-meta-env/commit/9c84da7eb1c000f19db6ea7f8deebfa2667a000d))
+* **deps:** update rust crate swc_core to 0.44.3 ([b5aebd9](https://github.com/iendeavor/import-meta-env/commit/b5aebd91fb802154e36dbdce3338daa1d5fb9729))
+* **deps:** update rust crate swc_core to 0.46.12 ([cd90626](https://github.com/iendeavor/import-meta-env/commit/cd906264e8e10f16ffd10ef8989b88499838a97f))
+* **deps:** update rust crate swc_core to 0.46.7 ([62984cb](https://github.com/iendeavor/import-meta-env/commit/62984cb08faf4fbc83cb17e63ddb697ffc494eee))
+* **deps:** update rust crate swc_core to 0.46.9 ([2bbd73f](https://github.com/iendeavor/import-meta-env/commit/2bbd73f8cc6f123cdc60294c6b718e736ec5e0f5))
+* **deps:** update rust crate swc_core to 0.47.0 ([5a9d902](https://github.com/iendeavor/import-meta-env/commit/5a9d9028000e3a3c732e5404c1f4f8482f2d5ec7))
+* **deps:** update rust crate swc_core to 0.47.2 ([123db9c](https://github.com/iendeavor/import-meta-env/commit/123db9c90959e2ce903436ac7ca30bb974c6ced3))
+
 ## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/swc0.3.0...swc0.4.0) (2022-11-27)
 
 
