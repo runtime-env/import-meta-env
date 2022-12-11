@@ -1,7 +1,6 @@
 import { existsSync, readFileSync } from "fs";
 import { resolve } from "path";
 import { parse } from "dotenv";
-import { red } from "picocolors";
 
 export const resolveEnvExample = ({
   envExampleFilePath,
@@ -13,8 +12,9 @@ export const resolveEnvExample = ({
     envExampleFilePath ?? ".env.example"
   );
   if (existsSync(envExampleFilePath) === false) {
-    console.error(red("[import-meta-env] No .env.example file found."));
-    return Object.freeze([]);
+    throw ReferenceError(
+      `[import-meta-env] failed to load file content from "${envExampleFilePath}".`
+    );
   }
   const content = readFileSync(envExampleFilePath, "utf8");
   const parsed = parse(content);

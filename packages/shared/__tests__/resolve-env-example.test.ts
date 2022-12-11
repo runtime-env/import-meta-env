@@ -2,10 +2,6 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import { resolveEnvExample } from "../resolve-env-example";
 
-afterEach(() => {
-  jest.clearAllMocks();
-});
-
 describe("resolveEnvExample", () => {
   test("resolved env cannot be mutate", () => {
     // arrange
@@ -24,21 +20,15 @@ describe("resolveEnvExample", () => {
     );
   });
 
-  test("throw error if .env.example file not found", () => {
+  test("throw error if .env.example file is not found", () => {
     // arrange
-    const spy = jest.spyOn(console, "error").mockImplementation();
     const envExampleFilePath = tmp.tmpNameSync();
 
-    // act
-    resolveEnvExample({ envExampleFilePath });
-
     // assert
-    expect(spy.mock.calls).toMatchInlineSnapshot(`
-      [
-        [
-          "[31m[import-meta-env] No .env.example file found.[39m",
-        ],
-      ]
-    `);
+    expect(() => resolveEnvExample({ envExampleFilePath })).toThrow(
+      ReferenceError(
+        `[import-meta-env] failed to load file content from "${envExampleFilePath}".`
+      )
+    );
   });
 });
