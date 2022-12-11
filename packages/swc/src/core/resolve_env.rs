@@ -1,4 +1,7 @@
-use super::resolve_env_from_file_name::resolve_env_from_file_name;
+use super::{
+    resolve_env_example_keys::resolve_env_example_keys,
+    resolve_env_from_file_name::resolve_env_from_file_name,
+};
 
 pub fn resolve_env(
     env_file_name: Option<String>,
@@ -14,10 +17,7 @@ pub fn resolve_env(
         .map(|(k, _)| k.to_owned())
         .collect::<Vec<String>>();
     let env_example = resolve_env_from_file_name(&env_example_file_name);
-    let env_example_keys = env_example
-        .iter()
-        .map(|(k, _)| k.to_owned())
-        .collect::<Vec<String>>();
+    let env_example_keys = resolve_env_example_keys(env_example_file_name.to_owned());
 
     let mut filtered_env: Vec<(String, String)> = env
         .into_iter()

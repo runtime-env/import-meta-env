@@ -4,7 +4,7 @@ mod core;
 use crate::{
     config::Config,
     core::{
-        mode::Mode, resolve_env::resolve_env, resolve_env_example::resolve_env_example,
+        mode::Mode, resolve_env::resolve_env, resolve_env_example_keys::resolve_env_example_keys,
         transform::TransformImportMetaEnv,
     },
 };
@@ -48,12 +48,12 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
         TransformMode::CompileTime => program.fold_with(&mut as_folder(
             TransformImportMetaEnv::new(Mode::CompileTime {
                 env: resolve_env(config.env, config.example.clone()),
-                env_example: resolve_env_example(config.example.clone()),
+                env_example_keys: resolve_env_example_keys(config.example.clone()),
             }),
         )),
         TransformMode::Runtime => {
             program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-                env_example: resolve_env_example(config.example.clone()),
+                env_example_keys: resolve_env_example_keys(config.example.clone()),
             })))
         }
     }

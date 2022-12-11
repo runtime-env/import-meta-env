@@ -24,13 +24,10 @@ impl TransformImportMetaEnv {
         let example_keys: Vec<String> = match &mode {
             Mode::CompileTime {
                 env: _,
-                env_example,
-            } => env_example,
-            Mode::Runtime { env_example } => env_example,
-        }
-        .iter()
-        .map(|(key, _)| key.clone())
-        .collect();
+                env_example_keys,
+            } => env_example_keys.to_vec(),
+            Mode::Runtime { env_example_keys } => env_example_keys.to_vec(),
+        };
 
         TransformImportMetaEnv { mode, example_keys }
     }
@@ -49,7 +46,7 @@ impl VisitMut for TransformImportMetaEnv {
             match &self.mode {
                 Mode::CompileTime {
                     env,
-                    env_example: _,
+                    env_example_keys: _,
                 } => {
                     *n = Expr::Lit(Lit::Str(Str {
                         value: Atom::from(
@@ -65,7 +62,9 @@ impl VisitMut for TransformImportMetaEnv {
                         span: DUMMY_SP,
                     }))
                 }
-                Mode::Runtime { env_example: _ } => {
+                Mode::Runtime {
+                    env_example_keys: _,
+                } => {
                     *n = Expr::Member(MemberExpr {
                         obj: Box::new(create_accessor_expr()),
                         span: old_member_expr.span.clone(),
@@ -160,7 +159,7 @@ mod tests {
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![],
-            env_example: vec![(String::from("EXISTS"), String::from(""))]
+            env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_compile_time_mode_ignore_new_target_env_hello,
         // Input codes
@@ -173,7 +172,7 @@ mod tests {
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![],
-            env_example: vec![(String::from("EXISTS"), String::from(""))]
+            env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_compile_time_mode_ignore_import_meta_url_hello,
         // Input codes
@@ -186,7 +185,7 @@ mod tests {
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![],
-            env_example: vec![(String::from("EXISTS"), String::from(""))]
+            env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_compile_time_mode_ignore_import_meta_env,
         // Input codes
@@ -199,7 +198,7 @@ mod tests {
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![("EXISTS".to_string(), "value".to_string()),],
-            env_example: vec![(String::from("EXISTS"), String::from("")),],
+            env_example_keys: vec![String::from("EXISTS")],
         })),
         spec_compile_time_mode_import_meta_env_property,
         // Input codes
@@ -218,7 +217,7 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-            env_example: vec![(String::from("EXISTS"), String::from(""))]
+            env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_runtime_mode_ignore_new_target_env_hello,
         // Input codes
@@ -230,7 +229,7 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-            env_example: vec![(String::from("EXISTS"), String::from(""))]
+            env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_runtime_mode_ignore_import_meta_url_hello,
         // Input codes
@@ -242,7 +241,7 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-            env_example: vec![(String::from("EXISTS"), String::from(""))]
+            env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_runtime_mode_ignore_import_meta_env,
         // Input codes
@@ -254,7 +253,7 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-            env_example: vec![(String::from("EXISTS"), String::from("")),],
+            env_example_keys: vec![String::from("EXISTS")],
         })),
         spec_runtime_mode_import_meta_env_property,
         // Input codes
@@ -272,7 +271,7 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-            env_example: vec![(String::from("PORT"), String::from("")),],
+            env_example_keys: vec![String::from("PORT")],
         })),
         spec_call_expr,
         // Input codes
@@ -284,10 +283,7 @@ mod tests {
     test!(
         Default::default(),
         |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
-            env_example: vec![
-                (String::from("PROTOCOL"), String::from("")),
-                (String::from("HOST"), String::from("")),
-            ],
+            env_example_keys: vec![String::from("PROTOCOL"), String::from("HOST"),],
         })),
         spec_return_stmt,
         // Input codes
