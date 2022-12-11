@@ -2,16 +2,22 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import { resolveEnv } from "../resolve-env";
 
+beforeEach(() => {
+  delete process.env.FOO;
+  delete process.env.BAR;
+  delete process.env.BAZ;
+});
+
 afterEach(() => {
   jest.clearAllMocks();
   jest.restoreAllMocks();
 });
 
 describe("resolveEnv", () => {
-  test("resolveEnv environment variables from env file", () => {
+  test("resolve environment variables from env file", () => {
     // arrange
     const envFilePath = tmp.tmpNameSync();
-    writeFileSync(envFilePath, "FOO=bar\nBAZ=qux");
+    writeFileSync(envFilePath, "FOO=file\nBAR=file");
     const envExampleFilePath = tmp.tmpNameSync();
     writeFileSync(envExampleFilePath, "FOO=");
 
@@ -20,20 +26,19 @@ describe("resolveEnv", () => {
 
     // assert
     expect(env).toEqual({
-      FOO: "bar",
+      FOO: "file",
     });
   });
 
-  test("resolveEnv environment variables from environment only", () => {
+  test("resolve environment variables from system only", () => {
     // arrange
-    delete process.env.FOO;
     const dir = tmp.dirSync();
     process.chdir(dir.name);
     const envFilePath = tmp.tmpNameSync({
       dir: dir.name,
       name: ".env",
     });
-    writeFileSync(envFilePath, "FOO=bar");
+    writeFileSync(envFilePath, "FOO=file");
     const envExampleFilePath = tmp.tmpNameSync();
     writeFileSync(envExampleFilePath, "FOO=");
     jest.spyOn(console, "error").mockImplementation(() => {});
@@ -42,10 +47,10 @@ describe("resolveEnv", () => {
     expect(() => resolveEnv({ envFilePath: "", envExampleFilePath })).toThrow();
   });
 
-  test("resolveEnv environment variables from environment", () => {
+  test("resolve environment variables from system", () => {
     // arrange
-    process.env.FOO = "bar";
-    process.env.BAZ = "qux";
+    process.env.FOO = "system";
+    process.env.BAR = "system";
     const envExampleFilePath = tmp.tmpNameSync();
     writeFileSync(envExampleFilePath, "FOO=");
 
@@ -54,12 +59,26 @@ describe("resolveEnv", () => {
 
     // assert
     expect(env).toEqual({
-      FOO: "bar",
+      FOO: "system",
     });
+  });
 
-    // cleanup
-    delete process.env.FOO;
-    delete process.env.BAZ;
+  test("resolve environment variables from both system and env file", () => {
+    // arrange
+    process.env.FOO = "system";
+    const envFilePath = tmp.tmpNameSync();
+    writeFileSync(envFilePath, "FOO=file\nBAR=file");
+    const envExampleFilePath = tmp.tmpNameSync();
+    writeFileSync(envExampleFilePath, "FOO=\nBAR=");
+
+    // act
+    const env = resolveEnv({ envExampleFilePath, envFilePath });
+
+    // assert
+    expect(env).toEqual({
+      FOO: "system",
+      BAR: "file",
+    });
   });
 
   test("resolved env cannot be mutate", () => {
