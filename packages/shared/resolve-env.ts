@@ -1,7 +1,8 @@
 // @ts-ignore: the dotenv package will be installed in each project
 import fs from "fs";
 import { parse } from "dotenv";
-import { red, yellow } from "picocolors";
+import { red } from "picocolors";
+import { resolveEnvExampleKeys } from "./resolve-env-example-keys";
 
 export const resolveEnv = ({
   envFilePath,
@@ -25,23 +26,10 @@ export const resolveEnv = ({
     return Object.assign({}, parsed!, process.env);
   })();
 
-  const parsedExample = (() => {
-    if (fs.existsSync(envExampleFilePath) === false) {
-      console.warn(
-        yellow(
-          `[import-meta-env]: ${envExampleFilePath} file not found, skip process.\n`
-        )
-      );
-
-      return {};
-    }
-
-    const parsed = parse(fs.readFileSync(envExampleFilePath, "utf8"));
-    return parsed;
-  })();
+  const envExampleKeys = resolveEnvExampleKeys({ envExampleFilePath });
 
   const missingKeys: string[] = [];
-  const env = Object.keys(parsedExample).reduce((acc, key) => {
+  const env = envExampleKeys.reduce((acc, key) => {
     if (Object.prototype.hasOwnProperty.call(parsed, key) === false) {
       missingKeys.push(key);
     }
@@ -49,7 +37,10 @@ export const resolveEnv = ({
     return Object.assign(acc, { [key]: parsed[key] });
   }, {});
   if (missingKeys.length) {
-    const missingEnv = missingKeys.map((key) => `${key}=${parsedExample[key]}`);
+    const parsedEnvExample = parse(fs.readFileSync(envExampleFilePath, "utf8"));
+    const missingEnv = missingKeys.map(
+      (key) => `${key}=${parsedEnvExample[key]}`
+    );
 
     const environmentVariablesAreMissing = [
       "",

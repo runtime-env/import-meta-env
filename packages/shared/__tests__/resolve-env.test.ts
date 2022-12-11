@@ -118,27 +118,13 @@ describe("resolveEnv", () => {
     );
   });
 
-  test("warn if .env.example file not found", () => {
+  test("it should call resolveEnvExampleKeys", () => {
     // arrange
-    const spy = jest.spyOn(console, "warn").mockImplementation();
     const envFilePath = tmp.tmpNameSync();
     const envExampleFilePath = tmp.tmpNameSync();
 
-    // act
-    resolveEnv({ envExampleFilePath, envFilePath });
-
     // assert
-    expect(spy.mock.calls).toMatchInlineSnapshot(`
-      [
-        [
-          "[33m[import-meta-env]: ${envExampleFilePath.replace(
-            /\\/g,
-            "\\\\"
-          )} file not found, skip process.
-      [39m",
-        ],
-      ]
-    `);
+    expect(() => resolveEnv({ envExampleFilePath, envFilePath })).toThrow();
   });
 
   test(`throw if any environment variables is not defined`, () => {
