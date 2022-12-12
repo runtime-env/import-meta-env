@@ -1,8 +1,10 @@
 # Compile-time Transform
 
+Please read the [guide](/guide/getting-started/introduction.html#guide) for how to use these plugins.
+
 ## Compatibility
 
-Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
+Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
 
 You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
 
@@ -27,7 +29,7 @@ There are some exceptions:
 $ npm i -D @import-meta-env/babel
 ```
 
-### Usage
+### Setup
 
 ```json
 {
@@ -56,7 +58,7 @@ Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main
 $ npm i -D @import-meta-env/swc
 ```
 
-### Usage
+### Setup
 
 .swcrc:
 
@@ -92,7 +94,7 @@ Related examples: [swc](https://github.com/iendeavor/import-meta-env/blob/main/p
 $ npm i -D @import-meta-env/unplugin
 ```
 
-### Usage
+### Setup
 
 ESbuild:
 

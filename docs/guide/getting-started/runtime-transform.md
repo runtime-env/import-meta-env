@@ -1,5 +1,7 @@
 # Runtime Transform
 
+Please read the [guide](/guide/getting-started/introduction.html#guide) for how to use this tool.
+
 ## CLI
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/cli.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/cli)

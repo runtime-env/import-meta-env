@@ -73,10 +73,21 @@
 
      See the [`.env` file](#env-file) section for details.
 
-  1. Install [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s.
+  1. Install and setup [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s.
 
      ```sh
      $ npm i -D @import-meta-env/unplugin
+     ```
+
+     ```diff
+     // webpack.config.js
+     module.exports = {
+       plugins: [
+     +   require("@import-meta-env/unplugin").webpack({
+     +     example: ".env.example",
+     +   }),
+       ],
+     };
      ```
 
   1. Transform it:
@@ -107,10 +118,21 @@
 
 - In production:
 
-  1. Install [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s.
+  1. Install and setup [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s.
 
      ```sh
      $ npm i -D @import-meta-env/unplugin
+     ```
+
+     ```diff
+     // webpack.config.js
+     module.exports = {
+       plugins: [
+     +   require("@import-meta-env/unplugin").webpack({
+     +     example: ".env.example",
+     +   }),
+       ],
+     };
      ```
 
   1. Transform it:
@@ -135,7 +157,7 @@
      // dist/main.js
      // ...
      - <h1>Hello, ${import.meta.env.NAME}</h1>
-     + <h1>Hello, ${Object.create(globalThis.import_meta_env || null).NAME}</h1>
+     + <h1>Hello, ${globalThis.import_meta_env.NAME}</h1>
      // ...
      ```
 
@@ -185,7 +207,7 @@
      ```diff
      // dist/main.js
      // ...
-     <h1>Hello, ${Object.create(globalThis.import_meta_env || null).NAME}</h1>
+     <h1>Hello, ${globalThis.import_meta_env.NAME}</h1>
      // ...
      ```
 

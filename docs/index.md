@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/getting-started/introduction.html
+      link: /guide/getting-started/introduction.html#guide
     - theme: alt
       text: Examples
       link: https://github.com/iendeavor/import-meta-env/tree/main/packages/examples
