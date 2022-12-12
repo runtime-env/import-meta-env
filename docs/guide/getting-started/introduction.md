@@ -178,6 +178,8 @@ See the [transform](#transform) section for details.
        --output import-meta-env-alpine
      ```
 
+     See the [without Node.js](/guide/getting-started/runtime-transform.html#without-node-js) section for details.
+
   1. Before starting your container, define environment variables:
 
      ```sh

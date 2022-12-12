@@ -41,5 +41,5 @@ $ npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
 ```
 
 ```bash
-$ npx import-meta-env-alpine -x .env.example
+$ ./import-meta-env-alpine -x .env.example
 ```
