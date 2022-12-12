@@ -56,6 +56,8 @@
 
 ### Transform it
 
+See the [transform](#transform) section for details.
+
 - In development and testing:
 
   1. Define environment variables:
@@ -278,25 +280,31 @@ In other words, the following are **invalid**:
 1. [compile-time transform plugins](/guide/getting-started/compile-time-transform.html)
 1. [runtime transform tool](/guide/getting-started/runtime-transform.html)
 
-In development and testing, you use [compile-time transform plugins](/guide/getting-started/compile-time-transform.html) to transform the environment variable expressions to environment variable strings.
+In development and testing, you use the compile-time transform plugins to replace the [environment variable expressions](#syntax) with environment variable strings.
 
-In production, you need to use [compile-time transform plugins](/guide/getting-started/compile-time-transform.html) to transform the environment variable expressions to another expression (in order to access to a special object), and then use [runtime transform tool](/guide/getting-started/runtime-transform.html) to inject environment variables to the special object.
+In production, you need to use the compile-time transform plugins to replace the environment variable expressions with global accessors (in order to access to a special object), and then use runtime transform tool to inject environment variables to the [special expression](#special-expression).
 
-### Compile-time Transform Modes
+## Compile-time Transform Modes
 
 Since [compile-time transform plugins](/guide/getting-started/compile-time-transform.html) will be used in two scenarios, it have two transform modes:
 
-1. `compile-time`
-1. `runtime`
+1. `compile-time`: statically replace `import.meta.env.KEY` with `"value"`
+1. `runtime`: statically replace `import.meta.env` with a global accessor
 
 Usually, you don't need to define it explicitly, because `Import-meta-env` determines it automatically based on your environment variables (e.g., `process.env.NODE_ENV`). See [API](/api) for details.
 
-### Special Expression
+## Special Expression
 
 In order to inject environment variables in production, you also need to add a special expression in your app:
 
 ```js
 globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');
+```
+
+This expression will be replaced with environment variables by using [runtime transform tool](/guide/getting-started/runtime-transform.html) as follows:
+
+```js
+globalThis.import_meta_env = JSON.parse('{"NAME":"world"}');
 ```
 
 We encourage you to put this special expression in your `index.html` because the `Cache-Control` header is usually set to `no-cache` when requesting `index.html`:
