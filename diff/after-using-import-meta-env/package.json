@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "import-meta-env-demo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development NAME='import-meta-env' npx webpack serve",
+    "build": "cross-env NODE_ENV=production npx webpack build",
+    "preview": "cross-env NAME='import-meta-env' npx import-meta-env --example .env.example && serve -s dist"
+  },
+  "devDependencies": {
+    "@import-meta-env/cli": "^0.4.1",
+    "@import-meta-env/unplugin": "^0.4.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "serve": "^14.1.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

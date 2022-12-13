@@ -17,6 +17,8 @@
 
 > In this guide, we use Webpack and Docker as examples.
 
+> If you'd rather see the [diff](https://en.wikipedia.org/wiki/Diff) code, it can be found [in the repository](https://github.com/iendeavor/import-meta-env/tree/main/diff).
+
 ### Write your code
 
 1. To prevent accidentally leaking environment variables to the client, you need to list public environment variables in an example file (e.g., `.env.example`):
