@@ -170,6 +170,7 @@ jobs:
           - "create-next-app-example"
           - "create-react-app-example"
           - "create-vue-app-example"
+          - "cypress-example"
           - "docker-compose-starter-example"
           - "docker-starter-example"
           - "esbuild-starter-example"
