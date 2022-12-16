@@ -30,21 +30,6 @@
 
    See the [`.env.example file`](#env-example-file) section for details.
 
-1. Add a special expression to be able to inject environment variables later:
-
-   ```diff
-   <!-- public/index.html -->
-   <!DOCTYPE html>
-   <html lang="en">
-     <head>
-       <meta charset="UTF-8" />
-   +   <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
-     </head>
-   </html>
-   ```
-
-   See the [special expression](#special-expression) section for details.
-
 1. Obtain the environment variable:
 
    ```diff
@@ -101,18 +86,6 @@ See the [transform](#transform) section for details.
      ```
 
      ```diff
-     <!-- dist/index.html -->
-     <!DOCTYPE html>
-     <html lang="en">
-       <head>
-         <meta charset="UTF-8" />
-         <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
-         <script defer src="main.js"></script>
-       </head>
-     </html>
-     ```
-
-     ```diff
      // dist/main.js
      // ...
      - <h1>Hello, ${import.meta.env.NAME}</h1>
@@ -146,24 +119,27 @@ See the [transform](#transform) section for details.
      ```
 
      ```diff
-     <!-- dist/index.html -->
-     <!DOCTYPE html>
-     <html lang="en">
-       <head>
-         <meta charset="UTF-8" />
-         <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
-         <script defer="defer" src="main.js"></script>
-       </head>
-     </html>
-     ```
-
-     ```diff
      // dist/main.js
      // ...
      - <h1>Hello, ${import.meta.env.NAME}</h1>
      + <h1>Hello, ${globalThis.import_meta_env.NAME}</h1>
      // ...
      ```
+
+  1. In order to obtain environment variables from `globalThis.import_meta_env`, you also need to add a special expression before your entry:
+
+     ```diff
+     <!-- public/index.html -->
+     <!DOCTYPE html>
+     <html lang="en">
+       <head>
+         <meta charset="UTF-8" />
+     +   <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
+       </head>
+     </html>
+     ```
+
+     See the [special expression](#special-expression) section for details.
 
   1. Install [runtime transform tool](/guide/getting-started/runtime-transform.html).
 
@@ -208,13 +184,6 @@ See the [transform](#transform) section for details.
          <script defer="defer" src="main.js"></script>
        </head>
      </html>
-     ```
-
-     ```diff
-     // dist/main.js
-     // ...
-     <h1>Hello, ${globalThis.import_meta_env.NAME}</h1>
-     // ...
      ```
 
 Full working example can be found [here](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example).
