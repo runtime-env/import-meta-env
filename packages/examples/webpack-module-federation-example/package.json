@@ -1,0 +1,19 @@
+{
+  "name": "webpack-module-federation-example",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "app1",
+      "app2"
+    ]
+  },
+  "scripts": {
+    "_test": "node test.js",
+    "dev": "lerna run --parallel dev",
+    "build": "lerna run build",
+    "preview": "lerna run --parallel preview"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
