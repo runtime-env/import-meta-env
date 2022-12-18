@@ -43,17 +43,15 @@
 
 ### Transform it
 
-See the [transform](#transform) section for details.
+Install dotenv in order for Import-meta-env packages to work:
 
-- In development and testing:
+```sh
+$ npm i -D dotenv
+```
+
+- During development and testing:
 
   1. Define environment variables:
-
-     ```sh
-     $ export NAME=world
-     ```
-
-     or
 
      ```ini
      # .env
@@ -93,7 +91,7 @@ See the [transform](#transform) section for details.
      // ...
      ```
 
-- In production:
+- During production:
 
   1. Install and setup [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s.
 
@@ -186,6 +184,8 @@ See the [transform](#transform) section for details.
      </html>
      ```
 
+See the [transform](#transform) section for details.
+
 Full working example can be found [here](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example).
 
 ## .env File
@@ -200,6 +200,22 @@ $ export NAME=world
 # .env
 NAME=world
 ```
+
+::: warning
+You should gitignore this file because these environment variables are usually used for local development purposes, while your production environment variables are usually stored in your cloud, such as GCP or AWS, and will be loaded from the system.
+:::
+
+::: tip
+You can write a simple script to generate this file for local development, which is good for you.
+
+For example, development environment variables can be shared across teams if you want, while you can safely switch to staging or production environment variables without accidentally committing them to your git repository.
+
+More instantiation guides:
+
+1. First, you commit the `.env.development` file to your git repository.
+2. Second, you are free to change the `.env.local` file (gitignored).
+3. Third, you write a simple script to generate the `.env` file (gitignored too) from these files.
+   :::
 
 ## .env.example File
 
