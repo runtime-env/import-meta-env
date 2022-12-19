@@ -14,7 +14,7 @@ module.exports = async () => {
   ];
   const expected = `Hello: ${hello}`;
   const url = `http://localhost:${port}`;
-  const waitMs = 10000;
+  const waitMs = 2000;
   await runTest({
     commands,
     longRunningCommands,
@@ -22,6 +22,7 @@ module.exports = async () => {
     url,
     waitMs,
     waitUntil: "networkidle2",
+    waitForSelector: "#__nuxt",
     noExit: true,
   });
 };

@@ -22,6 +22,7 @@ module.exports = async () => {
     expected,
     url,
     waitMs,
+    waitForSelector: "#__nuxt",
     noExit: true,
   });
 };

@@ -10,6 +10,7 @@ module.exports = ({
   url,
   waitMs,
   waitUntil,
+  waitForSelector,
   noExit,
 }) => {
   const childProcessList = [];
@@ -42,6 +43,7 @@ module.exports = ({
     await page.goto(url, {
       waitUntil: waitUntil || "networkidle0",
     });
+    waitForSelector && (await page.waitForSelector(waitForSelector));
 
     // act
     const result = await (
