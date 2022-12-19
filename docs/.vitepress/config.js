@@ -8,6 +8,9 @@ const links = [];
 export default defineConfig({
   title: "Import-meta-env",
 
+  description:
+    "Build once, deploy anywhere. Import-meta-env helps to developing applications following the 12-factor principles.",
+
   base: "/import-meta-env/",
 
   head: [

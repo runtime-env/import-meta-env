@@ -2,12 +2,12 @@
 layout: home
 
 title: Import-meta-env
-titleTemplate: Build once, deploy anywhere
+titleTemplate: Startup/Runtime environment variables solution for JavaScript
 
 hero:
   name: Import-meta-env
-  text: Build once, deploy anywhere
-  tagline: Startup/Runtime environment variable solution for JavaScript. It helps in developing applications following the 12-factor principles.
+  text: Startup/Runtime environment variables solution for JavaScript
+  tagline: Build once, deploy anywhere. Import-meta-env helps to developing applications following the 12-factor principles.
   actions:
     - theme: brand
       text: Get Started
