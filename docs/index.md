@@ -26,7 +26,7 @@ features:
   - title: Framework Agnostic
     details: Support for Babel, SWC, and Unplugin for ESbuild, Rollup, Vite, and Webpack.
   - title: Adoptable
-    details: Designed with a generic approach in mind, CSR and SSR, transpilers, bundlers, and even micro frontend are all supported.
+    details: Designed with a generic approach in mind, CSR/SSR, transpilers/bundlers, workers, service workers, and even micro frontend are all supported.
   - title: Save Time & Money
     details: Speed up your CI/CD pipeline, you no longer need to build multiple bundles for different stages.
 ---

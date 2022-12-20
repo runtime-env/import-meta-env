@@ -205,6 +205,7 @@ jobs:
           - "webpack-starter-example"
           - "webpack-swc-example"
           - "webpack-ts-loader-example"
+          - "worker-example"
         include:
           - os: ubuntu-latest
             node_version: 18
