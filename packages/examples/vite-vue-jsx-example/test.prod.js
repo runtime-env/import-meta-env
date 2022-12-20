@@ -27,7 +27,7 @@ module.exports = async () => {
     `src import: ${hello}`,
   ].join("\n");
   const url = `http://localhost:${port}`;
-  const waitMs = 1000;
+  const waitMs = 3000;
 
   await runTest({
     commands,
