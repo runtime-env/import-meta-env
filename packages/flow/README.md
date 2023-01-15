@@ -1,4 +1,4 @@
-# @import-meta-env/typescript
+# @import-meta-env/flow
 
 Automatically generate flow type from .env.example
 
