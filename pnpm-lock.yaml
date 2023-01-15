@@ -78,12 +78,12 @@ importers:
       commander: 10.0.0
       glob: 8.1.0
       picocolors: 1.0.0
-      serialize-javascript: 6.0.0
+      serialize-javascript: 6.0.1
     dependencies:
       commander: 10.0.0
       glob: 8.1.0
       picocolors: 1.0.0
-      serialize-javascript: 6.0.0
+      serialize-javascript: 6.0.1
     devDependencies:
       '@types/glob': 8.0.0
       '@types/serialize-javascript': 5.0.2
@@ -5300,8 +5300,8 @@ packages:
       upper-case-first: 2.0.2
     dev: true
 
-  /serialize-javascript/6.0.0:
-    resolution: {integrity: sha512-Qr3TosvguFt8ePWqsvRfrKyQXIiW+nGbYpy8XK24NQHE83caxWt+mIymTT19DGFbNWNLfEwsrkSmN64lVWB9ag==}
+  /serialize-javascript/6.0.1:
+    resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
     dependencies:
       randombytes: 2.1.0
 
@@ -5568,7 +5568,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.16
       jest-worker: 27.5.1
       schema-utils: 3.1.1
-      serialize-javascript: 6.0.0
+      serialize-javascript: 6.0.1
       terser: 5.15.1
       webpack: 5.75.0
     dev: true
