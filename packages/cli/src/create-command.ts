@@ -8,7 +8,7 @@ import { defaultOutput } from "./shared";
 export interface Args {
   env: string;
   example: string;
-  output: string[];
+  path: string[];
   disposable: boolean;
 }
 
@@ -27,9 +27,16 @@ export const createCommand = () =>
       "-x, --example <path>",
       "The .env example file path to load"
     )
+    // TODO: remove this option in v1
     .option(
       "-o, --output <path...>",
-      `The output file/dir paths to inject in-place (default: ${JSON.stringify(
+      `[deprecated: use --path] The file/dir paths to inject in-place (default: ${JSON.stringify(
+        defaultOutput
+      )})`
+    )
+    .option(
+      "-p, --path <path...>",
+      `The file/dir paths to inject in-place (default: ${JSON.stringify(
         defaultOutput
       )})`
     )
@@ -38,16 +45,27 @@ export const createCommand = () =>
       "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files."
     )
     .action((args: Args) => {
+      args = { ...args };
+
+      if ((args as Args & { output: string[] }).output) {
+        console.warn(
+          colors.yellow(
+            `[import-meta-env]: Option \`-o, --output\` were deprecated and will be removed in a future release, please use \`-p, --path\` instead.`
+          )
+        );
+      }
+      args.path = args.path ?? (args as Args & { output: string[] }).output;
+
       resolveEnvExampleKeys({
         envExampleFilePath: args.example,
       });
 
-      const output = args.output ?? defaultOutput;
-      const foundOutputFilePaths = resolveOutputFileNames(output);
+      const path = args.path ?? defaultOutput;
+      const foundOutputFilePaths = resolveOutputFileNames(path);
       if (foundOutputFilePaths.length === 0) {
         console.error(
           colors.red(
-            `[import-meta-env]: Output file not found: ${output.join(", ")}`
+            `[import-meta-env]: Output file not found: ${path.join(", ")}`
           )
         );
         if (require.main === module) process.exit(1);

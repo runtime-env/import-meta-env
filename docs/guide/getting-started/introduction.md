@@ -166,7 +166,7 @@ $ npm i -D dotenv
 
      ```sh
      # start.sh
-     ./import-meta-env-alpine -x .env.example -o dist/index.html || exit 1
+     ./import-meta-env-alpine -x .env.example -p dist/index.html || exit 1
      ```
 
      ```diff

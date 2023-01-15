@@ -21,8 +21,8 @@ export const main = (di: {
     envFilePath: opts.env,
   });
 
-  const output = opts.output ?? defaultOutput;
-  resolveOutputFileNames(output).forEach((outputFileName) => {
+  const path = opts.path ?? defaultOutput;
+  resolveOutputFileNames(path).forEach((outputFileName) => {
     if (lstatSync(outputFileName).isDirectory()) return;
     if (isSourceMap(outputFileName)) return;
     if (isBackupFileName(outputFileName)) return;

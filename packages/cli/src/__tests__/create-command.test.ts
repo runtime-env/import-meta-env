@@ -19,6 +19,43 @@ describe("create-command", () => {
     ).toThrow();
   });
 
+  // TODO: remove this line in v1
+  test("it should warn if output files not found (legacy)", () => {
+    // arrange
+    const envExampleFilePath = tmp.fileSync();
+    const spyError = jest.spyOn(console, "error").mockImplementation();
+    const spyWarn = jest.spyOn(console, "warn").mockImplementation();
+
+    // act
+    command
+      .exitOverride()
+      .parse([
+        "node",
+        "test",
+        "--example",
+        envExampleFilePath.name,
+        "--output",
+        "foo",
+        "bar",
+      ]);
+
+    // assert
+    expect(spyWarn.mock.calls).toMatchInlineSnapshot(`
+      [
+        [
+          "[33m[import-meta-env]: Option \`-o, --output\` were deprecated and will be removed in a future release, please use \`-p, --path\` instead.[39m",
+        ],
+      ]
+    `);
+    expect(spyError.mock.calls).toMatchInlineSnapshot(`
+      [
+        [
+          "[31m[import-meta-env]: Output file not found: foo, bar[39m",
+        ],
+      ]
+    `);
+  });
+
   test("it should warn if output files not found", () => {
     // arrange
     const envExampleFilePath = tmp.fileSync();
@@ -32,7 +69,7 @@ describe("create-command", () => {
         "test",
         "--example",
         envExampleFilePath.name,
-        "--output",
+        "--path",
         "foo",
         "bar",
       ]);

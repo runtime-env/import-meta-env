@@ -12,5 +12,5 @@
 1. For this example, we need to provide the output directory explicitly:
 
    ```sh
-   $ npx import-meta-env -x .env.example.public -o "custom-out-dir/**/*"
+   $ npx import-meta-env -x .env.example.public -p "custom-out-dir/**/*"
    ```

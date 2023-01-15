@@ -37,7 +37,7 @@ describe("cli", () => {
           "test",
           "--example",
           envExampleFilePath.name,
-          "--output",
+          "--path",
           "foo",
           "bar",
         ]);
@@ -94,11 +94,11 @@ describe("cli", () => {
       const parse = jest.fn();
       const opts = jest.fn(
         () =>
-          ({
+          <Args>{
             env: envFilePath.name,
             example: envExampleFilePath.name,
-            output: [outputFile.name],
-          } as Args)
+            path: [outputFile.name],
+          }
       );
       const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
       const di = {

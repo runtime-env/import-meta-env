@@ -23,7 +23,7 @@ Related examples: [docker](https://github.com/iendeavor/import-meta-env/blob/mai
 ::: tip
 By default, import-meta-env will automatically replace all files in the [common bundle output directories](https://github.com/iendeavor/import-meta-env/blob/e4defac25c89ff1bfd71ec478713720bd82d85d4/packages/cli/src/shared.ts#L5-L16)
 
-You can override this behavior by passing the `--output <path...>` option.
+You can override this behavior by passing the `-p, --path <path...>` option.
 
 For more information, see [API](/api.html#import-meta-env-cli).
 :::
