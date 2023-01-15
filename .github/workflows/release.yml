@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  schedule:
+    - cron: "0 0 * * 3"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          - 18
+        package:
+          - babel
+          - cli
+          - flow
+          - swc
+          - typescript
+          - unplugin
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Release
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          cd packages/${{ matrix.package }}
+          pnpm run release
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          delete-branch: true
+          reviewers: "iendeavor"
+          branch: bot/release/${{ matrix.package }}
+          title: "chore(release): @import-meta-env/${{ matrix.package }}"
