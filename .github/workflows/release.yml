@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  schedule:
+    - cron: "45 5 * * 0"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          - 18
+        package:
+          - babel
+          - cli
+          - flow
+          - swc
+          - typescript
+          - unplugin
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Release
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          cd packages/${{ matrix.package }}
+          pnpm run release
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          delete-branch: true
+          reviewers: "iendeavor"
+          branch: release/${{ matrix.package }}
