@@ -1,7 +1,7 @@
 import { accessor } from "../../../shared";
 import type { Compiler, javascript } from "webpack";
 
-export class ImportMetaPlugin {
+export class ImportMetaEnvPlugin {
   apply(compiler: Compiler) {
     const { dependencies } = require("webpack");
 

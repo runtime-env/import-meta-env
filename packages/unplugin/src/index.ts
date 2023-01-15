@@ -4,7 +4,7 @@ import { version } from "../package.json";
 import { resolveEnv, getPackageManagerExecCommand } from "../../shared";
 import { createAccessorRegExp } from "./constant";
 import { PluginOptions } from "./types";
-import { ImportMetaPlugin } from "./webpack/import-meta-plugin";
+import { ImportMetaEnvPlugin } from "./webpack/import-meta-env-plugin";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
@@ -99,7 +99,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     },
 
     webpack: (compiler) => {
-      compiler.options.plugins.push(new ImportMetaPlugin());
+      compiler.options.plugins.push(new ImportMetaEnvPlugin());
 
       const developmentModes: typeof compiler.options.mode[] = [
         "development",
