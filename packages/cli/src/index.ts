@@ -8,6 +8,7 @@ import { backupFileExt, defaultOutput } from "./shared";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
 import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
 import { shouldInjectEnv } from "./should-inject-env";
+import { replaceAllAsIsPlaceholderWithEnv } from "./replace-all-as-is-placeholder-with-env";
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
@@ -30,13 +31,14 @@ export const main = (di: {
     const backupFileName = outputFileName + backupFileExt;
     if (!opts.disposable) tryToRestore(backupFileName);
 
-    const code = readFileSync(outputFileName, "utf8");
+    let code = readFileSync(outputFileName, "utf8");
 
     if (shouldInjectEnv(code) === false) return;
     if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
-    const outputCode = replaceAllPlaceholderWithEnv({ code, env });
-    writeFileSync(outputFileName, outputCode);
+    code = replaceAllPlaceholderWithEnv({ code, env });
+    code = replaceAllAsIsPlaceholderWithEnv({ code, env });
+    writeFileSync(outputFileName, code);
   });
 };
 

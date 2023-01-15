@@ -5,11 +5,13 @@ import { resolveEnv, getPackageManagerExecCommand } from "../../shared";
 import { createAccessorRegExp } from "./constant";
 import { PluginOptions } from "./types";
 import { ImportMetaEnvPlugin } from "./webpack/import-meta-env-plugin";
+import { ImportMetaHtmlPlugin } from "./webpack/import-meta-env-html-plugin";
 import { transformDev } from "./transform-dev";
 import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
 import { resolveEnvExampleKeys } from "packages/shared/resolve-env-example-keys";
 import { SourceMap } from "magic-string";
+import { transformIndexHtmlDev } from "./transform-index-html-dev";
 
 const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
@@ -71,6 +73,13 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
         debug && console.debug(html);
         debug && console.debug("==================");
 
+        if (transformMode === "compile-time") {
+          html = transformIndexHtmlDev({
+            code: html,
+            env,
+            example: envExampleKeys,
+          });
+        }
         html = html.replace(createAccessorRegExp(""), "import.meta.env");
 
         debug && console.debug("=== index.html after ===");
@@ -116,6 +125,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
           envExampleFilePath: options?.example,
           envFilePath: options?.env,
         });
+
+        compiler.options.plugins.push(
+          new ImportMetaHtmlPlugin({ env, example: envExampleKeys })
+        );
       }
     },
 

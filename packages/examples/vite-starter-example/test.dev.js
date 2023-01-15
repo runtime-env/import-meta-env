@@ -3,6 +3,7 @@ const getPort = require("../get-port");
 
 module.exports = async () => {
   const port = await getPort();
+  const title = Math.random();
   const hello = Math.random();
 
   const commands = [
@@ -10,9 +11,9 @@ module.exports = async () => {
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
   ];
   const longRunningCommands = [
-    `npx cross-env HELLO=${hello} vite dev --port ${port}`,
+    `npx cross-env TITLE=${title} HELLO=${hello} vite dev --port ${port}`,
   ];
-  const expected = `Hello: ${hello}`;
+  const expected = `Title: ${title}\nHello: ${hello}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
 
