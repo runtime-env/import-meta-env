@@ -6,11 +6,11 @@ module.exports = async () => {
   const hello = Math.random();
 
   const commands = [
-    "npx rimraf dist",
+    "npx rimraf output",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     `npx cross-env NODE_ENV=development HELLO=${hello} rollup -c`,
   ];
-  const longRunningCommands = [`node ../serve.js -d public -p ${port}`];
+  const longRunningCommands = [`node ../serve.js -d output -p ${port}`];
   const expected = `Hello: ${hello}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
