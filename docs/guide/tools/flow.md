@@ -1,6 +1,6 @@
 # Flow
 
-Generate flow type from `.env.example`.
+Generate [Flow](https://flow.org/) type from `.env.example`.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # TypeScript
 
-Generate declaration file from `.env.example`.
+Generate [TypeScript](https://www.typescriptlang.org/) .d.ts from `.env.example`.
 
 ## Installation
 

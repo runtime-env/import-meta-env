@@ -206,16 +206,8 @@ You should gitignore this file because these environment variables are usually u
 :::
 
 ::: tip
-You can write a simple script to generate this file for local development, which is good for you.
-
-For example, development environment variables can be shared across teams if you want, while you can safely switch to staging or production environment variables without accidentally committing them to your git repository.
-
-More instantiation guides:
-
-1. First, you commit the `.env.development` file to your git repository.
-2. Second, you are free to change the `.env.local` file (gitignored).
-3. Third, you write a simple script to generate the `.env` file (gitignored too) from these files.
-   :::
+It is common to temporarily change environment variables for debugging or other purposes. You can use [@import-meta-env/prepare](/guide/tools/prepare) to automatically generate the final `.env` file from `.env.local`, `.env.local.defaults`, etc. files.
+:::
 
 ## .env.example File
 
