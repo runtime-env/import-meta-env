@@ -16,6 +16,7 @@ jobs:
           - babel
           - cli
           - flow
+          - prepare
           - swc
           - typescript
           - unplugin
