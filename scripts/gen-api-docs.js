@@ -57,6 +57,33 @@ fs.writeFileSync(
 );
 
 fs.writeFileSync(
+  path.resolve(__dirname, "..", "docs", ".api", "prepare.md"),
+  [
+    "## @import-meta-env/prepare",
+    "",
+    "```sh",
+    "$ npx import-meta-env-prepare --help",
+    "```",
+    "",
+    "```",
+    execSync(
+      `node ${path.resolve(
+        __dirname,
+        "..",
+        "packages",
+        "prepare",
+        "bin",
+        "import-meta-env-prepare.js"
+      )} --help`
+    )
+      .toString()
+      .trim(),
+    "```",
+  ].join("\n"),
+  "utf8"
+);
+
+fs.writeFileSync(
   path.resolve(__dirname, "..", "docs", ".api", "typescript.md"),
   [
     "## @import-meta-env/typescript",
@@ -97,6 +124,10 @@ fs.writeFileSync(
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "flow.md"),
+      "utf8"
+    ),
+    fs.readFileSync(
+      path.resolve(__dirname, "..", "docs", ".api", "prepare.md"),
       "utf8"
     ),
     fs.readFileSync(
