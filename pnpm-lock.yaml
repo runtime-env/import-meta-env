@@ -57,7 +57,7 @@ importers:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': ^7.19.0
       '@types/babel-plugin-tester': 9.0.5
-      '@types/babel__core': 7.1.20
+      '@types/babel__core': 7.20.0
       '@types/babel__helper-plugin-utils': ^7.10.0
       babel-plugin-tester: 11.0.1
       picocolors: ^1.0.0
@@ -67,7 +67,7 @@ importers:
     devDependencies:
       '@babel/core': 7.20.12
       '@types/babel-plugin-tester': 9.0.5
-      '@types/babel__core': 7.1.20
+      '@types/babel__core': 7.20.0
       '@types/babel__helper-plugin-utils': 7.10.0
       babel-plugin-tester: 11.0.1_@babel+core@7.20.12
 
@@ -587,14 +587,6 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       chalk: 2.4.2
       js-tokens: 4.0.0
-    dev: true
-
-  /@babel/parser/7.20.2:
-    resolution: {integrity: sha512-afk318kh2uKbo7BEj2QtEi8HVCGrwHUffrYDy7dgVcSa2j9lY3LDjPzcyGdpX7xgm35aWqvciZJ4WKmdF/SxYg==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.20.7
     dev: true
 
   /@babel/parser/7.20.7:
@@ -2292,15 +2284,15 @@ packages:
   /@types/babel-plugin-tester/9.0.5:
     resolution: {integrity: sha512-NRBPlhi5VkrTXMqDB1hSUnHs7vqLGRopeukC9u1zilOIFe9O1siwqeKZRiuJiVYakgpeDso/HE2Q5DU1aDqBog==}
     dependencies:
-      '@types/babel__core': 7.1.20
+      '@types/babel__core': 7.20.0
       '@types/prettier': 2.7.1
     dev: true
 
-  /@types/babel__core/7.1.20:
-    resolution: {integrity: sha512-PVb6Bg2QuscZ30FvOU7z4guG6c926D9YRvOxEaelzndpMsvP+YM74Q/dAFASpg2l6+XLalxSGxcq/lrgYWZtyQ==}
+  /@types/babel__core/7.20.0:
+    resolution: {integrity: sha512-+n8dL/9GWblDO0iU6eZAwEIJVr5DWigtle+Q6HLOrh/pdbXOhOtqzq8VPPE2zvNJzSKY4vH/z3iT3tn0A3ypiQ==}
     dependencies:
-      '@babel/parser': 7.20.2
-      '@babel/types': 7.20.2
+      '@babel/parser': 7.20.7
+      '@babel/types': 7.20.7
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
       '@types/babel__traverse': 7.18.2
@@ -2315,7 +2307,7 @@ packages:
   /@types/babel__helper-plugin-utils/7.10.0:
     resolution: {integrity: sha512-60YtHzhQ9HAkToHVV+TB4VLzBn9lrfgrsOjiJMtbv/c1jPdekBxaByd6DMsGBzROXWoIL6U3lEFvvbu69RkUoA==}
     dependencies:
-      '@types/babel__core': 7.1.20
+      '@types/babel__core': 7.20.0
     dev: true
 
   /@types/babel__template/7.4.1:
@@ -2835,7 +2827,7 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@jest/transform': 29.3.1
-      '@types/babel__core': 7.1.20
+      '@types/babel__core': 7.20.0
       babel-plugin-istanbul: 6.1.1
       babel-preset-jest: 29.2.0_@babel+core@7.20.12
       chalk: 4.1.2
@@ -2864,7 +2856,7 @@ packages:
     dependencies:
       '@babel/template': 7.20.7
       '@babel/types': 7.20.7
-      '@types/babel__core': 7.1.20
+      '@types/babel__core': 7.20.0
       '@types/babel__traverse': 7.18.2
     dev: true
 
