@@ -59,7 +59,7 @@ importers:
       '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.20.0
       '@types/babel__helper-plugin-utils': ^7.10.0
-      babel-plugin-tester: 11.0.1
+      babel-plugin-tester: 11.0.2
       picocolors: ^1.0.0
     dependencies:
       '@babel/helper-plugin-utils': 7.19.0
@@ -69,7 +69,7 @@ importers:
       '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.20.0
       '@types/babel__helper-plugin-utils': 7.10.0
-      babel-plugin-tester: 11.0.1_@babel+core@7.20.12
+      babel-plugin-tester: 11.0.2_@babel+core@7.20.12
 
   packages/cli:
     specifiers:
@@ -2896,13 +2896,14 @@ packages:
       - supports-color
     dev: true
 
-  /babel-plugin-tester/11.0.1_@babel+core@7.20.12:
-    resolution: {integrity: sha512-ADedssDweczFzImpD6kFb6DzXoCv8ODlG/FIrKj6UR6cREoW5ra9c8eGg/Ds2oGI4Jg1TyGISzgMCMMR8/kNJw==}
+  /babel-plugin-tester/11.0.2_@babel+core@7.20.12:
+    resolution: {integrity: sha512-wt7Zjiigg+xTgmUrpyjVByAX/RuWAAJzzuCSUTdxjm2iUpzWXkyentrOcIldhk4O4vl7d0+4DK1CXFmf64Xo3w==}
     engines: {node: ^14.20.0 || ^16.16.0 || >=18.5.0}
     peerDependencies:
       '@babel/core': '>=7.11.6'
     dependencies:
       '@babel/core': 7.20.12
+      core-js: 3.27.2
       debug: 4.3.4
       lodash.mergewith: 4.6.2
       prettier: 2.8.3
@@ -3384,6 +3385,11 @@ packages:
     resolution: {integrity: sha512-ovcyhs2DEBUIE0MGEKHP4olCUW/XYte3Vroyxuh38rD1wAO4dHohsovUC4eAOuzFxE6b+RXvBU3UZ9o0YhUTkA==}
     dependencies:
       browserslist: 4.21.4
+    dev: true
+
+  /core-js/3.27.2:
+    resolution: {integrity: sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w==}
+    requiresBuild: true
     dev: true
 
   /core-util-is/1.0.3:
