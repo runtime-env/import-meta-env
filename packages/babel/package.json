@@ -46,6 +46,6 @@
     "@types/babel-plugin-tester": "9.0.5",
     "@types/babel__core": "7.20.0",
     "@types/babel__helper-plugin-utils": "^7.10.0",
-    "babel-plugin-tester": "11.0.2"
+    "babel-plugin-tester": "11.0.3"
   }
 }
