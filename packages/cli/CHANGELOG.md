@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/iendeavor/import-meta-env/compare/cli0.4.1...cli0.5.0) (2023-01-25)
+
+
+### Features
+
+* **cli:** rename option `--output` to `--path` ([08cf5bf](https://github.com/iendeavor/import-meta-env/commit/08cf5bfad9e22985d73f299746777d5962c2ea0f))
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v10 ([d7b6d3d](https://github.com/iendeavor/import-meta-env/commit/d7b6d3da733db25acfab1b00fa0cd7b226f141a8))
+* **deps:** update dependency commander to v9.5.0 ([199b47f](https://github.com/iendeavor/import-meta-env/commit/199b47f23898896a568d225f901f52f97ff8f98a))
+* **deps:** update dependency glob to v8.1.0 ([cae7ab9](https://github.com/iendeavor/import-meta-env/commit/cae7ab98197287bdde230c8dc21fefab43d6e509))
+* **deps:** update dependency serialize-javascript to v6.0.1 ([080f7eb](https://github.com/iendeavor/import-meta-env/commit/080f7eb997ceeda50d5c067303e853aed657b165))
+
 ### [0.4.1](https://github.com/iendeavor/import-meta-env/compare/cli0.4.0...cli0.4.1) (2022-12-11)
 
 ## [0.4.0](https://github.com/iendeavor/import-meta-env/compare/cli0.3.0...cli0.4.0) (2022-11-27)
