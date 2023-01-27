@@ -59,7 +59,7 @@ importers:
       '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.20.0
       '@types/babel__helper-plugin-utils': ^7.10.0
-      babel-plugin-tester: 11.0.3
+      babel-plugin-tester: 11.0.4
       picocolors: ^1.0.0
     dependencies:
       '@babel/helper-plugin-utils': 7.19.0
@@ -69,7 +69,7 @@ importers:
       '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.20.0
       '@types/babel__helper-plugin-utils': 7.10.0
-      babel-plugin-tester: 11.0.3_@babel+core@7.20.12
+      babel-plugin-tester: 11.0.4_@babel+core@7.20.12
 
   packages/cli:
     specifiers:
@@ -2914,8 +2914,8 @@ packages:
       - supports-color
     dev: true
 
-  /babel-plugin-tester/11.0.3_@babel+core@7.20.12:
-    resolution: {integrity: sha512-YUIJEUy/IH0lGB7U6Y4PnU1PVmWhUtfKveYExYqbkJXYkmCuuRwDH1hTa0Qd5RvE293kID192LCdVvnhISiqeg==}
+  /babel-plugin-tester/11.0.4_@babel+core@7.20.12:
+    resolution: {integrity: sha512-cqswtpSPo0e++rZB0l/54EG17LL25l9gLgh59yXfnmNxX+2lZTIOpx2zt4YI9QIClVXc8xf63J6yWwKkzy0jNg==}
     engines: {node: ^14.20.0 || ^16.16.0 || >=18.5.0}
     peerDependencies:
       '@babel/core': '>=7.11.6'
