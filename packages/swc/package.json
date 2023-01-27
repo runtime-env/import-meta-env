@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/swc#readme",
   "peerDependencies": {
-    "@import-meta-env/cli": ">=0.4.0"
+    "@import-meta-env/cli": "^0.4.0"
   },
   "peerDependenciesMeta": {
     "@import-meta-env/cli": {
