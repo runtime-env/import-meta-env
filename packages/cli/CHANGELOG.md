@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/iendeavor/import-meta-env/compare/cli0.5.0...cli0.5.1) (2023-01-27)
+
+
+### Bug Fixes
+
+* cannot install newer version ([aec3166](https://github.com/iendeavor/import-meta-env/commit/aec3166f4b4c7791e1aa2d3d8e0252397b771d8f))
+
+
+### Reverts
+
+* Revert "fix: cannot install newer version" ([6ae494f](https://github.com/iendeavor/import-meta-env/commit/6ae494f2df91f593781e1e5f5e46b9de430d8865))
+
 ## [0.5.0](https://github.com/iendeavor/import-meta-env/compare/cli0.4.1...cli0.5.0) (2023-01-25)
 
 
