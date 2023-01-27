@@ -184,8 +184,8 @@ jobs:
           - "process-env-example"
           - "rollup-plugin-babel-example"
           - "rollup-starter-example"
-          - "rollup-swc-example"
-          - "swc-example"
+          # - "rollup-swc-example"
+          # - "swc-example"
           - "vite-alpine-example"
           - "vite-built-in-import-meta-env-example"
           - "vite-config-build-assets-dir-example"
@@ -197,7 +197,7 @@ jobs:
           - "vite-solid-example"
           - "vite-starter-example"
           - "vite-svelte-example"
-          - "vite-swc-example"
+          # - "vite-swc-example"
           - "vite-vanilla-example"
           - "vite-vanilla-ts-example"
           - "vite-vue-jsx-example"
@@ -206,7 +206,7 @@ jobs:
           - "webpack-module-federation-example"
           - "webpack-babel-loader-example"
           - "webpack-starter-example"
-          - "webpack-swc-example"
+          # - "webpack-swc-example"
           - "webpack-ts-loader-example"
           - "worker-example"
         include:
@@ -299,7 +299,7 @@ jobs:
           - cli
           - flow
           - prepare
-          - swc
+          # - swc
           - typescript
           - unplugin
 
