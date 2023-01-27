@@ -101,7 +101,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
     webpack: (compiler) => {
       compiler.options.plugins.push(new ImportMetaEnvPlugin());
 
-      const developmentModes: typeof compiler.options.mode[] = [
+      const developmentModes: (typeof compiler.options.mode)[] = [
         "development",
         "none",
       ];
