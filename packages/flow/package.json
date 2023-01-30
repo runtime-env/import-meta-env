@@ -34,7 +34,7 @@
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/flow#readme",
   "devDependencies": {
     "@types/node": "18.11.18",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   },
   "peerDependencies": {
     "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
