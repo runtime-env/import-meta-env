@@ -144,14 +144,14 @@ importers:
       rollup: 3.15.0
       ts-node: 10.9.1
       typescript: 4.9.5
-      unplugin: 1.0.1
+      unplugin: 1.1.0
       vite: 4.1.1
       webpack: 5.75.0
     dependencies:
       magic-string: 0.29.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      unplugin: 1.0.1
+      unplugin: 1.1.0
     devDependencies:
       '@types/node': 18.13.0
       '@types/object-hash': 3.0.2
@@ -2727,8 +2727,8 @@ packages:
     hasBin: true
     dev: true
 
-  /acorn/8.8.1:
-    resolution: {integrity: sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==}
+  /acorn/8.8.2:
+    resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -5677,7 +5677,7 @@ packages:
     hasBin: true
     dependencies:
       '@jridgewell/source-map': 0.3.2
-      acorn: 8.8.1
+      acorn: 8.8.2
       commander: 2.20.3
       source-map-support: 0.5.21
     dev: true
@@ -5841,10 +5841,10 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /unplugin/1.0.1:
-    resolution: {integrity: sha512-aqrHaVBWW1JVKBHmGo33T5TxeL0qWzfvjWokObHA9bYmN7eNDkwOxmLjhioHl9878qDFMAaT51XNroRyuz7WxA==}
+  /unplugin/1.1.0:
+    resolution: {integrity: sha512-I8obQ8Rs/hnkxokRV6g8JKOQFgYNnTd9DL58vcSt5IJ9AkK8wbrtsnzD5hi4BJlvcY536JzfEXj9L6h7j559/A==}
     dependencies:
-      acorn: 8.8.1
+      acorn: 8.8.2
       chokidar: 3.5.3
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
