@@ -138,7 +138,7 @@ importers:
     specifiers:
       '@types/node': 18.14.0
       '@types/object-hash': 3.0.2
-      magic-string: ^0.29.0
+      magic-string: ^0.30.0
       object-hash: ^3.0.0
       picocolors: ^1.0.0
       rollup: 3.17.2
@@ -148,7 +148,7 @@ importers:
       vite: 4.1.4
       webpack: 5.75.0
     dependencies:
-      magic-string: 0.29.0
+      magic-string: 0.30.0
       object-hash: 3.0.0
       picocolors: 1.0.0
       unplugin: 1.1.0
@@ -4779,8 +4779,8 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
-  /magic-string/0.29.0:
-    resolution: {integrity: sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==}
+  /magic-string/0.30.0:
+    resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
