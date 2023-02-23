@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/prepare#readme",
   "devDependencies": {
-    "@types/glob": "8.0.1",
+    "@types/glob": "8.1.0",
     "@types/serialize-javascript": "5.0.2"
   },
   "peerDependencies": {
