@@ -73,7 +73,7 @@ importers:
 
   packages/cli:
     specifiers:
-      '@types/glob': 8.0.1
+      '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
       commander: 10.0.0
       glob: 8.1.0
@@ -85,7 +85,7 @@ importers:
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     devDependencies:
-      '@types/glob': 8.0.1
+      '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
 
   packages/flow:
@@ -103,7 +103,7 @@ importers:
 
   packages/prepare:
     specifiers:
-      '@types/glob': 8.0.1
+      '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
       commander: 10.0.0
       glob: 8.1.0
@@ -115,7 +115,7 @@ importers:
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     devDependencies:
-      '@types/glob': 8.0.1
+      '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
 
   packages/swc:
@@ -2392,11 +2392,11 @@ packages:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
-  /@types/glob/8.0.1:
-    resolution: {integrity: sha512-8bVUjXZvJacUFkJXHdyZ9iH1Eaj5V7I8c4NdH5sQJsdXkqT4CA5Dhb4yb4VE/3asyx4L9ayZr1NIhTsWHczmMw==}
+  /@types/glob/8.1.0:
+    resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.11.18
+      '@types/node': 18.14.0
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -2442,10 +2442,6 @@ packages:
 
   /@types/node/17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
-    dev: true
-
-  /@types/node/18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
   /@types/node/18.14.0:
