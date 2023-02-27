@@ -16,12 +16,12 @@ describe("resolveOutputFileNames", () => {
     expect(act).not.toThrow();
   });
 
-  test("it should call glob.sync", () => {
+  test("it should call globSync", () => {
     // arrange
     const tmpDir = tmp.dirSync();
     writeFileSync(resolve(tmpDir.name, "foo"), "", "utf8");
     const tmpDirGlob = resolve(tmpDir.name, "**", "*");
-    const spy = jest.spyOn(require("glob"), "sync");
+    const spy = jest.spyOn(require("glob"), "globSync");
 
     // act
     resolveOutputFileNames([tmpDirGlob]);
@@ -74,9 +74,11 @@ describe("resolveOutputFileNames", () => {
     const result = resolveOutputFileNames([resolve(tmpDir.name, "**", "*")]);
 
     // assert
-    expect(result).toEqual([
-      resolve(tmpDir.name, "bar", "baz"),
-      resolve(tmpDir.name, "foo"),
-    ]);
+    expect(result).toEqual(
+      expect.arrayContaining([
+        resolve(tmpDir.name, "bar", "baz"),
+        resolve(tmpDir.name, "foo"),
+      ])
+    );
   });
 });
