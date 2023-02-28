@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "commander": "10.0.0",
-    "glob": "9.0.1",
+    "glob": "9.0.2",
     "picocolors": "1.0.0",
     "serialize-javascript": "6.0.1"
   }
