@@ -76,12 +76,12 @@ importers:
       '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
       commander: 10.0.0
-      glob: 9.0.2
+      glob: 9.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     dependencies:
       commander: 10.0.0
-      glob: 9.0.2
+      glob: 9.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     devDependencies:
@@ -106,12 +106,12 @@ importers:
       '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
       commander: 10.0.0
-      glob: 9.0.2
+      glob: 9.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     dependencies:
       commander: 10.0.0
-      glob: 9.0.2
+      glob: 9.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     devDependencies:
@@ -3921,12 +3921,12 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /glob/9.0.2:
-    resolution: {integrity: sha512-s6v83yj/qsUHZTp4d1Pq9HkB2tROINGxXhKYspF0kGvVqPlEPrUo4WDnSffO1611xYvkuK3mgoo86mdulYCX4A==}
+  /glob/9.1.0:
+    resolution: {integrity: sha512-bAnZn/xYN7o43Y97vDipnunJtQOOhJAyt7/zt1HrzFgtIrol4eJTUn8Kd74B1cMyOBuzWUMvBr2F178h0UQuUw==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       fs.realpath: 1.0.0
-      minimatch: 7.3.0
+      minimatch: 7.4.1
       minipass: 4.2.4
       path-scurry: 1.5.0
     dev: false
@@ -4876,8 +4876,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch/7.3.0:
-    resolution: {integrity: sha512-WaMDuhKa7a6zKiwplR1AOz+zGvJba24k5VU1Cy6NhEguavT2YRlHxuINUgTas4wiS6fwBpYq4TcA1XIECSntyw==}
+  /minimatch/7.4.1:
+    resolution: {integrity: sha512-Oz1iPEP+MGl7KS3SciLsLLcuZ7VsBfb7Qrz/jYt/s/sYAv272P26HSLz2f77Y6hzTKXiBi6g765fqpEDNc5fJw==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
