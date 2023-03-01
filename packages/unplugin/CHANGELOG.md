@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.6](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.5...unplugin0.4.6) (2023-03-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency magic-string to ^0.30.0 ([4e64df5](https://github.com/iendeavor/import-meta-env/commit/4e64df5f5d649f64c9b4a64017fee906d44ccf85))
+
 ### [0.4.5](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.4...unplugin0.4.5) (2023-02-22)
 
 
