@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.3](https://github.com/iendeavor/import-meta-env/compare/cli0.5.2...cli0.5.3) (2023-03-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v9.2.1 ([633f8c8](https://github.com/iendeavor/import-meta-env/commit/633f8c8dc3dedb3d7562e9ef74e6c8d59ffdd3ca))
+
 ### [0.5.2](https://github.com/iendeavor/import-meta-env/compare/cli0.5.1...cli0.5.2) (2023-03-01)
 
 
