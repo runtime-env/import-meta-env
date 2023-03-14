@@ -42,7 +42,7 @@
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.21.0",
+    "@babel/core": "7.21.3",
     "@types/babel-plugin-tester": "9.0.5",
     "@types/babel__core": "7.20.0",
     "@types/babel__helper-plugin-utils": "^7.10.0",
