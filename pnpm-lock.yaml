@@ -25,7 +25,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.1
       typescript: 4.9.5
-      vitepress: 1.0.0-alpha.58
+      vitepress: 1.0.0-alpha.60
       yaml: 2.2.1
     devDependencies:
       '@babel/core': 7.21.3
@@ -49,7 +49,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.1
       typescript: 4.9.5
-      vitepress: 1.0.0-alpha.58_@types+node@18.15.3
+      vitepress: 1.0.0-alpha.60_@types+node@18.15.3
       yaml: 2.2.1
 
   packages/babel:
@@ -5907,8 +5907,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress/1.0.0-alpha.58_@types+node@18.15.3:
-    resolution: {integrity: sha512-aENSAiE2uKMoQPwBTELY8Nig5qSWrmAl+MgsO3l/TE8At6kXii+2rseEId/bVfT700JeucYdqtCgWxu+LwpYIw==}
+  /vitepress/1.0.0-alpha.60_@types+node@18.15.3:
+    resolution: {integrity: sha512-GI5iLDkZRqGEPixbSloT+p6pbKcMh9ykRRxt8vf9AjV1gaPit6Stg/t9WNxTdIhKVCuQMexGs1605DNApSRK2A==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.3
