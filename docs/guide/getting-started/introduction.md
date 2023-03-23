@@ -73,6 +73,7 @@ $ npm i -D dotenv
        plugins: [
      +   require("@import-meta-env/unplugin").webpack({
      +     example: ".env.example",
+     +     transformMode: 'compile-time',
      +   }),
        ],
      };
@@ -106,6 +107,7 @@ $ npm i -D dotenv
        plugins: [
      +   require("@import-meta-env/unplugin").webpack({
      +     example: ".env.example",
+     +     transformMode: 'runtime',
      +   }),
        ],
      };
@@ -308,10 +310,15 @@ We encourage you to put this special expression in your `index.html` because the
 </html>
 ```
 
-::: info
+::: warning
 The value of the expression will be statically replaced, the following will not work:
 
+<!-- prettier-ignore -->
 ```js
+globalThis.import_meta_env = JSON.parse(
+  '"import_meta_env_placeholder"'
+);
+
 globalThis.import_meta_env = JSON.parse('"import_meta_env" + "_placeholder"');
 
 const placeholder = '"import_meta_env_placeholder"';
