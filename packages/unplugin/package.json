@@ -45,7 +45,7 @@
     "ts-node": "10.9.1",
     "typescript": "5.0.2",
     "vite": "4.2.1",
-    "webpack": "5.76.2"
+    "webpack": "5.76.3"
   },
   "peerDependencies": {
     "@import-meta-env/cli": "^0.5.1",
