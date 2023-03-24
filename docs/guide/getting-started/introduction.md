@@ -16,9 +16,7 @@
 
 ## Guide
 
-> In this guide, we use Webpack and Docker as examples.
-
-> If you'd rather see the [diff](https://en.wikipedia.org/wiki/Diff) code, it can be found [in the repository](https://github.com/iendeavor/import-meta-env/tree/main/diff).
+> In this guide, we will use Webpack as an example, but you can also use other build tools. All supported build tools can be found on the [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s page.
 
 ### Write your code
 
@@ -35,9 +33,9 @@
 
    ```diff
    // src/index.js
-   document.querySelector("body").innerHTML = `
-   + <h1>Hello, ${import.meta.env.NAME}</h1>
-   `;
+   - const name = process.env.NAME
+   + const name = import.meta.env.NAME
+   document.querySelector("body").innerHTML = `<h1>Hello, ${name}</h1>`;
    ```
 
    See the [syntax](#syntax) section for details.
@@ -72,8 +70,9 @@ $ npm i -D dotenv
      module.exports = {
        plugins: [
      +   require("@import-meta-env/unplugin").webpack({
+     +     env: ".env",
      +     example: ".env.example",
-     +     transformMode: 'compile-time',
+     +     transformMode: "compile-time",
      +   }),
        ],
      };
@@ -87,9 +86,8 @@ $ npm i -D dotenv
 
      ```diff
      // dist/main.js
-     // ...
-     - <h1>Hello, ${import.meta.env.NAME}</h1>
-     + <h1>Hello, ${"world"}</h1>
+     - const name = import.meta.env.NAME
+     + const name = "world"
      // ...
      ```
 
@@ -105,10 +103,12 @@ $ npm i -D dotenv
      // webpack.config.js
      module.exports = {
        plugins: [
-     +   require("@import-meta-env/unplugin").webpack({
-     +     example: ".env.example",
-     +     transformMode: 'runtime',
-     +   }),
+         require("@import-meta-env/unplugin").webpack({
+           env: ".env",
+           example: ".env.example",
+     -     transformMode: "compile-time",
+     +     transformMode: "runtime",
+         }),
        ],
      };
      ```
@@ -121,9 +121,8 @@ $ npm i -D dotenv
 
      ```diff
      // dist/main.js
-     // ...
-     - <h1>Hello, ${import.meta.env.NAME}</h1>
-     + <h1>Hello, ${globalThis.import_meta_env.NAME}</h1>
+     - const name = import.meta.env.NAME
+     + const name = globalThis.import_meta_env.NAME
      // ...
      ```
 
@@ -135,7 +134,9 @@ $ npm i -D dotenv
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-     +   <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
+     +   <script>
+     +     globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"')
+     +   </script>
        </head>
      </html>
      ```
@@ -148,28 +149,10 @@ $ npm i -D dotenv
      $ npm i -D @import-meta-env/cli
      ```
 
-  1. Package the above CLI into an alpine-compatible executable:
-
-     ```
-     # Dockerfile
-     RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js \
-       --target node18-alpine-x64 \
-       --output import-meta-env-alpine
-     ```
-
-     See the [without Node.js](/guide/getting-started/runtime-transform.html#without-node-js) section for details.
-
-  1. Before starting your container, define environment variables:
+  1. Transform it again using the packaged executable:
 
      ```sh
-     $ docker run --env NAME=world ...
-     ```
-
-  1. Transform it again (on the container startup) using the packaged excutable:
-
-     ```sh
-     # start.sh
-     ./import-meta-env-alpine -x .env.example -p dist/index.html || exit 1
+     npx import-meta-env -x .env.example -p dist/index.html
      ```
 
      ```diff
@@ -178,10 +161,10 @@ $ npm i -D dotenv
      <html lang="en">
        <head>
          <meta charset="UTF-8" />
-     -   <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
-     +   <script>
+         <script>
+     -     globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"')
      +     globalThis.import_meta_env = JSON.parse('{"NAME":"world"}');
-     +   </script>
+         </script>
          <script defer="defer" src="main.js"></script>
        </head>
      </html>
@@ -189,7 +172,7 @@ $ npm i -D dotenv
 
 See the [transform](#transform) section for details.
 
-Full working example can be found [here](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/docker-starter-example).
+You can find the corresponding working example [here](https://github.com/iendeavor/import-meta-env/tree/main/diff/after-using-import-meta-env), and all examples [here](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples).
 
 ## .env File
 

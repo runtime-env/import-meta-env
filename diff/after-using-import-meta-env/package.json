@@ -9,8 +9,8 @@
     "preview": "cross-env NAME='import-meta-env' npx import-meta-env --example .env.example && serve -s dist"
   },
   "devDependencies": {
-    "@import-meta-env/cli": "^0.4.1",
-    "@import-meta-env/unplugin": "^0.4.1",
+    "@import-meta-env/cli": "^0.5.5",
+    "@import-meta-env/unplugin": "^0.4.7",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "html-webpack-plugin": "^5.5.0",

@@ -10,9 +10,10 @@ module.exports = {
       template: "./public/index.html",
     }),
     importMetaEnv.webpack({
+      env: ".env",
       example: ".env.example",
-      // transformMode: process.env.NODE_ENV === "development" ? "compile-time" : "runtime",
-      // env: ".env"
+      transformMode:
+        process.env.NODE_ENV === "development" ? "compile-time" : "runtime",
     }),
   ],
 };
