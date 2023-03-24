@@ -228,6 +228,14 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
 
+      - name: Test diff
+        run: |
+          cd packages/examples
+          npm i
+          cd ../../diff/after-using-import-meta-env
+          npm i
+          npm run _test
+
       - name: Test ${{ matrix.example }}
         run: |
           cd packages/examples
