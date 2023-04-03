@@ -36,6 +36,8 @@ export const main = (di: {
     if (!opts.disposable) copyFileSync(outputFileName, backupFileName);
 
     const outputCode = replaceAllPlaceholderWithEnv({ code, env });
+    if (code === outputCode) return;
+
     writeFileSync(outputFileName, outputCode);
   });
 };
