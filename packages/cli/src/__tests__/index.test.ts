@@ -71,6 +71,53 @@ describe("cli", () => {
         ]
       `);
     });
+
+    test("it should warn if placeholders are not found", () => {
+      // arrange
+      const envFilePath = tmp.fileSync();
+      writeFileSync(envFilePath.name, "FOO=bar\nBAZ=qux");
+      const envExampleFilePath = tmp.fileSync();
+      writeFileSync(envExampleFilePath.name, "FOO=");
+      const outputFile = tmp.fileSync();
+      const code = `
+<html>
+  <body>
+  </body>
+</html>
+        `.trim();
+      writeFileSync(outputFile.name, code);
+      const parse = jest.fn();
+      const opts = jest.fn(
+        () =>
+          <Args>{
+            env: envFilePath.name,
+            example: envExampleFilePath.name,
+            path: [outputFile.name],
+          }
+      );
+      const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
+      const di = {
+        command: new cmd() as typeof command,
+        resolveEnv,
+        resolveEnvExampleKeys,
+      };
+      const spy = jest.spyOn(console, "error").mockImplementation();
+
+      // act
+      main(di);
+
+      // assert
+      expect(spy.mock.calls).toMatchInlineSnapshot(`
+        [
+          [
+            "[31m[import-meta-env]: Placeholder not found[39m
+
+        [33mIt looks like you forgot to add the special expression to your entry.[39m
+        [33mSee special expression for more info: https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression[39m",
+          ],
+        ]
+      `);
+    });
   });
 
   describe("main", () => {

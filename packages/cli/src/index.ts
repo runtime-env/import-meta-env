@@ -8,6 +8,7 @@ import { backupFileExt, defaultOutput } from "./shared";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
 import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
 import { shouldInjectEnv } from "./should-inject-env";
+import colors from "picocolors";
 
 export const main = (di: {
   command: ReturnType<typeof createCommand>;
@@ -22,6 +23,7 @@ export const main = (di: {
   });
 
   const path = opts.path ?? defaultOutput;
+  let hasReplaced = false;
   resolveOutputFileNames(path).forEach((outputFileName) => {
     if (lstatSync(outputFileName).isDirectory()) return;
     if (isSourceMap(outputFileName)) return;
@@ -38,8 +40,25 @@ export const main = (di: {
     const outputCode = replaceAllPlaceholderWithEnv({ code, env });
     if (code === outputCode) return;
 
+    hasReplaced = true;
     writeFileSync(outputFileName, outputCode);
   });
+
+  if (hasReplaced) return;
+
+  console.error(
+    [
+      colors.red(`[import-meta-env]: Placeholder not found`),
+      "",
+      colors.yellow(
+        `It looks like you forgot to add the special expression to your entry.`
+      ),
+      colors.yellow(
+        `See special expression for more info: https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression`
+      ),
+    ].join("\n")
+  );
+  if (require.main === module) process.exit(1);
 };
 
 if (require.main === module) {
