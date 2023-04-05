@@ -16,7 +16,10 @@ rust-ini = "0.18.0"
 serde = "1.0.159"
 serde_json = "1.0.95"
 string_cache = "0.8.7"
-swc_core = { version = "0.63.3", features = ["ecma_plugin_transform"] }
+swc_core = { version = "0.74.2", features = [
+  "ecma_plugin_transform",
+  "ecma_ast_serde",
+] }
 
 [dev-dependencies]
 tempfile = "3.5.0"
