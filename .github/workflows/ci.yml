@@ -102,7 +102,9 @@ jobs:
             packages/swc
 
       - name: Install dependencies
-        run: pnpm i
+        run: |
+          pnpm i
+          rustup component add rustfmt
 
       - name: Check formatting
         run: pnpm run lint
