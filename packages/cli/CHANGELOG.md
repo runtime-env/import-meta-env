@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/iendeavor/import-meta-env/compare/cli0.5.6...cli0.6.0) (2023-04-05)
+
+
+### Features
+
+* ignore if output is same ([d51b885](https://github.com/iendeavor/import-meta-env/commit/d51b885c4b2b305edbfef773a4d7e40974aac090))
+* throw error if no placeholder found ([a9aa559](https://github.com/iendeavor/import-meta-env/commit/a9aa55952ed293d2ba5a80f7d626bd06bf47b23e)), closes [#584](https://github.com/iendeavor/import-meta-env/issues/584)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v9.3.4 ([1b3b66d](https://github.com/iendeavor/import-meta-env/commit/1b3b66d3e020cf0f17e99d24cc7835b9e0ce161e))
+
 ### [0.5.6](https://github.com/iendeavor/import-meta-env/compare/cli0.5.5...cli0.5.6) (2023-03-29)
 
 
