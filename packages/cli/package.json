@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/cli",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
