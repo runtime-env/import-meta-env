@@ -1372,9 +1372,9 @@ dependencies = [
 
 [[package]]
 name = "swc_core"
-version = "0.74.5"
+version = "0.74.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "95f203dcfb8ea32be2963814c7ec9fdba3997a60ec2b3051117b2cf6151a607c"
+checksum = "e18b78930ecae9f6415393c0c396af455e2a3cda540620f01b28a3e99ce4cc77"
 dependencies = [
  "once_cell",
  "swc_atoms",
@@ -1496,9 +1496,9 @@ dependencies = [
 
 [[package]]
 name = "swc_ecma_transforms_testing"
-version = "0.128.1"
+version = "0.128.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9139aadca26483b90b96557374628b9983fe359e8c7d289433f3188236d47a92"
+checksum = "1b5e8f2b21110a20b55b234d4ed50f5df9bda8ff76da56b743a655c332bdc6b9"
 dependencies = [
  "ansi_term",
  "anyhow",
