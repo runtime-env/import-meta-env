@@ -14,7 +14,7 @@ importers:
       babel-jest: 29.5.0
       chai: 4.3.7
       change-case: 4.1.2
-      commander: 10.0.0
+      commander: 10.0.1
       dotenv: 16.0.3
       esbuild: 0.17.16
       jest: 29.5.0
@@ -38,7 +38,7 @@ importers:
       babel-jest: 29.5.0_@babel+core@7.21.4
       chai: 4.3.7
       change-case: 4.1.2
-      commander: 10.0.0
+      commander: 10.0.1
       dotenv: 16.0.3
       esbuild: 0.17.16
       jest: 29.5.0_@types+node@18.15.11
@@ -75,12 +75,12 @@ importers:
     specifiers:
       '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
-      commander: 10.0.0
+      commander: 10.0.1
       glob: 10.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     dependencies:
-      commander: 10.0.0
+      commander: 10.0.1
       glob: 10.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
@@ -105,12 +105,12 @@ importers:
     specifiers:
       '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
-      commander: 10.0.0
+      commander: 10.0.1
       glob: 10.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     dependencies:
-      commander: 10.0.0
+      commander: 10.0.1
       glob: 10.1.0
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
@@ -3191,6 +3191,11 @@ packages:
 
   /commander/10.0.0:
     resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==}
+    engines: {node: '>=14'}
+    dev: false
+
+  /commander/10.0.1:
+    resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
     engines: {node: '>=14'}
 
   /commander/2.20.3:
