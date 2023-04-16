@@ -25,7 +25,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.1
       typescript: 5.0.4
-      vitepress: 1.0.0-alpha.69
+      vitepress: 1.0.0-alpha.71
       yaml: 2.2.1
     devDependencies:
       '@babel/core': 7.21.4
@@ -49,7 +49,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.1
       typescript: 5.0.4
-      vitepress: 1.0.0-alpha.69_@types+node@18.15.11
+      vitepress: 1.0.0-alpha.71_@types+node@18.15.11
       yaml: 2.2.1
 
   packages/babel:
@@ -4734,6 +4734,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /mark.js/8.11.1:
+    resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
+    dev: true
+
   /meow/8.1.2:
     resolution: {integrity: sha512-r85E3NdZ+mpYk1C6RjPFEMSE+s1iZMuHtsHAqY0DT3jZczl0diWUZ8g6oU7h0M9cD2EL+PzaYghhCLzR0ZNn5Q==}
     engines: {node: '>=10'}
@@ -5920,8 +5924,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress/1.0.0-alpha.69_@types+node@18.15.11:
-    resolution: {integrity: sha512-d7Vz+S/1i/7szVUSOHJf12APtoGlHXIJXzDvXLChhlE000TVzWoYX6rUAchjJzfxdFjng3Eo96ZkPs7OJxDjMg==}
+  /vitepress/1.0.0-alpha.71_@types+node@18.15.11:
+    resolution: {integrity: sha512-UkmDuNO+paGq0ba5WVhwasR1BCQ0owlPStnjtCRd/cfzXB+VBAiZFK9pglVQaf/tDBFQOuHZkrkfgp5ka69hIg==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.3
@@ -5930,6 +5934,7 @@ packages:
       '@vue/devtools-api': 6.5.0
       '@vueuse/core': 10.0.2_vue@3.2.47
       body-scroll-lock: 4.0.0-beta.0
+      mark.js: 8.11.1
       minisearch: 6.0.1
       shiki: 0.14.1
       vite: 4.2.1_@types+node@18.15.11
