@@ -141,7 +141,7 @@ importers:
       magic-string: ^0.30.0
       object-hash: ^3.0.0
       picocolors: ^1.0.0
-      rollup: 3.20.2
+      rollup: 3.20.3
       ts-node: 10.9.1
       typescript: 5.0.4
       unplugin: 1.2.0
@@ -155,7 +155,7 @@ importers:
     devDependencies:
       '@types/node': 18.15.11
       '@types/object-hash': 3.0.2
-      rollup: 3.20.2
+      rollup: 3.20.3
       ts-node: 10.9.1_bhanhq442dy43ncydsavgi4jfi
       typescript: 5.0.4
       vite: 4.2.1_@types+node@18.15.11
@@ -5321,8 +5321,8 @@ packages:
       glob: 10.1.0
     dev: true
 
-  /rollup/3.20.2:
-    resolution: {integrity: sha512-3zwkBQl7Ai7MFYQE0y1MeQ15+9jsi7XxfrqwTb/9EK8D9C9+//EBR4M+CuA1KODRaNbFez/lWxA5vhEGZp4MUg==}
+  /rollup/3.20.3:
+    resolution: {integrity: sha512-u6/O1X42CAZ79rbk+smyONJQLTpwFBL7InpRa/AVWia5lq60w5J/PUsVHCOgSolN0X9R2GjQ41fZm3x28Hk1lA==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -5915,7 +5915,7 @@ packages:
       esbuild: 0.17.12
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.20.2
+      rollup: 3.20.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
