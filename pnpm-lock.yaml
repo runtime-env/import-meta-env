@@ -26,7 +26,7 @@ importers:
       tmp: 0.2.1
       typescript: 5.0.4
       vitepress: 1.0.0-alpha.73
-      yaml: 2.2.1
+      yaml: 2.2.2
     devDependencies:
       '@babel/core': 7.21.4
       '@babel/preset-env': 7.21.4_@babel+core@7.21.4
@@ -50,7 +50,7 @@ importers:
       tmp: 0.2.1
       typescript: 5.0.4
       vitepress: 1.0.0-alpha.73_@types+node@18.16.0
-      yaml: 2.2.1
+      yaml: 2.2.2
 
   packages/babel:
     specifiers:
@@ -6110,8 +6110,8 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
 
-  /yaml/2.2.1:
-    resolution: {integrity: sha512-e0WHiYql7+9wr4cWMx3TVQrNwejKaEe7/rHNmQmqRjazfOP5W8PB6Jpebb5o6fIapbz9o9+2ipcaTM2ZwDI6lw==}
+  /yaml/2.2.2:
+    resolution: {integrity: sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==}
     engines: {node: '>= 14'}
     dev: true
 
