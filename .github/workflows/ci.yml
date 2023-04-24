@@ -345,7 +345,7 @@ jobs:
           greater-version-only: true
 
       - name: Tag
-        uses: anothrNick/github-tag-action@v1.61.0
+        uses: anothrNick/github-tag-action@1.62.0
         if: steps.publish.outputs.type != 'none'
         env:
           CUSTOM_TAG: ${{ matrix.package }}${{ steps.publish.outputs.version }}
