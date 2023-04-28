@@ -291,8 +291,6 @@ jobs:
   release:
     name: Release
 
-    if: github.ref_name == 'main'
-
     needs:
       - build
       - lint
@@ -340,7 +338,7 @@ jobs:
           package: packages/${{ matrix.package }}/package.json
           tag: latest
           access: public
-          dry-run: false
+          dry-run: ${{ github.ref_name != 'main' }}
           check-version: true
           greater-version-only: true
 
@@ -348,20 +346,19 @@ jobs:
         uses: anothrNick/github-tag-action@v1
         if: steps.publish.outputs.type != 'none'
         env:
+          DRY_RUN: ${{ github.ref_name != 'main' }}
           CUSTOM_TAG: ${{ matrix.package }}${{ steps.publish.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: steps.publish.outputs.type != 'none'
+        if: ${{github.ref_name == 'main' && steps.publish.outputs.type != 'none'}}
         with:
           tag_name: ${{ matrix.package }}${{ steps.publish.outputs.version }}
           body: "Changelog: https://github.com/iendeavor/import-meta-env/blob/${{ matrix.package }}${{ steps.publish.outputs.version }}/packages/${{ matrix.package }}/CHANGELOG.md"
 
   docs:
     name: Docs
-
-    if: github.ref_name == 'main'
 
     needs:
       - build
@@ -402,6 +399,7 @@ jobs:
           git commit -m "docs: deploy"
 
       - name: Push docs
+        if: github.ref_name == 'main'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
