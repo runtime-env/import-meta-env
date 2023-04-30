@@ -48,8 +48,17 @@ export default defineConfig({
         link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
       },
       {
-        text: "Sponsor",
-        link: "https://www.paypal.com/paypalme/iendeavor/5",
+        text: "Sponsor ☕",
+        items: [
+          {
+            text: "Paypal",
+            link: "https://www.paypal.com/paypalme/iendeavor",
+          },
+          {
+            text: "Buy me a coffee",
+            link: "https://www.buymeacoffee.com/iendeavor",
+          },
+        ],
       },
     ],
 
