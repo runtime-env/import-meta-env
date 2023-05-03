@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.8](https://github.com/iendeavor/import-meta-env/compare/swc0.4.7...swc0.4.8) (2023-05-03)
+
 ### [0.4.7](https://github.com/iendeavor/import-meta-env/compare/swc0.4.6...swc0.4.7) (2023-04-19)
 
 
