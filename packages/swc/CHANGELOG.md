@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.9](https://github.com/iendeavor/import-meta-env/compare/swc0.4.8...swc0.4.9) (2023-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate serde to 1.0.163 ([5a8b925](https://github.com/iendeavor/import-meta-env/commit/5a8b92585a37d99c0f893dd50de36eeee9b81ee5))
+
 ### [0.4.8](https://github.com/iendeavor/import-meta-env/compare/swc0.4.7...swc0.4.8) (2023-05-10)
 
 
