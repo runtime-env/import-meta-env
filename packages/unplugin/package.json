@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/node": "18.16.12",
     "@types/object-hash": "3.0.2",
-    "rollup": "3.21.8",
+    "rollup": "3.22.0",
     "ts-node": "10.9.1",
     "typescript": "5.0.4",
     "vite": "4.3.7",
