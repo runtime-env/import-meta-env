@@ -44,7 +44,7 @@
   "devDependencies": {
     "@babel/core": "7.21.8",
     "@types/babel-plugin-tester": "9.0.5",
-    "@types/babel__core": "7.20.0",
+    "@types/babel__core": "7.20.1",
     "@types/babel__helper-plugin-utils": "^7.10.0",
     "babel-plugin-tester": "11.0.4"
   }
