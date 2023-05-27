@@ -41,7 +41,7 @@ export function transformDev({
           throw Error(
             `It seems you want to use a runtime environment variable prefixed by or equal to: \`${key
               .split(".")
-              .pop()}\`, but this conflicts with Vite's environment variables. You can fix this by using a different environment variable name or changing Vite's \`envPrefix\` configuration.`
+              .pop()}\`, but this won't work as expected because these environment variables will be replaced by Vite. You can fix this by removing it from \`.env.example\` file or changing Vite's \`envPrefix\` configuration.`
           );
         }
 
@@ -66,7 +66,7 @@ export function transformDev({
             throw Error(
               `It seems you want to use a runtime environment variable prefixed by or equal to: \`${replacement.substitution
                 .split(".")
-                .pop()}\`, but this conflicts with Vite's environment variables. You can fix this by using a different environment variable name or changing Vite's \`envPrefix\` configuration.`
+                .pop()}\`, but this won't work as expected because these environment variables will be replaced by Vite. You can fix this by removing it from \`.env.example\` file or changing Vite's \`envPrefix\` configuration.`
             );
           }
         }
