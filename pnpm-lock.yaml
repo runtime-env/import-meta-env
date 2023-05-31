@@ -15,7 +15,7 @@ importers:
       chai: 4.3.7
       change-case: 4.1.2
       commander: 10.0.1
-      dotenv: 16.1.0
+      dotenv: 16.1.1
       esbuild: 0.17.19
       jest: 29.5.0
       picocolors: 1.0.0
@@ -39,7 +39,7 @@ importers:
       chai: 4.3.7
       change-case: 4.1.2
       commander: 10.0.1
-      dotenv: 16.1.0
+      dotenv: 16.1.1
       esbuild: 0.17.19
       jest: 29.5.0_@types+node@18.16.16
       picocolors: 1.0.0
@@ -3494,8 +3494,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv/16.1.0:
-    resolution: {integrity: sha512-XiwP/4cqatBNLEnKe169vPZCrovUmYngyVA4DgZ3uIVLJfZaBgr4uT0EF2TrEQqgWDDlekGo0muEYme5SR78Ww==}
+  /dotenv/16.1.1:
+    resolution: {integrity: sha512-UGmzIqXU/4b6Vb3R1Vrfd/4vGgVlB+mO+vEixOdfRhLeppkyW2BMhuK7TL8d0el+q9c4lW9qK2wZYhNLFhXYLA==}
     engines: {node: '>=12'}
     dev: true
 
