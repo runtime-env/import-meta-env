@@ -22,7 +22,7 @@ swc_core = { version = "0.74.6", features = [
 ] }
 
 [dev-dependencies]
-tempfile = "3.5.0"
+tempfile = "3.6.0"
 
 # .cargo/config defines few alias to build plugin.
 # cargo build-wasi generates wasm-wasi32 binary
