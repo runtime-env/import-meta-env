@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.7...prepare0.1.8) (2023-06-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.2.6 ([01cdf6d](https://github.com/iendeavor/import-meta-env/commit/01cdf6d347536506554c2ba4813ed97822b423f1))
+* **deps:** update dependency glob to v10.2.7 ([64b087f](https://github.com/iendeavor/import-meta-env/commit/64b087f7012fc5a33c54cc439dc609a3a1a2bd63))
+
 ### [0.1.7](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.6...prepare0.1.7) (2023-04-19)
 
 
