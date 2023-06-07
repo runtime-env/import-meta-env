@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.8...unplugin0.5.0) (2023-06-07)
+
+
+### Features
+
+* update error messages ([1128494](https://github.com/iendeavor/import-meta-env/commit/1128494ed2b4d0618e4c9d9af90c7e88ffa32f00))
+
 ### [0.4.8](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.6...unplugin0.4.8) (2023-04-05)
 
 
