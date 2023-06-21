@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/iendeavor/import-meta-env/compare/cli0.6.3...cli0.6.4) (2023-06-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v11 ([2218338](https://github.com/iendeavor/import-meta-env/commit/2218338974827fa45fcf7f16ac03d312227a398a))
+
 ### [0.6.3](https://github.com/iendeavor/import-meta-env/compare/cli0.6.2...cli0.6.3) (2023-06-14)
 
 
