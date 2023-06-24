@@ -8,6 +8,7 @@ hero:
   name: Import-meta-env
   text: Startup/Runtime environment variables solution for JavaScript
   tagline: Build once, deploy anywhere. Import-meta-env helps to developing applications following the 12-factor principles.
+  image: /glance.png
   actions:
     - theme: brand
       text: Get Started
@@ -30,3 +31,59 @@ features:
   - title: Save Time & Money
     details: Speed up your CI/CD pipeline, you no longer need to build multiple bundles for different stages.
 ---
+
+<style>
+  #app .container > .image > .image-container > .image-src:hover {
+    cursor: zoom-in;
+  }
+
+  #app .container > .image > .image-container.zoom-in {
+    cursor: zoom-out;
+    z-index: 9999;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: unset;
+    max-height: unset;
+    background-color: black;
+    transform: unset;
+  }
+
+  #app .container > .image > .image-container.zoom-in > .image-src {
+    cursor: zoom-out;
+    max-width: 100vw;
+    max-height: 100vh;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  const doc = typeof document === 'object' ? document : undefined
+  function addZoomFeature() {
+    if (doc === undefined) return
+    let shouldZoomIn = true;
+    const imageContainer = doc.querySelector(".image-container");
+    const imageSrc = doc.querySelector(".image-src");
+    if (imageContainer === null || imageSrc === null) {
+      requestAnimationFrame(addZoomFeature);
+      return;
+    }
+    imageContainer.addEventListener("click", (e) => {
+      if (shouldZoomIn) {
+        if (e.target !== imageSrc) {
+          return;
+        }
+        imageContainer.classList.add("zoom-in");
+        doc.body.style.overflow = "hidden";
+      } else {
+        imageContainer.classList.remove("zoom-in");
+        doc.body.style.overflow = "unset";
+      }
+      shouldZoomIn = !shouldZoomIn;
+    });
+  }
+  addZoomFeature();
+</script>
