@@ -24,7 +24,7 @@ importers:
       sitemap: ^7.1.1
       standard-version: 9.5.0
       tmp: 0.2.1
-      typescript: 5.1.3
+      typescript: 5.1.5
       vitepress: 1.0.0-beta.3
       yaml: 2.3.1
     devDependencies:
@@ -48,7 +48,7 @@ importers:
       sitemap: 7.1.1
       standard-version: 9.5.0
       tmp: 0.2.1
-      typescript: 5.1.3
+      typescript: 5.1.5
       vitepress: 1.0.0-beta.3_jbmhub7v4scfwtvanwyiq7xssi
       yaml: 2.3.1
 
@@ -93,13 +93,13 @@ importers:
       '@types/node': 18.16.18
       commander: ^11.0.0
       picocolors: ^1.0.0
-      typescript: 5.1.3
+      typescript: 5.1.5
     dependencies:
       commander: 11.0.0
       picocolors: 1.0.0
     devDependencies:
       '@types/node': 18.16.18
-      typescript: 5.1.3
+      typescript: 5.1.5
 
   packages/prepare:
     specifiers:
@@ -126,13 +126,13 @@ importers:
       '@types/node': 18.16.18
       commander: ^11.0.0
       picocolors: ^1.0.0
-      typescript: 5.1.3
+      typescript: 5.1.5
     dependencies:
       commander: 11.0.0
       picocolors: 1.0.0
     devDependencies:
       '@types/node': 18.16.18
-      typescript: 5.1.3
+      typescript: 5.1.5
 
   packages/unplugin:
     specifiers:
@@ -143,7 +143,7 @@ importers:
       picocolors: ^1.0.0
       rollup: 3.25.2
       ts-node: 10.9.1
-      typescript: 5.1.3
+      typescript: 5.1.5
       unplugin: 1.2.0
       vite: 4.3.9
       webpack: 5.88.0
@@ -156,8 +156,8 @@ importers:
       '@types/node': 18.16.18
       '@types/object-hash': 3.0.2
       rollup: 3.25.2
-      ts-node: 10.9.1_uc4mglbmg4gsgxc6hysq56typi
-      typescript: 5.1.3
+      ts-node: 10.9.1_sphkm3mgckhpklbr7jogeciqqa
+      typescript: 5.1.5
       vite: 4.3.9_@types+node@18.16.18
       webpack: 5.88.0
 
@@ -5857,7 +5857,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-node/10.9.1_uc4mglbmg4gsgxc6hysq56typi:
+  /ts-node/10.9.1_sphkm3mgckhpklbr7jogeciqqa:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -5883,7 +5883,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.1.3
+      typescript: 5.1.5
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -5921,8 +5921,8 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typescript/5.1.3:
-    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
+  /typescript/5.1.5:
+    resolution: {integrity: sha512-FOH+WN/DQjUvN6WgW+c4Ml3yi0PH+a/8q+kNIfRehv1wLhWONedw85iu+vQ39Wp49IzTJEsZ2lyLXpBF7mkF1g==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
