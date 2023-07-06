@@ -145,7 +145,7 @@ importers:
       ts-node: 10.9.1
       typescript: 5.1.6
       unplugin: 1.2.0
-      vite: 4.4.0
+      vite: 4.4.1
       webpack: 5.88.1
     dependencies:
       magic-string: 0.30.0
@@ -158,7 +158,7 @@ importers:
       rollup: 3.26.2
       ts-node: 10.9.1_pqdfkuhuhnwv2d7uogwywwxtqq
       typescript: 5.1.6
-      vite: 4.4.0_@types+node@18.16.19
+      vite: 4.4.1_@types+node@18.16.19
       webpack: 5.88.1
 
 packages:
@@ -5984,8 +5984,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.4.0_@types+node@18.16.19:
-    resolution: {integrity: sha512-Wf+DCEjuM8aGavEYiF77hnbxEZ+0+/jC9nABR46sh5Xi+GYeSvkeEFRiVuI3x+tPjxgZeS91h1jTAQTPFgePpA==}
+  /vite/4.4.1_@types+node@18.16.19:
+    resolution: {integrity: sha512-8mmwPlsy7t+ZcTme7vdbVGuZ3Tri+lrLXr6hsF5UHdyYyARPPPMtM16QlqC9TZuCd5j3NmWs1rwka3cVSRHZTw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
