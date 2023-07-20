@@ -13,7 +13,7 @@ lto = true
 
 [dependencies]
 rust-ini = "0.19.0"
-serde = "1.0.171"
+serde = "1.0.173"
 serde_json = "1.0.103"
 string_cache = "0.8.7"
 swc_core = { version = "0.74.6", features = [
