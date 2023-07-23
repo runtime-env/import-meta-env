@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/flow#readme",
   "devDependencies": {
-    "@types/node": "18.16.19",
+    "@types/node": "18.17.0",
     "typescript": "5.1.6"
   },
   "peerDependencies": {
