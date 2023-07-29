@@ -56,7 +56,7 @@ importers:
     specifiers:
       '@babel/core': 7.22.9
       '@babel/helper-plugin-utils': ^7.19.0
-      '@types/babel-plugin-tester': 9.0.5
+      '@types/babel-plugin-tester': 9.0.6
       '@types/babel__core': 7.20.1
       '@types/babel__helper-plugin-utils': ^7.10.0
       babel-plugin-tester: 11.0.4
@@ -66,7 +66,7 @@ importers:
       picocolors: 1.0.0
     devDependencies:
       '@babel/core': 7.22.9
-      '@types/babel-plugin-tester': 9.0.5
+      '@types/babel-plugin-tester': 9.0.6
       '@types/babel__core': 7.20.1
       '@types/babel__helper-plugin-utils': 7.10.0
       babel-plugin-tester: 11.0.4_@babel+core@7.22.9
@@ -2409,8 +2409,8 @@ packages:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
     dev: true
 
-  /@types/babel-plugin-tester/9.0.5:
-    resolution: {integrity: sha512-NRBPlhi5VkrTXMqDB1hSUnHs7vqLGRopeukC9u1zilOIFe9O1siwqeKZRiuJiVYakgpeDso/HE2Q5DU1aDqBog==}
+  /@types/babel-plugin-tester/9.0.6:
+    resolution: {integrity: sha512-wn3Vmy+Aum0hUSx61oRTn0JXjRLwIMq89CTpWIR6y1WPeFW81cBj6Nr8di7LW044V3uRL3zjp+JLSbms+zJ6qg==}
     dependencies:
       '@types/babel__core': 7.20.1
       '@types/prettier': 2.7.1
