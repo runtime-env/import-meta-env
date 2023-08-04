@@ -22,7 +22,7 @@
     "@babel/preset-typescript": "7.22.5",
     "@types/chai": "4.3.5",
     "@types/jest": "29.5.3",
-    "@types/node": "18.17.1",
+    "@types/node": "18.17.2",
     "@types/tmp": "0.2.3",
     "babel-jest": "29.6.2",
     "chai": "4.3.7",
