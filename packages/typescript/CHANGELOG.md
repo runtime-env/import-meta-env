@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/iendeavor/import-meta-env/compare/typescript0.3.1...typescript0.3.2) (2023-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v11 ([2218338](https://github.com/iendeavor/import-meta-env/commit/2218338974827fa45fcf7f16ac03d312227a398a))
+
 ### [0.3.1](https://github.com/iendeavor/import-meta-env/compare/typescript0.3.0...typescript0.3.1) (2023-01-25)
 
 
