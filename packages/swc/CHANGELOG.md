@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/iendeavor/import-meta-env/compare/swc0.4.10...swc0.4.11) (2023-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate serde to 1.0.177 ([b92266f](https://github.com/iendeavor/import-meta-env/commit/b92266f56e34a27d87f05e6e1443efdb7c3ba615))
+* **deps:** update rust crate serde to 1.0.178 ([d7bde80](https://github.com/iendeavor/import-meta-env/commit/d7bde80c7d9e50457e1969e2c8c22bd0de25621b))
+* **deps:** update rust crate serde to 1.0.179 ([6f24f51](https://github.com/iendeavor/import-meta-env/commit/6f24f51c55e1e592d128dbc41cdf3b0efbae2274))
+* **deps:** update rust crate serde to 1.0.180 ([fffa929](https://github.com/iendeavor/import-meta-env/commit/fffa9295651d261807a8a01d86828307273a5e6a))
+* **deps:** update rust crate serde to 1.0.181 ([4b978d9](https://github.com/iendeavor/import-meta-env/commit/4b978d93893749b6b4aa97acffa9b42dd1128130))
+* **deps:** update rust crate serde to 1.0.182 ([406fe1c](https://github.com/iendeavor/import-meta-env/commit/406fe1c691731d19d8e37d2ef64c93aea354e619))
+* **deps:** update rust crate serde to 1.0.183 ([ed816e7](https://github.com/iendeavor/import-meta-env/commit/ed816e70a9497d49e56797d505d90ef8df8888cc))
+* **deps:** update rust crate serde_json to 1.0.104 ([8d29ca9](https://github.com/iendeavor/import-meta-env/commit/8d29ca9b73cdcd92bc4bd17f85c0d5d947eb8c78))
+
 ### [0.4.10](https://github.com/iendeavor/import-meta-env/compare/swc0.4.9...swc0.4.10) (2023-07-26)
 
 
