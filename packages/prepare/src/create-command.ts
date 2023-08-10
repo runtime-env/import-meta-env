@@ -21,5 +21,5 @@ export const createCommand = () =>
     .option(
       "-u, --user-environment",
       "whether to load user environment variables (i.e., process.env.*)",
-      false
+      false,
     );

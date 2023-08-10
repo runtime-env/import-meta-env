@@ -14,7 +14,7 @@ import { readFileSync, writeFileSync } from "fs";
     writeFileSync(indexPath, code);
 
     console.log(
-      bold(`${indexPath} patched with overwrite for cjs require('...')()`)
+      bold(`${indexPath} patched with overwrite for cjs require('...')()`),
     );
   }
 }
@@ -29,7 +29,7 @@ import { readFileSync, writeFileSync } from "fs";
     writeFileSync(indexPath, code);
 
     console.log(
-      bold(`${indexPath} patched with overwrite for cjs require('...')()`)
+      bold(`${indexPath} patched with overwrite for cjs require('...')()`),
     );
   }
 }

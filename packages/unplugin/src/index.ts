@@ -189,10 +189,10 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
             `${colors.cyan("import-meta-env v" + version)}`,
             `${colors.green("✓")} environment files are generated.`,
             colors.yellow(
-              `Remember to inject (\`${execCommand} import-meta-env\`) environment variables before serving your application.`
+              `Remember to inject (\`${execCommand} import-meta-env\`) environment variables before serving your application.`,
             ),
             "",
-          ].join("\n")
+          ].join("\n"),
         );
       }
     },

@@ -13,13 +13,13 @@ export function unwrapSignalForImportMetaEnvEnv(
     | {
         transformMode: "runtime";
       }
-  )
+  ),
 ): Replacement[] {
   return options.example.map((key) => {
     return {
       regexp: new RegExp(
         `\\b_wrapSignal\\(import\\.meta\\.env, "(${key})"\\)`,
-        "g"
+        "g",
       ),
       substitution:
         options.transformMode === "compile-time"

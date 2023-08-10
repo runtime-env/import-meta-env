@@ -15,7 +15,7 @@ describe("create-command", () => {
   test("it should warn if example not found", () => {
     // act
     expect(() =>
-      command.exitOverride().parse(["node", "test", "--example", "foo"])
+      command.exitOverride().parse(["node", "test", "--example", "foo"]),
     ).toThrow();
   });
 

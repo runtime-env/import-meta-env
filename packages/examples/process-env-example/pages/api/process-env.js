@@ -5,6 +5,6 @@ export default function handler(req, res) {
     JSON.stringify({
       SECRET1: process.env.SECRET1,
       SECRET2: process.env.SECRET2,
-    })
+    }),
   );
 }

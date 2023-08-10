@@ -6,7 +6,7 @@ export function tryToRestore(backupFileName: string) {
     if (existsSync(backupFileName)) {
       const originalFileName = backupFileName.slice(
         0,
-        -1 * backupFileExt.length
+        -1 * backupFileExt.length,
       );
       copyFileSync(backupFileName, originalFileName);
     }

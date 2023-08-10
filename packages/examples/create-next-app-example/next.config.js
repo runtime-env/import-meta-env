@@ -7,7 +7,7 @@ const nextConfig = {
     config.plugins.push(
       require("@import-meta-env/unplugin").webpack({
         example: ".env.example.public",
-      })
+      }),
     );
 
     return config;

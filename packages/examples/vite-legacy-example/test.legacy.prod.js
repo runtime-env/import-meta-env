@@ -20,7 +20,7 @@ module.exports = async () => {
     "dist/index.html",
     readFileSync("dist/index.html", "utf8")
       .replace(/.*type="module".*/g, "")
-      .replace(/nomodule/g, "")
+      .replace(/nomodule/g, ""),
   );
   const commands = [
     `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,

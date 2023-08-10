@@ -25,14 +25,14 @@ describe("resolveEnvExampleKeys", () => {
 
     // assert
     expect(() =>
-      (envExampleKeys as string[]).push("")
+      (envExampleKeys as string[]).push(""),
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Cannot add property 1, object is not extensible"`
+      `"Cannot add property 1, object is not extensible"`,
     );
     expect(() =>
-      (envExampleKeys as string[]).pop()
+      (envExampleKeys as string[]).pop(),
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Cannot delete property '0' of [object Array]"`
+      `"Cannot delete property '0' of [object Array]"`,
     );
   });
 
@@ -43,8 +43,8 @@ describe("resolveEnvExampleKeys", () => {
     // assert
     expect(() => resolveEnvExampleKeys({ envExampleFilePath })).toThrow(
       ReferenceError(
-        `[import-meta-env] failed to load file content from "${envExampleFilePath}".`
-      )
+        `[import-meta-env] failed to load file content from "${envExampleFilePath}".`,
+      ),
     );
   });
 });

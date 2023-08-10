@@ -22,7 +22,7 @@ module.exports = ({
   process.on("exit", cleanExit);
 
   commands.forEach((command) =>
-    childProcess.execSync(command, { stdio: "inherit" })
+    childProcess.execSync(command, { stdio: "inherit" }),
   );
   longRunningCommands.forEach((command) =>
     childProcessList.push(
@@ -30,8 +30,8 @@ module.exports = ({
         if (error) throw error;
         console.log(stdout);
         console.error(stderr);
-      })
-    )
+      }),
+    ),
   );
 
   return (async () => {

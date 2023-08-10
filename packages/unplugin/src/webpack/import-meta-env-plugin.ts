@@ -30,7 +30,7 @@ export class ImportMetaEnvPlugin {
         normalModuleFactory.hooks.parser
           .for("javascript/esm")
           .tap("ImportMetaPlugin", parserHandler);
-      }
+      },
     );
   }
 }

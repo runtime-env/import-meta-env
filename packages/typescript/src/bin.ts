@@ -13,7 +13,7 @@ export const main = () => {
   const outputPath = resolve(
     process.cwd(),
     opts.outDir ?? ".",
-    "import-meta-env.d.ts"
+    "import-meta-env.d.ts",
   );
   writeFileSync(outputPath, declaration, "utf8");
 };

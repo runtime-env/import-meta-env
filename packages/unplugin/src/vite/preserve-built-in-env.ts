@@ -22,7 +22,7 @@ export function preserveViteBuiltInEnv({
         regexp: new RegExp(`\\bimport\\.meta\\.env\\.${key}\\b`),
         substitution: `import.meta.env.${key}`,
       };
-    })
+    }),
   );
 
   const normalizedEnPrefix = (() => {
@@ -40,7 +40,7 @@ export function preserveViteBuiltInEnv({
         regexp: new RegExp(`\\bimport\\.meta\\.env\\.${prefix}`),
         substitution: `import.meta.env.${prefix}`,
       };
-    })
+    }),
   );
 
   return replacements;

@@ -4,7 +4,7 @@ const path = require("path");
 const yaml = require("yaml");
 
 const workspaces = yaml.parse(
-  fs.readFileSync(path.resolve(__dirname, "..", "pnpm-workspace.yaml"), "utf8")
+  fs.readFileSync(path.resolve(__dirname, "..", "pnpm-workspace.yaml"), "utf8"),
 ).packages;
 console.log(workspaces);
 

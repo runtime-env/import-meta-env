@@ -16,7 +16,7 @@ module.exports = () => {
     `npx cross-env HELLO=${hello} ./node_modules/.bin/babel src --out-dir dist`,
     {
       stdio: "inherit",
-    }
+    },
   );
   const output = childProcess.execSync("node dist/index.js").toString().trim();
 

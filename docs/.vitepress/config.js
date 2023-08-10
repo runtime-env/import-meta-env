@@ -89,7 +89,7 @@ export default defineConfig({
       hostname: "https://iendeavor.github.io/import-meta-env/",
     });
     const writeStream = fs.createWriteStream(
-      path.resolve(outDir, "sitemap.xml")
+      path.resolve(outDir, "sitemap.xml"),
     );
     sitemap.pipe(writeStream);
     links.forEach((link) => sitemap.write(link));
@@ -117,12 +117,12 @@ function genSidebarItems(rootDir) {
      * @type {string[]}
      */
     const order = JSON.parse(
-      fs.readFileSync(path.resolve(rootDir, "__order.json"))
+      fs.readFileSync(path.resolve(rootDir, "__order.json")),
     );
     dirs.sort(
       (a, b) =>
         order.indexOf(a.replace(/\.md$/, "")) -
-        order.indexOf(b.replace(/\.md$/, ""))
+        order.indexOf(b.replace(/\.md$/, "")),
     );
   }
 

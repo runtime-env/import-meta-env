@@ -46,7 +46,7 @@ export default defineNuxtConfig({
       this.nuxt.hook("vite:extend", async (vite) => {
         vite.config.plugins = vite.config.plugins || [];
         vite.config.plugins.push(
-          importMetaEnv.vite({ example: ".env.example.public" })
+          importMetaEnv.vite({ example: ".env.example.public" }),
         );
       });
     },
