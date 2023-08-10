@@ -39,7 +39,7 @@ export const resolveEnv = ({
   if (missingKeys.length) {
     const parsedEnvExample = parse(fs.readFileSync(envExampleFilePath, "utf8"));
     const missingEnv = missingKeys.map(
-      (key) => `${key}=${parsedEnvExample[key]}`
+      (key) => `${key}=${parsedEnvExample[key]}`,
     );
 
     const environmentVariablesAreMissing = [
@@ -57,7 +57,7 @@ export const resolveEnv = ({
       "",
     ].join("\n");
     console.error(
-      red(`[import-meta-env]: Some environment variables are not defined.`)
+      red(`[import-meta-env]: Some environment variables are not defined.`),
     );
     console.error(environmentVariablesAreMissing);
 

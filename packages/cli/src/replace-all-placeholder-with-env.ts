@@ -14,20 +14,20 @@ export const replaceAllPlaceholderWithEnv = ({
         doubleQuoteSlashCount: 2,
         singleQuoteSlashCount: 1,
       }),
-      `JSON.parse(\\'${serialize(env).replace(/"/g, '\\\\"')}\\')`
+      `JSON.parse(\\'${serialize(env).replace(/"/g, '\\\\"')}\\')`,
     )
     .replace(
       createScriptPlaceholderRegExp({
         doubleQuoteSlashCount: 1,
         singleQuoteSlashCount: 0,
       }),
-      `JSON.parse('${serialize(env).replace(/"/g, '\\"')}')`
+      `JSON.parse('${serialize(env).replace(/"/g, '\\"')}')`,
     )
     .replace(
       createScriptPlaceholderRegExp({
         doubleQuoteSlashCount: 0,
         singleQuoteSlashCount: 0,
       }),
-      `JSON.parse('${serialize(env)}')`
+      `JSON.parse('${serialize(env)}')`,
     );
 };

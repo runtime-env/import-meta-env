@@ -78,7 +78,7 @@ describe("resolveOutputFileNames", () => {
       expect.arrayContaining([
         resolve(tmpDir.name, "bar", "baz"),
         resolve(tmpDir.name, "foo"),
-      ])
+      ]),
     );
   });
 });

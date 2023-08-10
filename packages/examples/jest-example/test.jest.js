@@ -11,6 +11,6 @@ module.exports = () => {
     `npx cross-env HELLO=import-meta-env jest --no-cache ./**/*.test.ts`,
     {
       stdio: "inherit",
-    }
+    },
   );
 };

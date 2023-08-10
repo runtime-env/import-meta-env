@@ -16,33 +16,33 @@ export const createCommand = () =>
   new Command()
     .version(version)
     .description(
-      "Populates your environment variables from the system or `.env` file."
+      "Populates your environment variables from the system or `.env` file.",
     )
     .option(
       "-e, --env <path>",
       "The .env file path to load. You can out-out this by passing an empty string.",
-      ".env"
+      ".env",
     )
     .requiredOption(
       "-x, --example <path>",
-      "The .env example file path to load"
+      "The .env example file path to load",
     )
     // TODO: remove this option in v1
     .option(
       "-o, --output <path...>",
       `[deprecated: use --path] The file/dir paths to inject in-place (default: ${JSON.stringify(
-        defaultOutput
-      )})`
+        defaultOutput,
+      )})`,
     )
     .option(
       "-p, --path <path...>",
       `The file/dir paths to inject in-place (default: ${JSON.stringify(
-        defaultOutput
-      )})`
+        defaultOutput,
+      )})`,
     )
     .option(
       "--disposable",
-      "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files."
+      "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files.",
     )
     .action((args: Args) => {
       args = { ...args };
@@ -50,8 +50,8 @@ export const createCommand = () =>
       if ((args as Args & { output: string[] }).output) {
         console.warn(
           colors.yellow(
-            `[import-meta-env]: Option \`-o, --output\` were deprecated and will be removed in a future release, please use \`-p, --path\` instead.`
-          )
+            `[import-meta-env]: Option \`-o, --output\` were deprecated and will be removed in a future release, please use \`-p, --path\` instead.`,
+          ),
         );
       }
       args.path = args.path ?? (args as Args & { output: string[] }).output;
@@ -65,8 +65,8 @@ export const createCommand = () =>
       if (foundOutputFilePaths.length === 0) {
         console.error(
           colors.red(
-            `[import-meta-env]: Output file not found: ${path.join(", ")}`
-          )
+            `[import-meta-env]: Output file not found: ${path.join(", ")}`,
+          ),
         );
         if (require.main === module) process.exit(1);
       }

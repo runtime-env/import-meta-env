@@ -108,13 +108,13 @@ describe("resolveEnv", () => {
 
     // assert
     expect(() => (env.NEW = "")).toThrowErrorMatchingInlineSnapshot(
-      `"Cannot add property NEW, object is not extensible"`
+      `"Cannot add property NEW, object is not extensible"`,
     );
     expect(() => delete env.OLD).toThrowErrorMatchingInlineSnapshot(
-      `"Cannot delete property 'OLD' of #<Object>"`
+      `"Cannot delete property 'OLD' of #<Object>"`,
     );
     expect(() => (env.OLD = "")).toThrowErrorMatchingInlineSnapshot(
-      `"Cannot assign to read only property 'OLD' of object '#<Object>'"`
+      `"Cannot assign to read only property 'OLD' of object '#<Object>'"`,
     );
   });
 
@@ -140,7 +140,7 @@ describe("resolveEnv", () => {
 
     // assert
     expect(act).toThrow(
-      ReferenceError(`Some environment variables are not defined.`)
+      ReferenceError(`Some environment variables are not defined.`),
     );
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       [
@@ -151,7 +151,7 @@ describe("resolveEnv", () => {
           "
       The following variables were defined in ${envExampleFilePath.replace(
         /\\/g,
-        "\\\\"
+        "\\\\",
       )} file but are not defined in the environment:
 
       \`\`\`

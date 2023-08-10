@@ -51,12 +51,12 @@ export const main = (di: {
       colors.red(`[import-meta-env]: Placeholder not found`),
       "",
       colors.yellow(
-        `It looks like you forgot to add the special expression to your entry.`
+        `It looks like you forgot to add the special expression to your entry.`,
       ),
       colors.yellow(
-        `See special expression for more info: https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression`
+        `See special expression for more info: https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression`,
       ),
-    ].join("\n")
+    ].join("\n"),
   );
   if (require.main === module) process.exit(1);
 };

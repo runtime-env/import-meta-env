@@ -13,7 +13,7 @@ export const main = () => {
   const outputPath = resolve(
     process.cwd(),
     opts.outDir ?? ".",
-    "import-meta-env.js"
+    "import-meta-env.js",
   );
   writeFileSync(outputPath, declaration, "utf8");
 };

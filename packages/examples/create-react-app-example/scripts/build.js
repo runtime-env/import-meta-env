@@ -75,12 +75,12 @@ checkBrowsers(paths.appPath, isInteractive)
         console.log(
           "\nSearch for the " +
             chalk.underline(chalk.yellow("keywords")) +
-            " to learn more about each warning."
+            " to learn more about each warning.",
         );
         console.log(
           "To ignore, add " +
             chalk.cyan("// eslint-disable-next-line") +
-            " to the line before.\n"
+            " to the line before.\n",
         );
       } else {
         console.log(chalk.green("Compiled successfully.\n"));
@@ -92,7 +92,7 @@ checkBrowsers(paths.appPath, isInteractive)
         previousFileSizes,
         paths.appBuild,
         WARN_AFTER_BUNDLE_GZIP_SIZE,
-        WARN_AFTER_CHUNK_GZIP_SIZE
+        WARN_AFTER_CHUNK_GZIP_SIZE,
       );
       console.log();
 
@@ -105,7 +105,7 @@ checkBrowsers(paths.appPath, isInteractive)
         publicUrl,
         publicPath,
         buildFolder,
-        useYarn
+        useYarn,
       );
     },
     (err) => {
@@ -113,8 +113,8 @@ checkBrowsers(paths.appPath, isInteractive)
       if (tscCompileOnError) {
         console.log(
           chalk.yellow(
-            "Compiled with the following type errors (you may want to check these before deploying your app):\n"
-          )
+            "Compiled with the following type errors (you may want to check these before deploying your app):\n",
+          ),
         );
         printBuildError(err);
       } else {
@@ -122,7 +122,7 @@ checkBrowsers(paths.appPath, isInteractive)
         printBuildError(err);
         process.exit(1);
       }
-    }
+    },
   )
   .catch((err) => {
     if (err && err.message) {
@@ -159,7 +159,7 @@ function build(previousFileSizes) {
         });
       } else {
         messages = formatWebpackMessages(
-          stats.toJson({ all: false, warnings: true, errors: true })
+          stats.toJson({ all: false, warnings: true, errors: true }),
         );
       }
       if (messages.errors.length) {
@@ -178,14 +178,14 @@ function build(previousFileSizes) {
       ) {
         // Ignore sourcemap warnings in CI builds. See #8227 for more info.
         const filteredWarnings = messages.warnings.filter(
-          (w) => !/Failed to parse source map/.test(w)
+          (w) => !/Failed to parse source map/.test(w),
         );
         if (filteredWarnings.length) {
           console.log(
             chalk.yellow(
               "\nTreating warnings as errors because process.env.CI = true.\n" +
-                "Most CI servers set it automatically.\n"
-            )
+                "Most CI servers set it automatically.\n",
+            ),
           );
           return reject(new Error(filteredWarnings.join("\n\n")));
         }

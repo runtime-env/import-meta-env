@@ -2,7 +2,7 @@ import { accessor } from "../../shared/constant";
 
 export const createAccessorRegExp = (
   suffix: string,
-  quote: "single" | "double" = "double"
+  quote: "single" | "double" = "double",
 ) =>
   new RegExp(
     "\\b" +
@@ -11,5 +11,5 @@ export const createAccessorRegExp = (
         .replace(/\s/g, "\\s*")
         .replace(/"/g, quote === "double" ? '"' : "'") +
       suffix,
-    "g"
+    "g",
   );

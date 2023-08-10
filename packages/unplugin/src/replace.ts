@@ -15,7 +15,7 @@ export const replace = ({
     console.debug(
       "--- replace ---",
       replacement.regexp,
-      replacement.substitution
+      replacement.substitution,
     );
   debug && console.debug("--- before ---");
   debug && console.debug(s.toString());

@@ -11,7 +11,7 @@ module.exports = () => {
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     {
       stdio: "inherit",
-    }
+    },
   );
 
   // act

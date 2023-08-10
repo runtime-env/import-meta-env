@@ -19,14 +19,14 @@ fs.writeFileSync(
         "packages",
         "cli",
         "bin",
-        "import-meta-env.js"
-      )} --help`
+        "import-meta-env.js",
+      )} --help`,
     )
       .toString()
       .trim(),
     "```",
   ].join("\n"),
-  "utf8"
+  "utf8",
 );
 
 fs.writeFileSync(
@@ -46,14 +46,14 @@ fs.writeFileSync(
         "packages",
         "flow",
         "bin",
-        "import-meta-env-flow.js"
-      )} --help`
+        "import-meta-env-flow.js",
+      )} --help`,
     )
       .toString()
       .trim(),
     "```",
   ].join("\n"),
-  "utf8"
+  "utf8",
 );
 
 fs.writeFileSync(
@@ -73,14 +73,14 @@ fs.writeFileSync(
         "packages",
         "prepare",
         "bin",
-        "import-meta-env-prepare.js"
-      )} --help`
+        "import-meta-env-prepare.js",
+      )} --help`,
     )
       .toString()
       .trim(),
     "```",
   ].join("\n"),
-  "utf8"
+  "utf8",
 );
 
 fs.writeFileSync(
@@ -100,14 +100,14 @@ fs.writeFileSync(
         "packages",
         "typescript",
         "bin",
-        "import-meta-env-typescript.js"
-      )} --help`
+        "import-meta-env-typescript.js",
+      )} --help`,
     )
       .toString()
       .trim(),
     "```",
   ].join("\n"),
-  "utf8"
+  "utf8",
 );
 
 fs.writeFileSync(
@@ -116,32 +116,32 @@ fs.writeFileSync(
     "# API",
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "babel.md"),
-      "utf8"
+      "utf8",
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "cli.md"),
-      "utf8"
+      "utf8",
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "flow.md"),
-      "utf8"
+      "utf8",
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "prepare.md"),
-      "utf8"
+      "utf8",
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "swc.md"),
-      "utf8"
+      "utf8",
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "typescript.md"),
-      "utf8"
+      "utf8",
     ),
     fs.readFileSync(
       path.resolve(__dirname, "..", "docs", ".api", "unplugin.md"),
-      "utf8"
+      "utf8",
     ),
   ].join("\n"),
-  "utf8"
+  "utf8",
 );

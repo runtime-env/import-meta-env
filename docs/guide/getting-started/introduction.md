@@ -277,7 +277,7 @@ globalThis.import_meta_env = JSON.parse('{"NAME":"world"}');
 We encourage you to put this special expression in your `index.html` because the `Cache-Control` header is usually set to `no-cache` when requesting `index.html`:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />

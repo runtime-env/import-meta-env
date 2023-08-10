@@ -10,7 +10,7 @@ export const resolveEnvExampleKeys = ({
   envExampleFilePath = resolve(process.cwd(), envExampleFilePath);
   if (existsSync(envExampleFilePath) === false) {
     throw ReferenceError(
-      `[import-meta-env] failed to load file content from "${envExampleFilePath}".`
+      `[import-meta-env] failed to load file content from "${envExampleFilePath}".`,
     );
   }
   const content = readFileSync(envExampleFilePath, "utf8");

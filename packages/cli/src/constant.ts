@@ -12,7 +12,7 @@ export const createScriptPlaceholderRegExp = ({
       .replace(/([\(\)])/g, "\\$1")
       .replace(/"/g, prependSlash({ char: '"', count: doubleQuoteSlashCount }))
       .replace(/'/g, prependSlash({ char: "'", count: singleQuoteSlashCount })),
-    "g"
+    "g",
   );
 
 const prependSlash = ({ char, count }: { char: string; count: number }) => {

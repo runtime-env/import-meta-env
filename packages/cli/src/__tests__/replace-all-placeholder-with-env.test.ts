@@ -18,7 +18,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
 
     // assert
     expect(result).toMatchInlineSnapshot(
-      `"JSON.parse('{"KEY1":"value1","KEY2":"value2"}')"`
+      `"JSON.parse('{"KEY1":"value1","KEY2":"value2"}')"`,
     );
   });
 
@@ -36,7 +36,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
 
     // assert
     expect(result).toMatchInlineSnapshot(
-      `"JSON.parse('{\\"KEY1\\":\\"value1\\",\\"KEY2\\":\\"value2\\"}')"`
+      `"JSON.parse('{\\"KEY1\\":\\"value1\\",\\"KEY2\\":\\"value2\\"}')"`,
     );
   });
 
@@ -54,7 +54,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
 
     // assert
     expect(result).toMatchInlineSnapshot(
-      `"JSON.parse(\\'{\\\\"EXISTS1\\\\":\\\\"value1\\\\",\\\\"EXISTS2\\\\":\\\\"value2\\\\"}\\')"`
+      `"JSON.parse(\\'{\\\\"EXISTS1\\\\":\\\\"value1\\\\",\\\\"EXISTS2\\\\":\\\\"value2\\\\"}\\')"`,
     );
   });
 });

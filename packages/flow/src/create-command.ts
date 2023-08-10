@@ -14,11 +14,11 @@ export const createCommand = () =>
     .description("Generate flow type from .env.example")
     .requiredOption(
       "-x, --example <path>",
-      "The .env example file path to load"
+      "The .env example file path to load",
     )
     .option(
       "-o, --outDir <path>",
       `Specify an output folder for emitted file. (default: ${JSON.stringify(
-        defaultOutDir
-      )})`
+        defaultOutDir,
+      )})`,
     );

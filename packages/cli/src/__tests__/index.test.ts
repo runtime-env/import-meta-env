@@ -20,7 +20,7 @@ describe("cli", () => {
     test("it throw if env example file not found", () => {
       // act
       expect(() =>
-        command.exitOverride().parse(["node", "test", "--example", "foo"])
+        command.exitOverride().parse(["node", "test", "--example", "foo"]),
       ).toThrow();
     });
 
@@ -93,9 +93,9 @@ describe("cli", () => {
             env: envFilePath.name,
             example: envExampleFilePath.name,
             path: [outputFile.name],
-          }
+          },
       );
-      const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
+      const cmd = jest.fn(() => ({ parse, opts }) as unknown as typeof command);
       const di = {
         command: new cmd() as typeof command,
         resolveEnv,
@@ -145,9 +145,9 @@ describe("cli", () => {
             env: envFilePath.name,
             example: envExampleFilePath.name,
             path: [outputFile.name],
-          }
+          },
       );
-      const cmd = jest.fn(() => ({ parse, opts } as unknown as typeof command));
+      const cmd = jest.fn(() => ({ parse, opts }) as unknown as typeof command);
       const di = {
         command: new cmd() as typeof command,
         resolveEnv,

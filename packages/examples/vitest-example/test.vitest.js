@@ -6,7 +6,7 @@ module.exports = () => {
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     {
       stdio: "inherit",
-    }
+    },
   );
 
   // act
@@ -14,6 +14,6 @@ module.exports = () => {
     `npx cross-env HELLO=import-meta-env VITE_PREFIXED_KEY=compile-time vitest run`,
     {
       stdio: "inherit",
-    }
+    },
   );
 };

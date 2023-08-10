@@ -27,11 +27,11 @@ export default declare<PluginOptions>(({ template, types }, options) => {
 
   const replaceEnvForCompileTime = (
     template: typeof babelCore.template,
-    property: string
+    property: string,
   ) => template.expression.ast(JSON.stringify(env[property]));
   const replaceEnvForRuntime = (
     template: typeof babelCore.template,
-    property: string
+    property: string,
   ) => template.expression.ast(`${accessor}.${property}`);
 
   return {
@@ -70,12 +70,12 @@ export default declare<PluginOptions>(({ template, types }, options) => {
           path.parentPath.replaceWith(
             replaceEnvForCompileTime(
               template,
-              path.parentPath.node.property.name
-            )
+              path.parentPath.node.property.name,
+            ),
           );
         } else {
           path.parentPath.replaceWith(
-            replaceEnvForRuntime(template, path.parentPath.node.property.name)
+            replaceEnvForRuntime(template, path.parentPath.node.property.name),
           );
         }
       },
