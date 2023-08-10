@@ -19,7 +19,7 @@ importers:
       esbuild: 0.19.0
       jest: 29.6.2
       picocolors: 1.0.0
-      prettier: 2.8.7
+      prettier: 3.0.1
       rimraf: 5.0.1
       sitemap: ^7.1.1
       standard-version: 9.5.0
@@ -43,7 +43,7 @@ importers:
       esbuild: 0.19.0
       jest: 29.6.2_@types+node@18.17.4
       picocolors: 1.0.0
-      prettier: 2.8.7
+      prettier: 3.0.1
       rimraf: 5.0.1
       sitemap: 7.1.1
       standard-version: 9.5.0
@@ -5366,9 +5366,9 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.8.7:
-    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
-    engines: {node: '>=10.13.0'}
+  /prettier/3.0.1:
+    resolution: {integrity: sha512-fcOWSnnpCrovBsmFZIGIy9UqK2FaI7Hqax+DIO0A9UxeVoY4iweyaFjS5TavZN97Hfehph0nhsZnjlVKzEQSrQ==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
