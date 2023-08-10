@@ -33,7 +33,7 @@ jobs:
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly-2023-03-20
+          toolchain: nightly-2023-07-03
           profile: minimal
           override: true
           target: wasm32-wasi
@@ -90,7 +90,7 @@ jobs:
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly-2023-03-20
+          toolchain: nightly-2023-07-03
           profile: minimal
           override: true
           target: wasm32-wasi
@@ -135,7 +135,7 @@ jobs:
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly-2023-03-20
+          toolchain: nightly-2023-07-03
           profile: minimal
           override: true
           target: wasm32-wasi
