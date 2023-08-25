@@ -12,7 +12,7 @@ importers:
       '@types/node': 18.17.11
       '@types/tmp': 0.2.3
       babel-jest: 29.6.4
-      chai: 4.3.7
+      chai: 4.3.8
       change-case: 4.1.2
       commander: 11.0.0
       dotenv: 16.3.1
@@ -36,7 +36,7 @@ importers:
       '@types/node': 18.17.11
       '@types/tmp': 0.2.3
       babel-jest: 29.6.4_@babel+core@7.22.11
-      chai: 4.3.7
+      chai: 4.3.8
       change-case: 4.1.2
       commander: 11.0.0
       dotenv: 16.3.1
@@ -3263,8 +3263,8 @@ packages:
       upper-case-first: 2.0.2
     dev: true
 
-  /chai/4.3.7:
-    resolution: {integrity: sha512-HLnAzZ2iupm25PlN0xFreAlBA5zaBSv3og0DdeGA4Ar6h6rJ3A0rolRUKJhSF2V10GZKDgWF/VmAEsNWjCRB+A==}
+  /chai/4.3.8:
+    resolution: {integrity: sha512-vX4YvVVtxlfSZ2VecZgFUTU5qPCYsobVI2O9FmwEXBhDigYGQA6jRXCycIs1yJnnWbZ6/+a2zNIF5DfVCcJBFQ==}
     engines: {node: '>=4'}
     dependencies:
       assertion-error: 1.1.0
