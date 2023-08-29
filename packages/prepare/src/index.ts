@@ -32,7 +32,7 @@ export const main = (args: Args) => {
     Object.keys(env)
       .sort()
       .filter((k) => envExampleKeys.includes(k))
-      .map((k) => `${k}=${env[k]}`)
+      .map((k) => env[k].includes('#') ? `${k}='${env[k]}'` : `${k}=${env[k]}`)
       .join("\n") + "\n";
 
   writeFileSync(
