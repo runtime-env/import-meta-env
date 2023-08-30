@@ -128,8 +128,8 @@ describe("integration", () => {
   });
 });
 
-describe('unit', () => {
-  test('does not include dotenv comments in output', () => {
+describe("unit", () => {
+  test("does not include dotenv comments in output", () => {
     const env = ".env";
     const example = ".env.example";
     const defaults = ".env.local.default";
@@ -152,7 +152,7 @@ describe('unit', () => {
     );
   });
 
-  test('includes dotenv strings that contain hashes intact in output', () => {
+  test("includes dotenv strings that contain hashes intact in output", () => {
     const env = ".env";
     const example = ".env.example";
     const defaults = ".env.local.default";
