@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.9...prepare0.1.10) (2023-08-30)
+
+
+### Bug Fixes
+
+* **prepare:** wrap outputted dotenv values containing hashes in quotes ([25c0c82](https://github.com/iendeavor/import-meta-env/commit/25c0c824f3dc440f7963634c40e328c3c97a87e4))
+
 ### [0.1.9](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.8...prepare0.1.9) (2023-08-09)
 
 
