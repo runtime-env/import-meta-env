@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/iendeavor/import-meta-env/compare/swc0.4.10...swc0.4.11) (2023-08-30)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate serde to 1.0.177 ([b92266f](https://github.com/iendeavor/import-meta-env/commit/b92266f56e34a27d87f05e6e1443efdb7c3ba615))
+* **deps:** update rust crate serde to 1.0.178 ([d7bde80](https://github.com/iendeavor/import-meta-env/commit/d7bde80c7d9e50457e1969e2c8c22bd0de25621b))
+* **deps:** update rust crate serde to 1.0.179 ([6f24f51](https://github.com/iendeavor/import-meta-env/commit/6f24f51c55e1e592d128dbc41cdf3b0efbae2274))
+* **deps:** update rust crate serde to 1.0.180 ([fffa929](https://github.com/iendeavor/import-meta-env/commit/fffa9295651d261807a8a01d86828307273a5e6a))
+* **deps:** update rust crate serde to 1.0.181 ([4b978d9](https://github.com/iendeavor/import-meta-env/commit/4b978d93893749b6b4aa97acffa9b42dd1128130))
+* **deps:** update rust crate serde to 1.0.182 ([406fe1c](https://github.com/iendeavor/import-meta-env/commit/406fe1c691731d19d8e37d2ef64c93aea354e619))
+* **deps:** update rust crate serde to 1.0.183 ([ed816e7](https://github.com/iendeavor/import-meta-env/commit/ed816e70a9497d49e56797d505d90ef8df8888cc))
+* **deps:** update rust crate serde to 1.0.185 ([a89e0a3](https://github.com/iendeavor/import-meta-env/commit/a89e0a30a4d1ab90b589b0a34933a604c844223a))
+* **deps:** update rust crate serde to 1.0.186 ([5a762e5](https://github.com/iendeavor/import-meta-env/commit/5a762e595a67761a77e18b46601f8015ac349e4e))
+* **deps:** update rust crate serde to 1.0.188 ([48ec0ac](https://github.com/iendeavor/import-meta-env/commit/48ec0acd04237f9020bad6dcde307fcb6d0b42bf))
+* **deps:** update rust crate serde_json to 1.0.104 ([8d29ca9](https://github.com/iendeavor/import-meta-env/commit/8d29ca9b73cdcd92bc4bd17f85c0d5d947eb8c78))
+* **deps:** update rust crate serde_json to 1.0.105 ([578bb38](https://github.com/iendeavor/import-meta-env/commit/578bb3839a2bb517b173cf29fe9bf02003b6affc))
+* **deps:** update rust crate swc_core to 0.79.55 ([fec58eb](https://github.com/iendeavor/import-meta-env/commit/fec58eb4037797aa733a625aa1cd38fe09c39a31))
+* **deps:** update rust crate swc_core to 0.79.56 ([c507fe5](https://github.com/iendeavor/import-meta-env/commit/c507fe597d39cf226d6b6e313921f9054b288a4d))
+* **deps:** update rust crate swc_core to 0.79.59 ([9379646](https://github.com/iendeavor/import-meta-env/commit/93796462885ac67f3e20e86cce1232bc7aece104))
+* **deps:** update rust crate swc_core to 0.79.60 ([fe4bd22](https://github.com/iendeavor/import-meta-env/commit/fe4bd2217ae00deec48f4b4fedeef28a62e990b4))
+* **deps:** update rust crate swc_core to 0.79.64 ([b732cb7](https://github.com/iendeavor/import-meta-env/commit/b732cb729213b843c82b8b244ce5f8888771a16d))
+* **deps:** update rust crate swc_core to 0.79.67 ([d4ca0de](https://github.com/iendeavor/import-meta-env/commit/d4ca0de94c931ec6b4ea2d42fb30031cc04119da))
+* **deps:** update rust crate swc_core to 0.79.69 ([a2a0fea](https://github.com/iendeavor/import-meta-env/commit/a2a0feab3d84c1d172f4adc42a86e57f83fd7556))
+* **deps:** update rust crate swc_core to 0.79.70 ([516fdfc](https://github.com/iendeavor/import-meta-env/commit/516fdfc15abcade7480e7a50755e03d8033c2bf8))
+* **deps:** update rust crate swc_core to 0.80.0 ([1fdf721](https://github.com/iendeavor/import-meta-env/commit/1fdf72163bd544f268848fc0d9a809500741bd17))
+* **deps:** update rust crate swc_core to 0.81.5 ([5f60c9a](https://github.com/iendeavor/import-meta-env/commit/5f60c9aefafc4af4212c0b9189c941a7777ee2a4))
+* **deps:** update rust crate swc_core to 0.81.6 ([cb5ddf3](https://github.com/iendeavor/import-meta-env/commit/cb5ddf3a22cbddf0a47ec1e23aa14d975aae1657))
+* **deps:** update rust crate swc_core to 0.82.1 ([065e028](https://github.com/iendeavor/import-meta-env/commit/065e028a38e8573b5e5825e7d75c53a9002b15c3))
+* **deps:** update rust crate swc_core to 0.82.4 ([457e252](https://github.com/iendeavor/import-meta-env/commit/457e2528609be5cf447a805d26ec24be5cc30129))
+* runtime error ([57e377c](https://github.com/iendeavor/import-meta-env/commit/57e377cbca2b6298e911239fb72e1a4ebf21bf05))
+
 ### [0.4.10](https://github.com/iendeavor/import-meta-env/compare/swc0.4.9...swc0.4.10) (2023-07-26)
 
 
