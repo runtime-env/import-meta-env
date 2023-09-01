@@ -8,10 +8,10 @@ module.exports = async () => {
   const commands = [
     "npx rimraf dist node_modules/.cache",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
-    `npx cross-env NODE_ENV=development HELLO=${hello} webpack`,
+    `npx cross-env NODE_ENV=development HELLO=${hello} JSON={\\\"hello\\\":\\\"${hello}\\\"} webpack`,
   ];
   const longRunningCommands = [`node ../serve.js -d dist -p ${port}`];
-  const expected = `Hello: ${hello}`;
+  const expected = `Hello: ${hello}\nJSON: {"hello":"${hello}"}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
   await runTest({
