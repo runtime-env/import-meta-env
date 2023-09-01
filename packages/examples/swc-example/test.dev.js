@@ -7,9 +7,12 @@ module.exports = () => {
   childProcess.execSync("npx rimraf dist .env", {
     stdio: "inherit",
   });
-  childProcess.execSync(`echo "HELLO=${hello}" > .env`, {
-    stdio: "inherit",
-  });
+  childProcess.execSync(
+    `echo "HELLO=${hello}\nJSON={\\"hello\\\":\\\"${hello}\\\"}" > .env`,
+    {
+      stdio: "inherit",
+    },
+  );
   childProcess.execSync("npm add ../../swc/import-meta-env-swc-test.tgz", {
     stdio: "inherit",
   });
@@ -24,5 +27,5 @@ module.exports = () => {
   const output = childProcess.execSync("node dist/index.js").toString().trim();
 
   // assert
-  expect(output).to.equal(`Hello: ${hello}`);
+  expect(output).to.equal(`Hello: ${hello}\nJSON: {"hello":"${hello}"}`);
 };

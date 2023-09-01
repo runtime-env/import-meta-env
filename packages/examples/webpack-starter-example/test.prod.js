@@ -10,10 +10,10 @@ module.exports = async () => {
     "npm add ../../cli/import-meta-env-cli-test.tgz",
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
     "npx cross-env NODE_ENV=production webpack",
-    `npx cross-env HELLO=${hello} npx import-meta-env -x .env.example.public`,
+    `npx cross-env HELLO=${hello} JSON={\\\"hello\\\":\\\"${hello}\\\"} npx import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`node ../serve.js -d dist -p ${port}`];
-  const expected = `Hello: ${hello}`;
+  const expected = `Hello: ${hello}\nJSON: {"hello":"${hello}"}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
   await runTest({

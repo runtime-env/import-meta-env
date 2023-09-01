@@ -13,7 +13,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    `npx cross-env HELLO=${hello} ./node_modules/.bin/babel src --out-dir dist`,
+    `npx cross-env HELLO=${hello} JSON={\\\"hello\\\":\\\"${hello}\\\"} ./node_modules/.bin/babel src --out-dir dist`,
     {
       stdio: "inherit",
     },
@@ -21,5 +21,5 @@ module.exports = () => {
   const output = childProcess.execSync("node dist/index.js").toString().trim();
 
   // assert
-  expect(output).to.equal(`Hello: ${hello}`);
+  expect(output).to.equal(`Hello: ${hello}\nJSON: {"hello":"${hello}"}`);
 };
