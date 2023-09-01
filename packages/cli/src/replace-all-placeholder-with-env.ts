@@ -10,7 +10,7 @@ export const replaceAllPlaceholderWithEnv = ({
 }): string => {
   const escapedEnv: Record<string, string> = {};
   for (const key of Object.keys(env)) {
-    escapedEnv[key] = env[key].replace(/"/g, '\\"')
+    escapedEnv[key] = env[key].replace(/"/g, '\\"');
   }
   return code
     .replace(

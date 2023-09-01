@@ -62,8 +62,8 @@ describe("replaceAllPlaceholderWithEnv", () => {
     // arrange
     const code = `JSON.parse('"import_meta_env_placeholder"')`;
     const env = {
-      KEY1: "{\"child1\":\"value1\"}",
-      KEY2: "{\"child2\":\"value2\"}",
+      KEY1: '{"child1":"value1"}',
+      KEY2: '{"child2":"value2"}',
     };
 
     // act
