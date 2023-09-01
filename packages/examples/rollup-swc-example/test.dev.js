@@ -8,11 +8,11 @@ module.exports = async () => {
   const commands = [
     "npx rimraf dist",
     "npm add ../../swc/import-meta-env-swc-test.tgz",
-    `echo HELLO=${hello} > .env`,
+    `echo HELLO=${hello}\\\\\\nJSON={\\"hello\\":\\"${hello}\\"} > .env`,
     `npx cross-env NODE_ENV=development rollup -c`,
   ];
   const longRunningCommands = [`node ../serve.js -d public -p ${port}`];
-  const expected = `Hello: ${hello}`;
+  const expected = `Hello: ${hello}\nJSON: {"hello":"${hello}"}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
   await runTest({

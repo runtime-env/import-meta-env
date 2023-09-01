@@ -5,11 +5,11 @@
     "_test": "node test.js",
     "dev:watch": "rollup -c -w",
     "dev:start": "node ../serve.js -d public -p 3000",
-    "dev": "rimraf bundle && echo HELLO=import-meta-env > .env && concurrently npm:dev:*",
+    "dev": "rimraf bundle && echo HELLO=import-meta-env\\\\\\nJSON={\\\"hello\\\":\\\"import-meta-env\\\"} > .env && concurrently npm:dev:*",
     "build": "rimraf dist && npm run build:pre && npm run build:post",
     "build:pre": "cross-env NODE_ENV=production rollup -c",
     "build:post": "cp public/index.html dist/index.html",
-    "preview": "echo HELLO=import-meta-env > .env && import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
+    "preview": "echo HELLO=import-meta-env\\\\\\nJSON={\\\"hello\\\":\\\"import-meta-env\\\"} > .env && import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^11.2.1",

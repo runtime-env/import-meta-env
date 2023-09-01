@@ -11,11 +11,11 @@ module.exports = async () => {
     "npm add ../../swc/import-meta-env-swc-test.tgz",
     `npx cross-env NODE_ENV=production rollup -c`,
     "cp public/index.html dist/index.html",
-    `echo HELLO=${hello} > .env`,
+    `echo HELLO=${hello}\\\\\\nJSON={\\"hello\\":\\"${hello}\\"} > .env`,
     `npx cross-env npx import-meta-env -x .env.example.public`,
   ];
   const longRunningCommands = [`node ../serve.js -d dist -p ${port}`];
-  const expected = `Hello: ${hello}`;
+  const expected = `Hello: ${hello}\nJSON: {"hello":"${hello}"}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
   await runTest({
