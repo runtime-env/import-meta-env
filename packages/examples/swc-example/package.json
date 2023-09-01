@@ -3,7 +3,7 @@
   "name": "swc-example",
   "scripts": {
     "_test": "node test.js",
-    "dev": "echo HELLO=import-meta-env > .env && npx cross-env SWC_ENV=development swc src -d dist -s true"
+    "dev": "echo HELLO=import-meta-env\\\\\\nJSON={\\\"hello\\\":\\\"import-meta-env\\\"} > .env && npx cross-env SWC_ENV=development swc src -d dist -s true"
   },
   "license": "MIT",
   "devDependencies": {
