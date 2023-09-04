@@ -7,7 +7,7 @@ importers:
       '@babel/core': 7.22.11
       '@babel/preset-env': 7.22.14
       '@babel/preset-typescript': 7.22.11
-      '@types/chai': 4.3.5
+      '@types/chai': 4.3.6
       '@types/jest': 29.5.4
       '@types/node': 18.17.14
       '@types/tmp': 0.2.3
@@ -31,7 +31,7 @@ importers:
       '@babel/core': 7.22.11
       '@babel/preset-env': 7.22.14_@babel+core@7.22.11
       '@babel/preset-typescript': 7.22.11_@babel+core@7.22.11
-      '@types/chai': 4.3.5
+      '@types/chai': 4.3.6
       '@types/jest': 29.5.4
       '@types/node': 18.17.14
       '@types/tmp': 0.2.3
@@ -2387,8 +2387,8 @@ packages:
       '@babel/types': 7.22.10
     dev: true
 
-  /@types/chai/4.3.5:
-    resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
+  /@types/chai/4.3.6:
+    resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
     dev: true
 
   /@types/eslint-scope/3.7.4:
