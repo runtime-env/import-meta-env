@@ -14,7 +14,7 @@ lto = true
 [dependencies]
 rust-ini = "0.19.0"
 serde = "1.0.188"
-serde_json = "1.0.105"
+serde_json = "1.0.106"
 string_cache = "0.8.7"
 swc_core = { version = "0.83.2", features = [
   "ecma_plugin_transform",
