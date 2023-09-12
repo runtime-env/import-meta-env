@@ -10,7 +10,7 @@ importers:
       '@types/chai': 4.3.6
       '@types/jest': 29.5.4
       '@types/node': 18.17.15
-      '@types/tmp': 0.2.3
+      '@types/tmp': 0.2.4
       babel-jest: 29.6.4
       chai: 4.3.8
       change-case: 4.1.2
@@ -34,7 +34,7 @@ importers:
       '@types/chai': 4.3.6
       '@types/jest': 29.5.4
       '@types/node': 18.17.15
-      '@types/tmp': 0.2.3
+      '@types/tmp': 0.2.4
       babel-jest: 29.6.4_@babel+core@7.22.17
       chai: 4.3.8
       change-case: 4.1.2
@@ -2534,8 +2534,8 @@ packages:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
 
-  /@types/tmp/0.2.3:
-    resolution: {integrity: sha512-dDZH/tXzwjutnuk4UacGgFRwV+JSLaXL1ikvidfJprkb7L9Nx1njcRHHmi3Dsvt7pgqqTEeucQuOrWHPFgzVHA==}
+  /@types/tmp/0.2.4:
+    resolution: {integrity: sha512-Vq3rwM+2KgiLacq68EjTJD9cuJ/ne5pXntWn8B8Rxj25SLkGAhCgooCZ1lhcIcV5OFveJ+s5Cqpi+XKfFM/xZA==}
     dev: true
 
   /@types/web-bluetooth/0.0.17:

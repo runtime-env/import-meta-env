@@ -23,7 +23,7 @@
     "@types/chai": "4.3.6",
     "@types/jest": "29.5.4",
     "@types/node": "18.17.15",
-    "@types/tmp": "0.2.3",
+    "@types/tmp": "0.2.4",
     "babel-jest": "29.6.4",
     "chai": "4.3.8",
     "change-case": "4.1.2",
