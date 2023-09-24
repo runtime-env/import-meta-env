@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/typescript#readme",
   "devDependencies": {
-    "@types/node": "18.17.18",
+    "@types/node": "18.17.19",
     "typescript": "5.2.2"
   },
   "peerDependencies": {
