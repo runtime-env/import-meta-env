@@ -76,12 +76,12 @@ importers:
       '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
       commander: 11.0.0
-      glob: 10.3.9
+      glob: 10.3.10
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     dependencies:
       commander: 11.0.0
-      glob: 10.3.9
+      glob: 10.3.10
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     devDependencies:
@@ -106,12 +106,12 @@ importers:
       '@types/glob': 8.1.0
       '@types/serialize-javascript': 5.0.2
       commander: 11.0.0
-      glob: 10.3.9
+      glob: 10.3.10
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     dependencies:
       commander: 11.0.0
-      glob: 10.3.9
+      glob: 10.3.10
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     devDependencies:
@@ -4038,8 +4038,8 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
-  /glob/10.3.9:
-    resolution: {integrity: sha512-2tU/LKevAQvDVuVJ9pg9Yv9xcbSh+TqHuTaXTNbQwf+0kDl9Fm6bMovi4Nm5c8TVvfxo2LLcqCGtmO9KoJaGWg==}
+  /glob/10.3.10:
+    resolution: {integrity: sha512-fa46+tv1Ak0UPK1TOy/pZrIybNNt4HCv7SDzwyfiOZkvZLEbjsZkJBPtDHVshZjbecAoAGSC20MjLDG/qr679g==}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
     dependencies:
@@ -5489,7 +5489,7 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      glob: 10.3.9
+      glob: 10.3.10
     dev: true
 
   /rollup/3.29.3:
