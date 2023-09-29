@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/unplugin#readme",
   "devDependencies": {
-    "@types/node": "18.18.0",
+    "@types/node": "18.18.1",
     "@types/object-hash": "3.0.4",
     "rollup": "3.29.3",
     "ts-node": "10.9.1",
