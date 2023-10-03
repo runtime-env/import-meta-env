@@ -173,7 +173,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
       debug && console.debug("==================");
 
-      return result?.code;
+      return result;
     },
 
     buildEnd() {
