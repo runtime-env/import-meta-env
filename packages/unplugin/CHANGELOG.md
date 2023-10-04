@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.10](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.9...unplugin0.4.10) (2023-10-04)
+
+
+### Bug Fixes
+
+* sourcemap is likely to be incorrect when running under Vite ([#1102](https://github.com/iendeavor/import-meta-env/issues/1102)) ([497bb4d](https://github.com/iendeavor/import-meta-env/commit/497bb4d61e4df180768f78705a5e83bceadb0332)), closes [#9](https://github.com/iendeavor/import-meta-env/issues/9)
+
 ### [0.4.9](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.8...unplugin0.4.9) (2023-07-28)
 
 
