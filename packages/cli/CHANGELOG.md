@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.6](https://github.com/iendeavor/import-meta-env/compare/cli0.6.5...cli0.6.6) (2023-10-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.3.10 ([#1086](https://github.com/iendeavor/import-meta-env/issues/1086)) ([3b99b1f](https://github.com/iendeavor/import-meta-env/commit/3b99b1f3628a3f4c52106567e2b7810353af06f9))
+* **deps:** update dependency glob to v10.3.5 ([#1068](https://github.com/iendeavor/import-meta-env/issues/1068)) ([3417fe4](https://github.com/iendeavor/import-meta-env/commit/3417fe48431e1d92b816b62ffc8899c5170064ef))
+* **deps:** update dependency glob to v10.3.6 ([#1070](https://github.com/iendeavor/import-meta-env/issues/1070)) ([3a1d265](https://github.com/iendeavor/import-meta-env/commit/3a1d26564a39b6487c654e9870b24c1d730ccec2))
+* **deps:** update dependency glob to v10.3.7 ([#1074](https://github.com/iendeavor/import-meta-env/issues/1074)) ([459a5e7](https://github.com/iendeavor/import-meta-env/commit/459a5e755f26b6fea0235757d1f956eb05d987ba))
+* **deps:** update dependency glob to v10.3.9 ([#1082](https://github.com/iendeavor/import-meta-env/issues/1082)) ([42c6b59](https://github.com/iendeavor/import-meta-env/commit/42c6b5937aebaa8aaea9018809d3637a6d310e84))
+
 ### [0.6.5](https://github.com/iendeavor/import-meta-env/compare/cli0.6.1...cli0.6.5) (2023-09-01)
 
 
