@@ -145,7 +145,7 @@ importers:
       ts-node: 10.9.1
       typescript: 5.2.2
       unplugin: ^1.5.0
-      vite: 4.4.10
+      vite: 4.4.11
       webpack: 5.88.2
     dependencies:
       magic-string: 0.30.0
@@ -158,7 +158,7 @@ importers:
       rollup: 4.0.0
       ts-node: 10.9.1_32vm5hrbqgromszj7lleontx7m
       typescript: 5.2.2
-      vite: 4.4.10_@types+node@18.18.3
+      vite: 4.4.11_@types+node@18.18.3
       webpack: 5.88.2
 
 packages:
@@ -2627,14 +2627,14 @@ packages:
       '@types/yargs-parser': 21.0.0
     dev: true
 
-  /@vitejs/plugin-vue/4.2.3_vite@4.4.10+vue@3.3.4:
+  /@vitejs/plugin-vue/4.2.3_vite@4.4.11+vue@3.3.4:
     resolution: {integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.10_@types+node@18.18.3
+      vite: 4.4.11_@types+node@18.18.3
       vue: 3.3.4
     dev: true
 
@@ -6188,8 +6188,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/4.4.10_@types+node@18.18.3:
-    resolution: {integrity: sha512-TzIjiqx9BEXF8yzYdF2NTf1kFFbjMjUSV0LFZ3HyHoI3SGSPLnnFUKiIQtL3gl2AjHvMrprOvQ3amzaHgQlAxw==}
+  /vite/4.4.11_@types+node@18.18.3:
+    resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -6230,7 +6230,7 @@ packages:
     dependencies:
       '@docsearch/css': 3.5.1
       '@docsearch/js': 3.5.1
-      '@vitejs/plugin-vue': 4.2.3_vite@4.4.10+vue@3.3.4
+      '@vitejs/plugin-vue': 4.2.3_vite@4.4.11+vue@3.3.4
       '@vue/devtools-api': 6.5.0
       '@vueuse/core': 10.2.1_vue@3.3.4
       '@vueuse/integrations': 10.2.1_ct45bxslhfncwpkdqgjxd37vqe
@@ -6239,7 +6239,7 @@ packages:
       mark.js: 8.11.1
       minisearch: 6.1.0
       shiki: 0.14.3
-      vite: 4.4.10_@types+node@18.18.3
+      vite: 4.4.11_@types+node@18.18.3
       vue: 3.3.4
     transitivePeerDependencies:
       - '@algolia/client-search'
