@@ -18,6 +18,14 @@ export default defineConfig({
       "script",
       {
         async: true,
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6110487434003355",
+        crossorigin: "anonymous",
+      },
+    ],
+    [
+      "script",
+      {
+        async: true,
         src: "https://www.googletagmanager.com/gtag/js?id=G-9QTYWHDXCJ",
       },
     ],
