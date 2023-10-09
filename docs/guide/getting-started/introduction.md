@@ -18,6 +18,8 @@
 
 > In this guide, we will use Webpack as an example, but you can also use other build tools. All supported build tools can be found on the [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s page.
 
+![](/glance.png)
+
 ### Write your code
 
 1. To prevent accidentally leaking environment variables to the client, you need to list public environment variables in an example file (e.g., `.env.example`):
@@ -54,7 +56,7 @@ $ npm i -D dotenv
 
      ```ini
      # .env
-     NAME=world
+     NAME=development
      ```
 
      See the [`.env` file](#env-file) section for details.
@@ -87,7 +89,7 @@ $ npm i -D dotenv
      ```diff
      // dist/main.js
      - const name = import.meta.env.NAME
-     + const name = "world"
+     + const name = "developemnt"
      // ...
      ```
 
@@ -107,6 +109,12 @@ $ npm i -D dotenv
            env: ".env",
            example: ".env.example",
      -     transformMode: "compile-time",
+     +     // If you are using popular packagers such as Webpack and Vite,
+     +     // @import-meta-env/unplugin will automatically switch the `transformMode` for you:
+     +     // - for development mode, `transformMode` will be `"compile-time"`
+     +     // - for production mode, `transformMode` will be `"runtime"`
+     +
+     +     // Otherwise, you need to set `transformMode` according to your needs:
      +     transformMode: "runtime",
          }),
        ],
@@ -143,13 +151,22 @@ $ npm i -D dotenv
 
      See the [special expression](#special-expression) section for details.
 
+  1. Define environment variables:
+
+     ```ini
+     # .env
+     NAME=production
+     ```
+
+     See the [`.env` file](#env-file) section for details.
+
   1. Install [runtime transform tool](/guide/getting-started/runtime-transform.html).
 
      ```sh
      $ npm i -D @import-meta-env/cli
      ```
 
-  1. Transform it again using the packaged executable:
+  1. Transform it again:
 
      ```sh
      npx import-meta-env -x .env.example -p dist/index.html
@@ -163,7 +180,7 @@ $ npm i -D dotenv
          <meta charset="UTF-8" />
          <script>
      -     globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"')
-     +     globalThis.import_meta_env = JSON.parse('{"NAME":"world"}');
+     +     globalThis.import_meta_env = JSON.parse('{"NAME":"production"}');
          </script>
          <script defer="defer" src="main.js"></script>
        </head>
