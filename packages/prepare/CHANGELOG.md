@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.11...prepare0.1.12) (2023-10-11)
+
 ### [0.1.11](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.10...prepare0.1.11) (2023-10-04)
 
 
