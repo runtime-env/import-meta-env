@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.10...unplugin0.4.11) (2023-10-11)
+
 ### [0.4.10](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.9...unplugin0.4.10) (2023-10-04)
 
 
