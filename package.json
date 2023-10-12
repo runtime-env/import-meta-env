@@ -17,7 +17,7 @@
     "docs:preview": "vitepress serve docs --port 4173"
   },
   "devDependencies": {
-    "@babel/core": "7.23.0",
+    "@babel/core": "7.23.2",
     "@babel/preset-env": "7.23.2",
     "@babel/preset-typescript": "7.23.2",
     "@types/chai": "4.3.7",
