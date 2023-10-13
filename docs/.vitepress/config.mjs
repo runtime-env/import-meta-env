@@ -14,6 +14,7 @@ export default defineConfig({
   base: "/import-meta-env/",
 
   head: [
+    ["link", { rel: "icon", href: "/logo.png" }],
     [
       "script",
       {
@@ -37,6 +38,8 @@ export default defineConfig({
   ],
 
   themeConfig: {
+    logo: "/logo.png",
+
     nav: [
       {
         text: "Guide",
