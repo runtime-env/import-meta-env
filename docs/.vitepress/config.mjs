@@ -14,7 +14,7 @@ export default defineConfig({
   base: "/import-meta-env/",
 
   head: [
-    ["link", { rel: "icon", href: "/logo.png" }],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
     [
       "script",
       {
