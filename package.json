@@ -39,7 +39,7 @@
     "tmp": "0.2.1",
     "typescript": "5.2.2",
     "vitepress": "1.0.0-rc.21",
-    "yaml": "2.3.2"
+    "yaml": "2.3.3"
   },
   "pnpm": {
     "peerDependencyRules": {
