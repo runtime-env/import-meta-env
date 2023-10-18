@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.11...prepare0.1.12) (2023-10-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v11.1.0 ([#1125](https://github.com/iendeavor/import-meta-env/issues/1125)) ([7455fa7](https://github.com/iendeavor/import-meta-env/commit/7455fa73384d5cc7430f399a0c69c4117a188ed5))
+
 ### [0.1.11](https://github.com/iendeavor/import-meta-env/compare/prepare0.1.10...prepare0.1.11) (2023-10-04)
 
 
