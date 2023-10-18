@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/unplugin",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
