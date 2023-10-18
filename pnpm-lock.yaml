@@ -8,7 +8,7 @@ importers:
       '@babel/preset-env': 7.23.2
       '@babel/preset-typescript': 7.23.2
       '@types/chai': 4.3.9
-      '@types/jest': 29.5.5
+      '@types/jest': 29.5.6
       '@types/node': 18.18.5
       '@types/tmp': 0.2.4
       babel-jest: 29.7.0
@@ -32,7 +32,7 @@ importers:
       '@babel/preset-env': 7.23.2_@babel+core@7.23.2
       '@babel/preset-typescript': 7.23.2_@babel+core@7.23.2
       '@types/chai': 4.3.9
-      '@types/jest': 29.5.5
+      '@types/jest': 29.5.6
       '@types/node': 18.18.5
       '@types/tmp': 0.2.4
       babel-jest: 29.7.0_@babel+core@7.23.2
@@ -2517,8 +2517,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.5.5:
-    resolution: {integrity: sha512-ebylz2hnsWR9mYvmBFbXJXr+33UPc4+ZdxyDXh5w0FlPBTfCVN3wPL+kuOiQt3xvrK419v7XWeAs+AeOksafXg==}
+  /@types/jest/29.5.6:
+    resolution: {integrity: sha512-/t9NnzkOpXb4Nfvg17ieHE6EeSjDS2SGSpNYfoLbUAeL/EOueU/RSdOWFpfQTXBEM7BguYW1XQ0EbM+6RlIh6w==}
     dependencies:
       expect: 29.7.0
       pretty-format: 29.7.0
