@@ -74,7 +74,7 @@ importers:
   packages/cli:
     specifiers:
       '@types/glob': 8.1.0
-      '@types/serialize-javascript': 5.0.2
+      '@types/serialize-javascript': 5.0.3
       commander: 11.1.0
       glob: 10.3.10
       picocolors: 1.0.0
@@ -86,7 +86,7 @@ importers:
       serialize-javascript: 6.0.1
     devDependencies:
       '@types/glob': 8.1.0
-      '@types/serialize-javascript': 5.0.2
+      '@types/serialize-javascript': 5.0.3
 
   packages/flow:
     specifiers:
@@ -104,7 +104,7 @@ importers:
   packages/prepare:
     specifiers:
       '@types/glob': 8.1.0
-      '@types/serialize-javascript': 5.0.2
+      '@types/serialize-javascript': 5.0.3
       commander: 11.1.0
       glob: 10.3.10
       picocolors: 1.0.0
@@ -116,7 +116,7 @@ importers:
       serialize-javascript: 6.0.1
     devDependencies:
       '@types/glob': 8.1.0
-      '@types/serialize-javascript': 5.0.2
+      '@types/serialize-javascript': 5.0.3
 
   packages/swc:
     specifiers: {}
@@ -2581,8 +2581,8 @@ packages:
       '@types/node': 18.18.6
     dev: true
 
-  /@types/serialize-javascript/5.0.2:
-    resolution: {integrity: sha512-BRLlwZzRoZukGaBtcUxkLsZsQfWZpvog6MZk3PWQO9Q6pXmXFzjU5iGzZ+943evp6tkkbN98N1Z31KT0UG1yRw==}
+  /@types/serialize-javascript/5.0.3:
+    resolution: {integrity: sha512-jz2WlMFHH85UD+SH9soACEO7v4I6kThWb7RcbT6aSCJ4hXsxOwZxwFkmXCC2ZpIjzaRKRfxVw+DvRtvqE8Ntig==}
     dev: true
 
   /@types/stack-utils/2.0.1:

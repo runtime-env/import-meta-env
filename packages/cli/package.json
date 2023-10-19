@@ -35,7 +35,7 @@
   "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme",
   "devDependencies": {
     "@types/glob": "8.1.0",
-    "@types/serialize-javascript": "5.0.2"
+    "@types/serialize-javascript": "5.0.3"
   },
   "peerDependencies": {
     "@import-meta-env/babel": "^0.4.3",
