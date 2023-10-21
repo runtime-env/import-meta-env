@@ -331,7 +331,7 @@ jobs:
           cache: "pnpm"
 
       - name: Publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v3
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
