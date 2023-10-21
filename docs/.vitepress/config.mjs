@@ -11,10 +11,8 @@ export default defineConfig({
   description:
     "Build once, deploy anywhere. Import-meta-env helps to developing applications following the 12-factor principles.",
 
-  base: "/import-meta-env/",
-
   head: [
-    ["link", { rel: "icon", href: "/import-meta-env/favicon.ico" }],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
     [
       "script",
       {
@@ -97,7 +95,7 @@ export default defineConfig({
 
   buildEnd: ({ outDir }) => {
     const sitemap = new SitemapStream({
-      hostname: "https://iendeavor.github.io/import-meta-env/",
+      hostname: "https://import-meta-env.org/",
     });
     const writeStream = fs.createWriteStream(
       path.resolve(outDir, "sitemap.xml"),
