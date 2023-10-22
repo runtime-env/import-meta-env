@@ -15,7 +15,7 @@ hero:
       link: /guide/getting-started/introduction.html#guide
     - theme: alt
       text: Examples
-      link: https://github.com/iendeavor/import-meta-env/tree/main/packages/examples
+      link: https://github.com/import-meta-env/import-meta-env/tree/main/packages/examples
 
 features:
   - title: Security First
