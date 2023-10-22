@@ -4,7 +4,7 @@ Please read the [guide](/guide/getting-started/introduction.html#guide) for how 
 
 ## Compatibility
 
-Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/iendeavor/import-meta-env/issues/new) on GitHub.
+Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/import-meta-env/import-meta-env/issues/new) on GitHub.
 
 You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
 
@@ -46,7 +46,7 @@ $ npm i -D @import-meta-env/babel
 }
 ```
 
-Related examples: [babel](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/babel-starter-example), [babel-loader](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-babel-loader-example), [jest](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/jest-example)
+Related examples: [babel](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/babel-starter-example), [babel-loader](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/webpack-babel-loader-example), [jest](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/jest-example)
 
 ## SWC Plugin
 
@@ -82,7 +82,7 @@ $ npm i -D @import-meta-env/swc
 }
 ```
 
-Related examples: [swc](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/swc-example)
+Related examples: [swc](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/swc-example)
 
 ## Unplugin
 
@@ -114,7 +114,7 @@ build({
 });
 ```
 
-Related examples: [esbuild](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/esbuild-starter-example)
+Related examples: [esbuild](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/esbuild-starter-example)
 
 Rollup:
 
@@ -133,7 +133,7 @@ export default {
 };
 ```
 
-Related examples: [rollup](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/rollup-starter-example)
+Related examples: [rollup](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/rollup-starter-example)
 
 Vite:
 
@@ -152,7 +152,7 @@ export default {
 };
 ```
 
-Related examples: [vite](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/vite-starter-example)
+Related examples: [vite](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/vite-starter-example)
 
 Webpack:
 
@@ -169,4 +169,4 @@ module.exports = {
 };
 ```
 
-Related examples: [webpack](https://github.com/iendeavor/import-meta-env/blob/main/packages/examples/webpack-starter-example)
+Related examples: [webpack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/webpack-starter-example)

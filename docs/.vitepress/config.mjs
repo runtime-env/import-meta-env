@@ -54,7 +54,7 @@ export default defineConfig({
       },
       {
         text: "Examples",
-        link: "https://github.com/iendeavor/import-meta-env/tree/main/packages/examples",
+        link: "https://github.com/import-meta-env/import-meta-env/tree/main/packages/examples",
       },
       {
         text: "Sponsor ☕",
@@ -74,7 +74,10 @@ export default defineConfig({
     sidebar: sidebar(),
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/iendeavor/import-meta-env" },
+      {
+        icon: "github",
+        link: "https://github.com/import-meta-env/import-meta-env",
+      },
     ],
 
     footer: {
