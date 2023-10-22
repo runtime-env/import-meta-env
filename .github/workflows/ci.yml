@@ -400,7 +400,7 @@ jobs:
 
       - name: Push docs
         if: github.ref_name == 'main'
-        uses: ad-m/github-push-action@0.6.0
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
