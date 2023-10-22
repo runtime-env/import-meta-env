@@ -170,3 +170,20 @@ module.exports = {
 ```
 
 Related examples: [webpack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/webpack-starter-example)
+
+Rspack:
+
+```js
+// rspack.config.js
+module.exports = {
+  plugins: [
+    require("@import-meta-env/unplugin").rspack({
+      example: ".env.example",
+      // "env": "...",
+      // "transformMode": "..."
+    }),
+  ],
+};
+```
+
+Related examples: [rspack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/rspack-starter-example)

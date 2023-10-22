@@ -119,6 +119,20 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
     },
 
+    rspack: (compiler) => {
+      transformMode =
+        transformMode ?? compiler.options.mode === "production"
+          ? "runtime"
+          : "compile-time";
+
+      if (transformMode === "compile-time") {
+        env = resolveEnv({
+          envExampleFilePath: options?.example,
+          envFilePath: options?.env,
+        });
+      }
+    },
+
     buildStart() {
       debug && console.debug("buildStart::");
       debug && console.debug("env::", env);
