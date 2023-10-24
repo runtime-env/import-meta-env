@@ -60,7 +60,11 @@ export default defineConfig({
         text: "Sponsor ☕",
         items: [
           {
-            text: "Paypal",
+            text: "Open Collective",
+            link: "https://opencollective.com/import-meta-env",
+          },
+          {
+            text: "PayPal",
             link: "https://www.paypal.com/paypalme/iendeavor",
           },
           {
