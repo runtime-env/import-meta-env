@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.10...unplugin0.5.0) (2023-10-25)
+
+
+### Features
+
+* rspack ([#1163](https://github.com/iendeavor/import-meta-env/issues/1163)) ([1b0f2c9](https://github.com/iendeavor/import-meta-env/commit/1b0f2c9e1f6823bb281d4d1d2127c5aa6d2f6c58))
+
 ### [0.4.10](https://github.com/iendeavor/import-meta-env/compare/unplugin0.4.9...unplugin0.4.10) (2023-10-04)
 
 
