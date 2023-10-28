@@ -1,6 +1,6 @@
 import { declare } from "@babel/helper-plugin-utils";
 import type babelCore from "@babel/core";
-import { resolveEnv, accessor } from "../../shared";
+import { resolveEnv } from "../../shared";
 import { resolveEnvExampleKeys } from "../../shared/resolve-env-example-keys";
 import { PluginOptions } from "./types";
 
@@ -25,18 +25,62 @@ export default declare<PluginOptions>(({ template, types }, options) => {
         })()
       : Object.create(null);
 
-  const replaceEnvForCompileTime = (
-    template: typeof babelCore.template,
-    property: string,
-  ) => template.expression.ast(JSON.stringify(env[property]));
   const replaceEnvForRuntime = (
     template: typeof babelCore.template,
     property: string,
-  ) => template.expression.ast(`${accessor}.${property}`);
+  ) => template.expression.ast(`globalThis.import_meta_env.${property}`);
 
   return {
     name: "@import-meta-env/babel",
     visitor: {
+      ImportDeclaration(path) {
+        if (!types.isStringLiteral(path.node.source)) return;
+        if (path.node.source.value !== "@import-meta-env/virtual-module")
+          return;
+        const body = path.parentPath.get("body");
+        const lastImport = (body instanceof Array ? body : [body])
+          .filter((p) => p.isImportDeclaration())
+          .pop();
+        if (!lastImport) return;
+
+        if (transformMode === "compile-time") {
+          const properties: babelCore.types.ObjectProperty[] = Object.entries(
+            env,
+          ).map(([key, value]) => {
+            return types.objectProperty(
+              types.identifier(key),
+              types.stringLiteral(value),
+            );
+          });
+          lastImport.insertAfter(
+            types.expressionStatement(
+              types.assignmentExpression(
+                "=",
+                types.memberExpression(
+                  types.identifier("globalThis"),
+                  types.identifier("import_meta_env"),
+                ),
+                types.objectExpression(properties),
+              ),
+            ),
+          );
+        } else {
+          lastImport.insertAfter(
+            types.expressionStatement(
+              types.assignmentExpression(
+                "=",
+                types.memberExpression(
+                  types.identifier("globalThis"),
+                  types.identifier("import_meta_env"),
+                ),
+                types.stringLiteral("import_meta_env_placeholder"),
+              ),
+            ),
+          );
+        }
+        path.remove();
+      },
+
       Identifier(path, state) {
         if (!types.isIdentifier(path)) return;
 
@@ -66,18 +110,9 @@ export default declare<PluginOptions>(({ template, types }, options) => {
         )
           return;
 
-        if (transformMode === "compile-time") {
-          path.parentPath.replaceWith(
-            replaceEnvForCompileTime(
-              template,
-              path.parentPath.node.property.name,
-            ),
-          );
-        } else {
-          path.parentPath.replaceWith(
-            replaceEnvForRuntime(template, path.parentPath.node.property.name),
-          );
-        }
+        path.parentPath.replaceWith(
+          replaceEnvForRuntime(template, path.parentPath.node.property.name),
+        );
       },
     },
   };

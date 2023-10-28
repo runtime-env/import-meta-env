@@ -1,5 +1,3 @@
-import importMetaEnv from "@import-meta-env/babel";
-
 export default {
   target: "static",
 
@@ -16,15 +14,6 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    script: [
-      {
-        hid: "import-meta-env",
-        innerHTML: `globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"')`,
-      },
-    ],
-    __dangerouslyDisableSanitizersByTagID: {
-      "import-meta-env": ["innerHTML"],
-    },
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

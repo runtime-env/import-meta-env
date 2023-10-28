@@ -129,13 +129,8 @@ describe("cli", () => {
       writeFileSync(envExampleFilePath.name, "FOO=");
       const outputFile = tmp.fileSync();
       const code = `
-<html>
-  <body>
-    <script>globalThis.import_meta_env=JSON.parse('"import_meta_env_placeholder"')</script>
-    <script>globalThis.import_meta_env=JSON.parse('\\"import_meta_env_placeholder\\"')</script>
-    <script>${accessor}.FOO</script>
-  </body>
-</html>
+globalThis.import_meta_env="import_meta_env_placeholder"
+${accessor}.FOO
         `.trim();
       writeFileSync(outputFile.name, code);
       const parse = jest.fn();
@@ -160,14 +155,9 @@ describe("cli", () => {
       // assert
       expect(readFileSync(outputFile.name, { encoding: "utf8" }))
         .toMatchInlineSnapshot(`
-        "<html>
-          <body>
-            <script>globalThis.import_meta_env=JSON.parse('{"FOO":"bar"}')</script>
-            <script>globalThis.import_meta_env=JSON.parse('{\\"FOO\\":\\"bar\\"}')</script>
-            <script>Object.create(globalThis.import_meta_env || null).FOO</script>
-          </body>
-        </html>"
-      `);
+"globalThis.import_meta_env={"FOO":"bar"}
+Object.create(globalThis.import_meta_env || null).FOO"
+`);
       const backupFileName = outputFile.name + ".bak";
       expect(existsSync(backupFileName)).toBe(true);
       expect(readFileSync(backupFileName, { encoding: "utf8" })).toBe(code);

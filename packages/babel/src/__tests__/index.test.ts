@@ -2,7 +2,6 @@ import { writeFileSync } from "fs";
 import tmp from "tmp";
 import pluginTester from "babel-plugin-tester";
 import importMetaEnvBabelPlugin from "../index";
-import { accessor } from "../../../shared";
 
 export const createTempFile = (code: string) => {
   const tmpFile = tmp.fileSync();
@@ -12,10 +11,83 @@ export const createTempFile = (code: string) => {
   return tmpFile.name;
 };
 
-describe("importMetaEnvBabelPlugin", () => {
-  const env = createTempFile("EXISTS=value\nSECRET=***");
-  const example = createTempFile("EXISTS=");
+const env = createTempFile("EXISTS=value\nSECRET=***");
+const example = createTempFile("EXISTS=");
 
+describe(`globalThis.import_meta_env = JSON.parse("import_meta_env_placeholder")`, () => {
+  pluginTester({
+    title: "It should insert after last import",
+
+    plugin: importMetaEnvBabelPlugin,
+
+    pluginOptions: {
+      env,
+      example,
+      transformMode: "compile-time",
+    },
+
+    tests: [
+      {
+        title: "compile-time",
+        code: `
+import "@import-meta-env/virtual-module";
+import "another-module";
+        `.trim(),
+        output: `
+import "another-module";
+globalThis.import_meta_env = {
+  EXISTS: "value",
+};
+        `.trim(),
+      },
+    ],
+  });
+
+  pluginTester({
+    title: "It should replace virtual module with environment variables",
+
+    plugin: importMetaEnvBabelPlugin,
+
+    pluginOptions: {
+      env,
+      example,
+      transformMode: "compile-time",
+    },
+
+    tests: [
+      {
+        title: "compile-time",
+        code: `import "@import-meta-env/virtual-module";`,
+        output: `
+globalThis.import_meta_env = {
+  EXISTS: "value",
+};
+        `.trim(),
+      },
+    ],
+  });
+
+  pluginTester({
+    title: "It should replace virtual module with the special expression",
+
+    plugin: importMetaEnvBabelPlugin,
+
+    pluginOptions: {
+      example,
+      transformMode: "runtime",
+    },
+
+    tests: [
+      {
+        title: "runtime",
+        code: `import "@import-meta-env/virtual-module";`,
+        output: `globalThis.import_meta_env = "import_meta_env_placeholder";`,
+      },
+    ],
+  });
+});
+
+describe("import.meta.env.*", () => {
   for (let transformMode of ["compile-time", "runtime"] as const) {
     pluginTester({
       title: `(transformMode: ${transformMode}) It should ignore`,
@@ -79,7 +151,7 @@ function _() {
       {
         title: "import.meta.env.EXISTS",
         code: "console.log(() => import.meta.env.EXISTS);",
-        output: `console.log(() => "value");`.trim(),
+        output: `console.log(() => globalThis.import_meta_env.EXISTS);`.trim(),
       },
     ],
   });
@@ -99,7 +171,7 @@ function _() {
         title: "import.meta.env.EXISTS",
         code: "console.log(() => import.meta.env.EXISTS);",
         output: `
-console.log(() => ${accessor}.EXISTS);
+console.log(() => globalThis.import_meta_env.EXISTS);
       `.trim(),
       },
     ],

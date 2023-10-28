@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import "@import-meta-env/virtual-module";
+
 export default {
   name: "IndexPage",
 

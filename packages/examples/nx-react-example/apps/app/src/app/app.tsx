@@ -1,3 +1,4 @@
+import '@import-meta-env/virtual-module';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 

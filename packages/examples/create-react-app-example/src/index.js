@@ -1,3 +1,4 @@
+import "@import-meta-env/virtual-module";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
