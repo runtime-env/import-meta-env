@@ -25,10 +25,6 @@ export default declare<PluginOptions>(({ template, types }, options) => {
         })()
       : Object.create(null);
 
-  const replaceEnvForCompileTime = (
-    template: typeof babelCore.template,
-    property: string,
-  ) => template.expression.ast(JSON.stringify(env[property]));
   const replaceEnvForRuntime = (
     template: typeof babelCore.template,
     property: string,
@@ -37,6 +33,63 @@ export default declare<PluginOptions>(({ template, types }, options) => {
   return {
     name: "@import-meta-env/babel",
     visitor: {
+      ExpressionStatement(path) {
+        if (transformMode === "runtime") return;
+
+        const assignmentExpression = path.node.expression;
+        if (!types.isAssignmentExpression(assignmentExpression)) return;
+        if (assignmentExpression.operator !== "=") return;
+
+        const memberExpression = assignmentExpression.left;
+        if (!types.isMemberExpression(memberExpression)) return;
+        if (memberExpression.computed) return;
+        if (!types.isIdentifier(memberExpression.object)) return;
+        if (memberExpression.object.name !== "globalThis") return;
+        if (!types.isIdentifier(memberExpression.property)) return;
+        if (memberExpression.property.name !== "import_meta_env") return;
+
+        const callExpression = assignmentExpression.right;
+        if (!types.isCallExpression(callExpression)) return;
+        if (!types.isMemberExpression(callExpression.callee)) return;
+        if (callExpression.callee.computed) return;
+        if (!types.isIdentifier(callExpression.callee.object)) return;
+        if (callExpression.callee.object.name !== "JSON") return;
+        if (!types.isIdentifier(callExpression.callee.property)) return;
+        if (callExpression.callee.property.name !== "parse") return;
+
+        if (callExpression.arguments.length !== 1) return;
+        if (!types.isStringLiteral(callExpression.arguments[0])) return;
+        try {
+          if (
+            JSON.parse(callExpression.arguments[0].value) !==
+            "import_meta_env_placeholder"
+          )
+            return;
+        } catch {
+          return;
+        }
+
+        const properties: babelCore.types.ObjectProperty[] = Object.entries(
+          env,
+        ).map(([key, value]) => {
+          return types.objectProperty(
+            types.identifier(key),
+            types.stringLiteral(value),
+          );
+        });
+        path.replaceWith(
+          types.expressionStatement(
+            types.assignmentExpression(
+              "=",
+              types.memberExpression(
+                types.identifier("globalThis"),
+                types.identifier("import_meta_env"),
+              ),
+              types.objectExpression(properties),
+            ),
+          ),
+        );
+      },
       Identifier(path, state) {
         if (!types.isIdentifier(path)) return;
 
@@ -66,18 +119,9 @@ export default declare<PluginOptions>(({ template, types }, options) => {
         )
           return;
 
-        if (transformMode === "compile-time") {
-          path.parentPath.replaceWith(
-            replaceEnvForCompileTime(
-              template,
-              path.parentPath.node.property.name,
-            ),
-          );
-        } else {
-          path.parentPath.replaceWith(
-            replaceEnvForRuntime(template, path.parentPath.node.property.name),
-          );
-        }
+        path.parentPath.replaceWith(
+          replaceEnvForRuntime(template, path.parentPath.node.property.name),
+        );
       },
     },
   };

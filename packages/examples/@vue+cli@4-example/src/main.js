@@ -1,3 +1,4 @@
+import "./import-meta-env";
 import Vue from "vue";
 import App from "./App.vue";
 

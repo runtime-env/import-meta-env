@@ -12,10 +12,57 @@ export const createTempFile = (code: string) => {
   return tmpFile.name;
 };
 
-describe("importMetaEnvBabelPlugin", () => {
-  const env = createTempFile("EXISTS=value\nSECRET=***");
-  const example = createTempFile("EXISTS=");
+const env = createTempFile("EXISTS=value\nSECRET=***");
+const example = createTempFile("EXISTS=");
 
+describe(`globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"')`, () => {
+  pluginTester({
+    title:
+      "It should replace the special expression with environment variables",
+
+    plugin: importMetaEnvBabelPlugin,
+
+    pluginOptions: {
+      env,
+      example,
+      transformMode: "compile-time",
+    },
+
+    tests: [
+      {
+        title: "compile-time",
+        code: `globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');`,
+        output: `
+globalThis.import_meta_env = {
+  EXISTS: "value",
+};
+        `.trim(),
+      },
+    ],
+  });
+
+  pluginTester({
+    title:
+      "It should not replace the special expression with environment variables",
+
+    plugin: importMetaEnvBabelPlugin,
+
+    pluginOptions: {
+      example,
+      transformMode: "runtime",
+    },
+
+    tests: [
+      {
+        title: "runtime",
+        code: `globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');`,
+        output: `globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');`,
+      },
+    ],
+  });
+});
+
+describe("import.meta.env.*", () => {
   for (let transformMode of ["compile-time", "runtime"] as const) {
     pluginTester({
       title: `(transformMode: ${transformMode}) It should ignore`,
