@@ -54,7 +54,7 @@ export const main = (di: {
         `It looks like you forgot to add the special expression to your entry.`,
       ),
       colors.yellow(
-        `See special expression for more info: https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression`,
+        `See special expression for more info: https://runtime-env.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression`,
       ),
     ].join("\n"),
   );

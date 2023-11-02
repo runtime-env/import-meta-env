@@ -113,7 +113,7 @@ describe("cli", () => {
             "[31m[import-meta-env]: Placeholder not found[39m
 
         [33mIt looks like you forgot to add the special expression to your entry.[39m
-        [33mSee special expression for more info: https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression[39m",
+        [33mSee special expression for more info: https://runtime-env.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression[39m",
           ],
         ]
       `);

@@ -32,7 +32,7 @@ SECRET_NUMBER=
    $ npm i @import-meta-env/cli
    ```
 
-1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
+1. Refer to [document](https://runtime-env.github.io/import-meta-env/guide/getting-started/introduction.html).
 
 1. For this example, we need to config webpack in next.config.js.
 

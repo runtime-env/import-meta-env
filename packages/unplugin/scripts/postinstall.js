@@ -18,7 +18,7 @@ var CI = [
 });
 
 var BANNER =
-  "\u001B[96mThank you for using import-meta-env (\u001B[94m https://github.com/iendeavor/import-meta-env \u001B[96m) JavaScript library!\u001B[0m\n\n" +
+  "\u001B[96mThank you for using import-meta-env (\u001B[94m https://github.com/runtime-env/import-meta-env \u001B[96m) JavaScript library!\u001B[0m\n\n" +
   "\u001B[96mThe project needs your help! Please consider supporting import-meta-env:\u001B[0m\n" +
   "\u001B[96m>\u001B[94m https://bmc.link/iendeavor \u001B[0m\n" +
   "\u001B[96m>\u001B[94m https://paypal.me/iendeavor \u001B[0m\n\n";
