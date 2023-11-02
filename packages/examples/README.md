@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-git clone https://github.com/iendeavor/import-meta-env
+git clone https://github.com/runtime-env/import-meta-env
 cd import-meta-env
 npm run install
 # Before running the examples, you must build the import-meta-env package:

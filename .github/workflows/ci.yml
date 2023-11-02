@@ -356,7 +356,7 @@ jobs:
         if: ${{github.ref_name == 'main' && steps.publish.outputs.type != 'none'}}
         with:
           tag_name: ${{ matrix.package }}${{ steps.publish.outputs.version }}
-          body: "Changelog: https://github.com/iendeavor/import-meta-env/blob/${{ matrix.package }}${{ steps.publish.outputs.version }}/packages/${{ matrix.package }}/CHANGELOG.md"
+          body: "Changelog: https://github.com/runtime-env/import-meta-env/blob/${{ matrix.package }}${{ steps.publish.outputs.version }}/packages/${{ matrix.package }}/CHANGELOG.md"
 
   docs:
     name: Docs

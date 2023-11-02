@@ -25,13 +25,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "url": "git+https://github.com/runtime-env/import-meta-env.git",
     "directory": "packages/flow"
   },
   "bugs": {
-    "url": "https://github.com/iendeavor/import-meta-env/issues"
+    "url": "https://github.com/runtime-env/import-meta-env/issues"
   },
-  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/flow#readme",
+  "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/flow#readme",
   "devDependencies": {
     "@types/node": "18.18.6",
     "typescript": "5.2.2"

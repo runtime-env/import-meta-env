@@ -7,7 +7,7 @@
    $ npm i @import-meta-env/cli
    ```
 
-1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
+1. Refer to [document](https://runtime-env.github.io/import-meta-env/guide/getting-started/introduction.html).
 
 1. Create a [Dockerfile](./Dockerfile) file in the root of your project.
 

@@ -26,13 +26,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iendeavor/import-meta-env.git",
+    "url": "git+https://github.com/runtime-env/import-meta-env.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/iendeavor/import-meta-env/issues"
+    "url": "https://github.com/runtime-env/import-meta-env/issues"
   },
-  "homepage": "https://github.com/iendeavor/import-meta-env/tree/main/packages/cli#readme",
+  "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/cli#readme",
   "devDependencies": {
     "@types/glob": "8.1.0",
     "@types/serialize-javascript": "5.0.3"

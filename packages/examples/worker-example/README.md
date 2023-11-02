@@ -7,9 +7,9 @@
    $ npm i -D @import-meta-env/cli
    ```
 
-1. Refer to [document](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html).
+1. Refer to [document](https://runtime-env.github.io/import-meta-env/guide/getting-started/introduction.html).
 
-1. In this example, we put the [special expression](https://iendeavor.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression) at the top of the worker.js content since we need to access runtime environment variables from workers:
+1. In this example, we put the [special expression](https://runtime-env.github.io/import-meta-env/guide/getting-started/introduction.html#special-expression) at the top of the worker.js content since we need to access runtime environment variables from workers:
 
    ```diff
    + globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');
