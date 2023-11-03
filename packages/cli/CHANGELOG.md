@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.8](https://github.com/runtime-env/import-meta-env/compare/cli0.6.7...cli0.6.8) (2023-11-03)
+
+
+### Bug Fixes
+
+* Update repository links ([#1190](https://github.com/runtime-env/import-meta-env/issues/1190)) ([32c762c](https://github.com/runtime-env/import-meta-env/commit/32c762c4e64be00bba3d673716e3aeb09e39cd7f))
+
 ### [0.6.7](https://github.com/runtime-env/import-meta-env/compare/cli0.6.6...cli0.6.7) (2023-10-18)
 
 
