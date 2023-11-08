@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/runtime-env/import-meta-env/compare/babel0.4.4...babel0.4.5) (2023-11-08)
+
+
+### Bug Fixes
+
+* Update repository links ([#1190](https://github.com/runtime-env/import-meta-env/issues/1190)) ([32c762c](https://github.com/runtime-env/import-meta-env/commit/32c762c4e64be00bba3d673716e3aeb09e39cd7f))
+
 ### [0.4.4](https://github.com/runtime-env/import-meta-env/compare/babel0.4.3...babel0.4.4) (2023-07-26)
 
 ### [0.4.3](https://github.com/runtime-env/import-meta-env/compare/babel0.4.2...babel0.4.3) (2023-04-05)
