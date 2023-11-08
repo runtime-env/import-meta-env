@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/runtime-env/import-meta-env/compare/prepare0.1.12...prepare0.1.13) (2023-11-08)
+
+
+### Bug Fixes
+
+* Update repository links ([#1190](https://github.com/runtime-env/import-meta-env/issues/1190)) ([32c762c](https://github.com/runtime-env/import-meta-env/commit/32c762c4e64be00bba3d673716e3aeb09e39cd7f))
+
 ### [0.1.12](https://github.com/runtime-env/import-meta-env/compare/prepare0.1.11...prepare0.1.12) (2023-10-18)
 
 
