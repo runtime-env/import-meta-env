@@ -57,21 +57,9 @@ export default defineConfig({
         link: "https://github.com/import-meta-env/import-meta-env/tree/main/packages/examples",
       },
       {
-        text: "Sponsor ☕",
-        items: [
-          {
-            text: "Open Collective",
-            link: "https://opencollective.com/import-meta-env",
-          },
-          {
-            text: "PayPal",
-            link: "https://www.paypal.com/paypalme/iendeavor",
-          },
-          {
-            text: "Buy me a coffee",
-            link: "https://www.buymeacoffee.com/iendeavor",
-          },
-        ],
+        text: "Try runtime-env",
+        activeMatch: "/*/",
+        link: "https://github.com/runtime-env/runtime-env",
       },
     ],
 
