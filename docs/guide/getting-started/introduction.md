@@ -16,10 +16,6 @@
 
 ## Guide
 
-::: tip
-[Try simpler way with `runtime-env` now↗](https://github.com/runtime-env/runtime-env).
-:::
-
 > In this guide, we will use Webpack as an example, but you can also use other build tools. All supported build tools can be found on the [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s page.
 
 ![](/glance.png)
