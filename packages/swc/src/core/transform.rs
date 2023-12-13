@@ -1,6 +1,6 @@
 use serde;
-use string_cache::Atom;
 use swc_core::{
+    atoms::Atom,
     common::DUMMY_SP,
     ecma::{
         ast::{
