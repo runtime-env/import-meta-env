@@ -40,6 +40,11 @@ export default defineConfig({
 
     nav: [
       {
+        text: "Try runtime-env",
+        activeMatch: "/*/",
+        link: "https://github.com/runtime-env/runtime-env",
+      },
+      {
         text: "Guide",
         activeMatch: "/guide/",
         link: "/guide/getting-started/introduction",
@@ -55,11 +60,6 @@ export default defineConfig({
       {
         text: "Examples",
         link: "https://github.com/import-meta-env/import-meta-env/tree/main/packages/examples",
-      },
-      {
-        text: "Try runtime-env",
-        activeMatch: "/*/",
-        link: "https://github.com/runtime-env/runtime-env",
       },
     ],
 
