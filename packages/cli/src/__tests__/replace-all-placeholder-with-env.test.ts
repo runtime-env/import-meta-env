@@ -5,7 +5,7 @@ afterEach(() => {
 });
 
 describe("replaceAllPlaceholderWithEnv", () => {
-  test("scriptPlaceholder (standard)", () => {
+  test("scriptPlaceholder with basic code and env values", () => {
     // arrange
     const code = `JSON.parse('"import_meta_env_placeholder"')`;
     const env = {
