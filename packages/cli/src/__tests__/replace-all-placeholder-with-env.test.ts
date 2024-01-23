@@ -5,7 +5,7 @@ afterEach(() => {
 });
 
 describe("replaceAllPlaceholderWithEnv", () => {
-  test("scriptPlaceholder (1)", () => {
+  test("scriptPlaceholder (standard)", () => {
     // arrange
     const code = `JSON.parse('"import_meta_env_placeholder"')`;
     const env = {
@@ -22,7 +22,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     );
   });
 
-  test("scriptPlaceholder (2)", () => {
+  test("scriptPlaceholder with slashes for double quotes [1]", () => {
     // arrange
     const code = `JSON.parse('\\"import_meta_env_placeholder\\"')`;
 
@@ -40,7 +40,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     );
   });
 
-  test("scriptPlaceholder (3)", () => {
+  test("scriptPlaceholder with slashes for double quotes [2] and single quotes [1]", () => {
     // arrange
     const code = `JSON.parse(\\'\\\\"import_meta_env_placeholder\\\\"\\')`;
 
@@ -58,7 +58,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     );
   });
 
-  test("scriptPlaceholder (4)", () => {
+  test("scriptPlaceholder with escaped double quotes", () => {
     // arrange
     const code = `JSON.parse('"import_meta_env_placeholder"')`;
     const env = {
