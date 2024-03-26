@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as o,Q as p}from"./chunks/framework.1169fbc9.js";const h=JSON.parse('{"title":"Migration","description":"","frontmatter":{},"headers":[],"relativePath":"migration.md","filePath":"migration.md"}'),n={name:"migration.md"},l=p("",5),e=[l];function t(r,c,i,E,y,d){return a(),o("div",null,e)}const m=s(n,[["render",t]]);export{h as __pageData,m as default};
