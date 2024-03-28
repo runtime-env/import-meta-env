@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-example": {
+    "angular-webpack-example": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -19,7 +19,7 @@
                 "plugins": "merge"
               }
             },
-            "outputPath": "dist/angular-example",
+            "outputPath": "dist/angular-webpack-example",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +64,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-example:build:production"
+              "browserTarget": "angular-webpack-example:build:production"
             },
             "development": {
-              "browserTarget": "angular-example:build:development"
+              "browserTarget": "angular-webpack-example:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-example:build"
+            "buildTarget": "angular-webpack-example:build"
           }
         },
         "test": {

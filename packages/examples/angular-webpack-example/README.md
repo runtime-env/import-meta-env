@@ -15,7 +15,7 @@
    // angular.json
    {
      "projects": {
-       "angular-example": {
+       "angular-webpack-example": {
          "architect": {
            "build": {
              "builder": "@angular-builders/custom-webpack:browser",

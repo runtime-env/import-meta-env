@@ -1,5 +1,5 @@
 {
-  "name": "angular-example",
+  "name": "angular-webpack-example",
   "version": "0.0.0",
   "scripts": {
     "_test": "node test.js",
