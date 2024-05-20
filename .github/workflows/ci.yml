@@ -169,7 +169,7 @@ jobs:
       matrix:
         example:
           - "@vue+cli@5-example"
-          - "angular-example"
+          - "angular-webpack-example"
           - "babel-starter-example"
           - "compatibility-example"
           - "create-next-app-example"
