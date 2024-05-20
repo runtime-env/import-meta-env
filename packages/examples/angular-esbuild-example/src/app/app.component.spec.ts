@@ -14,16 +14,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'angular-esbuild-example' title`, () => {
+  it(`should have the 'import-meta-env' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-esbuild-example');
+    expect(app.hello).toEqual('import-meta-env');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-esbuild-example');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, import-meta-env',
+    );
   });
 });
