@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.9](https://github.com/runtime-env/import-meta-env/compare/cli0.6.8...cli0.6.9) (2024-06-01)
+
 ### [0.6.8](https://github.com/runtime-env/import-meta-env/compare/cli0.6.7...cli0.6.8) (2023-11-03)
 
 
