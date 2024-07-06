@@ -63,7 +63,7 @@ importers:
       picocolors: ^1.0.0
     dependencies:
       '@babel/helper-plugin-utils': 7.19.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
     devDependencies:
       '@babel/core': 7.23.2
       '@types/babel-plugin-tester': 9.0.10
@@ -96,7 +96,7 @@ importers:
       typescript: 5.2.2
     dependencies:
       commander: 11.0.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
     devDependencies:
       '@types/node': 18.18.6
       typescript: 5.2.2
@@ -129,7 +129,7 @@ importers:
       typescript: 5.2.2
     dependencies:
       commander: 11.0.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
     devDependencies:
       '@types/node': 18.18.6
       typescript: 5.2.2
@@ -150,7 +150,7 @@ importers:
     dependencies:
       magic-string: 0.30.10
       object-hash: 3.0.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       unplugin: 1.5.0
     devDependencies:
       '@types/node': 18.18.6
@@ -5209,10 +5209,6 @@ packages:
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: true
-
-  /picocolors/1.0.0:
-    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
-    dev: false
 
   /picocolors/1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
