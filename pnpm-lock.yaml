@@ -7,12 +7,12 @@ importers:
       '@babel/core': 7.24.7
       '@babel/preset-env': 7.24.7
       '@babel/preset-typescript': 7.24.7
-      '@types/chai': 4.3.9
+      '@types/chai': 4.3.16
       '@types/jest': 29.5.12
       '@types/node': 18.19.39
       '@types/tmp': 0.2.6
       babel-jest: 29.7.0
-      chai: 4.3.10
+      chai: 4.4.1
       change-case: 5.1.2
       commander: 11.1.0
       dotenv: 16.3.1
@@ -31,12 +31,12 @@ importers:
       '@babel/core': 7.24.7
       '@babel/preset-env': 7.24.7_@babel+core@7.24.7
       '@babel/preset-typescript': 7.24.7_@babel+core@7.24.7
-      '@types/chai': 4.3.9
+      '@types/chai': 4.3.16
       '@types/jest': 29.5.12
       '@types/node': 18.19.39
       '@types/tmp': 0.2.6
       babel-jest: 29.7.0_@babel+core@7.24.7
-      chai: 4.3.10
+      chai: 4.4.1
       change-case: 5.1.2
       commander: 11.1.0
       dotenv: 16.3.1
@@ -2652,8 +2652,8 @@ packages:
       '@babel/types': 7.23.0
     dev: true
 
-  /@types/chai/4.3.9:
-    resolution: {integrity: sha512-69TtiDzu0bcmKQv3yg1Zx409/Kd7r0b5F1PfpYJfSHzLGtB53547V4u+9iqKYsTu/O2ai6KTb0TInNpvuQ3qmg==}
+  /@types/chai/4.3.16:
+    resolution: {integrity: sha512-PatH4iOdyh3MyWtmHVFXLWCCIhUbopaltqddG9BzB+gMIzee2MJrvd+jouii9Z3wzQJruGWAm7WOMjgfG8hQlQ==}
     dev: true
 
   /@types/eslint-scope/3.7.4:
@@ -3427,8 +3427,8 @@ packages:
     resolution: {integrity: sha512-lA4VMpW0PSUrFnkmVuEKBUovSWKhj7puyCg8StBChgu298N1AtuF1sKWEvfDuimSEDbhlb/KqPKC3fs1HbuQUA==}
     dev: true
 
-  /chai/4.3.10:
-    resolution: {integrity: sha512-0UXG04VuVbruMUYbJ6JctvH0YnC/4q3/AkT18q4NaITo91CUm0liMS9VqzT9vZhVQ/1eqPanMWjBM+Juhfb/9g==}
+  /chai/4.4.1:
+    resolution: {integrity: sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==}
     engines: {node: '>=4'}
     dependencies:
       assertion-error: 1.1.0
@@ -5080,6 +5080,7 @@ packages:
 
   /loupe/2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
+    deprecated: Please upgrade to 2.3.7 which fixes GHSA-4q6p-r6v2-jvc5
     dependencies:
       get-func-name: 2.0.2
     dev: true
