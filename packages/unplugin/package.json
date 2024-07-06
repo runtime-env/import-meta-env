@@ -43,7 +43,7 @@
     "@types/node": "18.18.6",
     "@types/object-hash": "3.0.6",
     "rollup": "4.1.4",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "typescript": "5.2.2",
     "vite": "4.5.3",
     "webpack": "5.89.0"
