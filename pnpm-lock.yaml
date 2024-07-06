@@ -20,7 +20,7 @@ importers:
       jest: 29.7.0
       picocolors: 1.0.0
       prettier: 3.0.3
-      rimraf: 5.0.5
+      rimraf: 5.0.8
       sitemap: ^7.1.1
       standard-version: 9.5.0
       tmp: 0.2.1
@@ -44,7 +44,7 @@ importers:
       jest: 29.7.0_@types+node@18.18.6
       picocolors: 1.0.0
       prettier: 3.0.3
-      rimraf: 5.0.5
+      rimraf: 5.0.8
       sitemap: 7.1.1
       standard-version: 9.5.0
       tmp: 0.2.1
@@ -5461,14 +5461,15 @@ packages:
 
   /rimraf/3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
     dev: true
 
-  /rimraf/5.0.5:
-    resolution: {integrity: sha512-CqDakW+hMe/Bz202FPEymy68P+G50RfMQK+Qo5YUqc9SPipvbGjCGKd0RSKEelbsfQuw3g5NZDSrlZZAJurH1A==}
-    engines: {node: '>=14'}
+  /rimraf/5.0.8:
+    resolution: {integrity: sha512-XSh0V2/yNhDEi8HwdIefD8MLgs4LQXPag/nEJWs3YUc3Upn+UHa1GyIkEg9xSSNt7HnkO5FjTvmcRzgf+8UZuw==}
+    engines: {node: '>=18'}
     hasBin: true
     dependencies:
       glob: 10.3.10
