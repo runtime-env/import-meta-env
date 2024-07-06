@@ -10,7 +10,7 @@ importers:
       '@types/chai': 4.3.9
       '@types/jest': 29.5.12
       '@types/node': 18.18.6
-      '@types/tmp': 0.2.5
+      '@types/tmp': 0.2.6
       babel-jest: 29.7.0
       chai: 4.3.10
       change-case: 5.1.2
@@ -23,7 +23,7 @@ importers:
       rimraf: 5.0.8
       sitemap: ^7.1.1
       standard-version: 9.5.0
-      tmp: 0.2.1
+      tmp: 0.2.3
       typescript: 5.2.2
       vitepress: 1.0.0-rc.22
       yaml: 2.3.3
@@ -34,7 +34,7 @@ importers:
       '@types/chai': 4.3.9
       '@types/jest': 29.5.12
       '@types/node': 18.18.6
-      '@types/tmp': 0.2.5
+      '@types/tmp': 0.2.6
       babel-jest: 29.7.0_@babel+core@7.23.2
       chai: 4.3.10
       change-case: 5.1.2
@@ -47,7 +47,7 @@ importers:
       rimraf: 5.0.8
       sitemap: 7.1.2
       standard-version: 9.5.0
-      tmp: 0.2.1
+      tmp: 0.2.3
       typescript: 5.2.2
       vitepress: 1.0.0-rc.22_zdizfvqjq5yryy5cald2jsbdla
       yaml: 2.3.3
@@ -2589,8 +2589,8 @@ packages:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
 
-  /@types/tmp/0.2.5:
-    resolution: {integrity: sha512-KodRrjqWrk/3VyzfR4aeXkf2n5Ssg+bvVUhXlvHVffLiIHriLlrO3vYobB+Kvnr9DkNzMiyWHT3G6hT/xX0ryQ==}
+  /@types/tmp/0.2.6:
+    resolution: {integrity: sha512-chhaNf2oKHlRkDGt+tiKE2Z5aJ6qalm7Z9rlLdBwmOiAAf09YQvvoLXjWK4HWPF1xU/fqvMgfNfpVoBscA/tKA==}
     dev: true
 
   /@types/web-bluetooth/0.0.18:
@@ -5459,14 +5459,6 @@ packages:
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
 
-  /rimraf/3.0.2:
-    resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
-    deprecated: Rimraf versions prior to v4 are no longer supported
-    hasBin: true
-    dependencies:
-      glob: 7.2.3
-    dev: true
-
   /rimraf/5.0.8:
     resolution: {integrity: sha512-XSh0V2/yNhDEi8HwdIefD8MLgs4LQXPag/nEJWs3YUc3Upn+UHa1GyIkEg9xSSNt7HnkO5FjTvmcRzgf+8UZuw==}
     engines: {node: '>=18'}
@@ -5871,11 +5863,9 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
-  /tmp/0.2.1:
-    resolution: {integrity: sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==}
-    engines: {node: '>=8.17.0'}
-    dependencies:
-      rimraf: 3.0.2
+  /tmp/0.2.3:
+    resolution: {integrity: sha512-nZD7m9iCPC5g0pYmcaxogYKggSfLsdxl8of3Q/oIbqCqLLIO9IAF0GWjX1z9NZRHPiXv8Wex4yDCaZsgEw0Y8w==}
+    engines: {node: '>=14.14'}
     dev: true
 
   /tmpl/1.0.5:
