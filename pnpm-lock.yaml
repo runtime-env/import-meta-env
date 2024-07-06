@@ -68,7 +68,7 @@ importers:
       '@babel/core': 7.23.2
       '@types/babel-plugin-tester': 9.0.10
       '@types/babel__core': 7.20.5
-      '@types/babel__helper-plugin-utils': 7.10.0
+      '@types/babel__helper-plugin-utils': 7.10.3
       babel-plugin-tester: 11.0.4_@babel+core@7.23.2
 
   packages/cli:
@@ -2447,8 +2447,8 @@ packages:
       '@babel/types': 7.23.0
     dev: true
 
-  /@types/babel__helper-plugin-utils/7.10.0:
-    resolution: {integrity: sha512-60YtHzhQ9HAkToHVV+TB4VLzBn9lrfgrsOjiJMtbv/c1jPdekBxaByd6DMsGBzROXWoIL6U3lEFvvbu69RkUoA==}
+  /@types/babel__helper-plugin-utils/7.10.3:
+    resolution: {integrity: sha512-FcLBBPXInqKfULB2nvOBskQPcnSMZ0s1Y2q76u9H1NPPWaLcTeq38xBeKfF/RBUECK333qeaqRdYoPSwW7rTNQ==}
     dependencies:
       '@types/babel__core': 7.20.5
     dev: true
@@ -4102,7 +4102,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.4
+      uglify-js: 3.18.0
     dev: true
 
   /hard-rejection/2.1.0:
@@ -5963,8 +5963,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js/3.17.4:
-    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
+  /uglify-js/3.18.0:
+    resolution: {integrity: sha512-SyVVbcNBCk0dzr9XL/R/ySrmYf0s372K6/hFklzgcp2lBFyXtw4I7BOdDjlLhE1aVqaI/SHWXWmYdlZxuyF38A==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
