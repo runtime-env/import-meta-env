@@ -57,7 +57,7 @@ importers:
       '@babel/core': 7.23.2
       '@babel/helper-plugin-utils': ^7.19.0
       '@types/babel-plugin-tester': 9.0.10
-      '@types/babel__core': 7.20.3
+      '@types/babel__core': 7.20.5
       '@types/babel__helper-plugin-utils': ^7.10.0
       babel-plugin-tester: 11.0.4
       picocolors: ^1.0.0
@@ -67,7 +67,7 @@ importers:
     devDependencies:
       '@babel/core': 7.23.2
       '@types/babel-plugin-tester': 9.0.10
-      '@types/babel__core': 7.20.3
+      '@types/babel__core': 7.20.5
       '@types/babel__helper-plugin-utils': 7.10.0
       babel-plugin-tester: 11.0.4_@babel+core@7.23.2
 
@@ -2427,12 +2427,12 @@ packages:
   /@types/babel-plugin-tester/9.0.10:
     resolution: {integrity: sha512-X+n3nZb8qIZ3a07qt7B5ONfptAZJ6nWLgU5I4U+gm0dRgtcjL+73P2tUkQAJ/iIbRF72BlW/2of5J0qbjlmsBw==}
     dependencies:
-      '@types/babel__core': 7.20.3
+      '@types/babel__core': 7.20.5
       '@types/prettier': 2.7.1
     dev: true
 
-  /@types/babel__core/7.20.3:
-    resolution: {integrity: sha512-54fjTSeSHwfan8AyHWrKbfBWiEUrNTZsUwPTDSNaaP1QDQIZbeNUg3a59E9D+375MzUw/x1vx2/0F5LBz+AeYA==}
+  /@types/babel__core/7.20.5:
+    resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
     dependencies:
       '@babel/parser': 7.23.0
       '@babel/types': 7.23.0
@@ -2450,7 +2450,7 @@ packages:
   /@types/babel__helper-plugin-utils/7.10.0:
     resolution: {integrity: sha512-60YtHzhQ9HAkToHVV+TB4VLzBn9lrfgrsOjiJMtbv/c1jPdekBxaByd6DMsGBzROXWoIL6U3lEFvvbu69RkUoA==}
     dependencies:
-      '@types/babel__core': 7.20.3
+      '@types/babel__core': 7.20.5
     dev: true
 
   /@types/babel__template/7.4.1:
@@ -3039,7 +3039,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.2
       '@jest/transform': 29.7.0
-      '@types/babel__core': 7.20.3
+      '@types/babel__core': 7.20.5
       babel-plugin-istanbul: 6.1.1
       babel-preset-jest: 29.6.3_@babel+core@7.23.2
       chalk: 4.1.2
@@ -3068,7 +3068,7 @@ packages:
     dependencies:
       '@babel/template': 7.22.15
       '@babel/types': 7.23.0
-      '@types/babel__core': 7.20.3
+      '@types/babel__core': 7.20.5
       '@types/babel__traverse': 7.18.2
     dev: true
 
