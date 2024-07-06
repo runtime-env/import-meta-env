@@ -13,7 +13,7 @@ importers:
       '@types/tmp': 0.2.6
       babel-jest: 29.7.0
       chai: 4.4.1
-      change-case: 5.1.2
+      change-case: 5.4.4
       commander: 11.1.0
       dotenv: 16.3.1
       esbuild: 0.19.5
@@ -37,7 +37,7 @@ importers:
       '@types/tmp': 0.2.6
       babel-jest: 29.7.0_@babel+core@7.24.7
       chai: 4.4.1
-      change-case: 5.1.2
+      change-case: 5.4.4
       commander: 11.1.0
       dotenv: 16.3.1
       esbuild: 0.19.5
@@ -49,7 +49,7 @@ importers:
       standard-version: 9.5.0
       tmp: 0.2.3
       typescript: 5.2.2
-      vitepress: 1.0.0-rc.22_5loahrg4k6lws7y53t5ye3crzq
+      vitepress: 1.0.0-rc.22_gepxqe37jjogvng6spya7ovfsm
       yaml: 2.3.3
 
   packages/babel:
@@ -2894,7 +2894,7 @@ packages:
       - vue
     dev: true
 
-  /@vueuse/integrations/10.5.0_b7ykfub3skjshnll7zsm74lg5u:
+  /@vueuse/integrations/10.5.0_7tb4zpr3bclhgwd3b3cfmhnouu:
     resolution: {integrity: sha512-fm5sXLCK0Ww3rRnzqnCQRmfjDURaI4xMsx+T+cec0ngQqHx/JgUtm8G0vRjwtonIeTBsH1Q8L3SucE+7K7upJQ==}
     peerDependencies:
       async-validator: '*'
@@ -2937,7 +2937,7 @@ packages:
     dependencies:
       '@vueuse/core': 10.5.0_vue@3.3.4
       '@vueuse/shared': 10.5.0_vue@3.3.4
-      change-case: 5.1.2
+      change-case: 5.4.4
       focus-trap: 7.5.4
       vue-demi: 0.14.6_vue@3.3.4
     transitivePeerDependencies:
@@ -3457,8 +3457,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /change-case/5.1.2:
-    resolution: {integrity: sha512-CAtbGEDulyjzs05RXy3uKcwqeztz/dMEuAc1Xu9NQBsbrhuGMneL0u9Dj5SoutLKBFYun8txxYIwhjtLNfUmCA==}
+  /change-case/5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
     dev: true
 
   /char-regex/1.0.2:
@@ -6296,7 +6296,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress/1.0.0-rc.22_5loahrg4k6lws7y53t5ye3crzq:
+  /vitepress/1.0.0-rc.22_gepxqe37jjogvng6spya7ovfsm:
     resolution: {integrity: sha512-n7le5iikCFgWMuX7sKfzDGJGlrsYQ5trG3S97BghNz2alOTr4Xp+GrB6ShwogUTX9gNgeNmrACjokhW55LNeBA==}
     hasBin: true
     peerDependencies:
@@ -6313,7 +6313,7 @@ packages:
       '@types/markdown-it': 13.0.2
       '@vue/devtools-api': 6.5.1
       '@vueuse/core': 10.5.0_vue@3.3.4
-      '@vueuse/integrations': 10.5.0_b7ykfub3skjshnll7zsm74lg5u
+      '@vueuse/integrations': 10.5.0_7tb4zpr3bclhgwd3b3cfmhnouu
       focus-trap: 7.5.4
       mark.js: 8.11.1
       minisearch: 6.1.0
