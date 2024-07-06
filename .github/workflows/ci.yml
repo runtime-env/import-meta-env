@@ -340,12 +340,11 @@ jobs:
           tag: latest
           access: public
           dry-run: ${{ github.ref_name != 'main' }}
-          check-version: true
-          greater-version-only: true
+          strategy: upgrade
 
       - name: Tag
         uses: anothrNick/github-tag-action@v1
-        if: steps.publish.outputs.type != 'none'
+        if: steps.publish.outputs.type
         env:
           DRY_RUN: ${{ github.ref_name != 'main' }}
           CUSTOM_TAG: ${{ matrix.package }}${{ steps.publish.outputs.version }}
@@ -353,7 +352,7 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: ${{github.ref_name == 'main' && steps.publish.outputs.type != 'none'}}
+        if: ${{ github.ref_name == 'main' && steps.publish.outputs.type }}
         with:
           tag_name: ${{ matrix.package }}${{ steps.publish.outputs.version }}
           body: "Changelog: https://github.com/runtime-env/import-meta-env/blob/${{ matrix.package }}${{ steps.publish.outputs.version }}/packages/${{ matrix.package }}/CHANGELOG.md"
