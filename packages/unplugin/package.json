@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/unplugin#readme",
   "devDependencies": {
-    "@types/node": "18.19.39",
+    "@types/node": "20.14.10",
     "@types/object-hash": "3.0.6",
     "rollup": "4.18.0",
     "ts-node": "10.9.2",
