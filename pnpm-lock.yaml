@@ -95,7 +95,7 @@ importers:
       picocolors: ^1.0.0
       typescript: 5.5.3
     dependencies:
-      commander: 11.0.0
+      commander: 11.1.0
       picocolors: 1.0.1
     devDependencies:
       '@types/node': 18.19.39
@@ -128,7 +128,7 @@ importers:
       picocolors: ^1.0.0
       typescript: 5.5.3
     dependencies:
-      commander: 11.0.0
+      commander: 11.1.0
       picocolors: 1.0.1
     devDependencies:
       '@types/node': 18.19.39
@@ -3816,11 +3816,6 @@ packages:
 
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-
-  /commander/11.0.0:
-    resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
-    engines: {node: '>=16'}
-    dev: false
 
   /commander/11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
