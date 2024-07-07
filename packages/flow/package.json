@@ -34,7 +34,7 @@
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/flow#readme",
   "devDependencies": {
     "@types/node": "18.19.39",
-    "typescript": "5.2.2"
+    "typescript": "5.5.3"
   },
   "peerDependencies": {
     "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"

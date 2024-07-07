@@ -37,7 +37,7 @@
     "sitemap": "^7.1.1",
     "standard-version": "9.5.0",
     "tmp": "0.2.3",
-    "typescript": "5.2.2",
+    "typescript": "5.5.3",
     "vitepress": "1.0.0-rc.22",
     "yaml": "2.3.3"
   },
