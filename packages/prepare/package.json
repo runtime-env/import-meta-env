@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "commander": "11.1.0",
-    "glob": "10.3.10",
+    "glob": "10.4.3",
     "picocolors": "1.0.1",
     "serialize-javascript": "6.0.2"
   }
