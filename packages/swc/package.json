@@ -15,7 +15,7 @@
     "pack": "rm -rf *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "postinstall": "node -e \"try{require('./scripts/postinstall')}catch(e){}\"",
     "release": "standard-version --skip.tag -t swc --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/swc@{{currentTag}}' --path .",
-    "test": "cargo test --all --color always -- --test-threads 1"
+    "test": "cargo test --tests transform && cargo test -- --test-threads 1 --skip transform"
   },
   "repository": {
     "type": "git",
