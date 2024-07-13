@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.9](https://github.com/runtime-env/import-meta-env/compare/cli0.6.8...cli0.6.9) (2024-07-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v12 ([#1317](https://github.com/runtime-env/import-meta-env/issues/1317)) ([46fd1a6](https://github.com/runtime-env/import-meta-env/commit/46fd1a6b3952ac0cbba30e6cad171a0cd86c9b6b))
+* **deps:** update dependency glob to v10.4.3 ([#1300](https://github.com/runtime-env/import-meta-env/issues/1300)) ([4e89d49](https://github.com/runtime-env/import-meta-env/commit/4e89d49ad3fc583504101cebf8fbb11973d23663))
+* **deps:** update dependency glob to v10.4.4 ([#1320](https://github.com/runtime-env/import-meta-env/issues/1320)) ([d0c68d3](https://github.com/runtime-env/import-meta-env/commit/d0c68d34d637c8abff1081fbe44ff8d0a6464ab1))
+* **deps:** update dependency glob to v11 ([#1322](https://github.com/runtime-env/import-meta-env/issues/1322)) ([3b1c582](https://github.com/runtime-env/import-meta-env/commit/3b1c58205930c295fd3b8c2aedae896b72b7c4a0))
+* **deps:** update dependency picocolors to v1.0.1 ([#1277](https://github.com/runtime-env/import-meta-env/issues/1277)) ([f4f83a8](https://github.com/runtime-env/import-meta-env/commit/f4f83a8acfbb671b05045916bdf116fd08491f13))
+* **deps:** update dependency serialize-javascript to v6.0.2 ([#1279](https://github.com/runtime-env/import-meta-env/issues/1279)) ([c4f8a3b](https://github.com/runtime-env/import-meta-env/commit/c4f8a3b67112b442cf495df49baf3b7e9176e783))
+
 ### [0.6.8](https://github.com/runtime-env/import-meta-env/compare/cli0.6.7...cli0.6.8) (2023-11-03)
 
 

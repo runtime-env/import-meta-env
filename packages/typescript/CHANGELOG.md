@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.4](https://github.com/runtime-env/import-meta-env/compare/typescript0.3.3...typescript0.3.4) (2024-07-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v12 ([#1317](https://github.com/runtime-env/import-meta-env/issues/1317)) ([46fd1a6](https://github.com/runtime-env/import-meta-env/commit/46fd1a6b3952ac0cbba30e6cad171a0cd86c9b6b))
+
 ### [0.3.3](https://github.com/runtime-env/import-meta-env/compare/typescript0.3.2...typescript0.3.3) (2023-12-06)
 
 
