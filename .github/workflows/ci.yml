@@ -31,9 +31,8 @@ jobs:
           cache: "pnpm"
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: nightly-2023-11-04
           profile: minimal
           override: true
           target: wasm32-wasi
@@ -88,9 +87,8 @@ jobs:
           cache: "pnpm"
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: nightly-2023-11-04
           profile: minimal
           override: true
           target: wasm32-wasi
@@ -133,9 +131,8 @@ jobs:
           cache: "pnpm"
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: nightly-2023-11-04
           profile: minimal
           override: true
           target: wasm32-wasi
