@@ -45,7 +45,7 @@ jobs:
             packages/swc
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Build packages
         run: pnpm run build
@@ -103,7 +103,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm i
+          pnpm i --frozen-lockfile
           rustup component add rustfmt
 
       - name: Check formatting
@@ -147,7 +147,7 @@ jobs:
             packages/swc
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Test packages
         run: pnpm run test
@@ -383,7 +383,7 @@ jobs:
           version: ^9
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Build docs
         run: pnpm run docs:build
