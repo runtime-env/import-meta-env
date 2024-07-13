@@ -3,7 +3,7 @@
   "packages/cli": "0.6.9",
   "packages/flow": "0.1.4",
   "packages/prepare": "0.1.14",
-  "packages/swc": "0.4.14",
+  "packages/swc": "0.4.15",
   "packages/typescript": "0.3.4",
   "packages/unplugin": "0.5.1"
 }
