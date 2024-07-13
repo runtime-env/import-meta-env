@@ -4,8 +4,8 @@ use swc_core::{
     common::DUMMY_SP,
     ecma::{
         ast::{
-            BinExpr, BinaryOp, CallExpr, Callee, Expr, ExprOrSpread, Ident, IdentName, Lit,
-            MemberExpr, MemberProp, MetaPropKind, Null, Str,
+            BinExpr, BinaryOp, CallExpr, Callee, Expr, ExprOrSpread, Ident, Lit, MemberExpr,
+            MemberProp, MetaPropKind, Null, Str,
         },
         atoms::js_word,
         visit::{VisitMut, VisitMutWith},
@@ -109,8 +109,9 @@ fn create_accessor_expr() -> Expr {
                 optional: false,
                 span: DUMMY_SP,
             })),
-            prop: MemberProp::Ident(IdentName {
+            prop: MemberProp::Ident(Ident {
                 sym: Atom::from(r#"create"#),
+                optional: false,
                 span: DUMMY_SP,
             }),
             span: DUMMY_SP,
@@ -125,8 +126,9 @@ fn create_accessor_expr() -> Expr {
                         optional: false,
                         span: DUMMY_SP,
                     })),
-                    prop: MemberProp::Ident(IdentName {
+                    prop: MemberProp::Ident(Ident {
                         sym: Atom::from(r#"import_meta_env"#),
+                        optional: false,
                         span: DUMMY_SP,
                     }),
                     span: DUMMY_SP,
