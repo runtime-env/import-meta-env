@@ -163,8 +163,6 @@ mod tests {
         })),
         spec_compile_time_mode_ignore_new_target_env_hello,
         // Input codes
-        r#"function _() { new.target.env.EXISTS; }"#,
-        // Output codes after transformed with plugin
         r#"function _() { new.target.env.EXISTS; }"#
     );
 
@@ -176,8 +174,6 @@ mod tests {
         })),
         spec_compile_time_mode_ignore_import_meta_url_hello,
         // Input codes
-        r#"import.meta.url.EXISTS"#,
-        // Output codes after transformed with plugin
         r#"import.meta.url.EXISTS"#
     );
 
@@ -189,8 +185,6 @@ mod tests {
         })),
         spec_compile_time_mode_ignore_import_meta_env,
         // Input codes
-        r#"import.meta.env"#,
-        // Output codes after transformed with plugin
         r#"import.meta.env"#
     );
 
@@ -205,11 +199,6 @@ mod tests {
         r#"
         const exists = import.meta.env.EXISTS;
         const not_exists = import.meta.env.NOT_EXISTS;
-        "#,
-        // Output codes after transformed with plugin
-        r#"
-        const exists = "value";
-        const not_exists = import.meta.env.NOT_EXISTS;
         "#
     );
 
@@ -221,8 +210,6 @@ mod tests {
         })),
         spec_runtime_mode_ignore_new_target_env_hello,
         // Input codes
-        r#"function _() { new.target.env.EXISTS; }"#,
-        // Output codes after transformed with plugin
         r#"function _() { new.target.env.EXISTS; }"#
     );
 
@@ -233,8 +220,6 @@ mod tests {
         })),
         spec_runtime_mode_ignore_import_meta_url_hello,
         // Input codes
-        r#"import.meta.url.EXISTS"#,
-        // Output codes after transformed with plugin
         r#"import.meta.url.EXISTS"#
     );
 
@@ -245,8 +230,6 @@ mod tests {
         })),
         spec_runtime_mode_ignore_import_meta_env,
         // Input codes
-        r#"import.meta.env"#,
-        // Output codes after transformed with plugin
         r#"import.meta.env"#
     );
 
@@ -260,11 +243,6 @@ mod tests {
         r#"
         const exists = import.meta.env.EXISTS;
         const not_exists = import.meta.env.NOT_EXISTS;
-        "#,
-        // Output codes after transformed with plugin
-        r#"
-        const exists = Object.create(globalThis.import_meta_env || null).EXISTS;
-        const not_exists = import.meta.env.NOT_EXISTS;
         "#
     );
 
@@ -275,9 +253,7 @@ mod tests {
         })),
         spec_call_expr,
         // Input codes
-        r#"parseInt(import.meta.env.PORT, 10)"#,
-        // Output codes after transformed with plugin
-        r#"parseInt(Object.create(globalThis.import_meta_env || null).PORT, 10)"#
+        r#"parseInt(import.meta.env.PORT, 10)"#
     );
 
     test!(
@@ -293,16 +269,6 @@ mod tests {
                 import.meta.env.PROTOCOL,
                 "//",
                 import.meta.env.HOST,
-            ].join("");
-        }
-        "#,
-        // Output codes after transformed with plugin
-        r#"
-        function API_URL () {
-            return [
-                Object.create(globalThis.import_meta_env || null).PROTOCOL,
-                "//",
-                Object.create(globalThis.import_meta_env || null).HOST,
             ].join("");
         }
         "#

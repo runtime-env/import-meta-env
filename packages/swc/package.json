@@ -15,7 +15,7 @@
     "pack": "rm -rf *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "postinstall": "node -e \"try{require('./scripts/postinstall')}catch(e){}\"",
     "release": "standard-version --skip.tag -t swc --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/swc@{{currentTag}}' --path .",
-    "test": "cargo test --all --color always -- --test-threads 1"
+    "test": "cargo test --tests transform && cargo test -- --test-threads 1 --skip transform"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/swc#readme",
   "peerDependencies": {
     "@import-meta-env/cli": "^0.5.1 || ^0.6.1",
-    "@swc/core": "^1.3.81"
+    "@swc/core": "~1.4"
   },
   "peerDependenciesMeta": {
     "@import-meta-env/cli": {
