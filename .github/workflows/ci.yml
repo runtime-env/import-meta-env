@@ -22,7 +22,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -79,7 +79,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -121,10 +121,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm@7
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -323,7 +323,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -380,7 +380,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Install dependencies
         run: pnpm i
