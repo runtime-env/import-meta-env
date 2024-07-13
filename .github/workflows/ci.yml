@@ -22,7 +22,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -45,7 +45,7 @@ jobs:
             packages/swc
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Build packages
         run: pnpm run build
@@ -79,7 +79,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -103,7 +103,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm i
+          pnpm i --frozen-lockfile
           rustup component add rustfmt
 
       - name: Check formatting
@@ -121,10 +121,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm@7
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -147,7 +147,7 @@ jobs:
             packages/swc
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Test packages
         run: pnpm run test
@@ -323,7 +323,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Set node version to 18
         uses: actions/setup-node@v4
@@ -380,10 +380,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ^7
+          version: ^9
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Build docs
         run: pnpm run docs:build
