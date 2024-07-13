@@ -108,7 +108,6 @@ fn create_accessor_expr() -> Expr {
                 sym: js_word!("Object"),
                 optional: false,
                 span: DUMMY_SP,
-                ctxt: Default::default(),
             })),
             prop: MemberProp::Ident(IdentName {
                 sym: Atom::from(r#"create"#),
@@ -125,7 +124,6 @@ fn create_accessor_expr() -> Expr {
                         sym: Atom::from(r#"globalThis"#),
                         optional: false,
                         span: DUMMY_SP,
-                        ctxt: Default::default(),
                     })),
                     prop: MemberProp::Ident(IdentName {
                         sym: Atom::from(r#"import_meta_env"#),
@@ -139,7 +137,6 @@ fn create_accessor_expr() -> Expr {
         }],
         type_args: None,
         span: DUMMY_SP,
-        ctxt: Default::default(),
     })
 }
 
