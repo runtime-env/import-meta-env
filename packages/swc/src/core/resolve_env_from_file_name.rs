@@ -11,8 +11,7 @@ pub fn resolve_env_from_file_name(file_name: &str) -> Vec<(String, String)> {
     ini::Ini::load_from_str(file_content.as_str())
         .unwrap()
         .into_iter()
-        .map(|(_, prop)| prop.iter())
-        .flatten()
+        .flat_map(|(_, prop)| prop.into_iter())
         .for_each(|(k, v)| {
             env.push((k.to_owned(), v.to_owned()));
         });
