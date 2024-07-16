@@ -45,7 +45,7 @@
     "rollup": "4.18.1",
     "ts-node": "10.9.2",
     "typescript": "5.5.3",
-    "vite": "5.3.3",
+    "vite": "5.3.4",
     "webpack": "5.93.0"
   },
   "peerDependencies": {
