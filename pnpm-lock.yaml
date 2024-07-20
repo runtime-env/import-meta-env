@@ -193,7 +193,7 @@ importers:
         specifier: ^0.5.1 || ^0.6.1
         version: 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
       '@swc/core':
-        specifier: ~1.6
+        specifier: ~1.6 || ~1.7.0
         version: 1.6.13
 
   packages/typescript:
