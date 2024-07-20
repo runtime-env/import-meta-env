@@ -121,7 +121,7 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
     rspack: (compiler) => {
       transformMode =
-        transformMode ?? compiler.options.mode === "production"
+        (transformMode ?? compiler.options.mode === "production")
           ? "runtime"
           : "compile-time";
 
