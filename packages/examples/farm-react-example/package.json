@@ -1,0 +1,26 @@
+{
+  "name": "react-template",
+  "version": "1.0.0",
+  "scripts": {
+    "_test": "node test.js",
+    "dev": "cross-env HELLO=import-meta-env farm start",
+    "start": "farm start",
+    "build": "farm build",
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && farm preview",
+    "clean": "farm clean"
+  },
+  "dependencies": {
+    "react": "18",
+    "react-dom": "18"
+  },
+  "devDependencies": {
+    "@farmfe/cli": "^1.0.2",
+    "@farmfe/core": "^1.3.0",
+    "@farmfe/plugin-react": "^1.2.0",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "core-js": "^3.36.1",
+    "cross-env": "^7.0.3",
+    "react-refresh": "^0.14.0"
+  }
+}
