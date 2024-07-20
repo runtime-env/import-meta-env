@@ -116,6 +116,26 @@ build({
 
 Related examples: [esbuild](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/esbuild-starter-example)
 
+Farm:
+
+```js
+// farm.config.ts
+import { defineConfig } from "@farmfe/core";
+import importMetaEnv from "@import-meta-env/unplugin";
+
+export default defineConfig({
+  plugins: [
+    importMetaEnv.farm({
+      example: ".env.example.public",
+      // "env": "...",
+      // "transformMode": "..."
+    }),
+  ],
+});
+```
+
+Related examples: [rollup](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/farm-react-example)
+
 Rollup:
 
 ```js
