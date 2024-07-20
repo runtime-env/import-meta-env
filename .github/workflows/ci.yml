@@ -149,7 +149,7 @@ jobs:
       - name: Test packages
         run: pnpm run test
 
-  npm-node-18-examples:
+  npm-node-lts-examples:
     needs:
       - build
       - lint
@@ -176,6 +176,7 @@ jobs:
           - "docker-compose-starter-example"
           - "docker-starter-example"
           - "esbuild-starter-example"
+          - "farm-react-example"
           - "jest-example"
           - "mocha-example"
           # - "nuxt-bridge-example"
@@ -211,7 +212,6 @@ jobs:
           - "worker-example"
         include:
           - os: ubuntu-latest
-            node_version: 18
 
       fail-fast: false
 
@@ -226,7 +226,7 @@ jobs:
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version-file: .nvmrc
 
       - name: Test diff
         run: |
@@ -293,7 +293,7 @@ jobs:
       - build
       - lint
       - test
-      - npm-node-18-examples
+      - npm-node-lts-examples
       - npm-node-16-examples
 
     runs-on: ubuntu-latest
@@ -361,7 +361,7 @@ jobs:
       - build
       - lint
       - test
-      - npm-node-18-examples
+      - npm-node-lts-examples
       - npm-node-16-examples
 
     runs-on: ubuntu-latest

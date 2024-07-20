@@ -39,6 +39,24 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
 
     enforce: meta.framework === "webpack" ? "post" : void 0,
 
+    farm: {
+      configResolved() {
+        debug && console.debug("configResolved::");
+
+        transformMode =
+          (transformMode ?? process.env.NODE_ENV !== "production")
+            ? "compile-time"
+            : "runtime";
+
+        if (transformMode === "compile-time") {
+          env = resolveEnv({
+            envExampleFilePath: options?.example,
+            envFilePath: options?.env,
+          });
+        }
+      },
+    },
+
     vite: {
       enforce: "pre",
 
