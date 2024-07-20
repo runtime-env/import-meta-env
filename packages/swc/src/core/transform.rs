@@ -1,11 +1,11 @@
 use serde;
 use swc_core::{
     atoms::Atom,
-    common::DUMMY_SP,
+    common::{SyntaxContext, DUMMY_SP},
     ecma::{
         ast::{
-            BinExpr, BinaryOp, CallExpr, Callee, Expr, ExprOrSpread, Ident, Lit, MemberExpr,
-            MemberProp, MetaPropKind, Null, Str,
+            BinExpr, BinaryOp, CallExpr, Callee, Expr, ExprOrSpread, Ident, IdentName, Lit,
+            MemberExpr, MemberProp, MetaPropKind, Null, Str,
         },
         atoms::js_word,
         visit::{VisitMut, VisitMutWith},
@@ -108,10 +108,10 @@ fn create_accessor_expr() -> Expr {
                 sym: js_word!("Object"),
                 optional: false,
                 span: DUMMY_SP,
+                ctxt: SyntaxContext::empty(),
             })),
-            prop: MemberProp::Ident(Ident {
+            prop: MemberProp::Ident(IdentName {
                 sym: Atom::from(r#"create"#),
-                optional: false,
                 span: DUMMY_SP,
             }),
             span: DUMMY_SP,
@@ -125,10 +125,10 @@ fn create_accessor_expr() -> Expr {
                         sym: Atom::from(r#"globalThis"#),
                         optional: false,
                         span: DUMMY_SP,
+                        ctxt: SyntaxContext::empty(),
                     })),
-                    prop: MemberProp::Ident(Ident {
+                    prop: MemberProp::Ident(IdentName {
                         sym: Atom::from(r#"import_meta_env"#),
-                        optional: false,
                         span: DUMMY_SP,
                     }),
                     span: DUMMY_SP,
@@ -139,6 +139,7 @@ fn create_accessor_expr() -> Expr {
         }],
         type_args: None,
         span: DUMMY_SP,
+        ctxt: SyntaxContext::empty(),
     })
 }
 
