@@ -8,7 +8,7 @@
     "preview": "echo HELLO=import-meta-env > .env && import-meta-env -x .env.example.public && vite preview"
   },
   "devDependencies": {
-    "@swc/core": "1.6.13",
+    "@swc/core": "1.7.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "rimraf": "^3.0.2",
