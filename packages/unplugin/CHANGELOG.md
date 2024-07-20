@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.2](https://github.com/runtime-env/import-meta-env/compare/unplugin0.5.1...unplugin0.5.2) (2024-07-20)
+
+
+### Bug Fixes
+
+* farm ([#1347](https://github.com/runtime-env/import-meta-env/issues/1347)) ([465a30e](https://github.com/runtime-env/import-meta-env/commit/465a30e063fc3a6a199d9c019c44675440158ecf))
+
 ### [0.5.1](https://github.com/runtime-env/import-meta-env/compare/unplugin0.5.0...unplugin0.5.1) (2023-11-02)
 
 
