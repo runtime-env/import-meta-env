@@ -234,7 +234,7 @@ importers:
         version: 1.0.1
       unplugin:
         specifier: ^1.5.0
-        version: 1.11.0
+        version: 1.12.0
     devDependencies:
       '@farmfe/core':
         specifier: 1.3.9
@@ -1743,6 +1743,9 @@ packages:
 
   '@swc/helpers@0.5.12':
     resolution: {integrity: sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==}
+
+  '@swc/types@0.1.12':
+    resolution: {integrity: sha512-wBJA+SdtkbFhHjTMYH+dEH1y4VpfGdAc2Kw/LK09i9bXd/K6j6PkDcFCEzb6iVfZMkPRrl/q0e3toqTAJdkIVA==}
 
   '@swc/types@0.1.9':
     resolution: {integrity: sha512-qKnCno++jzcJ4lM4NTfYifm1EFSCeIfKiAHAfkENZAV5Kl9PjJIyd2yeeVv6c/2CckuLyv2NmRC5pv6pm2WQBg==}
@@ -4322,6 +4325,10 @@ packages:
     resolution: {integrity: sha512-3r7VWZ/webh0SGgJScpWl2/MRCZK5d3ZYFcNaeci/GQ7Teop7zf0Nl2pUuz7G21BwPd9pcUPOC5KmJ2L3WgC5g==}
     engines: {node: '>=14.0.0'}
 
+  unplugin@1.12.0:
+    resolution: {integrity: sha512-KeczzHl2sATPQUx1gzo+EnUkmN4VmGBYRRVOZSGvGITE9rGHRDGqft6ONceP3vgXcyJ2XjX5axG5jMWUwNCYLw==}
+    engines: {node: '>=14.0.0'}
+
   untildify@4.0.0:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
@@ -6277,6 +6284,23 @@ snapshots:
   '@swc/core-win32-x64-msvc@1.7.0':
     optional: true
 
+  '@swc/core@1.7.0':
+    dependencies:
+      '@swc/counter': 0.1.3
+      '@swc/types': 0.1.12
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.7.0
+      '@swc/core-darwin-x64': 1.7.0
+      '@swc/core-linux-arm-gnueabihf': 1.7.0
+      '@swc/core-linux-arm64-gnu': 1.7.0
+      '@swc/core-linux-arm64-musl': 1.7.0
+      '@swc/core-linux-x64-gnu': 1.7.0
+      '@swc/core-linux-x64-musl': 1.7.0
+      '@swc/core-win32-arm64-msvc': 1.7.0
+      '@swc/core-win32-ia32-msvc': 1.7.0
+      '@swc/core-win32-x64-msvc': 1.7.0
+    optional: true
+
   '@swc/core@1.7.0(@swc/helpers@0.5.12)':
     dependencies:
       '@swc/counter': 0.1.3
@@ -6299,6 +6323,11 @@ snapshots:
   '@swc/helpers@0.5.12':
     dependencies:
       tslib: 2.6.3
+
+  '@swc/types@0.1.12':
+    dependencies:
+      '@swc/counter': 0.1.3
+    optional: true
 
   '@swc/types@0.1.9':
     dependencies:
@@ -9003,7 +9032,7 @@ snapshots:
       terser: 5.31.2
       webpack: 5.93.0(@swc/core@1.7.0)(esbuild@0.23.0)
     optionalDependencies:
-      '@swc/core': 1.7.0(@swc/helpers@0.5.12)
+      '@swc/core': 1.7.0
       esbuild: 0.23.0
 
   terser@5.31.2:
@@ -9070,7 +9099,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optionalDependencies:
-      '@swc/core': 1.7.0(@swc/helpers@0.5.12)
+      '@swc/core': 1.7.0
 
   tslib@2.6.3: {}
 
@@ -9118,6 +9147,13 @@ snapshots:
   universalify@2.0.1: {}
 
   unplugin@1.11.0:
+    dependencies:
+      acorn: 8.12.1
+      chokidar: 3.6.0
+      webpack-sources: 3.2.3
+      webpack-virtual-modules: 0.6.2
+
+  unplugin@1.12.0:
     dependencies:
       acorn: 8.12.1
       chokidar: 3.6.0
