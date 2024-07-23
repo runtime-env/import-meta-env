@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/typescript#readme",
   "devDependencies": {
-    "@types/node": "20.14.11",
+    "@types/node": "20.14.12",
     "typescript": "5.5.4"
   },
   "peerDependencies": {
