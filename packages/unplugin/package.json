@@ -45,7 +45,7 @@
     "@types/object-hash": "3.0.6",
     "rollup": "4.19.0",
     "ts-node": "10.9.2",
-    "typescript": "5.5.3",
+    "typescript": "5.5.4",
     "vite": "5.3.4",
     "webpack": "5.93.0"
   },
