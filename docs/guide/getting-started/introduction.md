@@ -114,8 +114,8 @@ $ npm i -D dotenv
      +     // - for development mode, `transformMode` will be `"compile-time"`
      +     // - for production mode, `transformMode` will be `"runtime"`
      +
-     +     // Otherwise, you need to set `transformMode` according to your needs:
-     +     transformMode: "runtime",
+     +     // Otherwise, you need to set `transformMode` according to your needs, for example:
+     +     transformMode: process.env.NODE_ENV === "development" ? "compile-time" : "runtime",
          }),
        ],
      };
