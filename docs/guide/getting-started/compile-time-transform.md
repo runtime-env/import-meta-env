@@ -134,7 +134,7 @@ export default defineConfig({
 });
 ```
 
-Related examples: [rollup](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/farm-react-example)
+Related examples: [farm](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/farm-react-example)
 
 Rollup:
 
