@@ -19,6 +19,35 @@ There are some exceptions:
 2. Webpack 4 is **not** compatible with [Unplugin](#unplugin).
    :::
 
+## Plugin Options
+
+```js
+export interface PluginOptions {
+  /**
+   * The .env file path to load
+   *
+   * You can out-out this by passing an empty string
+   *
+   * @default ".env"
+   */
+  env?: string;
+
+  /**
+   * The public .env example file path to load
+   */
+  example: string;
+
+  /**
+   * Compile-time: statically replace `import.meta.env.KEY` with `"value"`
+   * Runtime: statically replace `import.meta.env` with a global accessor
+   *
+   * @default
+   * Generally speaking, `process.env.NODE_ENV === "production" ? "runtime" : "compile-time"`
+   */
+  transformMode?: "compile-time" | "runtime";
+}
+```
+
 ## Babel Plugin
 
 [![NPM version](https://img.shields.io/npm/v/@import-meta-env/babel.svg?color=blue)](https://www.npmjs.com/package/@import-meta-env/babel)
@@ -36,11 +65,7 @@ $ npm i -D @import-meta-env/babel
   "plugins": [
     [
       "module:@import-meta-env/babel",
-      {
-        "example": ".env.example"
-        // "env": "...",
-        // "transformMode": "..."
-      }
+      pluginOptions
     ]
   ]
 }
@@ -70,11 +95,7 @@ $ npm i -D @import-meta-env/swc
       "plugins": [
         [
           "@import-meta-env/swc",
-          {
-            "example": ".env.example"
-            // "env": "...",
-            // "transformMode": "..."
-          }
+          pluginOptions
         ]
       ]
     }
@@ -104,13 +125,7 @@ const { build } = require("esbuild");
 const importMetaEnv = require("@import-meta-env/unplugin");
 
 build({
-  plugins: [
-    importMetaEnv.esbuild({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [importMetaEnv.esbuild(pluginOptions)],
 });
 ```
 
@@ -124,13 +139,7 @@ import { defineConfig } from "@farmfe/core";
 import importMetaEnv from "@import-meta-env/unplugin";
 
 export default defineConfig({
-  plugins: [
-    importMetaEnv.farm({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [importMetaEnv.farm(pluginOptions)],
 });
 ```
 
@@ -143,13 +152,7 @@ Rollup:
 import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
 
 export default {
-  plugins: [
-    ImportMetaEnvPlugin.rollup({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [ImportMetaEnvPlugin.rollup(pluginOptions)],
 };
 ```
 
@@ -162,13 +165,7 @@ Vite:
 import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
 
 export default {
-  plugins: [
-    ImportMetaEnvPlugin.vite({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [ImportMetaEnvPlugin.vite(pluginOptions)],
 };
 ```
 
@@ -179,13 +176,7 @@ Webpack:
 ```js
 // webpack.config.js
 module.exports = {
-  plugins: [
-    require("@import-meta-env/unplugin").webpack({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [require("@import-meta-env/unplugin").webpack(pluginOptions)],
 };
 ```
 
@@ -196,13 +187,7 @@ Rspack:
 ```js
 // rspack.config.js
 module.exports = {
-  plugins: [
-    require("@import-meta-env/unplugin").rspack({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [require("@import-meta-env/unplugin").rspack(pluginOptions)],
 };
 ```
 
