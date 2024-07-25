@@ -24,8 +24,8 @@ features:
     details: No more forgetting to provide environment variables. Using Import-meta-env, if your code compiles, it works.
   - title: Type-safe
     details: No more typos. Import-meta-env automatically generates types for your environment variables by using the .env.example file as a source of type information.
-  - title: Framework Agnostic
-    details: Support for Babel, SWC, and Unplugin for ESbuild, Rollup, Vite, and Webpack.
+  - title: Versatile
+    details: Support for Babel, SWC, and Unplugin for ESbuild, Rollup, Vite, Webpack, etc.
   - title: Adoptable
     details: Designed with a generic approach in mind, CSR/SSR, transpilers/bundlers, workers, service workers, and even micro frontend are all supported.
   - title: Save Time & Money
