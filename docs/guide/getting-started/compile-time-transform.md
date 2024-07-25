@@ -117,7 +117,7 @@ $ npm i -D @import-meta-env/unplugin
 
 ### Setup
 
-ESbuild:
+#### ESbuild
 
 ```js
 // esbuild.config.js
@@ -131,7 +131,7 @@ build({
 
 Related examples: [esbuild](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/esbuild-starter-example)
 
-Farm:
+#### Farm
 
 ```js
 // farm.config.ts
@@ -145,7 +145,7 @@ export default defineConfig({
 
 Related examples: [farm](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/farm-react-example)
 
-Rollup:
+#### Rollup
 
 ```js
 // rollup.config.js
@@ -158,7 +158,7 @@ export default {
 
 Related examples: [rollup](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/rollup-starter-example)
 
-Vite:
+#### Vite
 
 ```ts
 // vite.config.ts
@@ -171,23 +171,27 @@ export default {
 
 Related examples: [vite](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/vite-starter-example)
 
-Webpack:
+#### Webpack
 
 ```js
 // webpack.config.js
+const ImportMetaEnvPlugin = require("@import-meta-env/unplugin");
+
 module.exports = {
-  plugins: [require("@import-meta-env/unplugin").webpack(pluginOptions)],
+  plugins: [ImportMetaEnvPlugin.webpack(pluginOptions)],
 };
 ```
 
 Related examples: [webpack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/webpack-starter-example)
 
-Rspack:
+#### Rspack
 
 ```js
 // rspack.config.js
+const ImportMetaEnvPlugin = require("@import-meta-env/unplugin");
+
 module.exports = {
-  plugins: [require("@import-meta-env/unplugin").rspack(pluginOptions)],
+  plugins: [ImportMetaEnvPlugin.rspack(pluginOptions)],
 };
 ```
 
