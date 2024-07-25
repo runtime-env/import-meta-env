@@ -126,7 +126,7 @@ import importMetaEnv from "@import-meta-env/unplugin";
 export default defineConfig({
   plugins: [
     importMetaEnv.farm({
-      example: ".env.example.public",
+      example: ".env.example",
       // "env": "...",
       // "transformMode": "..."
     }),
