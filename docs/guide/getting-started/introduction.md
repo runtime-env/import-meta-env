@@ -72,8 +72,8 @@ $ npm i -D dotenv
      module.exports = {
        plugins: [
      +   require("@import-meta-env/unplugin").webpack({
-     +     env: ".env",
      +     example: ".env.example",
+     +     env: ".env",
      +     transformMode: "compile-time",
      +   }),
        ],
@@ -106,16 +106,20 @@ $ npm i -D dotenv
      module.exports = {
        plugins: [
          require("@import-meta-env/unplugin").webpack({
-           env: ".env",
            example: ".env.example",
+           env: ".env",
+
+           // If you are using popular packagers such as Webpack and Vite,
+           // @import-meta-env/unplugin will automatically switch the `transformMode` for you, you don't have to explicitly define it:
+           // - for development mode, `transformMode` will be `"compile-time"`
+           // - for production mode, `transformMode` will be `"runtime"`
+           transformMode: undefined,
+
+           // Otherwise, you need to set `transformMode` according to your needs, for example:
+           transformMode: process.env.NODE_ENV === "development" ? "compile-time" : "runtime",
+
      -     transformMode: "compile-time",
-     +     // If you are using popular packagers such as Webpack and Vite,
-     +     // @import-meta-env/unplugin will automatically switch the `transformMode` for you:
-     +     // - for development mode, `transformMode` will be `"compile-time"`
-     +     // - for production mode, `transformMode` will be `"runtime"`
-     +
-     +     // Otherwise, you need to set `transformMode` according to your needs, for example:
-     +     transformMode: process.env.NODE_ENV === "development" ? "compile-time" : "runtime",
+     +     transformMode: "runtime",
          }),
        ],
      };
@@ -153,12 +157,13 @@ $ npm i -D dotenv
 
   1. Define environment variables:
 
-     ```ini
-     # .env
-     NAME=production
-     ```
+     In the real world, we might define environment variables in the cloud, for example: Google Cloud Run environment variables.
 
-     See the [`.env` file](#env-file) section for details.
+     Here, we simulate this by defining our environment variables in the system:
+
+     ```sh
+     export NAME=production
+     ```
 
   1. Install [runtime transform tool](/guide/getting-started/runtime-transform.html).
 
