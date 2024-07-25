@@ -2,22 +2,36 @@
 
 Please read the [guide](/guide/getting-started/introduction.html#guide) for how to use these plugins.
 
-## Compatibility
+### Plugin Options
 
-Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/import-meta-env/import-meta-env/issues/new) on GitHub.
+All compile-time transform plugins use the same options:
 
-You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
+```js
+interface PluginOptions {
+  /**
+   * The .env file path to load
+   *
+   * You can out-out this by passing an empty string
+   *
+   * @default ".env"
+   */
+  env?: string;
 
-1. You can use [babel-loader](https://www.npmjs.com/package/babel-loader) + [Babel plugin](#babel-plugin) for development, testing and production.
-2. Alternatively, you can use [Unplugin](#unplugin) for development and production, and [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
-3. Alternatively, you can use the [swc-loader](https://www.npmjs.com/package/swc-loader) + [SWC plugin](#swc-plugin) for development, production, and the [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
+  /**
+   * The public .env example file path to load
+   */
+  example: string;
 
-::: warning
-There are some exceptions:
-
-1. Vite is **only** compatible with [Unplugin](#unplugin).
-2. Webpack 4 is **not** compatible with [Unplugin](#unplugin).
-   :::
+  /**
+   * Compile-time: statically replace `import.meta.env.KEY` with `"value"`
+   * Runtime: statically replace `import.meta.env` with a global accessor
+   *
+   * @default
+   * Generally speaking, `process.env.NODE_ENV === "production" ? "runtime" : "compile-time"`
+   */
+  transformMode?: "compile-time" | "runtime";
+}
+```
 
 ## Babel Plugin
 
@@ -36,11 +50,7 @@ $ npm i -D @import-meta-env/babel
   "plugins": [
     [
       "module:@import-meta-env/babel",
-      {
-        "example": ".env.example"
-        // "env": "...",
-        // "transformMode": "..."
-      }
+      pluginOptions
     ]
   ]
 }
@@ -70,11 +80,7 @@ $ npm i -D @import-meta-env/swc
       "plugins": [
         [
           "@import-meta-env/swc",
-          {
-            "example": ".env.example"
-            // "env": "...",
-            // "transformMode": "..."
-          }
+          pluginOptions
         ]
       ]
     }
@@ -96,7 +102,7 @@ $ npm i -D @import-meta-env/unplugin
 
 ### Setup
 
-ESbuild:
+#### ESbuild
 
 ```js
 // esbuild.config.js
@@ -104,19 +110,13 @@ const { build } = require("esbuild");
 const importMetaEnv = require("@import-meta-env/unplugin");
 
 build({
-  plugins: [
-    importMetaEnv.esbuild({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [importMetaEnv.esbuild(pluginOptions)],
 });
 ```
 
 Related examples: [esbuild](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/esbuild-starter-example)
 
-Farm:
+#### Farm
 
 ```js
 // farm.config.ts
@@ -124,86 +124,77 @@ import { defineConfig } from "@farmfe/core";
 import importMetaEnv from "@import-meta-env/unplugin";
 
 export default defineConfig({
-  plugins: [
-    importMetaEnv.farm({
-      example: ".env.example.public",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [importMetaEnv.farm(pluginOptions)],
 });
 ```
 
-Related examples: [rollup](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/farm-react-example)
+Related examples: [farm](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/farm-react-example)
 
-Rollup:
+#### Rollup
 
 ```js
 // rollup.config.js
 import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
 
 export default {
-  plugins: [
-    ImportMetaEnvPlugin.rollup({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [ImportMetaEnvPlugin.rollup(pluginOptions)],
 };
 ```
 
 Related examples: [rollup](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/rollup-starter-example)
 
-Vite:
+#### Vite
 
 ```ts
 // vite.config.ts
 import ImportMetaEnvPlugin from "@import-meta-env/unplugin";
 
 export default {
-  plugins: [
-    ImportMetaEnvPlugin.vite({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [ImportMetaEnvPlugin.vite(pluginOptions)],
 };
 ```
 
 Related examples: [vite](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/vite-starter-example)
 
-Webpack:
+#### Webpack
 
 ```js
 // webpack.config.js
+const ImportMetaEnvPlugin = require("@import-meta-env/unplugin");
+
 module.exports = {
-  plugins: [
-    require("@import-meta-env/unplugin").webpack({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [ImportMetaEnvPlugin.webpack(pluginOptions)],
 };
 ```
 
 Related examples: [webpack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/webpack-starter-example)
 
-Rspack:
+#### Rspack
 
 ```js
 // rspack.config.js
+const ImportMetaEnvPlugin = require("@import-meta-env/unplugin");
+
 module.exports = {
-  plugins: [
-    require("@import-meta-env/unplugin").rspack({
-      example: ".env.example",
-      // "env": "...",
-      // "transformMode": "..."
-    }),
-  ],
+  plugins: [ImportMetaEnvPlugin.rspack(pluginOptions)],
 };
 ```
 
 Related examples: [rspack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/rspack-starter-example)
+
+## Compatibility
+
+Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/import-meta-env/import-meta-env/issues/new) on GitHub.
+
+You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
+
+1. You can use [babel-loader](https://www.npmjs.com/package/babel-loader) + [Babel plugin](#babel-plugin) for development, testing and production.
+2. Alternatively, you can use [Unplugin](#unplugin) for development and production, and [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
+3. Alternatively, you can use the [swc-loader](https://www.npmjs.com/package/swc-loader) and [SWC plugin](#swc-plugin) for development and production, and the [babel-jest](https://www.npmjs.com/package/babel-jest) and [Babel plugin](#babel-plugin) for testing.
+
+::: warning
+There are some exceptions:
+
+1. Vite is only compatible with [Unplugin](#unplugin).
+2. Webpack 4 is _**not**_ compatible with [Unplugin](#unplugin).
+   :::
