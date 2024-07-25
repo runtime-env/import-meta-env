@@ -2,27 +2,12 @@
 
 Please read the [guide](/guide/getting-started/introduction.html#guide) for how to use these plugins.
 
-## Compatibility
+### Plugin Options
 
-Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/import-meta-env/import-meta-env/issues/new) on GitHub.
-
-You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
-
-1. You can use [babel-loader](https://www.npmjs.com/package/babel-loader) + [Babel plugin](#babel-plugin) for development, testing and production.
-2. Alternatively, you can use [Unplugin](#unplugin) for development and production, and [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
-3. Alternatively, you can use the [swc-loader](https://www.npmjs.com/package/swc-loader) + [SWC plugin](#swc-plugin) for development, production, and the [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
-
-::: warning
-There are some exceptions:
-
-1. Vite is **only** compatible with [Unplugin](#unplugin).
-2. Webpack 4 is **not** compatible with [Unplugin](#unplugin).
-   :::
-
-## Plugin Options
+All compile-time transform plugins use the same options:
 
 ```js
-export interface PluginOptions {
+interface PluginOptions {
   /**
    * The .env file path to load
    *
@@ -196,3 +181,20 @@ module.exports = {
 ```
 
 Related examples: [rspack](https://github.com/import-meta-env/import-meta-env/blob/main/packages/examples/rspack-starter-example)
+
+## Compatibility
+
+Currently we support [Babel plugin](#babel-plugin), [SWC plugin](#swc-plugin) and [Unplugin](#unplugin) (an unified plugin system for Vite, Rollup, Webpack, and more) transforms. If your toolchain is not supported, please feel free to [file an issue](https://github.com/import-meta-env/import-meta-env/issues/new) on GitHub.
+
+You can choose one of these or combine multiple plugins, for example if you are using Webpack 5 and Jest:
+
+1. You can use [babel-loader](https://www.npmjs.com/package/babel-loader) + [Babel plugin](#babel-plugin) for development, testing and production.
+2. Alternatively, you can use [Unplugin](#unplugin) for development and production, and [babel-jest](https://www.npmjs.com/package/babel-jest) + [Babel plugin](#babel-plugin) for testing.
+3. Alternatively, you can use the [swc-loader](https://www.npmjs.com/package/swc-loader) and [SWC plugin](#swc-plugin) for development and production, and the [babel-jest](https://www.npmjs.com/package/babel-jest) and [Babel plugin](#babel-plugin) for testing.
+
+::: warning
+There are some exceptions:
+
+1. Vite is only compatible with [Unplugin](#unplugin).
+2. Webpack 4 is _**not**_ compatible with [Unplugin](#unplugin).
+   :::
