@@ -20,7 +20,7 @@
     "@babel/core": "7.25.2",
     "@babel/preset-env": "7.25.3",
     "@babel/preset-typescript": "7.24.7",
-    "@types/chai": "4.3.16",
+    "@types/chai": "4.3.17",
     "@types/jest": "29.5.12",
     "@types/node": "20.14.13",
     "@types/tmp": "0.2.6",
