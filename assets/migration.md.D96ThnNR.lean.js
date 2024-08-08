@@ -1,0 +1,1 @@
+import{_ as i,c as s,o as a,a2 as t}from"./chunks/framework.DJD-rxBc.js";const c=JSON.parse('{"title":"Migration","description":"","frontmatter":{},"headers":[],"relativePath":"migration.md","filePath":"migration.md"}'),e={name:"migration.md"},n=t("",5),p=[n];function h(l,k,r,o,d,g){return a(),s("div",null,p)}const m=i(e,[["render",h]]);export{c as __pageData,m as default};
