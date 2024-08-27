@@ -18,8 +18,8 @@ importers:
         specifier: 7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@types/chai':
-        specifier: 4.3.18
-        version: 4.3.18
+        specifier: 4.3.19
+        version: 4.3.19
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -1826,8 +1826,8 @@ packages:
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
 
-  '@types/chai@4.3.18':
-    resolution: {integrity: sha512-2UfJzigyNa8kYTKn7o4hNMPphkxtu4WTJyobK3m4FBpyj7EK5xgtPcOtxLm7Dznk/Qxr0QXn+gQbkg7mCZKdfg==}
+  '@types/chai@4.3.19':
+    resolution: {integrity: sha512-2hHHvQBVE2FiSK4eN0Br6snX9MtolHaTo/batnLjlGRhoQzlCL61iVpxoqO7SfFyOw+P/pwv+0zNHzKoGWz9Cw==}
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -6476,7 +6476,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.25.0
 
-  '@types/chai@4.3.18': {}
+  '@types/chai@4.3.19': {}
 
   '@types/estree@1.0.5': {}
 
