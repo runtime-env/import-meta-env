@@ -168,6 +168,7 @@ jobs:
           - "@vue+cli@5-example"
           - "angular-webpack-example"
           - "babel-starter-example"
+          - "compatibility-example"
           - "create-next-app-example"
           - "create-react-app-example"
           - "create-vue-app-example"

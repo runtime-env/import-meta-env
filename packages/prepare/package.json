@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "rimraf bin && pnpm build-prepare",
-    "build-prepare": "esbuild src/index.ts --bundle --platform=node --target=node14 --outfile=bin/import-meta-env-prepare.js && node ./scripts/patchBin.js",
+    "build-prepare": "esbuild src/index.ts --bundle --platform=node --target=node14 --external:dotenv --outfile=bin/import-meta-env-prepare.js && node ./scripts/patchBin.js",
     "pack": "rm -f *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "release": "standard-version --skip.tag -t prepare --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/prepare@{{currentTag}}' --path .",
     "test": "jest src/__tests__"
@@ -37,9 +37,11 @@
     "@types/glob": "8.1.0",
     "@types/serialize-javascript": "5.0.4"
   },
+  "peerDependencies": {
+    "dotenv": "^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0"
+  },
   "dependencies": {
     "commander": "12.1.0",
-    "dotenv": "^16.0.0",
     "glob": "11.0.0",
     "picocolors": "1.0.1",
     "serialize-javascript": "6.0.2"

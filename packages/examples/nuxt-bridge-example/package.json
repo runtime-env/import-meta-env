@@ -12,6 +12,7 @@
     "nuxt-edge": "^2.16.0-27720022.54e852f"
   },
   "devDependencies": {
-    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27747000.69db93e"
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27747000.69db93e",
+    "dotenv": "^16.0.3"
   }
 }

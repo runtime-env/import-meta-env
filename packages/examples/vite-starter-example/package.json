@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "rimraf": "^3.0.2",
     "vite": "^4.4.9"
   }
