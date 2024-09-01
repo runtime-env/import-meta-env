@@ -7,7 +7,6 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
     "esbuild": "^0.15.10",
     "rimraf": "^3.0.2"
   }
