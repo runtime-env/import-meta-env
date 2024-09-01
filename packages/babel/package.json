@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/babel",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/babel#readme",
   "peerDependencies": {
     "@babel/core": "^7.0.0-0",
-    "@import-meta-env/cli": "^0.5.1 || ^0.6.0"
+    "@import-meta-env/cli": "^0.7.0"
   },
   "peerDependenciesMeta": {
     "@import-meta-env/cli": {

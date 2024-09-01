@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/runtime-env/import-meta-env/compare/unplugin0.5.2...unplugin0.6.0) (2024-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* dotenv is a dependency instead of a peer dependency
+
+### Features
+
+* support single executable applications ([#1424](https://github.com/runtime-env/import-meta-env/issues/1424)) ([31724fd](https://github.com/runtime-env/import-meta-env/commit/31724fd7c3ef83ea7e4410e08e5df1650766f8d2)), closes [#1421](https://github.com/runtime-env/import-meta-env/issues/1421)
+
 ## [0.5.2](https://github.com/runtime-env/import-meta-env/compare/unplugin0.5.1...unplugin0.5.2) (2024-07-20)
 
 

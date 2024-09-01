@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/runtime-env/import-meta-env/compare/typescript0.3.4...typescript0.4.0) (2024-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* dotenv is a dependency instead of a peer dependency
+
+### Features
+
+* support single executable applications ([#1424](https://github.com/runtime-env/import-meta-env/issues/1424)) ([31724fd](https://github.com/runtime-env/import-meta-env/commit/31724fd7c3ef83ea7e4410e08e5df1650766f8d2)), closes [#1421](https://github.com/runtime-env/import-meta-env/issues/1421)
+
 ## [0.3.4](https://github.com/runtime-env/import-meta-env/compare/typescript0.3.3...typescript0.3.4) (2024-07-13)
 
 
