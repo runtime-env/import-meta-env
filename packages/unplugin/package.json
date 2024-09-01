@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/unplugin",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
@@ -50,7 +50,7 @@
     "webpack": "5.94.0"
   },
   "peerDependencies": {
-    "@import-meta-env/cli": "^0.5.1 || ^0.6.0"
+    "@import-meta-env/cli": "^0.7.0"
   },
   "peerDependenciesMeta": {
     "@import-meta-env/cli": {

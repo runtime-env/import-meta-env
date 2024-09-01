@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/cli",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
@@ -38,9 +38,9 @@
     "@types/serialize-javascript": "5.0.4"
   },
   "peerDependencies": {
-    "@import-meta-env/babel": "^0.4.3",
+    "@import-meta-env/babel": "^0.5.0",
     "@import-meta-env/swc": "^0.4.5",
-    "@import-meta-env/unplugin": "^0.4.8 || ^0.5.0"
+    "@import-meta-env/unplugin": "^0.6.0"
   },
   "peerDependenciesMeta": {
     "@import-meta-env/babel": {

@@ -84,8 +84,8 @@ importers:
         specifier: ^7.19.0
         version: 7.24.8
       '@import-meta-env/cli':
-        specifier: ^0.5.1 || ^0.6.0
-        version: 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
+        specifier: ^0.7.0
+        version: link:../cli
       dotenv:
         specifier: ^16.0.0
         version: 16.4.5
@@ -112,14 +112,14 @@ importers:
   packages/cli:
     dependencies:
       '@import-meta-env/babel':
-        specifier: ^0.4.3
-        version: 0.4.5(@babel/core@7.25.2)(@import-meta-env/cli@0.6.8)(dotenv@16.4.5)
+        specifier: ^0.5.0
+        version: link:../babel
       '@import-meta-env/swc':
         specifier: ^0.4.5
         version: 0.4.12(@import-meta-env/cli@0.6.8)(@swc/core@1.7.0(@swc/helpers@0.5.12))
       '@import-meta-env/unplugin':
-        specifier: ^0.4.8 || ^0.5.0
-        version: 0.5.1(@import-meta-env/cli@0.6.8)(dotenv@16.4.5)
+        specifier: ^0.6.0
+        version: link:../unplugin
       commander:
         specifier: 12.1.0
         version: 12.1.0
@@ -190,8 +190,8 @@ importers:
   packages/swc:
     dependencies:
       '@import-meta-env/cli':
-        specifier: ^0.5.1 || ^0.6.1
-        version: 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
+        specifier: ^0.7.0
+        version: link:../cli
       '@swc/core':
         specifier: ~1.7.0
         version: 1.7.0(@swc/helpers@0.5.12)
@@ -218,8 +218,8 @@ importers:
   packages/unplugin:
     dependencies:
       '@import-meta-env/cli':
-        specifier: ^0.5.1 || ^0.6.0
-        version: 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
+        specifier: ^0.7.0
+        version: link:../cli
       dotenv:
         specifier: ^16.0.0
         version: 16.4.5
@@ -1444,16 +1444,6 @@ packages:
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
     engines: {node: '>=6.9.0'}
 
-  '@import-meta-env/babel@0.4.5':
-    resolution: {integrity: sha512-xRbhinkSeA+NOOQElnR+eTwAFIVRh5KK2xTYy+C2WBANy6TyK0tOqIkaYeFCK0d1rZemqrSCXAQrf9+GJgwFiw==}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-      '@import-meta-env/cli': ^0.5.1 || ^0.6.0
-      dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
-    peerDependenciesMeta:
-      '@import-meta-env/cli':
-        optional: true
-
   '@import-meta-env/cli@0.6.8':
     resolution: {integrity: sha512-Lunsmlj02yVtI5drlhNwIUFAQ0wsIUYIrz0Nm5jbvmYvyEUsxC8Qotnf3gXTfvM9Yuutvuc2+dx4uXpa3DajTg==}
     engines: {node: '>= 14'}
@@ -1480,16 +1470,6 @@ packages:
       '@import-meta-env/cli':
         optional: true
       '@swc/core':
-        optional: true
-
-  '@import-meta-env/unplugin@0.5.1':
-    resolution: {integrity: sha512-2pn+eYha02TY+iJ8WAlGr9SnOx0o+OvddO6lzU9hBxkogWlU9Q1dI/9thacnjL9alOA3R2qGZPd79kaiYtw81A==}
-    engines: {node: '>= 14'}
-    peerDependencies:
-      '@import-meta-env/cli': ^0.5.1 || ^0.6.0
-      dotenv: ^11.0.0 || ^12.0.4 || ^13.0.1 || ^14.3.2 || ^15.0.1 || ^16.0.0
-    peerDependenciesMeta:
-      '@import-meta-env/cli':
         optional: true
 
   '@isaacs/cliui@8.0.2':
@@ -3509,9 +3489,6 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  magic-string@0.30.10:
-    resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
-
   magic-string@0.30.11:
     resolution: {integrity: sha512-+Wri9p0QHMy+545hKww7YAu5NyzF8iomPL/RQazugQ9+Ez4Ic3mERMd8ZTX5rfK944j+560ZJi8iAwgak1Ac7A==}
 
@@ -4383,10 +4360,6 @@ packages:
   universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
-
-  unplugin@1.11.0:
-    resolution: {integrity: sha512-3r7VWZ/webh0SGgJScpWl2/MRCZK5d3ZYFcNaeci/GQ7Teop7zf0Nl2pUuz7G21BwPd9pcUPOC5KmJ2L3WgC5g==}
-    engines: {node: '>=14.0.0'}
 
   unplugin@1.12.3:
     resolution: {integrity: sha512-my8DH0/T/Kx33KO+6QXAqdeMYgyy0GktlOpdQjpagfHKw5DrD0ctPr7SHUyOT3g4ZVpzCQGt/qcpuoKJ/pniHA==}
@@ -6034,16 +6007,7 @@ snapshots:
 
   '@hutson/parse-repository-url@3.0.2': {}
 
-  '@import-meta-env/babel@0.4.5(@babel/core@7.25.2)(@import-meta-env/cli@0.6.8)(dotenv@16.4.5)':
-    dependencies:
-      '@babel/core': 7.25.2
-      '@babel/helper-plugin-utils': 7.24.8
-      dotenv: 16.4.5
-      picocolors: 1.0.1
-    optionalDependencies:
-      '@import-meta-env/cli': 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
-
-  '@import-meta-env/cli@0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)':
+  '@import-meta-env/cli@0.6.8(@import-meta-env/babel@packages+babel)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@packages+unplugin)(dotenv@16.4.5)':
     dependencies:
       commander: 11.1.0
       dotenv: 16.4.5
@@ -6051,24 +6015,15 @@ snapshots:
       picocolors: 1.0.0
       serialize-javascript: 6.0.1
     optionalDependencies:
-      '@import-meta-env/babel': 0.4.5(@babel/core@7.25.2)(@import-meta-env/cli@0.6.8)(dotenv@16.4.5)
+      '@import-meta-env/babel': link:packages/babel
       '@import-meta-env/swc': 0.4.12(@import-meta-env/cli@0.6.8)(@swc/core@1.7.0(@swc/helpers@0.5.12))
-      '@import-meta-env/unplugin': 0.5.1(@import-meta-env/cli@0.6.8)(dotenv@16.4.5)
+      '@import-meta-env/unplugin': link:packages/unplugin
+    optional: true
 
   '@import-meta-env/swc@0.4.12(@import-meta-env/cli@0.6.8)(@swc/core@1.7.0(@swc/helpers@0.5.12))':
     optionalDependencies:
-      '@import-meta-env/cli': 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
+      '@import-meta-env/cli': 0.6.8(@import-meta-env/babel@packages+babel)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@packages+unplugin)(dotenv@16.4.5)
       '@swc/core': 1.7.0(@swc/helpers@0.5.12)
-
-  '@import-meta-env/unplugin@0.5.1(@import-meta-env/cli@0.6.8)(dotenv@16.4.5)':
-    dependencies:
-      dotenv: 16.4.5
-      magic-string: 0.30.10
-      object-hash: 3.0.0
-      picocolors: 1.0.1
-      unplugin: 1.11.0
-    optionalDependencies:
-      '@import-meta-env/cli': 0.6.8(@import-meta-env/babel@0.4.5)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@0.5.1)(dotenv@16.4.5)
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -7091,7 +7046,8 @@ snapshots:
 
   color-name@1.1.4: {}
 
-  commander@11.1.0: {}
+  commander@11.1.0:
+    optional: true
 
   commander@12.1.0: {}
 
@@ -7722,6 +7678,7 @@ snapshots:
       minimatch: 9.0.5
       minipass: 7.1.2
       path-scurry: 1.11.1
+    optional: true
 
   glob@11.0.0:
     dependencies:
@@ -7974,6 +7931,7 @@ snapshots:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
+    optional: true
 
   jackspeak@4.0.1:
     dependencies:
@@ -8452,7 +8410,8 @@ snapshots:
     dependencies:
       get-func-name: 2.0.2
 
-  lru-cache@10.4.3: {}
+  lru-cache@10.4.3:
+    optional: true
 
   lru-cache@11.0.0: {}
 
@@ -8468,10 +8427,6 @@ snapshots:
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
-
-  magic-string@0.30.10:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
 
   magic-string@0.30.11:
     dependencies:
@@ -8541,6 +8496,7 @@ snapshots:
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
+    optional: true
 
   minimist-options@4.1.0:
     dependencies:
@@ -8703,6 +8659,7 @@ snapshots:
     dependencies:
       lru-cache: 10.4.3
       minipass: 7.1.2
+    optional: true
 
   path-scurry@2.0.0:
     dependencies:
@@ -8719,7 +8676,8 @@ snapshots:
 
   perfect-debounce@1.0.0: {}
 
-  picocolors@1.0.0: {}
+  picocolors@1.0.0:
+    optional: true
 
   picocolors@1.0.1: {}
 
@@ -8955,6 +8913,7 @@ snapshots:
   serialize-javascript@6.0.1:
     dependencies:
       randombytes: 2.1.0
+    optional: true
 
   serialize-javascript@6.0.2:
     dependencies:
@@ -9263,13 +9222,6 @@ snapshots:
   universalify@0.1.2: {}
 
   universalify@2.0.1: {}
-
-  unplugin@1.11.0:
-    dependencies:
-      acorn: 8.12.1
-      chokidar: 3.6.0
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.6.2
 
   unplugin@1.12.3:
     dependencies:

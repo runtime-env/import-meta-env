@@ -1,9 +1,9 @@
 {
-  "packages/babel": "0.4.5",
-  "packages/cli": "0.6.9",
-  "packages/flow": "0.1.4",
-  "packages/prepare": "0.1.14",
-  "packages/swc": "0.4.17",
-  "packages/typescript": "0.3.4",
-  "packages/unplugin": "0.5.2"
+  "packages/babel": "0.5.0",
+  "packages/cli": "0.7.0",
+  "packages/flow": "0.2.0",
+  "packages/prepare": "0.2.0",
+  "packages/swc": "0.4.18",
+  "packages/typescript": "0.4.0",
+  "packages/unplugin": "0.6.0"
 }

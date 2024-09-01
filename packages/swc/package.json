@@ -1,6 +1,6 @@
 {
   "name": "@import-meta-env/swc",
-  "version": "0.4.17",
+  "version": "0.4.18",
   "description": "Build once, deploy anywhere. Startup/runtime environment variable solution for JavaScript.",
   "license": "MIT",
   "author": "Ernest",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/swc#readme",
   "peerDependencies": {
-    "@import-meta-env/cli": "^0.5.1 || ^0.6.1",
+    "@import-meta-env/cli": "^0.7.0",
     "@swc/core": "~1.7.0"
   },
   "peerDependenciesMeta": {
