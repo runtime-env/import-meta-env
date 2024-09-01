@@ -35,7 +35,6 @@
     "babel-jest": "28.1.1",
     "cross-env": "^7.0.3",
     "cypress": "^10.7.0",
-    "dotenv": "^16.0.3",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
