@@ -16,7 +16,6 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.0",
     "rimraf": "^3.0.2"
   },
   "browserslist": [

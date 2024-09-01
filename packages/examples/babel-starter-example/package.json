@@ -11,7 +11,6 @@
     "@babel/preset-env": "^7.16.11",
     "concurrently": "7.0.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
     "rimraf": "^3.0.2"
   }
 }
