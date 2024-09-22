@@ -53,8 +53,8 @@ export default defineConfig({
         link: "/migration",
       },
       {
-        text: "Buy me a coffee",
-        link: "https://www.buymeacoffee.com/iendeavor",
+        text: "Other Projects",
+        link: "https://soc221b.github.io/",
       },
     ],
 
@@ -70,7 +70,7 @@ export default defineConfig({
     footer: {
       message: "Released under the MIT License.",
       copyright:
-        "Created by <a href='https://github.com/iendeavor' target='_blank'>Ernest</a>",
+        "Created by <a href='https://github.com/soc221b' target='_blank'>Ernest</a>",
     },
   },
 
