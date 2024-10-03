@@ -16,6 +16,12 @@
 
 ## Guide
 
+::: tip
+We are excited to introduce [runtime-env](https://github.com/runtime-env/runtime-env), a **framework-agnostic** library that provides a runtime environment variable solution for JavaScript applications. It integrates effortlessly with any framework or build tool.
+
+Discover it today and streamline your development workflow!
+:::
+
 > In this guide, we will use Webpack as an example, but you can also use other build tools. All supported build tools can be found on the [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s page.
 
 ![](/glance.png)
