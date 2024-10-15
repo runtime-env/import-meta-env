@@ -5,7 +5,7 @@ afterEach(() => {
 });
 
 describe("replaceAllPlaceholderWithEnv", () => {
-  test("scriptPlaceholder (1)", () => {
+  test("scriptPlaceholder with basic code and env values", () => {
     // arrange
     const code = `JSON.parse('"import_meta_env_placeholder"')`;
     const env = {
@@ -22,7 +22,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     );
   });
 
-  test("scriptPlaceholder (2)", () => {
+  test("scriptPlaceholder with slashes for double quotes [1]", () => {
     // arrange
     const code = `JSON.parse('\\"import_meta_env_placeholder\\"')`;
 
@@ -40,7 +40,7 @@ describe("replaceAllPlaceholderWithEnv", () => {
     );
   });
 
-  test("scriptPlaceholder (3)", () => {
+  test("scriptPlaceholder with slashes for double quotes [2] and single quotes [1]", () => {
     // arrange
     const code = `JSON.parse(\\'\\\\"import_meta_env_placeholder\\\\"\\')`;
 
@@ -58,12 +58,13 @@ describe("replaceAllPlaceholderWithEnv", () => {
     );
   });
 
-  test("scriptPlaceholder (4)", () => {
+  test("scriptPlaceholder with escaped double quotes", () => {
     // arrange
     const code = `JSON.parse('"import_meta_env_placeholder"')`;
     const env = {
       KEY1: '{"child1":"value1"}',
       KEY2: '{"child2":"value2"}',
+      KEY3: '["value1", "value2"]',
     };
 
     // act
@@ -71,7 +72,24 @@ describe("replaceAllPlaceholderWithEnv", () => {
 
     // assert
     expect(result).toMatchInlineSnapshot(
-      `"JSON.parse('{"KEY1":"{\\\\\\"child1\\\\\\":\\\\\\"value1\\\\\\"}","KEY2":"{\\\\\\"child2\\\\\\":\\\\\\"value2\\\\\\"}"}')"`,
+      `"JSON.parse('{"KEY1":"{\\\\\\"child1\\\\\\":\\\\\\"value1\\\\\\"}","KEY2":"{\\\\\\"child2\\\\\\":\\\\\\"value2\\\\\\"}","KEY3":"[\\\\\\"value1\\\\\\", \\\\\\"value2\\\\\\"]"}')"`
+    );
+  });
+
+  test("scriptPlaceholder with escaped single quotes", () => {
+    // arrange
+    const code = `JSON.parse('"import_meta_env_placeholder"')`;
+    const env = {
+      KEY1: "['value3', 'value4']",
+      KEY2: "This has 'single quotes' inside",
+    };
+
+    // act
+    const result = replaceAllPlaceholderWithEnv({ code, env });
+
+    // assert
+    expect(result).toMatchInlineSnapshot(
+      `"JSON.parse('{"KEY1":"[\\\'value3\\\', \\\'value4\\\']","KEY2":"This has \\\'single quotes\\\' inside"}')"`
     );
   });
 });
