@@ -91,7 +91,7 @@ importers:
         version: 16.4.5
       picocolors:
         specifier: ^1.0.0
-        version: 1.1.0
+        version: 1.1.1
     devDependencies:
       '@babel/core':
         specifier: 7.25.8
@@ -153,7 +153,7 @@ importers:
         version: 16.4.5
       picocolors:
         specifier: ^1.0.0
-        version: 1.1.0
+        version: 1.1.1
     devDependencies:
       '@types/node':
         specifier: 20.16.11
@@ -206,7 +206,7 @@ importers:
         version: 16.4.5
       picocolors:
         specifier: ^1.0.0
-        version: 1.1.0
+        version: 1.1.1
     devDependencies:
       '@types/node':
         specifier: 20.16.11
@@ -231,7 +231,7 @@ importers:
         version: 3.0.0
       picocolors:
         specifier: ^1.0.0
-        version: 1.1.0
+        version: 1.1.1
       unplugin:
         specifier: ^1.5.0
         version: 1.14.1(webpack-sources@3.2.3)
@@ -3811,9 +3811,6 @@ packages:
 
   picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
-
-  picocolors@1.1.0:
-    resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -8764,8 +8761,6 @@ snapshots:
 
   picocolors@1.0.0:
     optional: true
-
-  picocolors@1.1.0: {}
 
   picocolors@1.1.1: {}
 
