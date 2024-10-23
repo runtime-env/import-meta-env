@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/flow#readme",
   "devDependencies": {
-    "@types/node": "20.16.14",
+    "@types/node": "20.16.15",
     "typescript": "5.6.3"
   },
   "dependencies": {
