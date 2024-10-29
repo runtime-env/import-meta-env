@@ -38,7 +38,7 @@
     "standard-version": "9.5.0",
     "tmp": "0.2.3",
     "typescript": "5.6.3",
-    "vitepress": "1.4.1",
+    "vitepress": "1.4.2",
     "yaml": "2.6.0"
   },
   "pnpm": {
