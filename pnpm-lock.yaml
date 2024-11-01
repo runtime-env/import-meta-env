@@ -258,8 +258,8 @@ importers:
         specifier: 5.4.10
         version: 5.4.10(@types/node@22.8.6)(terser@5.31.2)
       webpack:
-        specifier: 5.96.0
-        version: 5.96.0(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)
+        specifier: 5.96.1
+        version: 5.96.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)
 
 packages:
 
@@ -1806,6 +1806,12 @@ packages:
 
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
+
+  '@types/eslint-scope@3.7.7':
+    resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
+
+  '@types/eslint@9.6.1':
+    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -4561,8 +4567,8 @@ packages:
   webpack-virtual-modules@0.6.2:
     resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
 
-  webpack@5.96.0:
-    resolution: {integrity: sha512-gvn84AfQ4f6vUeNWmFuRp3vGERyxK4epADKTaAo60K0EQbY/YBNQbXH3Ji/ZRK5M25O/XneAOuChF4xQZjQ4xA==}
+  webpack@5.96.1:
+    resolution: {integrity: sha512-l2LlBSvVZGhL4ZrPwyr8+37AunkcYj5qh8o6u2/2rzoPc8gxFJkLj1WxNgooi9pnoc06jh0BjuXnamM4qlujZA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -6481,6 +6487,16 @@ snapshots:
       '@types/deep-eql': 4.0.2
 
   '@types/deep-eql@4.0.2': {}
+
+  '@types/eslint-scope@3.7.7':
+    dependencies:
+      '@types/eslint': 9.6.1
+      '@types/estree': 1.0.6
+
+  '@types/eslint@9.6.1':
+    dependencies:
+      '@types/estree': 1.0.6
+      '@types/json-schema': 7.0.15
 
   '@types/estree@1.0.6': {}
 
@@ -9231,14 +9247,14 @@ snapshots:
 
   term-size@2.2.1: {}
 
-  terser-webpack-plugin@5.3.10(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)(webpack@5.96.0(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)):
+  terser-webpack-plugin@5.3.10(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)(webpack@5.96.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.2
-      webpack: 5.96.0(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)
+      webpack: 5.96.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)
     optionalDependencies:
       '@swc/core': 1.7.0(@swc/helpers@0.5.12)
       esbuild: 0.24.0
@@ -9519,8 +9535,9 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.96.0(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0):
+  webpack@5.96.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0):
     dependencies:
+      '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.6
       '@webassemblyjs/ast': 1.12.1
       '@webassemblyjs/wasm-edit': 1.12.1
@@ -9540,7 +9557,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)(webpack@5.96.0(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0))
+      terser-webpack-plugin: 5.3.10(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)(webpack@5.96.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
