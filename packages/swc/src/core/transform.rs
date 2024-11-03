@@ -153,12 +153,12 @@ struct Config {
 #[cfg(test)]
 mod tests {
     use super::{Mode, TransformImportMetaEnv};
-    use swc_core::ecma::{transforms::testing::test, visit::as_folder};
+    use swc_core::ecma::{transforms::testing::test, visit::visit_mut_pass};
 
     // compile-time
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![],
             env_example_keys: vec![String::from("EXISTS")]
         })),
@@ -169,7 +169,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![],
             env_example_keys: vec![String::from("EXISTS")]
         })),
@@ -180,7 +180,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![],
             env_example_keys: vec![String::from("EXISTS")]
         })),
@@ -191,7 +191,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::CompileTime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::CompileTime {
             env: vec![("EXISTS".to_string(), "value".to_string()),],
             env_example_keys: vec![String::from("EXISTS")],
         })),
@@ -206,7 +206,7 @@ mod tests {
     // runtime
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
             env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_runtime_mode_ignore_new_target_env_hello,
@@ -216,7 +216,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
             env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_runtime_mode_ignore_import_meta_url_hello,
@@ -226,7 +226,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
             env_example_keys: vec![String::from("EXISTS")]
         })),
         spec_runtime_mode_ignore_import_meta_env,
@@ -236,7 +236,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
             env_example_keys: vec![String::from("EXISTS")],
         })),
         spec_runtime_mode_import_meta_env_property,
@@ -249,7 +249,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
             env_example_keys: vec![String::from("PORT")],
         })),
         spec_call_expr,
@@ -259,7 +259,7 @@ mod tests {
 
     test!(
         Default::default(),
-        |_| as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+        |_| visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
             env_example_keys: vec![String::from("PROTOCOL"), String::from("HOST"),],
         })),
         spec_return_stmt,
