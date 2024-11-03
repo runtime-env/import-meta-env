@@ -10,10 +10,7 @@ use crate::{
 };
 use config::TransformMode;
 use swc_core::{
-    ecma::{
-        ast::Program,
-        visit::{as_folder, FoldWith},
-    },
+    ecma::{ast::Program, visit::visit_mut_pass},
     plugin::{
         metadata::TransformPluginMetadataContextKind, plugin_transform,
         proxies::TransformPluginProgramMetadata,
@@ -45,14 +42,14 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
         }
     };
     match mode {
-        TransformMode::CompileTime => program.fold_with(&mut as_folder(
-            TransformImportMetaEnv::new(Mode::CompileTime {
+        TransformMode::CompileTime => program.apply(visit_mut_pass(TransformImportMetaEnv::new(
+            Mode::CompileTime {
                 env: resolve_env(config.env, config.example.clone()),
                 env_example_keys: resolve_env_example_keys(config.example.clone()),
-            }),
-        )),
+            },
+        ))),
         TransformMode::Runtime => {
-            program.fold_with(&mut as_folder(TransformImportMetaEnv::new(Mode::Runtime {
+            program.apply(visit_mut_pass(TransformImportMetaEnv::new(Mode::Runtime {
                 env_example_keys: resolve_env_example_keys(config.example.clone()),
             })))
         }
