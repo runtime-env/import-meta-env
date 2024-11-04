@@ -72,8 +72,8 @@ importers:
         specifier: 5.6.3
         version: 5.6.3
       vitepress:
-        specifier: 1.4.5
-        version: 1.4.5(@algolia/client-search@4.24.0)(@types/node@22.8.7)(change-case@5.4.4)(postcss@8.4.47)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.6.3)
+        specifier: 1.5.0
+        version: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.8.7)(change-case@5.4.4)(postcss@8.4.47)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.6.3)
       yaml:
         specifier: 2.6.0
         version: 2.6.0
@@ -1416,6 +1416,12 @@ packages:
   '@hutson/parse-repository-url@3.0.2':
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
     engines: {node: '>=6.9.0'}
+
+  '@iconify-json/simple-icons@1.2.10':
+    resolution: {integrity: sha512-9OK1dsSjXlH36lhu5n+BlSoXuqFjHUErGLtNdzHpq0vHq4YFBuGYWtZ+vZTHLreRQ8ijPRv/6EsgkV+nf6AReQ==}
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
   '@import-meta-env/cli@0.6.8':
     resolution: {integrity: sha512-Lunsmlj02yVtI5drlhNwIUFAQ0wsIUYIrz0Nm5jbvmYvyEUsxC8Qotnf3gXTfvM9Yuutvuc2+dx4uXpa3DajTg==}
@@ -4522,8 +4528,8 @@ packages:
       terser:
         optional: true
 
-  vitepress@1.4.5:
-    resolution: {integrity: sha512-9K0k8kvdEbeowVCpKF/x0AySSq0Pr9pM8xufLgQcKMjsifwxtDjXJjcFhZv4LYw2dcpdYiBq2j7PnWi0tCaMCg==}
+  vitepress@1.5.0:
+    resolution: {integrity: sha512-q4Q/G2zjvynvizdB3/bupdYkCJe2umSAMv9Ju4d92E6/NXJ59z70xB0q5p/4lpRyAwflDsbwy1mLV9Q5+nlB+g==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -6028,6 +6034,12 @@ snapshots:
   '@farmfe/utils@0.1.0': {}
 
   '@hutson/parse-repository-url@3.0.2': {}
+
+  '@iconify-json/simple-icons@1.2.10':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/types@2.0.0': {}
 
   '@import-meta-env/cli@0.6.8(@import-meta-env/babel@packages+babel)(@import-meta-env/swc@0.4.12)(@import-meta-env/unplugin@packages+unplugin)(dotenv@16.4.5)':
     dependencies:
@@ -9459,10 +9471,11 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.2
 
-  vitepress@1.4.5(@algolia/client-search@4.24.0)(@types/node@22.8.7)(change-case@5.4.4)(postcss@8.4.47)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.6.3):
+  vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.8.7)(change-case@5.4.4)(postcss@8.4.47)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.6.3):
     dependencies:
       '@docsearch/css': 3.6.2
       '@docsearch/js': 3.6.2(@algolia/client-search@4.24.0)(search-insights@2.15.0)
+      '@iconify-json/simple-icons': 1.2.10
       '@shikijs/core': 1.22.2
       '@shikijs/transformers': 1.22.2
       '@shikijs/types': 1.22.2
