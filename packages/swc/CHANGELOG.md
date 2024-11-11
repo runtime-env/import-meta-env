@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.19](https://github.com/runtime-env/import-meta-env/compare/swc0.4.18...swc0.4.19) (2024-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate serde to v1.0.210 ([#1449](https://github.com/runtime-env/import-meta-env/issues/1449)) ([34e727f](https://github.com/runtime-env/import-meta-env/commit/34e727f805dee6393f6dc5bcb54f4d3eb7fae722))
+* **deps:** update rust crate serde to v1.0.211 ([#1512](https://github.com/runtime-env/import-meta-env/issues/1512)) ([d7cef80](https://github.com/runtime-env/import-meta-env/commit/d7cef80b3d8e17e9c90055118ff074d2a5ca1f26))
+* **deps:** update rust crate serde to v1.0.213 ([#1514](https://github.com/runtime-env/import-meta-env/issues/1514)) ([4252e30](https://github.com/runtime-env/import-meta-env/commit/4252e301c658790e679939586e63c36af0ef4633))
+* **deps:** update rust crate serde to v1.0.214 ([#1529](https://github.com/runtime-env/import-meta-env/issues/1529)) ([a78c924](https://github.com/runtime-env/import-meta-env/commit/a78c924ca207729cf6d4ba5dde18b39a71aef5c1))
+* **deps:** update rust crate serde_json to v1.0.128 ([#1450](https://github.com/runtime-env/import-meta-env/issues/1450)) ([1fcec2c](https://github.com/runtime-env/import-meta-env/commit/1fcec2c7e6709517cfe7cbd4a369b275370c09db))
+* **deps:** update rust crate serde_json to v1.0.129 ([#1505](https://github.com/runtime-env/import-meta-env/issues/1505)) ([dcfdefb](https://github.com/runtime-env/import-meta-env/commit/dcfdefbe693e25aadebed74ecfcf5ef70bfd685e))
+* **deps:** update rust crate serde_json to v1.0.130 ([#1506](https://github.com/runtime-env/import-meta-env/issues/1506)) ([d86fb95](https://github.com/runtime-env/import-meta-env/commit/d86fb95c57e850ef841762c4add68ff794b7ab2c))
+* **deps:** update rust crate serde_json to v1.0.131 ([#1507](https://github.com/runtime-env/import-meta-env/issues/1507)) ([5053bf2](https://github.com/runtime-env/import-meta-env/commit/5053bf2cd4c5c089127857fef2dad5f94ed1c926))
+* **deps:** update rust crate serde_json to v1.0.132 ([#1509](https://github.com/runtime-env/import-meta-env/issues/1509)) ([c165e1f](https://github.com/runtime-env/import-meta-env/commit/c165e1fba021eb8b6984fb9c38f8381a69905e60))
+* **deps:** update rust crate swc_core to 0.103.0 ([#1431](https://github.com/runtime-env/import-meta-env/issues/1431)) ([d71295a](https://github.com/runtime-env/import-meta-env/commit/d71295aeab312ec3dc677fa372453d1ae060e5c0))
+* **deps:** update rust crate swc_core to 0.104.0 ([#1444](https://github.com/runtime-env/import-meta-env/issues/1444)) ([d2b4958](https://github.com/runtime-env/import-meta-env/commit/d2b4958f58e1132917e7b54cf3f7a2449f6d5fe3))
+* **deps:** update rust crate swc_core to 0.105.0 ([#1454](https://github.com/runtime-env/import-meta-env/issues/1454)) ([25b6c62](https://github.com/runtime-env/import-meta-env/commit/25b6c622b407af41f0e62da252d49f09e05cfaf2))
+* **deps:** update rust crate swc_core to 0.106.0 ([#1462](https://github.com/runtime-env/import-meta-env/issues/1462)) ([c8f5eb1](https://github.com/runtime-env/import-meta-env/commit/c8f5eb1b93ee733f89b1110c0de7bfef3748558c))
+* **deps:** update rust crate swc_core to 0.107.0 ([#1484](https://github.com/runtime-env/import-meta-env/issues/1484)) ([7a41ca3](https://github.com/runtime-env/import-meta-env/commit/7a41ca377b96f61ca513099a972931d1c564cac2))
+* **deps:** update rust crate swc_core to 0.108.0 ([#1485](https://github.com/runtime-env/import-meta-env/issues/1485)) ([1ed7251](https://github.com/runtime-env/import-meta-env/commit/1ed7251efc623edd1ce2d0ba421d39063499f760))
+* **deps:** update rust crate swc_core to 0.109.0 ([#1486](https://github.com/runtime-env/import-meta-env/issues/1486)) ([7055499](https://github.com/runtime-env/import-meta-env/commit/7055499746b179ef3f9b646037d47743d3f60867))
+* **deps:** update rust crate swc_core to v0.104.2 ([#1451](https://github.com/runtime-env/import-meta-env/issues/1451)) ([267a187](https://github.com/runtime-env/import-meta-env/commit/267a187f1222a9c7a7bb1874ad89814d424d7244))
+* **deps:** update rust crate swc_core to v0.106.3 ([#1474](https://github.com/runtime-env/import-meta-env/issues/1474)) ([fab76c5](https://github.com/runtime-env/import-meta-env/commit/fab76c5d75b17cecb1bd769bc7dd1f72645ec4f6))
+* **deps:** update rust crate swc_core to v0.106.4 ([#1476](https://github.com/runtime-env/import-meta-env/issues/1476)) ([313d21a](https://github.com/runtime-env/import-meta-env/commit/313d21af7afe1f1450b22624578d50c1668e3bfc))
+* **deps:** update rust crate swc_core to v0.109.1 ([#1488](https://github.com/runtime-env/import-meta-env/issues/1488)) ([6fd3190](https://github.com/runtime-env/import-meta-env/commit/6fd31909332e6ea5441d3ee7d2ed35e3b0014c56))
+* **deps:** update rust crate swc_core to v0.109.2 ([#1491](https://github.com/runtime-env/import-meta-env/issues/1491)) ([3b07010](https://github.com/runtime-env/import-meta-env/commit/3b0701082ae923ef7375ccdd445e795d25c2c29a))
+* **deps:** update rust crate swc_core to v1 ([#1492](https://github.com/runtime-env/import-meta-env/issues/1492)) ([080c592](https://github.com/runtime-env/import-meta-env/commit/080c59242fe699791889145761546fc0e8ffc53e))
+* **deps:** update rust crate swc_core to v1.0.1 ([#1497](https://github.com/runtime-env/import-meta-env/issues/1497)) ([4f54288](https://github.com/runtime-env/import-meta-env/commit/4f54288ea7e586cd4915b5e226af9bd70315fd79))
+* **deps:** update rust crate swc_core to v1.0.2 ([#1502](https://github.com/runtime-env/import-meta-env/issues/1502)) ([a0efb08](https://github.com/runtime-env/import-meta-env/commit/a0efb08d20123ba41f699be50a34dbc69d1264eb))
+* **deps:** update rust crate swc_core to v1.0.3 ([#1503](https://github.com/runtime-env/import-meta-env/issues/1503)) ([ff8a650](https://github.com/runtime-env/import-meta-env/commit/ff8a650023b237af901da6115bb9f80a5c495ced))
+* **deps:** update rust crate swc_core to v1.0.4 ([#1510](https://github.com/runtime-env/import-meta-env/issues/1510)) ([c3487df](https://github.com/runtime-env/import-meta-env/commit/c3487dfacd454588fac01c72038eb3a44b6c573e))
+* **deps:** update rust crate swc_core to v1.0.5 ([#1521](https://github.com/runtime-env/import-meta-env/issues/1521)) ([bd85f69](https://github.com/runtime-env/import-meta-env/commit/bd85f69404812ae882e1145ced4873b55c61d8b3))
+* **deps:** update rust crate swc_core to v1.0.6 ([#1524](https://github.com/runtime-env/import-meta-env/issues/1524)) ([f7e1337](https://github.com/runtime-env/import-meta-env/commit/f7e1337a0508b7e7dbfb7f8d8e6dfbd2768133ea))
+* **deps:** update rust crate swc_core to v4 ([#1533](https://github.com/runtime-env/import-meta-env/issues/1533)) ([bf94b6d](https://github.com/runtime-env/import-meta-env/commit/bf94b6d25cc6e5e8079a71f0015508a3e7236f60))
+* **deps:** update rust crate swc_core to v4.0.2 ([#1546](https://github.com/runtime-env/import-meta-env/issues/1546)) ([e1a89d4](https://github.com/runtime-env/import-meta-env/commit/e1a89d48d8360bc58653d451b9e7a4e000afc057))
+* **deps:** update rust crate swc_core to v4.0.3 ([#1548](https://github.com/runtime-env/import-meta-env/issues/1548)) ([65fc284](https://github.com/runtime-env/import-meta-env/commit/65fc284c3b03b96747a804adc374ebe1e7ccd011))
+* **deps:** update rust crate swc_core to v5 ([#1553](https://github.com/runtime-env/import-meta-env/issues/1553)) ([edf7eb7](https://github.com/runtime-env/import-meta-env/commit/edf7eb7de67d6a29b9b1ae386f013a27c8efc6ed))
+* **deps:** update rust crate swc_core to v5.0.1 ([#1555](https://github.com/runtime-env/import-meta-env/issues/1555)) ([6f2226e](https://github.com/runtime-env/import-meta-env/commit/6f2226ee2d452ecab7ee15474daea4650b906c07))
+* **deps:** update rust crate swc_core to v5.0.2 ([#1556](https://github.com/runtime-env/import-meta-env/issues/1556)) ([6b05444](https://github.com/runtime-env/import-meta-env/commit/6b054449185cf82895aaf8b119b5898d09a28e0a))
+* **deps:** update rust crate swc_core to v5.0.3 ([#1559](https://github.com/runtime-env/import-meta-env/issues/1559)) ([801d629](https://github.com/runtime-env/import-meta-env/commit/801d6295ca91d337828eac8d51403408ce462762))
+
 ## [0.4.18](https://github.com/runtime-env/import-meta-env/compare/swc0.4.17...swc0.4.18) (2024-09-01)
 
 

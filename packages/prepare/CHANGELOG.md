@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.1](https://github.com/runtime-env/import-meta-env/compare/prepare0.2.0...prepare0.2.1) (2024-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency picocolors to v1.1.0 ([#1432](https://github.com/runtime-env/import-meta-env/issues/1432)) ([396fa37](https://github.com/runtime-env/import-meta-env/commit/396fa374a945d2bf685ac72382cd4a0e91324b46))
+* **deps:** update dependency picocolors to v1.1.1 ([#1499](https://github.com/runtime-env/import-meta-env/issues/1499)) ([c697ca8](https://github.com/runtime-env/import-meta-env/commit/c697ca8333fdf5c153d9ab74c06f9e4c9ed31cc9))
+
 ## [0.2.0](https://github.com/runtime-env/import-meta-env/compare/prepare0.1.14...prepare0.2.0) (2024-09-01)
 
 
