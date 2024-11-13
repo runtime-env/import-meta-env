@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.21](https://github.com/runtime-env/import-meta-env/compare/swc0.4.20...swc0.4.21) (2024-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate swc_core to v5.0.4 ([#1565](https://github.com/runtime-env/import-meta-env/issues/1565)) ([4905cb0](https://github.com/runtime-env/import-meta-env/commit/4905cb06141ad390693247db4bea042bea393a80))
+
 ## [0.4.20](https://github.com/runtime-env/import-meta-env/compare/swc0.4.19...swc0.4.20) (2024-11-11)
 
 
