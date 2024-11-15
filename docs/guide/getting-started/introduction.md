@@ -95,7 +95,7 @@ $ npm i -D dotenv
      ```diff
      // dist/main.js
      - const name = import.meta.env.NAME
-     + const name = "developemnt"
+     + const name = "development"
      // ...
      ```
 
