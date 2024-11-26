@@ -73,7 +73,7 @@ importers:
         version: 5.7.2
       vitepress:
         specifier: 1.5.0
-        version: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.0)(change-case@5.4.4)(postcss@8.4.47)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.2)
+        version: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.0)(change-case@5.4.4)(postcss@8.4.49)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.2)
       yaml:
         specifier: 2.6.1
         version: 2.6.1
@@ -258,8 +258,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 5.4.11
-        version: 5.4.11(@types/node@22.10.0)(terser@5.31.2)
+        specifier: 6.0.0
+        version: 6.0.0(@types/node@22.10.0)(terser@5.31.2)(yaml@2.6.1)
       webpack:
         specifier: 5.96.1
         version: 5.96.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)
@@ -3860,6 +3860,10 @@ packages:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
+  postcss@8.4.49:
+    resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
+    engines: {node: ^10 || ^12 || >=14}
+
   preact@10.22.1:
     resolution: {integrity: sha512-jRYbDDgMpIb5LHq3hkI0bbl+l/TQ9UnkdQ0ww+lp+4MMOdqaUYdFc5qeyP+IV8FAd/2Em7drVPeKdQxsiWCf/A==}
 
@@ -4510,6 +4514,46 @@ packages:
       sugarss:
         optional: true
       terser:
+        optional: true
+
+  vite@6.0.0:
+    resolution: {integrity: sha512-Q2+5yQV79EdnpbNxjD3/QHVMCBaQ3Kpd4/uL51UGuh38bIIM+s4o3FqyCzRvTRwFb+cWIUeZvaWwS9y2LD2qeQ==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      jiti: '>=1.21.0'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
         optional: true
 
   vitepress@1.5.0:
@@ -8814,6 +8858,12 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  postcss@8.4.49:
+    dependencies:
+      nanoid: 3.3.7
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+
   preact@10.22.1: {}
 
   preferred-pm@3.1.4:
@@ -9432,7 +9482,18 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.2
 
-  vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.0)(change-case@5.4.4)(postcss@8.4.47)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.2):
+  vite@6.0.0(@types/node@22.10.0)(terser@5.31.2)(yaml@2.6.1):
+    dependencies:
+      esbuild: 0.24.0
+      postcss: 8.4.49
+      rollup: 4.27.4
+    optionalDependencies:
+      '@types/node': 22.10.0
+      fsevents: 2.3.3
+      terser: 5.31.2
+      yaml: 2.6.1
+
+  vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.0)(change-case@5.4.4)(postcss@8.4.49)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.2):
     dependencies:
       '@docsearch/css': 3.6.2
       '@docsearch/js': 3.6.2(@algolia/client-search@4.24.0)(search-insights@2.15.0)
@@ -9453,7 +9514,7 @@ snapshots:
       vite: 5.4.11(@types/node@22.10.0)(terser@5.31.2)
       vue: 3.5.12(typescript@5.7.2)
     optionalDependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
