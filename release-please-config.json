@@ -28,6 +28,5 @@
     }
   },
   "pull-request-title-pattern": "chore(release): @import-meta-env/${component}@${version}",
-  "skip-github-release": true,
   "tag-separator": ""
 }
