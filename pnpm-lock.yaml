@@ -42,8 +42,8 @@ importers:
         specifier: 12.1.0
         version: 12.1.0
       dotenv:
-        specifier: 16.4.6
-        version: 16.4.6
+        specifier: 16.4.7
+        version: 16.4.7
       esbuild:
         specifier: 0.24.0
         version: 0.24.0
@@ -2632,6 +2632,10 @@ packages:
 
   dotenv@16.4.6:
     resolution: {integrity: sha512-JhcR/+KIjkkjiU8yEpaB/USlzVi3i5whwOjpIRNGi9svKEXZSe+Qp6IWAjFjv+2GViAoDRCUv/QLNziQxsLqDg==}
+    engines: {node: '>=12'}
+
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
   dotgitignore@2.1.0:
@@ -7416,9 +7420,11 @@ snapshots:
 
   dotenv-expand@11.0.6:
     dependencies:
-      dotenv: 16.4.6
+      dotenv: 16.4.7
 
   dotenv@16.4.6: {}
+
+  dotenv@16.4.7: {}
 
   dotgitignore@2.1.0:
     dependencies:
