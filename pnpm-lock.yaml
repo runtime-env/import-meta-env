@@ -88,7 +88,7 @@ importers:
         version: link:../cli
       dotenv:
         specifier: ^16.0.0
-        version: 16.4.5
+        version: 16.4.6
       picocolors:
         specifier: ^1.0.0
         version: 1.1.1
@@ -125,7 +125,7 @@ importers:
         version: 12.1.0
       dotenv:
         specifier: ^16.0.0
-        version: 16.4.5
+        version: 16.4.6
       glob:
         specifier: 11.0.0
         version: 11.0.0
@@ -153,7 +153,7 @@ importers:
         version: 12.1.0
       dotenv:
         specifier: ^16.0.0
-        version: 16.4.5
+        version: 16.4.6
       picocolors:
         specifier: ^1.0.0
         version: 1.1.1
@@ -172,7 +172,7 @@ importers:
         version: 12.1.0
       dotenv:
         specifier: ^16.0.0
-        version: 16.4.5
+        version: 16.4.6
       glob:
         specifier: 11.0.0
         version: 11.0.0
@@ -206,7 +206,7 @@ importers:
         version: 12.1.0
       dotenv:
         specifier: ^16.0.0
-        version: 16.4.5
+        version: 16.4.6
       picocolors:
         specifier: ^1.0.0
         version: 1.1.1
@@ -225,7 +225,7 @@ importers:
         version: link:../cli
       dotenv:
         specifier: ^16.0.0
-        version: 16.4.5
+        version: 16.4.6
       magic-string:
         specifier: ^0.30.0
         version: 0.30.14
@@ -6009,7 +6009,7 @@ snapshots:
       '@swc/helpers': 0.5.12
       chokidar: 3.6.0
       deepmerge: 4.3.1
-      dotenv: 16.4.5
+      dotenv: 16.4.6
       dotenv-expand: 11.0.6
       execa: 7.2.0
       farm-browserslist-generator: 1.0.0
@@ -7422,7 +7422,8 @@ snapshots:
     dependencies:
       dotenv: 16.4.6
 
-  dotenv@16.4.5: {}
+  dotenv@16.4.5:
+    optional: true
 
   dotenv@16.4.6: {}
 
