@@ -5,5 +5,5 @@
   "packages/prepare": "0.2.1",
   "packages/swc": "0.4.25",
   "packages/typescript": "0.4.0",
-  "packages/unplugin": "0.6.0"
+  "packages/unplugin": "0.6.1"
 }
