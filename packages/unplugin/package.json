@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/unplugin#readme",
   "devDependencies": {
-    "@farmfe/core": "1.4.7",
+    "@farmfe/core": "1.5.0",
     "@types/node": "22.10.1",
     "@types/object-hash": "3.0.6",
     "rollup": "4.28.1",
