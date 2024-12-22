@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.2](https://github.com/runtime-env/import-meta-env/compare/cli0.7.1...cli0.7.2) (2024-12-22)
+
+
+### Bug Fixes
+
+* incomplete string escaping or encoding ([#1651](https://github.com/runtime-env/import-meta-env/issues/1651)) ([870d2c2](https://github.com/runtime-env/import-meta-env/commit/870d2c2d8c5aa7faf492ad40f734998ed05a0886))
+
 ## [0.7.1](https://github.com/runtime-env/import-meta-env/compare/cli0.7.0...cli0.7.1) (2024-11-11)
 
 
