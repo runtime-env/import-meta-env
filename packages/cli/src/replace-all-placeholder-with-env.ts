@@ -10,7 +10,7 @@ export const replaceAllPlaceholderWithEnv = ({
 }): string => {
   const escapedEnv: Record<string, string> = {};
   for (const key of Object.keys(env)) {
-    escapedEnv[key] = env[key].replace(/"/g, '\\"');
+    escapedEnv[key] = env[key].replace(/\\/g, "\\\\").replace(/"/g, '\\"');
   }
   return code
     .replace(
@@ -18,14 +18,14 @@ export const replaceAllPlaceholderWithEnv = ({
         doubleQuoteSlashCount: 2,
         singleQuoteSlashCount: 1,
       }),
-      `JSON.parse(\\'${serialize(escapedEnv).replace(/"/g, '\\\\"')}\\')`,
+      `JSON.parse(\\'${serialize(escapedEnv).replace(/\\/g, "\\\\").replace(/"/g, '\\\\"')}\\')`,
     )
     .replace(
       createScriptPlaceholderRegExp({
         doubleQuoteSlashCount: 1,
         singleQuoteSlashCount: 0,
       }),
-      `JSON.parse('${serialize(escapedEnv).replace(/"/g, '\\"')}')`,
+      `JSON.parse('${serialize(escapedEnv).replace(/\\/g, "\\\\").replace(/"/g, '\\"')}')`,
     )
     .replace(
       createScriptPlaceholderRegExp({

@@ -9,6 +9,7 @@ export const createScriptPlaceholderRegExp = ({
 }) =>
   new RegExp(
     scriptPlaceholder
+      .replace(/\\/g, "\\\\")
       .replace(/([\(\)])/g, "\\$1")
       .replace(/"/g, prependSlash({ char: '"', count: doubleQuoteSlashCount }))
       .replace(/'/g, prependSlash({ char: "'", count: singleQuoteSlashCount })),
