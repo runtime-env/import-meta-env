@@ -75,8 +75,8 @@ importers:
         specifier: 1.5.0
         version: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.2)
       yaml:
-        specifier: 2.6.1
-        version: 2.6.1
+        specifier: 2.7.0
+        version: 2.7.0
 
   packages/babel:
     dependencies:
@@ -259,7 +259,7 @@ importers:
         version: 5.7.2
       vite:
         specifier: 6.0.6
-        version: 6.0.6(@types/node@22.10.2)(terser@5.31.2)(yaml@2.6.1)
+        version: 6.0.6(@types/node@22.10.2)(terser@5.31.2)(yaml@2.7.0)
       webpack:
         specifier: 5.97.1
         version: 5.97.1(@swc/core@1.7.0(@swc/helpers@0.5.12))(esbuild@0.24.0)
@@ -4827,8 +4827,8 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
-  yaml@2.6.1:
-    resolution: {integrity: sha512-7r0XPzioN/Q9kXBro/XPnA6kznR73DHq+GXh5ON7ZozRO6aMjbmiBuKste2wslTFkC5d1dw0GooOCepZXJ2SAg==}
+  yaml@2.7.0:
+    resolution: {integrity: sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -9739,7 +9739,7 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.2
 
-  vite@6.0.6(@types/node@22.10.2)(terser@5.31.2)(yaml@2.6.1):
+  vite@6.0.6(@types/node@22.10.2)(terser@5.31.2)(yaml@2.7.0):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
@@ -9748,7 +9748,7 @@ snapshots:
       '@types/node': 22.10.2
       fsevents: 2.3.3
       terser: 5.31.2
-      yaml: 2.6.1
+      yaml: 2.7.0
 
   vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.2):
     dependencies:
@@ -9903,7 +9903,7 @@ snapshots:
 
   yallist@4.0.0: {}
 
-  yaml@2.6.1: {}
+  yaml@2.7.0: {}
 
   yargs-parser@20.2.9: {}
 
