@@ -41,7 +41,7 @@
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/unplugin#readme",
   "devDependencies": {
     "@farmfe/core": "1.6.2",
-    "@types/node": "22.10.3",
+    "@types/node": "22.10.4",
     "@types/object-hash": "3.0.6",
     "rollup": "4.29.1",
     "ts-node": "10.9.2",
