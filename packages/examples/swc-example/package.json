@@ -8,7 +8,7 @@
   "license": "MIT",
   "devDependencies": {
     "@swc/cli": "^0.1.57",
-    "@swc/core": "1.7.0",
+    "@swc/core": "^1.10.9",
     "cross-env": "^7.0.3"
   }
 }
