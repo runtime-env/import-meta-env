@@ -9,9 +9,9 @@
   ],
   "main": "import_meta_env_swc.wasm",
   "scripts": {
-    "prepare": "rustup target add wasm32-wasi",
-    "build": "cargo build --all --release --target wasm32-wasi --locked",
-    "prepack": "cp target/wasm32-wasi/release/import_meta_env_swc.wasm .",
+    "prepare": "rustup target add wasm32-wasip1",
+    "build": "cargo build --all --release --target wasm32-wasip1 --locked",
+    "prepack": "cp target/wasm32-wasip1/release/import_meta_env_swc.wasm .",
     "pack": "rm -rf *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "postinstall": "node -e \"try{require('./scripts/postinstall')}catch(e){}\"",
     "release": "standard-version --skip.tag -t swc --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/swc@{{currentTag}}' --path .",

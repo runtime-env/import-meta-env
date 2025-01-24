@@ -33,9 +33,7 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
-          override: true
-          target: wasm32-wasi
+          target: wasm32-wasip1
 
       - name: Cache Rust
         uses: Swatinem/rust-cache@v2
@@ -60,7 +58,7 @@ jobs:
             !.git/
             !**/node_modules/
             !packages/swc/target/
-            packages/swc/target/wasm32-wasi/release/import_meta_env_swc.wasm
+            packages/swc/target/wasm32-wasip1/release/import_meta_env_swc.wasm
             !packages/examples/
 
   lint:
@@ -89,9 +87,7 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
-          override: true
-          target: wasm32-wasi
+          target: wasm32-wasip1
 
       - name: Cache Rust
         uses: Swatinem/rust-cache@v2
@@ -133,9 +129,7 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
-          override: true
-          target: wasm32-wasi
+          target: wasm32-wasip1
 
       - name: Cache Rust
         uses: Swatinem/rust-cache@v2
