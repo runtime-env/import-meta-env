@@ -38,7 +38,9 @@ module.exports = ({
     await new Promise((resolve) => setTimeout(resolve, waitMs));
 
     // arrange
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: process.env.CI ? ["--no-sandbox"] : [],
+    });
     const page = await browser.newPage();
     await page.goto(url, {
       waitUntil: waitUntil || "networkidle0",
