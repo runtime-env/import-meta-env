@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.30](https://github.com/runtime-env/import-meta-env/compare/swc0.4.29...swc0.4.30) (2025-01-24)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate serde_json to v1.0.137 ([#1680](https://github.com/runtime-env/import-meta-env/issues/1680)) ([dcc6bdd](https://github.com/runtime-env/import-meta-env/commit/dcc6bdda5e4b7afac93e71f39ef795b4f4a4d637))
+* **deps:** update rust crate swc_core to v10 ([#1612](https://github.com/runtime-env/import-meta-env/issues/1612)) ([8902952](https://github.com/runtime-env/import-meta-env/commit/8902952f3b2bb6476c5334b851036eef27a8883d))
+* **deps:** update rust crate swc_core to v10.7.0 ([#1688](https://github.com/runtime-env/import-meta-env/issues/1688)) ([db7d697](https://github.com/runtime-env/import-meta-env/commit/db7d6972694923a5bcebca836d3a3a4ef1345a34))
+
 ## [0.4.29](https://github.com/runtime-env/import-meta-env/compare/swc0.4.28...swc0.4.29) (2025-01-07)
 
 

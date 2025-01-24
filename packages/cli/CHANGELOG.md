@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.3](https://github.com/runtime-env/import-meta-env/compare/cli0.7.2...cli0.7.3) (2025-01-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v13.1.0 ([#1685](https://github.com/runtime-env/import-meta-env/issues/1685)) ([a4afca0](https://github.com/runtime-env/import-meta-env/commit/a4afca067ef33d3296a66d8d8a0d412b37ed9dcd))
+* **deps:** update dependency glob to v11.0.1 ([#1675](https://github.com/runtime-env/import-meta-env/issues/1675)) ([d59eb14](https://github.com/runtime-env/import-meta-env/commit/d59eb140ad7e1c42c580df733d7812344b83a64a))
+
 ## [0.7.2](https://github.com/runtime-env/import-meta-env/compare/cli0.7.1...cli0.7.2) (2024-12-22)
 
 
