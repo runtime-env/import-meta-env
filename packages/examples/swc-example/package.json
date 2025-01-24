@@ -3,11 +3,11 @@
   "name": "swc-example",
   "scripts": {
     "_test": "node test.js",
-    "dev": "echo HELLO=import-meta-env\\\\\\nJSON={\\\"hello\\\":\\\"import-meta-env\\\"} > .env && npx cross-env SWC_ENV=development swc src -d dist -s true"
+    "dev": "echo HELLO=import-meta-env\\\\\\nJSON={\\\"hello\\\":\\\"import-meta-env\\\"} > .env && npx cross-env SWC_ENV=development swc src -o dist/index.js -s true"
   },
   "license": "MIT",
   "devDependencies": {
-    "@swc/cli": "^0.1.57",
+    "@swc/cli": "~0.6.0",
     "@swc/core": "^1.10.9",
     "cross-env": "^7.0.3"
   }
