@@ -150,7 +150,7 @@ importers:
     dependencies:
       commander:
         specifier: ^13.0.0
-        version: 13.0.0
+        version: 13.1.0
       dotenv:
         specifier: ^16.0.0
         version: 16.4.7
@@ -203,7 +203,7 @@ importers:
     dependencies:
       commander:
         specifier: ^13.0.0
-        version: 13.0.0
+        version: 13.1.0
       dotenv:
         specifier: ^16.0.0
         version: 16.4.7
@@ -2548,10 +2548,6 @@ packages:
   commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
-
-  commander@13.0.0:
-    resolution: {integrity: sha512-oPYleIY8wmTVzkvQq10AEok6YcTC4sRUBl8F9gVuwchGVUCTbl/vhLTaQqutuuySYOsu8YTgV+OxKc/8Yvx+mQ==}
-    engines: {node: '>=18'}
 
   commander@13.1.0:
     resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
@@ -7411,8 +7407,6 @@ snapshots:
 
   commander@11.1.0:
     optional: true
-
-  commander@13.0.0: {}
 
   commander@13.1.0: {}
 
