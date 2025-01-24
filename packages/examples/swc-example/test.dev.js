@@ -19,7 +19,7 @@ module.exports = () => {
 
   // act
   childProcess.execSync(
-    `npx cross-env SWC_ENV=development swc src -d dist -s true`,
+    `npx cross-env SWC_ENV=development swc src -o dist/index.js -s true`,
     {
       stdio: "inherit",
     },
