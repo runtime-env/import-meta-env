@@ -1,4 +1,4 @@
-import { createUnplugin } from "unplugin";
+import { createUnplugin, UnpluginFactory } from "unplugin";
 import colors from "picocolors";
 import { version } from "../package.json";
 import { resolveEnv, getPackageManagerExecCommand } from "../../shared";
@@ -10,8 +10,11 @@ import { transformProd } from "./transform-prod";
 import { ViteResolvedConfig } from "./vite/types";
 import { resolveEnvExampleKeys } from "packages/shared/resolve-env-example-keys";
 import { SourceMap } from "magic-string";
+import { JsPlugin } from "@farmfe/core";
 
-const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
+export type Options = PluginOptions;
+
+export const unpluginFactory: UnpluginFactory<Options> = (options, meta) => {
   const debug = process.env.DEBUG_IMPORT_META_ENV;
   debug && console.debug("factory::", options, meta);
 
@@ -229,6 +232,17 @@ const createPlugin = createUnplugin<PluginOptions>((options, meta) => {
       }
     },
   };
-});
+};
 
-export default createPlugin;
+export const unplugin = /* #__PURE__ */ createUnplugin(unpluginFactory);
+
+export default unplugin;
+
+export const esbuild = unplugin.esbuild;
+export const farm = unplugin.farm satisfies (
+  options: PluginOptions,
+) => JsPlugin;
+export const rollup = unplugin.rollup;
+export const vite = unplugin.vite;
+export const webpack = unplugin.webpack;
+export const rspack = unplugin.rspack;
