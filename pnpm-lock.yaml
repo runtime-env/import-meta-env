@@ -73,7 +73,7 @@ importers:
         version: 5.7.3
       vitepress:
         specifier: 1.6.3
-        version: 1.6.3(@algolia/client-search@5.20.0)(@types/node@22.13.1)(change-case@5.4.4)(postcss@8.4.49)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.3)
+        version: 1.6.3(@algolia/client-search@5.20.0)(@types/node@22.13.1)(change-case@5.4.4)(postcss@8.5.1)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.3)
       yaml:
         specifier: 2.7.0
         version: 2.7.0
@@ -258,8 +258,8 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
       vite:
-        specifier: 6.0.11
-        version: 6.0.11(@types/node@22.13.1)(terser@5.31.2)(yaml@2.7.0)
+        specifier: 6.1.0
+        version: 6.1.0(@types/node@22.13.1)(terser@5.31.2)(yaml@2.7.0)
       webpack:
         specifier: 5.97.1
         version: 5.97.1(@swc/core@1.10.9(@swc/helpers@0.5.12))(esbuild@0.24.2)
@@ -3666,6 +3666,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanoid@3.3.8:
+    resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -3878,6 +3883,10 @@ packages:
 
   postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
+    engines: {node: ^10 || ^12 || >=14}
+
+  postcss@8.5.1:
+    resolution: {integrity: sha512-6oz2beyjc5VMn/KV1pPw8fliQkhBXrVn1Z3TVyqZxU8kZpzEKhBdmCFqI6ZbmGtamQvQGuU1sgPTk8ZrXDD7jQ==}
     engines: {node: ^10 || ^12 || >=14}
 
   preact@10.22.1:
@@ -4538,8 +4547,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.0.11:
-    resolution: {integrity: sha512-4VL9mQPKoHy4+FE0NnRE/kbY51TOfaknxAjt3fJbGJxhIpBZiqVzlZDEesWWsuREXHwNdAoOFZ9MkPEVXczHwg==}
+  vite@6.1.0:
+    resolution: {integrity: sha512-RjjMipCKVoR4hVfPY6GQTgveinjNuyLw+qruksLDvA5ktI1150VmcMBKmQaEWJhg/j6Uaf6dNCNA0AfdzUb/hQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -8693,6 +8702,8 @@ snapshots:
 
   nanoid@3.3.7: {}
 
+  nanoid@3.3.8: {}
+
   natural-compare@1.4.0: {}
 
   negotiator@0.6.3: {}
@@ -8875,6 +8886,12 @@ snapshots:
   postcss@8.4.49:
     dependencies:
       nanoid: 3.3.7
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+
+  postcss@8.5.1:
+    dependencies:
+      nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -9508,10 +9525,10 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.2
 
-  vite@6.0.11(@types/node@22.13.1)(terser@5.31.2)(yaml@2.7.0):
+  vite@6.1.0(@types/node@22.13.1)(terser@5.31.2)(yaml@2.7.0):
     dependencies:
       esbuild: 0.24.2
-      postcss: 8.4.49
+      postcss: 8.5.1
       rollup: 4.34.3
     optionalDependencies:
       '@types/node': 22.13.1
@@ -9519,7 +9536,7 @@ snapshots:
       terser: 5.31.2
       yaml: 2.7.0
 
-  vitepress@1.6.3(@algolia/client-search@5.20.0)(@types/node@22.13.1)(change-case@5.4.4)(postcss@8.4.49)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.3):
+  vitepress@1.6.3(@algolia/client-search@5.20.0)(@types/node@22.13.1)(change-case@5.4.4)(postcss@8.5.1)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.7.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.20.0)(search-insights@2.15.0)
@@ -9540,7 +9557,7 @@ snapshots:
       vite: 5.4.14(@types/node@22.13.1)(terser@5.31.2)
       vue: 3.5.13(typescript@5.7.3)
     optionalDependencies:
-      postcss: 8.4.49
+      postcss: 8.5.1
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
