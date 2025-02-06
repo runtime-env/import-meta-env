@@ -178,7 +178,7 @@ jobs:
           - "rollup-plugin-babel-example"
           - "rollup-starter-example"
           - "rollup-swc-example"
-          # - "rspack-starter-example"
+          - "rspack-starter-example"
           - "swc-example"
           - "vite-alpine-example"
           - "vite-built-in-import-meta-env-example"
