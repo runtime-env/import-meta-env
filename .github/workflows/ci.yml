@@ -159,7 +159,7 @@ jobs:
     strategy:
       matrix:
         example:
-          - "@vue+cli@5-example"
+          - "@vue+cli-example"
           - "angular-webpack-example"
           - "babel-starter-example"
           - "create-next-app-example"
@@ -237,48 +237,6 @@ jobs:
           npm i
           npm run _test
 
-  npm-node-16-examples:
-    needs:
-      - build
-      - lint
-      - test
-
-    name: "Test example - ${{ matrix.example }}"
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        example:
-          - "@vue+cli@4-example"
-          - "create-nuxt-app-example"
-        include:
-          - os: ubuntu-latest
-            node_version: 16
-
-      fail-fast: false
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: artifact
-
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node_version }}
-
-      - name: Test ${{ matrix.example }}
-        run: |
-          cd packages/examples
-          npm i
-          cd ${{ matrix.example }}
-          npm i
-          npm run _test
-
   release:
     name: Release
 
@@ -287,7 +245,6 @@ jobs:
       - lint
       - test
       - npm-node-lts-examples
-      - npm-node-16-examples
 
     runs-on: ubuntu-latest
 
@@ -340,7 +297,6 @@ jobs:
       - lint
       - test
       - npm-node-lts-examples
-      - npm-node-16-examples
 
     runs-on: ubuntu-latest
 
