@@ -159,7 +159,7 @@ jobs:
     strategy:
       matrix:
         example:
-          - "@vue+cli@5-example"
+          - "@vue+cli-example"
           - "angular-webpack-example"
           - "babel-starter-example"
           - "create-next-app-example"
