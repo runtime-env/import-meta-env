@@ -3,5 +3,6 @@
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "squash",
+  "ignorePaths": ["**/node_modules/**"],
   "extends": ["config:recommended"]
 }
