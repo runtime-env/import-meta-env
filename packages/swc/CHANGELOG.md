@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.38](https://github.com/runtime-env/import-meta-env/compare/swc0.4.37...swc0.4.38) (2025-02-07)
+
+
+### Bug Fixes
+
+* **deps:** update swc monorepo ([#1725](https://github.com/runtime-env/import-meta-env/issues/1725)) ([527fc1a](https://github.com/runtime-env/import-meta-env/commit/527fc1ac1c858e22bd9312bd5fb511b11e5dac5a))
+
 ## [0.4.37](https://github.com/runtime-env/import-meta-env/compare/swc0.4.36...swc0.4.37) (2025-02-06)
 
 
