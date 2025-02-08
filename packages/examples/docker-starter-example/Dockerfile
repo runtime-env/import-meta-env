@@ -22,7 +22,7 @@ RUN npx postject import-meta-env-alpine NODE_SEA_BLOB sea-prep.blob --sentinel-f
 
 ###############################################################################
 
-FROM nginx:1.27.1-alpine3.20 as production-stage
+FROM nginx:1.27.3-alpine3.20 as production-stage
 RUN apk add libstdc++
 RUN mkdir /app
 COPY --from=build-stage /app/dist/* /app/dist/
