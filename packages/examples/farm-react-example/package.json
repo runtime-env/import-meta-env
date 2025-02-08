@@ -21,6 +21,6 @@
     "@types/react-dom": "18",
     "core-js": "^3.36.1",
     "cross-env": "^7.0.3",
-    "react-refresh": "^0.14.0"
+    "react-refresh": "^0.16.0"
   }
 }
