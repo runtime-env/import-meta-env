@@ -28,7 +28,7 @@
     "@typescript-eslint/eslint-plugin": "5.37.0",
     "@typescript-eslint/parser": "5.37.0",
     "cross-env": "^7.0.3",
-    "eslint": "8.23.1",
+    "eslint": "8.57.1",
     "eslint-plugin-qwik": "^0.14.1",
     "node-fetch": "3.2.10",
     "prettier": "2.7.1",
