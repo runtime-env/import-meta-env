@@ -4,5 +4,6 @@
   "automergeType": "pr",
   "automergeStrategy": "squash",
   "ignorePaths": ["**/node_modules/**"],
+  "rangeStrategy": "pin",
   "extends": ["config:recommended"]
 }
