@@ -12,7 +12,7 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.26.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "cross-env": "^7.0.3",
