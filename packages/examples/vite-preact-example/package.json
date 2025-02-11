@@ -8,7 +8,7 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && vite preview"
   },
   "dependencies": {
-    "preact": "10.11.1"
+    "preact": "10.25.4"
   },
   "devDependencies": {
     "@babel/core": "7.26.8",
