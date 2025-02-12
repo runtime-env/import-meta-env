@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.26.8",
-    "@rollup/plugin-babel": "5.3.1",
+    "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "11.2.1",
     "concurrently": "7.6.0",
     "cross-env": "7.0.3",
