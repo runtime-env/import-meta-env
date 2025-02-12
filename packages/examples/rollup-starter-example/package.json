@@ -10,7 +10,7 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public -p output/** && node ../serve.js -d output -p 4173"
   },
   "devDependencies": {
-    "@rollup/plugin-html": "1.1.0",
+    "@rollup/plugin-html": "2.0.0",
     "@rollup/plugin-node-resolve": "11.2.1",
     "concurrently": "7.6.0",
     "cross-env": "7.0.3",
