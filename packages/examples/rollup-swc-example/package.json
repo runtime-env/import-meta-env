@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "16.0.0",
-    "@swc/core": "1.10.15",
+    "@swc/core": "1.10.16",
     "concurrently": "9.1.2",
     "cross-env": "7.0.3",
     "rimraf": "6.0.1",
