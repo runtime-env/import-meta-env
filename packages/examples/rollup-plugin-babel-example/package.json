@@ -15,7 +15,7 @@
     "@babel/core": "7.26.9",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "16.0.0",
-    "concurrently": "7.6.0",
+    "concurrently": "9.1.2",
     "cross-env": "7.0.3",
     "rimraf": "3.0.2",
     "rollup": "2.79.2"
