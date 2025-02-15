@@ -21,9 +21,6 @@
     "release": "standard-version --skip.tag -t prepare --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/prepare@{{currentTag}}' --path .",
     "test": "jest src/__tests__"
   },
-  "engines": {
-    "node": "23.7.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/runtime-env/import-meta-env.git",

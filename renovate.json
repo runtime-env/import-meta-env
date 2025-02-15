@@ -4,6 +4,15 @@
   "automergeType": "pr",
   "automergeStrategy": "squash",
   "ignorePaths": ["**/node_modules/**"],
-  "rangeStrategy": "pin",
+  "packageRules": [
+    {
+      "matchPackageNames": ["*"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": ["engines", "peerDependencies"],
+      "rangeStrategy": "auto"
+    }
+  ],
   "extends": ["config:recommended"]
 }
