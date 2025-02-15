@@ -20,9 +20,6 @@
     "pack": "rm -f *.tgz && pnpm pack && node ../../scripts/rename-tgz.js",
     "release": "standard-version --skip.tag -t flow --preset=conventionalcommits --releaseCommitMessageFormat 'chore(release): @import-meta-env/flow@{{currentTag}}' --path ."
   },
-  "engines": {
-    "node": "23.7.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/runtime-env/import-meta-env.git",

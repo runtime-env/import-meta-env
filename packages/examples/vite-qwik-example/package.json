@@ -1,9 +1,6 @@
 {
   "name": "vite-qwik-example",
   "description": "Recommended for your first Qwik app (comes with Qwik City)",
-  "engines": {
-    "node": "23.7.0"
-  },
   "private": true,
   "scripts": {
     "_test": "node test.js",

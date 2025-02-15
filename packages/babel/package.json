@@ -29,13 +29,7 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/babel#readme",
   "peerDependencies": {
-    "@babel/core": "7.26.8",
-    "@import-meta-env/cli": "0.7.3"
-  },
-  "peerDependenciesMeta": {
-    "@import-meta-env/cli": {
-      "optional": true
-    }
+    "@babel/core": ">=7.0.0"
   },
   "dependencies": {
     "@babel/helper-plugin-utils": "7.26.5",
