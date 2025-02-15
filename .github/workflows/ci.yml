@@ -210,7 +210,7 @@ jobs:
         with:
           name: artifact
 
-      - name: Set node version to ${{ matrix.node_version }}
+      - name: Install node@${{ matrix.node_version }}
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
