@@ -8,6 +8,9 @@
     "swc-plugin"
   ],
   "main": "import_meta_env_swc.wasm",
+  "files": [
+    "import_meta_env_swc.wasm"
+  ],
   "scripts": {
     "prepare": "rustup target add wasm32-wasip1",
     "build": "cargo build --all --release --target wasm32-wasip1 --locked",
