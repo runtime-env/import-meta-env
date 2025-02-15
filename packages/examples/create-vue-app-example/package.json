@@ -8,7 +8,7 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && vite preview"
   },
   "dependencies": {
-    "vue": "3.2.40"
+    "vue": "3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "3.2.0",
