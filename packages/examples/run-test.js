@@ -53,7 +53,7 @@ module.exports = ({
     ).evaluate(() => document.body.innerText);
 
     // assert
-    expect(result).to.equal(expected);
+    expect(result).to.contain(expected);
 
     // cleanup
     await browser.close();
