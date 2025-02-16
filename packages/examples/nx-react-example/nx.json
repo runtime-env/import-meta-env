@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "affected": {
-    "defaultBase": "main"
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
@@ -59,5 +56,7 @@
       }
     }
   },
-  "defaultProject": "app"
+  "defaultProject": "app",
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }
