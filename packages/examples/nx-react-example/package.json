@@ -54,7 +54,7 @@
     "prettier": "2.7.1",
     "react-refresh": "^0.16.0",
     "style-loader": "^3.3.0",
-    "stylus": "0.59.0",
+    "stylus": "0.64.0",
     "stylus-loader": "^7.1.0",
     "ts-jest": "29.1.5",
     "ts-node": "10.9.2",
