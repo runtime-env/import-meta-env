@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../babel/import-meta-env-babel-test.tgz",
   ];
   const longRunningCommands = [
-    `npx cross-env HELLO=${hello} nx serve --port ${port}`,
+    `npx cross-env HELLO=${hello} nx serve --port=${port}`,
   ];
   const expected = `Hello: ${hello}`;
   const url = `http://localhost:${port}`;
