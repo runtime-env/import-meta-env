@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
-    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-react": "^7.26.3",
     "@nx/cypress": "20.4.4",
     "@nx/eslint": "20.4.4",
     "@nx/eslint-plugin": "20.4.4",
