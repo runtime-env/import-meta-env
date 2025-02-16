@@ -19,8 +19,7 @@
         "assets": ["apps/app/src/favicon.ico", "apps/app/src/assets"],
         "styles": ["apps/app/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/app/webpack.config.js",
-        "isolatedConfig": true
+        "webpackConfig": "apps/app/webpack.config.js"
       },
       "configurations": {
         "development": {
