@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@10.4.0",
+  "packageManager": "pnpm@10.4.1",
   "scripts": {
     "build": "pnpm --recursive --aggregate-output run build",
     "pack": "pnpm --recursive --aggregate-output run pack",
