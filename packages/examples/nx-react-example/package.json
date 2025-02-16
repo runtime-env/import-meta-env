@@ -30,7 +30,7 @@
     "@nx/workspace": "20.4.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@svgr/webpack": "8.1.0",
-    "@testing-library/react": "16.1.0",
+    "@testing-library/react": "16.2.0",
     "@types/jest": "29.5.14",
     "@types/node": "18.19.9",
     "@types/react": "18.3.18",
