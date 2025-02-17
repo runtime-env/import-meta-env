@@ -8,6 +8,6 @@
   "devDependencies": {
     "cross-env": "7.0.3",
     "esbuild": "0.25.0",
-    "rimraf": "3.0.2"
+    "rimraf": "6.0.1"
   }
 }
