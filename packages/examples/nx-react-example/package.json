@@ -51,7 +51,7 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "nx": "20.4.4",
-    "prettier": "2.7.1",
+    "prettier": "3.5.1",
     "react-refresh": "^0.16.0",
     "style-loader": "^3.3.0",
     "stylus": "0.64.0",
