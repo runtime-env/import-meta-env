@@ -9,6 +9,6 @@
     "express": "4.21.2",
     "picocolors": "1.1.1",
     "portfinder": "1.0.32",
-    "puppeteer": "23.11.1"
+    "puppeteer": "24.2.1"
   }
 }
