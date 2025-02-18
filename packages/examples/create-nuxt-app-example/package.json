@@ -15,6 +15,6 @@
     "nuxt": "2.18.1"
   },
   "devDependencies": {
-    "rimraf": "3.0.2"
+    "rimraf": "6.0.1"
   }
 }

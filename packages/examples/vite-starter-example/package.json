@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "cross-env": "7.0.3",
-    "rimraf": "3.0.2",
+    "rimraf": "6.0.1",
     "vite": "4.5.9"
   }
 }
