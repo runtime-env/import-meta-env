@@ -30,7 +30,7 @@
     "jest-resolve": "27.5.1",
     "jest-watch-typeahead": "1.1.0",
     "mini-css-extract-plugin": "2.9.2",
-    "postcss": "8.5.2",
+    "postcss": "8.5.3",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-loader": "6.2.1",
     "postcss-normalize": "10.0.1",
@@ -85,7 +85,7 @@
     "@testing-library/dom": "7.31.2",
     "autoprefixer": "10.4.20",
     "cross-env": "7.0.3",
-    "postcss": "8.5.2",
+    "postcss": "8.5.3",
     "typescript": "4.9.5"
   },
   "jest": {
