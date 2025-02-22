@@ -5,10 +5,9 @@ test("builtIn", () => {
   expect(builtIn).toEqual({
     BASE_URL: "/",
     DEV: true,
-    MODE: "development",
+    MODE: "test",
     PROD: false,
     SSR: true,
-    LEGACY: false,
     VITE_PREFIXED_KEY: "compile-time",
   });
 });
