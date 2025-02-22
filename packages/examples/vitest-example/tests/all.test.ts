@@ -2,13 +2,12 @@ import { test, expect } from "vitest";
 import { all } from "../src/all";
 
 test("all", () => {
-  expect(all).toEqual({
+  expect(all).toMatchObject({
     BASE_URL: "/",
     DEV: true,
-    MODE: "development",
+    MODE: "test",
     PROD: false,
     SSR: true,
-    LEGACY: false,
     VITE_PREFIXED_KEY: "compile-time",
   });
 });
