@@ -9,7 +9,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/user-event": "13.5.0",
     "babel-jest": "27.5.1",
-    "babel-loader": "8.4.1",
+    "babel-loader": "9.2.1",
     "babel-plugin-named-asset-import": "0.3.8",
     "babel-preset-react-app": "10.1.0",
     "bfj": "7.1.0",
