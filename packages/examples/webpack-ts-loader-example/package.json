@@ -17,6 +17,6 @@
     "ts-loader": "9.5.2",
     "typescript": "5.7.3",
     "webpack": "5.98.0",
-    "webpack-cli": "5.1.4"
+    "webpack-cli": "6.0.1"
   }
 }
