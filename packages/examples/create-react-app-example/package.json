@@ -4,7 +4,7 @@
   "dependencies": {
     "@babel/core": "7.26.9",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.15",
-    "@svgr/webpack": "5.5.0",
+    "@svgr/webpack": "8.1.0",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "12.1.5",
     "@testing-library/user-event": "13.5.0",
