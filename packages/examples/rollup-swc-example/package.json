@@ -17,7 +17,7 @@
     "concurrently": "9.1.2",
     "cross-env": "7.0.3",
     "rimraf": "6.0.1",
-    "rollup": "4.34.8",
+    "rollup": "4.34.9",
     "unplugin-swc": "1.5.1"
   }
 }
