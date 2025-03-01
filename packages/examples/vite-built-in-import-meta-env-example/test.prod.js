@@ -22,7 +22,6 @@ module.exports = async () => {
     "BASE_URL: /",
     "PROD: true",
     "DEV: false",
-    `All: {"VITE_PREFIXED_KEY":"${compileTime}","BASE_URL":"/","MODE":"production","DEV":false,"PROD":true}`,
   ].join("\n");
   const url = `http://localhost:${port}`;
   const waitMs = 1000;
