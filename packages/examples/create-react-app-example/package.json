@@ -49,7 +49,7 @@
     "style-loader": "4.0.0",
     "tailwindcss": "4.0.9",
     "terser-webpack-plugin": "5.3.12",
-    "web-vitals": "2.1.4",
+    "web-vitals": "4.2.4",
     "webpack": "5.98.0",
     "webpack-dev-server": "4.15.2",
     "webpack-manifest-plugin": "4.1.1",
