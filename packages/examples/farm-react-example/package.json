@@ -10,15 +10,15 @@
     "clean": "farm clean"
   },
   "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@farmfe/cli": "1.0.4",
     "@farmfe/core": "1.6.6",
     "@farmfe/plugin-react": "1.2.6",
-    "@types/react": "18.3.18",
-    "@types/react-dom": "18.3.5",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "core-js": "3.41.0",
     "cross-env": "7.0.3",
     "react-refresh": "0.16.0"
