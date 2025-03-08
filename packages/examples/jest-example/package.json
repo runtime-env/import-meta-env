@@ -9,10 +9,10 @@
     "@babel/core": "7.26.9",
     "@babel/preset-env": "7.26.9",
     "@babel/preset-typescript": "7.26.0",
-    "@types/jest": "27.5.2",
-    "babel-jest": "27.5.1",
+    "@types/jest": "29.5.14",
+    "babel-jest": "29.7.0",
     "cross-env": "7.0.3",
-    "jest": "27.5.1",
+    "jest": "29.7.0",
     "typescript": "5.8.2"
   }
 }
