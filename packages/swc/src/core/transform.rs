@@ -7,7 +7,6 @@ use swc_core::{
             BinExpr, BinaryOp, CallExpr, Callee, Expr, ExprOrSpread, Ident, IdentName, Lit,
             MemberExpr, MemberProp, MetaPropKind, Null, Str,
         },
-        atoms::js_word,
         visit::{VisitMut, VisitMutWith},
     },
 };
@@ -105,7 +104,7 @@ fn create_accessor_expr() -> Expr {
     Expr::Call(CallExpr {
         callee: Callee::Expr(Box::new(Expr::Member(MemberExpr {
             obj: Box::new(Expr::Ident(Ident {
-                sym: js_word!("Object"),
+                sym: Atom::from("Object"),
                 optional: false,
                 span: DUMMY_SP,
                 ctxt: SyntaxContext::empty(),
