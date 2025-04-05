@@ -157,7 +157,6 @@ jobs:
           - "angular-webpack-example"
           - "babel-starter-example"
           - "create-next-app-example"
-          - "create-react-app-example"
           - "create-vue-app-example"
           - "cypress-example"
           - "docker-compose-starter-example"
