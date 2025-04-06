@@ -8,7 +8,7 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && vite preview"
   },
   "devDependencies": {
-    "@types/node": "22.13.10",
+    "@types/node": "22.14.0",
     "cross-env": "7.0.3",
     "typescript": "5.8.2",
     "vite": "6.2.0"
