@@ -17,7 +17,7 @@
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@babel/core": "7.26.9",
+    "@babel/core": "7.26.10",
     "@babel/preset-react": "7.26.3",
     "@nx/cypress": "20.5.0",
     "@nx/eslint": "20.5.0",
