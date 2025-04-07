@@ -252,8 +252,8 @@ importers:
         specifier: 6.2.0
         version: 6.2.0(@types/node@22.14.0)(terser@5.31.2)(yaml@2.7.1)
       webpack:
-        specifier: 5.99.0
-        version: 5.99.0(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)
+        specifier: 5.99.1
+        version: 5.99.1(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)
 
 packages:
 
@@ -4723,8 +4723,8 @@ packages:
   webpack-virtual-modules@0.6.2:
     resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
 
-  webpack@5.99.0:
-    resolution: {integrity: sha512-//MpHjkKV7dhKheJ1lJuHkR6tv8ycfYy7YVzVhhIpwKuKCu5/Zty/vGpFi0fV2RRAWTYDuj6oKn4vYyLzRh55g==}
+  webpack@5.99.1:
+    resolution: {integrity: sha512-o9gY7ibHPFxLjF6NtvQ6+5CGknsPTRllsL6SEnqR2Zhjk02hiIioJYLS7dvrWaykrRbbmhvDeKp36mKHNbKYiw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -9484,14 +9484,14 @@ snapshots:
 
   term-size@2.2.1: {}
 
-  terser-webpack-plugin@5.3.11(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)(webpack@5.99.0(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)):
+  terser-webpack-plugin@5.3.11(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)(webpack@5.99.1(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 4.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.2
-      webpack: 5.99.0(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)
+      webpack: 5.99.1(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)
     optionalDependencies:
       '@swc/core': 1.11.16(@swc/helpers@0.5.12)
       esbuild: 0.25.2
@@ -9767,7 +9767,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.99.0(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2):
+  webpack@5.99.1(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.7
@@ -9789,7 +9789,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.11(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)(webpack@5.99.0(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2))
+      terser-webpack-plugin: 5.3.11(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2)(webpack@5.99.1(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.2))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
