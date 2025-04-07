@@ -6,7 +6,7 @@
   "devDependencies": {
     "chai": "5.2.0",
     "commander": "13.1.0",
-    "express": "4.21.2",
+    "express": "5.1.0",
     "picocolors": "1.1.1",
     "portfinder": "1.0.35",
     "puppeteer": "24.6.0"
