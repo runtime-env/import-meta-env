@@ -43,7 +43,7 @@
     "ts-node": "10.9.2",
     "typescript": "5.8.2",
     "vite": "6.2.0",
-    "webpack": "5.99.3"
+    "webpack": "5.99.4"
   },
   "dependencies": {
     "dotenv": "16.4.7",
