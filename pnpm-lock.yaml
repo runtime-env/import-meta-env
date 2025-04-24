@@ -124,8 +124,8 @@ importers:
         specifier: 16.4.7
         version: 16.4.7
       glob:
-        specifier: 11.0.1
-        version: 11.0.1
+        specifier: 11.0.2
+        version: 11.0.2
       picocolors:
         specifier: 1.1.1
         version: 1.1.1
@@ -171,8 +171,8 @@ importers:
         specifier: 16.4.7
         version: 16.4.7
       glob:
-        specifier: 11.0.1
-        version: 11.0.1
+        specifier: 11.0.2
+        version: 11.0.2
       picocolors:
         specifier: 1.1.1
         version: 1.1.1
@@ -3113,8 +3113,8 @@ packages:
   glob-to-regexp@0.4.1:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
 
-  glob@11.0.1:
-    resolution: {integrity: sha512-zrQDm8XPnYEKawJScsnM0QzobJxlT/kHOOlRTio8IH/GrmxRE5fjllkzdaHclIuNjUQTJYH2xHNIGfdpJkDJUw==}
+  glob@11.0.2:
+    resolution: {integrity: sha512-YT7U7Vye+t5fZ/QMkBFrTJ7ZQxInIUjwyAjVj84CYXqgBdv30MFUPGnBR6sQaVq6Is15wYJUsnzTuWaGRBhBAQ==}
     engines: {node: 20 || >=22}
     hasBin: true
 
@@ -8007,7 +8007,7 @@ snapshots:
 
   glob-to-regexp@0.4.1: {}
 
-  glob@11.0.1:
+  glob@11.0.2:
     dependencies:
       foreground-child: 3.2.1
       jackspeak: 4.0.1
@@ -9230,7 +9230,7 @@ snapshots:
 
   rimraf@6.0.1:
     dependencies:
-      glob: 11.0.1
+      glob: 11.0.2
       package-json-from-dist: 1.0.0
 
   rollup@4.39.0:
