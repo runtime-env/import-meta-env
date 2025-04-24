@@ -58,7 +58,7 @@
     "stylus-loader": "8.1.1",
     "ts-jest": "29.3.2",
     "ts-node": "10.9.2",
-    "typescript": "5.7.3",
+    "typescript": "5.8.3",
     "url-loader": "4.1.1",
     "webpack": "5.99.6",
     "webpack-merge": "6.0.1"
