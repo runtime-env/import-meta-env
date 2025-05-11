@@ -10,7 +10,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "core-js": "3.41.0",
+    "core-js": "3.42.0",
     "cross-env": "7.0.3",
     "nuxt": "3.16.2"
   },
