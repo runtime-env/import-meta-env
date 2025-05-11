@@ -17,8 +17,8 @@
     "@farmfe/cli": "1.0.4",
     "@farmfe/core": "1.7.4",
     "@farmfe/plugin-react": "1.2.6",
-    "@types/react": "18.3.20",
-    "@types/react-dom": "18.3.6",
+    "@types/react": "18.3.21",
+    "@types/react-dom": "18.3.7",
     "core-js": "3.41.0",
     "cross-env": "7.0.3",
     "react-refresh": "0.17.0"
