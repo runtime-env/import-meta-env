@@ -10,7 +10,7 @@
     "preview": "echo HELLO=import-meta-env > .env && import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
   },
   "devDependencies": {
-    "@swc/core": "1.11.24",
+    "@swc/core": "1.11.29",
     "concurrently": "9.1.2",
     "cross-env": "7.0.3",
     "html-webpack-plugin": "5.6.3",
