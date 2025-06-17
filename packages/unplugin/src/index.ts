@@ -160,7 +160,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (options, meta) => {
     },
 
     transformInclude(id) {
-      const include = [/\.[jt]sx?$/, /\.vue$/, /\.vue\?(vue)/, /\.svelte$/];
+      const include = [/\.[jt]sx?(\?.*)?$/, /\.vue$/, /\.vue\?(vue)/, /\.svelte$/];
       const exclude = [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/];
       const shouldInclude =
         include.some((re) => re.test(id)) &&
