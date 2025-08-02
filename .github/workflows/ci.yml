@@ -270,6 +270,7 @@ jobs:
           cache: "pnpm"
 
       - name: Publish
+        if: github.repository == 'runtime-env/import-meta-env'
         uses: JS-DevTools/npm-publish@v3
         id: publish
         with:
