@@ -14,7 +14,7 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@farmfe/cli": "1.0.4",
+    "@farmfe/cli": "1.0.5",
     "@farmfe/core": "1.7.5",
     "@farmfe/plugin-react": "1.2.6",
     "@types/react": "18.3.23",
