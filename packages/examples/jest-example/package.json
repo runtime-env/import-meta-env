@@ -6,8 +6,8 @@
     "test": "cross-env HELLO=import-meta-env jest --no-cache ./**/*.test.ts"
   },
   "devDependencies": {
-    "@babel/core": "7.28.0",
-    "@babel/preset-env": "7.28.0",
+    "@babel/core": "7.28.3",
+    "@babel/preset-env": "7.28.3",
     "@babel/preset-typescript": "7.27.1",
     "@types/jest": "29.5.14",
     "babel-jest": "29.7.0",
