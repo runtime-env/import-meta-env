@@ -72,8 +72,8 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
       vitepress:
-        specifier: 1.6.3
-        version: 1.6.3(@algolia/client-search@5.20.0)(@types/node@22.15.17)(change-case@5.4.4)(postcss@8.5.3)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.8.2)
+        specifier: 1.6.4
+        version: 1.6.4(@algolia/client-search@5.20.0)(@types/node@22.15.17)(change-case@5.4.4)(postcss@8.5.3)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.8.2)
       yaml:
         specifier: 2.7.1
         version: 2.7.1
@@ -4749,8 +4749,8 @@ packages:
       yaml:
         optional: true
 
-  vitepress@1.6.3:
-    resolution: {integrity: sha512-fCkfdOk8yRZT8GD9BFqusW3+GggWYZ/rYncOfmgcDtP3ualNHCAg+Robxp2/6xfH1WwPHtGpPwv7mbA3qomtBw==}
+  vitepress@1.6.4:
+    resolution: {integrity: sha512-+2ym1/+0VVrbhNyRoFFesVvBvHAVMZMK0rw60E3X/5349M1GuVdKeazuksqopEdvkKwKGs21Q729jX81/bkBJg==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -6923,7 +6923,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.28.0
+      '@babel/parser': 7.28.3
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -6936,7 +6936,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.28.0
+      '@babel/parser': 7.28.3
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -9808,7 +9808,7 @@ snapshots:
       terser: 5.31.2
       yaml: 2.7.1
 
-  vitepress@1.6.3(@algolia/client-search@5.20.0)(@types/node@22.15.17)(change-case@5.4.4)(postcss@8.5.3)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.8.2):
+  vitepress@1.6.4(@algolia/client-search@5.20.0)(@types/node@22.15.17)(change-case@5.4.4)(postcss@8.5.3)(search-insights@2.15.0)(terser@5.31.2)(typescript@5.8.2):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.20.0)(search-insights@2.15.0)
