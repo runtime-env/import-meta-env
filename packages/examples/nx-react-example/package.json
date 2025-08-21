@@ -55,7 +55,7 @@
     "react-refresh": "0.17.0",
     "style-loader": "4.0.0",
     "stylus": "0.64.0",
-    "stylus-loader": "8.1.1",
+    "stylus-loader": "8.1.2",
     "ts-jest": "29.3.4",
     "ts-node": "10.9.2",
     "typescript": "5.7.3",
