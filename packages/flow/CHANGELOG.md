@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.1](https://github.com/runtime-env/import-meta-env/compare/flow0.2.0...flow0.2.1) (2025-09-22)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#1788](https://github.com/runtime-env/import-meta-env/issues/1788)) ([6f42d9e](https://github.com/runtime-env/import-meta-env/commit/6f42d9e97ff8c04940b1c0df285e0704b2719517))
+* **deps:** update dependency dotenv to v16.5.0 ([#2087](https://github.com/runtime-env/import-meta-env/issues/2087)) ([23b9f43](https://github.com/runtime-env/import-meta-env/commit/23b9f4349d44b95293253ac73d4c78e767d862c6))
+
 ## [0.2.0](https://github.com/runtime-env/import-meta-env/compare/flow0.1.4...flow0.2.0) (2024-09-01)
 
 
