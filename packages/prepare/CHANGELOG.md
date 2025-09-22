@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.3](https://github.com/runtime-env/import-meta-env/compare/prepare0.2.2...prepare0.2.3) (2025-09-22)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#1788](https://github.com/runtime-env/import-meta-env/issues/1788)) ([6f42d9e](https://github.com/runtime-env/import-meta-env/commit/6f42d9e97ff8c04940b1c0df285e0704b2719517))
+* **deps:** update dependency dotenv to v16.5.0 ([#2087](https://github.com/runtime-env/import-meta-env/issues/2087)) ([23b9f43](https://github.com/runtime-env/import-meta-env/commit/23b9f4349d44b95293253ac73d4c78e767d862c6))
+* **deps:** update dependency glob to v11.0.2 ([#2055](https://github.com/runtime-env/import-meta-env/issues/2055)) ([4a60458](https://github.com/runtime-env/import-meta-env/commit/4a60458735c70a3bb78cc357c6029228c8a56112))
+
 ## [0.2.2](https://github.com/runtime-env/import-meta-env/compare/prepare0.2.1...prepare0.2.2) (2025-01-24)
 
 
