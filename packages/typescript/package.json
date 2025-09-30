@@ -31,7 +31,7 @@
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/typescript#readme",
   "devDependencies": {
     "@types/node": "22.15.17",
-    "typescript": "5.8.2"
+    "typescript": "5.9.3"
   },
   "dependencies": {
     "commander": "13.1.0",
