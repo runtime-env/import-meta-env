@@ -13,7 +13,7 @@ $ npm i -D @import-meta-env/typescript
 ## Usage
 
 ```bash
-$ npx import-meta-env-typescript -x .env.example
+$ npx @import-meta-env/typescript -x .env.example
 ```
 
 By default, when running above command, the CLI will create an `import-meta-env.d.ts` file in your project root:
