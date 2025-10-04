@@ -212,15 +212,10 @@ jobs:
         with:
           filters: |
             src:
-              - packages/babel/**
-              - packages/cli/**
-              - packages/flow/**
-              - packages/prepare/**
-              - packages/swc/**
-              - packages/typescript/**
-              - packages/unplugin/**
-              - packages/examples/_/**
-              - packages/examples/${{ matrix.example }}/**
+              - '**'
+              - '!packages/examples/**'
+              - 'packages/examples/_/**'
+              - 'packages/examples/${{ matrix.example }}/**'
 
       - uses: actions/download-artifact@v4
         if: steps.changes.outputs.src == 'true'
