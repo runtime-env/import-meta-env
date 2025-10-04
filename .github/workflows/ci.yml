@@ -212,7 +212,6 @@ jobs:
         with:
           filters: |
             src:
-              - '**'
               - '!packages/examples/**'
               - 'packages/examples/_/**'
               - 'packages/examples/${{ matrix.example }}/**'
