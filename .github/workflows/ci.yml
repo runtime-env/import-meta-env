@@ -242,7 +242,7 @@ jobs:
       - name: Test example
         if: steps.changes.outputs.src == 'true'
         run: |
-          cd ${{ matrix.example }}
+          cd packages/examples/${{ matrix.example }}
           npm ci
           npm run _test
 
