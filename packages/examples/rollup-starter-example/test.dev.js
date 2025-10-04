@@ -1,4 +1,4 @@
-const runTest = require("../run-test");
+const runTest = require("../_/run-test");
 const getPort = require("../_/get-port");
 
 module.exports = async () => {
