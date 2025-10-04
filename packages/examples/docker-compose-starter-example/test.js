@@ -8,11 +8,11 @@ const colors = require("picocolors");
   const hello = Math.random();
   copyFileSync(
     "../../cli/import-meta-env-cli-test.tgz",
-    "./import-meta-env-cli-test.tgz"
+    "./import-meta-env-cli-test.tgz",
   );
   copyFileSync(
     "../../unplugin/import-meta-env-unplugin-test.tgz",
-    "./import-meta-env-unplugin-test.tgz"
+    "./import-meta-env-unplugin-test.tgz",
   );
   copyFileSync("../_/run-test.js", "./run-test.js");
   const runTest = require("./run-test");
