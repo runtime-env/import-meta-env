@@ -22,7 +22,7 @@
     "@vitejs/plugin-react": "4.4.1",
     "cross-env": "7.0.3",
     "cypress": "14.1.0",
-    "typescript": "5.8.2",
+    "typescript": "5.9.3",
     "vite": "6.2.0"
   }
 }
