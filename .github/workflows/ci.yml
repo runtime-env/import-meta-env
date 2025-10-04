@@ -111,30 +111,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Only run if changed
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            src:
+              - '!packages/examples/**'
+
       - name: Install pnpm
+        if: steps.changes.outputs.src == 'true'
         uses: pnpm/action-setup@v2
 
       - name: Install node
+        if: steps.changes.outputs.src == 'true'
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: "pnpm"
 
       - name: Install Rust
+        if: steps.changes.outputs.src == 'true'
         uses: dtolnay/rust-toolchain@stable
         with:
           target: wasm32-wasip1
 
       - name: Cache Rust
+        if: steps.changes.outputs.src == 'true'
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: |
             packages/swc
 
       - name: Install dependencies
+        if: steps.changes.outputs.src == 'true'
         run: pnpm i --frozen-lockfile
 
       - name: Test packages
+        if: steps.changes.outputs.src == 'true'
         run: pnpm run test
 
   npm-node-lts-examples:
@@ -266,20 +280,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Only run if changed
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'packages/${{ matrix.package }}/**'
+
       - uses: actions/download-artifact@v4
+        if: steps.changes.outputs.src == 'true'
         with:
           name: artifact
 
       - name: Install pnpm
+        if: steps.changes.outputs.src == 'true'
         uses: pnpm/action-setup@v2
 
       - name: Install node
+        if: steps.changes.outputs.src == 'true'
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: "pnpm"
 
       - name: Publish
+        if: steps.changes.outputs.src == 'true'
         uses: JS-DevTools/npm-publish@v3
         id: publish
         with:
