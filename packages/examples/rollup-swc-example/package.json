@@ -16,6 +16,7 @@
     "@swc/core": "1.11.29",
     "concurrently": "9.1.2",
     "cross-env": "7.0.3",
+    "picocolors": "1.1.1",
     "rimraf": "6.0.1",
     "rollup": "4.40.2",
     "unplugin-swc": "1.5.3"
