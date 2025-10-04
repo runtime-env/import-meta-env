@@ -1,5 +1,5 @@
 const childProcess = require("child_process");
-const getPort = require("../get-port");
+const getPort = require("../_/get-port");
 
 module.exports = async () => {
   const port = await getPort();
@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../unplugin/import-meta-env-unplugin-test.tgz",
   ];
   commands.forEach((command) =>
-    childProcess.execSync(command, { stdio: "inherit" }),
+    childProcess.execSync(command, { stdio: "inherit" })
   );
 
   const childProcessList = [];
@@ -29,12 +29,12 @@ module.exports = async () => {
         if (error) throw error;
         console.log(stdout);
         console.error(stderr);
-      }),
-    ),
+      })
+    )
   );
 
   childProcess.execSync(
     `cross-env PORT=${port} cypress run --e2e --env HELLO=${hello}`,
-    { stdio: "inherit" },
+    { stdio: "inherit" }
   );
 };

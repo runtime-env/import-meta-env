@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import importMetaEnv from "@import-meta-env/unplugin";
-import createSharedViteConfig from "../shared-vite-config.mjs";
+import createSharedViteConfig from "../_/shared-vite-config.mjs";
 
 const assetsDir = "custom-assets-dir";
 

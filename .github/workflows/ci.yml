@@ -219,6 +219,7 @@ jobs:
               - packages/swc/**
               - packages/typescript/**
               - packages/unplugin/**
+              - packages/examples/_/**
               - packages/examples/${{ matrix.example }}/**
 
       - uses: actions/download-artifact@v4
@@ -232,10 +233,10 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Test packages/examples
+      - name: Install dependencies
         if: steps.changes.outputs.src == 'true'
         run: |
-          cd packages/examples
+          cd packages/examples/_
           npm ci
 
       - name: Test example

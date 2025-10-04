@@ -1,5 +1,5 @@
 const runTest = require("../run-test");
-const getPort = require("../get-port");
+const getPort = require("../_/get-port");
 
 module.exports = async () => {
   const port = await getPort();
@@ -19,8 +19,8 @@ module.exports = async () => {
     `cd app2 && npx cross-env NODE_ENV=production webpack`,
   ];
   const longRunningCommands = [
-    `node ../serve.js -d app2/dist -p ${port2}`,
-    `node ../serve.js -d app1/dist -p ${port}`,
+    `node ../_/serve.js -d app2/dist -p ${port2}`,
+    `node ../_/serve.js -d app1/dist -p ${port}`,
   ];
   const expected = `Hello: ${hello}\nHello2: ${hello2}`;
   const url = `http://localhost:${port}`;

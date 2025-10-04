@@ -1,5 +1,5 @@
 const runTest = require("../run-test");
-const getPort = require("../get-port");
+const getPort = require("../_/get-port");
 
 module.exports = async () => {
   const port = await getPort();
@@ -12,7 +12,7 @@ module.exports = async () => {
     "npx cross-env NODE_ENV=production webpack",
     `npx cross-env HELLO=${hello} JSON={\\\"hello\\\":\\\"${hello}\\\"} npx import-meta-env -x .env.example.public`,
   ];
-  const longRunningCommands = [`node ../serve.js -d dist -p ${port}`];
+  const longRunningCommands = [`node ../_/serve.js -d dist -p ${port}`];
   const expected = `Hello: ${hello}\nJSON: {"hello":"${hello}"}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;

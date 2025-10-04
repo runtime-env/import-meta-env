@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import createSharedViteConfig from "../shared-vite-config.mjs";
+import createSharedViteConfig from "../_/shared-vite-config.mjs";
 import swc from "unplugin-swc";
 
 // https://vitejs.dev/config/

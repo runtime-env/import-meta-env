@@ -6,7 +6,7 @@
     "_test": "node test.js",
     "dev": "cross-env HELLO=import-meta-env JSON={\\\"hello\\\":\\\"import-meta-env\\\"} PORT=8082 rspack serve",
     "build": "rspack build",
-    "preview": "cross-env HELLO=import-meta-env JSON={\\\"hello\\\":\\\"import-meta-env\\\"} import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env JSON={\\\"hello\\\":\\\"import-meta-env\\\"} import-meta-env -x .env.example.public && node ../_/serve.js -d dist -p 4173"
   },
   "dependencies": {
     "react": "18.3.1",

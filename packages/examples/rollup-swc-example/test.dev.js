@@ -1,5 +1,5 @@
 const runTest = require("../run-test");
-const getPort = require("../get-port");
+const getPort = require("../_/get-port");
 
 module.exports = async () => {
   const port = await getPort();
@@ -11,7 +11,7 @@ module.exports = async () => {
     `echo HELLO=${hello}\\\\\\nJSON={\\"hello\\":\\"${hello}\\"} > .env`,
     `npx cross-env NODE_ENV=development rollup -c`,
   ];
-  const longRunningCommands = [`node ../serve.js -d public -p ${port}`];
+  const longRunningCommands = [`node ../_/serve.js -d public -p ${port}`];
   const expected = `Hello: ${hello}\nJSON: {"hello":"${hello}"}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;
