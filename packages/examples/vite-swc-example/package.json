@@ -11,7 +11,7 @@
     "@swc/core": "1.11.29",
     "cross-env": "7.0.3",
     "rimraf": "6.0.1",
-    "unplugin-swc": "1.5.3",
+    "unplugin-swc": "1.5.7",
     "vite": "6.2.0"
   }
 }
