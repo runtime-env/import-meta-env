@@ -14,7 +14,7 @@
     "preview": "lerna run --parallel preview"
   },
   "devDependencies": {
-    "lerna": "8.2.2",
+    "lerna": "8.2.4",
     "rimraf": "6.0.1"
   }
 }
