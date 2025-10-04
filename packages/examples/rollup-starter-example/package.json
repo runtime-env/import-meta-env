@@ -4,16 +4,17 @@
   "scripts": {
     "_test": "node test.js",
     "dev:watch": "rollup -c -w",
-    "dev:start": "node ../serve.js -d output -p 3000",
+    "dev:start": "node ../_/serve.js -d output -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env concurrently npm:dev:*",
     "build": "rimraf output && cross-env NODE_ENV=production rollup -c",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public -p output/** && node ../serve.js -d output -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public -p output/** && node ../_/serve.js -d output -p 4173"
   },
   "devDependencies": {
     "@rollup/plugin-html": "2.0.0",
     "@rollup/plugin-node-resolve": "16.0.1",
     "concurrently": "9.1.2",
     "cross-env": "7.0.3",
+    "picocolors": "1.1.1",
     "rimraf": "6.0.1",
     "rollup": "4.40.2"
   }

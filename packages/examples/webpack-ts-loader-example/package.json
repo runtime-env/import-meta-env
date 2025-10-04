@@ -4,10 +4,10 @@
   "scripts": {
     "_test": "node test.js",
     "dev:watch": "webpack --watch",
-    "dev:start": "node ../serve.js -d dist -p 3000",
+    "dev:start": "node ../_/serve.js -d dist -p 3000",
     "dev": "rimraf bundle && cross-env HELLO=import-meta-env NODE_ENV=development concurrently npm:dev:*",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack",
-    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && node ../serve.js -d dist -p 4173"
+    "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && node ../_/serve.js -d dist -p 4173"
   },
   "devDependencies": {
     "concurrently": "9.1.2",

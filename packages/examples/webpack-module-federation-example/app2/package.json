@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development PORT2=3002 HELLO2=import-meta-env-2 webpack serve",
     "build": "cross-env NODE_ENV=production webpack",
-    "preview": "node ../../serve.js -d dist -p 4174"
+    "preview": "node ../../_/serve.js -d dist -p 4174"
   },
   "dependencies": {
     "react": "17.0.2",

@@ -1,5 +1,5 @@
 const childProcess = require("child_process");
-const getPort = require("../get-port");
+const getPort = require("../_/get-port");
 
 module.exports = async () => {
   const port = await getPort();

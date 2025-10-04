@@ -1,5 +1,5 @@
-const runTest = require("../run-test");
-const getPort = require("../get-port");
+const runTest = require("../_/run-test");
+const getPort = require("../_/get-port");
 
 module.exports = async () => {
   const port = await getPort();
@@ -10,7 +10,7 @@ module.exports = async () => {
     "npm add ../../babel/import-meta-env-babel-test.tgz",
     `npx cross-env NODE_ENV=development HELLO=${hello} rollup -c`,
   ];
-  const longRunningCommands = [`node ../serve.js -d public -p ${port}`];
+  const longRunningCommands = [`node ../_/serve.js -d public -p ${port}`];
   const expected = `Hello: ${hello}`;
   const url = `http://localhost:${port}`;
   const waitMs = 2000;

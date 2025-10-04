@@ -154,6 +154,7 @@ jobs:
       matrix:
         example:
           - "@vue+cli-example"
+          - "after-using-import-meta-env"
           - "angular-webpack-example"
           - "babel-starter-example"
           - "create-next-app-example"
@@ -205,29 +206,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Only run if changed
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            src:
+              - packages/babel/**
+              - packages/cli/**
+              - packages/flow/**
+              - packages/prepare/**
+              - packages/swc/**
+              - packages/typescript/**
+              - packages/unplugin/**
+              - packages/examples/_/**
+              - packages/examples/${{ matrix.example }}/**
+
       - uses: actions/download-artifact@v4
+        if: steps.changes.outputs.src == 'true'
         with:
           name: artifact
 
       - name: Install node@${{ matrix.node_version }}
+        if: steps.changes.outputs.src == 'true'
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
 
-      - name: Test diff
+      - name: Install dependencies
+        if: steps.changes.outputs.src == 'true'
         run: |
-          cd packages/examples
-          npm i
-          cd ../../diff/after-using-import-meta-env
-          npm i
-          npm run _test
+          cd packages/examples/_
+          npm ci
 
-      - name: Test ${{ matrix.example }}
+      - name: Test example
+        if: steps.changes.outputs.src == 'true'
         run: |
-          cd packages/examples
-          npm i
-          cd ${{ matrix.example }}
-          npm i
+          cd packages/examples/${{ matrix.example }}
+          npm ci
           npm run _test
 
   release:

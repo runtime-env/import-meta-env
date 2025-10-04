@@ -1,5 +1,5 @@
 const childProcess = require("child_process");
-const getPort = require("../get-port");
+const getPort = require("../_/get-port");
 const { copyFileSync, rmSync } = require("fs");
 const colors = require("picocolors");
 
@@ -14,7 +14,7 @@ const colors = require("picocolors");
     "../../unplugin/import-meta-env-unplugin-test.tgz",
     "./import-meta-env-unplugin-test.tgz",
   );
-  copyFileSync("../run-test.js", "./run-test.js");
+  copyFileSync("../_/run-test.js", "./run-test.js");
   const runTest = require("./run-test");
 
   const commands = [];
