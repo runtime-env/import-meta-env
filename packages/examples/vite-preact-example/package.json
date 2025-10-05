@@ -11,7 +11,7 @@
     "preact": "10.26.8"
   },
   "devDependencies": {
-    "@babel/core": "7.27.3",
+    "@babel/core": "7.28.4",
     "@preact/preset-vite": "2.10.2",
     "cross-env": "7.0.3",
     "vite": "6.2.0"
