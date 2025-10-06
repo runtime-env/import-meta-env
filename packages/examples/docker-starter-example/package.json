@@ -10,7 +10,7 @@
     "preview": "cross-env NAME=world import-meta-env -x .env.example && node ../_/serve.js -d dist -p 4173"
   },
   "devDependencies": {
-    "chai": "5.2.0",
+    "chai": "5.3.3",
     "concurrently": "9.1.2",
     "cross-env": "7.0.3",
     "html-webpack-plugin": "5.6.4",
