@@ -11,6 +11,6 @@
     "@babel/register": "7.28.3",
     "cross-env": "7.0.3",
     "expect": "29.7.0",
-    "mocha": "11.2.2"
+    "mocha": "11.7.4"
   }
 }
