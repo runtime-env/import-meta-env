@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/runtime-env/import-meta-env/compare/unplugin0.6.3...unplugin1.0.0) (2025-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** The HMR server now rejects all connections with unrecognized `Origin` headers. Clients need to update their configured ports and hosts if they want external apps to be able to connect to the HMR server.
+
+### Bug Fixes
+
+* **deps:** update dependency magic-string to v0.30.19 ([#2179](https://github.com/runtime-env/import-meta-env/issues/2179)) ([6e9b9c0](https://github.com/runtime-env/import-meta-env/commit/6e9b9c0b5498f511545f44bf33dd60f795873e2a))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @farmfe/core to v1.7.11 ([#2152](https://github.com/runtime-env/import-meta-env/issues/2152)) ([438f6f8](https://github.com/runtime-env/import-meta-env/commit/438f6f83653c521b4b0c71d38c407ab2eef3220e))
+
 ## [0.6.3](https://github.com/runtime-env/import-meta-env/compare/unplugin0.6.2...unplugin0.6.3) (2025-09-22)
 
 
