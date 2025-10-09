@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.41](https://github.com/runtime-env/import-meta-env/compare/swc0.4.40...swc0.4.41) (2025-10-09)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate rust-ini to v0.21.3 ([#2184](https://github.com/runtime-env/import-meta-env/issues/2184)) ([80b1b4f](https://github.com/runtime-env/import-meta-env/commit/80b1b4f71605330f8e1862306b98974300ce2dcd))
+
 ## [0.4.40](https://github.com/runtime-env/import-meta-env/compare/swc0.4.39...swc0.4.40) (2025-09-22)
 
 

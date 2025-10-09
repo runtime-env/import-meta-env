@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.5](https://github.com/runtime-env/import-meta-env/compare/cli0.7.4...cli0.7.5) (2025-10-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v11.0.3 ([#2178](https://github.com/runtime-env/import-meta-env/issues/2178)) ([38f37ab](https://github.com/runtime-env/import-meta-env/commit/38f37ab64ae2e05c77aba96c075baa3c79242edf))
+
 ## [0.7.4](https://github.com/runtime-env/import-meta-env/compare/cli0.7.3...cli0.7.4) (2025-09-22)
 
 
