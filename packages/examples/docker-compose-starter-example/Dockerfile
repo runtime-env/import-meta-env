@@ -11,7 +11,7 @@ RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node18
 
 ###############################################################################
 
-FROM nginx:1.28.0-alpine as production-stage
+FROM nginx:1.29.2-alpine as production-stage
 RUN mkdir /app
 
 COPY --from=build-stage /app/dist /app/dist
