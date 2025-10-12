@@ -29,7 +29,7 @@
     "@angular/cli": "18.2.21",
     "@angular/compiler-cli": "18.2.13",
     "@types/jasmine": "5.1.9",
-    "@types/node": "22.15.17",
+    "@types/node": "22.18.10",
     "cross-env": "7.0.3",
     "jasmine-core": "5.12.0",
     "karma": "6.4.4",
