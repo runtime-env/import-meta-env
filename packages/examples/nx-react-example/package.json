@@ -45,7 +45,7 @@
     "style-loader": "4.0.0",
     "stylus": "0.64.0",
     "stylus-loader": "8.1.2",
-    "ts-jest": "29.3.4",
+    "ts-jest": "29.4.5",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "url-loader": "4.1.1",
