@@ -10,7 +10,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "5.1.1",
     "cross-env": "7.0.3",
-    "svelte": "5.39.11",
+    "svelte": "5.39.12",
     "vite": "6.3.6"
   }
 }
