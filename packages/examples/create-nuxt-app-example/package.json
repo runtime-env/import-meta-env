@@ -12,7 +12,7 @@
   "dependencies": {
     "core-js": "3.46.0",
     "cross-env": "7.0.3",
-    "nuxt": "3.16.2"
+    "nuxt": "3.19.3"
   },
   "devDependencies": {
     "rimraf": "6.0.1"
