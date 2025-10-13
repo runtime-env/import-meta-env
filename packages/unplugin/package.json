@@ -46,7 +46,7 @@
     "webpack": "5.102.1"
   },
   "dependencies": {
-    "dotenv": "16.5.0",
+    "dotenv": "16.6.1",
     "magic-string": "0.30.19",
     "object-hash": "3.0.0",
     "picocolors": "1.1.1",

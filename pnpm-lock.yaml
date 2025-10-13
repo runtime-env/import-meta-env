@@ -42,8 +42,8 @@ importers:
         specifier: 13.1.0
         version: 13.1.0
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       esbuild:
         specifier: 0.25.10
         version: 0.25.10
@@ -84,8 +84,8 @@ importers:
         specifier: 7.27.1
         version: 7.27.1
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       picocolors:
         specifier: 1.1.1
         version: 1.1.1
@@ -121,8 +121,8 @@ importers:
         specifier: 13.1.0
         version: 13.1.0
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       glob:
         specifier: 11.0.3
         version: 11.0.3
@@ -149,8 +149,8 @@ importers:
         specifier: 13.1.0
         version: 13.1.0
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       picocolors:
         specifier: 1.1.1
         version: 1.1.1
@@ -168,8 +168,8 @@ importers:
         specifier: 13.1.0
         version: 13.1.0
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       glob:
         specifier: 11.0.3
         version: 11.0.3
@@ -199,8 +199,8 @@ importers:
         specifier: 13.1.0
         version: 13.1.0
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       picocolors:
         specifier: 1.1.1
         version: 1.1.1
@@ -215,8 +215,8 @@ importers:
   packages/unplugin:
     dependencies:
       dotenv:
-        specifier: 16.5.0
-        version: 16.5.0
+        specifier: 16.6.1
+        version: 16.6.1
       magic-string:
         specifier: 0.30.19
         version: 0.30.19
@@ -2702,8 +2702,8 @@ packages:
     resolution: {integrity: sha512-8NHi73otpWsZGBSZwwknTXS5pqMOrk9+Ssrna8xCaxkzEpU9OTf9R5ArQGVw03//Zmk9MOwLPng9WwndvpAJ5g==}
     engines: {node: '>=12'}
 
-  dotenv@16.5.0:
-    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
     engines: {node: '>=12'}
 
   dotgitignore@2.1.0:
@@ -6113,7 +6113,7 @@ snapshots:
       '@swc/helpers': 0.5.12
       chokidar: 3.6.0
       deepmerge: 4.3.1
-      dotenv: 16.5.0
+      dotenv: 16.6.1
       dotenv-expand: 11.0.6
       execa: 7.2.0
       farm-browserslist-generator: 1.0.5
@@ -7568,9 +7568,9 @@ snapshots:
 
   dotenv-expand@11.0.6:
     dependencies:
-      dotenv: 16.5.0
+      dotenv: 16.6.1
 
-  dotenv@16.5.0: {}
+  dotenv@16.6.1: {}
 
   dotgitignore@2.1.0:
     dependencies:
