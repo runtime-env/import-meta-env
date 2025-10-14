@@ -230,7 +230,7 @@ jobs:
               - 'packages/examples/_/**'
               - 'packages/examples/${{ matrix.example }}/**'
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         if: steps.changes.outputs.src == 'true'
         with:
           name: artifact
@@ -288,7 +288,7 @@ jobs:
             src:
               - 'packages/${{ matrix.package }}/**'
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         if: steps.changes.outputs.src == 'true'
         with:
           name: artifact
@@ -331,7 +331,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: artifact
 
