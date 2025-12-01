@@ -305,7 +305,7 @@ jobs:
           cache: "pnpm"
 
       - name: Publish
-        if: steps.changes.outputs.src == 'true'
+        if: ${{ github.ref_name == 'main' && steps.changes.outputs.src == 'true' }}
         uses: JS-DevTools/npm-publish@v3
         id: publish
         with:
