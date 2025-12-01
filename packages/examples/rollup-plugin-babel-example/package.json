@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "rollup-starter-example",
+  "name": "rollup-plugin-babel-example",
   "scripts": {
     "_test": "node test.js",
     "dev:watch": "rollup -c -w",

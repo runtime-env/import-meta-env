@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "webpack-starter-example",
+  "name": "worker-example",
   "scripts": {
     "_test": "node test.js",
     "dev:watch": "webpack --watch",
