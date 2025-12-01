@@ -57,7 +57,6 @@ $ npm i -D dotenv
 ```
 
 - During development and testing:
-
   1. Define environment variables:
 
      ```ini
@@ -100,7 +99,6 @@ $ npm i -D dotenv
      ```
 
 - During production:
-
   1. Install and setup [compile-time transform plugin](/guide/getting-started/compile-time-transform.html)s.
 
      ```sh
