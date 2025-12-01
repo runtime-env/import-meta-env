@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/runtime-env/import-meta-env/tree/main/packages/prepare#readme",
   "devDependencies": {
-    "@types/glob": "8.1.0",
     "@types/serialize-javascript": "5.0.4"
   },
   "dependencies": {
