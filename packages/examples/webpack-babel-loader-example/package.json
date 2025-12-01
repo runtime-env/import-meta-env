@@ -8,8 +8,8 @@
     "populate": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public"
   },
   "devDependencies": {
-    "@babel/core": "7.28.4",
-    "@babel/preset-env": "7.28.3",
+    "@babel/core": "7.28.5",
+    "@babel/preset-env": "7.28.5",
     "babel-loader": "10.0.0",
     "concurrently": "9.2.1",
     "cross-env": "7.0.3",
