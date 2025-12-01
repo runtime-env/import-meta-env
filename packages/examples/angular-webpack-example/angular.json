@@ -64,16 +64,16 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-webpack-example:build:production"
+              "buildTarget": "angular-webpack-example:build:production"
             },
             "development": {
-              "browserTarget": "angular-webpack-example:build:development"
+              "buildTarget": "angular-webpack-example:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
             "buildTarget": "angular-webpack-example:build"
           }
