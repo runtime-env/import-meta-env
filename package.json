@@ -34,7 +34,7 @@
     "picocolors": "1.1.1",
     "prettier": "3.7.3",
     "rimraf": "6.0.1",
-    "sitemap": "8.0.0",
+    "sitemap": "8.0.2",
     "standard-version": "9.5.0",
     "tmp": "0.2.5",
     "typescript": "5.9.3",
