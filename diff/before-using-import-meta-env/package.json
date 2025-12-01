@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "import-meta-env-demo",
+  "name": "import-meta-env-demo-before-using-import-meta-env",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
