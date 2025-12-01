@@ -7,8 +7,8 @@
   },
   "devDependencies": {
     "@babel/cli": "7.28.3",
-    "@babel/core": "7.28.4",
-    "@babel/preset-env": "7.28.3",
+    "@babel/core": "7.28.5",
+    "@babel/preset-env": "7.28.5",
     "chai": "6.2.0",
     "concurrently": "9.2.1",
     "cross-env": "7.0.3",

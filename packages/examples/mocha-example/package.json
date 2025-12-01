@@ -6,8 +6,8 @@
     "test": "cross-env HELLO=import-meta-env mocha"
   },
   "devDependencies": {
-    "@babel/core": "7.28.4",
-    "@babel/preset-env": "7.28.3",
+    "@babel/core": "7.28.5",
+    "@babel/preset-env": "7.28.5",
     "@babel/register": "7.28.3",
     "cross-env": "7.0.3",
     "expect": "29.7.0",
