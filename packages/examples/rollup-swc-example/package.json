@@ -19,6 +19,6 @@
     "picocolors": "1.1.1",
     "rimraf": "6.0.1",
     "rollup": "4.52.4",
-    "unplugin-swc": "1.5.7"
+    "unplugin-swc": "1.5.9"
   }
 }
