@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "dotenv": "16.6.1",
-    "magic-string": "0.30.19",
+    "magic-string": "0.30.21",
     "object-hash": "3.0.0",
     "picocolors": "1.1.1",
     "unplugin": "2.3.10"
