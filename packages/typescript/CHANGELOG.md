@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.2](https://github.com/runtime-env/import-meta-env/compare/typescript0.4.1...typescript0.4.2) (2025-12-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency dotenv to v16.6.1 ([#2224](https://github.com/runtime-env/import-meta-env/issues/2224)) ([c04b410](https://github.com/runtime-env/import-meta-env/commit/c04b4105251f8302a8e6bb4a43bcba935aabaaef))
+
 ## [0.4.1](https://github.com/runtime-env/import-meta-env/compare/typescript0.4.0...typescript0.4.1) (2025-09-22)
 
 

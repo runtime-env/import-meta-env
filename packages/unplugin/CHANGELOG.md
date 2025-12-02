@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/runtime-env/import-meta-env/compare/unplugin0.6.3...unplugin1.0.0) (2025-12-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** The HMR server now rejects all connections with unrecognized `Origin` headers. Clients need to update their configured ports and hosts if they want external apps to be able to connect to the HMR server.
+
+### Bug Fixes
+
+* **deps:** update dependency dotenv to v16.6.1 ([#2224](https://github.com/runtime-env/import-meta-env/issues/2224)) ([c04b410](https://github.com/runtime-env/import-meta-env/commit/c04b4105251f8302a8e6bb4a43bcba935aabaaef))
+* **deps:** update dependency magic-string to v0.30.19 ([#2179](https://github.com/runtime-env/import-meta-env/issues/2179)) ([6e9b9c0](https://github.com/runtime-env/import-meta-env/commit/6e9b9c0b5498f511545f44bf33dd60f795873e2a))
+* **deps:** update dependency magic-string to v0.30.21 ([#2263](https://github.com/runtime-env/import-meta-env/issues/2263)) ([befa6bb](https://github.com/runtime-env/import-meta-env/commit/befa6bbcee8bd716c2acd1c1bbefe8032dc5c79a))
+* **deps:** update dependency unplugin to v2.3.10 ([#2231](https://github.com/runtime-env/import-meta-env/issues/2231)) ([04985c3](https://github.com/runtime-env/import-meta-env/commit/04985c37fef19ae6017c2a793fb3ab5d5b3029a0))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @farmfe/core to v1.7.11 ([#2152](https://github.com/runtime-env/import-meta-env/issues/2152)) ([438f6f8](https://github.com/runtime-env/import-meta-env/commit/438f6f83653c521b4b0c71d38c407ab2eef3220e))
+
 ## [0.6.3](https://github.com/runtime-env/import-meta-env/compare/unplugin0.6.2...unplugin0.6.3) (2025-09-22)
 
 
