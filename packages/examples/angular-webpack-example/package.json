@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "20.0.0",
-    "@angular/build": "20.3.12",
-    "@angular/cli": "20.3.12",
+    "@angular/build": "21.0.2",
+    "@angular/cli": "21.0.2",
     "@angular/compiler-cli": "20.3.14",
     "@types/jasmine": "5.1.13",
     "@types/node": "22.18.10",
