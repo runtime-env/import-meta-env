@@ -4,12 +4,15 @@ import colors from "picocolors";
 import { version } from "../package.json";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
 import { defaultOutput } from "./shared";
+import { DEFAULT_ACCESSOR_KEY } from "../../shared/constant";
 
 export interface Args {
   env: string;
   example: string;
   path: string[];
   disposable: boolean;
+  generate?: string;
+  accessorKey: string;
 }
 
 export const createCommand = () =>
@@ -43,6 +46,15 @@ export const createCommand = () =>
     .option(
       "--disposable",
       "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files.",
+    )
+    .option(
+      "-g, --generate <filepath>",
+      "Generate a standalone JavaScript file containing environment variables instead of replacing placeholders in existing files.",
+    )
+    .option(
+      "-k, --accessor-key <key>",
+      "The global variable key used to access environment variables (e.g., globalThis.<key>).",
+      DEFAULT_ACCESSOR_KEY,
     )
     .action((args: Args) => {
       args = { ...args };

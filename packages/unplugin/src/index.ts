@@ -92,7 +92,10 @@ export const unpluginFactory: UnpluginFactory<Options> = (options, meta) => {
         debug && console.debug(html);
         debug && console.debug("==================");
 
-        html = html.replace(createAccessorRegExp(""), "import.meta.env");
+        html = html.replace(
+          createAccessorRegExp("", "double", options?.accessorKey),
+          "import.meta.env",
+        );
 
         debug && console.debug("=== index.html after ===");
         debug && console.debug(html);
@@ -206,6 +209,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (options, meta) => {
           example: envExampleKeys,
           meta,
           viteConfig,
+          accessorKey: options?.accessorKey,
         });
 
         debug && console.debug("=== after ===");
