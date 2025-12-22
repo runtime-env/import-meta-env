@@ -28,8 +28,8 @@ export interface PluginOptions {
    *
    * @default "import_meta_env"
    * @example
-   * // With accessorKey: "my_env", the plugin transforms:
-   * // import.meta.env.API_URL -> Object.create(globalThis.my_env || null).API_URL
+   *  With accessorKey: "my_env", the plugin transforms:
+   *  import.meta.env.API_URL -> Object.create(globalThis.my_env || null).API_URL
    */
   accessorKey?: string;
 }

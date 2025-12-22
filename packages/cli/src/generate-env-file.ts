@@ -5,7 +5,7 @@ import { DEFAULT_ACCESSOR_KEY } from "../../shared/constant";
 
 const generateEnvContent = (
   env: Record<string, string>,
-  accessorKey: string,
+  accessorKey: string
 ): string => {
   return `globalThis.${accessorKey} = ${serialize(env)};
 `;
@@ -43,10 +43,7 @@ export const prependEnvToFile = ({
     throw new Error(`File not found: ${filePath}`);
   }
 
-  // Read existing file content
   const existingContent = readFileSync(filePath, "utf8");
-
-  // Generate the env content to prepend
   const envContent = generateEnvContent(env, accessorKey);
 
   // Prepend env content to existing file
