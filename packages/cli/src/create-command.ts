@@ -12,6 +12,7 @@ export interface Args {
   path: string[];
   disposable: boolean;
   generate?: string;
+  prepend?: string;
   accessorKey: string;
 }
 
@@ -52,6 +53,10 @@ export const createCommand = () =>
       "Generate a standalone JavaScript file containing environment variables instead of replacing placeholders in existing files.",
     )
     .option(
+      "--prepend <filepath>",
+      "Prepend environment variables to an existing JavaScript file (e.g., remoteEntry.js). The globalThis.<key> assignment will be inserted at the beginning of the file.",
+    )
+    .option(
       "-k, --accessor-key <key>",
       "The global variable key used to access environment variables (e.g., globalThis.<key>).",
       DEFAULT_ACCESSOR_KEY,
@@ -71,6 +76,11 @@ export const createCommand = () =>
       resolveEnvExampleKeys({
         envExampleFilePath: args.example,
       });
+
+      // Skip output file validation for --generate and --prepend modes
+      if (args.generate || args.prepend) {
+        return;
+      }
 
       const path = args.path ?? defaultOutput;
       const foundOutputFilePaths = resolveOutputFileNames(path);
