@@ -55,6 +55,6 @@
     "dotenv": "16.6.1",
     "glob": "11.1.0",
     "picocolors": "1.1.1",
-    "serialize-javascript": "6.0.2"
+    "serialize-javascript": "7.0.3"
   }
 }
