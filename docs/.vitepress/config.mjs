@@ -6,6 +6,8 @@ import { SitemapStream } from "sitemap";
 
 const links = [];
 export default defineConfig({
+  base: "/import-meta-env/",
+
   title: "Import-meta-env",
 
   description:
