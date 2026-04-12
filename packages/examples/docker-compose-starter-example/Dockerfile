@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine3.15 as build-stage
+FROM node:20.19.6-alpine3.22 as build-stage
 WORKDIR /app
 
 COPY ./ .
@@ -7,7 +7,7 @@ RUN npm i
 RUN npm i -D import-meta-env-cli-test.tgz
 RUN npm i -D import-meta-env-unplugin-test.tgz
 RUN npm run build
-RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node18-alpine-x64 -o import-meta-env
+RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node20-alpine-x64 -o import-meta-env
 
 ###############################################################################
 
