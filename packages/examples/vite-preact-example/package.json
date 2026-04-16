@@ -14,6 +14,6 @@
     "@babel/core": "7.28.5",
     "@preact/preset-vite": "2.10.2",
     "cross-env": "7.0.3",
-    "vite": "6.3.6"
+    "vite": "6.4.2"
   }
 }
