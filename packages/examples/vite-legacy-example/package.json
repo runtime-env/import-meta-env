@@ -8,7 +8,7 @@
     "preview": "cross-env HELLO=import-meta-env import-meta-env -x .env.example.public && vite preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "6.1.1",
+    "@vitejs/plugin-legacy": "8.0.1",
     "cross-env": "7.0.3",
     "terser": "5.44.1",
     "vite": "6.3.6"
