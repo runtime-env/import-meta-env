@@ -39,7 +39,7 @@
     "@farmfe/core": "1.7.11",
     "@types/node": "22.18.10",
     "@types/object-hash": "3.0.6",
-    "rollup": "4.52.4",
+    "rollup": "4.60.1",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "vite": "6.3.6",
