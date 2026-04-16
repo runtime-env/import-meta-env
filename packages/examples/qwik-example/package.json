@@ -31,7 +31,7 @@
     "@builder.io/qwik": "1.13.0",
     "@builder.io/qwik-city": "1.13.0",
     "@types/eslint": "9.6.1",
-    "@types/node": "22.18.10",
+    "@types/node": "22.19.17",
     "@typescript-eslint/eslint-plugin": "8.46.1",
     "@typescript-eslint/parser": "8.46.1",
     "cross-env": "7.0.3",
