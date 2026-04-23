@@ -8,6 +8,7 @@ import { backupFileExt, defaultOutput } from "./shared";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
 import { replaceAllPlaceholderWithEnv } from "./replace-all-placeholder-with-env";
 import { shouldInjectEnv } from "./should-inject-env";
+import { generateEnvFile, prependEnvToFile } from "./generate-env-file";
 import colors from "picocolors";
 
 export const main = (di: {
@@ -22,6 +23,37 @@ export const main = (di: {
     envFilePath: opts.env,
   });
 
+  // Generate mode: create a standalone env.js file
+  if (opts.generate) {
+    generateEnvFile({
+      filePath: opts.generate,
+      env,
+      accessorKey: opts.accessorKey,
+    });
+    console.info(
+      colors.green(
+        `[import-meta-env]: Generated ${opts.generate} with accessor key "${opts.accessorKey}"`,
+      ),
+    );
+    return;
+  }
+
+  // Prepend mode: prepend env vars to an existing JS file
+  if (opts.prepend) {
+    prependEnvToFile({
+      filePath: opts.prepend,
+      env,
+      accessorKey: opts.accessorKey,
+    });
+    console.info(
+      colors.green(
+        `[import-meta-env]: Prepended env vars to ${opts.prepend} with accessor key "${opts.accessorKey}"`,
+      ),
+    );
+    return;
+  }
+
+  // Legacy mode: replace placeholders in existing files
   const path = opts.path ?? defaultOutput;
   let hasReplaced = false;
   resolveOutputFileNames(path).forEach((outputFileName) => {

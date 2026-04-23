@@ -4,12 +4,16 @@ import colors from "picocolors";
 import { version } from "../package.json";
 import { resolveOutputFileNames } from "./resolve-output-file-names";
 import { defaultOutput } from "./shared";
+import { DEFAULT_ACCESSOR_KEY } from "../../shared/constant";
 
 export interface Args {
   env: string;
   example: string;
   path: string[];
   disposable: boolean;
+  generate?: string;
+  prepend?: string;
+  accessorKey: string;
 }
 
 export const createCommand = () =>
@@ -44,6 +48,19 @@ export const createCommand = () =>
       "--disposable",
       "Do not create backup files and restore from backup files. In local development, disable this option to avoid rebuilding the project when environment variable changes, In production, enable this option to avoid generating unnecessary backup files.",
     )
+    .option(
+      "-g, --generate <filepath>",
+      "Generate a standalone JavaScript file containing environment variables instead of replacing placeholders in existing files.",
+    )
+    .option(
+      "--prepend <filepath>",
+      "Prepend environment variables to an existing JavaScript file (e.g., remoteEntry.js). The globalThis.<key> assignment will be inserted at the beginning of the file.",
+    )
+    .option(
+      "-k, --accessor-key <key>",
+      "The global variable key used to access environment variables (e.g., globalThis.<key>).",
+      DEFAULT_ACCESSOR_KEY,
+    )
     .action((args: Args) => {
       args = { ...args };
 
@@ -59,6 +76,11 @@ export const createCommand = () =>
       resolveEnvExampleKeys({
         envExampleFilePath: args.example,
       });
+
+      // Skip output file validation for --generate and --prepend modes
+      if (args.generate || args.prepend) {
+        return;
+      }
 
       const path = args.path ?? defaultOutput;
       const foundOutputFilePaths = resolveOutputFileNames(path);

@@ -6,7 +6,7 @@ import {
 } from "./vite/preserve-built-in-env";
 import { unwrapSignalForImportMetaEnvEnv } from "./qwik/unwrap-signal-for-import-meta-env-env";
 import MagicString from "magic-string";
-import { accessor } from "packages/shared";
+import { createAccessor } from "packages/shared";
 import { replace } from "./replace";
 
 export function transformProd({
@@ -15,13 +15,16 @@ export function transformProd({
   meta,
   example,
   viteConfig,
+  accessorKey,
 }: {
   code: string;
   id: string;
   meta: UnpluginContextMeta;
   example: readonly string[];
   viteConfig?: ViteResolvedConfig;
+  accessorKey?: string;
 }) {
+  const accessor = createAccessor(accessorKey);
   const s = new MagicString(code);
 
   if (id.includes("node_modules") === false) {

@@ -1,6 +1,6 @@
 import { declare } from "@babel/helper-plugin-utils";
 import type babelCore from "@babel/core";
-import { resolveEnv, accessor } from "../../shared";
+import { resolveEnv, createAccessor } from "../../shared";
 import { resolveEnvExampleKeys } from "../../shared/resolve-env-example-keys";
 import { PluginOptions } from "./types";
 
@@ -24,6 +24,8 @@ export default declare<PluginOptions>(({ template, types }, options) => {
           });
         })()
       : Object.create(null);
+
+  const accessor = createAccessor(options.accessorKey);
 
   const replaceEnvForCompileTime = (
     template: typeof babelCore.template,

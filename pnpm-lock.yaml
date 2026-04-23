@@ -240,8 +240,8 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
       vite:
-        specifier: 6.3.6
-        version: 6.3.6(@types/node@22.18.10)(terser@5.31.2)(yaml@2.8.2)
+        specifier: 6.4.0
+        version: 6.4.0(@types/node@22.18.10)(terser@5.31.2)(yaml@2.8.2)
       webpack:
         specifier: 5.102.1
         version: 5.102.1(@swc/core@1.11.16(@swc/helpers@0.5.12))(esbuild@0.25.10)
@@ -4540,8 +4540,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.3.6:
-    resolution: {integrity: sha512-0msEVHJEScQbhkbVTb/4iHZdJ6SXp/AvxL2sjwYQFfBqleHtnCqv1J3sa9zbWz/6kW1m9Tfzn92vW+kZ1WV6QA==}
+  vite@6.4.0:
+    resolution: {integrity: sha512-oLnWs9Hak/LOlKjeSpOwD6JMks8BeICEdYMJBf6P4Lac/pO9tKiv/XhXnAM7nNfSkZahjlCZu9sS50zL8fSnsw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -9512,7 +9512,7 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.2
 
-  vite@6.3.6(@types/node@22.18.10)(terser@5.31.2)(yaml@2.8.2):
+  vite@6.4.0(@types/node@22.18.10)(terser@5.31.2)(yaml@2.8.2):
     dependencies:
       esbuild: 0.25.10
       fdir: 6.5.0(picomatch@4.0.3)
