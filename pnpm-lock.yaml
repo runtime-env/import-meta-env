@@ -127,8 +127,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       serialize-javascript:
-        specifier: 6.0.2
-        version: 6.0.2
+        specifier: 7.0.3
+        version: 7.0.3
     devDependencies:
       '@scarf/scarf':
         specifier: 1.4.0
@@ -171,8 +171,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       serialize-javascript:
-        specifier: 6.0.2
-        version: 6.0.2
+        specifier: 7.0.3
+        version: 7.0.3
     devDependencies:
       '@types/serialize-javascript':
         specifier: 5.0.4
@@ -4096,6 +4096,10 @@ packages:
 
   serialize-javascript@6.0.2:
     resolution: {integrity: sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==}
+
+  serialize-javascript@7.0.3:
+    resolution: {integrity: sha512-h+cZ/XXarqDgCjo+YSyQU/ulDEESGGf8AMK9pPNmhNSl/FzPl6L8pMp1leca5z6NuG6tvV/auC8/43tmovowww==}
+    engines: {node: '>=20.0.0'}
 
   setprototypeof@1.1.0:
     resolution: {integrity: sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==}
@@ -9110,6 +9114,8 @@ snapshots:
   serialize-javascript@6.0.2:
     dependencies:
       randombytes: 2.1.0
+
+  serialize-javascript@7.0.3: {}
 
   setprototypeof@1.1.0: {}
 
