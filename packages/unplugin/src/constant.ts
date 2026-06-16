@@ -1,12 +1,13 @@
-import { accessor } from "../../shared/constant";
+import { createAccessor } from "../../shared/constant";
 
 export const createAccessorRegExp = (
   suffix: string,
   quote: "single" | "double" = "double",
+  accessorKey?: string,
 ) =>
   new RegExp(
     "\\b" +
-      accessor
+      createAccessor(accessorKey)
         .replace(/\\/g, "\\\\")
         .replace(/([\(\)\[\]\|])/g, "\\$1")
         .replace(/\s/g, "\\s*")
