@@ -1,12 +1,17 @@
 import { globSync } from "glob";
-import { existsSync, lstatSync } from "fs";
+import { lstatSync } from "fs";
 import { resolve } from "path";
 
 export const resolveOutputFileNames = (outputPaths: string[]) => {
   return outputPaths
     .map((path) => globSync(path))
     .flat()
-    .filter((path) => existsSync(path))
-    .filter((path) => lstatSync(path).isFile())
+    .filter((path) => {
+      try {
+        return lstatSync(path).isFile();
+      } catch {
+        return false;
+      }
+    })
     .map((path) => resolve(path));
 };
