@@ -51,5 +51,10 @@
     "object-hash": "3.0.0",
     "picocolors": "1.1.1",
     "unplugin": "2.3.10"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/../.."
+    ]
   }
 }
