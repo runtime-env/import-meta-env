@@ -47,9 +47,8 @@ export const unpluginFactory: UnpluginFactory<Options> = (options, meta) => {
         debug && console.debug("configResolved::");
 
         transformMode =
-          (transformMode ?? process.env.NODE_ENV !== "production")
-            ? "compile-time"
-            : "runtime";
+          transformMode ??
+          (process.env.NODE_ENV !== "production" ? "compile-time" : "runtime");
 
         if (transformMode === "compile-time") {
           env = resolveEnv({
@@ -142,9 +141,8 @@ export const unpluginFactory: UnpluginFactory<Options> = (options, meta) => {
 
     rspack: (compiler) => {
       transformMode =
-        (transformMode ?? compiler.options.mode === "production")
-          ? "runtime"
-          : "compile-time";
+        transformMode ??
+        (compiler.options.mode === "production" ? "runtime" : "compile-time");
 
       if (transformMode === "compile-time") {
         env = resolveEnv({
